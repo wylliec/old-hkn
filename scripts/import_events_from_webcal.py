@@ -3,11 +3,7 @@ from django.core.management import setup_environ
 from django.core.exceptions import ObjectDoesNotExist
 import re, django, sys
 
-sys.path.append("/home/hzarka")
-sys.path.append("/home/hzarka/hkn")
-
-import settings
-setup_environ(settings)
+import hkn_settings
 
 from hkn.info.models import *
 from hkn.info.utils import *
