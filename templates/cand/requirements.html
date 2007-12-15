@@ -1,0 +1,26 @@
+{% extends "info/hkn.html" %}
+
+{% block extrahead %}
+<link href="/css/list.css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+{% for rts in type_rsvps.items %}
+<span style="font-size:24">{{ rts.0 }}</span>
+<table class="list"><tr>
+<th>Name</th>
+<th>Description</th>
+<th>Time</th>
+<th>Event Type</th>
+</tr>
+{% for rsvp in rts.1 %}
+<tr>
+<td>{{ rsvp.event.name }}</td>
+<td>{{ rsvp.event.description }}</td>
+<td>{{ rsvp.event.start_time|date:"l m/d g:ia" }}-{{ rsvp.event.end_time|date:"g:ia" }}</td>
+<td>{{ rsvp.event.get_event_type }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endfor %}
+{% endblock %}

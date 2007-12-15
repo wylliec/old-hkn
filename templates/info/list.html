@@ -1,0 +1,36 @@
+{% extends "info/hkn.html" %}
+
+{% block extrahead %}
+<link href="/css/list.css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<form action="" method="get">
+<input name="query" />
+<input type="submit" value="search!">
+</form>
+
+{% for page_i in page_range %}
+	<a href="/info/list/{{ class }}/{{ page_i }}/{{ max }}">{{ page_i }}</a>
+{% endfor %}
+<table class="list">
+<tr><th>Image</th>
+<th><a href="?sort={% if first_order %}{{ first_order }}{% endif %}first">First Name</a></th>
+<th><a href="?sort={% if last_order %}{{ last_order }}{% endif %}last">Last Name</a></th>
+<th><a href="?sort={% if email_order %}{{ email_order }}{% endif %}email">Email</a></th>
+<th>Phone</th>
+</tr>
+{% for person in persons %}
+<tr>
+<td><a href="/info/pictures/{{ person.person_id }}"><img height=60 width=80 src="{{ person.thumbnail_url }}"></a></td>
+<td><a href="/info/details/{{ person.person_id }}">{{ person.first }}</a></td>
+<td><a href="/info/details/{{ person.person_id }}">{{ person.last }}</a></td>
+<td>{{ person.email }}</td>
+<td>{{ person.extendedinfo.get_phone }}</td>
+</tr>
+{% endfor %}
+</table>
+{% for page_i in page_range %}
+	<a href="/info/list/{{ class }}/{{ page_i }}/{{ max }}">{{ page_i }}</a>
+{% endfor %}
+{% endblock %}

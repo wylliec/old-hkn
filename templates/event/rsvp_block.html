@@ -1,0 +1,20 @@
+{% extends "event/hkn.html" %}
+
+{% block content %}
+<form action="" method="post">
+	<table>
+	<tr><td>Event:</td><td>{{ event.name }}</td>
+	<tr><td>Person:</td><td>{{ person.name }}</td>
+	</table>
+	{% if has_transport %}
+	Transport: <input name="transport" value="{{ transport }}" /><br>
+	{% endif %}
+
+	{% for block in blocks %}
+	{{ block.0 }} <input type="checkbox" name="blocks" value={{ forloop.counter0 }} {% if block.1 %} checked="yes" {% endif %}/><br>
+	{% endfor %}
+
+	<input type="hidden" name="confirm" value="1" />
+	<input type=submit value = "RSVP!" />
+</form>
+{% endblock %}

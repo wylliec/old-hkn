@@ -1,0 +1,7 @@
+<form id="event.{{event.event_id}}" action="" method="post">
+	<table>
+	{{ form }}
+	</table>
+	<input type=hidden name="event_id" value="{{event.event_id}}" />
+	<a href="javascript:void(0);" onclick="submit_rsvp({{event.event_id}});"> RSVP! </a>
+</form>

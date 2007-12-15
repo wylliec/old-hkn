@@ -1,0 +1,25 @@
+{% extends "info/hkn.html" %}
+
+{% block extrahead %}
+<link href="/css/list.css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+<input class="button" type=submit value="save">
+<table class="list"><tr>
+<th>Name</th>
+<th>RSVP Comment</th>
+<th>VP Comment</th>
+</tr>
+{% for rsvp in rsvps %}
+<tr>
+<td> <input type=checkbox name="{{rsvp.rsvp_id}}.vp_confirm" {% if rsvp.vp_confirm %} checked="yes" {% endif %} /> {{ rsvp.person.name }}<br><span style="font-size: 10">(<a href="/event/rsvp/view/{{rsvp.rsvp_id}}/">see rsvp</a>)</span></td>
+<td>{{ rsvp.comment }}</td>
+<td><input type=text name="{{rsvp.rsvp_id}}.vp_comment" value="{{rsvp.vp_comment}}"/></td>
+</tr>
+{% endfor %}
+</table>
+<input class="button" type=submit value="save">
+</form>
+{% endblock %}

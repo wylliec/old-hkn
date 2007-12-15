@@ -1,0 +1,25 @@
+{% extends "info/hkn.html" %}
+
+{% block extrahead %}
+<link href="/css/list.css" rel="stylesheet" />
+{% endblock %}
+
+{% block extratitle %} - Initiate {% endblock %}
+
+{% block content %}
+<form action="" method="post">
+<input class="button" type=submit value="save">
+<table class="list"><tr>
+<th>Name</th>
+<th>Initiation Comment</th>
+</tr>
+{% for c in candidates %}
+<tr>
+<td> <input type=checkbox name="{{c.person_id}}.initiated" {% if c.is_initiated %} checked="yes" {% endif %} /> {{ c.name }} ({{c.events_attended}})<br><span style="font-size: 10">(<a href="/info/details/{{c.person_id}}/">see details</a>)</span></td>
+<td><input type=text name="{{c.person_id}}.comment" value="{{c.comment}}"/></td>
+</tr>
+{% endfor %}
+</table>
+<input class="button" type=submit value="save">
+</form>
+{% endblock %}

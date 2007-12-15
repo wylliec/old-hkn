@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>HKN - Login</title>
+</head>
+
+<body text="#000000" bgcolor="#ffffff" link="#0000cc" vlink="#0000cc" alink="#0000cc">
+<form action="/authenticate/" method="post" enctype="multipart/form-data">
+<table bgcolor="#ffffff" border="0" cellspacing="0" cellpadding="0" width="100%%"><tr><td align="center"><center><img src="http://hkn.eecs.berkeley.edu/images/shield_medium.gif" alt="HKN Logo" width="187" height="244" /><br />
+  <font color="red">{{ message }}</font><br />
+<table bgcolor="#ffffff" border="0" width="350"><tr><td bgcolor="#ece9d8" align="center"><b>HKN Login</b>
+</td>
+</tr>
+<tr><td bgcolor="#ffffff" align="left">
+<table bgcolor="#ffffff" align="center" border="0" width="100%%"><tr><td align="right" width="30%%">Username:</td>
+<td align="left" width="*"><input type="text" name="username" value="" />
+</td>
+</tr>
+
+<tr><td align="right" width="30%%">Password:</td>
+<td align="left" width="*"><input type="password" name="password" />
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+<input type="hidden" name="redirect_url" value="{{ redirect_url }}" />
+
+<tr><td align="left"><center><input type="submit" value="Submit" />
+</center></td>
+</tr>
+</table>
+</center></td>
+</tr>
+</table>
+</form>
+</body></html>

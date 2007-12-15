@@ -1,0 +1,18 @@
+table.list {
+  margin: 1em 1em 1em 2em;
+  background: whitesmoke;
+  border-collapse: collapse;
+  width: 100%;
+}
+table.list th, table.list td {
+  border: 1px silver solid;
+  padding: 0.2em;
+}
+table.list th {
+  background: gainsboro;
+  text-align: left;
+}
+table.list caption {
+  margin-left: inherit;
+  margin-right: inherit;
+}

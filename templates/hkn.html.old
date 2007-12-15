@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+{% block title %}<title>HKN {% block extratitle%} {% endblock %}</title>{% endblock %}
+<LINK REL="stylesheet" TYPE="text/css" HREF="/css/hkn.css">
+<META NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
+fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
+{% block extrahead %}
+{% endblock %}
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#003366" VLINK="#003366">
+
+<!--navigation bar-->
+<NAVBAR>
+
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#000055">
+  <TR>
+
+	<TD HEIGHT="25" ALIGN="LEFT" NOWRAP>
+	    <FONT FACE="verdana, arial, helvetica" SIZE="-2" COLOR="#EEC000">
+	    &nbsp;&nbsp;
+	    <A CLASS="navbar" HREF="/"><FONT FACE="verdana, arial, helvetica" SIZE="-2" COLOR="#EEC000"><B>Home</B></FONT></A>
+	    &nbsp;&nbsp;|&nbsp;&nbsp;
+	    <A CLASS="navbar" HREF="/student/"><FONT FACE="verdana, arial, helvetica" SIZE="-2" COLOR="#EEC000"><B>Student 
+Services</B></FONT></A>
+	    &nbsp;&nbsp;|&nbsp;&nbsp;
+
+	    <A CLASS="navbar" HREF="/indrel/"><FONT FACE="verdana, arial, helvetica" SIZE="-2" COLOR="#EEC000"><B>Industrial 
+Relations</B></FONT></A>
+	    &nbsp;&nbsp;|&nbsp;&nbsp;
+	    <A CLASS="navbar" HREF="/alumni/"><FONT FACE="verdana, arial, helvetica" SIZE="-2" 
+COLOR="#EEC000"><B>Alumni</B></FONT></A>
+	    &nbsp;&nbsp;|&nbsp;&nbsp;
+	    <A CLASS="navbar" HREF="/about/"><FONT FACE="verdana, arial, helvetica" SIZE="-2" COLOR="#EEC000"><B>About 
+HKN</B></FONT></A>
+	    &nbsp;&nbsp;|&nbsp;&nbsp;
+
+	    <A CLASS="navbar" HREF="/about/contacthkn.shtml"><FONT FACE="verdana, arial, helvetica" SIZE="-2" 
+COLOR="#EEC000"><B>Contact Us</B></FONT></A>
+	    &nbsp;&nbsp;</FONT>
+	</TD>
+  </TR>
+</TABLE>
+</NAVBAR>
+
+
+<!--page title-->
+<HEADER>
+
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0" BGCOLOR="#FFFFFF">
+
+  <TR>
+      <TD ALIGN="LEFT">
+	<IMG SRC="http://hkn.eecs.berkeley.edu/images/titles/hkntitle.gif" ALT="HKN Main Page" BORDER="0" HEIGHT="100" 
+WIDTH="330">
+      </TD>
+      <TD ALIGN="RIGHT">
+<!--<IMG SRC="/images/hkn_shield_thumb.gif" ALT="HKN Logo" BORDER="0" HEIGHT="94" WIDTH="72">
+-->
+      </TD>
+  </TR>
+</TABLE>
+</HEADER>
+
+
+<!--location mapper-->
+<LOCATION>
+
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#000066">
+  <TR>
+      <TD HEIGHT="25" ALIGN="LEFT" WIDTH="70%">
+	<FONT FACE="Verdana, Arial, Helvetica" SIZE="-2" COLOR="#FFFFFF">
+	&nbsp;&nbsp;
+	</FONT>
+      </TD>
+
+     <TD HEIGHT="25" ALIGN="MIDDLE" WIDTH="30%" NOWRAP VALIGN="middle">
+	<FONT FACE="Verdana, Arial, Helvetica" SIZE="-2" COLOR="#EEC000">
+	Wednesday, October 10, 2007
+	</FONT>
+     </TD>
+  </TR>
+</TABLE>
+
+</LOCATION>
+
+
+<!--main content starts-->
+
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+
+  <!--spacers and initialize-->
+  <TR>
+    <!--spacer column-->
+    <TD WIDTH="7" ROWSPAN="4"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="7" HEIGHT="1" ALT="" 
+BORDER="0"></TD>
+        <!--contents column-->
+    <TD WIDTH="158" HEIGHT="8"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="158" HEIGHT="1" ALT="" 
+BORDER="0"></TD>
+        <!--spacer column-->
+    <TD WIDTH="7" ROWSPAN="4"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="7"HEIGHT="1" ALT="" 
+BORDER="0"></TD>
+
+        <!--vertial line column-->
+    <TD ROWSPAN="4" BGCOLOR="#000066"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="1" HEIGHT="1" ALT="" 
+BORDER="0"></TD>
+        <!--spacer column-->
+    <TD WIDTH="7" ROWSPAN="4"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="7" HEIGHT="1" ALT="" 
+BORDER="0"></TD>
+        <!--headline column-->
+    <TD HEIGHT="8"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="1" HEIGHT="1" ALT="" BORDER="0"></TD>
+  </TR>
+
+  <!--main content-->
+
+  <TR>
+
+{% block sidebar %}
+    <TD ID="sidebar" VALIGN="TOP" WIDTH="160" NOWRAP>
+        <!--table of contents-->
+    <P>
+	<SPAN CLASS="title">Student Services</SPAN>
+	<BR><A HREF="/student/CourseSurvey">Course Survey</A>
+	<BR><A HREF="/student/onlineexams.shtml">Online Exams</A>
+	<BR>
+
+	<br><SPAN CLASS="title">People</SPAN>
+	<BR><A HREF="/info/list/candidates">Candidate Information</A>
+	<BR><A HREF="/info/list/officers">Officer Information</A>
+	<BR>
+
+	<br><SPAN CLASS="title">Events</SPAN>
+	<BR><A HREF="/event/new">New Event</A>
+	<BR><A HREF="/event/list">List of Events</A>
+	<BR><A HREF="/event/rsvp/mine">My RSVPs</A>
+	<BR><A HREF="/event/calendar">Events Calendar</A>
+	<BR>
+
+	<br><SPAN CLASS="title">Candidates</SPAN>
+	<BR><A HREF="/cand/confirm">Confirm Attendance</A>
+	<BR><A HREF="/cand/confirmed">Confirmed Attendance</A>
+	<BR>
+	<BR>
+	
+	{% if user.is_anonymous %}
+	<form action="/authenticate/" method="post" enctype="multipart/form-data">
+	User: <input class="inputbox" type="text" name="username" value="" size=15/><br>
+	Pass: <input class="inputbox" type="password" name="password" value="" size=15/><br>
+	<input type="hidden" name="redirect_url" value="/" />
+	<input type="submit" class="button" value="Login" />
+	{% else %}
+	<SPAN CLASS="logout"> you are {{ user.username }} <A HREF="/logout">(logout)</A></SPAN>
+	{% endif %}
+
+
+	<IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="11" HEIGHT="1" ALT="" BORDER="0">
+	<BR><BR><A HREF="http://hkn.eecs.berkeley.edu/images/shield_huge.gif"><IMG 
+SRC="http://hkn.eecs.berkeley.edu/images/shield256.gif" WIDTH="75" HEIGHT="122" BORDER=0></A>
+    </TD>
+{% endblock %}
+
+    <!--content-->
+    <TD WIDTH="100%" VALIGN="TOP" ROWSPAN="2">
+        <CONTENT>
+<!-- start main content block -->
+{% block content %}
+	Content goes here! Extend "content" block in template :) :) :) <3 <3 <3
+{% endblock %}
+<!-- end main content block -->
+        </CONTENT>
+    </TD>
+  </TR>
+
+  <!--spacers before footer-->
+  <TR>
+
+    <TD WIDTH="158" HEIGHT="20" colspan=2><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="158" HEIGHT="20 
+ALT="" BORDER="0"></td>
+  </TR>
+</TABLE>
+
+<!--footer-->
+<FOOTER>
+
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#000055">
+  <TR>
+      <TD HEIGHT="25" ALIGN="left" WIDTH="30%" NOWRAP VALIGN="middle">
+	&nbsp;&nbsp;
+	<A CLASS="footer" HREF="/">
+
+	  <FONT FACE="verdana, arial, helvetica" SIZE="-2" COLOR="#EEC000">
+	    <B>Eta Kappa Nu, Mu Chapter</B>
+	  </FONT>
+	</A>
+      </TD>
+      <TD HEIGHT="25" ALIGN="center" VALIGN="middle">
+	<A CLASS="footer" HREF="./about/contacthkn.shtml">
+	<FONT FACE="verdana, arial, helvetica" SIZE="-2" COLOR="#EEC000">
+
+	<B> 290 Cory: (510) 642-7346 </B></FONT>
+	</A>
+      </TD>
+      <TD HEIGHT="25" ALIGN="right" WIDTH="30%" NOWRAP VALIGN="middle">
+	<A CLASS="footer" HREF="mailto:www@hkn.eecs.berkeley.edu"><FONT FACE="verdana, arial, helvetica" SIZE="-2" 
+COLOR="#EEC000"><B>www@hkn.eecs.berkeley.edu</B></FONT></A>
+	&nbsp;&nbsp;
+      </TD>
+
+  </TR>
+</TABLE>
+</FOOTER>
+
+</BODY>
+</HTML>
+
+

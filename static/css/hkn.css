@@ -1,0 +1,117 @@
+.inputbox {
+	background:#FFFFFF none repeat scroll 0%;
+	border:1px solid #999999;
+	color:#333333;
+}
+
+.button {
+	background:#666666 none repeat scroll 0%;
+	border:1px solid #000000;
+	color:#CCCCCC;
+	font-size:0.75em;
+	line-height:100%;
+	padding:3px;
+}
+
+a {
+	font-weight:bold;
+	text-decoration:none;
+}
+
+a:link, a:visited {
+	background-color:transparent;
+	color:#0000CC;
+}
+
+
+a:hover {
+	background-color:transparent;
+	color:#DDAA11;
+	text-decoration:underline;
+}
+
+
+h1 {
+  color: #003366;
+  font-weight: bold;
+  font-size: large;
+  font-family: arial, helvetica, sans-serif;
+}
+
+h2 {
+  font-size: large;
+  font-family: arial, helvetica, sans-serif;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: medium;
+  font-family: arial, helvetica, sans-serif;
+}
+
+.navbar {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-weight: bold;
+  font-size: x-small;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.location {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-weight: bold;
+  font-size: x-small;
+  color: #FFFFFF;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.date {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-weight: bold;
+  font-size: x-small;
+  color: #FFFFFF;
+  vertical-align: middle;
+}
+
+.footer {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-weight: bold;
+  font-size: x-small;
+  color: #FFFFFF;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+#sidebar .title { 
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-weight: bold;
+  font-size: small;
+  color: #000000;
+}
+
+#sidebar a { 
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-weight: normal;
+  font-size: x-small;
+}
+
+#sidebar .logout {
+  font-size: x-small;
+}
+
+
+.articletitle { 
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-weight: bold;
+  font-size: medium;
+  text-decoration: underline;
+}
+
+.articletext { 
+  font-family: "times new roman", times, serif;
+  font-weight: normal;
+  font-size: medium;
+}
+
+

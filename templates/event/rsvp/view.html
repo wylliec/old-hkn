@@ -1,0 +1,14 @@
+{% extends "event/hkn.html" %}
+
+{% block content %}
+	<table>
+	<tr><td>Event:</td><td>{{ event.name }}</td>
+	</tr>
+	<tr><td>Person:</td><td>{{ person.name }}</td>
+	</tr>
+	<tr><td>Transport:</td><td>{{ rsvp.transport }}</td>
+	</tr>
+	<tr><td>Comment:</td><td>{{ rsvp.comment }}</td>
+	</tr>
+	</table>
+{% endblock %}

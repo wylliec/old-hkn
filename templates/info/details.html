@@ -1,0 +1,27 @@
+{% extends "info/hkn.html" %}
+
+
+{% block content %}
+<ALIGN = CENTER><big><b>{{ person.first }} {{ person.last }}</b></big></H1>
+<br>
+<body>
+<img ALIGN = CENTER src="{{ person.picture_url }}">
+<table>
+<tr>
+<td><b>Contact Information</b></td>
+</tr>
+<tr>
+<td>{{ person.first }} {{ person.last }}</td>
+</tr>
+<tr>
+<td>{{ info.phone }}</td>
+</tr>
+<tr>
+<td>{{ info.local_addr }}</td>
+</tr>
+<tr>
+<td>{{ person.email }} </td>
+</tr>
+</table>
+<a href = "/info/list/">List All</a>
+{% endblock %}
