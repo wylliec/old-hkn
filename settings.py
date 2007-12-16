@@ -7,7 +7,10 @@ ADMINS = (
      ('HKN Computing Services', 'compserv@hkn.eecs.berkeley.edu'),
 )
 
+# a valid value should look something like this:
+# SERVER_ROOT = "/home/hzarka/website/hkn/"
 SERVER_ROOT = "/dev/null"
+
 
 # make sure SERVER_ROOT ends with hkn/
 if not SERVER_ROOT.endswith("hkn/"):
@@ -105,4 +108,8 @@ INSTALLED_APPS = (
     'hkn.event',
     'hkn.gcal',
     'hkn.cand',
+    'hkn.yearbook',
+    'hkn.exam',
+    'hkn.tutor',
+    'hkn.resume',
 )

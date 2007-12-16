@@ -3,19 +3,25 @@ from hkn.settings import SERVER_ROOT, IMAGES_PATH
 
 urlpatterns = patterns('',
     # Example:
-    # (r'^hkn/', include('hkn.foo.urls')),
 
-      (r'^$', 'hkn.main.views.main'),
-
-     (r'^hkn/', include('hkn.info.urls')),
-     (r'^login/$', 'hkn.auth.login.login'),
-     (r'^logout/$', 'hkn.auth.login.logout'),
-     (r'^authenticate/$', 'hkn.auth.login.authenticate'),
+    # main page
+     (r'^$', 'hkn.main.views.main'),
 
     # other inclusions
     (r'^info/', include('hkn.info.urls')),
     (r'^event/', include('hkn.event.urls')),
     (r'^cand/', include('hkn.cand.urls')),
+    (r'^resume/', include('hkn.resume.urls')),
+    (r'^exam/', include('hkn.exam.urls')),
+    (r'^tutor/', include('hkn.tutor.urls')),
+    (r'^sms/', include('hkn.sms.urls')),
+    (r'^yearbook/', include('hkn.yearbook.urls')),
+
+    # authentication pages
+     (r'^login/$', 'hkn.auth.login.login'),
+     (r'^logout/$', 'hkn.auth.login.logout'),
+     (r'^authenticate/$', 'hkn.auth.login.authenticate'),
+
 
     # default static
     (r'^images/(?P<path>.*)$', 'django.views.static.serve', {'document_root': IMAGES_PATH}),
