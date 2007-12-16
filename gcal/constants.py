@@ -2,8 +2,6 @@ from hkn.event.constants import EVENT_TYPE, _const
 
 GCAL = _const()
 
-#email = "etakappanu.mu@gmail.com"
-#password = "pkillvandebo"
 GCAL.email = "hkn@mu.etakappanu.net"
 GCAL.password = "monkey13"
 GCAL.source = "Google_Calendar_HKN_Sync"
