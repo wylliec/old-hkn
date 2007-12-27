@@ -83,6 +83,7 @@ def addUser(person):
 	user.setPassword(DEFAULT_PASSWORD)
 	user.is_superuser = False
 	user.is_active = True
+	user.pam_login = False
 
 	user.force_password_change = True
 	user.force_info_update = True
