@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.4
+#!/usr/bin/env python
 from django.core.management import setup_environ
 from django.core.exceptions import ObjectDoesNotExist
 import re, django
