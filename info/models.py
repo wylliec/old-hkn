@@ -14,6 +14,18 @@ class PeopleManager(models.Manager):
 	def email_contains(self, email):
 		email = normalizeEmail(email)
 		return self.get_query_set().filter(Q(school_email__icontains = email) | Q(preferred_email__icontains = email))
+	
+	def query(self, query, objects = None):
+		if objects == None:
+			objects = self.get_query_set()
+			
+		persons = objects
+		if query and len(query.strip()) != 0:
+			for q in query.split(" "):
+				if len(q.strip()) == 0:
+					continue
+				persons = persons.filter(Q(first__icontains = q) | Q(last__icontains = q) | Q(user__username__icontains = q))
+		return persons
 		
 
 class CandidateManager(PeopleManager):
@@ -88,14 +100,14 @@ class Person(models.Model):
         object has one associated person) you can do the following::
                 >>>> rsvps  = some_person.rsvp_set
 
-        For other objects for which there are many-to-many correspondences (e.g. each Person has held lots of Positions, but
+        For other objects for wmodels.ManyToManyField(Position)hich there are many-to-many correspondences (e.g. each Person has held lots of Positions, but
         each Position can also have many Persons that have occupied that position)::
                 >>>> positions = some_person.positions
 
         To figure out the right name for the related object(extendedinfo, user, rsvp_set) lowercase the class name
         (ExtendedInfo, User, RSVP) and then add '_set' for one-to-many relationships or pluralize for many-to-many relationships.
 
-        If in doubt, get a shell (run './manage.py shell' in your server root) and try the following:
+        If in doubt, get a shell (run './manage.py shell' in your server root) and try the following::
                 >>>> from hkn.info.models import Person
                 >>>> some_person = Person.members.get(first = "Hisham")
                 >>>> dir(some_person)
@@ -134,7 +146,7 @@ class Person(models.Model):
         Same as above, but only current officers.
         """
 	
-	all_officers = AllOfficerManager()
+	fogies = exofficers = all_officers = AllOfficerManager()
 	"""
         Same as above, but all officers ever.
         """
@@ -241,12 +253,12 @@ class Person(models.Model):
 		return self.member_status >= MEMBER_TYPE.MEMBER
 
 	def initiate(self, initiate = True):
-                """
-                Initiates the person. Sets their MEMBER_TYPE to Member or Candidate as appropriate.
+		"""
+		Initiates the person. Sets their MEMBER_TYPE to Member or Candidate as appropriate.
 
-                @type initiate: boolean
-                @param initiate: True to set MEMBER_TYPE to Member, False for Candidate
-                """
+		@type initiate: boolean
+		@param initiate: True to set MEMBER_TYPE to Member, False for Candidate
+		"""
 		if initiate:
 			self.member_status = MEMBER_TYPE.MEMBER
 		else:
@@ -264,6 +276,9 @@ class ExtendedInfo(models.Model):
         """
         
 	person = models.OneToOneField(Person, primary_key = True)
+	"""A reference to a L{Person} object. To get a handle of the associated Person, do::
+		>>>> extendedinfo.person"""
+	
 	sid = models.CharField(maxlength=10)
 	""" The person's SID. Try to use this as little as possible, will be phased out gradually. """
 	
@@ -319,11 +334,14 @@ class CandidateInfo(models.Model):
         """
         
 	person = models.OneToOneField(Person, primary_key = True)
+	"""A reference to a L{Person} object. To get a handle of the associated Person, do::
+		>>>> candidateinfo.person"""
+	
 	candidate_semester = models.CharField(maxlength=5)
 	""" The person's candidate semester. """
 	
 	candidate_committee = models.ForeignKey(Position)
-        """ The person's candidate committee. """
+	""" The person's candidate committee. """
 	
 	initiation_comment = models.TextField()
 	""" a comment that can be set at initiation time by the VP """
@@ -335,7 +353,7 @@ class CandidateInfo(models.Model):
 
 class Officership(models.Model):
         """
-        The official record of Officership in HKN. Brings together a Person, Position, and Semester.
+        The official record of Officership in HKN. Brings together a L{Person}, L{Position}, and L{semester}.
 
         If Lahini Arunachalam was VP in fa07, then the corresponding officership object would have
         person = Lahini, position = vp, semester = fa07
@@ -343,8 +361,19 @@ class Officership(models.Model):
         
 	officership_id = models.AutoField(primary_key = True)
 	semester = models.CharField(maxlength=5)
+	"""The L{semester} of this officership."""
+	
 	position = models.ForeignKey(Position)
+	"""
+	A reference to a L{Position} object. To get the handle of the associated Position, do::
+		>>>> officership_object.position
+	"""	
+	
 	person = models.ForeignKey(Person)
+	"""
+	A reference to a L{Person} object. To get the handle of the associated Person, do::
+		>>>> officership_object.person
+	"""
 
 	def __str__(self):
 		return "%s %s %s %s" % (self.semester, self.position.short_name, self.person.first, self.person.last)

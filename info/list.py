@@ -5,52 +5,31 @@ from django.core.paginator import ObjectPaginator, InvalidPage
 from hkn.info.models import *
 from hkn.info.utils import *
 from hkn.auth.decorators import *
+from hkn.list import get_list_context, filter_objects
 from string import atoi
+
 
 @login_required
 #@permission_required("all.view.basic")
-def list_people(request, person_class, page = "1", max = "20"):
-	sort_field = request.GET.get("sort", "first")
+def list_people(request, person_class):
+	d = get_list_context(request, default_sort = "first", default_category = person_class)	
+	d["objects_url"] = "/info/list_people_ajax"
+	return render_to_response("list/list.html", d, context_instance=RequestContext(request))
 
-	try:
-		page = atoi(page)
-	except ValueError:
-		page = 1
+def query_people(objects, query):
+	persons = objects
+	if query and len(query.strip()) != 0:
+		for q in query.split(" "):
+			if len(q.strip()) == 0:
+				continue
+			persons = persons.filter(Q(first__icontains = q) | Q(last__icontains = q) | Q(user__username__icontains = q))
+	return persons
 
-	try:
-		max = atoi(max)
-	except ValueError:
-		max = 20
-
-	descending = sort_field[0] == '-'
-	sort_field_base = sort_field
-	sort_character = None
-	if descending:
-		sort_character = False
-		sort_field_base = sort_field_base[1:]
-	else:
-		sort_character = '-'
+def list_people_ajax(request):
+	list_context = get_list_context(request, default_sort = "first")
+	(people, pages) = filter_objects(Person, list_context, query_objects = query_people, category_map = {"all" : "objects"})
 	
-	persons = None
-	if person_class == "all":
-		persons = Person.objects.order_by(sort_field)
-	elif person_class == "officers":
-		persons = Person.officers.order_by(sort_field)
-	elif person_class == "candidates":
-		persons = Person.candidates.order_by(sort_field)
-	elif person_class == "members":
-		persons = Person.members.order_by(sort_field)
-
-	if request.GET.has_key("cand_committee"):
-		persons = persons.filter(candidateinfo__candidate_committee = Position.objects.getPosition(request.GET["cand_committee"]))
-
-	if request.GET.has_key("query"):
-		query = request.GET["query"]
-		persons = persons.filter(Q(first__icontains = query) | Q(last__icontains = query))
-
-	paginator = ObjectPaginator(persons, max)
-	people = paginator.get_page(page-1)
-	d = { "persons" : people, sort_field_base + "_order" : sort_character, "page_range" : range(1,paginator.pages+1), "class" : person_class, "max" : max, "page" : page }
-	
-	return render_to_response("info/list.html", d, context_instance=RequestContext(request))
+	list_context["people"] = people
+	list_context["page_range"] = range(1, pages+1)
+	return render_to_response("info/ajax/list_people.html", list_context, context_instance = RequestContext(request))
 

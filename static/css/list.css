@@ -2,6 +2,7 @@ table.list {
   margin: 1em 1em 1em 2em;
   background: whitesmoke;
   border-collapse: collapse;
+  font-size: small;
   width: 100%;
 }
 table.list th, table.list td {
@@ -10,6 +11,7 @@ table.list th, table.list td {
 }
 table.list th {
   background: gainsboro;
+  font-size: medium;
   text-align: left;
 }
 table.list caption {

@@ -7,18 +7,6 @@
 {% endblock %}
 
 {% block content %}
-<script language="javascript">
-function show_rsvp_form(event_id) {
-	new Ajax.Updater("rsvp_" + event_id, "/event/rsvp_form/", {method: 'post', parameters : {"event_id" : event_id}, asynchronous:true});
-}
-
-function submit_rsvp(eid) {
-	params = Form.serialize("event." + eid, true)
-	new Ajax.Updater('rsvp_'+eid, "/event/rsvp_form/", {method : "post", parameters: params})
-}
-
-</script>
-
 <table class="list"><tr>
 <th>Name</th>
 <th>Description</th>

@@ -1,0 +1,34 @@
+{% block objects_query %}
+<input id="objects_query" value="{{ query }}" onkeypress="return queryOnEnter(event, '{{ sort }}', '{{ page }}', '{{ max }}', '{{ category }}');" />
+<a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page }}', '{{ max }}', '{{ category }}', document.getElementById('objects_query').value);"> search! </a>
+{% endblock %}
+
+<br/><br/>
+{% block pages_top %}
+{% for page_i in page_range %}
+	<a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page_i }}', '{{ max }}', '{{ category }}', '{{ query }}');"> {{page_i}} </a>
+{% endfor %}
+{% endblock %}
+<br/>
+{% block per_page_top %}
+{% for pp in per_page %}
+	<a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page }}', '{{ pp }}', '{{ category }}', '{{ query }}');"> {{ pp }} </a>
+{% endfor %}
+{% endblock %}
+
+<table class="list"><tr>
+	{% block table_heading %}
+	<th> Generic List: Heading Here </th>
+	{% endblock %}
+</tr>
+
+{% block table_content %}
+	<td> Content Here </td> %}
+{% endblock %}
+</table>
+
+{% block pages_bottom %}
+{% for page_i in page_range %}
+	<a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page_i }}', '{{ max }}', '{{ category }}', '{{ query }}');"> {{page_i}} </a>
+{% endfor %}
+{% endblock %}

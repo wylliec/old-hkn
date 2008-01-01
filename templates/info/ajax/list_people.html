@@ -1,0 +1,22 @@
+{% extends "list/list_objects.html" %}
+
+{% block table_heading %}
+<th>Image</th>
+<th><a href="javascript:void(0)" onclick="filter('{{ reverse_sort_first }}first', '{{ page }}', '{{ max }}', '{{ category }}', '{{ query }}')">First Name</a></th>
+<th><a href="javascript:void(0)" onclick="filter('{{ reverse_sort_last }}last', '{{ page }}', '{{ max }}', '{{ category }}', '{{ query }}')">Last Name</a></th>
+<th><a href="javascript:void(0)" onclick="filter('{{ reverse_sort_email }}email', '{{ page }}', '{{ max }}', '{{ category }}', '{{ query }}')">Email</a></th>
+<th>Phone</th>
+{% endblock %}
+
+
+{% block table_content %}
+{% for person in people %}
+<tr>
+	<td><a href="/info/pictures/{{ person.person_id }}"><img height=60 width=80 src="{{ person.thumbnail_url }}"></a></td>
+	<td><a href="/info/details/{{ person.person_id }}">{{ person.first }}</a></td>
+	<td><a href="/info/details/{{ person.person_id }}">{{ person.last }}</a></td>
+	<td>{{ person.email }}</td>
+	<td>{{ person.extendedinfo.get_phone }}</td>
+</tr>
+{% endfor %}
+{% endblock %}

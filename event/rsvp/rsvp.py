@@ -6,7 +6,9 @@ from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
 from django import newforms as forms
 
-from constants import RSVP_TYPE, EVENT_TYPE
+from hkn.list import get_list_context, filter_objects
+
+from hkn.event.constants import RSVP_TYPE, EVENT_TYPE
 
 import datetime
 from string import atoi
@@ -14,7 +16,7 @@ from string import atoi
 def message(request, msg):
 	return render_to_response("event/message.html", {"message" : msg},  context_instance = RequestContext(request))
 
-def rsvpFromFormInstance(form, rsvp = RSVP()):
+def rsvp_from_form_instance(form, rsvp = RSVP()):
 	cd = form.clean_data
 	if cd.has_key('comment'):
 		rsvp.comment = cd['comment']
@@ -31,9 +33,11 @@ def rsvpFromFormInstance(form, rsvp = RSVP()):
 	
 	return rsvp
 
-def rsvpFormInstance(event, data = {}):
-	form = RSVPForm(data)
-
+def rsvp_form_instance(event, data = {}):
+	if data:
+		form = RSVPForm(data)
+	else:
+		form = RSVPForm()
 
 	if event.rsvp_transportation_necessary:
 		form.fields['transport'] = forms.IntegerField(label = "Transport (0 for none)")
@@ -45,23 +49,7 @@ def rsvpFormInstance(event, data = {}):
 		form.fields['rsvp_data'].widget = forms.CheckboxSelectMultiple()
 		form.fields['rsvp_data'].bindEvent(event)
 
-	return form
-
-def my_rsvps(request):
-	#rsvps = RSVP.future.filter(person = request.user.person).select_related()
-	rsvps = RSVP.objects.filter(person = request.user.person).select_related()
-
-	return render_to_response('event/rsvp/my_rsvps.html', {"rsvps" : rsvps}, context_instance = RequestContext(request))
-
-def list(request, event_id = "-1"):
-	try:
-		e = Event.objects.get(pk = event_id)
-	except Event.DoesNotExist:
-		return message(request, "Event with id " + str(event_id) + " does not exist!")
-
-	rsvps = e.rsvp_set.select_related()
-	return render_to_response("event/rsvp/list.html", {"rsvps" : rsvps, "event" : e}, context_instance = RequestContext(request))
-	
+	return form	
 
 def delete(request, event_id = "-1"):
 	try:
@@ -90,7 +78,7 @@ def view(request, rsvp_id = "-1"):
 
 	return render_to_response("event/rsvp/view.html", d, context_instance = RequestContext(request))
 	
-def rsvp(request, event_id = "-1"):
+def edit(request, event_id = "-1"):
 	try:
 		e = Event.objects.get(pk = event_id)
 	except Event.DoesNotExist:
@@ -101,27 +89,34 @@ def rsvp(request, event_id = "-1"):
 
 	person = request.user.person
 
+	new = False
 	try:
 		rsvp = RSVP.objects.get(event = e, person = person)
 	except RSVP.DoesNotExist:
 		rsvp = RSVP(event = e, person = person)
+		new = True
 
 	if request.POST:
-		form = rsvpFormInstance(e, request.POST)
+		form = rsvp_form_instance(e, request.POST)
 		if form.is_valid():
-			rsvp = rsvpFromFormInstance(form, rsvp)
+			rsvp = rsvp_from_form_instance(form, rsvp)
 			rsvp.save()
 			return HttpResponseRedirect("/event/rsvp/mine")
 	else:
-		form = rsvpFormInstance(e, rsvp.__dict__)
+		if new:
+			form = rsvp_form_instance(e)
+		else:
+			form = rsvp_form_instance(e, rsvp.__dict__)
 
 	d = {"person" : person, "event" : e, "form" : form}
 
-	return render_to_response('event/rsvp/rsvp.html', d, context_instance = RequestContext(request))
+	return render_to_response('event/rsvp/edit.html', d, context_instance = RequestContext(request))
 
-def rsvp_form(request):
+def new(request):
+	return edit(request, "-1")
+
+def new_ajax(request):
 	person = request.user.person
-
 
 	if not request.POST or not request.POST.has_key("event_id"):
 		return HttpResponse("no post")
@@ -132,20 +127,26 @@ def rsvp_form(request):
 	except Event.DoesNotExist:
 		return HttpResponse("sorry")
 
+	new_rsvp = False
 	try:
 		rsvp = RSVP.objects.get(event = e, person = person)
 	except RSVP.DoesNotExist:
 		rsvp = RSVP(event = e, person = person)
+		new_rsvp = True
+		
 	if request.POST.has_key("comment"):
-		form = rsvpFormInstance(e, request.POST)
+		form = rsvp_form_instance(e, request.POST)
 		if form.is_valid():
-			rsvp = rsvpFromFormInstance(form, rsvp)
+			rsvp = rsvp_from_form_instance(form, rsvp)
 			rsvp.save()
 			return HttpResponse("<BR><B>Successfully RSVPd for " + e.name + "</B>")
 	else:
-		form = rsvpFormInstance(e, rsvp.__dict__)
+		if new_rsvp:
+			form = rsvp_form_instance(e)
+		else:
+			form = rsvp_form_instance(e, rsvp.__dict__)
 
 	d = {"person" : person, "event" : e, "form" : form}
 
-	return render_to_response('event/rsvp/ajax/rsvp.html', d, context_instance = RequestContext(request))
+	return render_to_response('event/rsvp/ajax/rsvp_new_ajax.html', d, context_instance = RequestContext(request))
 

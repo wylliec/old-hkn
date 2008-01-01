@@ -12,7 +12,7 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% endblock %}
 </HEAD>
 
-<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#003366" VLINK="#003366">
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#003366" VLINK="#003366" {% block body_extra %} {% endblock %}>
 
 
 <!--page title-->
@@ -22,8 +22,8 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 
   <TR>
       <TD ALIGN="LEFT">
-	<IMG SRC="http://hkn.eecs.berkeley.edu/images/titles/hkntitle.gif" ALT="HKN Main Page" BORDER="0" HEIGHT="100" 
-WIDTH="330">
+<!--	<IMG SRC="/images/titles/hkntitle.gif" ALT="HKN Main Page" BORDER="0" HEIGHT="100" 
+WIDTH="330">  -->
       </TD>
       <TD ALIGN="RIGHT">
 <!--<IMG SRC="/images/hkn_shield_thumb.gif" ALT="HKN Logo" BORDER="0" HEIGHT="94" WIDTH="72">
@@ -63,23 +63,23 @@ WIDTH="330">
   <!--spacers and initialize-->
   <TR>
     <!--spacer column-->
-    <TD WIDTH="7" ROWSPAN="4"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="7" HEIGHT="1" ALT="" 
+    <TD WIDTH="7" ROWSPAN="4"><IMG SRC="/images/trans.gif" WIDTH="7" HEIGHT="1" ALT="" 
 BORDER="0"></TD>
         <!--contents column-->
-    <TD WIDTH="158" HEIGHT="8"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="158" HEIGHT="1" ALT="" 
+    <TD WIDTH="158" HEIGHT="8"><IMG SRC="/images/trans.gif" WIDTH="158" HEIGHT="1" ALT="" 
 BORDER="0"></TD>
         <!--spacer column-->
-    <TD WIDTH="7" ROWSPAN="4"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="7"HEIGHT="1" ALT="" 
+    <TD WIDTH="7" ROWSPAN="4"><IMG SRC="/images/trans.gif" WIDTH="7"HEIGHT="1" ALT="" 
 BORDER="0"></TD>
 
         <!--vertial line column-->
-    <TD ROWSPAN="4" BGCOLOR="#000066"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="1" HEIGHT="1" ALT="" 
+    <TD ROWSPAN="4" BGCOLOR="#000066"><IMG SRC="/images/trans.gif" WIDTH="1" HEIGHT="1" ALT="" 
 BORDER="0"></TD>
         <!--spacer column-->
-    <TD WIDTH="7" ROWSPAN="4"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="7" HEIGHT="1" ALT="" 
+    <TD WIDTH="7" ROWSPAN="4"><IMG SRC="/images/trans.gif" WIDTH="7" HEIGHT="1" ALT="" 
 BORDER="0"></TD>
         <!--headline column-->
-    <TD HEIGHT="8"><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="1" HEIGHT="1" ALT="" BORDER="0"></TD>
+    <TD HEIGHT="8"><IMG SRC="/images/trans.gif" WIDTH="1" HEIGHT="1" ALT="" BORDER="0"></TD>
   </TR>
 
   <!--main content-->
@@ -134,9 +134,11 @@ BORDER="0"></TD>
 	{% endif %}
 
 
-	<IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="11" HEIGHT="1" ALT="" BORDER="0">
-	<BR><BR><A HREF="http://hkn.eecs.berkeley.edu/images/shield_huge.gif"><IMG 
-SRC="http://hkn.eecs.berkeley.edu/images/shield256.gif" WIDTH="75" HEIGHT="122" BORDER=0></A>
+<!--
+	<IMG SRC="/images/trans.gif" WIDTH="11" HEIGHT="1" ALT="" BORDER="0">
+	<BR><BR><A HREF="/images/shield_huge.gif"><IMG 
+SRC="/images/shield256.gif" WIDTH="75" HEIGHT="122" BORDER=0></A>
+-->
     </TD>
 {% endblock %}
 
@@ -155,7 +157,7 @@ SRC="http://hkn.eecs.berkeley.edu/images/shield256.gif" WIDTH="75" HEIGHT="122" 
   <!--spacers before footer-->
   <TR>
 
-    <TD WIDTH="158" HEIGHT="20" colspan=2><IMG SRC="http://hkn.eecs.berkeley.edu/images/trans.gif" WIDTH="158" HEIGHT="20 
+    <TD WIDTH="158" HEIGHT="20" colspan=2><IMG SRC="/images/trans.gif" WIDTH="158" HEIGHT="20 
 ALT="" BORDER="0"></td>
   </TR>
 </TABLE>

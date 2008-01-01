@@ -1,0 +1,22 @@
+{% extends "list/list_objects.html" %}
+
+{% block table_heading %}
+<th>Event Name</th>
+<th>Time</th>
+<th>Comment</th>
+<th>Transport</th>
+<th>Time Blocks</th>
+{% endblock %}
+
+{% block table_content %}
+{% for rsvp in rsvps %}
+<tr>
+	<td>{{ rsvp.event.name }}<br><span style="font-size: 10">(<a href="{% url hkn.event.rsvp.rsvp.edit rsvp.event_id %}">edit</a> <a href="{% url hkn.event.rsvp.rsvp.delete rsvp.event_id %}">del</a>)</td>
+	<td>{{ rsvp.event.start_time|date:"l m/d g:ia" }}-{{ rsvp.event.end_time|date:"g:ia" }}</td>
+	<td> {{ rsvp.comment }} </td>
+	<td> {% if rsvp.event.rsvp_transportation_necessary %} {{rsvp.transport}} {% else %} - {% endif %} </td>
+	<td> {% if rsvp.is_block %} {{ rsvp.get_block_descriptions }} {% endif %} </td>
+</tr>
+{% endfor %}
+{% endblock %}
+

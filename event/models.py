@@ -35,10 +35,10 @@ class SemesterEventsManager(models.Manager):
 
 class Event(models.Model):
 	objects = AllEventsManager()
-        future = FutureEventsManager()
-        past = PastEventsManager()
-        semester = SemesterEventsManager()
-        today = TodayEventsManager()
+	future = FutureEventsManager()
+	past = PastEventsManager()
+	semester = SemesterEventsManager()
+	today = TodayEventsManager()
 
 	event_id = models.AutoField(primary_key = True)
 	name = models.CharField(maxlength=100)
@@ -112,7 +112,8 @@ class Event(models.Model):
 		models.Model.delete(self)
 
 def getCandidates():
-	return Person.candidates.all()
+	#return Person.candidates.all()
+	return Person.fogies.all()
 
 class RSVPManager(models.Manager):
 	def getConfirmedForEvent(self, e):
