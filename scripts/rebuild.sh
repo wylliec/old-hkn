@@ -9,8 +9,7 @@
 echo  'c' | ./import_people.py
 echo  'a' | ./import_people.py
 ./create_superusers.py
-mysql -u root --password="monkey13" hkn_website < data/events.sql
-# ./import_events_from_webcal.py
+./import_events_from_webcal.py
 ./import_officership_cached.py
 ./import_usernames_cached.py
 ./create_random_rsvps.py
