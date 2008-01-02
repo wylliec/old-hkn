@@ -8,8 +8,8 @@ ADMINS = (
 )
 
 # a valid value should look something like this:
-SERVER_ROOT = "/home/hzarka/website/hkn/"
-# SERVER_ROOT = "/dev/null"
+# SERVER_ROOT = "/home/hzarka/website/hkn/"
+SERVER_ROOT = "/dev/null"
 
 
 # make sure SERVER_ROOT ends with hkn/
