@@ -1,0 +1,153 @@
+{% extends "exam/exam.html" %}
+
+{# The exam submissions page. Note: The pre-Fall 2007 website does not have an analog to this page. #}
+
+{% block subtitle %}Exam Files - Submit a File{% endblock %}
+
+
+{% block examcontent %}
+{# <form action="exam-submit.cgi" method="post" enctype="multipart/form-data"> #}
+<form> 
+<table bgcolor="#ffffff" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="center">
+<center>
+<img src="http://hkn.eecs.berkeley.edu/images/shield_medium.gif" alt="HKN Logo" width="187" height="244" /><br />
+<font color="red"></font><br />
+<table bgcolor="#ffffff" border="0" width="400"><tr><td bgcolor="#ece9d8" align="center"><b>Exam Submission</b>
+</td>
+</tr>
+<tr><td bgcolor="#ffffff" align="left">
+<table bgcolor="#ffffff" align="center" border="0" width="100%">
+
+<tr><td align="right" width="30%">Name:</td>
+<td align="left" width="*"><input type="text" name="submitter" value="" />
+</td>
+</tr>
+
+<tr><td align="right" width="30%">Email:</td>
+<td align="left" width="*"><input type="text" name="email" />
+</td>
+</tr>
+
+<tr><td align="right" width="30%">HKN Candidate:</td>
+<td align="left" width="*"><input type="checkbox" name="candidate" />
+</td>
+</tr>
+
+<tr>
+<td align="right" width="30%">File (pdf):</td>
+<td align="left" width="*"><input type="file" name="exam_file" />
+</td>
+</tr>
+
+<tr>
+<td align="right" width="30%">Course:</td>
+<td align="left" width="*">
+<select name="course">
+<option value="CS3">CS3</option>
+<option value="CS61A">CS61A</option>
+<option value="CS61B">CS61B</option>
+<option value="CS61C">CS61C</option>
+<option value="CS70">CS70</option>
+<option value="CS150">CS150</option>
+<option value="CS152">CS152</option>
+<option value="CS160">CS160</option>
+<option value="CS161">CS161</option>
+<option value="CS162">CS162</option>
+<option value="CS164">CS164</option>
+<option value="CS169">CS169</option>
+<option value="CS170">CS170</option>
+<option value="CS172">CS172</option>
+<option value="CS174">CS174</option>
+<option value="CS182">CS182</option>
+<option value="CS184">CS184</option>
+<option value="CS186">CS186</option>
+<option value="CS188">CS188</option>
+<option value="EE20N">EE20N</option>
+<option value="EE40">EE40</option>
+<option value="EE42">EE42</option>
+<option value="EE100">EE100</option>
+<option value="EE104">EE104</option>
+<option value="EE105">EE105</option>
+<option value="EE117A">EE117A</option>
+<option value="EE117B">EE117B</option>
+<option value="EE118">EE118</option>
+<option value="EE120">EE120</option>
+<option value="EE121">EE121</option>
+<option value="EE122">EE122</option>
+<option value="EE123">EE123</option>
+<option value="EE126">EE126</option>
+<option value="EE130">EE130</option>
+<option value="EE140">EE140</option>
+<option value="EE141">EE141</option>
+<option value="EE142">EE142</option>
+<option value="EE143">EE143</option>
+<option value="EE145B">EE145B</option>
+<option value="EE145L">EE145L</option>
+<option value="EE145M">EE145M</option>
+<option value="other">Other</option>
+</select>
+</td></tr>
+
+<tr><td></td><td align="left" width="*">
+<table><tr>
+<td><input type="radio" name="midterm_final" value="midterm">Midterm # <input type=text size=2 name="midterm_num" /></input></td>
+<td><input type="radio" name="midterm_final" value="final">Final</input></td>
+<td><input type="radio" name="midterm_final" value="other">Other</input></td>
+</tr></table>
+</td></tr>
+
+<tr><td></td><td align="left" width="*">
+
+<input type="radio" name="solutions-p" value="problems" CHECKED>Problems Only</input><br>
+<input type="radio" name="solutions-p" value="solutions" >Solutions</input><br>
+</td></tr>
+
+<tr>
+<td align="right" width"=30%"></td><td align="left" width="*">
+<table><tr>
+
+<select name="semester">
+<option value="spring">Spring</option>
+<option value="summer">Summer</option>
+<option value="fall">Fall</option>
+<option value="other">Other</option>
+</select>
+</td><td>
+
+<select name="year">
+<option value="2008">2008</option>
+<option value="2007">2007</option>
+<option value="2006">2006</option>
+<option value="2005">2005</option>
+<option value="2004">2004</option>
+<option value="2003">2003</option>
+<option value="2002">2002</option>
+<option value="2001">2001</option>
+<option value="2000">2000</option>
+<option value="1999">1999</option>
+<option value="1998">1998</option>
+<option value="1997">1997</option>
+<option value="1996">1996</option>
+<option value="1995">1995</option>
+<option value="other">Other</option>
+</select>
+</td></tr></table>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+<tr><td align="left"><center><input type="submit" value="Submit" />
+</center></td>
+</tr>
+</table>
+</center></td>
+</tr>
+</table>
+
+</form>
+
+{% endblock %}
