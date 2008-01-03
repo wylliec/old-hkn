@@ -16,11 +16,11 @@ class EventForm(forms.Form):
 	start_time = forms.DateTimeField()
 	end_time = forms.DateTimeField()
 
-	rsvp_type = forms.ChoiceField(choices = RSVP_TYPE.CHOICES)
+	rsvp_type = forms.ChoiceField(choices = RSVP_TYPE.choices())
 	rsvp_block_size = forms.IntegerField(required = False)
 	rsvp_transportation_necessary = forms.BooleanField(required = False)
 
-	event_type = forms.ChoiceField(choices = EVENT_TYPE.CHOICES)
+	event_type = forms.ChoiceField(choices = EVENT_TYPE.choices())
 	
 	view_permission = forms.ModelChoiceField(queryset = Permission.objects.all())
 	rsvp_permission = forms.ModelChoiceField(queryset = Permission.objects.all())

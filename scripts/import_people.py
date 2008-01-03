@@ -14,7 +14,7 @@ DEFAULT_PASSWORD = "password"
 
 def import_people(filename, member_status):
 	print "Importing from file: " + filename
-	print "Member status: " + MEMBER_TYPE.CHOICES_DICT[member_status]
+	print "Member status: " + MEMBER_TYPE[member_status]
 	f = file(filename, 'r')
 	for line in f:
 		addLine(line, member_status)

@@ -20,7 +20,7 @@ def filter_events_by_category(clazz, objects, category):
         pass
     
     category = category.upper()
-    if not EVENT_TYPE.CHOICES_DICT.has_key(category):
+    if not category in EVENT_TYPE:
         raise KeyError, "category does not exist!"   
     
     return objects.filter(event_type = category)

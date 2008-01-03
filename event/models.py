@@ -55,7 +55,7 @@ class Event(models.Model):
 	start_time = models.DateTimeField()
 	end_time = models.DateTimeField()
 
-	rsvp_type = models.IntegerField(choices = RSVP_TYPE.CHOICES)
+	rsvp_type = models.IntegerField(choices = RSVP_TYPE.choices())
 
 	rsvp_block_size = models.IntegerField()
 
@@ -66,7 +66,7 @@ class Event(models.Model):
 
 	
 
-	event_type = models.CharField(maxlength = 10, choices = EVENT_TYPE.CHOICES)
+	event_type = models.CharField(maxlength = 10, choices = EVENT_TYPE.choices())
 
 	gcal_id = models.TextField(blank = True)
 
@@ -83,10 +83,10 @@ class Event(models.Model):
 		return self.rsvp_type == RSVP_TYPE.BLOCK
 
 	def get_event_type(self):
-		return EVENT_TYPE.CHOICES_DICT[self.event_type]
+		return EVENT_TYPE[self.event_type]
 
 	def get_rsvp_type(self):
-		return RSVP_TYPE.CHOICES_DICT[self.rsvp_type]
+		return RSVP_TYPE[self.rsvp_type]
 
 	def get_num_rsvp_blocks(self):
 		if self.rsvp_type != RSVP_TYPE.BLOCK:

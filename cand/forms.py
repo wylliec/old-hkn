@@ -19,11 +19,11 @@ class CandidateApplicationForm(forms.Form):
 	preferred_email = forms.CharField()
 	sid = forms.CharField()
 
-	year = forms.ChoiceField(choices = APP.YEAR_CHOICES)
+	year = forms.ChoiceField(choices = APP_YEAR.choices())
 	transfer = forms.BooleanField(required = True)
 	transferred_from = forms.CharField(required = False)
 	
-	option = forms.ChoiceField(choices = APP.OPT_CHOICES)
+	option = forms.ChoiceField(choices = EECS_OPTION.choices())
 	grad_semester = forms.CharField()
 	
 	committee_prefs = forms.CharField()

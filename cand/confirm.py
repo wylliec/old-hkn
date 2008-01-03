@@ -37,7 +37,7 @@ def filter_events_by_category(clazz, objects, category):
         pass
     
     category = category.upper()
-    if not EVENT_TYPE.CHOICES_DICT.has_key(category):
+    if not category in EVENT_TYPE:
         raise KeyError, "category does not exist!"   
     
     return objects.filter(event_type = category)
@@ -73,7 +73,7 @@ def requirements(request):
 	person = Person.objects.get(pk = request.user.person_id)
 	confirmed_rsvps = RSVP.objects.getAttendedEvents(person = person)
 	type_rsvp = {}
-	for etype in EVENT_TYPE.CHOICES_DICT.keys():
-		type_rsvp[EVENT_TYPE.CHOICES_DICT[etype]] = confirmed_rsvps.filter(event__event_type__iexact = etype)
+	for etype, value in EVENT_TYPE.items():
+		type_rsvp[value] = confirmed_rsvps.filter(event__event_type__iexact = etype)
 	return render_to_response("cand/requirements.html", {"type_rsvps" : type_rsvp}, context_instance = RequestContext(request))
 

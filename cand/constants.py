@@ -1,27 +1,21 @@
-from hkn.constants import _const
+from hkn.enum import EnumType
 
-APP = _const()
-APP.YEAR = _const()
-APP.OPT = _const()
 
-APP.YEAR.FIRST = '1'
-APP.YEAR.SECOND = '2'
-APP.YEAR.THIRD = '3'
-APP.YEAR.FOURTH = '4'
-APP.YEAR.GRAD = 'G'
+APP_YEAR_OTHER = 0
+APP_YEAR_FIRST = 1
+APP_YEAR_SECOND = 2
+APP_YEAR_THIRD = 3
+APP_YEAR_FOURTH = 4
+APP_YEAR_GRAD = 6
 
-APP.OPT.I = 1
-APP.OPT.II = 2
-APP.OPT.III = 3
-APP.OPT.IV = 4
-APP.OPT.V = 5
+EECS_OPTION_I = 1
+EECS_OPTION_II = 2
+EECS_OPTION_III = 3
+EECS_OPTION_IV = 4
+EECS_OPTION_V = 5
 
-APP.YEAR_CHOICES = ((APP.YEAR.FIRST, 'First year'), (APP.YEAR.SECOND, 'Second year'), (APP.YEAR.THIRD, 'Third year'), (APP.YEAR.FOURTH, 'Fourth year'), (APP.YEAR.GRAD, 'Grad student'))
-APP.YEAR_CHOICES_DICT = {}
-for year in APP.YEAR_CHOICES:
-	APP.YEAR_CHOICES_DICT[year[0]] = year[1]
+APP_YEAR = EnumType(OTHER = APP_YEAR_OTHER, FIRST = APP_YEAR_FIRST, SECOND = APP_YEAR_SECOND, THIRD = APP_YEAR_THIRD, FOURTH = APP_YEAR_FOURTH, GRAD = APP_YEAR_GRAD)
+APP_YEAR.add_descriptions(((APP_YEAR.OTHER, "Other"), (APP_YEAR.FIRST, 'First year'), (APP_YEAR.SECOND, 'Second year'), (APP_YEAR.THIRD, 'Third year'), (APP_YEAR.FOURTH, 'Fourth year'), (APP_YEAR.GRAD, 'Grad student')))
 
-APP.OPT_CHOICES = ((APP.OPT.I, 'Electronics'), (APP.OPT.II, 'Communications, Networks and Systems'), (APP.OPT.III, 'Computer Systems'), (APP.OPT.IV, 'Computer Science'), (APP.OPT.V, 'General'))
-APP.OPT_CHOICES_DICT = {}
-for option in OPT_CHOICES:
-	APP.OPT_CHOICES_DICT[option[0]] = option[1]
+EECS_OPTION = EnumType(I = EECS_OPTION_I, II = EECS_OPTION_II, III = EECS_OPTION_III, IV = EECS_OPTION_IV, V = EECS_OPTION_V)
+EECS_OPTION.add_descriptions(((EECS_OPTION.I, 'I - Electronics'), (EECS_OPTION.II, 'II - Communications, Networks and Systems'), (EECS_OPTION.III, 'III - Computer Systems'), (EECS_OPTION.IV, 'IV - Computer Science'), (EECS_OPTION.V, 'V - General')))

@@ -1,4 +1,5 @@
-from hkn.event.constants import EVENT_TYPE, _const
+from hkn.event.constants import EVENT_TYPE
+from hkn.constants import _const
 
 GCAL = _const()
 
