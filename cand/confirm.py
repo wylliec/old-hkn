@@ -6,6 +6,9 @@ from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
 from django import newforms as forms
+from django.core import urlresolvers
+
+from hkn.list import get_list_context, filter_objects
 
 from hkn.event.constants import RSVP_TYPE, EVENT_TYPE
 
@@ -15,52 +18,56 @@ from string import atoi
 def message(request, msg):
 	return render_to_response("event/message.html", {"message" : msg},  context_instance = RequestContext(request))
 
-def confirm(request, event_id = "-1"):
-	e = None
-	try:
-		e = Event.objects.get(pk = event_id)
-	except Event.DoesNotExist:
-		return message(request, "Event with id " + str(event_id) + " does not exist!")
-
-	rsvps = RSVP.objects.getConfirmablesForEvent(e)
-
-	if request.POST:
-		for rsvp in rsvps:
-			attr_confirm = str(rsvp.rsvp_id) + ".vp_confirm"
-			attr_comment = str(rsvp.rsvp_id) + ".vp_comment"
-			if not request.POST.has_key(attr_comment):
-				return message("No comment field for rsvp: " + str(rsvp.rsvp_id))
-			else:
-				rsvp.vp_comment = request.POST[attr_comment]
-
-			if request.POST.has_key(attr_confirm):
-				rsvp.vp_confirm = True
-			else:
-				rsvp.vp_confirm = False
-
-		for rsvp in rsvps:
-			rsvp.save()
-
-	return render_to_response("cand/confirm.html", {"rsvps" : rsvps}, context_instance = RequestContext(request))
-
-def list(request):
-	max = 300
-	page = 1
-
-	user = request.user
-	permissions = user.get_all_permissions()
-
-	events = Event.past.order_by('-start_time').filter(Q(rsvp_type = RSVP_TYPE.WHOLE) | Q(rsvp_type = RSVP_TYPE.BLOCK))
-
-	paginator = ObjectPaginator(events, max)
-	events_to_display = paginator.get_page(page-1)
-
-	for e in events_to_display:
+def add_events_to_confirm_metainfo(events):
+	for e in events:
 		e.confirm = len(RSVP.objects.getConfirmedForEvent(e))
 		e.possible = len(RSVP.objects.getConfirmablesForEvent(e))
+	return events
+	
+def list_events_to_confirm(request, event_category):
+    d = get_list_context(request, default_sort = "-start_time", default_category = event_category)    
+    d["objects_url"] = urlresolvers.reverse("hkn.cand.confirm.list_events_to_confirm_ajax")
+    return render_to_response("list/list.html", d, context_instance=RequestContext(request))
 
-	d = {"events" : events_to_display}
-	return render_to_response("cand/list.html", d, context_instance=RequestContext(request))
+def filter_events_by_category(clazz, objects, category):
+    try:
+        objects = objects & clazz.__dict__[category].manager.all()
+        return objects;
+    except:
+        pass
+    
+    category = category.upper()
+    if not EVENT_TYPE.CHOICES_DICT.has_key(category):
+        raise KeyError, "category does not exist!"   
+    
+    return objects.filter(event_type = category)
+
+def get_events_for_categories(clazz, categories, category_map):
+    objects = clazz._default_manager.filter(Q(rsvp_type = RSVP_TYPE.WHOLE) | Q(rsvp_type = RSVP_TYPE.BLOCK))
+    if len(categories) == 0:
+        return objects
+
+    try:        
+        for category in categories:
+            category = category_map.get(category, category)            
+            objects = filter_events_by_category(clazz, objects, category)            
+    except KeyError, e:
+        raise KeyError, "Category \"" + category + "\" does not exist for class " + clazz.__class__.__name__
+    
+    return objects
+
+def list_events_to_confirm_ajax(request):
+    list_context = get_list_context(request, default_sort = "-start_time")
+    permissions = request.user.get_all_permissions()
+    filter_permissions = lambda objects: objects.filter(view_permission__in = permissions)
+    query_events = lambda objects, query: Event.objects.query(query, objects)
+    (events, pages) = filter_objects(Event, list_context, query_objects = query_events, filter_permissions = filter_permissions, get_objects_for_categories = get_events_for_categories, final_filter = add_events_to_confirm_metainfo)
+    
+    list_context["events"] = events
+    list_context["page_range"] = range(1, pages+1)
+    
+    return render_to_response("cand/ajax/list_events_to_confirm.html", list_context, context_instance = RequestContext(request))
+
 
 def requirements(request):
 	person = Person.objects.get(pk = request.user.person_id)

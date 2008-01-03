@@ -168,11 +168,11 @@ class Person(models.Model):
         """ Real first name (the Person's official name, if it isn't already in L{first}).
         Can be empty if the Person's first name is their official name"""
 	
-	school_email = models.CharField(maxlength=60)
+	school_email = models.EmailField()
         """ Person's official school email address. Probably a bad idea to issue lookup queries on this,
         see the object managers for some utility functions to help out with this """
 	
-	preferred_email = models.CharField(maxlength=60)
+	preferred_email = models.EmailField()
         """ Person's preferred email address, where email should go. Probably a bad idea to
         issue lookup queries on this, see the object managers for some utility functions to help out with this """
 	
@@ -250,7 +250,7 @@ class Person(models.Model):
                 @rtype: boolean
                 @return: whether this person is a member
                 """
-		return self.member_status >= MEMBER_TYPE.MEMBER
+		return self.candidateinfo.initiated
 
 	def initiate(self, initiate = True):
 		"""
@@ -264,8 +264,8 @@ class Person(models.Model):
 		else:
 			self.member_status = MEMBER_TYPE.CANDIDATE
 
-	class Admin:
-		pass
+	class Meta:
+		ordering = ["first", "last"]
 
 class ExtendedInfo(models.Model):
         """
@@ -342,6 +342,9 @@ class CandidateInfo(models.Model):
 	
 	candidate_committee = models.ForeignKey(Position)
 	""" The person's candidate committee. """
+	
+	initiated = models.BooleanField()
+	""" whether this person initiated this semester """
 	
 	initiation_comment = models.TextField()
 	""" a comment that can be set at initiation time by the VP """

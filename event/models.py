@@ -10,7 +10,15 @@ from string import atoi
 
 
 class AllEventsManager(models.Manager):
-	pass
+	def query(self, query, events = None):
+		if events == None:
+			events = self.get_query_set()
+		if query and len(query.strip()) != 0:
+			for q in query.split(" "):
+				if len(q.strip()) == 0:
+					continue
+				events = events.filter(Q(name__icontains = q) | Q(location__icontains = q) | Q(description__icontains = q))
+		return events
 
 class FutureEventsManager(models.Manager):
         def get_query_set(self):
@@ -112,8 +120,8 @@ class Event(models.Model):
 		models.Model.delete(self)
 
 def getCandidates():
-	#return Person.candidates.all()
-	return Person.fogies.all()
+	return Person.candidates.all()
+	#return Person.fogies.all()
 
 class RSVPManager(models.Manager):
 	def getConfirmedForEvent(self, e):
@@ -132,6 +140,29 @@ class RSVPManager(models.Manager):
 
 	def get_query_set(self):
 		return super(RSVPManager, self).get_query_set()
+	
+	def order(self, sort_field, rsvps):
+		if sort_field.find("event__") != -1:
+			sort_field = sort_field.replace("event__", "")
+			return RSVP.objects.order_by_event_field(sort_field, rsvps)
+		if sort_field.find("person__") != -1:
+			sort_field = sort_field.replace("person__", "")
+			return RSVP.objects.order_by_person_field(sort_field, rsvps)
+		return rsvps.order_by(sort_field)
+	
+	def order_by_event_field(self, event_field, objects):
+		negate = ""
+		if event_field[0] == "-":
+			event_field = event_field[1:]
+			negate = "-"
+		return objects.extra(where=["event_rsvp.event_id = event_event.event_id"], tables=["event_event"]).order_by(negate + "event_event." + event_field)
+	
+	def order_by_person_field(self, person_field, objects):
+		negate = ""
+		if person_field[0] == "-":
+			person_field = person_field[1:]
+			negate = "-"		
+		return objects.extra(where=["event_rsvp.person_id = info_person.person_id"], tables=["info_person"]).order_by(negate + "info_person." + person_field)
 
 		
 class FutureRSVPManager(RSVPManager):

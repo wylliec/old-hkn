@@ -1,22 +1,51 @@
 {% extends "list/list_objects.html" %}
 
-{% block table_heading %}
+{% block objects_content %}
+
+{% if show_confirm_form %}
+<script language="javascript">
+saveConfirmationsForm = function() {
+	objects_url = "{% url hkn.event.rsvp.list.list_for_person_ajax %}";
+	get_parameters = {"sort" : "{{ sort }}" , "page" : "{{ page }}", "max" : "{{ max }}", "category" : "{{ category }}", "query" : "{{ query }}" };
+	post_parameters = $("confirmation_form").serialize(true);
+	objects_url += "?" + $H(get_parameters).toQueryString();
+
+	new Ajax.Updater('objects_div', objects_url, {method : 'post', parameters : post_parameters, asynchronous:true, evalScripts : true});
+	return false;
+}	
+</script>
+
+<form id="confirmation_form" action="" method="post" onSubmit="return saveConfirmationsForm();">
+<input class="button" type=submit value="save">
+{% endif %}
+
+<table class="list"><tr>
 <th>Event Name</th>
 <th>Time</th>
 <th>Comment</th>
 <th>Transport</th>
 <th>Time Blocks</th>
-{% endblock %}
+{% if show_confirm_form %} <th>VP Comment</th> {% endif %}
+</tr>
 
-{% block table_content %}
+
 {% for rsvp in rsvps %}
 <tr>
-	<td>{{ rsvp.event.name }}<br><span style="font-size: 10">(<a href="{% url hkn.event.rsvp.rsvp.edit rsvp.event_id %}">edit</a> <a href="{% url hkn.event.rsvp.rsvp.delete rsvp.event_id %}">del</a>)</td>
-	<td>{{ rsvp.event.start_time|date:"l m/d g:ia" }}-{{ rsvp.event.end_time|date:"g:ia" }}</td>
+	<td> {% if show_confirm_form %} <input type=checkbox name="{{rsvp.rsvp_id}}.vp_confirm" {% if rsvp.vp_confirm %} checked="yes" {% endif %} /> {% endif %} {{ rsvp.event.name }}<br><span style="font-size: 10">(<a href="{% url hkn.event.rsvp.rsvp.view rsvp.rsvp_id %}">view</a> <a href="{% url hkn.event.rsvp.rsvp.delete rsvp.rsvp_id %}">del</a>)</span></td>
+	<td> {{ rsvp.event.start_time|date:"l m/d g:ia" }}-{{ rsvp.event.end_time|date:"g:ia" }}</td>
 	<td> {{ rsvp.comment }} </td>
 	<td> {% if rsvp.event.rsvp_transportation_necessary %} {{rsvp.transport}} {% else %} - {% endif %} </td>
 	<td> {% if rsvp.is_block %} {{ rsvp.get_block_descriptions }} {% endif %} </td>
+{% if show_confirm_form %}	<td><input type=text name="{{rsvp.rsvp_id}}.vp_comment" value="{{rsvp.vp_comment}}"/></td> {% endif %}	
 </tr>
 {% endfor %}
+</table>
+
+
+{% if show_confirm_form %}
+<input class="button" type=submit value="save">
+</form>
+{% endif %}
+
 {% endblock %}
 

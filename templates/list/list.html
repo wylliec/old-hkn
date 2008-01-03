@@ -7,7 +7,7 @@
 function filter(sort, page, max, category, query) {
 	objects_url = "{{ objects_url }}"
 	parameters = {"sort" : sort, "page" : page, "max" : max, "category" : category, "query" : query};
-	new Ajax.Updater('objects_div', objects_url, {method : 'get', parameters : parameters, asynchronous:true});
+	new Ajax.Updater('objects_div', objects_url, {method : 'get', parameters : parameters, asynchronous:true, evalScripts : true});
 	return false;
 }
 
@@ -17,11 +17,25 @@ function queryOnEnter(e, sort, page, max, category) {
 	else if (e) keycode = e.which;
 	else return true;
 	if (keycode == 13) {
-		filter(sort, page, max, category, document.getElementById('objects_query').value);
+		element = e.srcElement || e.target
+		filter(sort, page, max, category, element.value);
 		return false;
 	}
 	return true;
 }
+
+function toggleOptionsDiv(options_div, img_div) {
+	var options = document.getElementById(options_div);
+	var toggle_img = document.getElementById(img_div);	
+	if ( options.style.display != 'none' ) {
+		options.style.display = 'none';
+		toggle_img.src = "/images/site/plus.gif";
+	} else {
+		options.style.display = '';
+		toggle_img.src = "/images/site/minus.gif";		
+	}
+}
+
 
 </script>
 {% endblock %}

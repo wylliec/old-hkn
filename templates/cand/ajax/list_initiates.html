@@ -1,0 +1,31 @@
+{% extends "list/list_objects.html" %}
+
+{% block objects_content %}
+<script language="javascript">
+saveCandidatesForm = function() {
+	objects_url = "{% url hkn.cand.initiate.initiate_ajax %}";
+	get_parameters = {"sort" : "{{ sort }}" , "page" : "{{ page }}", "max" : "{{ max }}", "category" : "{{ category }}", "query" : "{{ query }}" };
+	post_parameters = $("initiation_form").serialize(true);
+	objects_url += "?" + $H(get_parameters).toQueryString();
+
+	new Ajax.Updater('objects_div', objects_url, {method : 'post', parameters : post_parameters, asynchronous:true, evalScripts : true});
+	return false;
+}	
+</script>
+
+<form id="initiation_form" action="" method="post" onSubmit="return saveCandidatesForm();">
+<input class="button" type=submit value="save">
+<table class="list"><tr>
+<th>Name</th>
+<th>Initiation Comment</th>
+</tr>
+{% for c in candidates %}
+<tr>
+<td> <input type=checkbox name="{{c.person_id}}.initiated" {% if c.is_initiated %} checked="yes" {% endif %} /> {{ c.name }} ({{c.events_attended}})<br><span style="font-size: 10">(<a href="/info/details/{{c.person_id}}/">see details</a>)</span></td>
+<td><input type=text name="{{c.person_id}}.comment" value="{{c.comment}}"/></td>
+</tr>
+{% endfor %}
+</table>
+<input class="button" type=submit value="save">
+</form>
+{% endblock %}

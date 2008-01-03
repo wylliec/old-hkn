@@ -1,9 +1,9 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
-		(r'^list/(?P<event_category>.*)/$', 'hkn.event.list.list'),					   
-		(r'^list/$', 'hkn.event.list.list', {"event_category" : "future"}),
-		(r'^list_ajax/$', 'hkn.event.list.list_ajax'),
+		(r'^list/(?P<category>.*)/$', 'hkn.event.list.list_events'),
+		(r'^list/$', 'hkn.event.list.list_events', {"category" : "future"}),
+		(r'^list_events_ajax/$', 'hkn.event.list.list_events_ajax'),
 		
 		(r'^calendar/$', 'hkn.event.event.calendar'),
 		(r'^edit/(?P<event_id>.*)/$', 'hkn.event.event.edit'),

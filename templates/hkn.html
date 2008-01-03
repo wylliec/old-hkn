@@ -92,26 +92,25 @@ BORDER="0"></TD>
     <P>
 
 	<SPAN CLASS="title">People</SPAN>
-	<BR><A HREF="/info/list/candidates">Candidate Information</A>
-	<BR><A HREF="/info/list/officers">Officer Information</A>
+	<BR><A HREF="{% url hkn.info.list.list_people category="candidates"%}">Candidate Information</A>
+	<BR><A HREF="{% url hkn.info.list.list_people category="officers"%}">Officer Information</A>	
 	<BR>
 
 	<br><SPAN CLASS="title">Events</SPAN>
-	<BR><A HREF="/event/new">New Event</A>
-	<BR><A HREF="/event/list">List of Events</A>
-	<BR><A HREF="/event/rsvp/mine">My RSVPs</A>
-	<BR><A HREF="/event/calendar">Events Calendar</A>
+	<BR><A HREF="{% url hkn.event.event.new %}">New Event</A>
+	<BR><A HREF="{% url hkn.event.list.list_events category="future" %}">Upcoming Events</A>
+	<BR><A HREF="{% url hkn.event.rsvp.list.list_for_person person_id="me" %}">My RSVPs</A>
+	<BR><A HREF="{% url hkn.event.event.calendar %}">Events Calendar</A>
 	<BR>
 
 	<br><SPAN CLASS="title">Candidates</SPAN>
-	<BR><A HREF="/cand/confirm">Confirm Attendance</A>
-	<BR><A HREF="/cand/initiate">Initiate Candidates!</A>
-	<BR><A HREF="/cand/confirmed">My Confirmed Attendance</A>
+	<BR><A HREF="{% url hkn.cand.initiate.initiate category="all"%}">Initiate Candidates!</A>
+	<BR><A HREF="{% url hkn.cand.confirm.requirements %}">My Confirmed Attendance</A>
 	<BR>
-
+	
 	<br><SPAN CLASS="title">u want a revolution</SPAN>
-	<BR><A HREF="/info/elect">Elect New Officers</A>
-	<BR><A HREF="/info/revolt">New Officer Revolt</A>
+	<BR><A HREF="{% url hkn.info.elect.elect %}">Elect New Officers</A>
+	<BR><A HREF="{% url hkn.info.elect.revolt %}">New Officer Revolt</A>
 	<BR>
 
 
@@ -119,7 +118,7 @@ BORDER="0"></TD>
 
 	<BR><SPAN CLASS="title">Student Services</SPAN>
 	<BR><A HREF="/student/CourseSurvey">Course Survey</A>
-	<BR><A HREF="/student/onlineexams.shtml">Online Exams</A>
+	<BR><A HREF="/exam/">Online Exams</A>
 	<BR>
 	<BR>
 	

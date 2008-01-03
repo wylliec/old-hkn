@@ -70,11 +70,12 @@ def get_list_context(request, default_sort, default_category = "objects", defaul
     
     return list_context
 
-def filter_objects(clazz, list_context, query_objects = query_objects, filter_permissions = filter_permissions, get_objects_for_categories = get_objects_for_categories, sort_objects = sort_objects, category_map = {}):
+def filter_objects(clazz, list_context, query_objects = query_objects, filter_permissions = filter_permissions, get_objects_for_categories = get_objects_for_categories, sort_objects = sort_objects, final_filter = lambda x: x, category_map = {}):
     objects = get_objects_for_categories(clazz, list_context["categories"], category_map)
     objects = query_objects(objects, list_context["query"])
     objects = sort_objects(objects, list_context["sort"])
     objects = filter_permissions(objects)
+    objects = final_filter(objects)
     
     paginator = ObjectPaginator(objects, list_context["max"])
     page_objects = paginator.get_page(list_context["page"]-1)    

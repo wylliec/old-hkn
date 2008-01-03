@@ -13,4 +13,5 @@ class _const(object):
     
 HKN = _const()
 
-HKN.SEMESTER = "sp08"
+#HKN.SEMESTER = "sp08"
+HKN.SEMESTER = "fa07"

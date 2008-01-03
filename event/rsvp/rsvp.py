@@ -51,21 +51,17 @@ def rsvp_form_instance(event, data = {}):
 
 	return form	
 
-def delete(request, event_id = "-1"):
+def delete(request, rsvp_id = "-1"):
 	try:
-		e = Event.objects.get(pk = event_id)
-	except Event.DoesNotExist:
-		return message(request, "Event with id " + str(event_id) + " does not exist!")
-
-	person = request.user.person
-
-	try:
-		rsvp = RSVP.objects.get(event = e, person = person)
+		rsvp = RSVP.objects.get(pk = rsvp_id)
 	except RSVP.DoesNotExist:
-		return message(request, "RSVP for current used and event with id " + str(event_id) + " does not exist!")
+		return message(request, "RSVP with id " + str(rsvp_id) + " does not exist!")
+	
+	if rsvp.person_id != request.user.person_id:
+		return message(request, "Can't delete someone else's RSVP!")
 
 	rsvp.delete()
-
+	
 	return message(request, "Your RSVP for event " + str(e.name) + " has been deleted!")
 
 def view(request, rsvp_id = "-1"):
@@ -115,7 +111,7 @@ def edit(request, event_id = "-1"):
 def new(request):
 	return edit(request, "-1")
 
-def new_ajax(request):
+def edit_ajax(request):
 	person = request.user.person
 
 	if not request.POST or not request.POST.has_key("event_id"):
@@ -148,5 +144,5 @@ def new_ajax(request):
 
 	d = {"person" : person, "event" : e, "form" : form}
 
-	return render_to_response('event/rsvp/ajax/rsvp_new_ajax.html', d, context_instance = RequestContext(request))
+	return render_to_response('event/rsvp/ajax/edit_ajax.html', d, context_instance = RequestContext(request))
 

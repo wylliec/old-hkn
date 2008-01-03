@@ -1,6 +1,6 @@
 <script language="javascript">
 function show_rsvp_form(event_id) {
-	new Ajax.Updater("rsvp_" + event_id, "/event/rsvp_form/", {method: 'post', parameters : {"event_id" : event_id}, asynchronous:true});
+	new Ajax.Updater("rsvp_" + event_id, "/event/rsvp/edit_ajax/", {method: 'post', parameters : {"event_id" : event_id}, asynchronous:true});
 }
 
 function hide_rsvp_form(event_id) {
@@ -9,6 +9,6 @@ function hide_rsvp_form(event_id) {
 
 function submit_rsvp(eid) {
 	params = Form.serialize("event." + eid, true)
-	new Ajax.Updater('rsvp_'+eid, "/event/rsvp_form/", {method : "post", parameters: params})
+	new Ajax.Updater('rsvp_'+eid, "/event/rsvp/edit_ajax/", {method : "post", parameters: params})
 }
 </script>

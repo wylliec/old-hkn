@@ -39,3 +39,6 @@ def elect(request):
 	
 	return render_to_response("info/elect.html", d, context_instance=RequestContext(request))
 
+def revolt(request):
+	return None
+

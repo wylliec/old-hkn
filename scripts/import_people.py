@@ -54,6 +54,7 @@ def addLine(line, member_status):
 		print "Could not match committee: " + cand_com
 	candidateinfo.candidate_committee = Position.objects.get(short_name = com)
 	candidateinfo.comment = ""
+	candidateinfo.initiated = False
 	candidateinfo.person = c
 	candidateinfo.save()
 

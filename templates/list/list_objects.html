@@ -3,6 +3,16 @@
 <a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page }}', '{{ max }}', '{{ category }}', document.getElementById('objects_query').value);"> search! </a>
 {% endblock %}
 
+{% block filter_categories_top %}
+{% if filter_categories %}
+<br/><br/>
+{% for cat in filter_categories.items %}
+	<a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page }}', '{{ max }}', '{{ cat.1 }}', '{{ query }}');"> {{cat.0}} </a>
+	<br/>
+{% endfor %}
+{% endif %}
+{% endblock %}
+
 <br/><br/>
 {% block pages_top %}
 {% for page_i in page_range %}
@@ -16,16 +26,9 @@
 {% endfor %}
 {% endblock %}
 
-<table class="list"><tr>
-	{% block table_heading %}
-	<th> Generic List: Heading Here </th>
-	{% endblock %}
-</tr>
-
-{% block table_content %}
-	<td> Content Here </td> %}
+{% block objects_content %}
+MAIN LIST CONTENT HERE ^_^
 {% endblock %}
-</table>
 
 {% block pages_bottom %}
 {% for page_i in page_range %}
