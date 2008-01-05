@@ -4,6 +4,10 @@ import hkn_settings, random
 
 from hkn.info.models import *
 from hkn.event.models import *
+from hkn.request.models import *
+from hkn.request.constants import REQUEST_TYPE
+
+
 
 
 for p in Person.candidates.all():
@@ -14,14 +18,20 @@ for p in Person.candidates.all():
 			r.transport = 0
 			r.comment = ""
 			r.vp_comment = ""
-			if ra < .65:
-				r.vp_confirm = True
-			elif ra < .75:
-				r.vp_confirm = False
-			else:
-				r.vp_confirm = None
-			r.rsvp_data_pkl = ""
+			r.vp_confirm = None		
+			r.rsvp_data_pkl = ""	
 			r.save()
+			
+			if ra < .05:
+				req = Request.objects.request_confirmation(REQUEST_TYPE.RSVP, r, p)			
+				if ra < .005:
+					req.set_confirm(False, "")				
+				elif ra < .045:
+					req.set_confirm(True, "")				
+				else:
+					r.vp_confirm = None
+				req.save()						
+			r.save()		
 
 		
 	
