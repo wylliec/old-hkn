@@ -108,3 +108,20 @@ def list_for_event_ajax(request):
     list_context["show_confirm_form"] = True
     
     return render_to_response("event/rsvp/ajax/list_for_event.html", list_context, context_instance = RequestContext(request))
+
+def list_for_event_small_ajax(request):    
+    list_context = get_list_context(request, default_sort = "person__first")
+    (rsvps, pages) = filter_objects(RSVP, list_context, get_objects_for_categories = get_rsvps_for_event, sort_objects = sort_rsvps)
+
+    categories = list_context["categories"]
+    category = categories[0]
+    try:
+        event = Event.objects.get(pk = category)
+    except:
+        event = None    
+    
+    list_context["event"] = event    
+    list_context["rsvps"] = rsvps
+    
+    
+    return render_to_response("event/rsvp/ajax/list_for_event_small.html", list_context, context_instance = RequestContext(request))

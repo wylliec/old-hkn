@@ -1,0 +1,39 @@
+{% extends "hkn.html" %}
+
+{% block extrahead %}
+<link href="/css/list.css" rel="stylesheet" />
+
+<script language="javascript">
+function filter(sort, page, max, category, query) {
+	objects_url = "{{ rsvps_url }}"
+	parameters = {"sort" : sort, "page" : page, "max" : max, "category" : category, "query" : query};
+	new Ajax.Updater('rsvps_div', objects_url, {method : 'get', parameters : parameters, asynchronous:true, evalScripts : true});
+	return false;
+}
+</script>
+{% endblock %}
+
+{% block body_extra %} onLoad='filter("{{ sort }}", "{{ page }}", "{{ max }}", "{{ event.event_id }}", "{{ query|escape }}");' {% endblock %}
+
+
+{% block content %}
+<table width="100%">
+<tr>
+<td valign="top">
+Event Info:
+<br/>
+<br/>Name: {{event.name}}
+<br/>Date: {{ event.start_time|date:"l m/d g:ia" }}-{{ event.end_time|date:"g:ia" }}
+<br/>Location: {{event.location}}
+<br/>Event Type: {{ event.get_event_type }}
+<br/>Description: {{event.description}}
+<br/>
+</td>
+<td>
+<div id="rsvps_div">
+</div>
+</td>
+</tr>
+</table>
+
+{% endblock %}

@@ -1,9 +1,11 @@
 from hkn.event.models import *
 from hkn.event.forms import *
-from django.shortcuts import render_to_response
+from hkn.list import get_list_context
+from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
+from django.core import urlresolvers
 from django import newforms as forms
 
 from constants import RSVP_TYPE, EVENT_TYPE
@@ -49,18 +51,15 @@ def new(request):
 	return edit(request, "-1")
 
 def view(request, event_id = "-1"):
-	try:
-		e = Event.objects.get(pk = event_id)
-	except Event.DoesNotExist:
-		return message(request, "Event with id " + str(event_id) + " does not exist!")
+	e = get_object_or_404(Event, pk = event_id)
+	d = get_list_context(request, default_sort = "person__first")
+	d["event"] = e
+	d["rsvps_url"] = urlresolvers.reverse("hkn.event.rsvp.list.list_for_event_small_ajax", kwargs = {"event_id" : event_id})	
 
-	return render_to_response("event/view.html", {"event" : e}, context_instance=RequestContext(request))
+	return render_to_response("event/view.html", d, context_instance=RequestContext(request))
 
 def delete(request, event_id = "-1"):
-	try:
-		e = Event.objects.get(pk = event_id)
-	except Event.DoesNotExist:
-		return message(request, "Event with id " + str(event_id) + " does not exist!")
+	e = get_object_or_404(Event, pk = event_id)	
 
 	name = e.name
 	e.delete()

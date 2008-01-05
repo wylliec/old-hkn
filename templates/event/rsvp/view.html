@@ -10,5 +10,7 @@
 	</tr>
 	<tr><td>Comment:</td><td>{{ rsvp.comment }}</td>
 	</tr>
+	<tr><td><a href="{% url hkn.event.rsvp.rsvp.request_confirmation rsvp_id=rsvp.rsvp_id %}">Request Confirmation</a></td>
+	</tr>
 	</table>
 {% endblock %}

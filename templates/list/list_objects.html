@@ -1,37 +1,56 @@
-{% block objects_query %}
-<input id="objects_query" value="{{ query }}" onkeypress="return queryOnEnter(event, '{{ sort }}', '{{ page }}', '{{ max }}', '{{ category }}');" />
-<a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page }}', '{{ max }}', '{{ category }}', document.getElementById('objects_query').value);"> search! </a>
+{% block objects_query_top %}
+	{% include "list/controls/query.html" %}
+	<br/><br/>
 {% endblock %}
 
 {% block filter_categories_top %}
-{% if filter_categories %}
-<br/><br/>
-{% for cat in filter_categories.items %}
-	<a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page }}', '{{ max }}', '{{ cat.1 }}', '{{ query }}');"> {{cat.0}} </a>
-	<br/>
-{% endfor %}
-{% endif %}
+	{% if filter_categories %}
+		{% include "list/controls/category_filter.html" %}
+	{% endif %}
+	<br/><br/>
 {% endblock %}
 
-<br/><br/>
-{% block pages_top %}
-{% for page_i in page_range %}
-	<a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page_i }}', '{{ max }}', '{{ category }}', '{{ query }}');"> {{page_i}} </a>
-{% endfor %}
-{% endblock %}
-<br/>
+{% spaceless %}
+<table width="100%">
+<td align="left">
 {% block per_page_top %}
-{% for pp in per_page %}
-	<a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page }}', '{{ pp }}', '{{ category }}', '{{ query }}');"> {{ pp }} </a>
-{% endfor %}
+Showing {% include "list/controls/per_page.html" %} per page.
 {% endblock %}
+{% block objects_info_top %}
+	{% include "list/controls/objects_info.html" %}
+{% endblock %}
+</td>
+<td align="right">
+{% block pages_top %}
+	{% include "list/controls/pager.html" %}
+{% endblock %}
+</td>
+</table>
+{% endspaceless %}
 
 {% block objects_content %}
-MAIN LIST CONTENT HERE ^_^
+	MAIN LIST CONTENT HERE ^_^
 {% endblock %}
 
+{% spaceless %}
+<table width="100%">
+<td align="left">
+{% block per_page_bottom %}
+Showing {% include "list/controls/per_page.html" %} per page. 
+{% endblock %}
+{% block objects_info_bottom %}
+{% include "list/controls/objects_info.html" %}
+{% endblock %}
+</td>
+<td align="right">
 {% block pages_bottom %}
-{% for page_i in page_range %}
-	<a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page_i }}', '{{ max }}', '{{ category }}', '{{ query }}');"> {{page_i}} </a>
-{% endfor %}
+{% include "list/controls/pager.html" %}
+{% endblock %}
+</td>
+</table>
+{% endspaceless %}
+
+{% block objects_query_bottom %}
+{% include "list/controls/query.html" %}
+<br/><br/>
 {% endblock %}

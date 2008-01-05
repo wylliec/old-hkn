@@ -171,6 +171,8 @@ class FutureRSVPManager(RSVPManager):
                 return super(FutureRSVPManager, self).get_query_set().filter(event__start_time__gte = start_time)
 
 
+
+
 class RSVP(models.Model):
 	objects = RSVPManager()
 	future = FutureRSVPManager()
@@ -183,15 +185,13 @@ class RSVP(models.Model):
 
 	comment = models.TextField(blank = True)
 
-	vp_confirm = models.BooleanField()
+	vp_confirm = models.NullBooleanField()
 	vp_comment = models.TextField(blank = True)
 
 	# store pickle'd data that is relevant
 	rsvp_data_pkl = models.TextField()
 
 	def save(self):
-		if self.vp_confirm == "":
-			self.vp_confirm = False
 		models.Model.save(self)
 
 	def set_rsvp_data(self, rsvp_data):
@@ -215,7 +215,6 @@ class RSVP(models.Model):
 	def __str__(self):
 		e = self.event
 		return str(self.person) + " : " + str(self.event)
-			
 
 
 

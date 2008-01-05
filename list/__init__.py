@@ -63,7 +63,7 @@ def get_list_context(request, default_sort, default_category = "objects", defaul
     
     list_context = {"category" : category, "categories" : categories, "sort" : sort, "page" : page, "max" : max, "query" : query}
     
-    if sort[0] != "-":
+    if len(sort) > 0 and sort[0] != "-":
         list_context["reverse_sort_" + sort] = "-"
         
     list_context["per_page"] = ("10", "25", "50", "100")
@@ -76,8 +76,18 @@ def filter_objects(clazz, list_context, query_objects = query_objects, filter_pe
     objects = sort_objects(objects, list_context["sort"])
     objects = filter_permissions(objects)
     objects = final_filter(objects)
-    
+
+    page = list_context["page"]    
     paginator = ObjectPaginator(objects, list_context["max"])
-    page_objects = paginator.get_page(list_context["page"]-1)    
+    page_objects = paginator.get_page(page-1)    
+
+    
+    list_context["has_next_page"] = paginator.has_next_page(page - 1)
+    list_context["has_previous_page"] = paginator.has_previous_page(page - 1)
+    list_context["first_on_page"] = paginator.first_on_page(page - 1)
+    list_context["last_on_page"] = paginator.last_on_page(page - 1)    
+    list_context["page_range"] = range(1, paginator.pages + 1)
+    list_context["num_hits"] = paginator.hits
+    
     return (page_objects, paginator.pages)
 

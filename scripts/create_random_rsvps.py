@@ -16,8 +16,10 @@ for p in Person.candidates.all():
 			r.vp_comment = ""
 			if ra < .65:
 				r.vp_confirm = True
-			else:
+			elif ra < .75:
 				r.vp_confirm = False
+			else:
+				r.vp_confirm = None
 			r.rsvp_data_pkl = ""
 			r.save()
 
@@ -31,21 +33,22 @@ for p in Person.officers.all():
 			r.transport = 0
 			r.comment = ""
 			r.vp_comment = ""
-			r.vp_confirm = False
+			r.vp_confirm = None
 			r.rsvp_data_pkl = ""
 			r.save()
 
 p = Person.objects.get(first = "Hisham")
-for e in Event.objects.all():
-	ra = random.random()
-	if ra < .8:
-		r = RSVP(person = p, event = e)
-		r.transport = 0
-		r.comment = ""
-		r.vp_comment = ""
-		r.vp_confirm = False
-		r.rsvp_data_pkl = ""
-		r.save()
+if not p in Person.officers.all():
+	for e in Event.objects.all():
+		ra = random.random()
+		if ra < .8:
+			r = RSVP(person = p, event = e)
+			r.transport = 0
+			r.comment = ""
+			r.vp_comment = ""
+			r.vp_confirm = None
+			r.rsvp_data_pkl = ""
+			r.save()
 
 		
 	

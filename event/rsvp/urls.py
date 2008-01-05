@@ -7,12 +7,14 @@ urlpatterns = patterns('',
         (r'^new/(?P<event_id>.*)/$', 'hkn.event.rsvp.rsvp.new'),
         (r'^edit/(?P<event_id>.*)/$', 'hkn.event.rsvp.rsvp.edit'),        
         (r'^view/(?P<rsvp_id>.*)/$', 'hkn.event.rsvp.rsvp.view'),        
+        (r'^request_confirmation/(?P<rsvp_id>.*)/$', 'hkn.event.rsvp.rsvp.request_confirmation'),                
         (r'^edit_ajax/$', 'hkn.event.rsvp.rsvp.edit_ajax'),       
         
         # list views
         (r'^list_event/(?P<event_id>.*)/$', 'hkn.event.rsvp.list.list_for_event'),
         (r'^list_event/$', 'hkn.event.rsvp.list.list_for_event', {"event_id" : "-1"}),        
         (r'^list_for_event_ajax/$', 'hkn.event.rsvp.list.list_for_event_ajax'),
+        (r'^list_for_event_small_ajax/$', 'hkn.event.rsvp.list.list_for_event_small_ajax'),        
         
         (r'^list_person/(?P<person_id>.*)/$', 'hkn.event.rsvp.list.list_for_person'),        
         (r'^list_person/$', 'hkn.event.rsvp.list.list_for_person', {"person_id" : ""}),

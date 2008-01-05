@@ -1,0 +1,35 @@
+{% extends "list/list_objects.html" %}
+
+{% block objects_query_top %}
+{% endblock %}
+
+{% block per_page_bottom %}
+{% endblock %}
+{% block per_page_top %}
+{% endblock %}
+{% block objects_info_bottom %}
+{% endblock %}
+{% block objects_info_top %}
+{% endblock %}
+
+{% block objects_content %}
+<table class="list"><tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Comment</th>
+{% if event.rsvp_block %} <th>Time Blocks</th> {% endif %}
+{% if event.rsvp_transportation_necessary %} <th>Transport</th> {% endif %}
+{% if show_confirm_form %} <th>VP Comment</th> {% endif %}
+</tr>
+
+{% for rsvp in rsvps %}
+<tr>
+	<td>	{{ rsvp.person.name }}	</td>	
+	<td>{{ rsvp.person.extendedinfo.get_phone }}</td>
+	<td> {{ rsvp.comment }} </td>
+	{% if event.rsvp_block %} <td> {{ rsvp.get_block_descriptions }} </td> {% endif %}
+	{% if event.rsvp_transportation_necessary %} <td> {{ rsvp.transport }} </td> {% endif %}
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

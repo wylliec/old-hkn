@@ -1,4 +1,25 @@
-# Django settings for hkn project.
+#########################
+# HKN-Specific Settings #
+#########################
+
+# set SERVER_ROOT       #
+
+# a valid value should look something like this:
+# SERVER_ROOT = "/home/hzarka/website/hkn/"
+SERVER_ROOT = "/dev/null"
+
+
+# you shouldn't have to touch anything below
+
+# make sure SERVER_ROOT ends with hkn/
+if not SERVER_ROOT.endswith("hkn/"):
+	raise Exception, "Your SERVER_ROOT is configured incorrectly in /hkn/settings.py. Make sure it ends with \"hkn/\" (including the final slash)"
+
+
+# don't change this
+IMAGES_PATH = "/home/hzarka/hkn-website-images/"
+
+################################
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -7,26 +28,16 @@ ADMINS = (
      ('HKN Computing Services', 'compserv@hkn.eecs.berkeley.edu'),
 )
 
-# a valid value should look something like this:
-# SERVER_ROOT = "/home/hzarka/website/hkn/"
-SERVER_ROOT = "/dev/null"
 
-
-# make sure SERVER_ROOT ends with hkn/
-if not SERVER_ROOT.endswith("hkn/"):
-	raise Exception, "Your SERVER_ROOT is configured incorrectly in /hkn/settings.py. Make sure it ends with \"hkn/\" (including the final slash)"
-
-#don't change this
-IMAGES_PATH = "/home/hzarka/hkn-website-images/"
 
 MANAGERS = ADMINS
 
-#DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-#DATABASE_NAME = 'hzarka_hkn'             # Or path to database file if using sqlite3.
-#DATABASE_USER = 'hzarka'             # Not used with sqlite3.
-#DATABASE_PASSWORD = 'monkey13'         # Not used with sqlite3.
-#DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-#DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+# DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
+# DATABASE_NAME = 'hkn_website'             # Or path to database file if using sqlite3.
+# DATABASE_USER = 'root'             # Not used with sqlite3.
+# DATABASE_PASSWORD = 'monkey13'         # Not used with sqlite3.
+# DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
+# DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
 DATABASE_NAME = SERVER_ROOT + "hkn.db"            # Or path to database file if using sqlite3.
@@ -91,6 +102,7 @@ TEMPLATE_DIRS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
 "hkn.auth.context_processor.auth",
+"hkn.request.context_processor.hkn_requests",
 "hkn.gcal.context_processor.gcal",
 #"django.core.context_processors.auth",
 "django.core.context_processors.debug",
@@ -112,4 +124,6 @@ INSTALLED_APPS = (
     'hkn.exam',
     'hkn.tutor',
     'hkn.resume',
+    'hkn.request',
+    'hkn.main',
 )

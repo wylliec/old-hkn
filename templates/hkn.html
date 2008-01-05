@@ -1,8 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
+{% load hkn_extras %}
 {% block title %}<title>HKN {% block extratitle%} {% endblock %}</title>{% endblock %}
 <LINK REL="stylesheet" TYPE="text/css" HREF="/css/hkn.css">
+<LINK REL="stylesheet" TYPE="text/css" HREF="/css/info.css">
 <META NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
 fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% block extrahead %}
@@ -99,6 +101,7 @@ BORDER="0"></TD>
 	<br><SPAN CLASS="title">Events</SPAN>
 	<BR><A HREF="{% url hkn.event.event.new %}">New Event</A>
 	<BR><A HREF="{% url hkn.event.list.list_events category="future" %}">Upcoming Events</A>
+	<BR><A HREF="{% url hkn.event.list.list_events category="past" %}">Past Events</A>	
 	<BR><A HREF="{% url hkn.event.rsvp.list.list_for_person person_id="me" %}">My RSVPs</A>
 	<BR><A HREF="{% url hkn.event.event.calendar %}">Events Calendar</A>
 	<BR>
@@ -106,6 +109,10 @@ BORDER="0"></TD>
 	<br><SPAN CLASS="title">Candidates</SPAN>
 	<BR><A HREF="{% url hkn.cand.initiate.initiate category="all"%}">Initiate Candidates!</A>
 	<BR><A HREF="{% url hkn.cand.confirm.requirements %}">My Confirmed Attendance</A>
+	<BR>
+
+	<br><SPAN CLASS="title">Requests</SPAN>
+	<BR><A HREF="{% url hkn.request.list.list_requests category="all"%}">Confirm Requests [{{ requests|length }}]</A>
 	<BR>
 	
 	<br><SPAN CLASS="title">u want a revolution</SPAN>

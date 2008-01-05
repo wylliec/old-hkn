@@ -1,0 +1,17 @@
+.info {
+	background:#EAF6FF url(/images/site/information.png) no-repeat scroll 10px;
+	border:1px solid #003399;
+	color:#000000;
+}
+
+.errors {
+	background:#FFEEEE url(/images/site/error.png) no-repeat scroll 10px;
+	border:1px solid #CC6666;
+	color:#990000;
+}
+
+.request_confirm_img {
+	cursor: pointer;
+	padding-left: 3px;
+	padding-right: 3px;
+}

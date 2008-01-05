@@ -1,10 +1,14 @@
 from hkn.event.models import *
 from hkn.event.forms import *
+from hkn.request.models import *
+from hkn.request.constants import REQUEST_TYPE
+
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
 from django import newforms as forms
+from django.shortcuts import get_object_or_404
 
 from hkn.list import get_list_context, filter_objects
 
@@ -52,10 +56,7 @@ def rsvp_form_instance(event, data = {}):
 	return form	
 
 def delete(request, rsvp_id = "-1"):
-	try:
-		rsvp = RSVP.objects.get(pk = rsvp_id)
-	except RSVP.DoesNotExist:
-		return message(request, "RSVP with id " + str(rsvp_id) + " does not exist!")
+	rsvp = get_object_or_404(RSVP, pk = rsvp_id)
 	
 	if rsvp.person_id != request.user.person_id:
 		return message(request, "Can't delete someone else's RSVP!")
@@ -64,11 +65,19 @@ def delete(request, rsvp_id = "-1"):
 	
 	return message(request, "Your RSVP for event " + str(e.name) + " has been deleted!")
 
+def request_confirmation(request, rsvp_id = "-1"):
+	rsvp = get_object_or_404(RSVP, pk = rsvp_id)
+	
+	if rsvp.person_id != request.user.person_id:
+		return message(request, "Can't request to confirm for RSVP!")
+	
+	req = Request.objects.request_confirmation(REQUEST_TYPE.RSVP, rsvp, request.user.person)
+	req.save()
+	
+	return message(request, "You have requested a confirmation for this RSVP.")
+
 def view(request, rsvp_id = "-1"):
-	try:
-		rsvp = RSVP.objects.get(pk = rsvp_id)
-	except RSVP.DoesNotExist:
-		return message(request, "RSVP with id " + str(rsvp_id) + " does not exist!")
+	rsvp = get_object_or_404(RSVP, pk = rsvp_id)
 
 	d = {"rsvp" : rsvp, "person" : rsvp.person, "event" : rsvp.event}
 
