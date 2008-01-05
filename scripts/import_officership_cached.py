@@ -34,7 +34,11 @@ def import_officers():
 				os = Officership(person = person, position = position, semester = semester)
 				os.save()
 				g = Group.objects.get(name = position.short_name)
-				person.user.groups.add(g)
+				user = person.user
+				user.is_superuser = True
+				user.groups.add(g)
+				user.save()
+
 				if semester == hkn.semester.getCurrentSemester():
 					person.member_status = MEMBER_TYPE.OFFICER
 				else:
