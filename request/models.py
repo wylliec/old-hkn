@@ -1,7 +1,7 @@
 from django.db import models
 from hkn.request.constants import REQUEST_TYPE
 from hkn.auth.models import *
-from hkn.request.types import CONFIRM_FUNCTIONS, CREATE_FUNCTIONS, PRIMARY_KEYS
+from hkn.request.types import CONFIRM_FUNCTIONS, CREATE_FUNCTIONS, PRIMARY_KEYS, METAINFO_FUNCTIONS
 
 class RequestManager(models.Manager):
     def query(self, query, objects = None):
@@ -25,7 +25,7 @@ class RequestManager(models.Manager):
         if objects == None:
             objects = self.get_query_set()
             
-        return objects.filter(permissions__in = user.get_all_permissions())        
+        return objects.filter(permissions__in = user.get_all_permissions())
         
 
 class ActiveRequestManager(RequestManager):
@@ -56,5 +56,9 @@ class Request(models.Model):
     def set_confirm(self, confirm, comment):
         self.active = False
         CONFIRM_FUNCTIONS[self.type](self, confirm, comment)
+        
+    def __str__(self):
+        METAINFO_FUNCTIONS[self.type](self)
+        return self.description
         
         

@@ -192,7 +192,7 @@ class RSVP(models.Model):
 	rsvp_data_pkl = models.TextField()
 
 	def save(self):
-		models.Model.save(self)
+		super(RSVP, self).save()
 
 	def set_rsvp_data(self, rsvp_data):
 		self.rsvp_data_pkl = pickle.dumps(rsvp_data)
@@ -215,6 +215,9 @@ class RSVP(models.Model):
 	def __str__(self):
 		e = self.event
 		return str(self.person) + " : " + str(self.event)
+	
+	class Meta:
+		unique_together = (("event", "person"),)
 
 
 
