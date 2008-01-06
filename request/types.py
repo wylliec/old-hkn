@@ -14,7 +14,7 @@ def add_rsvp_type_metainfo(request):
     
     request.title = "Confirm RSVP"
     request.description = "Confirm %s's RSVP for %s" % (r.person.name(), r.event.name)
-    request.links = {"rsvp" : urlresolvers.reverse("hkn.event.rsvp.rsvp.view", kwargs = {"rsvp_id" : r.rsvp_id}),
+    request.links = {"rsvp" : urlresolvers.reverse("hkn.event.rsvp.rsvp.view", kwargs = {"rsvp_id" : r.id}),
                      "person" : urlresolvers.reverse("hkn.info.person.view", kwargs = {"person_id" : r.person_id}),
                      "event" : urlresolvers.reverse("hkn.event.event.view", kwargs = {"event_id" : r.event_id})}
     request.confirm = r.vp_confirm
@@ -25,7 +25,7 @@ def add_rsvp_type_metainfo(request):
     return request
 
 def add_unimplemented_type_metainfo(request):
-    request.title = "ERR"
+    request.title = "ERROR :("
     request.description = "Unimplemented for this type!"
     return request
 
