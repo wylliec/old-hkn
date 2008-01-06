@@ -156,7 +156,7 @@ class Person(models.Model):
         Same as above, but all initiated members.
         """
 
-	person_id = models.AutoField(primary_key = True)
+	id = models.AutoField(primary_key = True)
 	
 	first = models.CharField(maxlength = 30)
 	""" Person's first name (sometimes preferred name, see L{realfirst})"""
@@ -185,7 +185,7 @@ class Person(models.Model):
 	
 
 	def __str__(self):
-		return "%s %s %s (%s)" % (str(self.person_id), self.first, self.last, self.email() )
+		return "%s %s %s (%s)" % (str(self.id), self.first, self.last, self.email() )
 
 	def email(self):
                 """
@@ -236,12 +236,6 @@ class Person(models.Model):
 		if os.path.exists(os.path.join(IMAGES_PATH, url2)):
 			return True
 		return False
-		
-
-	
-
-	def detail_url(self):
-		return "/info/details/" + str(self.person_id)
 
 	def is_initiated(self):
                 """

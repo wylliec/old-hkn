@@ -84,10 +84,7 @@ def view(request, rsvp_id = "-1"):
 	return render_to_response("event/rsvp/view.html", d, context_instance = RequestContext(request))
 	
 def edit(request, event_id = "-1"):
-	try:
-		e = Event.objects.get(pk = event_id)
-	except Event.DoesNotExist:
-		return message(request, "Event with id " + str(event_id) + " does not exist!")
+	e = get_object_or_404(Event, pk = event_id)
 
 	if e.rsvp_type == RSVP_TYPE.NONE:
 		return message(request, "Event " + e.name + " does not require RSVP!")
@@ -117,8 +114,8 @@ def edit(request, event_id = "-1"):
 
 	return render_to_response('event/rsvp/edit.html', d, context_instance = RequestContext(request))
 
-def new(request):
-	return edit(request, "-1")
+def new(request, event_id):
+	return edit(request, event_id)
 
 def edit_ajax(request):
 	person = request.user.person
@@ -126,11 +123,8 @@ def edit_ajax(request):
 	if not request.POST or not request.POST.has_key("event_id"):
 		return HttpResponse("no post")
 
-	eid = atoi(request.POST["event_id"])
-	try:
-		e = Event.objects.get(pk = eid)
-	except Event.DoesNotExist:
-		return HttpResponse("sorry")
+	event_id = atoi(request.POST["event_id"])
+	e = get_object_or_404(Event, pk = event_id)
 
 	new_rsvp = False
 	try:
@@ -144,7 +138,7 @@ def edit_ajax(request):
 		if form.is_valid():
 			rsvp = rsvp_from_form_instance(form, rsvp)
 			rsvp.save()
-			return HttpResponse("<BR><B>Successfully RSVPd for " + e.name + "</B>")
+			return HttpResponse("<BR/><strong>Successfully RSVPd for " + e.name + "</strong>")
 	else:
 		if new_rsvp:
 			form = rsvp_form_instance(e)

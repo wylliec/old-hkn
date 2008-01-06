@@ -44,7 +44,7 @@ def request_rsvp_confirmation(r, rsvp, requestor):
     r.permissions = Permission.objects.get(codename = "group_vp")
     r.active = True
     r.requestor = requestor
-    r.object_id = rsvp.rsvp_id
+    r.object_id = rsvp.id
     return r
 
 def request_unimplemented_confirmation(r, object, requestor):
@@ -73,7 +73,7 @@ CREATE_FUNCTIONS = {
                     }
 
 PRIMARY_KEYS = {
-                      REQUEST_TYPE.RSVP : "rsvp_id",
+                      REQUEST_TYPE.RSVP : "id",
                       REQUEST_TYPE.EXAM : None,
                       REQUEST_TYPE.RESUME : None,
                       REQUEST_TYPE.CHALLENGE : None

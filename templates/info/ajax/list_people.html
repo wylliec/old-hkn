@@ -10,8 +10,8 @@
 
 {% for person in people %}
 <tr>
-	<td><a href="/info/pictures/{{ person.person_id }}"><img height=60 width=80 src="{{ person.thumbnail_url }}"></a></td>
-	<td><a href="/info/details/{{ person.person_id }}">{{ person.name }}</a><br><span style="font-size: 10"><a href="{% url hkn.event.rsvp.list.list_for_person person.person_id %}">see rsvps</a></span> </td>
+	<td><a href="/info/pictures/{{ person.id }}"><img height=60 width=80 src="{{ person.thumbnail_url }}"></a></td>
+	<td><a href="/info/details/{{ person.id }}">{{ person.name }}</a><br><span style="font-size: 10"><a href="{% url hkn.event.rsvp.list.list_for_person person.id %}">see rsvps</a></span> </td>
 	<td>{{ person.email }}</td>
 	<td>{{ person.extendedinfo.get_phone }}</td>
 </tr>

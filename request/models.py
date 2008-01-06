@@ -43,7 +43,7 @@ class Request(models.Model):
     inactives = InactiveRequestManager()
     
     
-    request_id = models.AutoField(primary_key = True)
+    id = models.AutoField(primary_key = True)
     
     type = models.IntegerField(choices = REQUEST_TYPE.choices())
     active = models.BooleanField()

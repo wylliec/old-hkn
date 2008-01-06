@@ -64,7 +64,7 @@ def deleteEvent(event):
 	getCalendarService().DeleteEvent(getEvent(event.gcal_id).GetEditLink().href)
 
 def hknExtendedPropertiesFromEvent(event):
-	p1 = gdata.calendar.ExtendedProperty(name="hkn_event_id", value=str(event.event_id))
+	p1 = gdata.calendar.ExtendedProperty(name="hkn_event_id", value=str(event.id))
 	p2 = gdata.calendar.ExtendedProperty(name="rsvp_transport_necessary", value=str(event.rsvp_transportation_necessary))
 	p3 = gdata.calendar.ExtendedProperty(name="rsvp_type", value=str(event.rsvp_type))
 	return (p1, p2, p3)

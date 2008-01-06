@@ -50,8 +50,8 @@ def initiate_ajax(request):
     
     if request.POST:
 		for c in candidates:
-			attr_initiated = str(c.person_id) + ".initiated"
-			attr_comment = str(c.person_id) + ".comment"
+			attr_initiated = str(c.id) + ".initiated"
+			attr_comment = str(c.id) + ".comment"
 
 			if not request.POST.has_key(attr_comment):
 				continue

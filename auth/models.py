@@ -6,7 +6,7 @@ from hkn.info.models import *
 
 
 class Permission(models.Model):
-	permission_id = models.AutoField(primary_key = True)
+	id = models.AutoField(primary_key = True)
 	codename = models.CharField('codename', maxlength=100)
 	name = models.CharField('name', maxlength=50)
 
@@ -19,7 +19,7 @@ except:
 	everyone_permission = None
 
 class Group(models.Model):
-	group_id = models.AutoField(primary_key = True)
+	id = models.AutoField(primary_key = True)
 	name = models.CharField('name', maxlength=80, unique=True)
 	permissions = models.ManyToManyField(Permission, verbose_name='permissions', related_name = "groups_with")
 

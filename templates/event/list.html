@@ -15,8 +15,8 @@
 </tr>
 {% for event in events %}
 <tr>
-<td>{{ event.name }}<br><span style="font-size: 10">(<a href="javascript:void(0)" onclick="show_rsvp_form({{event.event_id}});">rsvp</a> <a href="/event/edit/{{ event.event_id}}">edit</a>)</span></td>
-<td>{{ event.description }}<BR><div id="rsvp_{{event.event_id}}"> </div></td>
+<td>{{ event.name }}<br><span style="font-size: 10">(<a href="javascript:void(0)" onclick="show_rsvp_form({{event.id}});">rsvp</a> <a href="/event/edit/{{ event.id}}">edit</a>)</span></td>
+<td>{{ event.description }}<BR><div id="rsvp_{{event.id}}"> </div></td>
 <td>{{ event.start_time|date:"l m/d g:ia" }}-{{ event.end_time|date:"g:ia" }}</td>
 <td><a href="?event_type={{ event.event_type }}">{{ event.get_event_type }}</a></td>
 </tr>

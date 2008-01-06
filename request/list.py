@@ -34,7 +34,7 @@ def list_requests_ajax(request):
     if request.POST:
         for r in requests:
             attr_confirmed = str(r.request_id) + ".confirmed"
-            attr_comment = str(r.request_id) + ".comment"
+            attr_comment = str(r.id) + ".comment"
             
             confirmed = request.POST.get(attr_confirmed, False)
             comment = request.POST.get(attr_comment, "")
@@ -74,7 +74,7 @@ def list_requests_confirm_ajax(request, request_id):
         
         r.comment
     
-    js = """setConfirmAndComment("%s", "%s", "%s");""" % (r.request_id, confirm_img, r.comment)
+    js = """setConfirmAndComment("%s", "%s", "%s");""" % (r.id, confirm_img, r.comment)
     
     return HttpResponse(js, mimetype='application/javascript')
     

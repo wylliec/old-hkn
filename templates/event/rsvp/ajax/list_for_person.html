@@ -33,19 +33,19 @@ saveConfirmationsForm = function() {
 <tr>
 	<td> 
 		{% if show_confirm_form %} 
-			<input type=checkbox name="{{rsvp.rsvp_id}}.vp_confirm" {% if rsvp.vp_confirm %} checked="yes" {% endif %} /> 
+			<input type=checkbox name="{{rsvp.id}}.vp_confirm" {% if rsvp.vp_confirm %} checked="yes" {% endif %} /> 
 		{% endif %} 
 		{{ rsvp.event.name }}
 		<br><span style="font-size: 10">
-		(<a href="{% url hkn.event.rsvp.rsvp.view rsvp.rsvp_id %}">view</a> 
-		<a href="{% url hkn.event.rsvp.rsvp.delete rsvp.rsvp_id %}">del</a>
-		<a href="{% url hkn.event.rsvp.rsvp.request_confirmation rsvp.rsvp_id %}">confirm</a>)
+		(<a href="{% url hkn.event.rsvp.rsvp.view rsvp.id %}">view</a> 
+		<a href="{% url hkn.event.rsvp.rsvp.delete rsvp.id %}">del</a>
+		<a href="{% url hkn.event.rsvp.rsvp.request_confirmation rsvp.id %}">confirm</a>)
 		</span></td>
 	<td> {{ rsvp.event.start_time|date:"l m/d g:ia" }}-{{ rsvp.event.end_time|date:"g:ia" }}</td>
 	<td> {{ rsvp.comment }} </td>
 	<td> {% if rsvp.event.rsvp_transportation_necessary %} {{rsvp.transport}} {% else %} - {% endif %} </td>
 	<td> {% if rsvp.is_block %} {{ rsvp.get_block_descriptions }} {% endif %} </td>
-{% if show_confirm_form %}	<td><input type=text name="{{rsvp.rsvp_id}}.vp_comment" value="{{rsvp.vp_comment}}"/></td> {% endif %}	
+{% if show_confirm_form %}	<td><input type=text name="{{rsvp.id}}.vp_comment" value="{{rsvp.vp_comment}}"/></td> {% endif %}	
 </tr>
 {% endfor %}
 {% endspaceless %}

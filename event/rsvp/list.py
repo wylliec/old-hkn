@@ -13,11 +13,15 @@ import datetime
 from string import atoi
 
 
-sort_rsvps = lambda rsvps, sort_field: RSVP.objects.order(sort_field, rsvps)        
+sort_rsvps = lambda rsvps, sort_field: RSVP.objects.order(sort_field, rsvps) 
+query_rsvps = lambda rsvps, query: RSVP.objects.query(query, rsvps)       
+query_rsvps_by_event = lambda rsvps, query: RSVP.objects.query_event(query, rsvps)       
+query_rsvps_by_person = lambda rsvps, query: RSVP.objects.query_person(query, rsvps)       
+
 
 def list_for_person(request, person_id):
     if len(person_id) == 0 or person_id == "me":
-        person_id = str(request.user.person.person_id)
+        person_id = str(request.user.person_id)
     
     d = get_list_context(request, default_sort = "-event__start_time", default_category = person_id)
     #d = get_list_context(request, default_sort = "?", default_category = person_id)    
@@ -52,12 +56,12 @@ def get_rsvps_for_event(clazz, categories, category_map):
 def list_for_person_ajax(request):    
     #list_context = get_list_context(request, default_sort = "-event__start_time")    
     list_context = get_list_context(request, default_sort = "")    
-    (rsvps, pages) = filter_objects(RSVP, list_context, get_objects_for_categories = get_rsvps_for_person, sort_objects = sort_rsvps)
+    (rsvps, pages) = filter_objects(RSVP, list_context, get_objects_for_categories = get_rsvps_for_person, sort_objects = sort_rsvps, query_objects = query_rsvps_by_event)
 
     if request.POST:
         for rsvp in rsvps:
-            attr_confirm = str(rsvp.rsvp_id) + ".vp_confirm"
-            attr_comment = str(rsvp.rsvp_id) + ".vp_comment"
+            attr_confirm = str(rsvp.id) + ".vp_confirm"
+            attr_comment = str(rsvp.id) + ".vp_comment"
             
             if request.POST.has_key(attr_comment):
                 rsvp.vp_comment = request.POST[attr_comment]
@@ -77,7 +81,7 @@ def list_for_person_ajax(request):
 
 def list_for_event_ajax(request):    
     list_context = get_list_context(request, default_sort = "person__first")
-    (rsvps, pages) = filter_objects(RSVP, list_context, get_objects_for_categories = get_rsvps_for_event, sort_objects = sort_rsvps)
+    (rsvps, pages) = filter_objects(RSVP, list_context, get_objects_for_categories = get_rsvps_for_event, sort_objects = sort_rsvps, query_objects = query_rsvps_by_person)
 
     categories = list_context["categories"]
     category = categories[0]
@@ -88,8 +92,8 @@ def list_for_event_ajax(request):
         
     if request.POST:
         for rsvp in rsvps:
-            attr_confirm = str(rsvp.rsvp_id) + ".vp_confirm"
-            attr_comment = str(rsvp.rsvp_id) + ".vp_comment"
+            attr_confirm = str(rsvp.id) + ".vp_confirm"
+            attr_comment = str(rsvp.id) + ".vp_comment"
             
             if request.POST.has_key(attr_comment):
                 rsvp.vp_comment = request.POST[attr_comment]
@@ -111,7 +115,7 @@ def list_for_event_ajax(request):
 
 def list_for_event_small_ajax(request):    
     list_context = get_list_context(request, default_sort = "person__first")
-    (rsvps, pages) = filter_objects(RSVP, list_context, get_objects_for_categories = get_rsvps_for_event, sort_objects = sort_rsvps)
+    (rsvps, pages) = filter_objects(RSVP, list_context, get_objects_for_categories = get_rsvps_for_event, sort_objects = sort_rsvps, query_objects = query_rsvps_by_person)
 
     categories = list_context["categories"]
     category = categories[0]

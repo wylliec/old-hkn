@@ -10,10 +10,23 @@ function filter(sort, page, max, category, query) {
 	new Ajax.Updater('rsvps_div', objects_url, {method : 'get', parameters : parameters, asynchronous:true, evalScripts : true});
 	return false;
 }
+
+function queryOnEnter(e, sort, page, max, category) {
+	var keycode;
+	if (window.event) keycode = window.event.keyCode;
+	else if (e) keycode = e.which;
+	else return true;
+	if (keycode == 13) {
+		element = e.srcElement || e.target
+		filter(sort, page, max, category, element.value);
+		return false;
+	}
+	return true;
+}
 </script>
 {% endblock %}
 
-{% block body_extra %} onLoad='filter("{{ sort }}", "{{ page }}", "{{ max }}", "{{ event.event_id }}", "{{ query|escape }}");' {% endblock %}
+{% block body_extra %} onLoad='filter("{{ sort }}", "{{ page }}", "{{ max }}", "{{ event.id }}", "{{ query|escape }}");' {% endblock %}
 
 
 {% block content %}

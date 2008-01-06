@@ -48,7 +48,7 @@ class Event(models.Model):
 	semester = SemesterEventsManager()
 	today = TodayEventsManager()
 
-	event_id = models.AutoField(primary_key = True)
+	id = models.AutoField(primary_key = True)
 	name = models.CharField(maxlength=100)
 	location = models.CharField(maxlength=100)
 	description = models.TextField()
@@ -155,14 +155,48 @@ class RSVPManager(models.Manager):
 		if event_field[0] == "-":
 			event_field = event_field[1:]
 			negate = "-"
-		return objects.extra(where=["event_rsvp.event_id = event_event.event_id"], tables=["event_event"]).order_by(negate + "event_event." + event_field)
+		return objects.extra(where=["event_rsvp.event_id = event_event.id"], tables=["event_event"]).order_by(negate + "event_event." + event_field)
 	
 	def order_by_person_field(self, person_field, objects):
 		negate = ""
 		if person_field[0] == "-":
 			person_field = person_field[1:]
 			negate = "-"		
-		return objects.extra(where=["event_rsvp.person_id = info_person.person_id"], tables=["info_person"]).order_by(negate + "info_person." + person_field)
+		return objects.extra(where=["event_rsvp.person_id = info_person.id"], tables=["info_person"]).order_by(negate + "info_person." + person_field)
+
+	def query_event(self, query, rsvps = None):
+		if rsvps == None:
+			rsvps = self.get_query_set()
+			
+		if query and len(query.strip()) != 0:
+			for q in query.split(" "):
+				if len(q.strip()) == 0:
+					continue
+				rsvps = rsvps.filter(Q(event__name__icontains = q) | Q(event__location__icontains = q) | Q(event__description__icontains = q))
+		return rsvps
+	
+	def query_person(self, query, rsvps = None):
+		if rsvps == None:
+			rsvps = self.get_query_set()
+			
+		if query and len(query.strip()) != 0:
+			for q in query.split(" "):
+				if len(q.strip()) == 0:
+					continue
+				rsvps = rsvps.filter(Q(person__first__icontains = q) | Q(person__last__icontains = q) | Q(person__user__username__icontains = q))
+		return rsvps
+	
+	def query(self, query, rsvps = None):
+		if rsvps == None:
+			rsvps = self.get_query_set()
+			
+		if query and len(query.strip()) != 0:
+			for q in query.split(" "):
+				if len(q.strip()) == 0:
+					continue
+				rsvps = rsvps.filter(Q(event__name__icontains = q) | Q(event__location__icontains = q) | Q(event__description__icontains = q)
+									 | Q(person__first__icontains = q) | Q(person__last__icontains = q) | Q(person__user__username__icontains = q))
+		return rsvps
 
 		
 class FutureRSVPManager(RSVPManager):
@@ -171,13 +205,11 @@ class FutureRSVPManager(RSVPManager):
                 return super(FutureRSVPManager, self).get_query_set().filter(event__start_time__gte = start_time)
 
 
-
-
 class RSVP(models.Model):
 	objects = RSVPManager()
 	future = FutureRSVPManager()
 
-	rsvp_id = models.AutoField(primary_key = True)
+	id = models.AutoField(primary_key = True)
 	event = models.ForeignKey(Event)
 	person = models.ForeignKey(Person)
 

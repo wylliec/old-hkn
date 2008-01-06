@@ -10,8 +10,8 @@
 
 {% for event in events %}
 <tr>
-	<td><a href="{% url hkn.event.event.view event.event_id %}">{{ event.name }}</a><br><span style="font-size: 10">(<a href="{% url hkn.event.rsvp.list.list_for_event event.event_id %}">{{ event.num_rsvps }} rsvps </a> : <a href="javascript:void(0)" onclick="show_rsvp_form({{event.event_id}});">rsvp</a> <a href="{% url hkn.event.event.edit event.event_id %}">edit</a>)</span></td>
-	<td>{{ event.description }}<BR><div id="rsvp_{{event.event_id}}"> </div></td>
+	<td><a href="{% url hkn.event.event.view event.id %}">{{ event.name }}</a><br><span style="font-size: 10">(<a href="{% url hkn.event.rsvp.list.list_for_event event.id %}">{{ event.num_rsvps }} rsvps </a> : <a href="javascript:void(0)" onclick="show_rsvp_form({{event.id}});">rsvp</a> <a href="{% url hkn.event.event.edit event.id %}">edit</a>)</span></td>
+	<td>{{ event.description }}<BR><div id="rsvp_{{event.id}}"> </div></td>
 	<td>{{ event.start_time|date:"l m/d g:ia" }}-{{ event.end_time|date:"g:ia" }}</td>
 	<td><a href="javascript:void(0)" onclick="filter('{{ sort }}', '1', '{{ max }}', '{{ category }},' + '{{ event.event_type }}', '{{ query }}');"> {{ event.get_event_type }} </a> </td>
 </tr>

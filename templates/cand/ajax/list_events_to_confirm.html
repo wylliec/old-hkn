@@ -11,7 +11,7 @@
 
 {% for event in events %}
 <tr>
-	<td>{{ event.name }}<br><span style="font-size: 10"><a href="/cand/confirm/{{event.event_id}}">confirm</a> {{ event.confirm }}/{{ event.possible }}</td>
+	<td>{{ event.name }}<br><span style="font-size: 10"><a href="/cand/confirm/{{event.id}}">confirm</a> {{ event.confirm }}/{{ event.possible }}</td>
 	<td>{{ event.description }}</td>
 	<td>{{ event.start_time|date:"l m/d g:ia" }}-{{ event.end_time|date:"g:ia" }}</td>
 	<td>{{ event.get_event_type }}</td>

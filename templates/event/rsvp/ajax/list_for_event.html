@@ -30,11 +30,11 @@ saveConfirmationsForm = function() {
 
 {% for rsvp in rsvps %}
 <tr>
-	<td> {% if show_confirm_form %} <input type=checkbox name="{{rsvp.rsvp_id}}.vp_confirm" {% if rsvp.vp_confirm %} checked="yes" {% endif %} /> {% endif %} 
-	<img id="toggle_{{ rsvp.rsvp_id }}" src="/images/site/plus.gif" onClick='toggleOptionsDiv("options_{{rsvp.rsvp_id}}", "toggle_{{rsvp.rsvp_id}}")' /> 
+	<td> {% if show_confirm_form %} <input type=checkbox name="{{rsvp.id}}.vp_confirm" {% if rsvp.vp_confirm %} checked="yes" {% endif %} /> {% endif %} 
+	<img id="toggle_{{ rsvp.id }}" src="/images/site/plus.gif" onClick='toggleOptionsDiv("options_{{rsvp.id}}", "toggle_{{rsvp.id}}")' /> 
 	{{ rsvp.person.name }}
-	<div id="options_{{ rsvp.rsvp_id }}" style="display: none; font-size:10">
-		<br>rsvp: <a href="{% url hkn.event.rsvp.rsvp.view rsvp.rsvp_id %}">view</a> <a href="{% url hkn.event.rsvp.rsvp.edit rsvp.event_id %}">edit</a> <a href="{% url hkn.event.rsvp.rsvp.delete rsvp.rsvp_id %}">del</a> 
+	<div id="options_{{ rsvp.id }}" style="display: none; font-size:10">
+		<br>rsvp: <a href="{% url hkn.event.rsvp.rsvp.view rsvp.id %}">view</a> <a href="{% url hkn.event.rsvp.rsvp.edit rsvp.event_id %}">edit</a> <a href="{% url hkn.event.rsvp.rsvp.delete rsvp.id %}">del</a> 
 		<br>event: 
 	</div>	
 	</td>
@@ -43,7 +43,7 @@ saveConfirmationsForm = function() {
 	<td> {{ rsvp.comment }} </td>
 	{% if event.rsvp_block %} <td> {{ rsvp.get_block_descriptions }} </td> {% endif %}
 	{% if event.rsvp_transportation_necessary %} <td> {{ rsvp.transport }} </td> {% endif %}
-	{% if show_confirm_form %} <td><input type=text name="{{rsvp.rsvp_id}}.vp_comment" value="{{rsvp.vp_comment}}"/></td> {% endif %}
+	{% if show_confirm_form %} <td><input type=text name="{{rsvp.id}}.vp_comment" value="{{rsvp.vp_comment}}"/></td> {% endif %}
 </tr>
 {% endfor %}
 </table>

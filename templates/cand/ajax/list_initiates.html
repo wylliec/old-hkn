@@ -21,8 +21,8 @@ saveCandidatesForm = function() {
 </tr>
 {% for c in candidates %}
 <tr>
-<td> <input type=checkbox name="{{c.person_id}}.initiated" {% if c.is_initiated %} checked="yes" {% endif %} /> {{ c.name }} ({{c.events_attended}})<br><span style="font-size: 10">(<a href="/info/details/{{c.person_id}}/">see details</a>)</span></td>
-<td><input type=text name="{{c.person_id}}.comment" value="{{c.comment}}"/></td>
+<td> <input type=checkbox name="{{c.id}}.initiated" {% if c.is_initiated %} checked="yes" {% endif %} /> {{ c.name }} ({{c.events_attended}})<br><span style="font-size: 10">({% url hkn.info.person.view person_id=c.id %}/">see details</a>)</span></td>
+<td><input type=text name="{{c.id}}.comment" value="{{c.comment}}"/></td>
 </tr>
 {% endfor %}
 </table>

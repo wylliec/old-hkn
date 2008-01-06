@@ -14,9 +14,9 @@
 </tr>
 {% for rsvp in rsvps %}
 <tr>
-<td> <input type=checkbox name="{{rsvp.rsvp_id}}.vp_confirm" {% if rsvp.vp_confirm %} checked="yes" {% endif %} /> {{ rsvp.person.name }}<br><span style="font-size: 10">(<a href="/event/rsvp/view/{{rsvp.rsvp_id}}/">see rsvp</a>)</span></td>
+<td> <input type=checkbox name="{{rsvp.id}}.vp_confirm" {% if rsvp.vp_confirm %} checked="yes" {% endif %} /> {{ rsvp.person.name }}<br><span style="font-size: 10">(<a href="/event/rsvp/view/{{rsvp.id}}/">see rsvp</a>)</span></td>
 <td>{{ rsvp.comment }}</td>
-<td><input type=text name="{{rsvp.rsvp_id}}.vp_comment" value="{{rsvp.vp_comment}}"/></td>
+<td><input type=text name="{{rsvp.id}}.vp_comment" value="{{rsvp.vp_comment}}"/></td>
 </tr>
 {% endfor %}
 </table>
