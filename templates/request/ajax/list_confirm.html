@@ -23,6 +23,6 @@ src="/images/site/error.png"
 </td>
 
 <td>{{r.description}}</td>
-<td><input type=text id="{{r.request_id}}.comment" name="{{r.request_id}}.comment" value="{{r.comment}}"/></td>
-<td><img class="request_confirm_img" src="/images/site/valid.png" onClick='confirmRequest( {{r.request_id}}, "true");'/><img class="request_confirm_img" src="/images/site/error.png" onClick='confirmRequest( {{r.request_id}}, "false");'/></td>
+<td><input type=text id="{{r.id}}.comment" name="{{r.id}}.comment" value="{{r.comment}}"/></td>
+<td><img class="request_confirm_img" src="/images/site/valid.png" onClick='confirmRequest( {{r.id}}, "true");'/><img class="request_confirm_img" src="/images/site/error.png" onClick='confirmRequest( {{r.id}}, "false");'/></td>
 </tr>
