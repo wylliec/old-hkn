@@ -10,16 +10,16 @@ from hkn.info.utils import *
 from hkn.auth.utils import *
 
 for o in Person.all_officers.all():
-	u = o.user
-	uname = raw_input("What is %s's username? [%s] " % (o.name(), u.username))
-	if len(uname.strip()) != 0:
-		u.username = uname
-		u.save()
+    u = o.user
+    uname = raw_input("What is %s's username? [%s] " % (o.name(), u.username))
+    if len(uname.strip()) != 0:
+        u.username = uname
+        u.save()
 
 oss = []
 for o in Person.all_officers.all():
-	os = (o.email(), o.user.username)
-	oss.append(os)
+    os = (o.email(), o.user.username)
+    oss.append(os)
 
 print oss
 

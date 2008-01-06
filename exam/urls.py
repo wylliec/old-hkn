@@ -6,8 +6,8 @@ urlpatterns = patterns('',
 
     # main page
     (r'^$', 'hkn.exam.views.main'),
-	(r'^faq/$', 'hkn.exam.views.faq'),
-	(r'^committee/$', 'hkn.exam.views.committee'),
-	(r'^onlineexams/$', 'hkn.exam.views.onlineexams'),
-	(r'^submit/$', 'hkn.exam.views.submit'),
+    (r'^faq/$', 'hkn.exam.views.faq'),
+    (r'^committee/$', 'hkn.exam.views.committee'),
+    (r'^onlineexams/$', 'hkn.exam.views.onlineexams'),
+    (r'^submit/$', 'hkn.exam.views.submit'),
 )

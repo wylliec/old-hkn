@@ -4,21 +4,21 @@ from hkn.info.models import *
 # Create your models here.
 
 class SMSInfo(models.Model):
-	# 1-1 correspondence 
-	person = models.OneToOneField(Person)
+    # 1-1 correspondence 
+    person = models.OneToOneField(Person)
 
-	# has this person activated SMS?
-	activated = models.BooleanField(default = False)
+    # has this person activated SMS?
+    activated = models.BooleanField(default = False)
 
-	# the person's passcode
-	passcode = models.CharField(maxlength = 20, default = "")
+    # the person's passcode
+    passcode = models.CharField(maxlength = 20, default = "")
 
-	# the person's carrier
-	carrier = models.CharField(maxlength = 50)
+    # the person's carrier
+    carrier = models.CharField(maxlength = 50)
 
-	# the person's usual phone-email address
-	# like 55555555555@vtext.com
-	phone_email = models.CharField(maxlength=70)
+    # the person's usual phone-email address
+    # like 55555555555@vtext.com
+    phone_email = models.CharField(maxlength=70)
 
-	# cache the response to their last query so we can page responses
-	cached_response = models.TextField()
+    # cache the response to their last query so we can page responses
+    cached_response = models.TextField()

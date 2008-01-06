@@ -12,18 +12,18 @@ officership_filename = "data/officership-all.pkl"
 
 
 def officershipTuple(os):
-	return (os.person.email(), os.person.user.username, os.position.short_name, os.semester)
+    return (os.person.email(), os.person.user.username, os.position.short_name, os.semester)
 
 def export_officers():
-	global officership_filename
+    global officership_filename
 
-	officership_by_semester = {}
-	for os in Officership.objects.all():
-		if not officership_by_semester.has_key(os.semester):
-			officership_by_semester[os.semester] = []
-		officership_by_semester[os.semester].append(officershipTuple(os))
-	f = file(officership_filename, 'w')
-	pickle.dump(officership_by_semester, f)
+    officership_by_semester = {}
+    for os in Officership.objects.all():
+        if not officership_by_semester.has_key(os.semester):
+            officership_by_semester[os.semester] = []
+        officership_by_semester[os.semester].append(officershipTuple(os))
+    f = file(officership_filename, 'w')
+    pickle.dump(officership_by_semester, f)
 
 if __name__ == "__main__":
-	export_officers()
+    export_officers()

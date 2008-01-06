@@ -1,16 +1,16 @@
 import re
 
 def normalizeEmail(email):
-	return email.strip().lower().replace("@uclink.berkeley.edu", "@berkeley.edu").replace("@calmail.berkeley.edu", "@berkeley.edu")
+    return email.strip().lower().replace("@uclink.berkeley.edu", "@berkeley.edu").replace("@calmail.berkeley.edu", "@berkeley.edu")
 
 def normalizePhone(phone):
-	return re.sub("[^\d]", "", phone.strip())
+    return re.sub("[^\d]", "", phone.strip())
 
 def make_set(*args):
-	s = set()
-	for arg in args:
-		s.add(arg)
-	return s
+    s = set()
+    for arg in args:
+        s.add(arg)
+    return s
 
 committee_names =  {
 "pres" : make_set("president", "p"),
@@ -33,11 +33,11 @@ committee_names =  {
 "facadvisor" : make_set("facultyadvisor")}
 
 def normalizeCommitteeName(com_name):
-	com_name = com_name.strip().replace(" ", "").lower()
-	for committee in committee_names.keys():
-		if com_name == committee:
-			return committee
-		if com_name in committee_names[committee]:
-			return committee
-	return ""
+    com_name = com_name.strip().replace(" ", "").lower()
+    for committee in committee_names.keys():
+        if com_name == committee:
+            return committee
+        if com_name in committee_names[committee]:
+            return committee
+    return ""
 

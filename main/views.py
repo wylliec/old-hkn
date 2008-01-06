@@ -7,4 +7,4 @@ from django.core.paginator import ObjectPaginator, InvalidPage
 from django import newforms as forms
 
 def main(request):
-	return render_to_response("main/main.html", context_instance=RequestContext(request))
+    return render_to_response("main/main.html", context_instance=RequestContext(request))

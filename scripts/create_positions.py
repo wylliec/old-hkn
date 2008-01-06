@@ -36,22 +36,22 @@ hkn_permissions = (
 )
 
 for p in hkn_permissions:
-	perm = Permission(codename = p[0], name = p[1])
-	perm.save()
+    perm = Permission(codename = p[0], name = p[1])
+    perm.save()
 
 for hkn_pos in hkn_positions:
-	if len(hkn_pos[0]) > 0:
-		perm = Permission(codename = "group_" + hkn_pos[0], name = "Members of " + hkn_pos[1])
-		perm.save()
+    if len(hkn_pos[0]) > 0:
+        perm = Permission(codename = "group_" + hkn_pos[0], name = "Members of " + hkn_pos[1])
+        perm.save()
 
-		g = Group(name = hkn_pos[0])
-		g.save()
-		if perm is not None:
-			g.permissions.add(perm)
-		g.save()
+        g = Group(name = hkn_pos[0])
+        g.save()
+        if perm is not None:
+            g.permissions.add(perm)
+        g.save()
 
-	p = Position(short_name = hkn_pos[0], long_name = hkn_pos[1])
-	p.save()
+    p = Position(short_name = hkn_pos[0], long_name = hkn_pos[1])
+    p.save()
 
 
 g = Group(name = "everyone")

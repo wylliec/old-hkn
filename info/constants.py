@@ -1,7 +1,8 @@
 from hkn.enum import EnumType
 
 
-			
+            
+
 
 ANONYMOUS = 0
 """An anonymous member: has never been a candidate"""
@@ -30,27 +31,29 @@ MEMBER_TYPE = EnumType(ANONYMOUS = ANONYMOUS, EXCANDIDATE = EXCANDIDATE, CANDIDA
 Namespace for member type related constants. 
 
 To import this constant namespace, do the following::
-	from hkn.info.constants import MEMBER_TYPE
+    from hkn.info.constants import MEMBER_TYPE
 
 These constants include:
- 	ANONYMOUS, EXCANDIDATE, CANDIDATE, MEMBER, FOGIE/EXOFFICER, OFFICER
+    ANONYMOUS, EXCANDIDATE, CANDIDATE, MEMBER, FOGIE/EXOFFICER, OFFICER
 
 Each of these constants has an associated integer value that is stored in the database.
 
 Each member-type constant such as CANDIDATE can be accessed as such::
-	>>>> MEMBER_TYPE.CANDIDATE
-	10							# 10 is the integer representing CANDIDATE
-	
+    >>>> MEMBER_TYPE.CANDIDATE
+    10							# 10 is the integer representing CANDIDATE
+    
+
 Additionally, you can do the following to get the description::
-	>>>> MEMBER_TYPE[person_object.member_status]
-	"Officer"
-	>>>> MEMBER_TYPE[MEMBER_TYPE.CANDIDATE]
-	"Candidate"
-	>>>> MEMBER_TYPE[10]
-	"Candidate"	
-	>>>> MEMBER_TYPE.describe("EXOFFICER")
-	"Fogie"	
-			
+    >>>> MEMBER_TYPE[person_object.member_status]
+    "Officer"
+    >>>> MEMBER_TYPE[MEMBER_TYPE.CANDIDATE]
+    "Candidate"
+    >>>> MEMBER_TYPE[10]
+    "Candidate"	
+    >>>> MEMBER_TYPE.describe("EXOFFICER")
+    "Fogie"	
+            
+
 """
 
 MEMBER_TYPE.add_descriptions(((MEMBER_TYPE.ANONYMOUS, "Anonymous"), (MEMBER_TYPE.EXCANDIDATE, "Ex-Candidate"), (MEMBER_TYPE.CANDIDATE, "Candidate"), (MEMBER_TYPE.MEMBER, "Member"), (MEMBER_TYPE.FOGIE, "Fogie"), (MEMBER_TYPE.OFFICER, "Officer")))
