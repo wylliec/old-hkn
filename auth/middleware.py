@@ -1,5 +1,11 @@
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 from hkn.auth.models import User
+
+try:
+    from hkn.hknsettings import FORCE_LOGIN
+except:
+    FORCE_LOGIN = False
 
 class LazyUser(object):
     def __get__(self, request, obj_type=None):
@@ -22,7 +28,10 @@ class AuthenticationMiddleware(object):
             del rpc['as_user']
             request.GET = rpc
             user = get_object_or_404(User, username = as_user)
-            request.user = user        
+            request.user = user
+            
+        if FORCE_LOGIN and request.path.find("login") == -1 and request.path.find("authenti") == -1 and request.user.is_anonymous():
+            return HttpResponseRedirect("/login/")
 
         return None
 
