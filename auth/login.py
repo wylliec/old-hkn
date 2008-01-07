@@ -33,6 +33,8 @@ def authenticate(request):
     except User.DoesNotExist:
         return login(request, redirect_url, message="Account does not exist!")
     
+    if not account.is_active:
+        return login(request, redirect_url, message="Account disabled")    
 
     if not account.checkPassword(password):
         return login(request, redirect_url, message="Password incorrect!")
