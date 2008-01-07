@@ -1,15 +1,21 @@
+##
+##
+##
+##
+##
+# Please edit hknsettings.py to set SERVER_ROOT, not this file
+##
+##
+##
+##
+##
+
+
 #########################
 # HKN-Specific Settings #
 #########################
 
-# set SERVER_ROOT       #
-
-# a valid value should look something like this:
-# SERVER_ROOT = "/home/hzarka/website/hkn/"
-SERVER_ROOT = "/dev/null"
-
-
-# you shouldn't have to touch anything below
+from hknsettings import SERVER_ROOT
 
 # make sure SERVER_ROOT ends with hkn/
 if not SERVER_ROOT.endswith("hkn/"):
@@ -19,7 +25,7 @@ if not SERVER_ROOT.endswith("hkn/"):
 # don't change this
 IMAGES_PATH = "/home/hzarka/hkn-website-images/"
 
-################################
+# django crap
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -32,15 +38,15 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-# DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-# DATABASE_NAME = 'hkn_website'             # Or path to database file if using sqlite3.
-# DATABASE_USER = 'root'             # Not used with sqlite3.
-# DATABASE_PASSWORD = 'monkey13'         # Not used with sqlite3.
-# DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-# DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
+DATABASE_NAME = 'hkn_website'             # Or path to database file if using sqlite3.
+DATABASE_USER = 'root'             # Not used with sqlite3.
+DATABASE_PASSWORD = 'monkey13'         # Not used with sqlite3.
+DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
+DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-DATABASE_NAME = SERVER_ROOT + "hkn.db"            # Or path to database file if using sqlite3.
+# DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
+# DATABASE_NAME = SERVER_ROOT + "hkn.db"            # Or path to database file if using sqlite3.
 
 
 # Local time zone for this installation. Choices can be found here:
