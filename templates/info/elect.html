@@ -9,7 +9,7 @@
 function update_persons() {
 	inp = document.getElementById("person_query").value;
 	query_url = "/info/find_person?query=" + escape(inp);
-	new Ajax.Updater('persons_div', query_url, {method : 'get', asynchronous:true});
+	$("#persons_div").load(query_url);
 	return false;
 }
 function updateonenter(e) {

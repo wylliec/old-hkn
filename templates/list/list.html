@@ -6,8 +6,12 @@
 <script language="javascript">
 function filter(sort, page, max, category, query) {
 	objects_url = "{{ objects_url }}"
+
 	parameters = {"sort" : sort, "page" : page, "max" : max, "category" : category, "query" : query};
-	new Ajax.Updater('objects_div', objects_url, {method : 'get', parameters : parameters, asynchronous:true, evalScripts : true});
+	
+	$.get("{{ objects_url }}", parameters, function(data, textStatus) {
+		$("#objects_div").html(data);
+	});
 	return false;
 }
 
@@ -36,11 +40,16 @@ function toggleOptionsDiv(options_div, img_div) {
 	}
 }
 
+$(document).ready(function() {
+	filter("{{ sort }}", "{{ page }}", "{{ max }}", "{{ category|escape }}", "{{ query|escape }}")
+});
+
+{% if extra_javascript %}
+{% include extra_javascript %}
+{% endif %}
 
 </script>
 {% endblock %}
-
-{% block body_extra %} onLoad='filter("{{ sort }}", "{{ page }}", "{{ max }}", "{{ category|escape }}", "{{ query|escape }}");' {% endblock %}
 
 
 {% block content %}

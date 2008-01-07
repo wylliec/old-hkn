@@ -1,0 +1,21 @@
+function show_rsvp_form(event_id) {
+	rsvp_div = $("#rsvp_" + event_id)
+	post_url = "{% url hkn.event.rsvp.rsvp.edit_ajax %}"
+	params = {"event_id" : event_id};
+	rsvp_div.load(post_url, params, function (responseText, textStatus, XMLHttpRequest) {
+		rsvp_form.show("fast");	
+	});
+}
+
+function hide_rsvp_form(event_id) {
+	$("#rsvp_" + event_id).hide("fast");
+}
+
+function submit_rsvp(event_id) {
+	rsvp_div = $("#rsvp_" + event_id);
+	post_url = "{% url hkn.event.rsvp.rsvp.edit_ajax %}";
+	params = $("#rsvp_form_" + event_id).serializeArray();
+	$.post(post_url, params, function(data) {
+		rsvp_div.html(data);
+	});
+}

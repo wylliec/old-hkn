@@ -1,3 +1,4 @@
+from hkn.auth.models import *
 from hkn.event.models import *
 from hkn.event.forms import *
 from django.shortcuts import render_to_response
@@ -18,6 +19,11 @@ query_rsvps = lambda rsvps, query: RSVP.objects.query(query, rsvps)
 query_rsvps_by_event = lambda rsvps, query: RSVP.objects.query_event(query, rsvps)       
 query_rsvps_by_person = lambda rsvps, query: RSVP.objects.query_person(query, rsvps)       
 
+vp_perm = Permission.objects.get(codename = "group_vp")
+
+def show_confirm_form(request):
+    #return False
+    return request.user.has_perm(vp_perm)
 
 def list_for_person(request, person_id):
     if len(person_id) == 0 or person_id == "me":
@@ -26,12 +32,16 @@ def list_for_person(request, person_id):
     d = get_list_context(request, default_sort = "-event__start_time", default_category = person_id)
     #d = get_list_context(request, default_sort = "?", default_category = person_id)    
     d["objects_url"] = urlresolvers.reverse("hkn.event.rsvp.list.list_for_person_ajax")
+    if show_confirm_form(request):
+        d["extra_javascript"] = "event/rsvp/ajax/list_rsvps_javascript.html"
     return render_to_response("list/list.html", d, context_instance = RequestContext(request))
 
 def list_for_event(request, event_id):
     #d = get_list_context(request, default_sort = "?", default_category = event_id)
     d = get_list_context(request, default_sort = "person__first", default_category = event_id)
     d["objects_url"] = urlresolvers.reverse("hkn.event.rsvp.list.list_for_event_ajax")    
+    if show_confirm_form(request):
+        d["extra_javascript"] = "event/rsvp/ajax/list_rsvps_javascript.html"    
     return render_to_response("list/list.html", d, context_instance = RequestContext(request))
 
 
@@ -75,7 +85,7 @@ def list_for_person_ajax(request):
     
     list_context["rsvps"] = rsvps
     list_context["page_range"] = range(1, pages+1)
-    list_context["show_confirm_form"] = True    
+    list_context["show_confirm_form"] = show_confirm_form(request)
     
     return render_to_response("event/rsvp/ajax/list_for_person.html", list_context, context_instance = RequestContext(request))
 
@@ -89,6 +99,12 @@ def list_for_event_ajax(request):
         event = Event.objects.get(pk = category)
     except:
         event = None
+        
+    list_context["event"] = event    
+    list_context["rsvps"] = rsvps
+    list_context["page_range"] = range(1, pages+1)
+    list_context["title"] = "HKN - RSVPs for " + event.name
+    list_context["show_confirm_form"] = show_confirm_form(request)        
         
     if request.POST:
         for rsvp in rsvps:
@@ -104,12 +120,6 @@ def list_for_event_ajax(request):
                 rsvp.vp_confirm = False
             
             rsvp.save()        
-    
-    list_context["event"] = event    
-    list_context["rsvps"] = rsvps
-    list_context["page_range"] = range(1, pages+1)
-    list_context["title"] = "HKN - RSVPs for " + event.name
-    list_context["show_confirm_form"] = True
     
     return render_to_response("event/rsvp/ajax/list_for_event.html", list_context, context_instance = RequestContext(request))
 

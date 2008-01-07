@@ -9,7 +9,7 @@ from string import atoi
 def list_events(request, category):
     d = get_list_context(request, default_sort = "-start_time", default_category = category)    
     d["objects_url"] = urlresolvers.reverse("hkn.event.list.list_events_ajax")
-    d["extra_body"] = get_template("event/ajax/list_javascript.html").render({})
+    d["extra_javascript"] = "event/ajax/list_events_javascript.html"
     return render_to_response("list/list.html", d, context_instance=RequestContext(request))
 
 def filter_events_by_category(clazz, objects, category):

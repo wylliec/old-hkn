@@ -128,7 +128,7 @@ def edit_ajax(request):
     person = request.user.person
 
     if not request.POST or not request.POST.has_key("event_id"):
-        return HttpResponse("no post")
+        return HttpResponse("no post or no event_id in post")
 
     event_id = atoi(request.POST["event_id"])
     e = get_object_or_404(Event, pk = event_id)

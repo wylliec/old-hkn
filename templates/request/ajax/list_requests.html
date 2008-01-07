@@ -1,34 +1,6 @@
 {% extends "list/list_objects.html" %}
 
 {% block objects_content %}
-<script language="javascript">
-saveRequestsForm = function() {
-	objects_url = "{% url hkn.request.list.list_requests_ajax %}";
-	get_parameters = {"sort" : "{{ sort }}" , "page" : "{{ page }}", "max" : "{{ max }}", "category" : "{{ category }}", "query" : "{{ query }}" };
-	post_parameters = $("requests_form").serialize(true);
-	objects_url += "?" + $H(get_parameters).toQueryString();
-
-	new Ajax.Updater('objects_div', objects_url, {method : 'post', parameters : post_parameters, asynchronous:true, evalScripts : true});
-	return false;
-}	
-
-confirmRequest = function(request_id, approved) {
-	confirm_url = "{% url hkn.request.list.list_requests_confirm_ajax %}" + request_id + "/";
-	post_parameters = {"confirm" : approved, "comment" : $(request_id + ".comment").value};
-	
-	new Ajax.Request(confirm_url, 
-		{method : 'post', parameters : post_parameters, asynchronous:true});
-	return false;
-}
-
-setConfirmAndComment = function(request_id, confirmed_img, comment) {
-	$(request_id + ".img_confirm").src = confirmed_img
-	$(request_id + ".comment").value = comment
-	return false;
-	
-}
-
-</script>
 
 <table class="list"><tr>
 <th>Confirm</th>
@@ -40,7 +12,7 @@ setConfirmAndComment = function(request_id, confirmed_img, comment) {
 {% for r in requests %}
 <div id="request_{{r.id }}">
 
-{% include "request/ajax/list_confirm.html" %}
+{% include "request/ajax/list_requests_row.html" %}
 
 </div>
 {% endfor %}

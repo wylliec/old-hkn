@@ -61,7 +61,7 @@ def initiate_ajax(request):
             ci.initiation_comment = request.POST[attr_comment]
             ci.initiated = request.POST.has_key(attr_initiated)
             ci.save()
-        candidates = final_filter(candidates)    
+        candidates = add_candidate_initiation_metainfo(candidates)    
                         
 
 

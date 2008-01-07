@@ -35,11 +35,11 @@ def unique_list(l):
     return [l[0]] + [e for i, e in enumerate(l[1:]) if l[i+1] != l[i]]     
 
 def get_list_context(request, default_sort, default_category = "objects", default_page = "1", default_max = "20"):
-    sort = request.GET.get("sort", default_sort)
-    page = request.GET.get("page", default_page)
-    max = request.GET.get("max", default_max)
-    category = request.GET.get("category", default_category)
-    query = request.GET.get("query", "")
+    sort = request.REQUEST.get("sort", default_sort)
+    page = request.REQUEST.get("page", default_page)
+    max = request.REQUEST.get("max", default_max)
+    category = request.REQUEST.get("category", default_category)
+    query = request.REQUEST.get("query", "")
 
     # two -'s negate each other
     while sort.startswith("--"):

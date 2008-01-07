@@ -3,19 +3,12 @@
 {% block objects_content %}
 
 {% if show_confirm_form %}
-<script language="javascript">
-saveConfirmationsForm = function() {
-	objects_url = "{% url hkn.event.rsvp.list.list_for_event_ajax %}";
-	get_parameters = {"sort" : "{{ sort }}" , "page" : "{{ page }}", "max" : "{{ max }}", "category" : "{{ category }}", "query" : "{{ query }}" };
-	post_parameters = $("confirmation_form").serialize(true);
-	objects_url += "?" + $H(get_parameters).toQueryString();
-
-	new Ajax.Updater('objects_div', objects_url, {method : 'post', parameters : post_parameters, asynchronous:true, evalScripts : true});
-	return false;
-}	
-</script>
-
-<form id="confirmation_form" action="" method="post" onSubmit="return saveConfirmationsForm();">
+<form id="confirmation_form" action="{% url hkn.event.rsvp.list.list_for_event_ajax %}" method="post">
+<input type="hidden" name="sort" value="{{sort}}" />
+<input type="hidden" name="page" value="{{page}}" />
+<input type="hidden" name="max" value="{{max}}" />
+<input type="hidden" name="category" value="{{category}}" />
+<input type="hidden" name="query" value="{{query}}" />
 <input class="button" type=submit value="save">
 {% endif %}
 
@@ -51,6 +44,14 @@ saveConfirmationsForm = function() {
 {% if show_confirm_form %}
 <input class="button" type=submit value="save">
 </form>
+
+<script language="javascript">
+$('#confirmation_form').ready(function() {	       
+	$('#confirmation_form').ajaxForm(function(data) { 
+		$('#objects_div').html(data);
+	}); 
+});
+</script>
 {% endif %}
 
 {% endblock %}

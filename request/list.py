@@ -17,6 +17,7 @@ def list_requests(request, category):
     d = get_list_context(request, default_sort = "submitted", default_category = category)    
     #d["objects_url"] = "/request/list_requests_ajax/"
     d["objects_url"] = urlresolvers.reverse("hkn.request.list.list_requests_ajax")    
+    d["extra_javascript"] = "request/ajax/list_requests_javascript.html"
     return render_to_response("list/list.html", d, context_instance=RequestContext(request))
 
 
@@ -31,16 +32,16 @@ def list_requests_ajax(request):
     filter_permissions = lambda objects: Request.objects.for_user(request.user, objects)
     (requests, pages) = filter_objects(Request, list_context, query_objects = query_requests, category_map = {"all" : "objects"}, filter_permissions = filter_permissions, final_filter = add_requests_metainfo)
     
-    if request.POST:
-        for r in requests:
-            attr_confirmed = str(r.request_id) + ".confirmed"
-            attr_comment = str(r.id) + ".comment"
-            
-            confirmed = request.POST.get(attr_confirmed, False)
-            comment = request.POST.get(attr_comment, "")
-            
-            r.confirm(confirmed, comment)
-            r.save()
+#    if request.POST:
+#        for req in requests:
+#            attr_confirmed = str(req.id) + ".confirmed"
+#            attr_comment = str(req.id) + ".comment"
+#            
+#            confirmed = request.POST.get(attr_confirmed, False)
+#            comment = request.POST.get(attr_comment, "")
+#            
+#            req.set_confirm(confirmed, comment)
+#            req.save()
     
     list_context["requests"] = requests
     list_context["filter_categories"] = {"All Requests" : "all", "Active Requests" : "actives", "Inactive Requests" : "inactives"}
@@ -72,11 +73,9 @@ def list_requests_confirm_ajax(request, request_id):
     else:
         confirm_img = "/images/site/valid.png"
         
-        r.comment
+    json = {"request_id" : r.id, "image" : confirm_img, "comment" : r.comment}
     
-    js = """setConfirmAndComment("%s", "%s", "%s");""" % (r.id, confirm_img, r.comment)
-    
-    return HttpResponse(js, mimetype='application/javascript')
+    return HttpResponse(simplejson.dumps(json), mimetype='application/javascript')
     
     
     
