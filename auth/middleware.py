@@ -31,7 +31,7 @@ class AuthenticationMiddleware(object):
             request.user = user
             
         if FORCE_LOGIN and request.path.find("login") == -1 and request.path.find("authenti") == -1 and request.user.is_anonymous():
-            return HttpResponseRedirect("/login/")
+            return HttpResponseRedirect("/login/?next=%s" % (request.path))
 
         return None
 
