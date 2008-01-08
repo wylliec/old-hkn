@@ -1,5 +1,5 @@
 from django.db import models
-from hkn.courses.constants import SEMESTER, EXAMS_PREFERENCE
+from hkn.course.constants import SEMESTER, EXAMS_PREFERENCE
 
 # Create your models here.
 class Department(models.Model):
