@@ -6,7 +6,7 @@ from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
 from django import newforms as forms
 
-from constants import RSVP_TYPE, EVENT_TYPE
+from hkn.event.constants import RSVP_TYPE, EVENT_TYPE
 
 import datetime
 from string import atoi
