@@ -3,6 +3,8 @@ from hkn.info.models import *
 from hkn.auth.models import *
 from hkn.event.models import *
 
+from hkn.cand.constants import APP_YEAR, EECS_OPTION
+
 from django import newforms as forms
 import os
 
