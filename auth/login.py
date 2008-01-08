@@ -31,13 +31,13 @@ def authenticate(request):
     try:
         account = User.objects.get(username = username)
     except User.DoesNotExist:
-        return login(request, redirect_url, message="Account does not exist!")
+        return login(request, redirect_url, message="Username or password incorrect.")
+    
+    if not account.checkPassword(password):
+        return login(request, redirect_url, message="Username or password incorrect.")
     
     if not account.is_active:
         return login(request, redirect_url, message="Account disabled")    
-
-    if not account.checkPassword(password):
-        return login(request, redirect_url, message="Password incorrect!")
 
     utils.login(request, account)
     #request.session[PERSONID_KEY] = account.person_id
