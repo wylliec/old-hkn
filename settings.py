@@ -132,4 +132,5 @@ INSTALLED_APPS = (
     'hkn.resume',
     'hkn.request',
     'hkn.main',
+    'hkn.course',
 )
