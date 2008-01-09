@@ -14,7 +14,7 @@ class Exam(models.Model):
     file = models.FileField(upload_to = FILE_UPLOAD_DIR)
     """ The local filesystem path to where the actual exam is stored. """
     
-    exam_type = models.CharField(choices = EXAM_TYPE.choices())
+    exam_type = models.CharField(choices = EXAM_TYPE.choices(), maxlength = 10)
     """ The type of exam (e.g., Midterm, Final). """
     
     number = models.IntegerField(blank = True)
@@ -27,7 +27,7 @@ class Exam(models.Model):
     """ True if this is the solutions file (i.e., not the original exam). """
     
     paper_only = models.BooleanField()
-    """ True if HKN has a paper copy BUT does not have a PDF version. """
+    """ True if HKN has a paper copy but does not have a PDF version. """
     
     publishable = models.BooleanField()
     """ True if HKN has permission to post this exam publicly online. """
@@ -35,5 +35,10 @@ class Exam(models.Model):
     topics = models.TextField()
     """ A text block of topics relevant to this exam. """
 
-#    def __str__(self):
-#        return "%s %s %s%s" % self.course
+    def __str__(self):
+        s = "%s %s %s" % (self.klass, self.exam_type, self.number)
+        if self.is_solution:
+            s += " Solutions"
+        if self.publishable:
+            s += " (publishable)"
+        return s
