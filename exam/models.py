@@ -35,5 +35,5 @@ class Exam(models.Model):
     topics = models.TextField()
     """ A text block of topics relevant to this exam. """
 
-%    def __str__(self):
-%        return "%s %s %s%s" % self.course
+#    def __str__(self):
+#        return "%s %s %s%s" % self.course
