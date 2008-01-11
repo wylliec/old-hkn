@@ -1,0 +1,681 @@
+<?xml version="1.0" ?>
+<department abbr="HISTORY" name="History">
+    <course name="The Practice of History" number="R1" units="4">
+        Intended for non-majors as well as prospective majors, this course introduces students to the discipline of history as a humanistic inquiry into the experiences of people in time and space. How do historians interpret and debate the past? How do they gather and make use of their materials and sources? Readings include the works of classical historians from different cultural traditions, contemporary historical debates, and an exploration of historical sources available at Berkeley. Satisfies half of the Reading and Composition requirement.
+    </course>
+    <course name="After the Roman Empire: the East" number="3" units="4">
+        A general introduction to the study of history, this course focuses on Byzantium and the Islamic world, two medieval successors to the Roman empire in the Eastern Mediterranean and the Near East. This course has three aims: to provide an outline of events that transpired in this area from the 4th-15th centuries; to explain how a modern historian can approach medieval sources in order to reconstruct various aspects of the past; and to discuss the commonalities of pre-industrial societies, and how lessons learnt in this class can be applied to the study of other time periods and geographic locations.
+    </course>
+    <course name="The Ancient Mediterranean World" number="4A" units="4">
+        
+    </course>
+    <course name="Medieval Europe" number="4B" units="4">
+        
+    </course>
+    <course name="European Civilization from the Renaissance to the Present" number="5" units="4">
+        A survey of Europe from the Renaissance to the present.
+    </course>
+    <course name="History of China: Origins to the Mongol Conquest" number="6A" units="4">
+        The history of China from its beginnings to the destruction of the Song Dynasty by the Mongols in the 13th century. Topics to be covered include the emergence of Chinese civilization, the Chinese language, early rhetoric and philosophy, the creation of the first empire, law, Buddhism and religious Taoism, the socioeconomic revolution of the 10th to 12th centuries, identities (male and female, Chinese and &quot;barbarian&quot;), lyric poetry, and painting and calligraphy. Comparisons between China and Europe will be made at strategic points.
+    </course>
+    <course name="Introduction to Chinese History from the Mongols to Mao" number="6B" units="4">
+        This is an introduction to Chinese history from the 13th through the 20th centuries -- from the Mongols and Khubilai Khan's conquest of southern China to the amazing turnaround following the death of Mao Zedong in 1976 and the opening of the era of reform that has led to China's emergence as a major economic and strategic power today. The course assumes no prior knowledge of Chinese history.
+    </course>
+    <course name="The United States from Settlement to Civil War" number="7A" units="4">
+        
+    </course>
+    <course name="From the Civil War to the Present" number="7B" units="4">
+        
+    </course>
+    <course name="Becoming Latin America, 1492 to 1824" number="8A" units="4">
+        The colonial period.
+    </course>
+    <course name="Latin America" number="8B" units="4">
+        The national period.
+    </course>
+    <course name="African History" number="10" units="4">
+        An introductory survey of the history of Africa.
+    </course>
+    <course name="India" number="11" units="4">
+        
+    </course>
+    <course name="The Middle East" number="12" units="4">
+        
+    </course>
+    <course name="History of China: Origins to the Mongol Conquest" number="13A" units="4">
+        The history of China from its beginnings to the destruction of the Song Dynasty by the Mongols in the 13th century. Topics to be covered include the emergence of Chinese civilization, the Chinese language, early rhetoric and philosophy, the creation of the first empire, law, Buddhism and religious Taoism, the socioeconomic revolution of the 10th to 12th centuries, identities (male and female, Chinese and &quot;barbarian&quot;), lyric poetry, and painting and calligraphy. Comparisons between China and Europe will be made at strategic points.
+    </course>
+    <course name="Introduction to Chinese History from the Mongols to Mao" number="13B" units="4">
+        This is an introduction to Chinese history from the 13th through the 20th centuries -- from the Mongols and Khubilai Khan's conquest of southern China to the amazing turnaround following the death of Mao Zedong in 1976 and the opening of the era of reform that has led to China's emergence as a major economic and strategic power today. The course assumes no prior knowledge of Chinese history.
+    </course>
+    <course name="Introduction to the History of Japan" number="14" units="4">
+        This course is a brisk introduction to the nearly two millennia of recorded Japanese history. As a survey, the course gives attention to broad themes and problems in Japan's political, social, and cultural/intellectual history. Topics include the dialectic of national and local identities in shaping Japanese politics, Japan's interaction with the Asian continent and the Western world, and the relation of past to present in modern times.
+    </course>
+    <course name="The Forging of the U.S.: Expansion and Interaction among American People" number="16AC" units="4">
+        Considers the culturally diverse Americans who reside within the geographical boundaries of today's U.S. The history, societies, cultures, perceptions, attitudes and laws of these peoples are the subject matter. Groups will be looked at chronologically in terms of the natural historical processes that brought them together during expansion westward and southward by the Anglo-American governmental units. These groups are: European, Native, African, Chicano Americans and Pacific Rim peoples.
+    </course>
+    <course name="Freshman Seminar" number="24" units="1">
+        The Freshman Seminar Program has been designed to provide new students with the opportunity to explore an intellectual topic with a faculty member in a small seminar setting. Freshman seminars are offered in all campus departments and topics vary from department to department and semester to semester. Enrollment limited to fifteen freshmen.
+    </course>
+    <course name="Science from Antiquity through Newton" number="30A" units="4">
+        The emergence of science as an organized activity.
+    </course>
+    <course name="Science, Technology, and Society since Newton" number="30B" units="4">
+        The development of science and its applications as a major force in modern society.
+    </course>
+    <course name="" number="39A" units="4">
+        
+    </course>
+    <course name="" number="39B" units="4">
+        
+    </course>
+    <course name="" number="39C" units="4">
+        
+    </course>
+    <course name="" number="39D" units="4">
+        
+    </course>
+    <course name="" number="39E" units="4">
+        
+    </course>
+    <course name="" number="39F" units="4">
+        
+    </course>
+    <course name="" number="39G" units="4">
+        
+    </course>
+    <course name="" number="39H" units="4">
+        
+    </course>
+    <course name="" number="39I" units="4">
+        
+    </course>
+    <course name="" number="39J" units="4">
+        
+    </course>
+    <course name="" number="39K" units="4">
+        
+    </course>
+    <course name="" number="39L" units="4">
+        
+    </course>
+    <course name="" number="39M" units="4">
+        
+    </course>
+    <course name="" number="39N" units="4">
+        
+    </course>
+    <course name="" number="39O" units="4">
+        
+    </course>
+    <course name="" number="39P" units="4">
+        
+    </course>
+    <course name="" number="39Q" units="4">
+        
+    </course>
+    <course name="" number="39R" units="4">
+        
+    </course>
+    <course name="" number="39S" units="4">
+        
+    </course>
+    <course name="" number="39T" units="4">
+        
+    </course>
+    <course name="" number="39U" units="4">
+        
+    </course>
+    <course name="" number="39V" units="4">
+        
+    </course>
+    <course name="Ethno-Racial Mixture and Identity in Modern America" number="39W" units="4">
+        
+    </course>
+    <course name="" number="39X" units="4">
+        
+    </course>
+    <course name="" number="39Y" units="4">
+        
+    </course>
+    <course name="" number="39Z" units="4">
+        
+    </course>
+    <course name="Sophomore Seminar" number="84" units="1,2">
+        Sophomore seminars are small interactive courses offered by faculty members in departments all across the campus. Sophomore seminars offer opportunity for close, regular intellectual contact between faculty members and students in the crucial second year. The topics vary from department to department and semester to semester. Enrollment limited to 15 sophomores.
+    </course>
+    <course name="Directed Group Study for Lower Division Students" number="98" units="2">
+        Lectures and small group discussion focusing on topics of interest that vary from semester to semester. Grading based on discussion and written work.
+    </course>
+    <course name="Directed Group Study" number="98X" units="1">
+        Only for students enrolled in a lower-division history lecture course. An extra weekly session emphasizing writing and speaking skills, taken in addition to regular lecture and discussion.
+    </course>
+    <course name="Special Topics" number="100" units="4">
+        Designed primarily to permit the instructors to deal with a topic with which they are especially concerned, usually more restricted than the subject matter of a regular lecture course. A combination of informal lectures and discussions, term papers, and examinations, with all grading by the instructor. Instructors and subjects to vary. Consult department catalog during pre-enrollment week each semester.
+    </course>
+    <course name="Special Topics" number="100AC" units="4">
+        Designed primarily to permit the instructors to deal with topic with which they are especially concerned, usually more restricted than the subject matter of a regular lecture course. A combination of informal lectures and discussions, term papers, and examinations, with all grading by the instructor. Instructors and subjects to vary.
+    </course>
+    <course name="Seminar in Historical Research and Writing for History Majors" number="101" units="5">
+        Individual research projects carried out in seminar sections in various historical fields resulting in a lengthy paper, with readings and discussions on general problems of historical inquiry. In addition to regular class meetings, individual consultations with the instructor, research, and preparation totaling ten to twelve hours per week are required.
+    </course>
+    <course name="Colloquium on Historical Thought" number="H102" units="4">
+        Consideration of the nature and function of historical thought as manifested in major historical classics and selected historical problems. Required of honors program juniors; open, by permission of instructor, to non-honors program seniors upon completion of 101.
+    </course>
+    <course name="Ancient" number="103A" units="4">
+        
+    </course>
+    <course name="Europe" number="103B" units="4">
+        
+    </course>
+    <course name="England" number="103C" units="4">
+        
+    </course>
+    <course name="United States" number="103D" units="4">
+        
+    </course>
+    <course name="Latin America" number="103E" units="4">
+        
+    </course>
+    <course name="Asia" number="103F" units="4">
+        
+    </course>
+    <course name="Africa" number="103H" units="4">
+        
+    </course>
+    <course name="" number="103R" units="4">
+        This course will resemble the traditional History 103s but will emphasize training in research more than historical criticism. The goal is to prepare students for History 101, the thesis-writing seminar, while at the same time engaging with a topic of historical or historiographical significance. Writing assignments will vary but should include a research paper relevant to issues raised in the seminar, and will also include a brief thesis pre-prospectus for the students whose main field is the same as the field of the 103R. In the history major, 103R will replace the 103 requirement in the main field.
+    </course>
+    <course name="History of Science" number="103S" units="4">
+        
+    </course>
+    <course name="Studies in Comparative History" number="103U" units="4">
+        
+    </course>
+    <course name="Bronze Age and Archaic" number="105A" units="4">
+        Until ca. 500 B.C. The beginnings of organized activity in Greek cities.
+    </course>
+    <course name="Classical" number="105B" units="4">
+        From ca. 500 until the time of Philip II of Macedon. More complex relations between Greek cities.
+    </course>
+    <course name="Hellenistic Age" number="105C" units="4">
+        From Alexander the Great to Cleopatra. The course explores the achievements of Alexander, the struggle for power among his successors, the social, political and economic history of the new Hellenistic kingdoms, and the expansion of Greek culture into the Near East.
+    </course>
+    <course name="The Roman Republic" number="106A" units="4">
+        A history of Rome from the foundation of the city to the dictatorship of Caesar. The course examines the evolution of Republican government, the growth of Roman imperialism, and the internal disruptions of the age of the Gracchi, Sulla, and Caesar.
+    </course>
+    <course name="The Roman Empire" number="106B" units="4">
+        A history of Rome from Augustus to Constantine. The course surveys the struggles between the Roman emperors and the senatorial class, the relationship between civil and military government, the emergence of Christianity, and Roman literature as a reflection of social and intellectual life.
+    </course>
+    <course name="Byzantium" number="108" units="4">
+        The social, cultural, and religious history of the Near East and eastern Mediterranean from late antiquity through the early middle ages. The survival of the Roman Empire in Byzantium, the Sassanian Empire in Iran, and the rise of Islam are the topics covered.
+    </course>
+    <course name="The Rise of Islamic Civilization, 600-1200" number="109A" units="4">
+        A survey of Islamic civilization in the Middle East during the medieval period. Topics include the emergence of Islam in Arabia and the role of the prophet Muhammad; the rapid rise of an Islamic empire and its effects on the societies it governed; the creation of an Islamic civilization and the religious, political, and intellectual debates it engendered; contact with Europe and Asia through trade, the Crusades, and nomadic conquest; the contributions of non-Muslims, women, slaves.
+    </course>
+    <course name="The Middle East, 1000-1750" number="109B" units="4">
+        The establishment of Turkish power in the Middle East: Seljuks, Mongols, Ottomans, and Safavis.
+    </course>
+    <course name="The Middle East From the 18th Century to the Present" number="109C" units="4">
+        The breaking of pre-modern empires and the formation of national states in the Arab world, Turkey, and Iran; Islam and nationalism.
+    </course>
+    <course name="The Ottoman Empire, 1400-1750" number="110" units="4">
+        This course studies the empire's expansion into Europe, Asia, and Africa; the multiple influences on its formation (Roman, Persian, Islamic, Mongol, Turkic); imperialism in the premodern era; the rich polyglot culture of the empire's peoples (Christians, Jews, and Muslims; Arabs, Greeks, Kurds, Turks, Armenians, Slavs, and others); forms of religious identity (orthodoxies, mysticisms, heresies); contrasting lives (female/male, free/slave, adult/child); and cultural shifts across three centuries.
+    </course>
+    <course name="Southeast Asia to the 18th Century" number="111A" units="4">
+        The rise of the region's most important classical and early modern states; long-term economic, social, and religious trends.
+    </course>
+    <course name="Southeast Asia to the 18th Century" number="C111A" units="4">
+        The rise of the region's most important classical and early modern states; long-term economic, social, and religious trends. Also listed as Southeast Asian C141A.
+    </course>
+    <course name="Modern Southeast Asia" number="111B" units="4">
+        Major themes in modern Southeast Asian history with an emphasis on cross-country comparisons involving the region's largest and most populous countries: Thailand, Burma, Vietnam, Indonesia, and the Philippines.
+    </course>
+    <course name="Modern Southeast Asia" number="C111B" units="4">
+        Major themes in modern Southeast Asian history with an emphasis on cross-country comparisons involving the region's largest and most populous countries: Thailand, Burma, Vietnam, Indonesia, and the Philippines. Also listed as Southeast Asian C141B.
+    </course>
+    <course name="Political and Cultural History of Vietnam" number="111C" units="4">
+        This course provides an introduction to the main issues in Vietnamese history from the mythic and archaeological origins of the modern nation-state to the end of the Second Indochina War in 1975. Special emphasis will be placed on &quot;modern&quot; developments from the late 18th century. In addition to history texts, readings will be taken from novels, short stories, poetry, and memoirs.
+    </course>
+    <course name="Political and Cultural History of Vietnam" number="C111C" units="4">
+        This course provides an introduction to the main issues in Vietnamese history from the mythic and archaeological origins of the modern nation-state to the end of the Second Indochina War in 1975. Special emphasis will be placed on &quot;modern&quot; developments from the late 18th century. In addition to history texts, readings will be taken from novels, short stories, poetry, and memoirs. Also listed as Southeast Asian C141C.
+    </course>
+    <course name="Modern South Africa, 1652-Present" number="112B" units="4">
+        This course will examine three centuries of South African history that account for the origin and development of the recently dismantled apartheid regime. Our aim is to understand the major historical forces that progressively shaped what became a turbulent socio-cultural, economic, political, and racial frontier.
+    </course>
+    <course name="Modern Korean History" number="113B" units="4">
+        This course will survey major social, economic, and political developments on the Korean peninsula from the middle of the 19th century.
+    </course>
+    <course name="Medieval and Early Modern India to the Coming of the British" number="114A" units="4">
+        
+    </course>
+    <course name="Modern South Asia" number="114B" units="4">
+        
+    </course>
+    <course name="Early China" number="116A" units="4">
+        
+    </course>
+    <course name="Two Golden Ages: China During the Tang and Song Dynasties" number="116B" units="4">
+        This course explores Chinese history and culture in the period from the 7th to the 13th centuries, when China achieved unprecedented military, political, and cultural power in East Asia. It concentrates on the fundamental transformation of state and society that took place between the 8th and 12th centuries, and on the nature of the new &quot;early modern&quot; order that had come into existence by the end of the Southern Song. Topics of special concern are economic and political power, technology, religion and philosophy, and poetry and painting.
+    </course>
+    <course name="Modern China" number="116C" units="4">
+        
+    </course>
+    <course name="Twentieth-Century China" number="116D" units="4">
+        Chinese history from the decline of the Qing empire to the reforms under the Chinese Communist Party in the late 20th century.
+    </course>
+    <course name="Chinese Popular Culture" number="117A" units="4">
+        It is impossible to understand Chinese history and culture without knowing what ordinary people thought, felt, and believed. In this course, our primary concerns will be 1) the built environment -- village form, houses, temples; 2) village festivals and domestic rituals; 3) the rituals and scriptures of local cults; 4) operas, storytelling, and other forms of village entertainment; and 5) popular visual arts. These subjects will be studied through both written and visual documentation.
+    </course>
+    <course name="Reading the Visual in Chinese History" number="117C" units="4">
+        This course brings a thematic approach to the critical analysis of the visual in Chinese history. In focusing on key elements of material culture and emphasizing how they have been viewed at specific moments in Chinese history, the course teaches students of history how to achieve a more balanced picture of the past drawn from both visual and literary records. Inevitably, the course tries to determine for a particular temporal and geographical setting what's ordinary or conventional and what's not; also to rethink the metaphors that currently dominate thinking about history in China. No prior acquaintance with Chinese history is required for the course.
+    </course>
+    <course name="The Chinese Body: Gender and Sex, Health, and Medicine" number="117D" units="4">
+        This course brings a thematic approach to the critical analysis of the &quot;Chinese body,&quot; as constructed before the 20th century, from four main perspectives, those of (1) gender, (2) sexual activity, (3) health, and (4) medicine. A variety of sources, material and literary, attest to changing perceptions over time, through the continuing use of standard vocabulary for Yin/Yang and the Five Phases frequently masked innovations.
+    </course>
+    <course name="Archaeological Period to 1800" number="118A" units="4">
+        Emphasis on political, cultural, and intellectual history of the Early Imperial State, Japan's first military governments, early modern, and Meiji Japan.
+    </course>
+    <course name="1800-1900" number="118B" units="4">
+        Emphasis on the social and intellectual history of Japan's pre-war reconstruction.
+    </course>
+    <course name="Empire and Alienation: The 20th Century in Japan" number="118C" units="4">
+        Japan's experience of the 20th century, beginning with the development of capitalism and the acquisition of an empire, and tracing the achievements and tragedy that came with Japan's emergence as a world power. Emphasis on social and intellectual history and on how Japan has understood itself and the world in this century.
+    </course>
+    <course name="Postwar Japan" number="119A" units="4">
+        This course considers the history of Japan since the end of World War II, beginning with an exploration of the war itself and its complex legacy to the postwar era. Using the best recent scholarship and a selection of translated novels, essays, and poetry along with film and art, we look at the six postwar decades and the transformations of Japanese life that those years have brought. We try, finally, to answer the question: has &quot;postwar&quot; itself come to an end?
+    </course>
+    <course name="American Environmental and Cultural History" number="120AC" units="4">
+        History of the American environment and the ways in which different cultural groups have perceived, used, managed, and conserved it from colonial times to the present. Cultures include American Indians and European and African Americans. Natural resources development includes gathering-hunting-fishing; farming, mining, ranching, forestry, and urbanization. Changes in attitudes and behaviors toward nature and past and present conservation and environmental movements are also examined. Also listed as Environ Sci, Policy, and Management 160AC.
+    </course>
+    <course name="American History, the Colonial Period: The Peoples and Cultures of Early America" number="121A" units="4">
+        America has always been a multicultural society and perhaps at no time was this more true than in the 17th and 18th centuries. In this course, we analyse the experiences of Native, African-, and European-Americans from about the 16th century through 1763 within the framework of early modern colonization, focusing upon their conflicting and changing gender, religious, social, cultural, economic, and political systems.
+    </course>
+    <course name="The American Revolution" number="121B" units="4">
+        
+    </course>
+    <course name="Antebellum America: The Advent of Mass Society" number="122AC" units="4">
+        This course examines half a century of life in the United States (roughly from the War of 1812 until the secession of the Southern states), focusing on race relations, westward expansion, class formation, immigration, religion, sexuality, popular culture, and everyday life. Assigned readings will consist largely of first-person narratives in which women and men of a range of ethnic and cultural backgrounds construct distinctive visions of life in the new nation.
+    </course>
+    <course name="Civil War and Reconstruction" number="123" units="4">
+        
+    </course>
+    <course name="The United States from the Late 19th Century to the Eve of World War II" number="124A" units="4">
+        During the first half-century before World War II, the United States became an industrialized, urban society with national markets and communication media. This class will explore in depth some of the most important changes and how they were connected. We will also examine what did not change, and how state and local priorities persisted in many arenas. Among the topics addressed: population movements and efforts to control immigration; the growth of corporations and trade unions; the campaign for women's suffrage; Prohibition; an end to child labor; the institution of the Jim Crow system; and the reshaping of higher education.
+    </course>
+    <course name="The United States, 1941 to 1980" number="124B" units="4">
+        American culture and political economy amidst affluence and turmoil in war and cold war.
+    </course>
+    <course name="Creating African America: 1550-1865" number="125A" units="4">
+        
+    </course>
+    <course name="African American Freedom Struggles: 1865 to the Present" number="125B" units="4">
+        
+    </course>
+    <course name="The West in United States History" number="126B" units="4">
+        A cultural and social history of westward migration from the 16th to the 20th Centuries.
+    </course>
+    <course name="California" number="127AC" units="4">
+        The history of California from pre-European contact to the present, with emphasis on the diversity of cultures and the interplay of social, economic, and political developments.
+    </course>
+    <course name="Liberal Superpower: Reform and Political Economy in Postwar U.S. History" number="128" units="4">
+        This course will examine the fate of previously important political ideals and distinctive institutional configurations under the restructuring regime of the Cold War, in a sense, asking ourselves whether it is a paradox in need of unraveling or an artfully constructed falsehood to describe the postwar United States as a &quot;liberal superpower.&quot;
+    </course>
+    <course name="Children Through History: Social Practices and Social Welfare" number="C129" units="4">
+        This course brings together the methods of historical analysis and the problems faced by social welfare professionals to create a new and provocative examination of children and childhood in America. Topics covered will include childbirth and infancy, children's rights, learning, and the state of the superparent. A significant research paper is required. Also listed as Undergrad Interdisciplinary Studies C132 and Social Welfare C129.
+    </course>
+    <course name="The Rising American Empire: From Principle to Spanish-American War" number="130A" units="4">
+        
+    </course>
+    <course name="American Diplomacy: War and Peace in the 20th Century" number="130B" units="4">
+        
+    </course>
+    <course name="1607-1865" number="131A" units="4">
+        
+    </course>
+    <course name="Social History of the United States: From Settlement to Civil War" number="131A" units="4">
+        
+    </course>
+    <course name="Creating Modern American Society: From the End of the Civil War to the Global Age" number="131B" units="4">
+        
+    </course>
+    <course name="Intellectual History of the United States" number="C132B" units="4">
+        American Studies C132B.
+    </course>
+    <course name="The Age of the City: The 19th Century" number="134A" units="4">
+        A cultural and social history of urban life in America with emphasis on the 19th century.
+    </course>
+    <course name="The Age of the City: The 20th Century to the Present" number="134B" units="4">
+        A cultural and social history of urban life in America since the beginning of the 20th century.
+    </course>
+    <course name="American Indian History: Precontact to the Present" number="135" units="4">
+        This course will provide an introductory interpretation of the varied historical experiences of diverse nations native to North America from their origins through the present. We will assess both the impact of colonialism and its consequences upon Indian peoples as well as their responses, treating Native Americans as historical, political, economic, and cultural actors who resourcefully adjusted, resisted, and accommodated to the changing realities of life in native North America.
+    </course>
+    <course name="Women's Lives: The 20th Century" number="136" units="4">
+        This course follows American women through a century of extraordinary change, using autobiographical writings as our guide. Lectures will describe a fundamental transformation in the structures of gender, including work, politics, sexuality, and family. Class readings, including memoirs and autobiographical novels representing a variety of classes, races, ethnicities, and generations, demonstrate how these changes were enacted by women themselves.
+    </course>
+    <course name="The Repeopling of America" number="137AC" units="4">
+        This course examines the coming together of people from five continents to the United States and provides an historical overview of the shifting patterns of immigration. The course begins in the colonial era when servants and slaves typified the migrant to America. It then follows the migration of the pre-industrial immigrants, through migration streams during the industrial and &quot;post-industrial&quot; eras of the nation.
+    </course>
+    <course name="History of Science in the U.S" number="138" units="4">
+        History of science in the U.S. from the colonial period to the present, with a focus on the contentious debates over the place of science within cultural, religious, and social-intellectual life. Development of institutions for the pursuit of scientific knowledge, with special attention to the relationships between science and technology and between science and the state.
+    </course>
+    <course name="American Labor History" number="139A" units="4">
+        This course explores the history of labor and working people in the United States from the 1830s to the 1980s, examining workers' experiences and expectations within the context of major events and trends in American history (wars, depressions, migrations, reform movements, state action, and political economy) and against the backdrop of changing habits of everyday life (mass consumption, commercial leisure, religious practices, and popular culture). Special emphasis will be placed on the varying experiences and perspectives of African Americans, European Americans, and Asian Americans during this period.
+    </course>
+    <course name="The American Immigrant Experience" number="C139B" units="4">
+        The history of the United States is the history of migration. The course covers the evolution of the American population from about 20,000 BC with the goal of understanding the interdependent roles of history and demography. As an American cultures class, special attention is given to the experiences of 18th- and 19th-century African and European immigrants and 20th- and 21st-century Asian and Latin American immigrants. Two substantial laboratory assignments; facility with a spreadsheet program is assumed. Also listed as Demography 145AC.
+    </course>
+    <course name="Recent US Social Movements: Difference, Identity, and Power in American Culture" number="139C" units="4">
+        This course will compare the post-World War II social movements of African Americans, Native Americans, Chicanos, and Asian Americans. We will explore the cultural-historical context, function, and meaning of these social movements for peoples of color specifically and race relations generally.
+    </course>
+    <course name="Civil Rights and Social Movements in U.S. History" number="C139C" units="4">
+        Beginning with the onset of World War II, America experienced not a sigular,unitary Civil Rights Movement -- as is typically portrayed in standard textbood accounts and the collective memory -- but rather a variety of contemporaneous civil rights and their related social movements. This course explores the history, presenting a top-down (political and legal history), bottom-up (social and cultural history), and comparative (by race and ethnicity as well as region) view of America's struggles for racial equality from roughly World War II until the present. Also listed as American Studies 139AC.
+    </course>
+    <course name="Liberal Superpower: Reform and Political Economy in Postwar U.S. History" number="139D" units="4">
+        This course will examine the fate of previously important political ideals and distinctive institutional configurations under the restructuring regime of the Cold War, in a sense, asking ourselves whether it is a paradox in need of unraveling or an artfully constructed falsehood to describe the postwar United States as a &quot;liberal superpower.&quot;
+    </course>
+    <course name="Modern Mexico" number="140B" units="4">
+        This course offers a broad view of Mexican history from the late colonial period to the present.
+    </course>
+    <course name="Social History of Modern Latin America" number="141B" units="4">
+        Affirmation of the central state. Social conflicts in the 20th century: industrialization and agrarian conflict.
+    </course>
+    <course name="Brazil" number="143" units="4">
+        From 16th Century conquest and settlement to the emergence of an industrial economy during the post-1964 period of military rule. Emphasis on dependence of colony on empire, on plantation agriculture, slavery, export economy, and the transition from agrarian to industrial society.
+    </course>
+    <course name="Latin American Women" number="146" units="4">
+        This class surveys the experiences and impact of women in Latin America from the pre-conquest period to the present, as well as the ways that gender ideologies (like patriarchy, honor-shame, machismo) have influenced Latin American history.
+    </course>
+    <course name="Italy in the Age of Dante (1000-1350)" number="149B" units="4">
+        This course is a survey of the history of northern Italy during the central Middle Ages (ca. 1000-1350). It traces the emergence, flowering, and decline of the &quot;communes,&quot; the independent city republics that made Italian political life distinctive during the Middle Ages. The course explores the culture of these dynamic urban communities, especially emphasizing the rich visual and material culture, as well as the particular relationship between religion and society in Italy before the Renaissance.
+    </course>
+    <course name="The Anglo-Saxon Period" number="150A" units="4">
+        From the Romans through the Norman conquest (to Domesday Book and Eadmer).
+    </course>
+    <course name="From the Conquest to 1290" number="150B" units="4">
+        Government, observation of government, community, religion, and social change.
+    </course>
+    <course name="Later Medieval England, Fourteenth and Fifteenth Centuries" number="150C" units="4">
+        Emphasis upon social history.
+    </course>
+    <course name="Tudor Stuart Britain, 1485-1660" number="151A" units="4">
+        The history of Britain, albeit with primary emphasis on England, from the advent of the Tudors through the revolutions of the mid-17th century. Principal concentration on political, religious, and social developments. No prerequisites other than some sense of general European history in the age of the Reformation.
+    </course>
+    <course name="Britain, 1660-1851" number="151B" units="4">
+        This is a course about the history of Britain that asks why this small island nation was so central to how Europeans and others understood world history more generally. It looks at Britain as the paradigmatic venue of industrialization, class conflict or its absence, consumer culture, parliamentary democracy, religious tolerance, imperial expansion, and modernity generally. It begins with the aftermath of Europe's first revolution and ends with the first world's fair, 1851's Great Exhibition.
+    </course>
+    <course name="Britain, 1848-1997" number="151C" units="4">
+        This lecture course provides a survey of the social, political, and cultural histories of Britain over the last 150 years. The focus is on the changing nature of citizenship in Britain and its intricate relationship to the maintenance and dissolution of imperial rule abroad. Lectures are organized thematically within three chronological periods and range from addressing the famine in Ireland, critiques of American mass culture to the politics of punk rock.
+    </course>
+    <course name="Ireland Since the Union" number="152A" units="4">
+        Ireland from the Union of 1801 to the 1970s.
+    </course>
+    <course name="British Empire and Commonwealth" number="153" units="4">
+        
+    </course>
+    <course name="Canada" number="154" units="4">
+        A survey of Canadian history from exploration and first settlement through colonial times to confederation and nationhood to the present.
+    </course>
+    <course name="From the Late Empire to the Investiture Conflict" number="155A" units="4">
+        Formulation of a West European civilization; stress on tribal settlements, the Carolingian Empire, and Christian foundations.
+    </course>
+    <course name="From the Investiture Conflict to the Fifteenth Century" number="155B" units="4">
+        Crusades; empire, papacy and the Western monarchies; social change, the rise of towns and heresy; culture and learning. Medieval civilization at its height.
+    </course>
+    <course name="History of Christian Thought, 200-600 A.D." number="156A" units="4">
+        Emphasis on the &quot;symbolist&quot; (rather than the &quot;sequential&quot;) mentality which pervaded the patristic and early medieval periods. Deals in its entirety with the period of the Church Fathers from Tertullian and Origen to Gregory the Great; particular stress on the thought of St. Augustine.
+    </course>
+    <course name="Medieval Intellectual History, c. 1050-1270" number="156B" units="4">
+        Emphasis on the interplay between the symbolist non-linear thinking found mostly in monastic circles and the growth of new forms of &quot;scientific,&quot; linear or sequential thinking (scholasticism) found in the new cathedral schools and universities.
+    </course>
+    <course name="The Renaissance and the Reformation" number="C157" units="4">
+        European history from the fourteenth to the middle of the seventeenth century. Political, social, and economic developments during this transitional period will be examined, together with the rise of Renaissance culture, and the religious upheavals of the sixteenth century. Also listed as Religious Studies C124.
+    </course>
+    <course name="Early Modern and Revolutionary Europe" number="158A" units="4">
+        
+    </course>
+    <course name="Old and New Europe, 1914-Present" number="158C" units="4">
+        
+    </course>
+    <course name="European Economic History" number="159A" units="4">
+        Survey of the economic and social developments of Europe up to the eve of industrialization. Including the transformation of peasant-based, agrarian economies, capitalist organization, colonial expansion, and international trade. This course is equivalent to Economics 111A; students will not receive credit for both courses.
+    </course>
+    <course name="European Economic History" number="159B" units="4">
+        The Industrial Revolution and the rise of the European economy to world dominance in the 19th century, emphasizing the diffusion of the industrial system and its consequences, the world trading system, the rise of modern imperialism. This course is equivalent to Economics 111B; students will not receive credit for both courses.
+    </course>
+    <course name="The International Economy of the Twentieth Century" number="160" units="4">
+        Development and crises of the advanced economies, with particular emphasis on trade relations with third world countries. Economic impact of war, business cycles, and social movements. This course is equivalent to Economics 115; students will not receive credit for both courses.
+    </course>
+    <course name="Emergence of Modern Industrial Societies" number="161" units="4">
+        Survey of the development of the modern political economies of the United States, Europe, and Japan; evolution and interaction of the major institutions of advanced capitalist societies; differences and similarities of their business communities, labor organization, and patterns of government relationships with the private sector.
+    </course>
+    <course name="Wars, Empires, Nations: European International History, 1648-1914" number="162A" units="4">
+        European international relations in the 19th and 20th centuries, with emphasis on the political and economic forces shaping foreign policy and the international system.
+    </course>
+    <course name="War and Peace: International History, 1914 to Present" number="162B" units="4">
+        European international relations in the 19th and 20th centuries, with emphasis on the political and economic forces shaping foreign policy and the international system.
+    </course>
+    <course name="The Dialectic of Enlightenment and Counter-Enlightenment: European Thought from 1750 to 1870" number="163A" units="4">
+        
+    </course>
+    <course name="The European Mind from Positivism to Post-Structuralism" number="163B" units="4">
+        
+    </course>
+    <course name="The Reformations of Christendom" number="165A" units="4">
+        This course examines not a period but a process: the reform and disruption of the civilization called &quot;Christendom&quot; during the 16th and 17th centuries and its transformation into the familiar Europe of the nation states.
+    </course>
+    <course name="The Revolution in European Culture since the Late 18th Century" number="165B" units="4">
+        
+    </course>
+    <course name="Old Regime and Revolution" number="166B" units="4">
+        
+    </course>
+    <course name="Modern France" number="166C" units="4">
+        
+    </course>
+    <course name="Early Modern Germany" number="167A" units="4">
+        
+    </course>
+    <course name="The Rise and Fall of the Second Reich" number="167B" units="4">
+        
+    </course>
+    <course name="Germany in the 20th Century" number="167C" units="4">
+        
+    </course>
+    <course name="The Spanish and Portuguese Empires in the Golden Age: 1450-1700" number="168A" units="4">
+        This course will focus on the rise and development of early modern Europe's most powerful empires. Rising from the unlikely setting of a weak and fragmented Iberian peninsula in the 15th century, the Spanish and Portuguese Empires went on to become the world's first truly global powers. As such, they had a tremendous impact on the political, economic, cultural, and religious life of not only Iberia, but on significant parts of Europe and the New World.
+    </course>
+    <course name="Renaissance and Baroque Italy 1350-1800" number="169A" units="4">
+        This course will focus on the history of Italy during a period when it was the leading center of European artistic and cultural production and the driving force in the revival of classical learning and literary ideals. This was the Italy of Raphael and Michelangelo, Ariosto and Alberti, Brunelleschi and Botticelli. At the same time, Italy was also a political battleground through most of this period, both in the realm of ideas and theory but also in a literal sense. It was in Italy that &quot;the art of war,&quot; as Machiavelli called it, took center stage as the peninsula became one of the major theaters of war between the great powers of the age, France and Spain. The course will combine a study of the artistic, intellectual, religious, and political history of Italy in this period both as it developed internally and as it was related to the rest of Europe and the Mediterranean world. Requirements will include a midterm, a final, and an optional final paper.
+    </course>
+    <course name="Poles and Others: The Making of Modern Poland" number="170C" units="4">
+        This course uses the devices of historical and literary interpretation to expose and analyze some of the lines of political and cultural development that have led to the Poland we now know. Beginning with the awakening of modern Polish nationalism, it traces the emergence of this Poland through the rise of mass society; the horrifying and exhilarating spectacles of World War I and national and social revolutions; first experiments with modern Polish statehood (especially policies toward ethnic minorities and socially marginalized groups); then the transformations wrought by a half century of totalitarian rule; ethnic cleansing, elite transfer, forced social stratification, and, despite all of this, the defiant return of civil society. Students must attend lectures, complete required readings, take two examinations, and write a semester paper.
+    </course>
+    <course name="Russia to 1700" number="171A" units="4">
+        
+    </course>
+    <course name="Russia 1700-1917" number="171B" units="4">
+        
+    </course>
+    <course name="The Soviet Union, 1917 to the Present" number="171C" units="4">
+        
+    </course>
+    <course name="Topics in Russian History" number="172" units="4">
+        
+    </course>
+    <course name="History of Eastern Europe: From 1900 to the Present" number="173C" units="4">
+        This course will examine the history of 20th-century Eastern Europe, understood as the band of countries and peoples stretching from the Baltics to the Balkans. Poland, Czechoslovakia, and Hungary, however, will receive special attention. Topics of study will include foundation of the national states, Eastern European fascism, Nazi occupation, contructing Stalinist socialism, the fate of reform communism, reconstitution of &quot;civil society,&quot; and the emergence of a new Eastern Europe. Given the paucity of historical writings on the region, the course will make extensive use of cinematic and literary portrayals of Eastern Europe.
+    </course>
+    <course name="A History of Poland-Lithuania" number="175A" units="4">
+        The course will focus on the development of identities within the constantly shifting borders of Polish-Lithuanian and Polish states. Among the topics: competing definitions--ethnic, confessional, linguistic, political--of Polishness; continuities and discontinuities in Polish history and historiography; Poland between East and West; the development of Polish self-perceptions; Jewish, Lithuanian, and Ukrainian identities in the Polish context; the Polish chapter in the events leading to the end of Communist hegemony in Eastern Europe.
+    </course>
+    <course name="Jewish Civilization: Middle Ages" number="C175A" units="4">
+        This is the third course in a four-course sequence in the history of Jewish culture and civilization. It covers the middle ages and the early modern period, including kabbalah, medieval poetry, halakhic, ethical literature, Jewish philosophy, and the Italian Jewish renaissance. Also listed as Undergrad Interdisciplinary Studies C154 and Religious Studies C134.
+    </course>
+    <course name="Jewish Civilization: Modern Period" number="C175B" units="4">
+        This is the fourth course in a four-course sequence in the history of Jewish culture and civilization. It explores the major themes in Jewish history from 1750 to the present, with special attention paid to the transformation of Jewish communal and individual identity in the modern world. Topics to be treated include the breakdown of traditional society, enlightenment and emancipation, assimilation, Hasidism, racial anti-Semitism, colonialism, Zionism, and contemporary Jewish life in Europe, North America, and Israel. The multicultural nature of Jewish history will be highlighted throughout the course through the treatment of non-European Jewish narratives alongside the more familiar Ashkenazi perspective. Also listed as Undergrad Interdisciplinary Studies C155 and Religious Studies C135.
+    </course>
+    <course name="Multicultural Europe" number="C176" units="4">
+        In this course, we will trace some of the substantive changes and transformations taking place in contemporary Europe in the areas of culture, society, and politics. In particular, we will look at the effects of massive migration flows--due to globalization processes--on the national culture of the core countries and examine the ways in which particular national cultures react to the increasing multiculturization of Europe. The goal of the course is, first of all, to familiarize students with a variety of cultural, social, and political innovations that accompany the formation of multicultural Europe. This involves (1) an examination of the traditional concepts of nationhood and citizenship, and (2) a study of the Europeanization of culture. Also listed as Geography C152, Interdisciplinary Studies Field Maj C145, and International and Area Studies C145.
+    </course>
+    <course name="Armenia from Ethnogenesis to the Dark Ages" number="177A" units="4">
+        This course will cover close to three millenia of Armenian history, from the process of ethnogenesis to the almost complete destruction of the Armenian &quot;feudal&quot; system by the end of the 15th century. This course is based on the broad framework of Armenian political history and institutions, but also emphasizes economic development, social change, and cultural transformations.
+    </course>
+    <course name="From Pre-modern Empires to the Present" number="177B" units="4">
+        This survey course will cover the period from the incorporation of most of the Armenian plateau into the Ottoman Empire to the present day.
+    </course>
+    <course name="History of the Holocaust" number="178" units="4">
+        This course will survey the historical events and intellectual developments leading up to and surrounding the destruction of European Jewry during World War II. We will examine the Shoah (the Hebrew word for the Holocaust) against the backdrop of modern Jewish and modern German history. The course is divided into two main parts: (1) the historical background up to 1939; and (2) the destruction of European Jewry, 1939-1945.
+    </course>
+    <course name="Topics in the History of Biology" number="180" units="4">
+        
+    </course>
+    <course name="Astronomy and Astrology in Medieval and Early Modern Europe" number="181A" units="4">
+        
+    </course>
+    <course name="Modern Physics: From The Atom to Big Science" number="181B" units="4">
+        Establishment of the ideas and institutions of modern physics. Undoing the classical world picture: radioactivity, Einstein, quantum mechanics, philosophical disputes. The evolving structure of the discipline, links with industry and government, World War II and the atomic bomb. Postwar conceptual consolidation and the emergence of big science.
+    </course>
+    <course name="History of Christianity to the Crusades" number="185A" units="4">
+        
+    </course>
+    <course name="Christanity in the Modern World" number="185B" units="4">
+        
+    </course>
+    <course name="Society and the Sexes in Europe and the US, 1750 to the Present" number="190" units="4">
+        Sex roles, sexuality and gender systems in social, political, economic and cultural life. This is a comparative course: specific societies (at least two) and periods to be covered will vary by semester. It will focus on specific historical events, issues, and periods in which gender was an especially significant factor.
+    </course>
+    <course name="Death, Dying, and Modern Medicine: Historical and Contemporary Perspectives" number="C191" units="4">
+        This course will study the end of life--dying and death--from the perspective of medicine and history. It seeks to confront the humanist with the quotidian dilemmas of modern clinical practice and medicine's deep engagement with death more generally. It invites pre-med, pre-law, and public policy students to understand these matters in light of the historical and, more broadly, literary and artistic perspectives of the humanities. Also listed as Undergrad Interdisciplinary Studies C133 and Health and Medical Sciences C133.
+    </course>
+    <course name="History of Information" number="C192" units="3">
+        This course explores the history of information and associated technologies, uncovering why we think of ours as &quot;the information age.&quot; We will select moments in the evolution of production, recording, and storage from the earliest writing systems to the world of Short Message Service (SMS) and blogs. In every instance, we'll be concerned with both what and when and how and why, and we will keep returning to the question of technological determinism: how do technological developments affect society and vice versa? Also listed as Mass Communications C103, Information C103, and Cognitive Science C103.
+    </course>
+    <course name="Senior Honors" number="H195" units="4">
+        Limited to senior honors candidates. Directed study centering upon the preparation of an honors thesis. Supervisors will be assigned to each student after consultation with the honors committee.
+    </course>
+    <course name="Special Field Research" number="C196W" units="10.5">
+        Students work in selected internship programs approved in advance by the faculty coordinator and for which written contracts have been established between the sponsoring organization and the student. Students will be expected to produce two progress reports for their faculty coordinator during the course of the internship, as well as a final paper for the course consisting of at least 35 pages. Other restrictions apply; see faculty adviser. Also listed as Gender and Women's Studies C196W, History of Art C196W, Undergrad Interdisciplinary Studies C196W, Mass Communications C196W, Political Economy of Industrial Soc C196W, Political Science C196W, and Sociology C196W.
+    </course>
+    <course name="Supervised Independent Study and Research" number="199" units="1-4">
+        
+    </course>
+    <course name="Special Topics:  Short Course" number="200X" units="2">
+        A four-week long course permitting the instructor to cover in-depth a topic of particular interest. Topics and instructors vary; consult department catalog for details.
+    </course>
+    <course name="Ancient" number="275A" units="4">
+        
+    </course>
+    <course name="Europe" number="275B" units="4">
+        
+    </course>
+    <course name="England" number="275C" units="4">
+        
+    </course>
+    <course name="United States" number="275D" units="4">
+        
+    </course>
+    <course name="Latin America" number="275E" units="4">
+        
+    </course>
+    <course name="Asia" number="275F" units="4">
+        
+    </course>
+    <course name="History of Science" number="275S" units="4">
+        
+    </course>
+    <course name="Ancient" number="280A" units="4">
+        
+    </course>
+    <course name="Europe" number="280B" units="4">
+        
+    </course>
+    <course name="England" number="280C" units="4">
+        
+    </course>
+    <course name="United States" number="280D" units="4">
+        
+    </course>
+    <course name="Latin America" number="280E" units="4">
+        
+    </course>
+    <course name="Asia (For M.A. Candidates)" number="280F" units="4">
+        
+    </course>
+    <course name="Asia (For Ph.D. Candidates)" number="280G" units="4">
+        
+    </course>
+    <course name="Africa" number="280H" units="4">
+        
+    </course>
+    <course name="Canada" number="280N" units="4">
+        
+    </course>
+    <course name="History of Science" number="280S" units="4">
+        
+    </course>
+    <course name="Studies in Comparative History" number="280U" units="4">
+        
+    </course>
+    <course name="Paleography and Other Auxiliary Sciences" number="281" units="4">
+        Introduction to the scholarly handling of texts, whether ancient or modern, inscriptions or manuscripts, and instruction in the methodologies, tools, sources, and the editing and use of texts relevant to a particular field of history; instruction in any auxiliary science requisite for historical research.
+    </course>
+    <course name="Historical Method and Theory" number="283" units="4">
+        Designed especially for candidates for higher degrees in History. Stress is laid on practical exercises. For precise schedule of offerings see department catalog during pre-enrollment week each semester.
+    </course>
+    <course name="Ancient" number="285A" units="4">
+        
+    </course>
+    <course name="Europe" number="285B" units="4">
+        
+    </course>
+    <course name="England" number="285C" units="4">
+        
+    </course>
+    <course name="United States" number="285D" units="4">
+        
+    </course>
+    <course name="Latin America" number="285E" units="4">
+        
+    </course>
+    <course name="Asia" number="285F" units="4">
+        
+    </course>
+    <course name="Africa" number="285H" units="4">
+        
+    </course>
+    <course name="Legal History" number="285L" units="4">
+        
+    </course>
+    <course name="History of Science" number="285S" units="4">
+        
+    </course>
+    <course name="Studies in Comparative History" number="285U" units="4">
+        
+    </course>
+    <course name="Historical Colloquium" number="290" units="1">
+        Colloquium on topics of current research. For precise schedule of offerings, see department catalog during pre-enrollment week each semester.
+    </course>
+    <course name="Supervised Research Colloquium" number="295" units="2-5">
+        Preparation, presentation and criticism of research papers.
+    </course>
+    <course name="Directed Dissertation Research" number="296" units="3-12">
+        
+    </course>
+    <course name="Independent Study for Graduate Students in History" number="298" units="2-12">
+        
+    </course>
+    <course name="Directed Reading" number="299" units="2-12">
+        Individual conferences to be arranged. Intended to provide directed reading in subject matter not covered in scheduled seminar offerings.
+    </course>
+    <course name="Teaching History at the University" number="300" units="2">
+        This class will introduce graduate students to a variety of techniques and theories used in teaching history at the university level. It will examine readings dealing with a range of classroom situations, opportunities, and challenges, with the goal of enabling future college teachers of history to understand the learning process of their students and to develop and improve their own teaching skills. The course will have two primary goals: (1) to train graduate students to work more effectively as graduate student instructors in history classes at Berkeley; and (2) to introduce students to techniques of designing and running their own classes that they will use when they become independent instructors and, ultimately, professors of history in their own right.
+    </course>
+    <course name="Individual Study for Master's Students" number="601" units="1-8">
+        Individual study, in consultation with the graduate adviser, to prepare for student's language examinations and the master's examination.
+    </course>
+    <course name="Individual Study for Doctoral Students" number="602" units="1-8">
+        Individual study, in consultation with the graduate adviser, to prepare students for language examinations and the doctoral examination.
+    </course>
+</department>

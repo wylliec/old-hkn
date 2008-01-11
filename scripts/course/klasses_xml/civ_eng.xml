@@ -1,0 +1,151 @@
+<?xml version="1.0" ?>
+<semester season="spring" year="2008">
+    <department abbr="civ eng">
+        <klass ccn="13903" exam_group="7" instructor="HORVATH, A" name="Engineered Systems and Sustainability" number="11" number_type="P" restrictions="" room="502 DAVIS" section="001 LEC" time="MWF 10-11A" units="3"/>
+        <klass ccn="13906" exam_group="" instructor="THE STAFF" name="Engineered Systems and Sustainability" number="11" number_type="S" restrictions="" room="141 MCCONE" section="101 DIS" time="W 5-6P" units=""/>
+        <klass ccn="13908" exam_group="TBA" instructor="DRACUP, J A" name="Freshman Seminars" number="24" number_type="P" restrictions="FR                                                                                                                                                ; CURRENTLY FULL" room="406 DAVIS" section="001 SEM" time="W 6-7P" units="1: PF">
+            <note>
+                &quot;Three Field Trips in Environmental Engineering&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="13909" exam_group="4" instructor="LUBLINER, J" name="Introduction to Solid Mechanics" number="C30" number_type="P" restrictions="" room="101 BARKER" section="001 LEC" time="MWF 9-10A" units="3">
+            <note>
+                Cross-listed with Mechanical Engineering C85 section 1.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="13912" exam_group="" instructor="THE STAFF" name="Introduction to Solid Mechanics" number="C30" number_type="S" restrictions="" room="141 MCCONE" section="101 DIS" time="M 5-6P" units=""/>
+        <klass ccn="13915" exam_group="13" instructor="OSTERTAG, C P" name="Structure and Properties of Civil Engineering Mater..." number="60" number_type="P" restrictions="CURRENTLY FULL" room="502 DAVIS" section="001 LEC" time="TuTh 11-12P" units="3"/>
+        <klass ccn="13918" exam_group="" instructor="THE STAFF" name="Structure and Properties of Civil Engineering Mater..." number="60" number_type="S" restrictions="CURRENTLY FULL" room="243 DAVIS" section="101 LAB" time="M 2-5P" units=""/>
+        <klass ccn="13921" exam_group="" instructor="THE STAFF" name="Structure and Properties of Civil Engineering Mater..." number="60" number_type="S" restrictions="CURRENTLY FULL" room="243 DAVIS" section="102 LAB" time="Tu 2-5P" units=""/>
+        <klass ccn="13924" exam_group="" instructor="THE STAFF" name="Structure and Properties of Civil Engineering Mater..." number="60" number_type="S" restrictions="CURRENTLY FULL" room="243 DAVIS" section="103 LAB" time="Th 2-5P" units=""/>
+        <klass ccn="13927" exam_group="15" instructor="SITAR, N" name="Engineering Geology" number="70" number_type="P" restrictions="" room="502 DAVIS" section="001 LEC" time="TuTh 1230-2P" units="3"/>
+        <klass ccn="13929" exam_group="" instructor="THE STAFF" name="Engineering Geology" number="70" number_type="S" restrictions="" room="544 DAVIS" section="101 DIS" time="M 11-1P" units=""/>
+        <klass ccn="14500" exam_group="" instructor="" name="Engineering Geology" number="70" number_type="S" restrictions="" room="544 DAVIS" section="102 DIS" time="F 11-1P" units=""/>
+        <klass ccn="14503" exam_group="" instructor="THE STAFF" name="Engineering Geology" number="70" number_type="S" restrictions="" room="544 DAVIS" section="103 DIS" time="W 5-7P" units=""/>
+        <klass ccn="14506" exam_group="" instructor="THE STAFF" name="Engineering Geology" number="70" number_type="S" restrictions="" room="544 DAVIS" section="104 DIS" time="Tu 5-7P" units=""/>
+        <klass ccn="13942" exam_group="NONE" instructor="RECTOR, J W" name="Introduction to Civil and Environmental Engineering" number="92" number_type="P" restrictions="" room="534 DAVIS" section="001 LEC" time="W 12-1P" units="1: PF"/>
+        <klass ccn="13945" exam_group="10" instructor="DER KIUREGHIAN, A" name="Engineering Data Analysis" number="93" number_type="P" restrictions="" room="3108 ETCHEVERRY" section="001 LEC" time="TuTh 9-10A" units="3"/>
+        <klass ccn="13948" exam_group="" instructor="THE STAFF" name="Engineering Data Analysis" number="93" number_type="S" restrictions="" room="345 DAVIS" section="101 DIS" time="W 1-3P" units=""/>
+        <klass ccn="13951" exam_group="" instructor="THE STAFF" name="Engineering Data Analysis" number="93" number_type="S" restrictions="CURRENTLY FULL" room="345 DAVIS" section="102 DIS" time="W 3-5P" units=""/>
+        <klass ccn="13954" exam_group="" instructor="THE STAFF" name="Engineering Data Analysis" number="93" number_type="S" restrictions="" room="CANCELLED" section="103 DIS" time="" units=""/>
+        <klass ccn="13969" exam_group="18" instructor="THE STAFF" name="Elementary Fluid Mechanics" number="100" number_type="P" restrictions="" room="502 DAVIS" section="001 LEC" time="MW 5-630P" units="4"/>
+        <klass ccn="13972" exam_group="" instructor="THE STAFF" name="Elementary Fluid Mechanics" number="100" number_type="S" restrictions="" room="212 OBRIEN" section="101 LAB" time="W 1-2P" units=""/>
+        <klass ccn="13975" exam_group="" instructor="THE STAFF" name="Elementary Fluid Mechanics" number="100" number_type="S" restrictions="" room="105 LATIMER" section="102 LAB" time="W 3-4P" units=""/>
+        <klass ccn="13978" exam_group="" instructor="THE STAFF" name="Elementary Fluid Mechanics" number="100" number_type="S" restrictions="" room="CANCELLED" section="103 LAB" time="" units=""/>
+        <klass ccn="13981" exam_group="" instructor="THE STAFF" name="Elementary Fluid Mechanics" number="100" number_type="S" restrictions="" room="CANCELLED" section="104 LAB" time="" units=""/>
+        <klass ccn="13984" exam_group="19" instructor="DRACUP, J A" name="Design of Environmental and Water Resource Systems" number="104N" number_type="P" restrictions="" room="CANCELLED" section="001 LEC" time="" units="3"/>
+        <klass ccn="13987" exam_group="" instructor="DRACUP, J A" name="Design of Environmental and Water Resource Systems" number="104N" number_type="S" restrictions="" room="CANCELLED" section="101 LAB" time="" units=""/>
+        <klass ccn="13990" exam_group="4" instructor="NAZAROFF, W W" name="Climate Change Mitigation" number="107" number_type="P" restrictions="" room="110 BARROWS" section="001 LEC" time="MWF 9-10A" units="3"/>
+        <klass ccn="13993" exam_group="8" instructor="THE STAFF" name="Environmental Engineering" number="111" number_type="P" restrictions="" room="534 DAVIS" section="001 LEC" time="MWF 11-12P" units="3"/>
+        <klass ccn="13998" exam_group="NONE" instructor="HERMANOWICZ, S W" name="Environmental Engineering Design" number="112" number_type="P" restrictions="" room="310 HEARST MIN" section="001 LEC" time="TuTh 10-11A" units="3"/>
+        <klass ccn="14497" exam_group="" instructor="HERMANOWICZ, S W" name="Environmental Engineering Design" number="112" number_type="S" restrictions="" room="406 DAVIS" section="101 LAB" time="Tu 2-5P" units=""/>
+        <klass ccn="13999" exam_group="13" instructor="SPOSITO, G" name="Environmental Aqueous Geochemistry" number="C116" number_type="P" restrictions="" room="219 DWINELLE" section="001 LEC" time="TuTh 11-1230P" units="3">
+            <note>
+                Cross-listed with Environ Sci, Policy, and Management C128 section 1.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="14002" exam_group="1" instructor="MOEHLE, J P" name="Structural Engineering" number="120" number_type="P" restrictions="" room="502 DAVIS" section="001 LEC" time="MW 8-9A" units="3"/>
+        <klass ccn="14005" exam_group="" instructor="THE STAFF" name="Structural Engineering" number="120" number_type="S" restrictions="" room="502 DAVIS" section="101 LAB" time="W 2-5P" units=""/>
+        <klass ccn="14008" exam_group="7" instructor="FILIPPOU, F" name="Advanced Structural Analysis" number="121" number_type="P" restrictions="" room="60 EVANS" section="001 LEC" time="MWF 10-11A" units="3"/>
+        <klass ccn="14011" exam_group="3" instructor="STOJADINOVIC, B" name="Design of Steel Structures" number="122" number_type="P" restrictions="" room="502 DAVIS" section="001 LEC" time="MW 1-2P" units="3"/>
+        <klass ccn="14014" exam_group="" instructor="THE STAFF" name="Design of Steel Structures" number="122" number_type="S" restrictions="" room="502 DAVIS" section="101 LAB" time="Th 2-5P" units=""/>
+        <klass ccn="14017" exam_group="14" instructor="MAHIN, S A" name="Design of Reinforced Concrete Structures" number="123" number_type="P" restrictions="" room="212 OBRIEN" section="001 LEC" time="MW 11-12P" units="3"/>
+        <klass ccn="14020" exam_group="" instructor="THE STAFF" name="Design of Reinforced Concrete Structures" number="123" number_type="S" restrictions="" room="502 DAVIS" section="101 LAB" time="Tu 2-5P" units=""/>
+        <klass ccn="14023" exam_group="8" instructor="LI, S" name="Mechanics of Materials I" number="130" number_type="P" restrictions="CURRENTLY FULL" room="106 STANLEY" section="001 LEC" time="MWF 11-12P" units="3"/>
+        <klass ccn="14026" exam_group="5" instructor="MORGAN, T A" name="Mechanics of Materials I" number="130" number_type="P" restrictions="" room="60 EVANS" section="002 LEC" time="MWF 1-2P" units="3"/>
+        <klass ccn="14035" exam_group="15" instructor="ZOHDI, T I" name="Engineering Analysis Using the Finite Element Metho..." number="C133" number_type="P" restrictions="" room="3108 ETCHEVERRY" section="001 LEC" time="TuTh 1230-2P" units="3">
+            <note>
+                Cross-listed with Mechanical Engineering C180 section 1.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="14038" exam_group="15" instructor="OSTERTAG, C P" name="Failure Mechanisms in Civil Engineering Materials" number="140" number_type="P" restrictions="" room="406 DAVIS" section="001 LEC" time="TuTh 1230-2P" units="3"/>
+        <klass ccn="14041" exam_group="18" instructor="FRICK, K T" name="Introduction to Urban and Regional Transportation P..." number="C154" number_type="P" restrictions="" room="112 WURSTER" section="001 LEC" time="MW 11-1230P" units="3">
+            <note>
+                Cross-listed with City and Regional Planning C114 section 1.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="14044" exam_group="19" instructor="DAGANZO, C F" name="Transportation Systems Engineering" number="155" number_type="P" restrictions="" room="3106 ETCHEVERRY" section="001 LEC" time="TuTh 10-11A" units="3"/>
+        <klass ccn="14047" exam_group="" instructor="DAGANZO, C F" name="Transportation Systems Engineering" number="155" number_type="S" restrictions="" room="502 DAVIS" section="101 LAB" time="F 12-3P" units=""/>
+        <klass ccn="14050" exam_group="16" instructor="MONTEIRO, P J" name="Concrete Materials and Construction" number="165" number_type="P" restrictions="" room="502 DAVIS" section="001 LEC" time="TuTh 8-930A" units="3"/>
+        <klass ccn="14053" exam_group="13" instructor="TOMMELEIN, I D" name="Engineering Project Management" number="167" number_type="P" restrictions="" room="3108 ETCHEVERRY" section="001 LEC" time="TuTh 11-1230P" units="3"/>
+        <klass ccn="14056" exam_group="10" instructor="GLASER, S D" name="Introduction to Rock Mechanics" number="172" number_type="P" restrictions="" room="544 DAVIS" section="001 LEC" time="TuTh 930-11A" units="3"/>
+        <klass ccn="14059" exam_group="4" instructor="PESTANA-NASCIMENTO" name="Geotechnical and Geoenvironmental Engineering" number="175" number_type="P" restrictions="" room="406 DAVIS" section="001 LEC" time="MW 9-10A" units="3"/>
+        <klass ccn="14062" exam_group="" instructor="THE STAFF" name="Geotechnical and Geoenvironmental Engineering" number="175" number_type="S" restrictions="" room="406 DAVIS" section="101 LAB" time="M 2-5P" units=""/>
+        <klass ccn="14064" exam_group="16" instructor="SITAR, N" name="Waste Containment Systems" number="176" number_type="P" restrictions="" room="CANCELLED" section="001 LEC" time="" units="3"/>
+        <klass ccn="14065" exam_group="NONE" instructor="BEA, R G" name="Design, Construction, Maintenance of Civil and Envi..." number="180" number_type="P" restrictions="" room="534 DAVIS" section="001 LEC" time="TuTh 1230-2P" units="4"/>
+        <klass ccn="14068" exam_group="" instructor="THE STAFF" name="Design, Construction, Maintenance of Civil and Envi..." number="180" number_type="S" restrictions="" room="310 HEARST MIN" section="101 DIS" time="W 3-4P" units=""/>
+        <klass ccn="14071" exam_group="NONE" instructor="KANAFANI, A" name="The Art and Science of Civil and Environmental Engi..." number="192" number_type="P" restrictions="SR &amp;                           CIVIL ENGINEERING" room="502 DAVIS" section="001 LEC" time="W 12-1P" units="1"/>
+        <klass ccn="14116" exam_group="NONE" instructor="STACEY, M T" name="Transport and Mixing in the Environment" number="200C" number_type="P" restrictions="" room="2 EVANS" section="001 LEC" time="MWF 11-12P" units="3"/>
+        <klass ccn="14119" exam_group="20" instructor="RUBIN, Y N" name="Vadose Zone Hydrology" number="202A" number_type="P" restrictions="" room="212 OBRIEN" section="001 LEC" time="TuTh 330-5P" units="3"/>
+        <klass ccn="14122" exam_group="2" instructor="HUNT, J R" name="Environmental Physical-Chemical Processes" number="211A" number_type="P" restrictions="" room="544 DAVIS" section="001 LEC" time="TuTh 2-330P" units="3"/>
+        <klass ccn="14125" exam_group="NONE" instructor="SEDLAK, D L" name="Environmental Analytical Chemistry" number="214" number_type="P" restrictions="" room="544 DAVIS" section="001 LEC" time="M 1-2P" units="3"/>
+        <klass ccn="14128" exam_group="" instructor="SEDLAK, D L" name="Environmental Analytical Chemistry" number="214" number_type="S" restrictions="" room="643 DAVIS" section="101 LAB" time="MW 2-5P" units=""/>
+        <klass ccn="14131" exam_group="7" instructor="SEDLAK, D L" name="Environmental Chemical Kinetics" number="217" number_type="P" restrictions="" room="544 DAVIS" section="001 LEC" time="MWF 10-11A" units="3"/>
+        <klass ccn="14134" exam_group="" instructor="THE STAFF" name="Environmental Chemical Kinetics" number="217" number_type="S" restrictions="" room="212 OBRIEN" section="101 DIS" time="W 5-6P" units=""/>
+        <klass ccn="14137" exam_group="10" instructor="HARLEY, R A" name="Air Pollution Modeling" number="218C" number_type="P" restrictions="" room="406 DAVIS" section="001 LEC" time="TuTh 930-11A" units="3"/>
+        <klass ccn="14140" exam_group="16" instructor="HUNT, J R" name="Contaminant Transport Processes" number="219" number_type="P" restrictions="" room="CANCELLED" section="001 LEC" time="" units="3"/>
+        <klass ccn="14143" exam_group="5" instructor="FILIPPOU, F" name="Nonlinear Structural Analysis" number="221" number_type="P" restrictions="" room="534 DAVIS" section="001 LEC" time="MWF 1-2P" units="3"/>
+        <klass ccn="14146" exam_group="" instructor="THE STAFF" name="Nonlinear Structural Analysis" number="221" number_type="S" restrictions="" room="502 DAVIS" section="101 DIS" time="M 2-330P" units=""/>
+        <klass ccn="14149" exam_group="7" instructor="MOSALAM, K M" name="Finite Element Methods" number="222" number_type="P" restrictions="" room="406 DAVIS" section="001 LEC" time="MWF 10-11A" units="3"/>
+        <klass ccn="14152" exam_group="13" instructor="MAHIN, S A" name="Earthquake-Resistant Design" number="227" number_type="P" restrictions="CURRENTLY FULL" room="534 DAVIS" section="001 LEC" time="TuTh 11-1230P" units="3"/>
+        <klass ccn="14157" exam_group="10" instructor="CHOPRA, A K" name="Advanced Earthquake Analysis" number="228" number_type="P" restrictions="" room="502 DAVIS" section="001 LEC" time="TuTh 930-11A" units="3"/>
+        <klass ccn="14158" exam_group="20" instructor="DER KIUREGHIAN, A" name="Structural System Reliability" number="229" number_type="P" restrictions="" room="CANCELLED" section="001 LEC" time="" units="3"/>
+        <klass ccn="14161" exam_group="10" instructor="ARMERO, F" name="Structural Mechanics" number="232" number_type="P" restrictions="" room="122 LATIMER" section="001 LEC" time="TuTh 930-11A" units="3"/>
+        <klass ccn="14164" exam_group="TBA" instructor="LI, S" name="Micromechanics" number="C236" number_type="P" restrictions="" room="CANCELLED" section="001 LEC" time="" units="3">
+            <note>
+                Cross-listed with Materials Science and Engineering C214 section 1.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="14167" exam_group="2" instructor="MONTEIRO, P J" name="Concrete Technology" number="241" number_type="P" restrictions="" room="5 EVANS" section="001 LEC" time="TuTh 2-330P" units="3"/>
+        <klass ccn="14170" exam_group="12" instructor="BENOIT, J M" name="Prestressed Concrete Structures" number="246" number_type="P" restrictions="CURRENTLY FULL" room="212 OBRIEN" section="001 LEC" time="MW 330-5P" units="3"/>
+        <klass ccn="14173" exam_group="4" instructor="ASTANEH-ASL, A" name="Design of Steel and Composite Structures" number="247" number_type="P" restrictions="" room="502 DAVIS" section="001 LEC" time="MWF 9-10A" units="3"/>
+        <klass ccn="14179" exam_group="13" instructor="THE STAFF" name="Transportation Policy and Planning" number="C250N" number_type="P" restrictions="CURRENTLY FULL" room="106 WURSTER" section="001 LEC" time="TuTh 11-1230P" units="3">
+            <note>
+                Cross-listed with City and Regional Planning C217 section 1.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="14182" exam_group="NONE" instructor="KANAFANI, A" name="Transportation Economics" number="254" number_type="P" restrictions="" room="212 OBRIEN" section="001 LEC" time="TuTh 930-11A" units="3"/>
+        <klass ccn="14185" exam_group="NONE" instructor="CASSIDY, M J" name="Highway Traffic Operations" number="255" number_type="P" restrictions="" room="212 OBRIEN" section="001 LEC" time="TuTh 1230-2P" units="3"/>
+        <klass ccn="14188" exam_group="NONE" instructor="DAGANZO, C F" name="Public Transportation Systems" number="259" number_type="P" restrictions="" room="534 DAVIS" section="001 LEC" time="M 4-6P" units="2"/>
+        <klass ccn="14191" exam_group="NONE" instructor="HANSEN, M" name="Air Transportation" number="260" number_type="P" restrictions="" room="212 OBRIEN" section="001 LEC" time="TuTh 2-330P" units="3"/>
+        <klass ccn="14194" exam_group="NONE" instructor="RAGLAND, D R" name="Traffic Safety and Injury Control" number="C265" number_type="P" restrictions="" room="544 DAVIS" section="001 LEC" time="MW 8-930A" units="3">
+            <note>
+                Cross-listed with Public Health C285 section 1.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="14196" exam_group="NONE" instructor="HORVATH, A" name="Civil Systems and the Environment" number="268E" number_type="P" restrictions="CURRENTLY FULL" room="212 OBRIEN" section="001 LEC" time="TuTh 11-1230P" units="3"/>
+        <klass ccn="14197" exam_group="13" instructor="SEED, R B" name="Advanced Foundation Engineering" number="270B" number_type="P" restrictions="" room="406 DAVIS" section="001 LEC" time="TuTh 11-1230P" units="3"/>
+        <klass ccn="14200" exam_group="NONE" instructor="RIEMER, M F" name="Advanced GeoEngineering Testing and Design" number="270L" number_type="P" restrictions="" room="406 DAVIS" section="001 LEC" time="W 2-330P" units="3"/>
+        <klass ccn="14203" exam_group="" instructor="RIEMER, M F" name="Advanced GeoEngineering Testing and Design" number="270L" number_type="S" restrictions="CURRENTLY FULL" room="434 DAVIS" section="101 LAB" time="Th 2-5P" units=""/>
+        <klass ccn="14205" exam_group="" instructor="THE STAFF" name="Advanced GeoEngineering Testing and Design" number="270L" number_type="S" restrictions="" room="434 DAVIS" section="102 LAB" time="F 2-5P" units=""/>
+        <klass ccn="14206" exam_group="NONE" instructor="GLASER, S D" name="Sensors and Signal Interpretation" number="271" number_type="P" restrictions="" room="544 DAVIS" section="001 LEC" time="TuTh 1230-2P" units="3"/>
+        <klass ccn="14209" exam_group="8" instructor="BRAY, J D" name="Numerical Modelling in Geomechanics" number="272" number_type="P" restrictions="" room="406 DAVIS" section="001 LEC" time="MWF 11-12P" units="3"/>
+        <klass ccn="14215" exam_group="NONE" instructor="BEA, R G" name="Human and Organizational Factors: Quality and Relia..." number="290A" number_type="P" restrictions="" room="544 DAVIS" section="001 LEC" time="TuTh 8-930A" units="3"/>
+        <klass ccn="14218" exam_group="NONE" instructor="RECTOR, J W" name="Advanced Topics in Seismology" number="290F" number_type="P" restrictions="" room="534 DAVIS" section="001 LEC" time="W 3-6P" units="3"/>
+        <klass ccn="14221" exam_group="6" instructor="SHUMWAY, R L" name="Law for Engineers" number="290L" number_type="P" restrictions="CURRENTLY FULL" room="406 DAVIS" section="001 LEC" time="F 2-5P" units="3"/>
+        <klass ccn="14224" exam_group="20" instructor="TOMMELEIN, I D" name="Advanced Construction Engineering" number="290N" number_type="P" restrictions="CURRENTLY FULL" room="544 DAVIS" section="001 LEC" time="TuTh 330-5P" units="3"/>
+        <klass ccn="14226" exam_group="NONE" instructor="DAGANZO, C F" name="Advanced Topics in Transportation Theory" number="290T" number_type="P" restrictions="" room="544 DAVIS" section="001 LEC" time="F 9-10A" units="1: SU"/>
+        <klass ccn="14227" exam_group="NONE" instructor="THE STAFF" name="Geoengineering Graduate Seminar" number="290X" number_type="P" restrictions="" room="406 DAVIS" section="001 SEM" time="W 12-1P" units="1: SU"/>
+        <klass ccn="14230" exam_group="20" instructor="KANAFANI, A" name="Selected Topics in Air Transportation" number="290Z" number_type="P" restrictions="" room="321 HAVILAND" section="001 LEC" time="Tu 4-6P" units="2"/>
+        <klass ccn="14236" exam_group="NONE" instructor="THE STAFF" name="Group Studies, Seminars, or Group Research" number="298" number_type="P" restrictions="" room="502 DAVIS" section="001 IND" time="M 12-1P" units="1: SU">
+            <note>
+                &quot;Structural Engineering Mechanics and Materials Seminar&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="14239" exam_group="NONE" instructor="RUBIN, Y N" name="Group Studies, Seminars, or Group Research" number="298" number_type="P" restrictions="" room="406 DAVIS" section="002 IND" time="F 12-130P" units="1: SU">
+            <note>
+                &quot;Environmental Engineering Seminar&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="14242" exam_group="NONE" instructor="THE STAFF" name="Group Studies, Seminars, or Group Research" number="298" number_type="P" restrictions="" room="212 OBRIEN" section="003 IND" time="F 4-530P" units="1: SU">
+            <note>
+                &quot;Transportation Engineering Seminar&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="14245" exam_group="NONE" instructor="THE STAFF" name="Group Studies, Seminars, or Group Research" number="298" number_type="P" restrictions="" room="212 OBRIEN" section="004 IND" time="Tu 5-6P" units="1: SU">
+            <note>
+                &quot;Engineering and Project Management Seminar&quot;&amp;nbsp;
+            </note>
+        </klass>
+    </department>
+</semester>

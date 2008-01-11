@@ -1,0 +1,245 @@
+<?xml version="1.0" ?>
+<semester season="spring" year="2008">
+    <department abbr="engin">
+        <klass ccn="27705" exam_group="5" instructor="BAYEN, A M" name="Introduction to Computer Programming for Scientists..." number="7" number_type="P" restrictions="CURRENTLY FULL" room="100 LEWIS" section="001 LEC" time="MW 12-1P" units="4">
+            <note>
+                Engineering 77, 110, and Computer Science 3, 3L, 3S, 9ABCDEFG, are the current set of &quot;computer service&quot; courses.  A maximum of 5 units may be earned toward graduation for these courses and students may enroll for additional units, but these units will be recognized only for the purpose of computing workload units on the study list.  See the General Catalog for more information.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27708" exam_group="5" instructor="PATZEK, T" name="Introduction to Computer Programming for Scientists..." number="7" number_type="P" restrictions="" room="100 GPB" section="002 LEC" time="MW 1-2P" units="4">
+            <note>
+                Engineering 77, 110, and Computer Science 3, 3L, 3S, 9ABCDEFG, are the current set of &quot;computer service&quot; courses.  A maximum of 5 units may be earned toward graduation for these courses and students may enroll for additional units, but these units will be recognized only for the purpose of computing workload units on the study list.  See the General Catalog for more information.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27711" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="3102 ETCHEVERRY" section="101 DIS" time="M 3-4P" units=""/>
+        <klass ccn="27714" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="285 CORY" section="102 DIS" time="M 4-5P" units=""/>
+        <klass ccn="27717" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="3105 ETCHEVERRY" section="103 DIS" time="Tu 8-9A" units=""/>
+        <klass ccn="27720" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="85 EVANS" section="104 DIS" time="Tu 2-3P" units=""/>
+        <klass ccn="27723" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="285 CORY" section="105 DIS" time="Tu 4-5P" units=""/>
+        <klass ccn="27726" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="3105 ETCHEVERRY" section="106 DIS" time="W 8-9A" units=""/>
+        <klass ccn="27729" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="3105 ETCHEVERRY" section="107 DIS" time="W 3-4P" units=""/>
+        <klass ccn="27732" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="3105 ETCHEVERRY" section="108 DIS" time="W 4-5P" units=""/>
+        <klass ccn="27735" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="3105 ETCHEVERRY" section="109 DIS" time="Th 8-9A" units=""/>
+        <klass ccn="27738" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="1109 ETCHEVERRY" section="011 LAB" time="MW 8-10A" units=""/>
+        <klass ccn="27741" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="012 LAB" time="MW 10-12P" units=""/>
+        <klass ccn="27744" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="1109 ETCHEVERRY" section="013 LAB" time="MW 2-4P" units=""/>
+        <klass ccn="27747" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="1109 ETCHEVERRY" section="014 LAB" time="MW 4-6P" units=""/>
+        <klass ccn="27750" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="1109 ETCHEVERRY" section="015 LAB" time="TuTh 8-10A" units=""/>
+        <klass ccn="27753" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="016 LAB" time="TuTh 10-12P" units=""/>
+        <klass ccn="27756" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="017 LAB" time="TuTh 12-2P" units=""/>
+        <klass ccn="27759" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="018 LAB" time="TuTh 2-4P" units=""/>
+        <klass ccn="27762" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="019 LAB" time="TuTh 4-6P" units=""/>
+        <klass ccn="27918" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="CANCELLED" section="020 LAB" time="" units=""/>
+        <klass ccn="27603" exam_group="7" instructor="AGOGINO, A M" name="Engineering Design and Analysis" number="10" number_type="P" restrictions="BY CATEGORY" room="3106 ETCHEVERRY" section="001 LEC" time="MWF 10-11A" units="3">
+            <note>
+                &quot;Module:  Human-Centered Sustainable Design&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27615" exam_group="" instructor="" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="CURRENTLY FULL" room="106 MULFORD" section="101 DIS" time="Tu 2-5P" units=""/>
+        <klass ccn="27618" exam_group="" instructor="" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="" room="287 DWINELLE" section="102 DIS" time="W 2-5P" units=""/>
+        <klass ccn="27621" exam_group="" instructor="" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="" room="47 EVANS" section="103 DIS" time="Th 2-5P" units=""/>
+        <klass ccn="27606" exam_group="7" instructor="PETERSON, P F" name="Engineering Design and Analysis" number="10" number_type="P" restrictions="BY CATEGORY" room="3108 ETCHEVERRY" section="002 LEC" time="MWF 10-11A" units="3"/>
+        <klass ccn="27624" exam_group="" instructor="" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="" room="" section="201 DIS" time="Tu 2-5P" units=""/>
+        <klass ccn="27627" exam_group="" instructor="" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="" room="31 EVANS" section="202 DIS" time="W 2-5P" units=""/>
+        <klass ccn="27630" exam_group="" instructor="" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="" room="45 EVANS" section="203 DIS" time="Th 2-5P" units=""/>
+        <klass ccn="27609" exam_group="7" instructor="SEED, R B" name="Engineering Design and Analysis" number="10" number_type="P" restrictions="BY CATEGORY" room="145 MCCONE" section="003 LEC" time="MWF 10-11A" units="3"/>
+        <klass ccn="27633" exam_group="" instructor="" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="CURRENTLY FULL" room="" section="301 DIS" time="Tu 2-5P" units=""/>
+        <klass ccn="27636" exam_group="" instructor="" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="" room="" section="302 DIS" time="W 2-5P" units=""/>
+        <klass ccn="27639" exam_group="" instructor="" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="CURRENTLY FULL" room="2038 VALLEY LSB" section="303 DIS" time="Th 2-5P" units=""/>
+        <klass ccn="27612" exam_group="7" instructor="RIGHTER, R L" name="Engineering Design and Analysis" number="10" number_type="P" restrictions="BY CATEGORY" room="9 LEWIS" section="004 LEC" time="MWF 10-11A" units="3"/>
+        <klass ccn="27642" exam_group="" instructor="THE STAFF" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="" room="" section="401 DIS" time="Tu 2-5P" units=""/>
+        <klass ccn="27645" exam_group="" instructor="THE STAFF" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="" room="" section="402 DIS" time="W 2-5P" units=""/>
+        <klass ccn="27648" exam_group="" instructor="THE STAFF" name="Engineering Design and Analysis" number="10" number_type="S" restrictions="" room="" section="403 DIS" time="Th 2-5P" units=""/>
+        <klass ccn="27651" exam_group="TBA" instructor="AZEVEDO, A" name="Freshman Seminar" number="24" number_type="P" restrictions="CURRENTLY FULL" room="45 EVANS" section="001 LEC" time="M 1-2P" units="1: PF">
+            <note>
+                &quot;Time, Money, and Love in the Age of Technology&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27654" exam_group="12" instructor="MCMAINS, S" name="Basic Engineering Design Graphics" number="28" number_type="P" restrictions="" room="60 EVANS" section="001 LEC" time="MW 3-4P" units="3"/>
+        <klass ccn="27657" exam_group="" instructor="" name="Basic Engineering Design Graphics" number="28" number_type="S" restrictions="" room="2105 ETCHEVERRY" section="011 LAB" time="F 3-6P" units=""/>
+        <klass ccn="27660" exam_group="" instructor="" name="Basic Engineering Design Graphics" number="28" number_type="S" restrictions="" room="2107 ETCHEVERRY" section="012 LAB" time="Th 3-6P" units=""/>
+        <klass ccn="27663" exam_group="" instructor="" name="Basic Engineering Design Graphics" number="28" number_type="S" restrictions="" room="2105 ETCHEVERRY" section="013 LAB" time="F 3-6P" units=""/>
+        <klass ccn="27666" exam_group="" instructor="" name="Basic Engineering Design Graphics" number="28" number_type="S" restrictions="" room="2107 ETCHEVERRY" section="014 LAB" time="Th 3-6P" units=""/>
+        <klass ccn="27672" exam_group="5" instructor="LI, S" name="Engineering Mechanics I" number="36" number_type="P" restrictions="" room="4 LECONTE" section="001 LEC" time="MW 1-2P" units="2"/>
+        <klass ccn="27678" exam_group="TBA" instructor="VERBONCOEUR, J" name="Freshman/Sophomore Seminar" number="39B" number_type="P" restrictions="BY CATEGORY" room="203 WHEELER" section="001 SEM" time="Tu 330-5P" units="1.5: PF">
+            <note>
+                &quot;Introduction to Computational Engineering Science&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27680" exam_group="TBA" instructor="JOHNSON, G C" name="Freshman/Sophomore Seminar" number="39E" number_type="P" restrictions="BY CATEGORY" room="203 WHEELER" section="001 SEM" time="Th 330-5P" units="2: PF">
+            <note>
+                &quot;Engineering and Project-Based Learning&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27681" exam_group="11" instructor="RAMESH, R" name="Properties of Materials" number="45" number_type="P" restrictions="" room="10 EVANS" section="001 LEC" time="MWF 12-1P" units="3"/>
+        <klass ccn="27684" exam_group="" instructor="" name="Properties of Materials" number="45" number_type="S" restrictions="" room="230 HEARST MIN" section="101 LAB" time="M 2-5P" units=""/>
+        <klass ccn="27687" exam_group="" instructor="" name="Properties of Materials" number="45" number_type="S" restrictions="" room="230 HEARST MIN" section="102 LAB" time="Tu 8-11A" units=""/>
+        <klass ccn="27690" exam_group="" instructor="" name="Properties of Materials" number="45" number_type="S" restrictions="CURRENTLY FULL" room="230 HEARST MIN" section="103 LAB" time="Tu 2-5P" units=""/>
+        <klass ccn="27693" exam_group="" instructor="" name="Properties of Materials" number="45" number_type="S" restrictions="" room="230 HEARST MIN" section="104 LAB" time="W 8-11A" units=""/>
+        <klass ccn="27696" exam_group="" instructor="" name="Properties of Materials" number="45" number_type="S" restrictions="" room="230 HEARST MIN" section="105 LAB" time="W 2-5P" units=""/>
+        <klass ccn="27699" exam_group="" instructor="" name="Properties of Materials" number="45" number_type="S" restrictions="" room="230 HEARST MIN" section="106 LAB" time="Th 8-11A" units=""/>
+        <klass ccn="27702" exam_group="" instructor="" name="Properties of Materials" number="45" number_type="S" restrictions="" room="230 HEARST MIN" section="107 LAB" time="Th 2-5P" units=""/>
+        <klass ccn="27765" exam_group="17" instructor="AZEVEDO, A" name="Introduction to Computers-Interdepartmental Studies" number="110" number_type="P" restrictions="" room="4 LECONTE" section="001 LEC" time="MWF 4-5P" units="4">
+            <note>
+                Engineering 110 was formerly IDS 110.  Contact americ@socrates.berkeley.edu or visit 230 Bechtel Engineering Center for more information.&amp;nbsp; Also: SOKOLIK, M E&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27768" exam_group="" instructor="" name="Introduction to Computers-Interdepartmental Studies" number="110" number_type="S" restrictions="" room="1535 TOLMAN" section="101 DIS" time="TuTh 10-12P" units=""/>
+        <klass ccn="27771" exam_group="" instructor="" name="Introduction to Computers-Interdepartmental Studies" number="110" number_type="S" restrictions="" room="1535 TOLMAN" section="102 DIS" time="TuTh 12-2P" units=""/>
+        <klass ccn="27774" exam_group="" instructor="" name="Introduction to Computers-Interdepartmental Studies" number="110" number_type="S" restrictions="" room="1535 TOLMAN" section="103 DIS" time="TuTh 2-4P" units=""/>
+        <klass ccn="27777" exam_group="" instructor="" name="Introduction to Computers-Interdepartmental Studies" number="110" number_type="S" restrictions="" room="1535 TOLMAN" section="104 DIS" time="TuTh 4-6P" units=""/>
+        <klass ccn="27780" exam_group="" instructor="" name="Introduction to Computers-Interdepartmental Studies" number="110" number_type="S" restrictions="" room="1535 TOLMAN" section="105 DIS" time="WF 10-12P" units=""/>
+        <klass ccn="27783" exam_group="" instructor="" name="Introduction to Computers-Interdepartmental Studies" number="110" number_type="S" restrictions="" room="1535 TOLMAN" section="106 DIS" time="WF 12-2P" units=""/>
+        <klass ccn="27785" exam_group="5" instructor="THE STAFF" name="Principles of Engineering Economics" number="120" number_type="P" restrictions="" room="105 NORTH GATE" section="001 LEC" time="MW 1-2P" units="3"/>
+        <klass ccn="27909" exam_group="" instructor="THE STAFF" name="Principles of Engineering Economics" number="120" number_type="S" restrictions="CURRENTLY FULL" room="170 BARROWS" section="101 DIS" time="M 3-4P" units=""/>
+        <klass ccn="27912" exam_group="" instructor="THE STAFF" name="Principles of Engineering Economics" number="120" number_type="S" restrictions="" room="145 MCCONE" section="102 DIS" time="Tu 5-6P" units=""/>
+        <klass ccn="27786" exam_group="2" instructor="LIEU, D K" name="Advanced Engineering Design Graphics" number="128" number_type="P" restrictions="CURRENTLY FULL" room="2105 ETCHEVERRY" section="001 LEC" time="TuTh 2-3P" units="3">
+            <note>
+                Also:  TuTh 2-3P, 2107 ETCHEVERRY
+            </note>
+        </klass>
+        <klass ccn="27789" exam_group="" instructor="" name="Advanced Engineering Design Graphics" number="128" number_type="S" restrictions="CURRENTLY FULL" room="2107 ETCHEVERRY" section="101 DIS" time="W 6-9P" units="">
+            <note>
+                Also: Th 9-12P, 2105 ETCHEVERRY&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27792" exam_group="13" instructor="JONES, S M" name="Technical Communication for Non-Native Speakers of ..." number="140" number_type="P" restrictions="CURRENTLY FULL" room="225A BECHTEL" section="001 LEC" time="TuTh 11-1230P" units="3">
+            <note>
+                This section is restricted to undergraduate students.  Engineering 140 was formerly IDS 140.  Visit 230 Bechtel Engineering Center for more information.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27795" exam_group="2" instructor="JONES, S M" name="Technical Communication for Non-Native Speakers of ..." number="140" number_type="P" restrictions="" room="225A BECHTEL" section="002 LEC" time="TuTh 2-330P" units="3">
+            <note>
+                This section is restricted to graduate students.  Engineering 140 was formerly IDS 140.  Visit 230 Bechtel Engineering Center for more information.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27798" exam_group="15" instructor="PACKARD, A K" name="Advanced Programming with MATLAB" number="177" number_type="P" restrictions="CURRENTLY FULL" room="310 HEARST MIN" section="001 LEC" time="TuTh 1230-2P" units="3"/>
+        <klass ccn="27801" exam_group="" instructor="" name="Advanced Programming with MATLAB" number="177" number_type="S" restrictions="CURRENTLY FULL" room="" section="101 DIS" time="" units=""/>
+        <klass ccn="27804" exam_group="NONE" instructor="VERBONCOEUR, J" name="Computational Engineering Science Modeling and Simu..." number="180A" number_type="P" restrictions="" room="179 STANLEY" section="001 LEC" time="TuTh 930-11A" units="4"/>
+        <klass ccn="27807" exam_group="NONE" instructor="PHILIPPI, T R" name="Technical Communication" number="190" number_type="P" restrictions="BY CATEGORY" room="240 BECHTEL" section="001 LEC" time="TuTh 930-11A" units="3">
+            <note>
+                All students, both grad and undergrad, who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall semester, a week before Tele-BEARS begins in the spring semester, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 140 or 190.  For the specific times and places of the test, please refer to the Program website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27810" exam_group="NONE" instructor="WELSH, J" name="Technical Communication" number="190" number_type="P" restrictions="BY CATEGORY" room="225A BECHTEL" section="002 LEC" time="MWF 2-3P" units="3">
+            <note>
+                All students, both grad and undergrad, who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall semester, a week before Tele-BEARS begins in the spring semester, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 140 or 190.  For the specific times and places of the test, please refer to the Program website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27813" exam_group="NONE" instructor="WELSH, J" name="Technical Communication" number="190" number_type="P" restrictions="CLASS ENTRY CODE REQ" room="225A BECHTEL" section="003 LEC" time="MWF 1-2P" units="3">
+            <note>
+                Section 3 is required for students who place in Engineering 190E on the Placement Test.  All students who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall, a week before Tele-BEARS begins in the spring, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 40 or 190.  For the specific times and places of the test, see the website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27816" exam_group="NONE" instructor="SENG, H W" name="Technical Communication" number="190" number_type="P" restrictions="BY CATEGORY" room="240 BECHTEL" section="004 LEC" time="TuTh 2-330P" units="3">
+            <note>
+                All students, both grad and undergrad, who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall semester, a week before Tele-BEARS begins in the spring semester, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 140 or 190.  For the specific times and places of the test, please refer to the Program website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27819" exam_group="NONE" instructor="SENG, H W" name="Technical Communication" number="190" number_type="P" restrictions="CLASS ENTRY CODE REQ" room="240 BECHTEL" section="005 LEC" time="TuTh 330-5P" units="3">
+            <note>
+                Section 5 is required for students who place in Engineering 190E on the Placement Test.  All students who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall, a week before Tele-BEARS begins in the spring, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 40 or 190.  For the specific times and places of the test, see the website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27822" exam_group="NONE" instructor="BIBBS, C S" name="Technical Communication" number="190" number_type="P" restrictions="BY CATEGORY" room="B51 HILDEBRAND" section="006 LEC" time="TuTh 11-1230P" units="3">
+            <note>
+                All students, both grad and undergrad, who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall semester, a week before Tele-BEARS begins in the spring semester, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 140 or 190.  For the specific times and places of the test, please refer to the Program website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27825" exam_group="NONE" instructor="BIBBS, C S" name="Technical Communication" number="190" number_type="P" restrictions="BY CATEGORY" room="225A BECHTEL" section="007 LEC" time="TuTh 1230-2P" units="3">
+            <note>
+                All students, both grad and undergrad, who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall semester, a week before Tele-BEARS begins in the spring semester, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 140 or 190.  For the specific times and places of the test, please refer to the Program website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27831" exam_group="NONE" instructor="NEVADER, A S" name="Technical Communication" number="190" number_type="P" restrictions="BY CATEGORY" room="225A BECHTEL" section="009 LEC" time="TuTh 930-11A" units="3">
+            <note>
+                All students, both grad and undergrad, who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall semester, a week before Tele-BEARS begins in the spring semester, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 140 or 190.  For the specific times and places of the test, please refer to the Program website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27834" exam_group="NONE" instructor="KRISTEL, M P" name="Technical Communication" number="190" number_type="P" restrictions="BY CATEGORY" room="240 BECHTEL" section="010 LEC" time="MWF 10-11A" units="3">
+            <note>
+                All students, both grad and undergrad, who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall semester, a week before Tele-BEARS begins in the spring semester, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 140 or 190.  For the specific times and places of the test, please refer to the Program website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27837" exam_group="NONE" instructor="KRISTEL, M P" name="Technical Communication" number="190" number_type="P" restrictions="BY CATEGORY" room="240 BECHTEL" section="011 LEC" time="MWF 11-12P" units="3">
+            <note>
+                All students, both grad and undergrad, who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall semester, a week before Tele-BEARS begins in the spring semester, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 140 or 190.  For the specific times and places of the test, please refer to the Program website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27840" exam_group="NONE" instructor="SENG, H W" name="Technical Communication" number="190" number_type="P" restrictions="" room="CANCELLED" section="012 LEC" time="" units="3">
+            <note>
+                All students, both grad and undergrad, who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall semester, a week before Tele-BEARS begins in the spring semester, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 140 or 190.  For the specific times and places of the test, please refer to the Program website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27843" exam_group="NONE" instructor="NEVADER, A S" name="Technical Communication" number="190" number_type="P" restrictions="" room="CANCELLED" section="013 LEC" time="" units="3">
+            <note>
+                All students, both grad and undergrad, who intend to take 190 or for whom 190 is a requirement must take the Engineering 190 Placement Test.  The test will be given 3 times each academic year:  a week before Tele-BEARS begins in the fall semester, a week before Tele-BEARS begins in the spring semester, and the week before the fall semester begins.  The test will not be given at any other time.  The results of the test will be used to assign students to designated sections of Engineering 140 or 190.  For the specific times and places of the test, please refer to the Program website at coe.berkeley.edu/ids/techcomm.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27846" exam_group="13" instructor="PHILIPPI, T R" name="Science, Technology, and Culture" number="195" number_type="P" restrictions="" room="240 BECHTEL" section="001 LEC" time="TuTh 11-1230P" units="3"/>
+        <klass ccn="27849" exam_group="NONE" instructor="MANSOUR, A E" name="Ocean Engineering Seminar" number="201" number_type="P" restrictions="" room="240 BECHTEL" section="001 LEC" time="W 2-4P" units="2,3"/>
+        <klass ccn="27852" exam_group="NONE" instructor="MARCUS, P S" name="Methods of Applied Mathematics" number="230" number_type="P" restrictions="" room="122 LATIMER" section="001 LEC" time="TuTh 2-330P" units="3"/>
+        <klass ccn="27855" exam_group="NONE" instructor="HEDRICK, J K" name="Mathematical Methods in Engineering" number="231" number_type="P" restrictions="" room="105 LATIMER" section="001 LEC" time="TuTh 1230-2P" units="3"/>
+        <klass ccn="27858" exam_group="NONE" instructor="YELICK, K A" name="Applications of Parallel Computers" number="C233" number_type="P" restrictions="" room="310 SODA" section="001 LEC" time="MW 1030-12P" units="3">
+            <note>
+                Cross-listed with Computer Science C267 section 1.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27860" exam_group="NONE" instructor="HASEGAWA, B H" name="Physics of Medical Imaging" number="253B" number_type="P" restrictions="" room="OFF CAMPUS" section="001 LEC" time="MW 930-11A" units="3"/>
+        <klass ccn="27900" exam_group="NONE" instructor="DORNFELD, D A" name="Sustainable Design, Manufacturing, and Management" number="290C" number_type="P" restrictions="" room="2308 TOLMAN" section="001 LEC" time="TuTh 11-1230P" units="3">
+            <note>
+                &quot;Sustainable Manufacturing&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27902" exam_group="NONE" instructor="CHESBROUGH, H W" name="Managing Innovation and Change" number="290I" number_type="P" restrictions="CURRENTLY NOT OPEN" room="" section="001 LEC" time="" units="3"/>
+        <klass ccn="27903" exam_group="NONE" instructor="ISAACS, A M" name="Opportunity Recognition: Technology and Entrepreneu..." number="290O" number_type="P" restrictions="CURRENTLY NOT OPEN" room="" section="001 LEC" time="" units="3"/>
+        <klass ccn="27905" exam_group="NONE" instructor="THE STAFF" name="Project Management" number="290P" number_type="P" restrictions="CURRENTLY NOT OPEN" room="" section="001 LEC" time="" units="2"/>
+        <klass ccn="27906" exam_group="NONE" instructor="MOAZZAMI, R" name="Wireless Communications" number="290W" number_type="P" restrictions="CURRENTLY NOT OPEN" room="" section="001 LEC" time="" units="3"/>
+        <klass ccn="27861" exam_group="NONE" instructor="THE STAFF" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="C210 CHEIT" section="001 SEM" time="Th 8-11A" units="3">
+            <note>
+                &quot;Introduction to Management of Technology&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27864" exam_group="NONE" instructor="THE STAFF" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY" room="C320 CHEIT" section="002 SEM" time="M 2-4P" units="2">
+            <note>
+                &quot;Project Management&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27867" exam_group="NONE" instructor="THE STAFF" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY" room="C135 CHEIT" section="003 SEM" time="Th 4-6P" units="2">
+            <note>
+                &quot;Business and Technology for Sustainable Development&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27870" exam_group="NONE" instructor="CHESBROUGH, H W" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY" room="C135 CHEIT" section="004 SEM" time="M 2-4P" units="2">
+            <note>
+                &quot;Managing Innovation and Change&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27873" exam_group="NONE" instructor="THE STAFF" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY" room="C135 CHEIT" section="005 SEM" time="Tu 2-4P" units="2">
+            <note>
+                &quot;Building Business Value through IT Innovation&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27876" exam_group="NONE" instructor="ROSEN, C A" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY" room="C220 CHEIT" section="006 SEM" time="Tu 4-6P" units="2">
+            <note>
+                &quot;Energy, Sustainability and Business Innovation&quot; Also: ISAACS, A M&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27878" exam_group="NONE" instructor="MOAZZAMI, R" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY" room="C330 CHEIT" section="007 SEM" time="M 6-9P" units="3">
+            <note>
+                &quot;Wireless Communications&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27882" exam_group="NONE" instructor="ISAACS, A M" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY" room="C125 CHEIT" section="010 SEM" time="MW 4-530P" units="3">
+            <note>
+                &quot;Opportunity Recognition:  Technology and Entrepreneurship&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27884" exam_group="NONE" instructor="LASKY, L A" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY" room="F320 HAAS" section="011 SEM" time="Tu 2-4P" units="2">
+            <note>
+                &quot;Entrepreneurship in Biotechnology&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="27915" exam_group="NONE" instructor="SOKOLIK, M E" name="The Teaching of Engineering" number="300" number_type="P" restrictions="" room="240 BECHTEL" section="001 SEM" time="M 1-3P" units="2"/>
+    </department>
+</semester>

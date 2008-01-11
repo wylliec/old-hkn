@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+<semester season="spring" year="2008">
+    <department abbr="chm eng">
+        <klass ccn="10403" exam_group="1" instructor="KATZ, A" name="Chemical Kinetics and Reaction Engineering" number="142" number_type="P" restrictions="" room="3 LECONTE" section="001 LEC" time="MWF 8-9A" units="3"/>
+        <klass ccn="10406" exam_group="" instructor="" name="Chemical Kinetics and Reaction Engineering" number="142" number_type="S" restrictions="CURRENTLY FULL" room="45 EVANS" section="101 DIS" time="Tu 8-9A" units=""/>
+        <klass ccn="10409" exam_group="" instructor="" name="Chemical Kinetics and Reaction Engineering" number="142" number_type="S" restrictions="CURRENTLY FULL" room="183 DWINELLE" section="102 DIS" time="Tu 3-4P" units=""/>
+        <klass ccn="10412" exam_group="" instructor="" name="Chemical Kinetics and Reaction Engineering" number="142" number_type="S" restrictions="" room="45 EVANS" section="103 DIS" time="Th 8-9A" units=""/>
+        <klass ccn="10415" exam_group="" instructor="" name="Chemical Kinetics and Reaction Engineering" number="142" number_type="S" restrictions="CURRENTLY FULL" room="183 DWINELLE" section="104 DIS" time="Th 3-4P" units=""/>
+        <klass ccn="10418" exam_group="4" instructor="RADKE, C J" name="Transport Processes" number="150A" number_type="P" restrictions="CURRENTLY FULL" room="3 LECONTE" section="001 LEC" time="MWF 9-10A" units="4"/>
+        <klass ccn="10421" exam_group="" instructor="" name="Transport Processes" number="150A" number_type="S" restrictions="CURRENTLY FULL" room="31 EVANS" section="101 DIS" time="Tu 8-9A" units=""/>
+        <klass ccn="10424" exam_group="" instructor="" name="Transport Processes" number="150A" number_type="S" restrictions="CURRENTLY FULL" room="55 EVANS" section="102 DIS" time="Tu 11-12P" units=""/>
+        <klass ccn="10427" exam_group="" instructor="" name="Transport Processes" number="150A" number_type="S" restrictions="CURRENTLY FULL" room="78 BARROWS" section="103 DIS" time="Th 3-4P" units=""/>
+        <klass ccn="10430" exam_group="" instructor="" name="Transport Processes" number="150A" number_type="S" restrictions="CURRENTLY FULL" room="47 EVANS" section="104 DIS" time="Th 10-11A" units=""/>
+        <klass ccn="10433" exam_group="NONE" instructor="WANG, X" name="Chemical Engineering Laboratory" number="154" number_type="P" restrictions="SR &amp; CHEMSTRY                                                                                                            &amp; BY CATEGORY" room="70 EVANS" section="001 LEC" time="M 12-1P" units="3">
+            <note>
+                ($90 Course Materials Fee - subject to change) - All students must attend the first lecture to be considered for enrollment in Chemical Engineering 154.  Prerequisites for 154 include Chemical Engineering 142, 150B, and 185.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="10436" exam_group="" instructor="" name="Chemical Engineering Laboratory" number="154" number_type="S" restrictions="" room="S1 GILMAN" section="101 LAB" time="MW 1-5P" units=""/>
+        <klass ccn="10439" exam_group="" instructor="" name="Chemical Engineering Laboratory" number="154" number_type="S" restrictions="" room="S1 GILMAN" section="102 LAB" time="TuTh 1-5P" units=""/>
+        <klass ccn="10442" exam_group="7" instructor="SEGALMAN, R A" name="Transport Processes Laboratory" number="157" number_type="P" restrictions="" room="56 BARROWS" section="001 LEC" time="W 10-11A" units="3">
+            <note>
+                Also: CHU, J
+            </note>
+        </klass>
+        <klass ccn="10445" exam_group="" instructor="" name="Transport Processes Laboratory" number="157" number_type="S" restrictions="CURRENTLY FULL" room="33 LEWIS" section="101 LAB" time="M 1-4P" units=""/>
+        <klass ccn="10448" exam_group="" instructor="" name="Transport Processes Laboratory" number="157" number_type="S" restrictions="CURRENTLY FULL" room="33 LEWIS" section="102 LAB" time="Tu 2-5P" units=""/>
+        <klass ccn="10451" exam_group="" instructor="" name="Transport Processes Laboratory" number="157" number_type="S" restrictions="CURRENTLY FULL" room="33 LEWIS" section="103 LAB" time="W 1-4P" units=""/>
+        <klass ccn="10454" exam_group="" instructor="" name="Transport Processes Laboratory" number="157" number_type="S" restrictions="" room="33 LEWIS" section="104 LAB" time="F 1-4P" units=""/>
+        <klass ccn="10457" exam_group="13" instructor="THE STAFF" name="Chemical Process Design" number="160" number_type="P" restrictions="CURRENTLY FULL" room="310 HEARST MIN" section="001 LEC" time="TuTh 11-1230P" units="4"/>
+        <klass ccn="10460" exam_group="" instructor="" name="Chemical Process Design" number="160" number_type="S" restrictions="CURRENTLY FULL" room="106 LATIMER" section="101 DIS" time="Tu 2-5P" units=""/>
+        <klass ccn="10463" exam_group="" instructor="" name="Chemical Process Design" number="160" number_type="S" restrictions="CURRENTLY FULL" room="106 LATIMER" section="102 DIS" time="Th 2-5P" units=""/>
+        <klass ccn="10466" exam_group="10" instructor="WALLMAN, P" name="Dynamics and Control of Chemical Processes" number="162" number_type="P" restrictions="" room="106 MOFFITT" section="001 LEC" time="TuTh 930-11A" units="4"/>
+        <klass ccn="10469" exam_group="" instructor="" name="Dynamics and Control of Chemical Processes" number="162" number_type="S" restrictions="CURRENTLY FULL" room="121 GILMAN" section="101 LAB" time="Tu 1-4P" units=""/>
+        <klass ccn="10472" exam_group="" instructor="" name="Dynamics and Control of Chemical Processes" number="162" number_type="S" restrictions="" room="121 GILMAN" section="102 LAB" time="W 1-4P" units=""/>
+        <klass ccn="10475" exam_group="" instructor="" name="Dynamics and Control of Chemical Processes" number="162" number_type="S" restrictions="" room="CANCELLED" section="103 LAB" time="" units=""/>
+        <klass ccn="10478" exam_group="4" instructor="CLARK, D S" name="Biochemical Engineering" number="170B" number_type="P" restrictions="" room="385 LECONTE" section="001 LEC" time="MWF 9-10A" units="3"/>
+        <klass ccn="10481" exam_group="6" instructor="CLARK, D S" name="Biochemical Engineering Laboratory" number="C170L" number_type="P" restrictions="CURRENTLY FULL" room="437 LATIMER" section="001 LAB" time="MW 2-5P" units="3">
+            <note>
+                Cross-listed with Chemistry C170L section 1.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="10484" exam_group="" instructor="HUDSON, E P" name="Biochemical Engineering Laboratory" number="C170L" number_type="S" restrictions="" room="55 EVANS" section="101 LEC" time="Th 10-11A" units=""/>
+        <klass ccn="10490" exam_group="8" instructor="NEWMAN, J S" name="Principles of Electrochemical Processes" number="176" number_type="P" restrictions="CURRENTLY FULL" room="7 EVANS" section="001 LEC" time="MWF 11-12P" units="3"/>
+        <klass ccn="10493" exam_group="15" instructor="MABOUDIAN, R" name="Process Technology of Solid-State Materials Devices" number="179" number_type="P" restrictions="" room="385 LECONTE" section="001 LEC" time="TuTh 1230-2P" units="3"/>
+        <klass ccn="10496" exam_group="13" instructor="REIMER, J A" name="Technical Communication for Chemical Engineers" number="185" number_type="P" restrictions="BY CATEGORY" room="30 WHEELER" section="001 LEC" time="TuTh 11-1230P" units="3">
+            <note>
+                Students are advised they must pass the Chemical Engineering 185 Screening Examination (administered in Chemical Engineering 140) before being admitted to the course.  Students with exceptional writing skills may seek exemption from Chemical Engineering 185 through an exam that is offered toward the end of each semester.  Please note that this exemption exam may be taken only once.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="10499" exam_group="2" instructor="REIMER, J A" name="Technical Communication for Chemical Engineers" number="185" number_type="P" restrictions="CLASS ENTRY CODE REQ" room="55 EVANS" section="002 LEC" time="TuTh 2-330P" units="3"/>
+        <klass ccn="10592" exam_group="12" instructor="RADKE, C J" name="Special Topics" number="195" number_type="P" restrictions="" room="CANCELLED" section="016 IND" time="" units="2-3"/>
+        <klass ccn="10604" exam_group="8" instructor="CARRARO, C" name="Special Topics" number="195" number_type="P" restrictions="SO, JR" room="35 EVANS" section="022 IND" time="MWF 11-12P" units="2-3"/>
+        <klass ccn="10679" exam_group="NONE" instructor="STRAUSS, H L" name="Field Study in Chemical Engineering" number="197" number_type="P" restrictions="JR, SR &amp;                                                                                                                       BY CATEGORY" room="UNSCHED NOFACILITY" section="041 FLD" time="" units="1-4: PF"/>
+        <klass ccn="10682" exam_group="NONE" instructor="MULLER, S J" name="Directed Group Study for Undergraduates" number="198" number_type="P" restrictions="" room="CANCELLED" section="012 LEC" time="" units="1-3: PF"/>
+        <klass ccn="10688" exam_group="10" instructor="IGLESIA, E" name="Kinetics and Reaction Engineering" number="244" number_type="P" restrictions="CURRENTLY FULL" room="223 DWINELLE" section="001 LEC" time="TuTh 930-11A" units="3"/>
+        <klass ccn="10691" exam_group="8" instructor="NEWMAN, J S" name="Principles of Electrochemical Engineering" number="246" number_type="P" restrictions="" room="7 EVANS" section="001 LEC" time="MWF 11-12P" units="3"/>
+        <klass ccn="10694" exam_group="7" instructor="MULLER, S J" name="Transport Processes" number="250" number_type="P" restrictions="CURRENTLY FULL" room="75 EVANS" section="001 LEC" time="MWF 10-11A" units="3"/>
+        <klass ccn="10697" exam_group="NONE" instructor="NEWMAN, J S" name="Electrochemical, Hydrodynamic, and Interfacial Phen..." number="295B" number_type="P" restrictions="" room="109 GILMAN" section="001 LEC" time="Tu 5-630P" units="2"/>
+        <klass ccn="10700" exam_group="NONE" instructor="STERNBERG, M" name="Development of Biopharmaceuticals" number="295D" number_type="P" restrictions="GR               &amp;                                                                                                                       BY CATEGORY" room="121 LATIMER" section="001 LEC" time="Tu 2-4P" units="2"/>
+        <klass ccn="10703" exam_group="NONE" instructor="BALSARA, N P" name="Polymer Physics" number="295N" number_type="P" restrictions="" room="75 EVANS" section="001 LEC" time="TuTh 8-930A" units="3"/>
+        <klass ccn="10709" exam_group="NONE" instructor="ALEXANDER, K" name="Advanced Topics in New Product Development" number="295Q" number_type="P" restrictions="" room="47 EVANS" section="001 LEC" time="TuTh 11-1230P" units="3"/>
+        <klass ccn="10724" exam_group="NONE" instructor="BELL, A T" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="775B TAN" section="01X SEM" time="M 4-6P" units="1"/>
+        <klass ccn="10727" exam_group="NONE" instructor="BLANCH, H W" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="775B TAN" section="02X SEM" time="Tu 4-6P" units="1"/>
+        <klass ccn="10730" exam_group="NONE" instructor="CAIRNS, E J" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="OFF CAMPUS" section="03X SEM" time="M 2-4P" units="1"/>
+        <klass ccn="10733" exam_group="NONE" instructor="CHU, J" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="OFF CAMPUS" section="04X SEM" time="M 2-4P" units="1"/>
+        <klass ccn="10736" exam_group="NONE" instructor="KATZ, A" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="110A GILMAN" section="05X SEM" time="Th 2-4P" units="1"/>
+        <klass ccn="10739" exam_group="NONE" instructor="IGLESIA, E" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="775A TAN" section="08X SEM" time="F 3-5P" units="1"/>
+        <klass ccn="10742" exam_group="NONE" instructor="KEASLING, J D" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="775B TAN" section="09X SEM" time="W 1-3P" units="1"/>
+        <klass ccn="10745" exam_group="NONE" instructor="MULLER, S J" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="775B TAN" section="12X SEM" time="M 2-4P" units="1"/>
+        <klass ccn="10748" exam_group="NONE" instructor="NEWMAN, J S" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="306 GILMAN" section="13X SEM" time="Th 8-9A" units="1"/>
+        <klass ccn="10751" exam_group="NONE" instructor="PRAUSNITZ, J M" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="775A TAN" section="15X SEM" time="Tu 4-5P" units="1"/>
+        <klass ccn="10754" exam_group="NONE" instructor="RADKE, C J" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="775A TAN" section="16X SEM" time="Th 3-5P" units="1"/>
+        <klass ccn="10757" exam_group="NONE" instructor="REIMER, J A" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="D85 TAN" section="17X SEM" time="F 12-1P" units="1"/>
+        <klass ccn="10760" exam_group="NONE" instructor="SCHAFFER, D" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="B71 TAN" section="18X SEM" time="Th 3-4P" units="1"/>
+        <klass ccn="10763" exam_group="NONE" instructor="BALSARA, N P" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="D80 TAN" section="19X SEM" time="Th 2-330P" units="1"/>
+        <klass ccn="10766" exam_group="NONE" instructor="MABOUDIAN, R" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="B72 TAN" section="22X SEM" time="Th 1-2P" units="1"/>
+        <klass ccn="10769" exam_group="NONE" instructor="BALSARA, N P" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="120 LATIMER" section="26X SEM" time="W 4-6P" units="1"/>
+        <klass ccn="10772" exam_group="NONE" instructor="GRAVES, D B" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="D83 TAN" section="31X SEM" time="Tu 5-6P" units="1"/>
+        <klass ccn="10775" exam_group="NONE" instructor="CLARK, D S" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="495 TAN" section="33X SEM" time="Th 2-4P" units="1"/>
+        <klass ccn="10778" exam_group="NONE" instructor="SEGALMAN, R A" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="403 LATIMER" section="39X SEM" time="Th 5-7P" units="1"/>
+        <klass ccn="10781" exam_group="NONE" instructor="FRECHET, J" name="Seminar in Chemical Engineering" number="298" number_type="P" restrictions="" room="775B TAN" section="40X SEM" time="TuTh 6-8P" units="1"/>
+    </department>
+</semester>

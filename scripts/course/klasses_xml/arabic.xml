@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<semester season="spring" year="2008">
+    <department abbr="arabic">
+        <klass ccn="62003" exam_group="14" instructor="ABUSAAD, R" name="Elementary Arabic" number="1B" number_type="P" restrictions="CURRENTLY FULL" room="252 BARROWS" section="001 REC" time="MTWTF 9-10A" units="5"/>
+        <klass ccn="62006" exam_group="14" instructor="VIVRETTE, J C" name="Elementary Arabic" number="1B" number_type="P" restrictions="CURRENTLY FULL" room="223 WHEELER" section="002 REC" time="MTWTF 10-11A" units="5"/>
+        <klass ccn="62012" exam_group="14" instructor="EL GENDY, K O" name="Elementary Arabic" number="1B" number_type="P" restrictions="" room="235 DWINELLE" section="004 REC" time="MTWTF 8-9A" units="5"/>
+        <klass ccn="62018" exam_group="7" instructor="S'HIRI, S" name="Intermediate Arabic" number="20B" number_type="P" restrictions="" room="271 BARROWS" section="001 REC" time="MTWTF 10-11A" units="5"/>
+        <klass ccn="62021" exam_group="4" instructor="BAZIAN, H A" name="Intermediate Arabic" number="20B" number_type="P" restrictions="CURRENTLY FULL" room="271 BARROWS" section="002 REC" time="MTWTF 9-10A" units="5"/>
+        <klass ccn="62024" exam_group="18" instructor="HASSAN, W M" name="Intermediate Arabic" number="20B" number_type="P" restrictions="" room="223 WHEELER" section="003 REC" time="MTWTF 11-12P" units="5"/>
+        <klass ccn="62030" exam_group="13" instructor="SIDDIQ, M" name="Advanced Arabic" number="100B" number_type="P" restrictions="" room="102 BARROWS" section="001 LEC" time="TuTh 11-1230P" units="3"/>
+        <klass ccn="62036" exam_group="2" instructor="LARKIN, M" name="Classical Arabic Prose" number="104B" number_type="P" restrictions="CURRENTLY FULL" room="180 BARROWS" section="001 LEC" time="TuTh 2-330P" units="3"/>
+        <klass ccn="62042" exam_group="15" instructor="SIDDIQ, M" name="Survey of Arabic Literature (in Arabic)" number="111B" number_type="P" restrictions="CURRENTLY FULL" room="102 BARROWS" section="001 LEC" time="TuTh 1230-2P" units="3"/>
+        <klass ccn="62054" exam_group="NONE" instructor="HAYES, J L" name="History of Arabic" number="202" number_type="P" restrictions="" room="250A BARROWS" section="001 LEC" time="MW 4-530P" units="3"/>
+        <klass ccn="62057" exam_group="NONE" instructor="LARKIN, M" name="Seminar in Classical Arabic Literature" number="220" number_type="P" restrictions="" room="252 BARROWS" section="001 SEM" time="Th 4-7P" units="3"/>
+    </department>
+</semester>

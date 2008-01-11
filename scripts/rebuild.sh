@@ -1,6 +1,7 @@
 #!/bin/sh
 ../manage.py --noinput reset auth
 ../manage.py --noinput reset cand
+../manage.py --noinput reset course
 ../manage.py --noinput reset event
 ../manage.py --noinput reset info
 ../manage.py --noinput flush
@@ -13,3 +14,5 @@ echo  'a' | ./import_people.py
 ./import_officership_cached.py
 ./import_usernames_cached.py
 ./create_random_rsvps.py
+./import_courses.py
+./import_klasses.py

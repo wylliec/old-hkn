@@ -1,0 +1,399 @@
+<?xml version="1.0" ?>
+<department abbr="MATH" name="Mathematics">
+    <course name="Calculus" number="1A" units="4">
+        This sequence is intended for majors in engineering and the physical sciences. An introduction to differential and integral calculus of functions of one variable, with applications and an introduction to transcendental functions.
+    </course>
+    <course name="Calculus" number="1B" units="4">
+        Continuation of 1A. Techniques of integration; applications of integration. Infinite sequences and series. First-order ordinary differential equations. Second-order ordinary differential equations; oscillation and damping; series solutions of ordinary differential equations.
+    </course>
+    <course name="Analytic Geometry and Calculus" number="16A" units="3">
+        This sequence is intended for majors in the life and social sciences. Calculus of one variable; derivatives, definite integrals and applications, maxima and minima, and applications of the exponential and logarithmic functions.
+    </course>
+    <course name="Analytic Geometry and Calculus" number="16B" units="3">
+        Continuation of 16A. Application of integration of economics and life sciences. Differential equations. Functions of many variables. Partial derivatives, constrained and unconstrained optimization.
+    </course>
+    <course name="Freshman Seminars" number="24" units="1">
+        The Berkeley Seminar Program has been designed to provide new students with the opportunity to explore an intellectual topic with a faculty member in a small-seminar setting. Berkeley Seminars are offered in all campus departments, and topics vary from department to department and semester to semester.
+    </course>
+    <course name="Precalculus" number="32" units="4">
+        Polynomial and rational functions, exponential and logarithmic functions, trigonometry and trigonometric functions. Complex numbers, fundamental theorem of algebra, mathematical induction, binomial theorem, series, and sequences.
+    </course>
+    <course name="" number="39A" units="2-4">
+        
+    </course>
+    <course name="Supplementary Work in Lower Division Mathematics" number="49" units="1-3">
+        Students with partial credit in lower division mathematics courses may, with consent of instructor, complete the credit under this heading.
+    </course>
+    <course name="Multivariable Calculus" number="53" units="4">
+        Parametric equations and polar coordinates. Vectors in 2- and 3-dimensional Euclidean spaces. Partial derivatives. Multiple integrals. Vector calculus. Theorems of Green, Gauss, and Stokes.
+    </course>
+    <course name="Honors Multivariable Calculus" number="H53" units="4">
+        Honors version of 53. Parametric equations and polar coordinates. Vectors in 2- and 3-dimensional Euclidean spaces. Partial derivatives. Multiple integrals. Vector calculus. Theorems of Green, Gauss, and Stokes.
+    </course>
+    <course name="Multivariable Calculus with Computers" number="53M" units="4">
+        This course will cover the same topics as 53; parametric equations and polar coordinates, vectors in 2- and 3-dimensional Euclidean spaces; partial derivatives, multiple integrals; vector calculus. Theorems of Green, Gauss, and Stokes. No prior computer experience is necessary.
+    </course>
+    <course name="Linear Algebra and Differential Equations" number="54" units="4">
+        Basic linear algebra; matrix arithmetic and determinants. Vector spaces; inner product as spaces. Eigenvalues and eigenvectors; linear transformations. Homogeneous ordinary differential equations; first-order differential equations with constant coefficients. Fourier series and partial differential equations.
+    </course>
+    <course name="Honors Linear Algebra and Differential Equations" number="H54" units="4">
+        Honors version of 54. Basic linear algebra: matrix arithmetic and determinants. Vectors spaces; inner product spaces. Eigenvalues and eigenvectors; linear transformations. Homogeneous ordinary differential equations; first-order differential equations with constant coefficients. Fourier series and partial differential equations.
+    </course>
+    <course name="Linear Algebra and Differential Equations with Computers" number="54M" units="4">
+        This course will cover the same topics as 54: basic linear algebra; matrix arithmetic and determinants. Vector spaces, inner product spaces. Eigenvalues and eigenvectors; linear transformations. Homogenous ordinary differential equations; first-order differential equations with constant coefficients. Fourier series and partial differential equations. No prior computer experience is necessary.
+    </course>
+    <course name="Discrete Mathematics" number="55" units="4">
+        Logic, mathematical induction sets, relations, and functions. Introduction to graphs, elementary number theory, combinatorics, algebraic structures, discrete probability, theory, and statistics. Emphasis on topics of interest to students in computer science.
+    </course>
+    <course name="Transition to Upper Division Mathematics" number="74" units="3">
+        The course will focus on reading and understanding mathematical proofs. It will emphasize precise thinking and the presentation of mathematical results, both orally and in written form. The course is intended for students who are considering majoring in mathematics but wish additional training.
+    </course>
+    <course name="Sophomore Seminar" number="84" units="1,2">
+        Sophomore seminars are small interactive courses offered by faculty members in departments all across the campus. Sophomore seminars offer opportunity for close, regular intellectual contact between faculty members and students in the crucial second year. The topics vary from department to department and semester to semester. Enrollment limited to 15 sophomores.
+    </course>
+    <course name="Honors Undergraduate Seminar in Mathematical Problem Solving" number="H90" units="1">
+        This seminar is designed especially, but not exclusively, to prepare students for the annual national Putnam Mathematical Competition in December. Students will develop problem solving skills and experience by attempting the solution of challenging mathematical problems that require insight more than knowledge.
+    </course>
+    <course name="Supervised Group Study" number="98" units="1-4">
+        Directed Group Study, topics vary with instructor.
+    </course>
+    <course name="Introduction to Mathematical Economics" number="C103" units="3">
+        Selected topics illustrating the application of mathematics to economic theory. This course is intended for upper-division students in Mathematics, Statistics, the Physical Sciences, and Engineering, and for economics majors with adequate mathematical preparation. No economic background is required. Also listed as Economics C103.
+    </course>
+    <course name="Introduction to Analysis" number="104" units="4">
+        The real number system. Sequences, limits, and continuous functions in R and R. The concept of a metric space. Uniform convergence, interchange of limit operations. Infinite series. Mean value theorem and applications. The Riemann integral.
+    </course>
+    <course name="Introduction to Analysis" number="H104" units="4">
+        Honors section corresponding to 104. Recommended for students who enjoy mathematics and are good at it. Greater emphasis on theory and challenging problems.
+    </course>
+    <course name="Second Course in Analysis" number="105" units="4">
+        Differential calculus in Rn: the derivative as a linear map; the chain rule; inverse and implicit function theorems. Lebesgue integration on the line; comparison of Lebesgue and Riemann integrals. Convergence theorems. Fourier series, L2 theory. Fubini's theorem, change of variable.
+    </course>
+    <course name="Linear Algebra" number="110" units="4">
+        Matrices, vector spaces, linear transformations, inner products, determinants. Eigenvectors. QR factorization. Quadratic forms and Rayleigh's principle. Jordan canonical form, applications. Linear functionals.
+    </course>
+    <course name="Linear Algebra" number="H110" units="4">
+        Honors section corresponding to course 110 for exceptional students with strong mathematical inclination and motivation. Emphasis is on rigor, depth, and hard problems.
+    </course>
+    <course name="Introduction to Abstract Algebra" number="113" units="4">
+        Sets and relations. The integers, congruences, and the Fundamental Theorem of Arithmetic. Groups and their factor groups. Commutative rings, ideals, and quotient fields. The theory of polynomials: Euclidean algorithm and unique factorizations. The Fundamental Theorem of Algebra. Fields and field extensions.
+    </course>
+    <course name="Introduction to Abstract Algebra" number="H113" units="4">
+        Honors section corresponding to 113. Recommended for students who enjoy mathematics and are good at it. Greater emphasis on theory and challenging problems.
+    </course>
+    <course name="Second Course in Abstract Algebra" number="114" units="4">
+        Further topics on groups, rings, and fields not covered in Math 113. Possible topics include the Sylow Theorems and their applications to group theory; classical groups; abelian groups and modules over a principal ideal domain; algebraic field extensions; splitting fields and Galois theory; construction and classification of finite fields.
+    </course>
+    <course name="Introduction to Number Theory" number="115" units="4">
+        Divisibility, congruences, numerical functions, theory of primes. Topics selected: Diophantine analysis, continued fractions, partitions, quadratic fields, asymptotic distributions, additive problems.
+    </course>
+    <course name="Fourier Analysis, Wavelets, and Signal Processing" number="118" units="4">
+        Introduction to signal processing including Fourier analysis and wavelets. Theory, algorithms, and applications to one-dimensional signals and multidimensional images.
+    </course>
+    <course name="Mathematical Tools for the Physical Sciences" number="121A" units="4">
+        Functions of a complex variable, Fourier series, finite-dimensional linear systems. Infinite-dimensional linear systems, orthogonal expansions, special functions, partial differential equations arising in mathematical physics. Intended for students in the physical sciences who are not planning to take more advanced mathematics courses.
+    </course>
+    <course name="Mathematical Tools for the Physical Sciences" number="121B" units="4">
+        Functions of a complex variable, Fourier series, finite-dimensional linear systems. Infinite-dimensional linear systems, orthogonal expansions, special functions, partial differential equations arising in mathematical physics. Intended for students in the physical sciences who are not planning to take more advanced mathematics courses.
+    </course>
+    <course name="Ordinary Differential Equations" number="123" units="4">
+        Existence and uniqueness of solutions, linear systems, regular singular points. Other topics selected from analytic systems, autonomous systems, Sturm-Liouville Theory.
+    </course>
+    <course name="Mathematical Logic" number="125A" units="4">
+        Sentential and quantificational logic. Formal grammar, semantical interpretation, formal deduction, and their interrelation. Applications to formalized mathematical theories. Selected topics from model theory or proof theory.
+    </course>
+    <course name="Introduction to Partial Differential Equations" number="126" units="4">
+        Waves and diffusion, initial value problems for hyperbolic and parabolic equations, boundary value problems for elliptic equations, Green's functions, maximum principles, a priori bounds, Fourier transform.
+    </course>
+    <course name="Mathematical and Computational Methods in Molecular Biology" number="127" units="4">
+        Introduction to mathematical and computational problems arising in the context of molecular biology. Theory and applications of combinatorics, probability, statistics, geometry, and topology to problems ranging from sequence determination to structure analysis.
+    </course>
+    <course name="Numerical Analysis" number="128A" units="4">
+        Programming for numerical calculations, round-off error, approximation and interpolation, numerical quadrature, and solution of ordinary differential equations. Practice on the computer.
+    </course>
+    <course name="Numerical Analysis" number="128B" units="4">
+        Iterative solution of systems of nonlinear equations, evaluation of eigenvalues and eigenvectors of matrices, applications to simple partial differential equations. Practice on the computer.
+    </course>
+    <course name="The Classical Geometries" number="130" units="4">
+        A critical examination of Euclid's Elements; ruler and compass constructions; connections with Galois theory; Hilbert's axioms for geometry, theory of areas, introduction of coordinates, non-Euclidean geometry, regular solids, projective geometry.
+    </course>
+    <course name="Introduction to the Theory of Sets" number="135" units="4">
+        Set-theoretical paradoxes and means of avoiding them. Sets, relations, functions, order and well-order. Proof by transfinite induction and definitions by transfinite recursion. Cardinal and ordinal numbers and their arithmetic. Construction of the real numbers. Axiom of choice and its consequences.
+    </course>
+    <course name="Metric Differential Geometry" number="140" units="4">
+        Frenet formulas, isoperimetric inequality, local theory of surfaces in Euclidean space, first and second fundamental forms. Gaussian and mean curvature, isometries, geodesics, parallelism, the Gauss-Bonnet-Von Dyck Theorem.
+    </course>
+    <course name="Elementary Differential Topology" number="141" units="4">
+        Manifolds in n-dimensional Euclidean space and smooth maps, Sard's Theorem, classification of compact one-manifolds, transversality and intersection modulo 2.
+    </course>
+    <course name="Elementary Algebraic Topology" number="142" units="4">
+        The topology of one and two dimensional spaces: manifolds and triangulation, classification of surfaces, Euler characteristic, fundamental groups, plus further topics at the discretion of the instructor.
+    </course>
+    <course name="Elementary Algebraic Geometry" number="143" units="4">
+        Introduction to basic commutative algebra, algebraic geometry, and computational techniques. Main focus on curves, surfaces and Grassmannian varieties.
+    </course>
+    <course name="Mathematics of the Secondary School Curriculum I" number="151" units="4">
+        Theory of rational numbers based on the number line, the Euclidean algorithm and fractions in lowest terms. The concepts of congruence and similarity, equation of a line, functions, and quadratic functions.
+    </course>
+    <course name="Mathematics of the Secondary School Curriculum II" number="152" units="4">
+        Complex numbers and Fundamental Theorem of Algebra, roots and factorizations of polynomials, Euclidean geometry and axiomatic systems, basic trigonometry.
+    </course>
+    <course name="Mathematics of the Secondary School Curriculum III" number="153" units="4">
+        The real line and least upper bound, limit and decimal expansion of a number, differentiation and integration, Fundamental Theorem of Calculus, characterizations of sine, cosine, exp, and log.
+    </course>
+    <course name="History of Mathematics" number="160" units="4">
+        History of algebra, geometry, analytic geometry, and calculus from ancient times through the seventeenth century and selected topics from more recent mathematical history.
+    </course>
+    <course name="Mathematical Methods for Optimization" number="170" units="4">
+        Linear programming and a selection of topics from among the following: matrix games, integer programming, semidefinite programming, nonlinear programming, convex analysis and geometry, polyhedral geometry, the calculus of variations, and control theory.
+    </course>
+    <course name="Combinatorics" number="172" units="4">
+        Basic combinatorial principles, graphs, partially ordered sets, generating functions, asymptotic methods, combinatorics of permutations and partitions, designs and codes. Additional topics at the discretion of the instructor.
+    </course>
+    <course name="Introduction to Complex Analysis" number="185" units="4">
+        Analytic functions of a complex variable. Cauchy's integral theorem, power series, Laurent series, singularities of analytic functions, the residue theorem with application to definite integrals. Some additional topics such as conformal mapping.
+    </course>
+    <course name="Introduction to Complex Analysis" number="H185" units="4">
+        Honors section corresponding to Math 185 for exceptional students with strong mathematical inclination and motivation. Emphasis is on rigor, depth, and hard problems.
+    </course>
+    <course name="Senior Level Analysis" number="187" units="4">
+        Course gives a comprehensive view of analysis. Emphasis is on the interrelations among topics taken from differential equations, harmonic analysis and group representation, elementary functional analysis and special functions.
+    </course>
+    <course name="Mathematical Methods in Classical and Quantum Mechanics" number="189" units="4">
+        Topics in mechanics presented from a mathematical viewpoint: e.g., hamiltonian mechanics and symplectic geometry, differential equations for fluids, spectral theory in quantum mechanics, probability theory and statistical mechanics. See department bulletins for specific topics each semester course is offered.
+    </course>
+    <course name="Experimental Courses in Mathematics" number="191" units="1-4">
+        The topics to be covered and the method of instruction to be used will be announced at the beginning of each semester that such courses are offered. See departmental bulletins.
+    </course>
+    <course name="Special Topics in Mathematics" number="195" units="4">
+        Lectures on special topics, which will be announced at the beginning of each semester that the course is offered.
+    </course>
+    <course name="Honors Thesis" number="196" units="4">
+        Independent study of an advanced topic leading to an honors thesis.
+    </course>
+    <course name="Field Study" number="197" units="1-4">
+        For Math/Applied math majors. Supervised experience relevant to specific aspects of their mathmatical emphasis of study in off-campus organizations. Regular individual meetings with faculty sponsor and written reports required. Units will be awarded on the basis of three hours/week/unit.
+    </course>
+    <course name="Directed Group Study" number="198" units="1-4">
+        Topics will vary with instructor.
+    </course>
+    <course name="Supervised Independent Study and Research" number="199" units="1-4">
+        
+    </course>
+    <course name="Introduction to Topology and Analysis" number="202A" units="4">
+        Metric spaces and general topological spaces. Compactness and connectedness. Characterization of compact metric spaces. Theorems of Tychonoff, Urysohn, Tietze. Complete spaces and the Baire category theorem. Function spaces; Arzela-Ascoli and Stone-Weierstrass theorems. Partitions of unity. Locally compact spaces; one-point compactification. Introduction to measure and integration. Sigma algebras of sets. Measures and outer measures. Lebesgue measure on the line and Rn. Construction of the integral. Dominated convergence theorem.
+    </course>
+    <course name="Introduction to Topology and Analysis" number="202B" units="4">
+        Measure and integration. Product measures and Fubini-type theorems. Signed measures; Hahn and Jordan decompositions. Radon-Nikodym theorem. Integration on the line and in Rn. Differentiation of the integral. Hausdorff measures. Fourier transform. Introduction to linear topological spaces, Banach spaces and Hilbert spaces. Banach-Steinhaus theorem; closed graph theorem. Hahn-Banach theorem. Duality; the dual of LP. Measures on locally compact spaces; the dual of C(X). Weak and weak-* topologies; Banach-Alaoglu theorem. Convexity and the Krein-Milman theorem. Additional topics chosen may include compact operators, spectral theory of compact operators, and applications to integral equations.
+    </course>
+    <course name="Asymptotic Analysis in Applied Mathematics" number="203" units="4">
+        Asymptotic methods for differential equations, with emphasis upon many physical examples. Topics will include matched asymptotic expansions, Laplace's method, stationary phase, boundary layers, multiple scales, WKB approximations, asymptotic Lagrangians, bifurcation theory.
+    </course>
+    <course name="Ordinary Differential Equations" number="204" units="4">
+        Rigorous theory of ordinary differential equations. Fundamental existence theorems for initial and boundary value problems, variational equilibria, periodic coefficients and Floquet Theory, Green's functions, eigenvalue problems, Sturm-Liouville theory, phase plane analysis, Poincare-Bendixon Theorem, bifurcation, chaos.
+    </course>
+    <course name="Theory of Functions of a Complex Variable" number="205" units="4">
+        Normal families. Riemann Mapping Theorem. Picard's theorem and related theorems. Multiple-valued analytic functions and Riemann surfaces. Further topics selected by the instructor may include: harmonic functions, elliptic and algebraic functions, boundary behavior of analytic functions and HP spaces, the Riemann zeta functions, prime number theorem.
+    </course>
+    <course name="Banach Algebras and Spectral Theory" number="206" units="4">
+        Banach algebras. Spectrum of a Banach algebra element. Gelfand theory of commutative Banach algebras. Analytic functional calculus. Hilbert space operators. C*-algebras of operators. Commutative C*-algebras. Spectral theorem for bounded self-adjoint and normal operators (both forms: the spectral integral and the &quot;multiplication operator&quot; formulation). Riesz theory of compact operators. Hilbert-Schmidt operators. Fredholm operators. The Fredholm index. Selected additional topics.
+    </course>
+    <course name="Unbounded Operators" number="207" units="4">
+        Unbounded self-adjoint operators. Stone's Theorem, Friedrichs extensions. Examples and applications, including differential operators. Perturbation theory. Further topics may include: unbounded operators in quantum mechanics, Stone-Von Neumann Theorem. Operator semigroups and evolution equations, some non-linear operators. Weyl theory of defect indices for ordinary differential operators.
+    </course>
+    <course name="C*-algebras" number="208" units="4">
+        Basic theory of C*-algebras. Positivity, spectrum, GNS construction. Group C*-algebras and connection with group representations. Additional topics, for example, C*-dynamical systems, K-theory.
+    </course>
+    <course name="Von Neumann Algebras" number="209" units="4">
+        Basic theory of von Neumann algebras. Density theorems, topologies and normal maps, traces, comparison of projections, type classification, examples of factors. Additional topics, for example, Tomita Takasaki theory, subfactors, group actions, and noncommutative probability.
+    </course>
+    <course name="Several Complex Variables" number="212" units="4">
+        Power series developments, domains of holomorphy, Hartogs' phenomenon, pseudo convexity and plurisubharmonicity. The remainder of the course may treat either sheaf cohomology and Stein manifolds, or the theory of analytic subvarieties and spaces.
+    </course>
+    <course name="Differentiable Manifolds" number="214" units="4">
+        Smooth manifolds and maps, tangent and normal bundles. Sard's theorem and transversality, Whitney embedding theorem. Morse functions, differential forms, Stokes' theorem, Frobenius theorem. Basic degree theory. Flows, Lie derivative, Lie groups and algebras. Additional topics selected by instructor.
+    </course>
+    <course name="Algebraic Topology" number="215A" units="4">
+        Fundamental group and covering spaces, simplicial and singular homology theory with applications, cohomology theory, duality theorem. Homotopy theory, fibrations, relations between homotopy and homology, obstruction theory, and topics from spectral sequences, cohomology operations, and characteristic classes. Sequence begins fall.
+    </course>
+    <course name="Algebraic Topology" number="215B" units="4">
+        Fundamental group and covering spaces, simplicial and singular homology theory with applications, cohomology theory, duality theorem. Homotopy theory, fibrations, relations between homotopy and homology, obstruction theory, and topics from spectral sequences, cohomology operations, and characteristic classes. Sequence begins fall.
+    </course>
+    <course name="Probability Theory" number="C218A" units="4">
+        Some knowledge of real analysis and metric spaces, including compactness, Riemann integral. Knowledge of Lebesgue integral and/or elementary probability is helpful, but not essential, given otherwise strong mathematical background. Measure theory concepts needed for probability. Expectation, distributions. Laws of large numbers and central limit theorems for independent random variables. Characteristic function methods. Conditional expectations; martingales and theory convergence. Markov chains. Stationary processes. Also listed as Statistics C205A.
+    </course>
+    <course name="Probability Theory" number="C218B" units="4">
+        Some knowledge of real analysis and metric spaces, including compactness, Riemann integral. Knowledge of Lebesgue integral and/or elementary probability is helpful, but not essential, given otherwise strong mathematical background. Measuretheory concepts needed for probability. Expectation, distributions. Laws of lar ge numbers and central limit theorems for independent random variables. Characteristic function methods. Conditional expectations; martingales and theory convergence. Markov chains. Stationary processes. Also listed as Statistics C205B.
+    </course>
+    <course name="Dynamical Systems" number="219" units="4">
+        Diffeomorphisms and flows on manifolds. Ergodic theory. Stable manifolds, generic properties, structural stability. Additional topics selected by the instructor.
+    </course>
+    <course name="Introduction to Probabilistic Methods in Mathematics and the Sciences" number="220" units="4">
+        Brownian motion, Langevin and Fokker-Planck equations, path integrals and Feynman diagrams, time series, an introduction to statistical mechanics, Monte Carlo methods, selected applications.
+    </course>
+    <course name="Advanced Matrix Computations" number="221" units="4">
+        Direct solution of linear systems, including large sparse systems: error bounds, iteration methods, least square approximation, eigenvalues and eigenvectors of matrices, nonlinear equations, and minimization of functions.
+    </course>
+    <course name="Partial Differential Equations" number="222A" units="4">
+        The theory of boundary value and initial value problems for partial differential equations, with emphasis on nonlinear equations. Laplace's equation, heat equation, wave equation, nonlinear first-order equations, conservation laws, Hamilton-Jacobi equations, Fourier transform, Sobolev spaces.
+    </course>
+    <course name="Partial Differential Equations" number="222B" units="4">
+        The theory of boundary value and initial value problems for partial differential equations, with emphasis on nonlinear equations. Second-order elliptic equations, parabolic and hyperbolic equations, calculus of variations methods, additional topics selected by instructor.
+    </course>
+    <course name="Stochastic Processes" number="C223A" units="3">
+        The content of this course changes from year to year. Course topics will be selectd from the general theory of processes, sample function properties, weak convergence, Brownian motion, diffusions, Levy processes, Markov processes, martingales, Gaussian processes, and further topics. Also listed as Statistics C206A.
+    </course>
+    <course name="Stochastic Processes" number="C223B" units="3">
+        The content of this course changes from year to year. Course topics will be selectd from the general theory of processes, sample function properties, weak convergence, Brownian motion, diffusions, Levy processes, Markov processes, martingales, Gaussian processes, and further topics. Also listed as Statistics C206B.
+    </course>
+    <course name="Mathematical Methods for the Physical Sciences" number="224A" units="4">
+        Introduction to the theory of distributions. Fourier and Laplace transforms. Partial differential equations. Green's function. Operator theory, with applications to eigenfunction expansions, perturbation theory and linear and non-linear waves. Sequence begins fall.
+    </course>
+    <course name="Mathematical Methods for the Physical Sciences" number="224B" units="4">
+        Introduction to the theory of distributions. Fourier and Laplace transforms. Partial differential equations. Green's function. Operator theory, with applications to eigenfunction expansions, perturbation theory and linear and non-linear waves. Sequence begins fall.
+    </course>
+    <course name="Metamathematics" number="225A" units="4">
+        Metamathematics of predicate logic. Completeness and compactness theorems. Interpolation theorem, definability, theory of models. Metamathematics of number theory, recursive functions, applications to truth and provability. Undecidable theories. Sequence begins fall.
+    </course>
+    <course name="Metamathematics" number="225B" units="4">
+        Metamathematics of predicate logic. Completeness and compactness theorems. Interpolation theorem, definability, theory of models. Metamathematics of number theory, recursive functions, applications to truth and provability. Undecidable theories. Sequence begins fall.
+    </course>
+    <course name="Theory of Recursive Functions" number="227A" units="4">
+        Recursive and recursively enumerable sets of natural numbers; characterizations, significance, and classification. Relativization, degrees of unsolvability. The recursion theorem. Constructive ordinals, the hyperarithmetical and analytical hierarchies. Recursive objects of higher type. Sequence begins fall.
+    </course>
+    <course name="Numerical Solution of Differential Equations" number="228A" units="4">
+        Ordinary differential equations: Runge-Kutta and predictor-corrector methods; stability theory, Richardson extrapolation, stiff equations, boundary value problems. Partial differential equations: stability, accuracy and convergence, Von Neumann and CFL conditions, finite difference solutions of hyperbolic and parabolic equations. Finite differences and finite element solution of elliptic equations.
+    </course>
+    <course name="Numerical Solution of Differential Equations" number="228B" units="4">
+        Ordinary differential equations: Runge-Kutta and predictor-corrector methods; stability theory, Richardson extrapolation, stiff equations, boundary value problems. Partial differential equations: stability, accuracy and convergence, Von Neumann and CFL conditions, finite difference solutions of hyperbolic and parabolic equations. Finite differences and finite element solution of elliptic equations.
+    </course>
+    <course name="Theory of Models" number="229" units="4">
+        Syntactical characterization of classes closed under algebraic operations. Ultraproducts and ultralimits, saturated models. Methods for establishing decidability and completeness. Model theory of various languages richer than first-order.
+    </course>
+    <course name="Theory of Sets" number="235A" units="4">
+        Axiomatic foundations. Operations on sets and relations. Images and set functions. Ordering, well-ordering, and well-founded relations; general principles of induction and recursion. Ranks of sets, ordinals and their arithmetic. Set-theoretical equivalence, similarity of relations; definitions by abstraction. Arithmetic of cardinals. Axiom of choice, equivalent forms, and consequences. Sequence begins fall.
+    </course>
+    <course name="Discrete Mathematics for the Life Sciences" number="239" units="4">
+        Introduction to algebraic statistics and probability, optimization, phylogenetic combinatorics, graphs and networks, polyhedral and metric geometry.
+    </course>
+    <course name="Riemannian Geometry" number="240" units="4">
+        Riemannian metric and Levi-Civita connection, geodesics and completeness, curvature, first and second variations of arc length. Additional topics such as the theorems of Myers, Synge, and Cartan-Hadamard, the second fundamental form, convexity and rigidity of hypersurfaces in Euclidean space, homogeneous manifolds, the Gauss-Bonnet theorem, and characteristic classes.
+    </course>
+    <course name="Complex Manifolds" number="241" units="4">
+        Riemann surfaces, divisors and line bundles on Riemann surfaces, sheaves and the Dolbeault theorem on Riemann surfaces, the classical Riemann-Roch theorem, theorem of Abel-Jacobi. Complex manifolds, Kahler metrics. Summary of Hodge theory, groups of line bundles, additional topics such as Kodaira's vanishing theorem, Lefschetz hyperplane theorem.
+    </course>
+    <course name="Symplectic Geometry" number="242" units="4">
+        Basic topics: symplectic linear algebra, symplectic manifolds, Darboux theorem, cotangent bundles, variational problems and Lengendre transform, hamiltonian systems, lagrangian submanifolds, Poisson brackets, symmetry groups and momentum mappings, coadjoint orbits, Kahler manifolds.
+    </course>
+    <course name="General Theory of Algebraic Structures" number="245A" units="4">
+        Structures defined by operations and/or relations, and their homomorphisms. Classes of structures determined by identities. Constructions such as free objects, objects presented by generators and relations, ultraproducts, direct limits. Applications of general results to groups, rings, lattices, etc. Course may emphasize study of congruence- and subalgebra-lattices, or category-theory and adjoint functors, or other aspects.
+    </course>
+    <course name="General Theory of Algebraic Structures" number="245B" units="4">
+        Structures defined by operations and/or relations, and their homomorphisms. Classes of structures determined by identities. Constructions such as free objects, objects presented by generators and relations, ultraproducts, direct limits. Applications of general results to groups, rings, lattices, etc. Course may emphasize study of congruence- and subalgebra-lattices, or category-theory and adjoint functors, or other aspects.
+    </course>
+    <course name="Algebraic Combinatorics" number="249" units="4">
+        (I) Enumeration, generating functions and exponential structures, (II) Posets and lattices, (III) Geometric combinatorics, (IV) Symmetric functions, Young tableaux, and connections with representation theory. Further study of applications of the core material and/or additional topics, chosen by instructor.
+    </course>
+    <course name="Groups, Rings, and Fields" number="250A" units="4">
+        Group theory, including the Jordan-Holder theorem and the Sylow theorems. Basic theory of rings and their ideals. Unique factorization domains and principal ideal domains. Modules. Chain conditions. Fields, including fundamental theorem of Galois theory, theory of finite fields, and transcendence degree.
+    </course>
+    <course name="Multilinear Algebra and Further Topics" number="250B" units="4">
+        Tensor algebras and exterior algebras, with application to linear transformations. Commutative ideal theory, localization. Elementary specialization and valuation theory. Related topics in algebra.
+    </course>
+    <course name="Ring Theory" number="251" units="4">
+        Topics such as: Noetherian rings, rings with descending chain condition, theory of the radical, homological methods.
+    </course>
+    <course name="Representation Theory" number="252" units="4">
+        Structure of finite dimensional algebras, applications to representations of finite groups, the classical linear groups.
+    </course>
+    <course name="Homological Algebra" number="253" units="4">
+        Modules over a ring, homomorphisms and tensor products of modules, functors and derived functors, homological dimension of rings and modules.
+    </course>
+    <course name="Number Theory" number="254A" units="4">
+        Valuations, units, and ideals in number fields, ramification theory, quadratic and cyclotomic fields, topics from class field theory, zeta-functions and L-series, distribution of primes, modular forms, quadratic forms, diophantine equations, P-adic analysis, and transcendental numbers. Sequence begins fall.
+    </course>
+    <course name="Number Theory" number="254B" units="4">
+        Valuations, units, and ideals in number fields, ramification theory, quadratic and cyclotomic fields, topics from class field theory, zeta-functions and L-series, distribution of primes, modular forms, quadratic forms, diophantine equations, P-adic analysis, and transcendental numbers. Sequence begins fall.
+    </course>
+    <course name="Algebraic Curves" number="255" units="4">
+        Elliptic curves. Algebraic curves, Riemann surfaces, and function fields. Singularities. Riemann-Roch theorem, Hurwitz's theorem, projective embeddings and the canonical curve. Zeta functions of curves over finite fields. Additional topics such as Jacobians or the Riemann hypothesis.
+    </course>
+    <course name="Algebraic Geometry" number="256A" units="4">
+        Affine and projective algebraic varieties. Theory of schemes and morphisms of schemes. Smoothness and differentials in algebraic geometry. Coherent sheaves and their cohomology. Riemann-Roch theorem and selected applications. Sequence begins fall.
+    </course>
+    <course name="Algebraic Geometry" number="256B" units="4">
+        Affine and projective algebraic varieties. Theory of schemes and morphisms of schemes. Smoothness and differentials in algebraic geometry. Coherent sheaves and their cohomology. Riemann-Roch theorem and selected applications. Sequence begins fall.
+    </course>
+    <course name="Group Theory" number="257" units="4">
+        Topics such as: generators and relations, infinite discrete groups, groups of Lie type, permutation groups, character theory, solvable groups, simple groups, transfer and cohomological methods.
+    </course>
+    <course name="Classical Harmonic Analysis" number="258" units="4">
+        Basic properties of Fourier series, convergence and summability, conjugate functions, Hardy spaces, boundary behavior of analytic and harmonic functions. Additional topics at the discretion of the instructor.
+    </course>
+    <course name="Abstract Harmonic Analysis" number="260" units="4">
+        Topological groups, Haar measure, Pontryagin duality, and structure theory of locally compact abelian groups, Peter-Weyl theorem for compact groups. Further topics may include finer study of harmonic analysis on commutative groups, or else head in the direction of group representations for noncommutative locally compact groups.
+    </course>
+    <course name="Lie Groups" number="261A" units="4">
+        Lie groups and Lie algebras, fundamental theorems of Lie, general structure theory; compact, nilpotent, solvable, semi-simple Lie groups; classification theory and representation theory of semi-simple Lie algebras and Lie groups, further topics such as symmetric spaces, Lie transformation groups, etc., if time permits. In view of its simplicity and its wide range of applications, it is preferable to cover compact Lie groups and their representations in 261A. Sequence begins Fall.
+    </course>
+    <course name="Lie Groups" number="261B" units="4">
+        Lie groups and Lie algebras, fundamental theorems of Lie, general structure theory; compact, nilpotent, solvable, semi-simple Lie groups; classification theory and representation theory of semi-simple Lie algebras and Lie groups, further topics such as symmetric spaces, Lie transformation groups, etc., if time permits. In view of its simplicity and its wide range of applications, it is preferable to cover compact Lie groups and their representations in 261A. Sequence begins Fall.
+    </course>
+    <course name="Differential Topology" number="265" units="4">
+        Approximations, degrees of maps, vector bundles, tubular neighborhoods. Introduction to Morse theory, handlebodies, cobordism, surgery. Additional topics selected by instructor from: characteristic classes, classification of manifolds, immersions, embeddings, singularities of maps.
+    </course>
+    <course name="Hot Topics Course in Mathematics" number="270" units="2">
+        This course will give introductions to current research developments. Every semester we will pick a different topic and go through the relevant literature. Each student will be expected to give one presentation.
+    </course>
+    <course name="Topics in Foundations" number="271" units="4">
+        Advanced topics chosen by the instructor. The content of this course changes, as in the case of seminars.
+    </course>
+    <course name="Ordinary Differential Equations" number="273A" units="4">
+        
+    </course>
+    <course name="Topics in Algebra" number="274" units="4">
+        Advanced topics chosen by the instructor. The content of this course changes, as in the case of seminars.
+    </course>
+    <course name="Topics in Applied Mathematics" number="275" units="4">
+        Advanced topics chosen by the instructor. The content of this course changes, as in the case of seminars.
+    </course>
+    <course name="Topics in Topology" number="276" units="4">
+        Advanced topics chosen by the instructor. The content of this course changes, as in the case of seminars.
+    </course>
+    <course name="Topics in Differential Geometry" number="277" units="4">
+        Advanced topics chosen by the instructor. The content of this course changes, as in the case of seminars.
+    </course>
+    <course name="Topics in Analysis" number="278" units="4">
+        Advanced topics chosen by the instructor. The content of this course changes, as in the case of seminars.
+    </course>
+    <course name="Topics in Partial Differential Equations" number="279" units="4">
+        Advanced topics chosen by the instructor. The content of this course changes, as in the case of seminars.
+    </course>
+    <course name="Seminars" number="290" units="1-6">
+        Topics in foundations of mathematics, theory of numbers, numerical calculations, analysis, geometry, topology, algebra, and their applications, by means of lectures and informal conferences; work based largely on original memoirs.
+    </course>
+    <course name="Topics in Fluid Mechanics" number="C290C" units="1,2">
+        Lectures on special topics which will be announced at the beginning of each semester that the course is offered. Topics may include transport and mixing, geophysical fluid dynamics, bio-fluid dynamics, oceanography, free surface flows, non Newtonian fluid mechanics, among other possibilities. Also listed as Environ Sci, Policy, and Management C291, Physics C290I, Chemical Engineering C295M, Nuclear Engineering C290F, Civil and Environmental Engineering C290K, Mechanical Engineering C298A, and Bioengineering C290C.
+    </course>
+    <course name="Individual Research" number="295" units="1-12">
+        Intended for candidates for the Ph.D. degree.
+    </course>
+    <course name="Reading Course for Graduate Students" number="299" units="1-6">
+        Investigation of special problems under the direction of members of the department.
+    </course>
+    <course name="Teaching Workshop" number="300" units="4">
+        Mandatory for all graduate student instructors teaching for the first time in the Mathematics Department. The course consists of practice teaching, alternatives to standard classroom methods, guided group and self-analysis of videotapes, reciprocal classroom visitations, and an individual project.
+    </course>
+    <course name="Undergraduate Mathematics Instruction" number="301" units="1-2">
+        May be taken for one unit by special permission of instructor. Tutoring at the Student Learning Center or for the Professional Development Program.
+    </course>
+    <course name="Professional Preparation: Supervised Teaching of Mathematics" number="303" units="2-4">
+        Meeting with supervising facutly and with discussion sections. Experience in teaching under the supervision of Mathematics faculty.
+    </course>
+    <course name="Individual Study for Master's Students" number="600" units="1-6">
+        Individual study for the comprehensive or language requirements in consultation with the field adviser.
+    </course>
+    <course name="Individual Study for Doctoral Students" number="602" units="1-8">
+        Individual study in consultation with the major field adviser intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates for the Ph.D. Course does not satisfy unit or residence requirements for doctoral degree.
+    </course>
+</department>
