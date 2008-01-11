@@ -6,18 +6,26 @@ class Department(models.Model):
     """ Models one of the academic departments. """
     
     id = models.AutoField(primary_key = True)
-    name = models.CharField(maxlength = 75)
+    name = models.CharField(maxlength = 75, unique = True)
     """ Department name: Electrical Engineering, Physics, etc."""
     
-    abbr = models.CharField(maxlength = 10)
+    abbr = models.CharField(maxlength = 10, unique = True)
     """ Department abbreviation: EE, PHYS, MATH, etc."""
+    
+    def __str__(self):
+            return self.name
+
     
 class Course(models.Model):
     """ Models a course (not to be confused with a klass, which is the teaching of a course in a particular semester"""
     
     id = models.AutoField(primary_key = True)
+    
     department = models.ForeignKey(Department)
     """ The department in charge of the course """
+    
+    department_abbr = models.CharField(maxlength = 10)
+    """ cached so we can get the course name (which relies on department abbr) without joining """
     
     number = models.CharField(maxlength = 10)
     """ The course number. Note that this isn't really a number, can contain letters e.g. 61A"""
@@ -27,6 +35,13 @@ class Course(models.Model):
     
     description = models.TextField()
     """ A description of the course """
+    
+    def __str__(self):
+        return "%s%s: %s" % (self.department_abbr, self.number, self.name)
+    
+    class Meta:
+        unique_together = (("department", "number"),)
+        
     
 class Season(models.Model):
     """ Models a season, i.e. fall, spring, or summer """
@@ -50,7 +65,7 @@ class Klass(models.Model):
     year = models.DateField()
     """ The year this klass was taught """
     
-    section = models.CharField(maxlength = 5)
+    section = models.CharField(maxlength = 10)
     """ 
     The section number of this klass. 
     
@@ -58,10 +73,10 @@ class Klass(models.Model):
     (i.e. two physics 7A lectures in the same semester, or lots of 194 sections, etc.)
     """
     
-    section_title = models.CharField(maxlength = 50)
+    section_note = models.TextField()
     """
-    A title for the particular section, useful for 194 and 294 series classes where each
-    section is very different.
+    A note for the particular section/klass, used for 194 and 294 series classes to store 
+    the title.
     """
     
     website = models.CharField(maxlength = 100)
