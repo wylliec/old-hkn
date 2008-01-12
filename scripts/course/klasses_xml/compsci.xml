@@ -8,7 +8,7 @@
         </klass>
         <klass ccn="26206" exam_group="" instructor="" name="Introduction to Symbolic Programming" number="3L" number_type="S" restrictions="CURRENTLY FULL" room="C30 HEARST ANNEX" section="011 LAB" time="TuTh 11-2P" units=""/>
         <klass ccn="26209" exam_group="" instructor="" name="Introduction to Symbolic Programming" number="3L" number_type="S" restrictions="CURRENTLY FULL" room="C30 HEARST ANNEX" section="012 LAB" time="TuTh 2-5P" units=""/>
-        <klass ccn="26212" exam_group="" instructor="" name="Introduction to Symbolic Programming" number="3L" number_type="S" restrictions="CURRENTLY FULL" room="C30 HEARST ANNEX" section="013 LAB" time="TuTh 5-8P" units=""/>
+        <klass ccn="26212" exam_group="" instructor="" name="Introduction to Symbolic Programming" number="3L" number_type="S" restrictions="" room="C30 HEARST ANNEX" section="013 LAB" time="TuTh 5-8P" units=""/>
         <klass ccn="26215" exam_group="" instructor="" name="Introduction to Symbolic Programming" number="3L" number_type="S" restrictions="" room="C30 HEARST ANNEX" section="014 LAB" time="WF 11-2P" units=""/>
         <klass ccn="26218" exam_group="TBA" instructor="GARCIA, D D" name="Introduction to Symbolic Programming (Self-Paced)" number="3S" number_type="P" restrictions="" room="UNSCHED C10 HEARST ANNEX" section="001 SLF" time="" units="1-4">
             <note>
@@ -77,18 +77,18 @@
         <klass ccn="26263" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="" room="4 EVANS" section="111 DIS" time="Th 8-930A" units=""/>
         <klass ccn="26266" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="C50 HEARST ANNEX" section="012 LAB" time="Tu 930-11A" units=""/>
         <klass ccn="26269" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="2 EVANS" section="112 DIS" time="Th 930-11A" units=""/>
-        <klass ccn="26272" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="" room="C50 HEARST ANNEX" section="013 LAB" time="Tu 11-1230P" units=""/>
-        <klass ccn="26275" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="" room="2 EVANS" section="113 DIS" time="Th 11-1230P" units=""/>
-        <klass ccn="26278" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="C50 HEARST ANNEX" section="014 LAB" time="Tu 1230-2P" units=""/>
-        <klass ccn="26281" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="4 EVANS" section="114 DIS" time="Th 1230-2P" units=""/>
+        <klass ccn="26272" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="C50 HEARST ANNEX" section="013 LAB" time="Tu 11-1230P" units=""/>
+        <klass ccn="26275" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="2 EVANS" section="113 DIS" time="Th 11-1230P" units=""/>
+        <klass ccn="26278" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="" room="C50 HEARST ANNEX" section="014 LAB" time="Tu 1230-2P" units=""/>
+        <klass ccn="26281" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="" room="4 EVANS" section="114 DIS" time="Th 1230-2P" units=""/>
         <klass ccn="26284" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="C50 HEARST ANNEX" section="015 LAB" time="Tu 2-330P" units=""/>
         <klass ccn="26287" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="6 EVANS" section="115 DIS" time="Th 2-330P" units=""/>
         <klass ccn="26290" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="C50 HEARST ANNEX" section="016 LAB" time="Tu 330-5P" units=""/>
         <klass ccn="26293" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="285 CORY" section="116 DIS" time="Th 330-5P" units=""/>
         <klass ccn="26296" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="" room="C50 HEARST ANNEX" section="017 LAB" time="W 930-11A" units=""/>
         <klass ccn="26299" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="" room="310 SODA" section="117 DIS" time="F 930-11A" units=""/>
-        <klass ccn="26302" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="C50 HEARST ANNEX" section="018 LAB" time="W 11-1230P" units=""/>
-        <klass ccn="26305" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="CURRENTLY FULL" room="310 SODA" section="118 DIS" time="F 11-1230P" units=""/>
+        <klass ccn="26302" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="" room="C50 HEARST ANNEX" section="018 LAB" time="W 11-1230P" units=""/>
+        <klass ccn="26305" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="" room="310 SODA" section="118 DIS" time="F 11-1230P" units=""/>
         <klass ccn="26308" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="" room="C50 HEARST ANNEX" section="019 LAB" time="W 1230-2P" units=""/>
         <klass ccn="26311" exam_group="" instructor="" name="The Structure and Interpretation of Computer Progra..." number="61A" number_type="S" restrictions="" room="310 SODA" section="119 DIS" time="F 1230-2P" units=""/>
         <klass ccn="26314" exam_group="18" instructor="CLANCY, M J" name="Data Structures and Programming Methodology" number="61BL" number_type="P" restrictions="" room="4 LECONTE" section="001 LEC" time="W 5-6P" units="4"/>
@@ -97,7 +97,7 @@
         <klass ccn="26323" exam_group="" instructor="" name="Data Structures and Programming Methodology" number="61BL" number_type="S" restrictions="" room="275 SODA" section="013 LAB" time="TuTh 8-11A" units=""/>
         <klass ccn="26326" exam_group="" instructor="" name="Data Structures and Programming Methodology" number="61BL" number_type="S" restrictions="CURRENTLY FULL" room="275 SODA" section="014 LAB" time="TuTh 11-2P" units=""/>
         <klass ccn="26329" exam_group="" instructor="" name="Data Structures and Programming Methodology" number="61BL" number_type="S" restrictions="CURRENTLY FULL" room="275 SODA" section="015 LAB" time="TuTh 2-5P" units=""/>
-        <klass ccn="26332" exam_group="" instructor="" name="Data Structures and Programming Methodology" number="61BL" number_type="S" restrictions="" room="275 SODA" section="016 LAB" time="TuTh 5-8P" units=""/>
+        <klass ccn="26332" exam_group="" instructor="" name="Data Structures and Programming Methodology" number="61BL" number_type="S" restrictions="CURRENTLY FULL" room="275 SODA" section="016 LAB" time="TuTh 5-8P" units=""/>
         <klass ccn="26334" exam_group="" instructor="" name="Data Structures and Programming Methodology" number="61BL" number_type="S" restrictions="" room="275 SODA" section="017 LAB" time="WF 8-11A" units=""/>
         <klass ccn="26335" exam_group="12" instructor="GARCIA, D D" name="Machine Structures" number="61C" number_type="P" restrictions="" room="2050 VALLEY LSB" section="001 LEC" time="MWF 3-4P" units="4">
             <note>
@@ -120,10 +120,10 @@
         <klass ccn="26377" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="CURRENTLY FULL" room="320 SODA" section="117 DIS" time="W 11-12P" units=""/>
         <klass ccn="26380" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="CURRENTLY FULL" room="271 SODA" section="018 LAB" time="F 1-3P" units=""/>
         <klass ccn="26383" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="CURRENTLY FULL" room="320 SODA" section="118 DIS" time="W 1-2P" units=""/>
-        <klass ccn="26386" exam_group="8" instructor="WAGNER, D" name="Discrete Mathematics and Probability Theory" number="70" number_type="P" restrictions="" room="155 DONNER LAB" section="001 LEC" time="MWF 11-12P" units="4"/>
+        <klass ccn="26386" exam_group="8" instructor="WAGNER, D" name="Discrete Mathematics and Probability Theory" number="70" number_type="P" restrictions="CURRENTLY FULL" room="155 DONNER LAB" section="001 LEC" time="MWF 11-12P" units="4"/>
         <klass ccn="26389" exam_group="" instructor="" name="Discrete Mathematics and Probability Theory" number="70" number_type="S" restrictions="CURRENTLY FULL" room="7 EVANS" section="101 DIS" time="Tu 1-2P" units=""/>
         <klass ccn="26392" exam_group="" instructor="" name="Discrete Mathematics and Probability Theory" number="70" number_type="S" restrictions="CURRENTLY FULL" room="7 EVANS" section="102 DIS" time="Tu 2-3P" units=""/>
-        <klass ccn="26395" exam_group="" instructor="" name="Discrete Mathematics and Probability Theory" number="70" number_type="S" restrictions="" room="246 DWINELLE" section="103 DIS" time="Tu 4-5P" units=""/>
+        <klass ccn="26395" exam_group="" instructor="" name="Discrete Mathematics and Probability Theory" number="70" number_type="S" restrictions="CURRENTLY FULL" room="246 DWINELLE" section="103 DIS" time="Tu 4-5P" units=""/>
         <klass ccn="26398" exam_group="NONE" instructor="GARCIA, D D" name="Directed Group Study" number="98" number_type="P" restrictions="" room="" section="001 GRP" time="" units="2: PF">
             <note>
                 &quot;Macintosh Student Developers for OS X&quot;&amp;nbsp;
@@ -177,8 +177,8 @@
         <klass ccn="26497" exam_group="" instructor="" name="Computer Security" number="161" number_type="S" restrictions="" room="5 EVANS" section="103 DIS" time="W 10-11A" units=""/>
         <klass ccn="26500" exam_group="17" instructor="JOSEPH, A D" name="Operating Systems and System Programming" number="162" number_type="P" restrictions="BY CATEGORY" room="277 CORY" section="001 LEC" time="MW 4-530P" units="4"/>
         <klass ccn="26503" exam_group="" instructor="" name="Operating Systems and System Programming" number="162" number_type="S" restrictions="CURRENTLY FULL" room="45 EVANS" section="101 DIS" time="Th 10-11A" units=""/>
-        <klass ccn="26506" exam_group="" instructor="" name="Operating Systems and System Programming" number="162" number_type="S" restrictions="" room="85 EVANS" section="102 DIS" time="Th 11-12P" units=""/>
-        <klass ccn="26509" exam_group="" instructor="" name="Operating Systems and System Programming" number="162" number_type="S" restrictions="" room="3102 ETCHEVERRY" section="103 DIS" time="Th 4-5P" units=""/>
+        <klass ccn="26506" exam_group="" instructor="" name="Operating Systems and System Programming" number="162" number_type="S" restrictions="CURRENTLY FULL" room="85 EVANS" section="102 DIS" time="Th 11-12P" units=""/>
+        <klass ccn="26509" exam_group="" instructor="" name="Operating Systems and System Programming" number="162" number_type="S" restrictions="CURRENTLY FULL" room="3102 ETCHEVERRY" section="103 DIS" time="Th 4-5P" units=""/>
         <klass ccn="26512" exam_group="8" instructor="HILFINGER, P N" name="Programming Languages and Compilers" number="164" number_type="P" restrictions="BY CATEGORY" room="306 SODA" section="001 LEC" time="MWF 11-12P" units="4"/>
         <klass ccn="26515" exam_group="" instructor="" name="Programming Languages and Compilers" number="164" number_type="S" restrictions="" room="75 EVANS" section="101 DIS" time="Tu 11-12P" units=""/>
         <klass ccn="26518" exam_group="" instructor="" name="Programming Languages and Compilers" number="164" number_type="S" restrictions="" room="4 EVANS" section="102 DIS" time="Tu 1-2P" units=""/>

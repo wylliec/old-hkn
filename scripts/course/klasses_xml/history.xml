@@ -5,7 +5,7 @@
         <klass ccn="39006" exam_group="" instructor="" name="Medieval Europe" number="4B" number_type="S" restrictions="CURRENTLY FULL" room="332 GIANNINI" section="101 DIS" time="Tu 12-2P" units=""/>
         <klass ccn="39009" exam_group="" instructor="" name="Medieval Europe" number="4B" number_type="S" restrictions="" room="175 DWINELLE" section="102 DIS" time="Tu 8-10A" units=""/>
         <klass ccn="39012" exam_group="" instructor="" name="Medieval Europe" number="4B" number_type="S" restrictions="" room="201 GIANNINI" section="103 DIS" time="W 10-12P" units=""/>
-        <klass ccn="39015" exam_group="" instructor="" name="Medieval Europe" number="4B" number_type="S" restrictions="CURRENTLY FULL" room="107 MULFORD" section="104 DIS" time="W 12-2P" units=""/>
+        <klass ccn="39015" exam_group="" instructor="" name="Medieval Europe" number="4B" number_type="S" restrictions="" room="107 MULFORD" section="104 DIS" time="W 12-2P" units=""/>
         <klass ccn="39018" exam_group="" instructor="" name="Medieval Europe" number="4B" number_type="S" restrictions="CURRENTLY FULL" room="332 GIANNINI" section="105 DIS" time="Th 10-12P" units=""/>
         <klass ccn="39021" exam_group="" instructor="" name="Medieval Europe" number="4B" number_type="S" restrictions="CURRENTLY FULL" room="189 DWINELLE" section="106 DIS" time="Th 4-6P" units=""/>
         <klass ccn="39024" exam_group="2" instructor="ANDERSON, M L" name="European Civilization from the Renaissance to the P..." number="5" number_type="P" restrictions="BY CATEGORY" room="145 DWINELLE" section="001 LEC" time="TuTh 2-330P" units="4"/>
@@ -28,107 +28,107 @@
                 SATISFIES AMERICAN HISTORY + CULTURES REQ      &quot;The History of American Society&quot;&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39081" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="2523 TOLMAN" section="101 DIS" time="Tu 4-6P" units="">
+        <klass ccn="39081" exam_group="" instructor="REDMAN, S J" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="2523 TOLMAN" section="101 DIS" time="Tu 4-6P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39084" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="2519 TOLMAN" section="102 DIS" time="Tu 4-6P" units="">
+        <klass ccn="39084" exam_group="" instructor="DUONG, J L" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="2519 TOLMAN" section="102 DIS" time="Tu 4-6P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39087" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="106 MULFORD" section="103 DIS" time="Tu 10-12P" units="">
+        <klass ccn="39087" exam_group="" instructor="ACTON, R M" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="106 MULFORD" section="103 DIS" time="Tu 10-12P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39090" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="332 GIANNINI" section="104 DIS" time="Tu 2-4P" units="">
+        <klass ccn="39090" exam_group="" instructor="DUONG, J L" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="332 GIANNINI" section="104 DIS" time="Tu 2-4P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39093" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="14 HAVILAND" section="105 DIS" time="Tu 2-4P" units="">
+        <klass ccn="39093" exam_group="" instructor="REDMAN, S J" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="14 HAVILAND" section="105 DIS" time="Tu 2-4P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39096" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="14 HAVILAND" section="106 DIS" time="M 4-6P" units="">
+        <klass ccn="39096" exam_group="" instructor="SHINE, J S" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="14 HAVILAND" section="106 DIS" time="M 4-6P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39099" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="211 DWINELLE" section="107 DIS" time="Tu 8-10A" units="">
+        <klass ccn="39099" exam_group="" instructor="RAMIREZ, Z S" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="211 DWINELLE" section="107 DIS" time="Tu 8-10A" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39102" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="332 GIANNINI" section="108 DIS" time="Tu 10-12P" units="">
+        <klass ccn="39102" exam_group="" instructor="CHEN, C S" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="332 GIANNINI" section="108 DIS" time="Tu 10-12P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39105" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="106 MULFORD" section="109 DIS" time="Tu 12-2P" units="">
+        <klass ccn="39105" exam_group="" instructor="IYER, S G" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="106 MULFORD" section="109 DIS" time="Tu 12-2P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39108" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="251 DWINELLE" section="110 DIS" time="Tu 4-6P" units="">
+        <klass ccn="39108" exam_group="" instructor="WILKINSON, A B" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="251 DWINELLE" section="110 DIS" time="Tu 4-6P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39111" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="214 HAVILAND" section="111 DIS" time="W 4-6P" units="">
+        <klass ccn="39111" exam_group="" instructor="CHEN, C S" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="214 HAVILAND" section="111 DIS" time="W 4-6P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39114" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="14 HAVILAND" section="112 DIS" time="W 10-12P" units="">
+        <klass ccn="39114" exam_group="" instructor="GULDI, E" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="14 HAVILAND" section="112 DIS" time="W 10-12P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39117" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="107 MULFORD" section="113 DIS" time="W 8-10A" units="">
+        <klass ccn="39117" exam_group="" instructor="IYER, S G" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="107 MULFORD" section="113 DIS" time="W 8-10A" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39120" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="214 HAVILAND" section="114 DIS" time="W 12-2P" units="">
+        <klass ccn="39120" exam_group="" instructor="GULDI, E" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="214 HAVILAND" section="114 DIS" time="W 12-2P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39123" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="214 HAVILAND" section="115 DIS" time="W 8-10A" units="">
+        <klass ccn="39123" exam_group="" instructor="NIBBE, N A" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="214 HAVILAND" section="115 DIS" time="W 8-10A" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39126" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="186 BARROWS" section="116 DIS" time="W 12-2P" units="">
+        <klass ccn="39126" exam_group="" instructor="WILKINSON, A B" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="186 BARROWS" section="116 DIS" time="W 12-2P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39129" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="2525 TOLMAN" section="117 DIS" time="W 4-6P" units="">
+        <klass ccn="39129" exam_group="" instructor="ADAMS, M" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="2525 TOLMAN" section="117 DIS" time="W 4-6P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39132" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="106 MULFORD" section="118 DIS" time="Th 2-4P" units="">
+        <klass ccn="39132" exam_group="" instructor="SHAW, C W" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="106 MULFORD" section="118 DIS" time="Th 2-4P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39135" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="14 HAVILAND" section="119 DIS" time="Th 12-2P" units="">
+        <klass ccn="39135" exam_group="" instructor="ADAMS, M" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="14 HAVILAND" section="119 DIS" time="Th 12-2P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39138" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="214 HAVILAND" section="120 DIS" time="Th 12-2P" units="">
+        <klass ccn="39138" exam_group="" instructor="RUCKLE, J T" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="214 HAVILAND" section="120 DIS" time="Th 12-2P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39141" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="214 HAVILAND" section="121 DIS" time="Th 2-4P" units="">
+        <klass ccn="39141" exam_group="" instructor="RUCKLE, J T" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="214 HAVILAND" section="121 DIS" time="Th 2-4P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
@@ -138,17 +138,17 @@
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39147" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="214 HAVILAND" section="123 DIS" time="Tu 10-12P" units="">
+        <klass ccn="39147" exam_group="" instructor="RAMIREZ, Z S" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="214 HAVILAND" section="123 DIS" time="Tu 10-12P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39150" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="201 GIANNINI" section="124 DIS" time="Th 10-12P" units="">
+        <klass ccn="39150" exam_group="" instructor="NIBBE, N A" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="201 GIANNINI" section="124 DIS" time="Th 10-12P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39153" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="2523 TOLMAN" section="125 DIS" time="Th 4-6P" units="">
+        <klass ccn="39153" exam_group="" instructor="SHAW, C W" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="" room="2523 TOLMAN" section="125 DIS" time="Th 4-6P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
@@ -158,7 +158,7 @@
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="39159" exam_group="" instructor="" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="214 HAVILAND" section="127 DIS" time="F 12-2P" units="">
+        <klass ccn="39159" exam_group="" instructor="ACTON, R M" name="From the Civil War to the Present" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="214 HAVILAND" section="127 DIS" time="F 12-2P" units="">
             <note>
                 SATISFIES AMERICAN HISTORY + CULTURES REQ&amp;nbsp;
             </note>

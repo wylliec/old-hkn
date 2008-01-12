@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <semester season="spring" year="2008">
     <department abbr="arabic">
-        <klass ccn="62003" exam_group="14" instructor="ABUSAAD, R" name="Elementary Arabic" number="1B" number_type="P" restrictions="CURRENTLY FULL" room="252 BARROWS" section="001 REC" time="MTWTF 9-10A" units="5"/>
+        <klass ccn="62003" exam_group="14" instructor="ABUSAAD, R" name="Elementary Arabic" number="1B" number_type="P" restrictions="" room="252 BARROWS" section="001 REC" time="MTWTF 9-10A" units="5"/>
         <klass ccn="62006" exam_group="14" instructor="VIVRETTE, J C" name="Elementary Arabic" number="1B" number_type="P" restrictions="CURRENTLY FULL" room="223 WHEELER" section="002 REC" time="MTWTF 10-11A" units="5"/>
         <klass ccn="62012" exam_group="14" instructor="EL GENDY, K O" name="Elementary Arabic" number="1B" number_type="P" restrictions="" room="235 DWINELLE" section="004 REC" time="MTWTF 8-9A" units="5"/>
         <klass ccn="62018" exam_group="7" instructor="S'HIRI, S" name="Intermediate Arabic" number="20B" number_type="P" restrictions="" room="271 BARROWS" section="001 REC" time="MTWTF 10-11A" units="5"/>

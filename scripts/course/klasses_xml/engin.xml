@@ -1,12 +1,12 @@
 <?xml version="1.0" ?>
 <semester season="spring" year="2008">
     <department abbr="engin">
-        <klass ccn="27705" exam_group="5" instructor="BAYEN, A M" name="Introduction to Computer Programming for Scientists..." number="7" number_type="P" restrictions="CURRENTLY FULL" room="100 LEWIS" section="001 LEC" time="MW 12-1P" units="4">
+        <klass ccn="27705" exam_group="5" instructor="BAYEN, A M" name="Introduction to Computer Programming for Scientists..." number="7" number_type="P" restrictions="" room="2040 VALLEY LSB" section="001 LEC" time="MW 12-1P" units="4">
             <note>
                 Engineering 77, 110, and Computer Science 3, 3L, 3S, 9ABCDEFG, are the current set of &quot;computer service&quot; courses.  A maximum of 5 units may be earned toward graduation for these courses and students may enroll for additional units, but these units will be recognized only for the purpose of computing workload units on the study list.  See the General Catalog for more information.&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="27708" exam_group="5" instructor="PATZEK, T" name="Introduction to Computer Programming for Scientists..." number="7" number_type="P" restrictions="" room="100 GPB" section="002 LEC" time="MW 1-2P" units="4">
+        <klass ccn="27708" exam_group="5" instructor="PATZEK, T" name="Introduction to Computer Programming for Scientists..." number="7" number_type="P" restrictions="" room="2060 VALLEY LSB" section="002 LEC" time="MW 1-2P" units="4">
             <note>
                 Engineering 77, 110, and Computer Science 3, 3L, 3S, 9ABCDEFG, are the current set of &quot;computer service&quot; courses.  A maximum of 5 units may be earned toward graduation for these courses and students may enroll for additional units, but these units will be recognized only for the purpose of computing workload units on the study list.  See the General Catalog for more information.&amp;nbsp;
             </note>
@@ -195,7 +195,7 @@
         <klass ccn="27903" exam_group="NONE" instructor="ISAACS, A M" name="Opportunity Recognition: Technology and Entrepreneu..." number="290O" number_type="P" restrictions="CURRENTLY NOT OPEN" room="" section="001 LEC" time="" units="3"/>
         <klass ccn="27905" exam_group="NONE" instructor="THE STAFF" name="Project Management" number="290P" number_type="P" restrictions="CURRENTLY NOT OPEN" room="" section="001 LEC" time="" units="2"/>
         <klass ccn="27906" exam_group="NONE" instructor="MOAZZAMI, R" name="Wireless Communications" number="290W" number_type="P" restrictions="CURRENTLY NOT OPEN" room="" section="001 LEC" time="" units="3"/>
-        <klass ccn="27861" exam_group="NONE" instructor="THE STAFF" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="C210 CHEIT" section="001 SEM" time="Th 8-11A" units="3">
+        <klass ccn="27861" exam_group="NONE" instructor="THE STAFF" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY" room="C210 CHEIT" section="001 SEM" time="Th 8-11A" units="3">
             <note>
                 &quot;Introduction to Management of Technology&quot;&amp;nbsp;
             </note>

@@ -2,16 +2,16 @@
 <semester season="spring" year="2008">
     <department abbr="math">
         <klass ccn="54103" exam_group="11" instructor="WILKENING, J A" name="Calculus" number="1A" number_type="P" restrictions="" room="2050 VALLEY LSB" section="001 LEC" time="MWF 12-1P" units="4"/>
-        <klass ccn="54106" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="CURRENTLY FULL" room="75 EVANS" section="101 DIS" time="MWF 8-9A" units=""/>
+        <klass ccn="54106" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="" room="75 EVANS" section="101 DIS" time="MWF 8-9A" units=""/>
         <klass ccn="54109" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="CURRENTLY FULL" room="81 EVANS" section="102 DIS" time="MWF 8-9A" units=""/>
         <klass ccn="54112" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="" room="30 WHEELER" section="103 DIS" time="MWF 11-12P" units=""/>
         <klass ccn="54115" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="CURRENTLY NOT OPEN" room="" section="104 DIS" time="" units=""/>
         <klass ccn="54118" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="CURRENTLY FULL" room="7 EVANS" section="105 DIS" time="MWF 10-11A" units=""/>
         <klass ccn="54121" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="CURRENTLY FULL" room="2070 VALLEY LSB" section="106 DIS" time="MWF 1-2P" units=""/>
-        <klass ccn="54124" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="CURRENTLY FULL" room="87 EVANS" section="107 DIS" time="MWF 4-5P" units=""/>
+        <klass ccn="54124" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="" room="87 EVANS" section="107 DIS" time="MWF 4-5P" units=""/>
         <klass ccn="54127" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="CURRENTLY FULL" room="5 EVANS" section="108 DIS" time="MWF 1-2P" units=""/>
         <klass ccn="54130" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="CURRENTLY FULL" room="47 EVANS" section="109 DIS" time="MWF 2-3P" units=""/>
-        <klass ccn="54133" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="" room="246 DWINELLE" section="110 DIS" time="MWF 2-3P" units=""/>
+        <klass ccn="54133" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="CURRENTLY FULL" room="246 DWINELLE" section="110 DIS" time="MWF 2-3P" units=""/>
         <klass ccn="54136" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="CURRENTLY FULL" room="110 BARKER" section="111 DIS" time="MWF 11-12P" units=""/>
         <klass ccn="54139" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="" room="259 DWINELLE" section="112 DIS" time="MWF 2-3P" units=""/>
         <klass ccn="54141" exam_group="" instructor="" name="Calculus" number="1A" number_type="S" restrictions="CURRENTLY NOT OPEN" room="230C STEPHENS" section="113 DIS" time="TuTh 11-130P" units=""/>
@@ -41,7 +41,7 @@
         <klass ccn="54199" exam_group="" instructor="" name="Calculus" number="1B" number_type="S" restrictions="CURRENTLY FULL" room="6 EVANS" section="203 DIS" time="MWF 10-11A" units=""/>
         <klass ccn="54202" exam_group="" instructor="" name="Calculus" number="1B" number_type="S" restrictions="" room="87 EVANS" section="204 DIS" time="MWF 11-12P" units=""/>
         <klass ccn="54205" exam_group="" instructor="" name="Calculus" number="1B" number_type="S" restrictions="CURRENTLY FULL" room="3105 ETCHEVERRY" section="205 DIS" time="MWF 12-1P" units=""/>
-        <klass ccn="54208" exam_group="" instructor="" name="Calculus" number="1B" number_type="S" restrictions="" room="6 EVANS" section="206 DIS" time="MWF 2-3P" units=""/>
+        <klass ccn="54208" exam_group="" instructor="" name="Calculus" number="1B" number_type="S" restrictions="CURRENTLY FULL" room="6 EVANS" section="206 DIS" time="MWF 2-3P" units=""/>
         <klass ccn="54211" exam_group="" instructor="" name="Calculus" number="1B" number_type="S" restrictions="" room="179 STANLEY" section="207 DIS" time="MWF 3-4P" units=""/>
         <klass ccn="54214" exam_group="" instructor="" name="Calculus" number="1B" number_type="S" restrictions="" room="4 EVANS" section="208 DIS" time="MWF 4-5P" units=""/>
         <klass ccn="54217" exam_group="" instructor="" name="Calculus" number="1B" number_type="S" restrictions="CURRENTLY FULL" room="6 EVANS" section="209 DIS" time="MWF 4-5P" units=""/>
@@ -70,13 +70,13 @@
         <klass ccn="54271" exam_group="" instructor="" name="Calculus" number="1B" number_type="S" restrictions="CURRENTLY NOT OPEN" room="" section="311 DIS" time="TuTh 11-1230P" units=""/>
         <klass ccn="54274" exam_group="" instructor="" name="Calculus" number="1B" number_type="S" restrictions="CURRENTLY NOT OPEN" room="230D STEPHENS" section="312 DIS" time="TuTh 2-430P" units=""/>
         <klass ccn="54277" exam_group="" instructor="" name="Calculus" number="1B" number_type="S" restrictions="" room="206 WHEELER" section="313 DIS" time="TuTh 2-330P" units=""/>
-        <klass ccn="54280" exam_group="15" instructor="WOODIN, W H" name="Analytic Geometry and Calculus" number="16A" number_type="P" restrictions="" room="2050 VALLEY LSB" section="001 LEC" time="TuTh 1230-2P" units="3"/>
-        <klass ccn="54283" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="" room="110 BARKER" section="101 DIS" time="Tu 8-930A" units=""/>
+        <klass ccn="54280" exam_group="15" instructor="WOODIN, W H" name="Analytic Geometry and Calculus" number="16A" number_type="P" restrictions="CURRENTLY FULL" room="2050 VALLEY LSB" section="001 LEC" time="TuTh 1230-2P" units="3"/>
+        <klass ccn="54283" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="110 BARKER" section="101 DIS" time="Tu 8-930A" units=""/>
         <klass ccn="54286" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="" room="9 EVANS" section="102 DIS" time="Tu 8-930A" units=""/>
         <klass ccn="54289" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="285 CORY" section="103 DIS" time="Tu 11-1230P" units=""/>
         <klass ccn="54292" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="87 EVANS" section="104 DIS" time="Tu 11-1230P" units=""/>
         <klass ccn="54295" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="61 EVANS" section="105 DIS" time="Tu 930-11A" units=""/>
-        <klass ccn="54298" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="" room="45 EVANS" section="106 DIS" time="Tu 2-330P" units=""/>
+        <klass ccn="54298" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="45 EVANS" section="106 DIS" time="Tu 2-330P" units=""/>
         <klass ccn="54301" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="45 EVANS" section="107 DIS" time="Tu 330-5P" units=""/>
         <klass ccn="54304" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="5 EVANS" section="108 DIS" time="Tu 11-1230P" units=""/>
         <klass ccn="54307" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="39 EVANS" section="109 DIS" time="Tu 5-630P" units=""/>
@@ -85,12 +85,12 @@
         <klass ccn="54316" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="41 EVANS" section="112 DIS" time="Tu 8-930A" units=""/>
         <klass ccn="54319" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="41 EVANS" section="113 DIS" time="Tu 930-11A" units=""/>
         <klass ccn="54322" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="289 DWINELLE" section="114 DIS" time="Tu 330-5P" units=""/>
-        <klass ccn="54324" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="39 EVANS" section="115 DIS" time="Tu 11-1230P" units=""/>
+        <klass ccn="54324" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="" room="39 EVANS" section="115 DIS" time="Tu 11-1230P" units=""/>
         <klass ccn="55690" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="" room="203 WHEELER" section="116 DIS" time="Tu 8-930A" units=""/>
         <klass ccn="55693" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY NOT OPEN" room="" section="117 DIS" time="" units=""/>
         <klass ccn="55705" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16A" number_type="S" restrictions="CURRENTLY FULL" room="47 EVANS" section="118 DIS" time="Tu 5-630P" units=""/>
         <klass ccn="54325" exam_group="2" instructor="HARRINGTON, L A" name="Analytic Geometry and Calculus" number="16B" number_type="P" restrictions="" room="155 DWINELLE" section="001 LEC" time="TuTh 2-330P" units="3"/>
-        <klass ccn="54328" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="110 BARKER" section="101 DIS" time="Th 8-930A" units=""/>
+        <klass ccn="54328" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="" room="110 BARKER" section="101 DIS" time="Th 8-930A" units=""/>
         <klass ccn="54331" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="41 EVANS" section="102 DIS" time="Th 8-930A" units=""/>
         <klass ccn="54334" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="2319 TOLMAN" section="103 DIS" time="Th 930-11A" units=""/>
         <klass ccn="54337" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="2066 VALLEY LSB" section="104 DIS" time="Th 1230-2P" units=""/>
@@ -102,7 +102,7 @@
         <klass ccn="54355" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="" room="39 EVANS" section="110 DIS" time="Th 11-1230P" units=""/>
         <klass ccn="54358" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="35 EVANS" section="111 DIS" time="Th 11-1230P" units=""/>
         <klass ccn="54361" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="" room="203 WHEELER" section="112 DIS" time="Th 8-930A" units=""/>
-        <klass ccn="54363" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="" room="61 EVANS" section="113 DIS" time="Th 330-5P" units=""/>
+        <klass ccn="54363" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="61 EVANS" section="113 DIS" time="Th 330-5P" units=""/>
         <klass ccn="55696" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="45 EVANS" section="114 DIS" time="Th 5-630P" units=""/>
         <klass ccn="55708" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="" room="237 CORY" section="115 DIS" time="Th 5-630P" units=""/>
         <klass ccn="55711" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY NOT OPEN" room="321 HAVILAND" section="116 DIS" time="Th 330-5P" units=""/>
@@ -111,7 +111,7 @@
         <klass ccn="54370" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="237 CORY" section="202 DIS" time="Tu 8-930A" units=""/>
         <klass ccn="54373" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="140 BARROWS" section="203 DIS" time="Tu 11-1230P" units=""/>
         <klass ccn="54376" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="" room="186 BARROWS" section="204 DIS" time="Tu 11-1230P" units=""/>
-        <klass ccn="54379" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="5 EVANS" section="205 DIS" time="Tu 1230-2P" units=""/>
+        <klass ccn="54379" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="" room="5 EVANS" section="205 DIS" time="Tu 1230-2P" units=""/>
         <klass ccn="54382" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="2066 VALLEY LSB" section="206 DIS" time="Tu 1230-2P" units=""/>
         <klass ccn="54385" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="259 DWINELLE" section="207 DIS" time="Tu 2-330P" units=""/>
         <klass ccn="54388" exam_group="" instructor="" name="Analytic Geometry and Calculus" number="16B" number_type="S" restrictions="CURRENTLY FULL" room="61 EVANS" section="208 DIS" time="Tu 330-5P" units=""/>
@@ -160,7 +160,7 @@
         <klass ccn="54457" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY FULL" room="110 BARKER" section="103 DIS" time="MWF 10-11A" units=""/>
         <klass ccn="54460" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY FULL" room="7 EVANS" section="104 DIS" time="MWF 12-1P" units=""/>
         <klass ccn="54463" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY FULL" room="30 WHEELER" section="105 DIS" time="MWF 12-1P" units=""/>
-        <klass ccn="54466" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY FULL" room="6 EVANS" section="106 DIS" time="MWF 3-4P" units=""/>
+        <klass ccn="54466" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="" room="6 EVANS" section="106 DIS" time="MWF 3-4P" units=""/>
         <klass ccn="54469" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY FULL" room="75 EVANS" section="107 DIS" time="MWF 12-1P" units=""/>
         <klass ccn="54472" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY FULL" room="3 EVANS" section="108 DIS" time="MWF 3-4P" units=""/>
         <klass ccn="54475" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY FULL" room="87 EVANS" section="109 DIS" time="MWF 5-6P" units=""/>
@@ -168,7 +168,7 @@
         <klass ccn="54481" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY NOT OPEN" room="" section="111 DIS" time="" units=""/>
         <klass ccn="54484" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY NOT OPEN" room="" section="112 DIS" time="" units=""/>
         <klass ccn="54487" exam_group="20" instructor="STEEL, J" name="Multivariable Calculus" number="53" number_type="P" restrictions="" room="100 LEWIS" section="002 LEC" time="TuTh 330-5P" units="4"/>
-        <klass ccn="54490" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="" room="7 EVANS" section="201 DIS" time="MWF 8-9A" units=""/>
+        <klass ccn="54490" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY FULL" room="7 EVANS" section="201 DIS" time="MWF 8-9A" units=""/>
         <klass ccn="54493" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY FULL" room="3 EVANS" section="202 DIS" time="MWF 10-11A" units=""/>
         <klass ccn="54496" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY FULL" room="3 EVANS" section="203 DIS" time="MWF 11-12P" units=""/>
         <klass ccn="54499" exam_group="" instructor="" name="Multivariable Calculus" number="53" number_type="S" restrictions="CURRENTLY FULL" room="30 WHEELER" section="204 DIS" time="MWF 2-3P" units=""/>
@@ -184,11 +184,11 @@
         <klass ccn="54529" exam_group="" instructor="" name="Honors Multivariable Calculus" number="H53" number_type="S" restrictions="" room="87 EVANS" section="101 DIS" time="MWF 3-4P" units=""/>
         <klass ccn="54532" exam_group="13" instructor="TATARU, D I" name="Linear Algebra and Differential Equations" number="54" number_type="P" restrictions="" room="2050 VALLEY LSB" section="001 LEC" time="TuTh 11-1230P" units="4"/>
         <klass ccn="54535" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="79 DWINELLE" section="101 DIS" time="MWF 8-9A" units=""/>
-        <klass ccn="54538" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="" room="9 EVANS" section="102 DIS" time="MWF 8-9A" units=""/>
+        <klass ccn="54538" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="9 EVANS" section="102 DIS" time="MWF 8-9A" units=""/>
         <klass ccn="54541" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="3102 ETCHEVERRY" section="103 DIS" time="MWF 10-11A" units=""/>
         <klass ccn="54544" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="6 EVANS" section="104 DIS" time="MWF 12-1P" units=""/>
         <klass ccn="54547" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="" room="3105 ETCHEVERRY" section="105 DIS" time="MWF 2-3P" units=""/>
-        <klass ccn="54550" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="246 DWINELLE" section="106 DIS" time="MWF 1-2P" units=""/>
+        <klass ccn="54550" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="" room="246 DWINELLE" section="106 DIS" time="MWF 1-2P" units=""/>
         <klass ccn="54553" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="321 HAVILAND" section="107 DIS" time="MWF 3-4P" units=""/>
         <klass ccn="54556" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="" room="87 EVANS" section="108 DIS" time="MWF 2-3P" units=""/>
         <klass ccn="54559" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="71 EVANS" section="109 DIS" time="MWF 5-6P" units=""/>
@@ -200,7 +200,7 @@
         <klass ccn="54574" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="4 EVANS" section="203 DIS" time="MWF 9-10A" units=""/>
         <klass ccn="54577" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="321 HAVILAND" section="204 DIS" time="MWF 10-11A" units=""/>
         <klass ccn="54580" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="" room="321 HAVILAND" section="205 DIS" time="MWF 11-12P" units=""/>
-        <klass ccn="54583" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="" room="4 EVANS" section="206 DIS" time="MWF 12-1P" units=""/>
+        <klass ccn="54583" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="4 EVANS" section="206 DIS" time="MWF 12-1P" units=""/>
         <klass ccn="54586" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="3 EVANS" section="207 DIS" time="MWF 2-3P" units=""/>
         <klass ccn="54589" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="CURRENTLY FULL" room="9 EVANS" section="208 DIS" time="MWF 2-3P" units=""/>
         <klass ccn="54592" exam_group="" instructor="" name="Linear Algebra and Differential Equations" number="54" number_type="S" restrictions="" room="75 EVANS" section="209 DIS" time="MWF 4-5P" units=""/>
@@ -263,7 +263,7 @@
         <klass ccn="54748" exam_group="" instructor="" name="Numerical Analysis" number="128A" number_type="S" restrictions="" room="B3A EVANS" section="101 DIS" time="W 9-10A" units=""/>
         <klass ccn="54751" exam_group="" instructor="" name="Numerical Analysis" number="128A" number_type="S" restrictions="CURRENTLY FULL" room="B3A EVANS" section="102 DIS" time="W 10-11A" units=""/>
         <klass ccn="54754" exam_group="" instructor="" name="Numerical Analysis" number="128A" number_type="S" restrictions="CURRENTLY FULL" room="B3A EVANS" section="103 DIS" time="W 11-12P" units=""/>
-        <klass ccn="54757" exam_group="" instructor="" name="Numerical Analysis" number="128A" number_type="S" restrictions="CURRENTLY FULL" room="B3A EVANS" section="104 DIS" time="W 1-2P" units=""/>
+        <klass ccn="54757" exam_group="" instructor="" name="Numerical Analysis" number="128A" number_type="S" restrictions="" room="B3A EVANS" section="104 DIS" time="W 1-2P" units=""/>
         <klass ccn="54760" exam_group="" instructor="" name="Numerical Analysis" number="128A" number_type="S" restrictions="CURRENTLY FULL" room="B3A EVANS" section="105 DIS" time="W 2-3P" units=""/>
         <klass ccn="54763" exam_group="8" instructor="KAHAN, W M" name="Numerical Analysis" number="128B" number_type="P" restrictions="" room="5 EVANS" section="001 LEC" time="MWF 11-12P" units="4"/>
         <klass ccn="54766" exam_group="" instructor="KAHAN, W M" name="Numerical Analysis" number="128B" number_type="S" restrictions="" room="B3A EVANS" section="101 DIS" time="M 10-11A" units=""/>

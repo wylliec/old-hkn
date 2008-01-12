@@ -26,7 +26,7 @@
         <klass ccn="13942" exam_group="NONE" instructor="RECTOR, J W" name="Introduction to Civil and Environmental Engineering" number="92" number_type="P" restrictions="" room="534 DAVIS" section="001 LEC" time="W 12-1P" units="1: PF"/>
         <klass ccn="13945" exam_group="10" instructor="DER KIUREGHIAN, A" name="Engineering Data Analysis" number="93" number_type="P" restrictions="" room="3108 ETCHEVERRY" section="001 LEC" time="TuTh 9-10A" units="3"/>
         <klass ccn="13948" exam_group="" instructor="THE STAFF" name="Engineering Data Analysis" number="93" number_type="S" restrictions="" room="345 DAVIS" section="101 DIS" time="W 1-3P" units=""/>
-        <klass ccn="13951" exam_group="" instructor="THE STAFF" name="Engineering Data Analysis" number="93" number_type="S" restrictions="CURRENTLY FULL" room="345 DAVIS" section="102 DIS" time="W 3-5P" units=""/>
+        <klass ccn="13951" exam_group="" instructor="THE STAFF" name="Engineering Data Analysis" number="93" number_type="S" restrictions="" room="345 DAVIS" section="102 DIS" time="W 3-5P" units=""/>
         <klass ccn="13954" exam_group="" instructor="THE STAFF" name="Engineering Data Analysis" number="93" number_type="S" restrictions="" room="CANCELLED" section="103 DIS" time="" units=""/>
         <klass ccn="13969" exam_group="18" instructor="THE STAFF" name="Elementary Fluid Mechanics" number="100" number_type="P" restrictions="" room="502 DAVIS" section="001 LEC" time="MW 5-630P" units="4"/>
         <klass ccn="13972" exam_group="" instructor="THE STAFF" name="Elementary Fluid Mechanics" number="100" number_type="S" restrictions="" room="212 OBRIEN" section="101 LAB" time="W 1-2P" units=""/>
@@ -51,7 +51,7 @@
         <klass ccn="14014" exam_group="" instructor="THE STAFF" name="Design of Steel Structures" number="122" number_type="S" restrictions="" room="502 DAVIS" section="101 LAB" time="Th 2-5P" units=""/>
         <klass ccn="14017" exam_group="14" instructor="MAHIN, S A" name="Design of Reinforced Concrete Structures" number="123" number_type="P" restrictions="" room="212 OBRIEN" section="001 LEC" time="MW 11-12P" units="3"/>
         <klass ccn="14020" exam_group="" instructor="THE STAFF" name="Design of Reinforced Concrete Structures" number="123" number_type="S" restrictions="" room="502 DAVIS" section="101 LAB" time="Tu 2-5P" units=""/>
-        <klass ccn="14023" exam_group="8" instructor="LI, S" name="Mechanics of Materials I" number="130" number_type="P" restrictions="CURRENTLY FULL" room="106 STANLEY" section="001 LEC" time="MWF 11-12P" units="3"/>
+        <klass ccn="14023" exam_group="8" instructor="LI, S" name="Mechanics of Materials I" number="130" number_type="P" restrictions="" room="106 STANLEY" section="001 LEC" time="MWF 11-12P" units="3"/>
         <klass ccn="14026" exam_group="5" instructor="MORGAN, T A" name="Mechanics of Materials I" number="130" number_type="P" restrictions="" room="60 EVANS" section="002 LEC" time="MWF 1-2P" units="3"/>
         <klass ccn="14035" exam_group="15" instructor="ZOHDI, T I" name="Engineering Analysis Using the Finite Element Metho..." number="C133" number_type="P" restrictions="" room="3108 ETCHEVERRY" section="001 LEC" time="TuTh 1230-2P" units="3">
             <note>

@@ -1,0 +1,294 @@
+<?xml version="1.0" ?>
+<semester season="spring" year="2008">
+    <department abbr="pol sci">
+        <klass ccn="71303" exam_group="2" instructor="SCHICKLER, E" name="Introduction to American Politics" number="1" number_type="P" restrictions="UG" room="2050 VALLEY LSB" section="001 LEC" time="TuTh 2-330P" units="4">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;            Political Science 1 must be completed before declaring the political science major.  Students who have received a score of 4 or 5 on the American Government Advanced Placement exam may substitute an upper division American Politics course (101B-111B, 157A-157B, and 171) for Political Science 1, before or after declaring the major.  An upper division course taken to satisfy Political Science 1 may not be used as an upper division major requirement.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71306" exam_group="" instructor="HUBER, B R" name="Introduction to American Politics" number="1" number_type="S" restrictions="" room="203 WHEELER" section="101 DIS" time="M 10-12P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71309" exam_group="" instructor="HOPKINS, D A" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="54 BARROWS" section="102 DIS" time="M 12-2P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71312" exam_group="" instructor="KLEIN, R W" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="115 KROEBER" section="103 DIS" time="M 2-4P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71315" exam_group="" instructor="KLEIN, R W" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="115 KROEBER" section="104 DIS" time="M 4-6P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71318" exam_group="" instructor="HUBER, B R" name="Introduction to American Politics" number="1" number_type="S" restrictions="" room="243 DWINELLE" section="105 DIS" time="Tu 8-10A" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71321" exam_group="" instructor="BLAKELY, J W" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="101 WHEELER" section="106 DIS" time="F 12-2P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71324" exam_group="" instructor="ORR, R" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="115 KROEBER" section="107 DIS" time="Tu 4-6P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71327" exam_group="" instructor="CAUGHEY, D M" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="106 WHEELER" section="108 DIS" time="W 8-10A" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71330" exam_group="" instructor="CAUGHEY, D M" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="105 DWINELLE" section="109 DIS" time="W 10-12P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71333" exam_group="" instructor="" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="B51 HILDEBRAND" section="110 DIS" time="W 10-12P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71336" exam_group="" instructor="" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="79 DWINELLE" section="111 DIS" time="W 12-2P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71339" exam_group="" instructor="MACMILLAN, K" name="Introduction to American Politics" number="1" number_type="S" restrictions="" room="115 KROEBER" section="112 DIS" time="W 4-6P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71342" exam_group="" instructor="MACMILLAN, K" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="79 DWINELLE" section="113 DIS" time="W 2-4P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71345" exam_group="" instructor="ORR, R" name="Introduction to American Politics" number="1" number_type="S" restrictions="" room="2066 VALLEY LSB" section="114 DIS" time="Th 8-10A" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71348" exam_group="" instructor="HOPKINS, D A" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="258 DWINELLE" section="115 DIS" time="Th 12-2P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71351" exam_group="" instructor="BLAKELY, J W" name="Introduction to American Politics" number="1" number_type="S" restrictions="CURRENTLY FULL" room="185 BARROWS" section="116 DIS" time="F 10-12P" units="">
+            <note>
+                SATISFIES INSTITUTIONS REQUIREMENT;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71354" exam_group="13" instructor="CHHIBBER, P" name="Introduction to Comparative Politics" number="2" number_type="P" restrictions="UG" room="WHEELER AUD" section="001 LEC" time="TuTh 11-1230P" units="4">
+            <note>
+                Political Science 2 must be completed before declaring the political science major.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71357" exam_group="" instructor="HAIG, K" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="2062 VALLEY LSB" section="101 DIS" time="M 8-10A" units=""/>
+        <klass ccn="71360" exam_group="" instructor="OPPENHEIM, B A" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="45 EVANS" section="102 DIS" time="M 10-12P" units=""/>
+        <klass ccn="71363" exam_group="" instructor="TURNER, R" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="121 WHEELER" section="103 DIS" time="M 12-2P" units=""/>
+        <klass ccn="71366" exam_group="" instructor="TURNER, R" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="251 DWINELLE" section="104 DIS" time="M 2-4P" units=""/>
+        <klass ccn="71369" exam_group="" instructor="OPPENHEIM, B A" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="" room="250 DWINELLE" section="105 DIS" time="M 4-6P" units=""/>
+        <klass ccn="71372" exam_group="" instructor="WENGLE, S" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="2066 VALLEY LSB" section="106 DIS" time="Tu 8-10A" units=""/>
+        <klass ccn="71375" exam_group="" instructor="SIRNATE, V" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="251 DWINELLE" section="107 DIS" time="Tu 2-4P" units=""/>
+        <klass ccn="71378" exam_group="" instructor="PURCELL, J S" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="104 BARROWS" section="108 DIS" time="Tu 330-530P" units=""/>
+        <klass ccn="71381" exam_group="" instructor="SIRNATE, V" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="2062 VALLEY LSB" section="109 DIS" time="Tu 4-6P" units=""/>
+        <klass ccn="71384" exam_group="" instructor="PURCELL, J S" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="2062 VALLEY LSB" section="110 DIS" time="W 8-10A" units=""/>
+        <klass ccn="71387" exam_group="" instructor="KHAN, M R" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="115 KROEBER" section="111 DIS" time="F 12-2P" units=""/>
+        <klass ccn="71390" exam_group="" instructor="HAIG, K" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="" room="2066 VALLEY LSB" section="112 DIS" time="Tu 5-7P" units=""/>
+        <klass ccn="71393" exam_group="" instructor="GNING, M C" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="243 DWINELLE" section="113 DIS" time="W 2-4P" units=""/>
+        <klass ccn="71396" exam_group="" instructor="GNING, M C" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="247 DWINELLE" section="114 DIS" time="W 4-6P" units=""/>
+        <klass ccn="71399" exam_group="" instructor="WENGLE, S" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="" room="243 DWINELLE" section="115 DIS" time="Th 8-10A" units=""/>
+        <klass ccn="71402" exam_group="" instructor="BRANCH, J N" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="2319 TOLMAN" section="116 DIS" time="Th 2-4P" units=""/>
+        <klass ccn="71405" exam_group="" instructor="KHAN, M R" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="" room="106 DWINELLE" section="117 DIS" time="Th 330-530P" units=""/>
+        <klass ccn="71408" exam_group="" instructor="BRANCH, J N" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="2062 VALLEY LSB" section="118 DIS" time="Th 4-6P" units=""/>
+        <klass ccn="71411" exam_group="" instructor="PLSEK, I" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="105 DWINELLE" section="119 DIS" time="F 10-12P" units=""/>
+        <klass ccn="71414" exam_group="" instructor="PLSEK, I" name="Introduction to Comparative Politics" number="2" number_type="S" restrictions="CURRENTLY FULL" room="54 BARROWS" section="120 DIS" time="F 12-2P" units=""/>
+        <klass ccn="71417" exam_group="20" instructor="GAILMARD, S P" name="Introduction to Empirical Analysis and Quantitative..." number="3" number_type="P" restrictions="" room="105 STANLEY" section="001 LEC" time="TuTh 330-5P" units="4">
+            <note>
+                Students are encouraged to take Political Science 3 early in their political science program.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71420" exam_group="" instructor="" name="Introduction to Empirical Analysis and Quantitative..." number="3" number_type="S" restrictions="" room="50 BARROWS" section="101 DIS" time="M 8-10A" units=""/>
+        <klass ccn="71423" exam_group="" instructor="" name="Introduction to Empirical Analysis and Quantitative..." number="3" number_type="S" restrictions="" room="2038 VALLEY LSB" section="102 DIS" time="M 4-6P" units=""/>
+        <klass ccn="71426" exam_group="" instructor="" name="Introduction to Empirical Analysis and Quantitative..." number="3" number_type="S" restrictions="CURRENTLY FULL" room="2066 VALLEY LSB" section="103 DIS" time="M 12-2P" units=""/>
+        <klass ccn="71429" exam_group="" instructor="" name="Introduction to Empirical Analysis and Quantitative..." number="3" number_type="S" restrictions="CURRENTLY FULL" room="2066 VALLEY LSB" section="104 DIS" time="M 2-4P" units=""/>
+        <klass ccn="71438" exam_group="" instructor="" name="Introduction to Empirical Analysis and Quantitative..." number="3" number_type="S" restrictions="CURRENTLY FULL" room="87 DWINELLE" section="107 DIS" time="Tu 530-730P" units=""/>
+        <klass ccn="71441" exam_group="" instructor="" name="Introduction to Empirical Analysis and Quantitative..." number="3" number_type="S" restrictions="CURRENTLY FULL" room="87 DWINELLE" section="108 DIS" time="Th 530-730P" units=""/>
+        <klass ccn="71444" exam_group="" instructor="" name="Introduction to Empirical Analysis and Quantitative..." number="3" number_type="S" restrictions="" room="50 BARROWS" section="109 DIS" time="W 4-6P" units=""/>
+        <klass ccn="71447" exam_group="" instructor="" name="Introduction to Empirical Analysis and Quantitative..." number="3" number_type="S" restrictions="" room="106 DWINELLE" section="110 DIS" time="W 5-7P" units=""/>
+        <klass ccn="71450" exam_group="" instructor="" name="Introduction to Empirical Analysis and Quantitative..." number="3" number_type="S" restrictions="CURRENTLY FULL" room="243 DWINELLE" section="111 DIS" time="W 12-2P" units=""/>
+        <klass ccn="71453" exam_group="" instructor="" name="Introduction to Empirical Analysis and Quantitative..." number="3" number_type="S" restrictions="CURRENTLY FULL" room="105 DWINELLE" section="112 DIS" time="W 2-4P" units=""/>
+        <klass ccn="71455" exam_group="TBA" instructor="CHIOZZA, G" name="Freshman/Sophomore Seminar" number="39A" number_type="P" restrictions="" room="CANCELLED" section="001 SEM" time="" units="2-4"/>
+        <klass ccn="72224" exam_group="TBA" instructor="CHIOZZA, G" name="Freshman/Sophomore Seminar" number="39D" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="106 MULFORD" section="001 SEM" time="MW 12-2P" units="4">
+            <note>
+                &quot;American Culture in Global Politics&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71456" exam_group="13" instructor="BIMES, T L" name="The American Executive" number="102" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="213 WHEELER" section="001 LEC" time="TuTh 11-1230P" units="4"/>
+        <klass ccn="71459" exam_group="" instructor="RYAN, P J" name="The American Executive" number="102" number_type="S" restrictions="CURRENTLY FULL" room="105 DWINELLE" section="101 DIS" time="M 10-11A" units=""/>
+        <klass ccn="71462" exam_group="" instructor="RYAN, P J" name="The American Executive" number="102" number_type="S" restrictions="CURRENTLY FULL" room="115 KROEBER" section="102 DIS" time="W 3-4P" units=""/>
+        <klass ccn="71477" exam_group="6" instructor="SCHNUR, D" name="American Politics: Campaign Strategy - Media" number="106A" number_type="P" restrictions="BY CATEGORY" room="155 KROEBER" section="001 LEC" time="M 2-5P" units="4"/>
+        <klass ccn="71483" exam_group="10" instructor="PERMAUL, N" name="The Politics of Displacement" number="111AC" number_type="P" restrictions="BY CATEGORY" room="791 BARROWS" section="001 LEC" time="TuTh 9-11A" units="4">
+            <note>
+                SATISFIES AMERICAN CULTURES REQUIREMENT;       Formerly numbered 118AC.   May not be repeated for credit.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71504" exam_group="13" instructor="ZIEGLER, J N" name="Politics of European Integration" number="122A" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="155 DONNER LAB" section="001 LEC" time="TuTh 11-1230P" units="4"/>
+        <klass ccn="71507" exam_group="" instructor="MAXWELL, R D" name="Politics of European Integration" number="122A" number_type="S" restrictions="CURRENTLY FULL" room="258 DWINELLE" section="101 DIS" time="Tu 1-2P" units=""/>
+        <klass ccn="71510" exam_group="" instructor="AKTURK, S" name="Politics of European Integration" number="122A" number_type="S" restrictions="CURRENTLY FULL" room="54 BARROWS" section="102 DIS" time="W 3-4P" units=""/>
+        <klass ccn="71512" exam_group="" instructor="MAXWELL, R D" name="Politics of European Integration" number="122A" number_type="S" restrictions="CURRENTLY FULL" room="115 KROEBER" section="103 DIS" time="Tu 3-4P" units=""/>
+        <klass ccn="72425" exam_group="" instructor="AKTURK, S" name="Politics of European Integration" number="122A" number_type="S" restrictions="CURRENTLY FULL" room="54 BARROWS" section="104 DIS" time="W 11-12P" units=""/>
+        <klass ccn="71516" exam_group="18" instructor="CHIOZZA, G" name="Special Topics in International Relations" number="123D" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="247 CORY" section="001 LEC" time="MW 5-630P" units="4"/>
+        <klass ccn="71519" exam_group="" instructor="FORD, C E" name="Special Topics in International Relations" number="123D" number_type="S" restrictions="CURRENTLY FULL" room="258 DWINELLE" section="101 DIS" time="Tu 12-1P" units=""/>
+        <klass ccn="71522" exam_group="" instructor="FORD, C E" name="Special Topics in International Relations" number="123D" number_type="S" restrictions="CURRENTLY FULL" room="50 BARROWS" section="102 DIS" time="W 1-2P" units=""/>
+        <klass ccn="71525" exam_group="10" instructor="GUROWITZ, A" name="Ethics and Justice in International Affairs" number="124C" number_type="P" restrictions="BY CATEGORY" room="105 NORTH GATE" section="001 LEC" time="TuTh 930-11A" units="4"/>
+        <klass ccn="71528" exam_group="" instructor="CALABRESE, N" name="Ethics and Justice in International Affairs" number="124C" number_type="S" restrictions="CURRENTLY FULL" room="54 BARROWS" section="101 DIS" time="M 4-530P" units=""/>
+        <klass ccn="71531" exam_group="" instructor="GALISANKA, A" name="Ethics and Justice in International Affairs" number="124C" number_type="S" restrictions="" room="106 WHEELER" section="102 DIS" time="Tu 2-330P" units=""/>
+        <klass ccn="71534" exam_group="" instructor="GALISANKA, A" name="Ethics and Justice in International Affairs" number="124C" number_type="S" restrictions="CURRENTLY FULL" room="106 DWINELLE" section="103 DIS" time="Tu 330-5P" units=""/>
+        <klass ccn="71537" exam_group="" instructor="CALABRESE, N" name="Ethics and Justice in International Affairs" number="124C" number_type="S" restrictions="CURRENTLY FULL" room="140 BARROWS" section="104 DIS" time="W 4-530P" units=""/>
+        <klass ccn="71540" exam_group="" instructor="BAXTER, M" name="Ethics and Justice in International Affairs" number="124C" number_type="S" restrictions="CURRENTLY FULL" room="187 DWINELLE" section="105 DIS" time="Th 330-5P" units=""/>
+        <klass ccn="71543" exam_group="" instructor="BAXTER, M" name="Ethics and Justice in International Affairs" number="124C" number_type="S" restrictions="CURRENTLY FULL" room="259 DWINELLE" section="106 DIS" time="Th 2-330P" units=""/>
+        <klass ccn="71546" exam_group="2" instructor="AGGARWAL, V K" name="International Political Economy" number="126A" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="2 LECONTE" section="001 LEC" time="TuTh 2-330P" units="4"/>
+        <klass ccn="71549" exam_group="" instructor="BOND, A M" name="International Political Economy" number="126A" number_type="S" restrictions="CURRENTLY FULL" room="54 BARROWS" section="101 DIS" time="M 11-12P" units=""/>
+        <klass ccn="71552" exam_group="" instructor="MCADAM, M L" name="International Political Economy" number="126A" number_type="S" restrictions="CURRENTLY FULL" room="87 DWINELLE" section="102 DIS" time="Tu 4-5P" units=""/>
+        <klass ccn="71555" exam_group="" instructor="BOND, A M" name="International Political Economy" number="126A" number_type="S" restrictions="CURRENTLY FULL" room="185 BARROWS" section="103 DIS" time="M 10-11A" units=""/>
+        <klass ccn="71558" exam_group="" instructor="MCADAM, M L" name="International Political Economy" number="126A" number_type="S" restrictions="CURRENTLY FULL" room="287 DWINELLE" section="104 DIS" time="Th 4-5P" units=""/>
+        <klass ccn="71561" exam_group="10" instructor="LEE, H Y" name="Chinese Foreign Policy" number="128A" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="200 WHEELER" section="001 LEC" time="TuTh 930-11A" units="4"/>
+        <klass ccn="71564" exam_group="" instructor="OH, S" name="Chinese Foreign Policy" number="128A" number_type="S" restrictions="CURRENTLY FULL" room="101 WHEELER" section="101 DIS" time="M 12-1P" units=""/>
+        <klass ccn="71567" exam_group="" instructor="OH, S" name="Chinese Foreign Policy" number="128A" number_type="S" restrictions="CURRENTLY FULL" room="121 WHEELER" section="102 DIS" time="Tu 3-4P" units=""/>
+        <klass ccn="71585" exam_group="16" instructor="WEBER, A" name="Applied Econometrics and Public Policy" number="C131A" number_type="P" restrictions="" room="534 DAVIS" section="001 LEC" time="TuTh 8-930A" units="4">
+            <note>
+                Cross-listed with Economics C142 section 1 and Public Policy C142 section 1.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71588" exam_group="" instructor="" name="Applied Econometrics and Public Policy" number="C131A" number_type="S" restrictions="CURRENTLY FULL" room="81 EVANS" section="101 DIS" time="W 5-6P" units=""/>
+        <klass ccn="71591" exam_group="" instructor="" name="Applied Econometrics and Public Policy" number="C131A" number_type="S" restrictions="CURRENTLY FULL" room="47 EVANS" section="102 DIS" time="W 4-5P" units=""/>
+        <klass ccn="71570" exam_group="20" instructor="FISH, M S" name="Democracy and Its Alternatives in The Developing Wo..." number="137C" number_type="P" restrictions="BY CATEGORY" room="4 LECONTE" section="001 LEC" time="TuTh 330-5P" units="4"/>
+        <klass ccn="71573" exam_group="" instructor="ROSENBERG, M Y" name="Democracy and Its Alternatives in The Developing Wo..." number="137C" number_type="S" restrictions="CURRENTLY FULL" room="187 DWINELLE" section="101 DIS" time="M 2-4P" units=""/>
+        <klass ccn="71576" exam_group="" instructor="GARDING, S E" name="Democracy and Its Alternatives in The Developing Wo..." number="137C" number_type="S" restrictions="CURRENTLY FULL" room="258 DWINELLE" section="102 DIS" time="Tu 8-10A" units=""/>
+        <klass ccn="71579" exam_group="" instructor="ROSENBERG, M Y" name="Democracy and Its Alternatives in The Developing Wo..." number="137C" number_type="S" restrictions="CURRENTLY FULL" room="251 DWINELLE" section="103 DIS" time="W 2-4P" units=""/>
+        <klass ccn="71582" exam_group="" instructor="ELLIS, T" name="Democracy and Its Alternatives in The Developing Wo..." number="137C" number_type="S" restrictions="" room="258 DWINELLE" section="104 DIS" time="Th 8-10A" units=""/>
+        <klass ccn="72419" exam_group="" instructor="GARDING, S E" name="Democracy and Its Alternatives in The Developing Wo..." number="137C" number_type="S" restrictions="CURRENTLY FULL" room="B51 HILDEBRAND" section="105 DIS" time="F 10-12P" units=""/>
+        <klass ccn="72422" exam_group="" instructor="ELLIS, T" name="Democracy and Its Alternatives in The Developing Wo..." number="137C" number_type="S" restrictions="CURRENTLY FULL" room="2066 VALLEY LSB" section="106 DIS" time="F 12-2P" units=""/>
+        <klass ccn="71609" exam_group="" instructor="THE STAFF" name="National Success and Failure in the Age of a Global..." number="138G" number_type="S" restrictions="" room="CANCELLED" section="102 DIS" time="" units=""/>
+        <klass ccn="71612" exam_group="15" instructor="CHAUDHRY, K A" name="Development Politics" number="139B" number_type="P" restrictions="BY CATEGORY" room="88 DWINELLE" section="001 LEC" time="TuTh 1230-2P" units="4"/>
+        <klass ccn="71615" exam_group="" instructor="DALLAS, M" name="Development Politics" number="139B" number_type="S" restrictions="" room="187 DWINELLE" section="101 DIS" time="W 4-530P" units=""/>
+        <klass ccn="71618" exam_group="" instructor="DALLAS, M" name="Development Politics" number="139B" number_type="S" restrictions="" room="115 KROEBER" section="102 DIS" time="Th 330-5P" units=""/>
+        <klass ccn="71621" exam_group="7" instructor="CHAUDHRY, K A" name="Middle East Politics" number="142A" number_type="P" restrictions="BY CATEGORY" room="155 KROEBER" section="001 LEC" time="MWF 10-11A" units="4"/>
+        <klass ccn="71624" exam_group="" instructor="DAIFALLAH, Y" name="Middle East Politics" number="142A" number_type="S" restrictions="" room="250 DWINELLE" section="101 DIS" time="Tu 2-330P" units=""/>
+        <klass ccn="71627" exam_group="" instructor="DAIFALLAH, Y" name="Middle East Politics" number="142A" number_type="S" restrictions="" room="87 DWINELLE" section="102 DIS" time="W 4-530P" units=""/>
+        <klass ccn="71630" exam_group="17" instructor="DITTMER, L" name="Northeast Asian Politics" number="143A" number_type="P" restrictions="BY CATEGORY" room="126 BARROWS" section="001 LEC" time="MW 4-530P" units="4">
+            <note>
+                &quot;China&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71633" exam_group="" instructor="HAN, R" name="Northeast Asian Politics" number="143A" number_type="S" restrictions="" room="385 LECONTE" section="101 DIS" time="Th 330-5P" units=""/>
+        <klass ccn="71636" exam_group="" instructor="TSAI, C" name="Northeast Asian Politics" number="143A" number_type="S" restrictions="" room="106 WHEELER" section="102 DIS" time="Th 2-330P" units=""/>
+        <klass ccn="71638" exam_group="" instructor="HAN, R" name="Northeast Asian Politics" number="143A" number_type="S" restrictions="" room="50 BARROWS" section="103 DIS" time="Tu 330-5P" units=""/>
+        <klass ccn="71657" exam_group="" instructor="" name="Special Topics in Area Studies" number="149A" number_type="S" restrictions="" room="CANCELLED" section="101 DIS" time="" units=""/>
+        <klass ccn="71663" exam_group="2" instructor="WITTENBERG, J" name="Special Topics in Area Studies" number="149B" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="88 DWINELLE" section="001 LEC" time="Tu 2-5P" units="4">
+            <note>
+                &quot;Dictatorship and its Discontents&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71666" exam_group="" instructor="LESTER, G" name="Special Topics in Area Studies" number="149B" number_type="S" restrictions="CURRENTLY FULL" room="187 DWINELLE" section="101 DIS" time="W 2-3P" units=""/>
+        <klass ccn="71669" exam_group="" instructor="LESTER, G" name="Special Topics in Area Studies" number="149B" number_type="S" restrictions="CURRENTLY FULL" room="283 DWINELLE" section="102 DIS" time="Th 2-3P" units=""/>
+        <klass ccn="71672" exam_group="18" instructor="ZOOK, D C" name="Special Topics in Area Studies" number="149E" number_type="P" restrictions="BY CATEGORY" room="390 HEARST MIN" section="001 LEC" time="MW 5-630P" units="4"/>
+        <klass ccn="71675" exam_group="15" instructor="KAGAN, R A" name="Selected Topics in Public Law" number="152A" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="220 WHEELER" section="001 LEC" time="TuTh 1230-2P" units="4"/>
+        <klass ccn="71681" exam_group="" instructor="HAMLIN, R" name="Selected Topics in Public Law" number="152A" number_type="S" restrictions="CURRENTLY FULL" room="115 KROEBER" section="102 DIS" time="W 2-3P" units=""/>
+        <klass ccn="71684" exam_group="" instructor="HAMLIN, R" name="Selected Topics in Public Law" number="152A" number_type="S" restrictions="CURRENTLY FULL" room="101 WHEELER" section="103 DIS" time="W 3-4P" units=""/>
+        <klass ccn="71690" exam_group="2" instructor="MUIR, W K" name="Constitutional Law of the United States" number="157B" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="160 KROEBER" section="001 LEC" time="TuTh 2-330P" units="4">
+            <note>
+                &quot;Liberty and Equality&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71696" exam_group="" instructor="SALAMONE, M F" name="Constitutional Law of the United States" number="157B" number_type="S" restrictions="CURRENTLY FULL" room="221 KROEBER" section="102 DIS" time="Tu 11-1230P" units=""/>
+        <klass ccn="71699" exam_group="" instructor="SALAMONE, M F" name="Constitutional Law of the United States" number="157B" number_type="S" restrictions="CURRENTLY FULL" room="50 BARROWS" section="103 DIS" time="M 4-530P" units=""/>
+        <klass ccn="71702" exam_group="" instructor="KRUPICKA, B T" name="Constitutional Law of the United States" number="157B" number_type="S" restrictions="CURRENTLY FULL" room="54 BARROWS" section="104 DIS" time="W 4-530P" units=""/>
+        <klass ccn="71705" exam_group="" instructor="" name="Constitutional Law of the United States" number="157B" number_type="S" restrictions="" room="CANCELLED" section="105 DIS" time="" units=""/>
+        <klass ccn="71708" exam_group="" instructor="KRUPICKA, B T" name="Constitutional Law of the United States" number="157B" number_type="S" restrictions="CURRENTLY FULL" room="115 KROEBER" section="106 DIS" time="Th 930-11A" units=""/>
+        <klass ccn="71711" exam_group="20" instructor="LEMPERT, E T" name="California Politics" number="171" number_type="P" restrictions="BY CATEGORY" room="3 LECONTE" section="001 LEC" time="TuTh 330-5P" units="4"/>
+        <klass ccn="71714" exam_group="" instructor="HANLEY, J I" name="California Politics" number="171" number_type="S" restrictions="CURRENTLY FULL" room="183 DWINELLE" section="101 DIS" time="M 4-530P" units=""/>
+        <klass ccn="71717" exam_group="" instructor="HANLEY, J I" name="California Politics" number="171" number_type="S" restrictions="CURRENTLY FULL" room="115 KROEBER" section="102 DIS" time="Tu 930-11A" units=""/>
+        <klass ccn="71720" exam_group="" instructor="KOENIG, J L" name="California Politics" number="171" number_type="S" restrictions="" room="255 DWINELLE" section="103 DIS" time="W 4-530P" units=""/>
+        <klass ccn="71723" exam_group="" instructor="KOENIG, J L" name="California Politics" number="171" number_type="S" restrictions="CURRENTLY FULL" room="250 DWINELLE" section="104 DIS" time="Th 2-330P" units=""/>
+        <klass ccn="71729" exam_group="TBA" instructor="ROSS, A D" name="Undergraduate Colloquium on Political Science" number="179" number_type="P" restrictions="" room="WHEELER AUD" section="001 LEC" time="W 4-5P" units="1: PF"/>
+        <klass ccn="71741" exam_group="11" instructor="CHHIBBER, P" name="Junior Seminar" number="191" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="706 BARROWS" section="001 LEC" time="W 12-2P" units="4"/>
+        <klass ccn="71744" exam_group="7" instructor="O'BRIEN, K" name="Junior Seminar" number="191" number_type="P" restrictions="CURRENTLY FULL" room="791 BARROWS" section="002 LEC" time="W 10-12P" units="4"/>
+        <klass ccn="71747" exam_group="15" instructor="KAROL, D" name="Junior Seminar" number="191" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="706 BARROWS" section="003 LEC" time="Tu 1-3P" units="4"/>
+        <klass ccn="71749" exam_group="7" instructor="STIMSON, S C" name="Junior Seminar" number="191" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="706 BARROWS" section="004 LEC" time="W 10-12P" units="4"/>
+        <klass ccn="72416" exam_group="20" instructor="COLLIER, D" name="Junior Seminar" number="191" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="2505 TOLMAN" section="006 LEC" time="Tu 4-6P" units="4">
+            <note>
+                Section 6 is open to seniors as well as juniors.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71759" exam_group="NONE" instructor="CHAUDHRY, K A" name="Theories of Development and Political Change." number="202A" number_type="P" restrictions="GR               &amp;                                                                                                                       BY CATEGORY" room="791 BARROWS" section="001 SEM" time="M 3-5P" units="4"/>
+        <klass ccn="71765" exam_group="NONE" instructor="JANOS, A C" name="Selected Topics in Comparative Politics" number="210" number_type="P" restrictions="" room="791 BARROWS" section="001 SEM" time="W 2-4P" units="4">
+            <note>
+                &quot;Themes in Comparative Politics:  Power and Political Change in Social Science&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71767" exam_group="NONE" instructor="ZIEGLER, J N" name="Selected Topics in Comparative Politics" number="210" number_type="P" restrictions="" room="791 BARROWS" section="002 SEM" time="Tu 4-6P" units="4">
+            <note>
+                &quot;Interests and Institutions in Comparative Capitalism&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71768" exam_group="NONE" instructor="STIMSON, S C" name="History of Political Thought: Ancient and Medieval" number="212A" number_type="P" restrictions="" room="CANCELLED" section="001 SEM" time="" units="4"/>
+        <klass ccn="72428" exam_group="NONE" instructor="PITKIN, H F" name="Themes in Western Political Theory" number="214" number_type="P" restrictions="" room="CANCELLED" section="003 SEM" time="" units="4"/>
+        <klass ccn="71774" exam_group="NONE" instructor="BEVIR, M" name="Approaches to Contemporary Political Theory" number="215A" number_type="P" restrictions="CURRENTLY FULL" room="706 BARROWS" section="001 SEM" time="Th 4-6P" units="4"/>
+        <klass ccn="71777" exam_group="NONE" instructor="PITKIN, H F" name="Topics to Contemporary Political Theory" number="215B" number_type="P" restrictions="GR" room="204 DWINELLE" section="001 SEM" time="Tu 2-5P" units="4"/>
+        <klass ccn="71778" exam_group="NONE" instructor="SONG, S S" name="Topics to Contemporary Political Theory" number="215B" number_type="P" restrictions="GR" room="102 2240 PIEDMNT" section="002 SEM" time="Tu 10-1240P" units="4"/>
+        <klass ccn="71779" exam_group="NONE" instructor="WEBER, S" name="Theories of International Relations" number="220A" number_type="P" restrictions="CURRENTLY FULL" room="791 BARROWS" section="001 SEM" time="Th 2-4P" units="4"/>
+        <klass ccn="71786" exam_group="NONE" instructor="STOKER, L" name="Quantitative Analysis in Political Research" number="231A" number_type="P" restrictions="BY CATEGORY" room="109 MORGAN" section="001 SEM" time="TuTh 8-10A" units="4"/>
+        <klass ccn="71788" exam_group="" instructor="HUI, S W" name="Quantitative Analysis in Political Research" number="231A" number_type="S" restrictions="" room="101 WHEELER" section="101 DIS" time="F 11-12P" units=""/>
+        <klass ccn="72434" exam_group="NONE" instructor="BRADY, H E" name="Quantitative Analysis in Political Research" number="231B" number_type="P" restrictions="GR" room="C109 2538CHANNING" section="001 SEM" time="MW 930-11A" units="4"/>
+        <klass ccn="72236" exam_group="2" instructor="LORENTZEN, P L" name="Formal Models of Political Science" number="232A" number_type="P" restrictions="BY CATEGORY" room="203 WHEELER" section="001 SEM" time="TuTh 2-330P" units="4"/>
+        <klass ccn="72239" exam_group="" instructor="COHON, A J" name="Formal Models of Political Science" number="232A" number_type="S" restrictions="" room="151 BARROWS" section="101 DIS" time="W 2-4P" units=""/>
+        <klass ccn="71792" exam_group="NONE" instructor="SEKHON, J S" name="Selected Topics in Methodology" number="239" number_type="P" restrictions="" room="205 WHEELER" section="001 SEM" time="W 5-7P" units="4"/>
+        <klass ccn="71795" exam_group="" instructor="TITIUNIK, R" name="Selected Topics in Methodology" number="239" number_type="S" restrictions="" room="200 WHEELER" section="101 DIS" time="Th 5-7P" units=""/>
+        <klass ccn="71794" exam_group="NONE" instructor="COLLIER, D" name="Selected Topics in Methodology" number="239" number_type="P" restrictions="" room="791 BARROWS" section="002 SEM" time="Th 4-7P" units="4"/>
+        <klass ccn="71798" exam_group="NONE" instructor="DITTMER, L" name="Analysis of Contemporary China" number="244A" number_type="P" restrictions="" room="791 BARROWS" section="001 SEM" time="M 1-3P" units="4"/>
+        <klass ccn="71800" exam_group="NONE" instructor="LORENTZEN, P L" name="The Political Economy of China" number="244E" number_type="P" restrictions="" room="706 BARROWS" section="001 SEM" time="M 5-7P" units="4"/>
+        <klass ccn="71803" exam_group="2" instructor="SAWYER, M" name="Special Topics in Area Studies" number="249A" number_type="P" restrictions="" room="115 BARROWS" section="001 LEC" time="Tu 2-5P" units="4"/>
+        <klass ccn="72233" exam_group="17" instructor="COLLIER, R B" name="Special Topics in Area Studies" number="249B" number_type="P" restrictions="BY CATEGORY" room="202 WHEELER" section="001 LEC" time="W 4-7P" units="4"/>
+        <klass ccn="71804" exam_group="NONE" instructor="SILVERSTEIN, G" name="Constitutional Law" number="257" number_type="P" restrictions="" room="706 BARROWS" section="001 SEM" time="W 4-6P" units="4">
+            <note>
+                Also: KAGAN, R
+            </note>
+        </klass>
+        <klass ccn="71809" exam_group="NONE" instructor="CITRIN, J" name="Political Behavior" number="261" number_type="P" restrictions="GR" room="791 BARROWS" section="001 SEM" time="Tu 2-4P" units="4">
+            <note>
+                Also: TETLOCK, P E&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="72431" exam_group="6" instructor="BRADY, H E" name="Selected Topics in Political Behavior" number="269" number_type="P" restrictions="GR" room="C109 2538CHANNING" section="001 SEM" time="M 2-4P" units="4"/>
+        <klass ccn="71810" exam_group="NONE" instructor="KAROL, D" name="Selected Topics in American Government" number="279" number_type="P" restrictions="" room="706 BARROWS" section="001 SEM" time="Tu 4-6P" units="4">
+            <note>
+                &quot;Political Parties&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71812" exam_group="NONE" instructor="GAILMARD, S P" name="Selected Topics in American Government" number="279" number_type="P" restrictions="" room="791 BARROWS" section="002 SEM" time="Tu 11-1P" units="4"/>
+        <klass ccn="71813" exam_group="NONE" instructor="ANSELL, C K" name="Research Topics in Public Organization" number="289" number_type="P" restrictions="" room="706 BARROWS" section="001 SEM" time="M 10-12P" units="4">
+            <note>
+                &quot;Strategies of Contemporary Governance&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71816" exam_group="NONE" instructor="VOGEL, D J" name="Research Topics in Public Organization" number="289" number_type="P" restrictions="BY CATEGORY" room="706 BARROWS" section="002 SEM" time="M 2-4P" units="4">
+            <note>
+                &quot;Globalization and Regulation&quot;&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="71819" exam_group="NONE" instructor="ZIEGLER, J N" name="Dissertation Research" number="290" number_type="P" restrictions="GR               &amp;                           POLITICAL SCIENCE" room="791 BARROWS" section="001 SEM" time="W 4-6P" units="4: SU"/>
+        <klass ccn="71822" exam_group="NONE" instructor="SCHICKLER, E" name="Research Workshop in American Politics" number="291" number_type="P" restrictions="" room="204 WHEELER" section="001 GRP" time="W 12-2P" units="1,2: SU"/>
+        <klass ccn="72218" exam_group="NONE" instructor="VOGEL, S K" name="Research Skills" number="404" number_type="P" restrictions="CURRENTLY NOT OPEN" room="" section="001 IND" time="" units="1-4: SU"/>
+        <klass ccn="72221" exam_group="NONE" instructor="PIERSON, P" name="Individual Study for Doctoral Students" number="602" number_type="P" restrictions="" room="UNSCHED NOFACILITY" section="001 IND" time="" units="4-12: SU"/>
+    </department>
+</semester>

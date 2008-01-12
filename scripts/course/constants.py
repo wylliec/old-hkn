@@ -12,7 +12,7 @@ The term. First value is the appropriate query value for the berkeley online sch
 #TERM = ("FL", "fall")
 
 
-DEFAULT_DEPARTMENTS = ["el eng", "compsci", "comscls", "math", "physics", "english", "history", "arabic", "engin", "civ eng", "chm eng"]
+DEFAULT_DEPARTMENTS = ["el eng", "compsci", "comscls", "math", "physics", "english", "history", "arabic", "engin", "civ eng", "chm eng", "pol sci"]
 """
 The departments that we get scrape course & klasses for by default. The values should be the correct department abbreviation
 """

@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <semester season="spring" year="2008">
     <department abbr="physics">
-        <klass ccn="68703" exam_group="8" instructor="BOGGS, S E" name="Physics for Scientists and Engineers" number="7A" number_type="P" restrictions="" room="1 LECONTE" section="001 LEC" time="MWF 11-12P" units="4">
+        <klass ccn="68703" exam_group="8" instructor="BOGGS, S E" name="Physics for Scientists and Engineers" number="7A" number_type="P" restrictions="CURRENTLY FULL" room="1 LECONTE" section="001 LEC" time="MWF 11-12P" units="4">
             <note>
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES; Discussion and lab (D/L) sections begin on the first day of instruction.  You must attend your D/L sections during the first and second week, or you may be dropped from the course.  Enter desired lecture followed by discussion then laboratory sections with the same numbers (i.e., if you enrolled in Dis 101 then you must enroll in Lab 101).  The discussion and laboratory sections must correspond with the lecture.  MIDTERM EXAMS:  Physics 7A lecture 1 midterms will be held on 2/25/08 and 4/7/08.  All midterms are from 6:00 to 8:00 p.m.  Plan accordingly.  DO NOT schedule any conflicts.&amp;nbsp;
             </note>
@@ -26,12 +26,12 @@
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="68718" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7A" number_type="S" restrictions="" room="225 LECONTE" section="103 DIS" time="W 8-10A" units="">
+        <klass ccn="68718" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7A" number_type="S" restrictions="CURRENTLY FULL" room="225 LECONTE" section="103 DIS" time="W 8-10A" units="">
             <note>
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="68721" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7A" number_type="S" restrictions="" room="224 LECONTE" section="103 LAB" time="M 8-10A" units="">
+        <klass ccn="68721" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7A" number_type="S" restrictions="CURRENTLY FULL" room="224 LECONTE" section="103 LAB" time="M 8-10A" units="">
             <note>
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
@@ -311,12 +311,12 @@
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="68889" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="226 LECONTE" section="102 DIS" time="Tu 10-12P" units="">
+        <klass ccn="68889" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="" room="226 LECONTE" section="102 DIS" time="Tu 10-12P" units="">
             <note>
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="68892" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="245 LECONTE" section="102 LAB" time="Th 10-12P" units="">
+        <klass ccn="68892" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="" room="245 LECONTE" section="102 LAB" time="Th 10-12P" units="">
             <note>
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
@@ -331,12 +331,12 @@
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="68901" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="" room="226 LECONTE" section="104 DIS" time="Tu 2-4P" units="">
+        <klass ccn="68901" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="226 LECONTE" section="104 DIS" time="Tu 2-4P" units="">
             <note>
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="68904" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="" room="245 LECONTE" section="104 LAB" time="Th 2-4P" units="">
+        <klass ccn="68904" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="245 LECONTE" section="104 LAB" time="Th 2-4P" units="">
             <note>
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
@@ -386,12 +386,12 @@
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="68934" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="226 LECONTE" section="202 DIS" time="M 10-12P" units="">
+        <klass ccn="68934" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="" room="226 LECONTE" section="202 DIS" time="M 10-12P" units="">
             <note>
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="68937" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="245 LECONTE" section="202 LAB" time="W 10-12P" units="">
+        <klass ccn="68937" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="" room="245 LECONTE" section="202 LAB" time="W 10-12P" units="">
             <note>
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
@@ -456,12 +456,12 @@
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="68976" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="226 LECONTE" section="209 DIS" time="W 2-4P" units="">
+        <klass ccn="68976" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="" room="226 LECONTE" section="209 DIS" time="W 2-4P" units="">
             <note>
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="68979" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="CURRENTLY FULL" room="245 LECONTE" section="209 LAB" time="M 2-4P" units="">
+        <klass ccn="68979" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7B" number_type="S" restrictions="" room="245 LECONTE" section="209 LAB" time="M 2-4P" units="">
             <note>
                 EARLY DROP DEADLINE (END OF 2ND WEEK) APPLIES&amp;nbsp;
             </note>
@@ -483,16 +483,16 @@
         </klass>
         <klass ccn="69003" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="175 LECONTE" section="101 DIS" time="M 1-2P" units=""/>
         <klass ccn="69006" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="175 LECONTE" section="102 DIS" time="Tu 1-2P" units=""/>
-        <klass ccn="69009" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="CURRENTLY FULL" room="175 LECONTE" section="103 DIS" time="W 2-3P" units=""/>
+        <klass ccn="69009" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="175 LECONTE" section="103 DIS" time="W 2-3P" units=""/>
         <klass ccn="69012" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="175 LECONTE" section="104 DIS" time="Th 12-1P" units=""/>
         <klass ccn="69015" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="175 LECONTE" section="201 DIS" time="M 12-1P" units=""/>
-        <klass ccn="69018" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="175 LECONTE" section="202 DIS" time="Tu 11-12P" units=""/>
+        <klass ccn="69018" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="CURRENTLY FULL" room="175 LECONTE" section="202 DIS" time="Tu 11-12P" units=""/>
         <klass ccn="69021" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="175 LECONTE" section="203 DIS" time="W 9-10A" units=""/>
         <klass ccn="69024" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="175 LECONTE" section="204 DIS" time="Th 1-2P" units=""/>
-        <klass ccn="69027" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="CURRENTLY FULL" room="221 LECONTE" section="110 LAB" time="Tu 11-2P" units=""/>
+        <klass ccn="69027" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="221 LECONTE" section="110 LAB" time="Tu 11-2P" units=""/>
         <klass ccn="69030" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="CURRENTLY FULL" room="221 LECONTE" section="111 LAB" time="Tu 2-5P" units=""/>
         <klass ccn="69033" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="CURRENTLY FULL" room="221 LECONTE" section="112 LAB" time="W 2-5P" units=""/>
-        <klass ccn="69036" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="221 LECONTE" section="113 LAB" time="Th 11-2P" units=""/>
+        <klass ccn="69036" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="CURRENTLY FULL" room="221 LECONTE" section="113 LAB" time="Th 11-2P" units=""/>
         <klass ccn="69039" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="CURRENTLY FULL" room="221 LECONTE" section="114 LAB" time="Th 2-5P" units=""/>
         <klass ccn="69042" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="221 LECONTE" section="115 LAB" time="F 2-5P" units=""/>
         <klass ccn="69045" exam_group="" instructor="" name="Physics for Scientists and Engineers" number="7C" number_type="S" restrictions="" room="235 LECONTE" section="116 LAB" time="Tu 11-2P" units=""/>
@@ -1232,6 +1232,11 @@
             </note>
         </klass>
         <klass ccn="69918" exam_group="NONE" instructor="" name="Seminar" number="290Z" number_type="P" restrictions="" room="402 LECONTE" section="001 SEM" time="Tu 2-4P" units="2: SU">
+            <note>
+                Consult bulletin board outside 366 LeConte for seminar offerings and their course control numbers.&amp;nbsp;
+            </note>
+        </klass>
+        <klass ccn="69921" exam_group="NONE" instructor="NOMURA, Y" name="Seminar" number="290Z" number_type="P" restrictions="" room="OFF CAMPUS" section="002 SEM" time="W 1230-2P" units="2: SU">
             <note>
                 Consult bulletin board outside 366 LeConte for seminar offerings and their course control numbers.&amp;nbsp;
             </note>

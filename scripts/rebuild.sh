@@ -15,4 +15,5 @@ echo  'a' | ./import_people.py
 ./import_usernames_cached.py
 ./create_random_rsvps.py
 ./import_courses.py
+./import_instructors.py
 ./import_klasses.py

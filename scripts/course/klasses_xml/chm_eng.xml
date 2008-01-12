@@ -43,12 +43,12 @@
         <klass ccn="10484" exam_group="" instructor="HUDSON, E P" name="Biochemical Engineering Laboratory" number="C170L" number_type="S" restrictions="" room="55 EVANS" section="101 LEC" time="Th 10-11A" units=""/>
         <klass ccn="10490" exam_group="8" instructor="NEWMAN, J S" name="Principles of Electrochemical Processes" number="176" number_type="P" restrictions="CURRENTLY FULL" room="7 EVANS" section="001 LEC" time="MWF 11-12P" units="3"/>
         <klass ccn="10493" exam_group="15" instructor="MABOUDIAN, R" name="Process Technology of Solid-State Materials Devices" number="179" number_type="P" restrictions="" room="385 LECONTE" section="001 LEC" time="TuTh 1230-2P" units="3"/>
-        <klass ccn="10496" exam_group="13" instructor="REIMER, J A" name="Technical Communication for Chemical Engineers" number="185" number_type="P" restrictions="BY CATEGORY" room="30 WHEELER" section="001 LEC" time="TuTh 11-1230P" units="3">
+        <klass ccn="10496" exam_group="13" instructor="REIMER, J A" name="Technical Communication for Chemical Engineers" number="185" number_type="P" restrictions="" room="CANCELLED" section="001 LEC" time="" units="3">
             <note>
                 Students are advised they must pass the Chemical Engineering 185 Screening Examination (administered in Chemical Engineering 140) before being admitted to the course.  Students with exceptional writing skills may seek exemption from Chemical Engineering 185 through an exam that is offered toward the end of each semester.  Please note that this exemption exam may be taken only once.&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="10499" exam_group="2" instructor="REIMER, J A" name="Technical Communication for Chemical Engineers" number="185" number_type="P" restrictions="CLASS ENTRY CODE REQ" room="55 EVANS" section="002 LEC" time="TuTh 2-330P" units="3"/>
+        <klass ccn="10499" exam_group="2" instructor="REIMER, J A" name="Technical Communication for Chemical Engineers" number="185" number_type="P" restrictions="" room="CANCELLED" section="002 LEC" time="" units="3"/>
         <klass ccn="10592" exam_group="12" instructor="RADKE, C J" name="Special Topics" number="195" number_type="P" restrictions="" room="CANCELLED" section="016 IND" time="" units="2-3"/>
         <klass ccn="10604" exam_group="8" instructor="CARRARO, C" name="Special Topics" number="195" number_type="P" restrictions="SO, JR" room="35 EVANS" section="022 IND" time="MWF 11-12P" units="2-3"/>
         <klass ccn="10679" exam_group="NONE" instructor="STRAUSS, H L" name="Field Study in Chemical Engineering" number="197" number_type="P" restrictions="JR, SR &amp;                                                                                                                       BY CATEGORY" room="UNSCHED NOFACILITY" section="041 FLD" time="" units="1-4: PF"/>
