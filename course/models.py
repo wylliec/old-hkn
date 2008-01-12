@@ -56,6 +56,7 @@ class Season(models.Model):
     
 class Klass(models.Model):
     id = models.AutoField(primary_key = True)
+    
     course = models.ForeignKey(Course)
     """ The course that this klass is a particular instance of """
     
@@ -91,8 +92,14 @@ class Instructor(models.Model):
     
     id = models.AutoField(primary_key = True)
     
+    department = models.ForeignKey(Department)
+    """ Department to which this instructor belongs """
+    
     first = models.CharField(maxlength = 30)
     """ Instructor's first name """
+    
+    middle = models.CharField(maxlength = 30)
+    """ Instructor's middle name """
     
     last = models.CharField(maxlength = 30)
     """ Instructor's last name """
@@ -111,6 +118,9 @@ class Instructor(models.Model):
     """
     A many-to-many relationship of the klasses taught by the instructor.
     """
-
-
-
+    
+    distinguished_teacher = models.BooleanField()
+    """ If this instructor has won the Distinguished Teacher award. """
+    
+    def __str__(self):
+        return "%s %s %s" % (self.first, self.middle, self.last)
