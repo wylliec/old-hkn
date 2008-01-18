@@ -7,6 +7,8 @@ from django.template import RequestContext
 #from django.core.paginator import ObjectPaginator, InvalidPage
 from django import newforms as forms
 
+from hkn.auth.decorators import *
+
 from hkn.course import models as courses
 from hkn.tutor import models as tutor
 
@@ -34,6 +36,7 @@ def prevSemesterInfo():
     return ["Spring", CURRENT_YEAR]
 
 # Create your views here.
+@login_required
 def signup(request, message = False):
     context = NiceDict(defaultValue="")
     context['signup_table_width'] = 600
@@ -97,6 +100,7 @@ def signup(request, message = False):
     
     return render_to_response("tutor/signup.html", context,  context_instance = RequestContext(request))
 
+@login_required
 def submit_signup(request):
     if request.method != "POST":
         return signup(request, message="Please enter signup information on this form")
