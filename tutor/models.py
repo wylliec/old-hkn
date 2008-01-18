@@ -16,6 +16,7 @@ class Availability(models.Model):
     office = models.CharField(maxlength = 5, choices = (OFFICE_CHOICES)) #Soda or Cory
     season = models.ForeignKey(courses.Season)
     year = models.PositiveIntegerField()
+    preference = models.IntegerField()
 
 class Assignment(models.Model):
     """ Models when a person will tutor for a given season/year and schedule version. """
