@@ -1,6 +1,6 @@
 {% extends "hkn.html" %}
 
-{# all tutoring pages should extend this template #}
+{# all tutoring pages should extend this template, and have message defined as False or a nonempty String #}
 
 {% block extratitle %} Tutoring {% endblock %}
 
@@ -11,8 +11,13 @@
 {# If you do not want this block to appear at all, simply place an empty 'subheader' block in the child template. #}
 {% block subheader %}
 <h1>{% block subtitle %}Tutoring{% endblock %}</h1>
-<HR>
+<hr>
 {% endblock %}
+
+{% if message %}
+<font size=3 color="red">{{ message }}</font>
+<hr />
+{% endif %}
 
 {% block tutorcontent %}
 <font color="red">This page lacks a properly formatted 'tutorcontent' block. (Content goes here!)</font>

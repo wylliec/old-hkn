@@ -12,17 +12,22 @@ class Availability(models.Model):
     """ Models a person's time and office availability for a given season/year. """
     
     person = models.ForeignKey(Person)
-    time = models.TimeField()
+    slot = models.CharField(maxlength = 30)
     office = models.CharField(maxlength = 5, choices = (OFFICE_CHOICES)) #Soda or Cory
     season = models.ForeignKey(courses.Season)
     year = models.PositiveIntegerField()
     preference = models.IntegerField()
 
+    def atCory(self):
+        return self.office == "Cory"
+    def atSoda(self):
+        return self.office == "Soda"
+    
 class Assignment(models.Model):
     """ Models when a person will tutor for a given season/year and schedule version. """
     
     person = models.ForeignKey(Person)
-    time = models.TimeField()
+    slot = models.CharField(maxlength = 30)
     office = models.CharField(maxlength = 5, choices = (OFFICE_CHOICES)) #Soda or Cory
     season = models.ForeignKey(courses.Season)
     year = models.PositiveIntegerField()
@@ -32,6 +37,11 @@ class Assignment(models.Model):
     Allows multiple schedule versions to be generated and saved
     for a single season/year.
     """
+
+    def atCory(self):
+        return self.office == "Cory"
+    def atSoda(self):
+        return self.office == "Soda"
 
 class CanTutor(models.Model):
     """ Models who can tutor what for a particular season/year. """

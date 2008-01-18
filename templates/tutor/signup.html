@@ -6,55 +6,55 @@
 
 {% block tutorcontent %}
 
-You are logged in as <B>{{ user.person.first }} {{ user.person.last }}</B> <BR />
-<BR />
-<BR />
+You are logged in as <b>{{ user.person.first }} {{ user.person.last }}</b> <br />
+<br />
+<br />
 
-<FORM action="tutor/submit_signup" method="POST">
-    <LABEL FOR="office">Office Preference: </label> <BR />
-    <SELECT NAME="office">
-        <OPTION VALUE="both">Doesn't Matter</OPTION>
-        <OPTION VALUE="soda">Soda Office</OPTION>
-        <OPTION VALUE="cory">Cory Office</OPTION>
-    </SELECT>
+<form action="/tutor/submit_signup/" method="POST">
+    <label FOR="office">Office Preference: </label> <br />
+    <select name="office">
+        <option value="Both"{% if prefer_both %} selected="yes"{% endif %}>Doesn't Matter</option>
+        <option value="Soda"{% if prefer_soda %} selected="yes"{% endif %}>Soda Office</option>
+        <option value="Cory"{% if prefer_cory %} selected="yes"{% endif %}>Cory Office</option>
+    </select>
     
-    <BR /><BR /><BR />
+    <br /><br /><br />
     Please note which times you can make according to the following:
-    <UL>
-    	<LI>1: Most favorable times</LI>
-    	<LI>2: Unfavorable times, but can make them</LI>
-    	<LI>(blank): Cannot make this time</LI>
-    </UL>
+    <ul>
+    	<li>1: Most favorable times</li>
+    	<li>2: Unfavorable times, but can make them</li>
+    	<li>(blank): Cannot make this time</li>
+    </ul>
     Tutoring will attempt where possible to have consecutive time slots for each person in addition to taking time and office preferences into account.
     
-    <TABLE WIDTH={{ signup_table_width }}>
-    <TR>
-        <TD WIDTH={{ signup_col_width }}>&nbsp;</TD>
+    <table width={{ signup_table_width }}>
+    <tr>
+        <td width={{ signup_col_width }}>&nbsp;</td>
         {% for day in days %}
-        <TD WIDTH={{ signup_col_width }}>
+        <td width={{ signup_col_width }}>
             {{ day }}
-        </TD>
+        </td>
         {% endfor %}
-    </TR>
+    </tr>
     {% for row in prev %}
-    <TR>
-    	<TD WIDTH={{ signup_col_width }}>{{ row.name }}</TD>
+    <tr>
+    	<td width={{ signup_col_width }}>{{ row.name }}</td>
         {% for elem in row %}
-        <TD STYLE="WIDTH:{{ signup_col_width }}">
-            <INPUT NAME="{{ elem.name }}" STYLE="WIDTH:2em" VALUE="{{ elem.value }}" />
-        </TD>
+        <td style="width:{{ signup_col_width }}">
+            <input name="{{ elem.name }}" style="width:2em" value="{{ elem.value }}" />
+        </td>
         {% endfor %}
     {% endfor %}
-    </TR>
-    </TABLE>
+    </tr>
+    </table>
     
-    <BR /><BR /><BR />
+    <br /><br /><br />
     
     Stuff about classes goes here
     
-    <BR /><BR /><BR />
+    <br /><br /><br />
     
-    <INPUT TYPE="submit" VALUE="Submit">
-</FORM>
+    <input type="submit" value="Submit">
+</form>
 
 {% endblock %}

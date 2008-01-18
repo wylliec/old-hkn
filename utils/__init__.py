@@ -36,3 +36,19 @@ class NamedList(list):
     def __repr__(self):
         return 'NamedList(%s, %s)' % (self.name,
                                       list.__repr__(self))
+"""
+queryDict is annoying.  request.POST and request.GET are examples.
+Use this wrapper to access a queryDict as if it were a dictionary
+with a default value.  This is just syntactic sugar.
+ugly: request.POST.get(key, defaultValue)
+nice: wrapper[key]
+"""
+class QueryDictWrapper:
+    def __init__(self, queryDict, defaultValue = False):
+        self.defaultValue = defaultValue
+        self.data = queryDict
+    def __getitem__(self, key):
+        return self.data.get(key, self.defaultValue)
+    def __contains__(self, key):
+        return key in self.data
+    
