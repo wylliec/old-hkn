@@ -1,0 +1,114 @@
+{% extends "tutor/base.html" %}
+
+{% block extratitle %} Tutoring - View Signups {% endblock %}
+
+{% block subtitle %} Tutoring - View Signups {% endblock %}
+
+{% block tutorcontent %}
+{% if version %}
+You are viewing version {{ version }}
+{% else %}
+Version unavailable.  Viewing null assignment.
+{% endif %}
+<br />
+<br />
+To edit the schedule, click on who should tutor at each time and office.  The number is the level of preference (1 is preferred, 2 is not preferred) <br />
+To select multiple or deselect, hold down CTRL while clicking.<br />
+When finished, click the submit button at the bottom.  This will create a new version of the schedule.<br />
+To change which schedule is displayed on the main tutoring page, you need to <s>go to the tutoring admin page <u>link</u></s> wait for someone to code that.<br />
+<br />
+<br />
+<form action="/tutor/view_signups/" method="GET">
+    <label for="version">Select Version:</label>
+    <input name="version"{% if version %} value="{{ version }}"{% endif %}/>
+    <input type="submit" value="Go" />
+</form>
+<br />
+<br />
+<br />
+<form action="/tutor/submit_assignments/" method="POST">
+    <table cellpadding=5>
+    <tr>
+        <td>&nbsp;</td>
+        {% for day in days %}
+        <td>
+            {{ day }}
+        </td>
+        {% endfor %}
+    </tr>
+    {% for row in info %}
+    <tr>
+        <td>{{ row.name }}</td>
+        {% for elem in row %}
+        <td style="width:{{ signup_col_width }}">
+            Soda:
+            <select name="{{ elem.name }} {{ SODA }}" multiple="yes"/>
+                {% for option in elem.sodaoptions %}
+                <option value="{{ option.id }}"{% if option.assigned %} selected="yes"{% endif %}>{{ option.name }} - {{ option.preference }}</option>
+                {% endfor %}
+            </select>
+            
+            <br />
+            Cory:
+            <select name="{{ elem.name }} {{ CORY }}" multiple="yes"/>
+                {% for option in elem.coryoptions %}
+                <option value="{{ option.id }}"{% if option.assigned %} selected="yes"{% endif %}>{{ option.name }} - {{ option.preference }}</option>
+                {% endfor %}
+            </select>
+        </td>
+        {% endfor %}
+    {% endfor %}
+    </tr>
+    </table>
+    
+    <br /><br /><br />
+    
+    Happiness - how happy each person is.  Net is calculated using:<ul>
+    <li>-{{score_miss}} for difference in hours assigned and hours supposed to be assigned</li>
+    <li>+{{score_office}} for assignment to correct office</li>
+    <li>+{{score_preferred}} for assignment to preferred time</li>
+    <li>+{{score_less_preferred}} for assignment to less preferred time</li>
+    <li>+{{score_adjacent}} for adjacent hours (currently not working)</li>
+    </ul>
+    
+    <br />
+    This table should probably get upgraded to update using javascript.  Oh well.
+    <br />
+    
+    <b>Total Happiness: {{ total_happiness }}</b>
+    
+    <br />
+    <table cellpadding=5>
+        <tr>
+            <td>Name</td>
+            <td>Net Happiness</td>
+            <td>First Choices</td>
+            <td>Second Choices</td>
+            <td>Adjacent (not working)</td>
+            <td>Correct Office</td>
+            <td>Missing (target - assigned)</td>
+        </tr>
+        {% for elem in happiness %}
+        <tr>
+            <td>{{ elem.name }}</td>
+            <td>{{ elem.net }}</td>
+            <td>{{ elem.first_choices }}</td>
+            <td>{{ elem.second_choices }}</td>
+            <td>{% if elem.adjacent %}True{% else %}False{% endif %}</td>
+            <td>{{ elem.correct_office_count }}</td>
+            <td>{{ elem.missing }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <br /><br /><br />
+    
+    Stuff about classes goes here
+    
+    <br /><br /><br />
+    
+    Submitting will save the current selection at a version number 1 higher than the current max, then display that schedule and version number on this page. <br />
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

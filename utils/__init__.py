@@ -37,7 +37,7 @@ class NamedList(list):
         return 'NamedList(%s, %s)' % (self.name,
                                       list.__repr__(self))
 """
-queryDict is annoying.  request.POST and request.GET are examples.
+queryDict is annoying.  request.POST and request.GET are examples of queryDict.
 Use this wrapper to access a queryDict as if it were a dictionary
 with a default value.  This is just syntactic sugar.
 ugly: request.POST.get(key, defaultValue)
@@ -51,4 +51,5 @@ class QueryDictWrapper:
         return self.data.get(key, self.defaultValue)
     def __contains__(self, key):
         return key in self.data
-    
+    def getlist(self, key):
+        return self.data.getlist(key)
