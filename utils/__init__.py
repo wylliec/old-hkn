@@ -1,7 +1,9 @@
 """
 has a default value instead of throwing an error
 allows for useful behavior of [] operations
-Default value is False
+Default defaultvalue is False
+To instantiate by copying another dictionary, you must specify the defaultValue:
+  NiceDict(defaultValue="default value", {"example":True})
 -Darren Lo
 """
 class NiceDict(dict):

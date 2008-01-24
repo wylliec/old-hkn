@@ -68,7 +68,7 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
     <li>+{{score_office}} for assignment to correct office</li>
     <li>+{{score_preferred}} for assignment to preferred time</li>
     <li>+{{score_less_preferred}} for assignment to less preferred time</li>
-    <li>+{{score_adjacent}} for adjacent hours (currently not working)</li>
+    <li>+{{score_adjacent}} for each pair of adjacent hours (currently not working)</li>
     </ul>
     
     <br />
@@ -84,7 +84,7 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
             <td>Net Happiness</td>
             <td>First Choices</td>
             <td>Second Choices</td>
-            <td>Adjacent (not working)</td>
+            <td>Adjacencies (not working)</td>
             <td>Correct Office</td>
             <td>Missing (target - assigned)</td>
         </tr>
@@ -94,7 +94,7 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
             <td>{{ elem.net }}</td>
             <td>{{ elem.first_choices }}</td>
             <td>{{ elem.second_choices }}</td>
-            <td>{% if elem.adjacent %}True{% else %}False{% endif %}</td>
+            <td>{{ elem.adjacencies }}</td>
             <td>{{ elem.correct_office_count }}</td>
             <td>{{ elem.missing }}</td>
         </tr>

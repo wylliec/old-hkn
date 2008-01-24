@@ -19,6 +19,7 @@ from hkn.utils import QueryDictWrapper
 
 from hkn.tutor.constants import *
 
+#WARNING: currentSeason is cached, may cause problems when updating seasons
 CURRENT_SEASON_HOLDER = []
 def currentSeason():
     if len(CURRENT_SEASON_HOLDER) == 0:
@@ -72,7 +73,7 @@ def signup(request, message = False):
     for time in context['timeslots']:
         row = NamedList(name=time)
         for day in context['days']:
-            slot = day + " " + time
+            slot = tutor.makeSlot(day=day, time=time)
             row.append({"name":slot,
                         "value":prevAvailabilities[slot]})
         prev.append(row)
@@ -129,7 +130,7 @@ def submit_signup(request):
     #make the new availabilities for this semester/year
     for time in TUTORING_TIMES:
         for day in TUTORING_DAYS:
-            slot = day + " " + time
+            slot = tutor.makeSlot(day=day, time=time)
             if info[slot]:
                 try:
                     preference = int(info[slot])
@@ -169,7 +170,7 @@ def view_signups(request):
     context['message'] = False
     context['SODA'] = SODA
     context['CORY'] = CORY
-    context['score_miss'] = SCORE_ASSIGNMENT_COUNT
+    context['score_miss'] = SCORE_MISS_PENALTY
     context['score_office'] = SCORE_CORRECT_OFFICE
     context['score_preferred'] = SCORE_PREFERENCE[1]
     context['score_less_preferred'] = SCORE_PREFERENCE[2]
@@ -244,10 +245,10 @@ def view_signups(request):
             happiness[fullname] = {"net":0,
                                    "first_choices":0,
                                    "second_choices":0,
-                                   "adjacent":False,
+                                   "adjacencies":0,
                                    "correct_office_count":0,
                                    "missing":HOUR_EXCEPTIONS[fullname] | DEFAULT_HOURS}
-            happiness[fullname]["net"] = -1 * SCORE_ASSIGNMENT_COUNT * happiness[fullname]["missing"]
+            happiness[fullname]["net"] = -1 * SCORE_MISS_PENALTY * happiness[fullname]["missing"]
         
         if assignment.atSoda():
             officeIndex = 0
@@ -262,9 +263,9 @@ def view_signups(request):
             happiness[fullname]["net"] += SCORE_CORRECT_OFFICE
             happiness[fullname]["missing"] -= 1
             if(happiness[fullname]["missing"] >= 0):
-                happiness[fullname]["net"] += SCORE_ASSIGNMENT_COUNT
+                happiness[fullname]["net"] += SCORE_MISS_PENALTY
             else:
-                happiness[fullname]["net"] -= SCORE_ASSIGNMENT_COUNT
+                happiness[fullname]["net"] -= SCORE_MISS_PENALTY
         elif len(slot_preference) == 0:
             #check other office
             slot_preference = [x for x in availabilitiesDict[assignment.slot][(officeIndex + 1) % 2] if x["name"] == fullname]
@@ -274,9 +275,9 @@ def view_signups(request):
             #TODO adjust net for bad office choice?
             happiness[fullname]["missing"] -= 1
             if(happiness[fullname]["missing"] >= 0):
-                happiness[fullname]["net"] += SCORE_ASSIGNMENT_COUNT
+                happiness[fullname]["net"] += SCORE_MISS_PENALTY
             else:
-                happiness[fullname]["net"] -= SCORE_ASSIGNMENT_COUNT
+                happiness[fullname]["net"] -= SCORE_MISS_PENALTY
         else:
             raise "improper availability found for " + fullname +", assignment to slot " + assignment.slot
         
@@ -302,7 +303,7 @@ def view_signups(request):
     for time in context['timeslots']:
         row = NamedList(name=time)
         for day in context['days']:
-            slot = day + " " + time
+            slot = tutor.makeSlot(day=day, time=time)
             #return signup(request, str(availabilitiesDict))
             row.append({"name":slot,
                         "sodaoptions":availabilitiesDict[slot][0],
@@ -346,9 +347,9 @@ def submit_assignments(request):
     
     for day in TUTORING_DAYS:
         for time in TUTORING_TIMES:
-            slot = day + " " + time
+            slot = tutor.makeSlot(day=day, time=time)
             for office in [SODA, CORY]:
-                officeslot = slot + " " + office
+                officeslot = tutor.makeOfficeSlot(day=day, time=time, office=office)
                 #selected_people is a DICTIONARY mapping id to person object
                 people_ids = [int(x) for x in info.getlist(officeslot)]
                 selected_people = hknmodels.Person.objects.in_bulk(people_ids)
