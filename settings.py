@@ -25,6 +25,8 @@ if not SERVER_ROOT.endswith("hkn/"):
 # don't change this
 IMAGES_PATH = "/home/hzarka/hkn-website-images/"
 
+ROOT_URL = ""
+
 # django crap
 
 DEBUG = True
