@@ -10,6 +10,39 @@ You are logged in as <b>{{ user.person.first }} {{ user.person.last }}</b> <br /
 <br />
 <br />
 
+<script language="javascript">
+function update_courses() {
+	var inp = document.getElementById("person_query").value;
+	query_url = "{% url hkn.course.course.find_course %}?query=" + escape(inp);
+	$("#results").load(query_url);
+	return false;
+}
+function updateonenter(e) {
+	var keycode;
+	if (window.event) keycode = window.event.keyCode;
+	else if (e) keycode = e.which;
+	else return true;
+	if (keycode == 13) {
+		update_persons();
+		return false;
+	}
+	return true;
+}
+function addCourse(name, course_id){
+	var newhtml =
+		'<div id=course' + course_id +'/>' +
+		name +
+		'<button onClick="removeCourse('+course_id+');"' +
+		'<input type=hidden value=' + course_id + ' /><br />' +
+		'</div>';
+	$("#classes").innerhtml += newhtml;
+}
+function removeCourse(course_id){
+	var doomed = $('course'+course_id)
+	doomed.parentNode.removeChild(doomed)
+}
+</script>
+
 <form action="{% url hkn.tutor.views.submit_signup %}" method="POST">
     <label FOR="office">Office Preference: </label> <br />
     <select name="office">
@@ -50,7 +83,16 @@ You are logged in as <b>{{ user.person.first }} {{ user.person.last }}</b> <br /
     
     <br /><br /><br />
     
-    Stuff about classes goes here
+    <div>
+		<div style="margin: 0px auto;">
+			Search for class (like "cs61a"):
+			<input id="course_query" onkeypress="return updateonenter(event);"/>
+			<button onclick="update_courses();">Search</button>
+		</div>
+		<br />
+		<div id="results" style="border: 2px solid black; margin: 0px auto; height: 20em;"> </div>
+		<div id="classes" style="border: 2px solid black; margin: 0px auto; height: 20em;"> </div>
+    </div>
     
     <br /><br /><br />
     
