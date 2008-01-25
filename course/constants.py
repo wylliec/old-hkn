@@ -1,5 +1,5 @@
 from hkn.enum import EnumType
-from utils import NiceDict
+from hkn.utils import NiceDict
 
 SEMESTER_SPRING = "spring"
 SEMESTER_SUMMER = "summer"
