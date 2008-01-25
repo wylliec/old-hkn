@@ -110,6 +110,7 @@ TEMPLATE_DIRS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
 "hkn.auth.context_processor.auth",
+"hkn.main.context_processor.hkn_vars",
 "hkn.request.context_processor.hkn_requests",
 "hkn.gcal.context_processor.gcal",
 #"django.core.context_processors.auth",
