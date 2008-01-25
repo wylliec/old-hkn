@@ -3,14 +3,13 @@
 <HEAD>
 {% load hkn_extras %}
 {% block title %}<title>HKN {% block extratitle%} {% endblock %}</title>{% endblock %}
-<LINK REL="stylesheet" TYPE="text/css" HREF="/css/hkn.css">
-<LINK REL="stylesheet" TYPE="text/css" HREF="/css/info.css">
+<LINK REL="stylesheet" TYPE="text/css" HREF="{{ROOT_URL}}css/hkn.css">
+<LINK REL="stylesheet" TYPE="text/css" HREF="{{ROOT_URL}}css/info.css">
 <META NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
 fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% block js %}
-<!-- <script type="text/javascript" src="/js/protoaculous1.6.packed.js" > </script> -->
-<script type="text/javascript" src="/js/jquery-1.2.1.js" > </script>
-<script type="text/javascript" src="/js/jquery.form.js"></script>
+<script type="text/javascript" src="{{ROOT_URL}}js/jquery-1.2.1.js" > </script>
+<script type="text/javascript" src="{{ROOT_URL}}js/jquery.form.js"></script>
 {% endblock %}
 {% block extrahead %}
 {% endblock %}
@@ -122,11 +121,13 @@ BORDER="0"></TD>
 	<BR><A HREF="{% url hkn.info.elect.revolt %}">New Officer Revolt</A>
 	<BR>
 
-
-	
+	<br><SPAN CLASS="title">Tutoring</SPAN>
+	<BR><A HREF="{% url hkn.tutor.views.signup %}">Tutoring Signup</A>
+	<BR><A HREF="{% url hkn.tutor.views.view_signups %}">View Tutoring Signups</A>
+	<BR><A HREF="{% url hkn.tutor.views.submit_assignments %}">Submit Assignments</A>
+	<BR>
 
 	<BR><SPAN CLASS="title">Student Services</SPAN>
-	<BR><A HREF="/tutor/">Tutoring</A>
 	<BR><A HREF="/student/CourseSurvey">Course Survey</A>
 	<BR><A HREF="/exam/">Online Exams</A>
 	<BR>
@@ -138,7 +139,7 @@ BORDER="0"></TD>
 	<input type="hidden" name="redirect_url" value="/" />
 	<input type="submit" class="button" value="Login" />
 	{% else %}
-	<SPAN CLASS="logout"> you are {{ user.username }} <A HREF="/logout">(logout)</A></SPAN>
+	<SPAN CLASS="logout"> you are {{ user.username }} <A HREF="{% url hkn.auth.login.logout %}">(logout)</A></SPAN>
 	{% endif %}
 
 
