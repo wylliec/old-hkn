@@ -4,6 +4,8 @@
 ../manage.py --noinput reset course
 ../manage.py --noinput reset event
 ../manage.py --noinput reset info
+../manage.py --noinput reset request
+../manage.py --noinput reset tutor
 ../manage.py --noinput flush
 ../manage.py --noinput syncdb
 ./create_positions.py
