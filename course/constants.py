@@ -1,9 +1,9 @@
 from hkn.enum import EnumType
 from utils import NiceDict
 
-SEMESTER_SPRING = "sp"
-SEMESTER_SUMMER = "su"
-SEMESTER_FALL = "fa"
+SEMESTER_SPRING = "spring"
+SEMESTER_SUMMER = "summer"
+SEMESTER_FALL = "fall"
 
 SEMESTER = EnumType(SPRING = SEMESTER_SPRING, SUMMER = SEMESTER_SUMMER, FALL = SEMESTER_FALL)
 SEMESTER.add_descriptions(((SEMESTER.SPRING, "Spring"), (SEMESTER.SUMMER, "Summer"), (SEMESTER.FALL, "Fall")))

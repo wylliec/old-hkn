@@ -1,6 +1,31 @@
 from django.db import models
 from hkn.course.constants import SEMESTER, EXAMS_PREFERENCE, DEPT_ABBR_OVERRIDE, DEPT_ABBR_CORRECT
 
+class CourseManager(models.Manager):
+    def query(self, query, objects = None):
+        if objects == None:
+            objects = self.get_query_set()
+            
+        dept_abbr = None
+        coursenumber = None
+        if query.find(" ") == -1:
+            for i, c in enumerate(query):
+                if c.isdigit():
+                    dept_abbr = query[:i]
+                    coursenumber = query[i:]
+                    break
+                else:
+                    dept_abbr = query  
+        else:
+            (dept_abbr, coursenumber) = query.split(" ")
+
+        objects = objects.filter(department_abbr__iexact = dept_abbr)        
+        if coursenumber:
+            objects = objects.filter(number__icontains = coursenumber)
+        
+        return objects
+
+
 # Create your models here.
 class Department(models.Model):
     """ Models one of the academic departments. """
@@ -27,6 +52,8 @@ class Department(models.Model):
     
 class Course(models.Model):
     """ Models a course (not to be confused with a klass, which is the teaching of a course in a particular semester"""
+    objects = courses = CourseManager()
+    
     
     id = models.AutoField(primary_key = True)
     
@@ -56,11 +83,15 @@ class Season(models.Model):
     """ Models a season, i.e. fall, spring, or summer """
     
     id = models.AutoField(primary_key = True)
+    
     name = models.CharField(maxlength = 10)
     """ The name of the season: fall, spring, or summer"""
     
     order = models.IntegerField()
     """ The order of the season. Spring comes before summer which comes before fall """
+    
+    def __str__(self):
+        return self.name
     
     
 class Klass(models.Model):
