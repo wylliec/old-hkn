@@ -5,6 +5,30 @@ from hkn.utils import NiceDict
 
 import random
 
+
+def areAdjacentHours(slotA, slotB):
+    """
+    Returns whether slotA and slotB have adjacent hours, assuming slot is defined as
+    a dictionary with the key "time" and values according to TUTORING_HOURS
+    
+    Raises exception if times are identical or cannot find either time in TUTORING_HOURS
+    """
+    justSeen = False
+    slotATime = slotA['time']
+    slotBTime = slotB['time']
+    if slotATime == slotBTime:
+        raise "Slot A and Slot B have the same time!"
+    for time in TUTORING_HOURS:
+        if time == slotATime or time == slotBTime:
+            if justSeen:
+                return True
+            else:
+                justSeen = True
+        else:
+            if justSeen:
+                return False
+    raise "Cannot find time for neither " + str(slotA) + " nor " + str(slotB)
+
 #"preference detail" is a dictionary {person, preference} for some particular slot
 #"slot" is defined by the caller, but uniquely identifies a specific slot to be assigned
 #  for hkn tutoring, it is a dictionary with day, time, and office
@@ -56,27 +80,3 @@ def generateSchedule(availabilitiesBySlot = NiceDict([]),
     
     #INCOMPLETE
     raise "Not yet implemented"
-
-
-def areAdjacentHours(slotA, slotB):
-    """
-    Returns whether slotA and slotB have adjacent hours, assuming slot is defined as
-    a dictionary with the key "time" and values according to TUTORING_HOURS
-    
-    Raises exception if times are identical or cannot find either time in TUTORING_HOURS
-    """
-    justSeen = False
-    slotATime = slotA['time']
-    slotBTime = slotB['time']
-    if slotATime == slotBTime:
-        raise "Slot A and Slot B have the same time!"
-    for time in TUTORING_HOURS:
-        if time == slotATime or time == slotBTime:
-            if justSeen:
-                return True
-            else:
-                justSeen = True
-        else:
-            if justSeen:
-                return False
-    raise "Cannot find time for neither " + str(slotA) + " nor " + str(slotB)
