@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     (r'^sms/', include('hkn.sms.urls')),
     (r'^yearbook/', include('hkn.yearbook.urls')),
     (r'^request/', include('hkn.request.urls')),    
+    (r'^course/', include('hkn.course.urls')),        
 
     # authentication pages
      (r'^login/$', 'hkn.auth.login.login'),
