@@ -19,23 +19,17 @@ from hkn.utils import QueryDictWrapper
 
 from hkn.tutor.constants import *
 
-#WARNING: currentSeason is cached, may cause problems when updating seasons
-CURRENT_SEASON_HOLDER = []
-def currentSeason():
-    if len(CURRENT_SEASON_HOLDER) == 0:
-        CURRENT_SEASON_HOLDER.append(courses.Season.objects.get(name=CURRENT_SEASON_NAME))
-    return CURRENT_SEASON_HOLDER[0]
 
-#returns [semester_name, year] of previous semester of tutoring
-def prevSemesterInfo():
-    if CURRENT_SEASON_NAME == "Spring":
-        return ["Fall", CURRENT_YEAR - 1]
-    return ["Spring", CURRENT_YEAR]
+
+def schedule(request):
+    return render_to_response('tutor/schedule.html',
+                              basicContext(request),
+                              context_instance = RequestContext(request))
 
 # Create your views here.
 @login_required
 def signup(request, message = False):
-    context = NiceDict(defaultValue="")
+    context = basicContext(request)
     context['signup_table_width'] = 600
     context['signup_col_width'] = 100
     context['days'] = TUTORING_DAYS
@@ -162,7 +156,7 @@ def submit_signup(request):
 
 @login_required
 def view_signups(request):
-    context = NiceDict(defaultValue="")
+    context = basicContext(request, {'showAdminLinks':True})
 #    context['signup_table_width'] = 1200
 #    context['signup_col_width'] = 200
     context['days'] = TUTORING_DAYS
@@ -328,7 +322,7 @@ def view_signups(request):
                               context_instance = RequestContext(request))
     
 def submit_assignments(request):
-    context = NiceDict(defaultValue="")
+    context = basicContext(request)
     info = QueryDictWrapper(request.POST, defaultValue=False)
     
     old_assignments = tutor.Assignment.objects.filter(
@@ -376,3 +370,29 @@ def submit_assignments(request):
     
     return HttpResponseRedirect("/tutor/view_signups")
 #    return HttpResponse("would have made " + str(debugcount) + " assignments at version " + str(version))
+
+def admin(request):
+    return render_to_response('tutor/admin.html',
+                              basicContext(request, {'showAdminLinks':True}),
+                              context_instance = RequestContext(request))
+
+
+#helper methods
+def basicContext(request, info = {}):
+    ret = NiceDict(False, info)
+    if request.user.is_authenticated:
+        ret['user'] = request.user
+    return ret
+
+#returns [semester_name, year] of previous semester of tutoring
+def prevSemesterInfo():
+    if CURRENT_SEASON_NAME == "Spring":
+        return ["Fall", CURRENT_YEAR - 1]
+    return ["Spring", CURRENT_YEAR]
+
+#WARNING: currentSeason is cached, may cause problems when updating seasons
+CURRENT_SEASON_HOLDER = []
+def currentSeason():
+    if len(CURRENT_SEASON_HOLDER) == 0:
+        CURRENT_SEASON_HOLDER.append(courses.Season.objects.get(name=CURRENT_SEASON_NAME))
+    return CURRENT_SEASON_HOLDER[0]

@@ -1,4 +1,5 @@
 from hkn.enum import EnumType
+from utils import NiceDict
 
 SEMESTER_SPRING = "sp"
 SEMESTER_SUMMER = "su"
@@ -14,3 +15,9 @@ EXAMS_PREFERENCE_ALWAYS_OK = 15
 
 EXAMS_PREFERENCE = EnumType(UNKNOWN = EXAMS_PREFERENCE_UNKNOWN, NEVER_OK = EXAMS_PREFERENCE_NEVER_OK, ALWAYS_ASK = EXAMS_PREFERENCE_ALWAYS_ASK, ALWAYS_OK = EXAMS_PREFERENCE_ALWAYS_OK)
 EXAMS_PREFERENCE.add_descriptions(((EXAMS_PREFERENCE.UNKNOWN, "Unknown"), (EXAMS_PREFERENCE.NEVER_OK, "Never post exams"), (EXAMS_PREFERENCE.ALWAYS_ASK, "Always ask before posting exams"), (EXAMS_PREFERENCE.ALWAYS_OK, "Always OK to post exams")))
+
+#NiceDict from allcaps official department abbreviations to preferred abbreviations
+DEPT_ABBR_OVERRIDE = NiceDict(False, {
+    "COMPSCI":"CS",
+    "EL ENG": "EE"})
+DEPT_ABBR_CORRECT = DEPT_ABBR_OVERRIDE.invertedCopy() #goes from preferred abbreviations to true ones

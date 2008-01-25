@@ -18,7 +18,7 @@ When finished, click the submit button at the bottom.  This will create a new ve
 To change which schedule is displayed on the main tutoring page, you need to <s>go to the tutoring admin page <u>link</u></s> wait for someone to code that.<br />
 <br />
 <br />
-<form action="/tutor/view_signups/" method="GET">
+<form action="{% url hkn.tutor.views.view_signups %}" method="GET">
     <label for="version">Select Version:</label>
     <input name="version"{% if version %} value="{{ version }}"{% endif %}/>
     <input type="submit" value="Go" />
@@ -26,7 +26,7 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
 <br />
 <br />
 <br />
-<form action="/tutor/submit_assignments/" method="POST">
+<form action="{% url hkn.tutor.views.submit_signups %}" method="POST">
     <table cellpadding=5>
     <tr>
         <td>&nbsp;</td>

@@ -4,12 +4,26 @@ allows for useful behavior of [] operations
 Default defaultvalue is False
 To instantiate by copying another dictionary, you must specify the defaultValue:
   NiceDict(defaultValue="default value", {"example":True})
+  
+Also allows reversing a dictionary with all distinct values using reverse method
 -Darren Lo
 """
 class NiceDict(dict):
     def __init__(self, defaultValue = False, *a, **kw):
         self.defaultValue = defaultValue
         dict.__init__(self, *a, **kw)
+    
+    """
+    reverses a NiceDict so that values map to keys, does not gracefully handle
+    non-unique values
+    """
+    def invertedCopy(self):
+        ret = NiceDict(self.defaultValue)
+        for key in self:
+            if self[key] in ret:
+                raise 'Duplicate value "' + self[key] + '", cannot invert!'
+            ret[self[key]] = key
+        return ret
     
     def __missing__(self, key):
         return self.defaultValue

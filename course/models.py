@@ -1,5 +1,5 @@
 from django.db import models
-from hkn.course.constants import SEMESTER, EXAMS_PREFERENCE
+from hkn.course.constants import SEMESTER, EXAMS_PREFERENCE, DEPT_ABBR_OVERRIDE, DEPT_ABBR_CORRECT
 
 # Create your models here.
 class Department(models.Model):
@@ -13,7 +13,16 @@ class Department(models.Model):
     """ Department abbreviation: EE, PHYS, MATH, etc."""
     
     def __str__(self):
-            return self.name
+        return self.name
+    
+    """ replaces COMPSCI (correct abbreviation) with CS (common abbreviation) and the like """
+    def get_abbr(self):
+        return DEPT_ABBR_OVERRIDE[self.abbr.upper] or self.abbr
+    
+    """ replaces CS (common abbreviation) with COMPSCI (correct abbreviation) and the like """
+    def get_proper_abbr(abbr):
+        return DEPT_ABBR_CORRECT[abbr.upper] or abbr
+    getProperAbbr = staticmethod(getProperAbbr)
 
     
 class Course(models.Model):
