@@ -19,4 +19,4 @@ echo  'a' | ./import_people.py
 ./import_seasons.py
 ./import_courses.py
 ./import_instructors.py
-./import_klasses.py
+#./import_klasses.py
