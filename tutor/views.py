@@ -179,7 +179,8 @@ def submit_signup(request):
             tutor.CanTutor(person=person,
                            course_id=course_id,
                            season=currentSeason(),
-                           year=CURRENT_YEAR))
+                           year=CURRENT_YEAR,
+                           current=False)) #TODO change this!
     
     #data is validated, so safe to update database
     oldAvailabilities.delete() #delete old ones

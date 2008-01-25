@@ -120,6 +120,7 @@ class CanTutor(models.Model):
     course = models.ForeignKey(courses.Course)
     season = models.ForeignKey(courses.Season)
     year = models.PositiveIntegerField()
+    current = modles.BooleanField()
     
 
 
