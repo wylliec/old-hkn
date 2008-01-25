@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
 #from django.core.paginator import ObjectPaginator, InvalidPage
 from django import newforms as forms
+from string import atoi
 
 from hkn.auth.decorators import *
 
@@ -30,7 +31,7 @@ def schedule(request):
 @login_required
 def signup(request, message = False):
     context = basicContext(request)
-    context['MAX_COURSESS'] = MAX_COURSES
+    context['MAX_COURSES'] = MAX_COURSES
     context['signup_table_width'] = 600
     context['signup_col_width'] = 100
     context['days'] = TUTORING_DAYS
@@ -103,11 +104,19 @@ def submit_signup(request):
     
     info = QueryDictWrapper(request.POST, defaultValue=False)
     person = request.user.person
-    
-    if info['maxNumCourses'] > MAX_COURSES:
+
+    try:
+    	numCourses = atoi(info["maxNumCourses"])
+    except:
         return signup(
             request,
-            message="You may not sign up for more than 50 courses.")
+            message="Invalid value for maxNumCourses")
+        
+    
+    if numCourses > MAX_COURSES:
+        return signup(
+            request,
+            message="You may not sign up for more than 50 courses. " + str(numCourses))
     
     #set up tuple of offices
     if info["office"] == "Both":
@@ -155,8 +164,8 @@ def submit_signup(request):
     
     #make CanTutor data
     newCanTutors = []
-    max = info['maxNumCourses'] #already ensured this is less than MAX_COURSES
-    for i in range(max + 1):
+    #already ensured numCourses is less than MAX_COURSES
+    for i in range(numCourses + 1):
         course_id = info["course_" + str(i)]
         if not course_id:
             continue
@@ -213,7 +222,7 @@ def view_signups(request):
     if context['version']:
         assignments = assignments.filter(version=context['version'])
     else:
-        assignments = tutor.Assignments.objects.none() #returns empty result set
+        assignments = tutor.Assignment.objects.none() #returns empty result set
     if context['version'] and len(assignments) == 0:
         context['message'] = "No assignments available for specified version"
         context['version'] = False
