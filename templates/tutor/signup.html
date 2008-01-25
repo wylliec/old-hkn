@@ -52,7 +52,8 @@ function addCourse(name, course_id){
 		'remove </a>' +
 		'<input name="course_' + nameNum + '" type=hidden value=' + course_id + ' /><br />' +
 		'</div>';
-	$("#classes").innerhtml += newhtml;
+	var classesDiv = $("#classes");
+	classesDiv.html(classesDiv.html() + newhtml);
 }
 function removeCourse(course_id){
 	var doomed = $('course'+course_id)
@@ -107,8 +108,8 @@ function removeCourse(course_id){
 			<a href="javascript:void(0);" onclick="update_courses();">Search</a>
 		</div>
 		<br />
-		<div id="results" style="border: 2px solid black; margin: 0px auto; height: 20em;"> </div>
-		<div id="classes" style="border: 2px solid black; margin: 0px auto; height: 20em;"> </div>
+		<div id="results" style="border: 2px solid black; width: 40%; float: left;"> </div>
+		<div id="classes" style="border: 2px solid black; width: 40%; float: right;"> </div>
     </div>
     
     <input name="maxNumCourses" id="maxNumCourses" type=hidden value=0 />
