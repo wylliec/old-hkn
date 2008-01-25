@@ -1,5 +1,10 @@
 from hkn.auth.models import *
 
+try:
+    from hkn.hknsettings import APACHE_LOGIN
+except:
+    APACHE_LOGIN = False
+
 PERSONID_KEY = 'person_id'
 LOGIN_URL = '/login/'
 REDIRECT_FIELD_NAME = 'next'
@@ -42,5 +47,12 @@ def get_user(request):
         user_id = request.session[PERSONID_KEY]
         user = get_user_for_id(user_id) or AnonymousUser()
     except KeyError:
-        user = AnonymousUser()
+        if APACHE_LOGIN and request.META.has_key("REMOTE_USER"):
+	    username = request.META["REMOTE_USER"]
+	    try:
+	        user = User.objects.get(username__iexact = username)
+	    except:
+	        user = AnonymousUser()
+	else:
+            user = AnonymousUser()
     return user
