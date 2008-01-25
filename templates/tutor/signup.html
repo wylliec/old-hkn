@@ -38,8 +38,8 @@ function addCourse(name, course_id){
 	} else {
 		nameNum = nextNumCourse
 		if(nameNum <= {{MAX_COURSES}}){
-			nextNumCourse++
-			$("#maxNumCourses").value = nameNum
+			nextNumCourse++;
+			$("#maxNumCourses").attr("value", nameNum);
 		} else {
 			alert("Too many Courses!")
 			return
@@ -49,16 +49,16 @@ function addCourse(name, course_id){
 		'<div id="course' + course_id +'">' +
 		name +
 		'<a href="javascript:void(0);" onClick="removeCourse('+course_id+');">' +
-		'remove </a>' +
+		' remove </a>' +
 		'<input name="course_' + nameNum + '" type=hidden value=' + course_id + ' /><br />' +
 		'</div>';
 	var classesDiv = $("#classes");
 	classesDiv.html(classesDiv.html() + newhtml);
 }
 function removeCourse(course_id){
-	var doomed = $('course'+course_id)
-	doomed.parentNode.removeChild(doomed)
+	$('#course'+course_id).remove();
 }
+
 </script>
 
 <form action="{% url hkn.tutor.views.submit_signup %}" method="POST">
@@ -108,15 +108,28 @@ function removeCourse(course_id){
 			<a href="javascript:void(0);" onclick="update_courses();">Search</a>
 		</div>
 		<br />
-		<div id="results" style="border: 2px solid black; width: 40%; float: left;"> </div>
-		<div id="classes" style="border: 2px solid black; width: 40%; float: right;"> </div>
+		<div id="results_container" style="border: 1px solid gray; width: 40%; float: left; height: 10em; overflow: hidden;"> 
+			<h2>Search Results: </h2>
+			<div id="results" style="height: 5em; overflow: scroll">None yet, search above!</div>
+		</div>
+		<div id="classes_container" style="border: 1px solid gray; width: 40%; margin-right: 10%; float: right; height: 10em; overflow: hidden;"> 
+			<h2>Courses Added:</h2>
+			<div id="classes" style="height: 5em; overflow: scroll"></div>
+		</div>
     </div>
     
-    <input name="maxNumCourses" id="maxNumCourses" type=hidden value=0 />
+    <input name="maxNumCourses" id="maxNumCourses" type=hidden value="{{ canTutor|length }}" />
     
     <br /><br /><br />
     
-    <input type="submit" value="Submit">
+    <input style="float: left; margin-right: 20em;" type="submit" value="Submit">
 </form>
+
+<script type="text/javascript">
+{% for canTutor in prevCanTutor %}
+addCourse('{{canTutor.course}}', '{{canTutor.course_id}}');
+{% endfor %}
+</script>
+
 
 {% endblock %}

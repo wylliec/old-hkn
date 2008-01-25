@@ -44,6 +44,10 @@ def signup(request, message = False):
     context['prefer_both'] = False
     context['prefer_soda'] = False
     context['prefer_cory'] = False
+    context['prevCanTutor'] = tutor.CanTutor.objects.filter(
+           person=request.user.person,
+           season=currentSeason(),
+           year=CURRENT_YEAR)
     
     #initialize using previous time / day availability data
     prev = [] #list of rows.  Each row is list of Strings
@@ -170,11 +174,12 @@ def submit_signup(request):
         if not course_id:
             continue
         course_id = int(course_id)
+	print "got course: " + str(course_id)
         newCanTutors.append(
             tutor.CanTutor(person=person,
                            course_id=course_id,
-                           season=season,
-                           year=year))
+                           season=currentSeason(),
+                           year=CURRENT_YEAR))
     
     #data is validated, so safe to update database
     oldAvailabilities.delete() #delete old ones
@@ -183,8 +188,8 @@ def submit_signup(request):
     
     #delete old CanTutor entries
     tutor.CanTutor.objects.filter(person=person,
-                                  season=season,
-                                  year=year).delete()
+                                  season=currentSeason(),
+                                  year=CURRENT_YEAR).delete()
     for elem in newCanTutors:
         elem.save()
     
@@ -431,5 +436,5 @@ def prevSemesterInfo():
 CURRENT_SEASON_HOLDER = []
 def currentSeason():
     if len(CURRENT_SEASON_HOLDER) == 0:
-        CURRENT_SEASON_HOLDER.append(courses.Season.objects.get(name=CURRENT_SEASON_NAME))
+        CURRENT_SEASON_HOLDER.append(courses.Season.objects.get(name__iexact =CURRENT_SEASON_NAME))
     return CURRENT_SEASON_HOLDER[0]
