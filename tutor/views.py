@@ -30,6 +30,7 @@ def schedule(request):
 @login_required
 def signup(request, message = False):
     context = basicContext(request)
+    context['MAX_COURSESS'] = MAX_COURSES
     context['signup_table_width'] = 600
     context['signup_col_width'] = 100
     context['days'] = TUTORING_DAYS
@@ -101,6 +102,12 @@ def submit_signup(request):
         return signup(request, message="Please enter signup information on this form")
     
     info = QueryDictWrapper(request.POST, defaultValue=False)
+    person = request.user.person
+    
+    if info['maxNumCourses'] > MAX_COURSES:
+        return signup(
+            request,
+            message="You may not sign up for more than 50 courses.")
     
     #set up tuple of offices
     if info["office"] == "Both":
@@ -116,7 +123,7 @@ def submit_signup(request):
     
     #grab any old availabilities for this semester/year
     oldAvailabilities = tutor.Availability.objects.filter(
-           person=request.user.person,
+           person=person,
            season=currentSeason(),
            year=CURRENT_YEAR)
     
@@ -139,17 +146,38 @@ def submit_signup(request):
                 for office in offices:
                     newAvailabilities.append(
                         tutor.Availability(
-                            person=request.user.person,
+                            person=person,
                             slot=slot,
                             office=office,
                             season=currentSeason(),
                             year=CURRENT_YEAR,
                             preference=preference))
     
+    #make CanTutor data
+    newCanTutors = []
+    max = info['maxNumCourses'] #already ensured this is less than MAX_COURSES
+    for i in range(max + 1):
+        course_id = info["course_" + str(i)]
+        if not course_id:
+            continue
+        course_id = int(course_id)
+        newCanTutors.append(
+            tutor.CanTutor(person=person,
+                           course_id=course_id,
+                           season=season,
+                           year=year))
+    
     #data is validated, so safe to update database
-    oldAvailabilities.delete()
+    oldAvailabilities.delete() #delete old ones
     for availability in newAvailabilities:
         availability.save()
+    
+    #delete old CanTutor entries
+    tutor.CanTutor.objects.filter(person=person,
+                                  season=season,
+                                  year=year).delete()
+    for elem in newCanTutors:
+        elem.save()
     
     return HttpResponseRedirect('/tutor/signup')
     #return render_to_response("tutor/signup.html", {},  context_instance = RequestContext(request))

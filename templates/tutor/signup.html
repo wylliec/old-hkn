@@ -12,7 +12,7 @@ You are logged in as <b>{{ user.person.first }} {{ user.person.last }}</b> <br /
 
 <script language="javascript">
 function update_courses() {
-	var inp = document.getElementById("person_query").value;
+	var inp = document.getElementById("course_query").value;
 	query_url = "{% url hkn.course.course.find_course %}?query=" + escape(inp);
 	$("#results").load(query_url);
 	return false;
@@ -23,17 +23,34 @@ function updateonenter(e) {
 	else if (e) keycode = e.which;
 	else return true;
 	if (keycode == 13) {
-		update_persons();
+		update_courses();
 		return false;
 	}
 	return true;
 }
+nextNumCourse = 1;
+missingInts = new Array();
 function addCourse(name, course_id){
+	var nameNum
+	if(missingInts.length > 0){
+		nameNum = missingInts[missingInts.length - 1]
+		missingInts.length--
+	} else {
+		nameNum = nextNumCourse
+		if(nameNum <= {{MAX_COURSES}}){
+			nextNumCourse++
+			$("#maxNumCourses").value = nameNum
+		} else {
+			alert("Too many Courses!")
+			return
+		}
+	}
 	var newhtml =
-		'<div id=course' + course_id +'/>' +
+		'<div id="course' + course_id +'">' +
 		name +
-		'<button onClick="removeCourse('+course_id+');"' +
-		'<input type=hidden value=' + course_id + ' /><br />' +
+		'<a href="javascript:void(0);" onClick="removeCourse('+course_id+');">' +
+		'remove </a>' +
+		'<input name="course_' + nameNum + '" type=hidden value=' + course_id + ' /><br />' +
 		'</div>';
 	$("#classes").innerhtml += newhtml;
 }
@@ -87,12 +104,14 @@ function removeCourse(course_id){
 		<div style="margin: 0px auto;">
 			Search for class (like "cs61a"):
 			<input id="course_query" onkeypress="return updateonenter(event);"/>
-			<button onclick="update_courses();">Search</button>
+			<a href="javascript:void(0);" onclick="update_courses();">Search</a>
 		</div>
 		<br />
 		<div id="results" style="border: 2px solid black; margin: 0px auto; height: 20em;"> </div>
 		<div id="classes" style="border: 2px solid black; margin: 0px auto; height: 20em;"> </div>
     </div>
+    
+    <input name="maxNumCourses" id="maxNumCourses" type=hidden value=0 />
     
     <br /><br /><br />
     

@@ -13,6 +13,9 @@ TUTORING_TIMES = ("11a-12", "12-1", "1-2", "2-3", "3-4", "4-5") #listed in order
 #lowest version number
 MIN_VERSION = 1
 
+#maximum number of courses that people can tutor per schedule
+MAX_COURSES = 50
+
 #used for scoring assignment utility, aka "happiness"
 SCORE_CORRECT_OFFICE = 1
 SCORE_MISS_PENALTY = 10000 #should be larger than slots * best score possible
