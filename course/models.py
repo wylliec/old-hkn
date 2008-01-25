@@ -19,6 +19,11 @@ class CourseManager(models.Manager):
         else:
             (dept_abbr, coursenumber) = query.split(" ")
 
+	dept_abbr = Department.get_proper_abbr(dept_abbr)
+
+	print dept_abbr
+	print coursenumber
+
         objects = objects.filter(department_abbr__iexact = dept_abbr)        
         if coursenumber:
             objects = objects.filter(number__icontains = coursenumber)
@@ -46,7 +51,7 @@ class Department(models.Model):
     
     """ replaces CS (common abbreviation) with COMPSCI (correct abbreviation) and the like """
     def get_proper_abbr(abbr):
-        return DEPT_ABBR_CORRECT[abbr.upper] or abbr
+        return DEPT_ABBR_CORRECT[abbr.upper()] or abbr
     get_proper_abbr = staticmethod(get_proper_abbr)
 
     
