@@ -24,6 +24,11 @@ class NiceDict(dict):
                 raise 'Duplicate value "' + self[key] + '", cannot invert!'
             ret[self[key]] = key
         return ret
+    def __getitem__(self, key):
+        try:
+	    return dict.__getitem__(self, key)
+	except KeyError:
+	    return self.__missing__(key)
     
     def __missing__(self, key):
         return self.defaultValue
