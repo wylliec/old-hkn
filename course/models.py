@@ -47,7 +47,7 @@ class Department(models.Model):
     """ replaces CS (common abbreviation) with COMPSCI (correct abbreviation) and the like """
     def get_proper_abbr(abbr):
         return DEPT_ABBR_CORRECT[abbr.upper] or abbr
-    getProperAbbr = staticmethod(getProperAbbr)
+    get_proper_abbr = staticmethod(get_proper_abbr)
 
     
 class Course(models.Model):
