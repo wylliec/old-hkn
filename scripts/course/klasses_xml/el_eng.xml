@@ -13,13 +13,13 @@
         <klass ccn="25230" exam_group="" instructor="" name="Structure and Interpretation of Systems and Signals" number="20N" number_type="S" restrictions="" room="3102 ETCHEVERRY" section="103 DIS" time="W 3-4P" units=""/>
         <klass ccn="25233" exam_group="" instructor="" name="Structure and Interpretation of Systems and Signals" number="20N" number_type="S" restrictions="" room="299 CORY" section="104 DIS" time="W 1-2P" units=""/>
         <klass ccn="25236" exam_group="5" instructor="ANANTHARAM, V" name="Introduction to Microelectronic Circuits" number="40" number_type="P" restrictions="" room="10 EVANS" section="001 LEC" time="MWF 1-2P" units="4"/>
-        <klass ccn="25239" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="" room="247 CORY" section="101 DIS" time="M 10-11A" units=""/>
+        <klass ccn="25239" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="CURRENTLY FULL" room="247 CORY" section="101 DIS" time="M 10-11A" units=""/>
         <klass ccn="25242" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="" room="285 CORY" section="102 DIS" time="M 11-12P" units=""/>
         <klass ccn="25245" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="" room="285 CORY" section="103 DIS" time="Tu 1-2P" units=""/>
         <klass ccn="25248" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="" room="237 CORY" section="104 DIS" time="W 3-4P" units=""/>
         <klass ccn="25251" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="" room="75 EVANS" section="105 DIS" time="Th 10-11A" units=""/>
         <klass ccn="25254" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="CURRENTLY FULL" room="140 CORY" section="010 LAB" time="M 3-6P" units=""/>
-        <klass ccn="25257" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="" room="140 CORY" section="011 LAB" time="Tu 9-12P" units=""/>
+        <klass ccn="25257" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="CURRENTLY FULL" room="140 CORY" section="011 LAB" time="Tu 9-12P" units=""/>
         <klass ccn="25260" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="" room="140 CORY" section="012 LAB" time="W 3-6P" units=""/>
         <klass ccn="25263" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="CURRENTLY FULL" room="140 CORY" section="013 LAB" time="Th 8-11A" units=""/>
         <klass ccn="25266" exam_group="" instructor="" name="Introduction to Microelectronic Circuits" number="40" number_type="S" restrictions="" room="140 CORY" section="014 LAB" time="F 3-6P" units=""/>
@@ -60,13 +60,13 @@
         <klass ccn="25368" exam_group="" instructor="" name="Electronic Techniques for Engineering" number="100" number_type="S" restrictions="" room="285 CORY" section="107 DIS" time="F 2-3P" units=""/>
         <klass ccn="25371" exam_group="20" instructor="WU, M A" name="Microelectronic Devices and Circuits" number="105" number_type="P" restrictions="" room="102 MOFFITT" section="001 LEC" time="TuTh 330-5P" units="4"/>
         <klass ccn="25374" exam_group="" instructor="" name="Microelectronic Devices and Circuits" number="105" number_type="S" restrictions="CURRENTLY FULL" room="353 CORY" section="010 LAB" time="M 9-12P" units=""/>
-        <klass ccn="25377" exam_group="" instructor="" name="Microelectronic Devices and Circuits" number="105" number_type="S" restrictions="" room="353 CORY" section="011 LAB" time="Tu 10-1P" units=""/>
+        <klass ccn="25377" exam_group="" instructor="" name="Microelectronic Devices and Circuits" number="105" number_type="S" restrictions="CURRENTLY FULL" room="353 CORY" section="011 LAB" time="Tu 10-1P" units=""/>
         <klass ccn="25380" exam_group="" instructor="" name="Microelectronic Devices and Circuits" number="105" number_type="S" restrictions="CURRENTLY FULL" room="353 CORY" section="012 LAB" time="W 2-5P" units=""/>
         <klass ccn="25382" exam_group="" instructor="" name="Microelectronic Devices and Circuits" number="105" number_type="S" restrictions="" room="CANCELLED" section="013 LAB" time="" units=""/>
         <klass ccn="25383" exam_group="" instructor="" name="Microelectronic Devices and Circuits" number="105" number_type="S" restrictions="" room="CANCELLED" section="014 LAB" time="" units=""/>
         <klass ccn="25386" exam_group="" instructor="" name="Microelectronic Devices and Circuits" number="105" number_type="S" restrictions="CURRENTLY FULL" room="293 CORY" section="102 DIS" time="M 4-5P" units=""/>
         <klass ccn="25389" exam_group="" instructor="" name="Microelectronic Devices and Circuits" number="105" number_type="S" restrictions="CURRENTLY FULL" room="2305 TOLMAN" section="103 DIS" time="W 10-11A" units=""/>
-        <klass ccn="25392" exam_group="" instructor="" name="Microelectronic Devices and Circuits" number="105" number_type="S" restrictions="" room="140 BARROWS" section="104 DIS" time="Th 9-10A" units=""/>
+        <klass ccn="25392" exam_group="" instructor="" name="Microelectronic Devices and Circuits" number="105" number_type="S" restrictions="CURRENTLY FULL" room="140 BARROWS" section="104 DIS" time="Th 9-10A" units=""/>
         <klass ccn="25395" exam_group="5" instructor="GUSTAFSON, T K" name="Electromagnetic Fields and Waves" number="117" number_type="P" restrictions="" room="289 CORY" section="001 LEC" time="MWF 1-2P" units="4"/>
         <klass ccn="25398" exam_group="" instructor="" name="Electromagnetic Fields and Waves" number="117" number_type="S" restrictions="" room="183 DWINELLE" section="101 DIS" time="W 3-4P" units=""/>
         <klass ccn="25401" exam_group="" instructor="" name="Electromagnetic Fields and Waves" number="117" number_type="S" restrictions="" room="CANCELLED" section="102 DIS" time="" units=""/>
@@ -130,7 +130,7 @@
         <klass ccn="25515" exam_group="" instructor="" name="Introductory Microcomputer Interfacing Laboratory" number="C145M" number_type="S" restrictions="CURRENTLY FULL" room="140 CORY" section="102 LAB" time="Th 11-2P" units=""/>
         <klass ccn="25518" exam_group="2" instructor="FEARING, R S" name="Mechatronic Design Laboratory" number="192" number_type="P" restrictions="CURRENTLY FULL" room="293 CORY" section="001 LEC" time="Tu 2-330P" units="4"/>
         <klass ccn="25521" exam_group="" instructor="" name="Mechatronic Design Laboratory" number="192" number_type="S" restrictions="" room="521 CORY" section="101 DIS" time="W 9-10A" units=""/>
-        <klass ccn="25523" exam_group="" instructor="" name="Mechatronic Design Laboratory" number="192" number_type="S" restrictions="CURRENTLY FULL" room="293 CORY" section="102 DIS" time="Th 2-3P" units=""/>
+        <klass ccn="25523" exam_group="" instructor="" name="Mechatronic Design Laboratory" number="192" number_type="S" restrictions="" room="293 CORY" section="102 DIS" time="Th 2-3P" units=""/>
         <klass ccn="25524" exam_group="NONE" instructor="NIKNEJAD, A M" name="Directed Group Study for Advanced Undergraduates" number="198" number_type="P" restrictions="JR, SR" room="" section="001 GRP" time="" units="1: PF"/>
         <klass ccn="25527" exam_group="NONE" instructor="YAN, N J" name="Directed Group Study for Advanced Undergraduates" number="198" number_type="P" restrictions="JR, SR" room="100 WHEELER" section="002 GRP" time="W 1-2P" units="1: PF"/>
         <klass ccn="26151" exam_group="NONE" instructor="ATTWOOD, D T" name="Soft X-rays and Extreme Ultraviolet Radiation" number="C213" number_type="P" restrictions="" room="CANCELLED" section="001 LEC" time="" units="3">
@@ -151,7 +151,7 @@
         <klass ccn="25731" exam_group="" instructor="" name="Digital Communications" number="224A" number_type="S" restrictions="" room="CANCELLED" section="101 DIS" time="" units=""/>
         <klass ccn="25734" exam_group="" instructor="" name="Digital Communications" number="224A" number_type="S" restrictions="" room="CANCELLED" section="102 DIS" time="" units=""/>
         <klass ccn="25737" exam_group="NONE" instructor="TSE, D N" name="Fundamentals of Wireless Communication" number="224B" number_type="P" restrictions="CURRENTLY FULL" room="299 CORY" section="001 LEC" time="TuTh 330-5P" units="3"/>
-        <klass ccn="25740" exam_group="13" instructor="GASTPAR, M C" name="Digital Signal Processing" number="225A" number_type="P" restrictions="" room="521 CORY" section="001 LEC" time="TuTh 11-1230P" units="3"/>
+        <klass ccn="25740" exam_group="13" instructor="GASTPAR, M C" name="Digital Signal Processing" number="225A" number_type="P" restrictions="CURRENTLY FULL" room="521 CORY" section="001 LEC" time="TuTh 11-1230P" units="3"/>
         <klass ccn="25743" exam_group="17" instructor="ZAKHOR, A" name="Digital Image Processing" number="225B" number_type="P" restrictions="" room="203 MCLAUGHLIN" section="001 LEC" time="WF 930-11A" units="3"/>
         <klass ccn="25746" exam_group="NONE" instructor="MORGAN, N" name="Audio Signal Processing in Humans and Machines" number="225D" number_type="P" restrictions="" room="CANCELLED" section="001 LEC" time="" units="3">
             <note>

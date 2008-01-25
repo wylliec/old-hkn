@@ -1,12 +1,12 @@
 <?xml version="1.0" ?>
 <semester season="spring" year="2008">
     <department abbr="engin">
-        <klass ccn="27705" exam_group="5" instructor="BAYEN, A M" name="Introduction to Computer Programming for Scientists..." number="7" number_type="P" restrictions="" room="2040 VALLEY LSB" section="001 LEC" time="MW 12-1P" units="4">
+        <klass ccn="27705" exam_group="5" instructor="BAYEN, A M" name="Introduction to Computer Programming for Scientists..." number="7" number_type="P" restrictions="" room="4 LECONTE" section="001 LEC" time="MW 12-1P" units="4">
             <note>
                 Engineering 77, 110, and Computer Science 3, 3L, 3S, 9ABCDEFG, are the current set of &quot;computer service&quot; courses.  A maximum of 5 units may be earned toward graduation for these courses and students may enroll for additional units, but these units will be recognized only for the purpose of computing workload units on the study list.  See the General Catalog for more information.&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="27708" exam_group="5" instructor="PATZEK, T" name="Introduction to Computer Programming for Scientists..." number="7" number_type="P" restrictions="" room="2060 VALLEY LSB" section="002 LEC" time="MW 1-2P" units="4">
+        <klass ccn="27708" exam_group="5" instructor="PATZEK, T" name="Introduction to Computer Programming for Scientists..." number="7" number_type="P" restrictions="" room="4 LECONTE" section="002 LEC" time="MW 1-2P" units="4">
             <note>
                 Engineering 77, 110, and Computer Science 3, 3L, 3S, 9ABCDEFG, are the current set of &quot;computer service&quot; courses.  A maximum of 5 units may be earned toward graduation for these courses and students may enroll for additional units, but these units will be recognized only for the purpose of computing workload units on the study list.  See the General Catalog for more information.&amp;nbsp;
             </note>
@@ -20,11 +20,11 @@
         <klass ccn="27729" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="3105 ETCHEVERRY" section="107 DIS" time="W 3-4P" units=""/>
         <klass ccn="27732" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="3105 ETCHEVERRY" section="108 DIS" time="W 4-5P" units=""/>
         <klass ccn="27735" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="3105 ETCHEVERRY" section="109 DIS" time="Th 8-9A" units=""/>
-        <klass ccn="27738" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="1109 ETCHEVERRY" section="011 LAB" time="MW 8-10A" units=""/>
+        <klass ccn="27738" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="011 LAB" time="MW 8-10A" units=""/>
         <klass ccn="27741" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="012 LAB" time="MW 10-12P" units=""/>
-        <klass ccn="27744" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="1109 ETCHEVERRY" section="013 LAB" time="MW 2-4P" units=""/>
-        <klass ccn="27747" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="1109 ETCHEVERRY" section="014 LAB" time="MW 4-6P" units=""/>
-        <klass ccn="27750" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="" room="1109 ETCHEVERRY" section="015 LAB" time="TuTh 8-10A" units=""/>
+        <klass ccn="27744" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="013 LAB" time="MW 2-4P" units=""/>
+        <klass ccn="27747" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="014 LAB" time="MW 4-6P" units=""/>
+        <klass ccn="27750" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="015 LAB" time="TuTh 8-10A" units=""/>
         <klass ccn="27753" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="016 LAB" time="TuTh 10-12P" units=""/>
         <klass ccn="27756" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="017 LAB" time="TuTh 12-2P" units=""/>
         <klass ccn="27759" exam_group="" instructor="" name="Introduction to Computer Programming for Scientists..." number="7" number_type="S" restrictions="CURRENTLY FULL" room="1109 ETCHEVERRY" section="018 LAB" time="TuTh 2-4P" units=""/>
@@ -60,7 +60,7 @@
         <klass ccn="27660" exam_group="" instructor="" name="Basic Engineering Design Graphics" number="28" number_type="S" restrictions="" room="2107 ETCHEVERRY" section="012 LAB" time="Th 3-6P" units=""/>
         <klass ccn="27663" exam_group="" instructor="" name="Basic Engineering Design Graphics" number="28" number_type="S" restrictions="" room="2105 ETCHEVERRY" section="013 LAB" time="F 3-6P" units=""/>
         <klass ccn="27666" exam_group="" instructor="" name="Basic Engineering Design Graphics" number="28" number_type="S" restrictions="" room="2107 ETCHEVERRY" section="014 LAB" time="Th 3-6P" units=""/>
-        <klass ccn="27672" exam_group="5" instructor="LI, S" name="Engineering Mechanics I" number="36" number_type="P" restrictions="" room="4 LECONTE" section="001 LEC" time="MW 1-2P" units="2"/>
+        <klass ccn="27672" exam_group="5" instructor="LI, S" name="Engineering Mechanics I" number="36" number_type="P" restrictions="CURRENTLY FULL" room="100 GPB" section="001 LEC" time="MW 1-2P" units="2"/>
         <klass ccn="27678" exam_group="TBA" instructor="VERBONCOEUR, J" name="Freshman/Sophomore Seminar" number="39B" number_type="P" restrictions="BY CATEGORY" room="203 WHEELER" section="001 SEM" time="Tu 330-5P" units="1.5: PF">
             <note>
                 &quot;Introduction to Computational Engineering Science&quot;&amp;nbsp;
@@ -210,7 +210,7 @@
                 &quot;Business and Technology for Sustainable Development&quot;&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="27870" exam_group="NONE" instructor="CHESBROUGH, H W" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY" room="C135 CHEIT" section="004 SEM" time="M 2-4P" units="2">
+        <klass ccn="27870" exam_group="NONE" instructor="CHESBROUGH, H W" name="Group Studies or Seminars" number="298A" number_type="P" restrictions="BY CATEGORY" room="C220 CHEIT" section="004 SEM" time="M 2-4P" units="2">
             <note>
                 &quot;Managing Innovation and Change&quot;&amp;nbsp;
             </note>

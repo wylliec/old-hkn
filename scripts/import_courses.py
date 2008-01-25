@@ -43,9 +43,13 @@ def importFromXmlFile(courseFile):
 	for department in dom.getElementsByTagName("department"):
 		importDepartment(department)
 
-courseFiles = glob.glob("course/courses_xml/*.xml")
+def main():
+	courseFiles = glob.glob("course/courses_xml/*.xml")
 
-for courseFile in courseFiles:
-	print "Importing courses from " + courseFile
-	importFromXmlFile(courseFile)
+	for courseFile in courseFiles:
+		print "Importing courses from " + courseFile
+		importFromXmlFile(courseFile)
+
+if __name__ == "__main__":
+	main()
 

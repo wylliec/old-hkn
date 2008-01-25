@@ -60,7 +60,7 @@
                 &quot;The Art and Science of Photography:  Drawing with Light&quot;&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="26247" exam_group="TBA" instructor="KATZ, R H" name="Freshman/Sophomore Seminar" number="39K" number_type="P" restrictions="BY CATEGORY" room="310 SODA" section="001 SEM" time="W 4-6P" units="2: PF">
+        <klass ccn="26247" exam_group="TBA" instructor="KATZ, R H" name="Freshman/Sophomore Seminar" number="39K" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="310 SODA" section="001 SEM" time="W 4-6P" units="2: PF">
             <note>
                 &quot;Information Technology Goes to War!&quot;&amp;nbsp;
             </note>
@@ -107,9 +107,9 @@
         <klass ccn="26338" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="" room="271 SODA" section="011 LAB" time="Th 10-12P" units=""/>
         <klass ccn="26341" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="" room="310 SODA" section="111 DIS" time="Tu 10-11A" units=""/>
         <klass ccn="26344" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="CURRENTLY FULL" room="271 SODA" section="012 LAB" time="Th 12-2P" units=""/>
-        <klass ccn="26347" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="CURRENTLY FULL" room="320 SODA" section="112 DIS" time="Tu 12-1P" units=""/>
-        <klass ccn="26350" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="CURRENTLY FULL" room="271 SODA" section="013 LAB" time="Th 2-4P" units=""/>
-        <klass ccn="26353" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="CURRENTLY FULL" room="310 SODA" section="113 DIS" time="Tu 3-4P" units=""/>
+        <klass ccn="26347" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="CURRENTLY FULL" room="205 DWINELLE" section="112 DIS" time="Tu 12-1P" units=""/>
+        <klass ccn="26350" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="" room="271 SODA" section="013 LAB" time="Th 2-4P" units=""/>
+        <klass ccn="26353" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="" room="310 SODA" section="113 DIS" time="Tu 3-4P" units=""/>
         <klass ccn="26356" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="" room="271 SODA" section="014 LAB" time="Th 4-6P" units=""/>
         <klass ccn="26359" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="" room="320 SODA" section="114 DIS" time="Tu 5-6P" units=""/>
         <klass ccn="26362" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="" room="271 SODA" section="015 LAB" time="Th 6-8P" units=""/>
@@ -120,10 +120,11 @@
         <klass ccn="26377" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="CURRENTLY FULL" room="320 SODA" section="117 DIS" time="W 11-12P" units=""/>
         <klass ccn="26380" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="CURRENTLY FULL" room="271 SODA" section="018 LAB" time="F 1-3P" units=""/>
         <klass ccn="26383" exam_group="" instructor="" name="Machine Structures" number="61C" number_type="S" restrictions="CURRENTLY FULL" room="320 SODA" section="118 DIS" time="W 1-2P" units=""/>
-        <klass ccn="26386" exam_group="8" instructor="WAGNER, D" name="Discrete Mathematics and Probability Theory" number="70" number_type="P" restrictions="CURRENTLY FULL" room="155 DONNER LAB" section="001 LEC" time="MWF 11-12P" units="4"/>
+        <klass ccn="26386" exam_group="8" instructor="WAGNER, D" name="Discrete Mathematics and Probability Theory" number="70" number_type="P" restrictions="" room="390 HEARST MIN" section="001 LEC" time="MWF 11-12P" units="4"/>
         <klass ccn="26389" exam_group="" instructor="" name="Discrete Mathematics and Probability Theory" number="70" number_type="S" restrictions="CURRENTLY FULL" room="7 EVANS" section="101 DIS" time="Tu 1-2P" units=""/>
         <klass ccn="26392" exam_group="" instructor="" name="Discrete Mathematics and Probability Theory" number="70" number_type="S" restrictions="CURRENTLY FULL" room="7 EVANS" section="102 DIS" time="Tu 2-3P" units=""/>
         <klass ccn="26395" exam_group="" instructor="" name="Discrete Mathematics and Probability Theory" number="70" number_type="S" restrictions="CURRENTLY FULL" room="246 DWINELLE" section="103 DIS" time="Tu 4-5P" units=""/>
+        <klass ccn="26397" exam_group="" instructor="" name="Discrete Mathematics and Probability Theory" number="70" number_type="S" restrictions="" room="246 DWINELLE" section="104 DIS" time="Tu 5-6P" units=""/>
         <klass ccn="26398" exam_group="NONE" instructor="GARCIA, D D" name="Directed Group Study" number="98" number_type="P" restrictions="" room="" section="001 GRP" time="" units="2: PF">
             <note>
                 &quot;Macintosh Student Developers for OS X&quot;&amp;nbsp;
@@ -177,8 +178,9 @@
         <klass ccn="26497" exam_group="" instructor="" name="Computer Security" number="161" number_type="S" restrictions="" room="5 EVANS" section="103 DIS" time="W 10-11A" units=""/>
         <klass ccn="26500" exam_group="17" instructor="JOSEPH, A D" name="Operating Systems and System Programming" number="162" number_type="P" restrictions="BY CATEGORY" room="277 CORY" section="001 LEC" time="MW 4-530P" units="4"/>
         <klass ccn="26503" exam_group="" instructor="" name="Operating Systems and System Programming" number="162" number_type="S" restrictions="CURRENTLY FULL" room="45 EVANS" section="101 DIS" time="Th 10-11A" units=""/>
-        <klass ccn="26506" exam_group="" instructor="" name="Operating Systems and System Programming" number="162" number_type="S" restrictions="CURRENTLY FULL" room="85 EVANS" section="102 DIS" time="Th 11-12P" units=""/>
+        <klass ccn="26506" exam_group="" instructor="" name="Operating Systems and System Programming" number="162" number_type="S" restrictions="" room="85 EVANS" section="102 DIS" time="Th 11-12P" units=""/>
         <klass ccn="26509" exam_group="" instructor="" name="Operating Systems and System Programming" number="162" number_type="S" restrictions="CURRENTLY FULL" room="3102 ETCHEVERRY" section="103 DIS" time="Th 4-5P" units=""/>
+        <klass ccn="26511" exam_group="" instructor="" name="Operating Systems and System Programming" number="162" number_type="S" restrictions="" room="405 SODA" section="104 DIS" time="F 3-4P" units=""/>
         <klass ccn="26512" exam_group="8" instructor="HILFINGER, P N" name="Programming Languages and Compilers" number="164" number_type="P" restrictions="BY CATEGORY" room="306 SODA" section="001 LEC" time="MWF 11-12P" units="4"/>
         <klass ccn="26515" exam_group="" instructor="" name="Programming Languages and Compilers" number="164" number_type="S" restrictions="" room="75 EVANS" section="101 DIS" time="Tu 11-12P" units=""/>
         <klass ccn="26518" exam_group="" instructor="" name="Programming Languages and Compilers" number="164" number_type="S" restrictions="" room="4 EVANS" section="102 DIS" time="Tu 1-2P" units=""/>
@@ -186,11 +188,11 @@
         <klass ccn="26524" exam_group="" instructor="" name="Software Engineering" number="169" number_type="S" restrictions="" room="2 EVANS" section="101 DIS" time="W 8-9A" units=""/>
         <klass ccn="26527" exam_group="" instructor="" name="Software Engineering" number="169" number_type="S" restrictions="" room="2 EVANS" section="102 DIS" time="F 8-9A" units=""/>
         <klass ccn="26530" exam_group="4" instructor="RAO, S B" name="Efficient Algorithms and Intractable Problems" number="170" number_type="P" restrictions="BY CATEGORY" room="306 SODA" section="001 LEC" time="MW 930-11A" units="4"/>
-        <klass ccn="26533" exam_group="" instructor="" name="Efficient Algorithms and Intractable Problems" number="170" number_type="S" restrictions="" room="5 EVANS" section="101 DIS" time="Th 11-12P" units=""/>
+        <klass ccn="26533" exam_group="" instructor="" name="Efficient Algorithms and Intractable Problems" number="170" number_type="S" restrictions="CURRENTLY FULL" room="5 EVANS" section="101 DIS" time="Th 11-12P" units=""/>
         <klass ccn="26536" exam_group="" instructor="" name="Efficient Algorithms and Intractable Problems" number="170" number_type="S" restrictions="CURRENTLY FULL" room="6 EVANS" section="102 DIS" time="Th 1-2P" units=""/>
         <klass ccn="26539" exam_group="" instructor="" name="Efficient Algorithms and Intractable Problems" number="170" number_type="S" restrictions="" room="87 EVANS" section="103 DIS" time="F 10-11A" units=""/>
         <klass ccn="26542" exam_group="" instructor="" name="Efficient Algorithms and Intractable Problems" number="170" number_type="S" restrictions="" room="85 EVANS" section="104 DIS" time="F 11-12P" units=""/>
-        <klass ccn="26545" exam_group="19" instructor="SESHIA, S A" name="Computability and Complexity" number="172" number_type="P" restrictions="BY CATEGORY" room="320 SODA" section="001 LEC" time="TuTh 1030-12P" units="4"/>
+        <klass ccn="26545" exam_group="19" instructor="SESHIA, S A" name="Computability and Complexity" number="172" number_type="P" restrictions="BY CATEGORY; CURRENTLY FULL" room="405 SODA" section="001 LEC" time="TuTh 1030-12P" units="4"/>
         <klass ccn="26548" exam_group="" instructor="" name="Computability and Complexity" number="172" number_type="S" restrictions="CURRENTLY FULL" room="2 EVANS" section="101 DIS" time="F 10-11A" units=""/>
         <klass ccn="26551" exam_group="5" instructor="CANNY, J F" name="Combinatorics and Discrete Probability" number="174" number_type="P" restrictions="BY CATEGORY" room="310 SODA" section="001 LEC" time="MW 1-230P" units="4"/>
         <klass ccn="26554" exam_group="" instructor="" name="Combinatorics and Discrete Probability" number="174" number_type="S" restrictions="" room="287 DWINELLE" section="101 DIS" time="Tu 2-3P" units=""/>
@@ -203,7 +205,7 @@
         <klass ccn="26563" exam_group="" instructor="" name="The Neural Basis of Thought and Language" number="C182" number_type="S" restrictions="" room="9 EVANS" section="101 DIS" time="F 11-12P" units=""/>
         <klass ccn="26566" exam_group="" instructor="" name="The Neural Basis of Thought and Language" number="C182" number_type="S" restrictions="" room="9 EVANS" section="102 DIS" time="F 12-1P" units=""/>
         <klass ccn="26569" exam_group="5" instructor="O'BRIEN, J" name="Foundations of Computer Graphics" number="184" number_type="P" restrictions="BY CATEGORY" room="306 SODA" section="001 LEC" time="MW 1-230P" units="4"/>
-        <klass ccn="26572" exam_group="" instructor="" name="Foundations of Computer Graphics" number="184" number_type="S" restrictions="" room="320 SODA" section="101 DIS" time="Th 12-1P" units=""/>
+        <klass ccn="26572" exam_group="" instructor="" name="Foundations of Computer Graphics" number="184" number_type="S" restrictions="" room="287 DWINELLE" section="101 DIS" time="Th 12-1P" units=""/>
         <klass ccn="26575" exam_group="" instructor="" name="Foundations of Computer Graphics" number="184" number_type="S" restrictions="" room="320 SODA" section="102 DIS" time="Th 1-2P" units=""/>
         <klass ccn="26578" exam_group="" instructor="" name="Foundations of Computer Graphics" number="184" number_type="S" restrictions="" room="405 SODA" section="103 DIS" time="F 2-3P" units=""/>
         <klass ccn="26581" exam_group="15" instructor="GAROFALAKIS, M" name="Introduction to Database Systems" number="186" number_type="P" restrictions="BY CATEGORY" room="306 SODA" section="001 LEC" time="TuTh 1230-2P" units="4"/>
@@ -212,7 +214,7 @@
         <klass ccn="26590" exam_group="" instructor="" name="Introduction to Database Systems" number="186" number_type="S" restrictions="CURRENTLY FULL" room="70 EVANS" section="103 DIS" time="M 3-4P" units=""/>
         <klass ccn="26593" exam_group="10" instructor="MALIK, J" name="Introduction to Artificial Intelligence" number="188" number_type="P" restrictions="BY CATEGORY" room="145 DWINELLE" section="001 LEC" time="TuTh 930-11A" units="4"/>
         <klass ccn="26596" exam_group="" instructor="" name="Introduction to Artificial Intelligence" number="188" number_type="S" restrictions="" room="105 LATIMER" section="101 DIS" time="Th 3-4P" units=""/>
-        <klass ccn="26599" exam_group="" instructor="" name="Introduction to Artificial Intelligence" number="188" number_type="S" restrictions="" room="6 EVANS" section="102 DIS" time="Th 4-5P" units=""/>
+        <klass ccn="26599" exam_group="" instructor="" name="Introduction to Artificial Intelligence" number="188" number_type="S" restrictions="CURRENTLY FULL" room="6 EVANS" section="102 DIS" time="Th 4-5P" units=""/>
         <klass ccn="26602" exam_group="" instructor="" name="Introduction to Artificial Intelligence" number="188" number_type="S" restrictions="CURRENTLY FULL" room="6 EVANS" section="103 DIS" time="F 11-12P" units=""/>
         <klass ccn="26605" exam_group="" instructor="" name="Introduction to Artificial Intelligence" number="188" number_type="S" restrictions="" room="87 EVANS" section="104 DIS" time="F 1-2P" units=""/>
         <klass ccn="26608" exam_group="" instructor="" name="Introduction to Artificial Intelligence" number="188" number_type="S" restrictions="" room="75 EVANS" section="105 DIS" time="F 2-3P" units=""/>
@@ -261,7 +263,7 @@
                 &quot;Unix System Administration&quot;&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="26632" exam_group="NONE" instructor="PATTERSON, D A" name="Directed Group Studies for Advanced Undergraduates" number="198" number_type="P" restrictions="JR, SR" room="271 SODA" section="010 GRP" time="MW 4-530P" units="1-4: PF">
+        <klass ccn="26632" exam_group="NONE" instructor="PATTERSON, D A" name="Directed Group Studies for Advanced Undergraduates" number="198" number_type="P" restrictions="JR, SR                                                                                                                                    ; CURRENTLY FULL" room="271 SODA" section="010 GRP" time="MW 4-530P" units="1-4: PF">
             <note>
                 &quot;Ruby on Rails&quot;&amp;nbsp;
             </note>
@@ -332,12 +334,12 @@
                 &quot;Research in Architecture&quot;&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="26871" exam_group="NONE" instructor="KARP, R M" name="Special Topics" number="294" number_type="P" restrictions="" room="405 SODA" section="016 LEC" time="TuTh 930-11A" units="3">
+        <klass ccn="26871" exam_group="NONE" instructor="KARP, R M" name="Special Topics" number="294" number_type="P" restrictions="" room="320 SODA" section="016 LEC" time="TuTh 930-11A" units="3">
             <note>
                 &quot;Computational Biology&quot;&amp;nbsp;
             </note>
         </klass>
-        <klass ccn="27391" exam_group="NONE" instructor="KLEIN, D L" name="Special Topics" number="294" number_type="P" restrictions="BY CATEGORY" room="405 SODA" section="019 LEC" time="TuTh 11-1230P" units="3">
+        <klass ccn="27391" exam_group="NONE" instructor="KLEIN, D L" name="Special Topics" number="294" number_type="P" restrictions="BY CATEGORY" room="320 SODA" section="019 LEC" time="TuTh 11-1230P" units="3">
             <note>
                 &quot;Statistical Natural Language Processing&quot;&amp;nbsp;
             </note>

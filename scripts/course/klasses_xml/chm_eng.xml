@@ -3,7 +3,7 @@
     <department abbr="chm eng">
         <klass ccn="10403" exam_group="1" instructor="KATZ, A" name="Chemical Kinetics and Reaction Engineering" number="142" number_type="P" restrictions="" room="3 LECONTE" section="001 LEC" time="MWF 8-9A" units="3"/>
         <klass ccn="10406" exam_group="" instructor="" name="Chemical Kinetics and Reaction Engineering" number="142" number_type="S" restrictions="CURRENTLY FULL" room="45 EVANS" section="101 DIS" time="Tu 8-9A" units=""/>
-        <klass ccn="10409" exam_group="" instructor="" name="Chemical Kinetics and Reaction Engineering" number="142" number_type="S" restrictions="CURRENTLY FULL" room="183 DWINELLE" section="102 DIS" time="Tu 3-4P" units=""/>
+        <klass ccn="10409" exam_group="" instructor="" name="Chemical Kinetics and Reaction Engineering" number="142" number_type="S" restrictions="" room="183 DWINELLE" section="102 DIS" time="Tu 3-4P" units=""/>
         <klass ccn="10412" exam_group="" instructor="" name="Chemical Kinetics and Reaction Engineering" number="142" number_type="S" restrictions="" room="45 EVANS" section="103 DIS" time="Th 8-9A" units=""/>
         <klass ccn="10415" exam_group="" instructor="" name="Chemical Kinetics and Reaction Engineering" number="142" number_type="S" restrictions="CURRENTLY FULL" room="183 DWINELLE" section="104 DIS" time="Th 3-4P" units=""/>
         <klass ccn="10418" exam_group="4" instructor="RADKE, C J" name="Transport Processes" number="150A" number_type="P" restrictions="CURRENTLY FULL" room="3 LECONTE" section="001 LEC" time="MWF 9-10A" units="4"/>

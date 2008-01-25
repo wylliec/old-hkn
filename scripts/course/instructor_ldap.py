@@ -37,6 +37,13 @@ def get_faculty_for_dept(dept, title=None, neg = False):
 def find_dept(query):
 	return lsearch("description=*%s*" % (query,), ou="UCBKL,ou=org units", attr=("description", "berkeleyEduOrgUnitHierarchyString"))
 
+def find_instructor(query, dept_abbr = None):
+	if dept_abbr == None:
+		return lsearch("(&(berkeleyEduAffiliations=EMPLOYEE-TYPE-ACADEMIC)(cn=*%s*))" % (query, ))
+	else:
+		return lsearch("(&(departmentNumber=%s)(berkeleyEduAffiliations=EMPLOYEE-TYPE-ACADEMIC)(cn=*%s*))" % (dept_abbr, query))
+	
+
 def print_results(results):
 	for r in results[1]:
 		d = r[1]
