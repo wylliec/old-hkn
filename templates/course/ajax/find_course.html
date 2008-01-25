@@ -1,0 +1,6 @@
+{% if courses|length_is:"0" %}
+No courses matching query found.
+{% endif %}
+{% for course in courses %}
+{{ course }} <a href="javascript:void(0)" onclick="addCourse('{{ course }}', {{ course.id }})"> add </a> <br>
+{% endfor %}
