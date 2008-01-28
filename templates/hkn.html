@@ -1,11 +1,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML>
-<HEAD>
+<html>
+<head>
 {% load hkn_extras %}
 {% block title %}<title>HKN {% block extratitle%} {% endblock %}</title>{% endblock %}
-<LINK REL="stylesheet" TYPE="text/css" HREF="{{ROOT_URL}}css/hkn.css">
-<LINK REL="stylesheet" TYPE="text/css" HREF="{{ROOT_URL}}css/info.css">
-<META NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
+<link rel="stylesheet" type="text/css" href="{{ROOT_URL}}css/hkn.css">
+<link rel="stylesheet" type="text/css" href="{{ROOT_URL}}css/info.css">
+<meta NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
 fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% block js %}
 <!-- <script type="text/javascript" src="/js/protoaculous1.6.packed.js" > </script> -->
@@ -14,16 +14,15 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% endblock %}
 {% block extrahead %}
 {% endblock %}
-</HEAD>
+</head>
 
-<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#003366" VLINK="#003366" {% block body_extra %} {% endblock %}>
+<body bgcolor="#FFFFFF" text="#000000" link="#003366" vlink="#003366" {% block body_extra %} {% endblock %}>
 
 
 <!--page title-->
 <div id="header">
 {% block header %}
-<!--<IMG SRC="/images/titles/hkntitle.gif" ALT="HKN Main Page" BORDER="0" HEIGHT="100" 
-WIDTH="330">-->
+<!--<IMG SRC="/images/titles/hkntitle.gif" ALT="HKN Main Page" BORDER="0" HEIGHT="100" WIDTH="330">-->
 {% endblock %}
 </div>
 
@@ -42,55 +41,61 @@ WIDTH="330">-->
 {% block sidebar %}
         <!--table of contents-->
 
-	<SPAN CLASS="title">People</SPAN>
-	<BR><A HREF="{% url hkn.info.list.list_people category="candidates"%}">Candidate Information</A>
-	<BR><A HREF="{% url hkn.info.list.list_people category="officers"%}">Officer Information</A>	
-	<BR>
+	<span class="title">People</span>
+	<br><a href="{% url hkn.info.list.list_people category="candidates"%}">Candidate Information</a>
+	<br><a href="{% url hkn.info.list.list_people category="officers"%}">Officer Information</a>	
+	<br>
 
-	<br><SPAN CLASS="title">Events</SPAN>
-	<BR><A HREF="{% url hkn.event.event.new %}">New Event</A>
-	<BR><A HREF="{% url hkn.event.list.list_events category="future" %}">Upcoming Events</A>
-	<BR><A HREF="{% url hkn.event.list.list_events category="past" %}">Past Events</A>	
-	<BR><A HREF="{% url hkn.event.rsvp.list.list_for_person person_id="me" %}">My RSVPs</A>
-	<BR><A HREF="{% url hkn.event.event.calendar %}">Events Calendar</A>
-	<BR>
+	<br><span class="title">Events</span>
+	<br><a href="{% url hkn.event.event.new %}">New Event</a>
+	<br><a href="{% url hkn.event.list.list_events category="future" %}">Upcoming Events</a>
+	<br><a href="{% url hkn.event.list.list_events category="past" %}">Past Events</a>	
+	<br><a href="{% url hkn.event.rsvp.list.list_for_person person_id="me" %}">My RSVPs</a>
+	<br><a href="{% url hkn.event.event.calendar %}">Events Calendar</a>
+	<br>
 
-	<br><SPAN CLASS="title">Candidates</SPAN>
-	<BR><A HREF="{% url hkn.cand.initiate.initiate category="all"%}">Initiate Candidates!</A>
-	<BR><A HREF="{% url hkn.cand.confirm.requirements %}">My Confirmed Attendance</A>
-	<BR>
+	<br><span class="title">Candidates</span>
+	<br><a href="{% url hkn.cand.initiate.initiate category="all"%}">Initiate Candidates!</a>
+	<br><a href="{% url hkn.cand.confirm.requirements %}">My Confirmed Attendance</a>
+	<br>
 
-	<br><SPAN CLASS="title">Requests</SPAN>
-	<BR><A HREF="{% url hkn.request.list.list_requests category="actives"%}">Confirm Requests [{{ requests|length }}]</A>
-	<BR>
+	<br><span class="title">Requests</span>
+	<br><a href="{% url hkn.request.list.list_requests category="actives"%}">Confirm Requests [{{ requests|length }}]</A>
+	<br>
 	
-	<br><SPAN CLASS="title">u want a revolution</SPAN>
-	<BR><A HREF="{% url hkn.info.elect.elect %}">Elect New Officers</A>
-	<BR><A HREF="{% url hkn.info.elect.revolt %}">New Officer Revolt</A>
-	<BR>
+	<br><span class="title">u want a revolution</span>
+	<br><a href="{% url hkn.info.elect.elect %}">Elect New Officers</a>
+	<br><a href="{% url hkn.info.elect.revolt %}">New Officer Revolt</a>
+	<br>
+
+	<br><span class="title">Tutoring</span>
+	<br><a href="{% url hkn.tutor.views.signup %}">Tutoring Signup</a>
+	<br><a href="{% url hkn.tutor.views.view_signups %}">View Tutoring Signups</a>
+	<br><a href="{% url hkn.tutor.views.submit_assignments %}">Submit Assignments</a>
+	<br>
+
 
 	
-	<BR><SPAN CLASS="title">Student Services</SPAN>
-	<BR><A HREF="/tutor/">Tutoring</A>
-	<BR><A HREF="/student/CourseSurvey">Course Survey</A>
-	<BR><A HREF="/exam/">Online Exams</A>
-	<BR>
-	<BR>
+	<br><span class="title">Student Services</span>
+	<br><a href="/student/CourseSurvey">Course Survey</a>
+	<br><a href="/exam/">Online Exams</a>
+	<br>
+	<br>
 	
 	{% if user.is_anonymous %}
-	<form action="/authenticate/" method="post" enctype="multipart/form-data">
+	<form action="{% url hkn.auth.login.authenticate %}" method="post" enctype="multipart/form-data">
 	User: <input class="inputbox" type="text" name="username" value="" size=15/><br>
 	Pass: <input class="inputbox" type="password" name="password" value="" size=15/><br>
 	<input type="hidden" name="redirect_url" value="/" />
 	<input type="submit" class="button" value="Login" />
 	{% else %}
-	<SPAN CLASS="logout"> you are {{ user.username }} <A HREF="/logout">(logout)</A></SPAN>
+	<span class="logout"> you are {{ user.username }} <a href="{% url hkn.auth.login.logout %}">(logout)</a></span>
 	{% endif %}
 
 
 <!--
 	<IMG SRC="/images/trans.gif" WIDTH="11" HEIGHT="1" ALT="" BORDER="0">
-	<BR><BR><A HREF="/images/shield_huge.gif"><IMG 
+	<br><br><A href="/images/shield_huge.gif"><IMG 
 SRC="/images/shield256.gif" WIDTH="75" HEIGHT="122" BORDER=0></A>
 -->
 {% endblock %}
@@ -110,10 +115,10 @@ SRC="/images/shield256.gif" WIDTH="75" HEIGHT="122" BORDER=0></A>
 
 <div style="float: left; width: 30%; text-align: left;">Eta Kappa Nu, Mu Chapter</div>
 <div style="float: left; width: 40%; text-align: center;">290 Cory: (510) 642-7346</div>
-<div style="float: left; width: 30%; text-align: right;"><A HREF="mailto:www@hkn.eecs.berkeley.edu">www@hkn.eecs.berkeley.edu</A></div>
+<div style="float: left; width: 30%; text-align: right;"><A href="mailto:www@hkn.eecs.berkeley.edu">www@hkn.eecs.berkeley.edu</A></div>
 </div>
 
-</BODY>
-</HTML>
+</body>
+</html>
 
 
