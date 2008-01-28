@@ -11,6 +11,8 @@
 {# If you do not want this block to appear at all, simply place an empty 'subheader' block in the child template. #}
 {% block subheader %}
 <a href="{% url hkn.tutor.views.schedule %}">Tutoring Schedule</a>
+ | <a href="{% url hkn.tutor.views.feedback %}">Tutoring Feedback</a>
+ | <a href="{% url hkn.tutor.views.contact %}">Contact Tutoring</a>
 {% if user %}
  | <a href="{% url hkn.tutor.views.signup %}">Signup</a>
 {% endif %}
