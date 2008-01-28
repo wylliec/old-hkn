@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+{% load hkn_extras %}
+{% block title %}<title>HKN {% block extratitle%} {% endblock %}</title>{% endblock %}
+<LINK REL="stylesheet" TYPE="text/css" HREF="{{ROOT_URL}}css/hkn.css">
+<LINK REL="stylesheet" TYPE="text/css" HREF="{{ROOT_URL}}css/info.css">
+<META NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
+fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
+{% block js %}
+<script type="text/javascript" src="{{ROOT_URL}}js/jquery-1.2.1.js" > </script>
+<script type="text/javascript" src="{{ROOT_URL}}js/jquery.form.js"></script>
+{% endblock %}
+{% block extrahead %}
+{% endblock %}
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#003366" VLINK="#003366" {% block body_extra %} {% endblock %}>
+
+
+<!--page title-->
+<div id="header">
+{% block header %}
+<table cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td>
+<IMG SRC="/images/shield_huge.gif" ALT="HKN Main Page" BORDER="0" HEIGHT="94" 
+WIDTH="72">
+</td>
+<td width="150"></td>
+<td>
+<IMG SRC="/images/titles/hkntitle.gif" ALT="HKN Main Page" BORDER="0" HEIGHT="100" 
+WIDTH="330">
+</td>
+</tr>
+</table>
+{% endblock %}
+</div>
+
+
+<!--location mapper-->
+<div id="location">
+{% block nav %}
+<table id="nav" cellspacing="0" cellpadding="0" border="0">
+<tbody>
+<tr>
+<td class="nav_leftcap"></td>
+<td class="nav_divider"></td>
+<td><a href="/1/">People</a></td>
+<td class="nav_divider"></td>
+<td><a href="/1/1/">Events</a></td>
+<td class="nav_divider"></td>
+<td><a href="/1/2/">Candidates</a></td>
+<td class="nav_divider"></td>
+<td><a href="/1/3/">Requests</a></td>
+<td class="nav_divider"></td>
+<td><a href="/1/4/">u want a revolution</a></td>
+<td class="nav_divider"></td>
+<td><a href="/1/5/">Student Services</a></td>
+<td class="nav_divider"></td>
+<td><a href="/1/6/">About</a></td>
+<td class="nav_divider"></td>
+<td class="nav_rightcap"></td>
+</tr>
+</tbody>
+</table>
+{% endblock %}
+{% block subnav %}
+{% endblock %}
+</div>
+
+
+<!--main content starts-->
+
+
+    <!--content-->
+<div id="content">
+<!-- start main content block -->
+{% block content %}
+	Content goes here! Extend "content" block in template :) :) :) <3 <3 <3
+{% endblock %}
+<!-- end main content block -->
+</div>
+
+<!--footer-->
+<div id="footer">
+
+<div style="float: left; width: 30%; text-align: left;">Eta Kappa Nu, Mu Chapter</div>
+<div style="float: left; width: 40%; text-align: center;">290 Cory: (510) 642-7346</div>
+<div style="float: left; width: 30%; text-align: right;"><A HREF="mailto:www@hkn.eecs.berkeley.edu">www@hkn.eecs.berkeley.edu</A></div>
+</div>
+
+</BODY>
+</HTML>
+
+
