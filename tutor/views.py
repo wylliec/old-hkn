@@ -27,6 +27,16 @@ def schedule(request):
                               basicContext(request),
                               context_instance = RequestContext(request))
 
+def contact(request):
+    return render_to_response('tutor/contact.html',
+                              basicContext(request),
+                              context_instance = RequestContext(request))
+
+def feedback(request):
+    return render_to_response('tutor/feedback.html',
+                              basicContext(request),
+                              context_instance = RequestContext(request))
+
 # Create your views here.
 @login_required
 def signup(request, message = False):
