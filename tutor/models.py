@@ -20,9 +20,9 @@ class Availability(models.Model):
     year = models.PositiveIntegerField()
     preference = models.IntegerField()
 
-    def atCory(self):
+    def at_cory(self):
         return self.office == "Cory"
-    def atSoda(self):
+    def at_soda(self):
         return self.office == "Soda"
     
 class Assignment(models.Model):
@@ -40,21 +40,21 @@ class Assignment(models.Model):
     for a single season/year.
     """
 
-    def atCory(self):
+    def at_cory(self):
         return self.office == "Cory"
-    def atSoda(self):
+    def at_soda(self):
         return self.office == "Soda"
     
-    def getMaxVersion(seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR):
+    def get_max_version(seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR):
         """
         NOTE: this is REALLY INEFFICIENT!
         gets the max version of all assignments for given year and season name
         """
         season = courses.Season.objects.get(name=seasonName)
         return max([x.version for x in Assignment.objects.filter(season=season, year=year)])
-    getMaxVersion = staticmethod(getMaxVersion)
+    get_max_version = staticmethod(get_max_version)
     
-    def generateSchedule(seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR, randomSeed = False):
+    def generate_schedule(seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR, randomSeed = False):
         """
         Generate a new schedule given latest assignments to given season name and year
         May also provide a randomSeed
@@ -73,8 +73,8 @@ class Assignment(models.Model):
         availabilitiesBySlot = NiceDict([])
         
         for availability in availabilities:
-            slotInfo = {"day":getDayFromSlot(availability.slot),
-                    "time":getTimeFromSlot(availability.slot),
+            slotInfo = {"day":get_day_from_slot(availability.slot),
+                    "time":get_time_from_slot(availability.slot),
                     "office":availability.office}
             
             prev = availabilitiesBySlot[slotInfo]
@@ -87,14 +87,14 @@ class Assignment(models.Model):
                          "preference":availability.preference})
         
         #delegate all calculation work to the scheduler
-        schedule_info = scheduler.generateSchedule(availabilitiesBySlot=availabilitiesBySlot,
+        schedule_info = scheduler.generate_schedule(availabilitiesBySlot=availabilitiesBySlot,
                                               options=options)
         
         #set up assignment objects
         new_assignments = []
         assignmentsDict = schedule_info['assignments']
         for slotInfo in assignmentsDict:
-            slotname = makeSlot(day=slotInfo['day'], time=slotInfo['time'])
+            slotname = make_slot(day=slotInfo['day'], time=slotInfo['time'])
             new_assignments.append(
                 Assignment(person=assignmentsDict[slotInfo]['person'],
                            slot=slotname,
@@ -111,7 +111,7 @@ class Assignment(models.Model):
         #return
         return schedule_info['happiness']
         
-    generateSchedule = staticmethod(generateSchedule)
+    generate_schedule = staticmethod(generate_schedule)
 
 class CanTutor(models.Model):
     """ Models who can tutor what for a particular season/year. """
@@ -146,17 +146,17 @@ class CourseTutored(models.Model):
 
 
 #Helpful methods
-def makeSlot(day="BAD_DAY", time="BAD_TIME"):
+def make_slot(day="BAD_DAY", time="BAD_TIME"):
     return day + ' ' + time
-def getDayFromSlot(slot):
+def get_day_from_slot(slot):
     return slot.split(' ')[0]
-def getTimeFromSlot(slot):
+def get_time_from_slot(slot):
     return slot.split(' ')[1]
-def makeOfficeSlot(day="BAD_DAY", time="BAD_TIME", office="BAD_OFFICE"):
+def make_office_slot(day="BAD_DAY", time="BAD_TIME", office="BAD_OFFICE"):
     return day + ' ' + time + ' ' + office
-def getDayFromOfficeSlot(officeSlot):
+def get_day_from_office_slot(officeSlot):
     return officeSlot.split(' ')[0]
-def getTimeFromOfficeSlot(officeSlot):
+def get_time_from_office_slot(officeSlot):
     return officeSlot.split(' ')[1]
-def getOfficeFromOfficeSlot(officeSlot):
+def get_office_from_office_slot(officeSlot):
     return officeSlot.split(' ')[2]

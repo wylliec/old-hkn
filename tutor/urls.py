@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     (r'^submit_signup/$', 'hkn.tutor.views.submit_signup'),
     (r'^view_signups/$', 'hkn.tutor.views.view_signups'),
     (r'^submit_assignments/$', 'hkn.tutor.views.submit_assignments'),
+    (r'^admin/$', 'hkn.tutor.views.admin'),
     )

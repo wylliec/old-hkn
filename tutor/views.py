@@ -64,16 +64,16 @@ def signup(request, message = False):
     prevAvailabilities = NiceDict(defaultValue="")
     for availability in prevAvailabilitiesList:
         prevAvailabilities[availability.slot] = availability.preference
-        if availability.atCory():
+        if availability.at_cory():
             seen_cory = True
-        if availability.atSoda():
+        if availability.at_soda():
             seen_soda = True
     
     #create each row for "prev"
     for time in context['timeslots']:
         row = NamedList(name=time)
         for day in context['days']:
-            slot = tutor.makeSlot(day=day, time=time)
+            slot = tutor.make_slot(day=day, time=time)
             row.append({"name":slot,
                         "value":prevAvailabilities[slot]})
         prev.append(row)
@@ -144,7 +144,7 @@ def submit_signup(request):
     #make the new availabilities for this semester/year
     for time in TUTORING_TIMES:
         for day in TUTORING_DAYS:
-            slot = tutor.makeSlot(day=day, time=time)
+            slot = tutor.make_slot(day=day, time=time)
             if info[slot]:
                 try:
                     preference = int(info[slot])
@@ -167,20 +167,28 @@ def submit_signup(request):
                             preference=preference))
     
     #make CanTutor data
-    newCanTutors = []
+    newCanTutors = {}
     #already ensured numCourses is less than MAX_COURSES
-    for i in range(numCourses + 1):
+    for i in range(numCourses):
+        current = False
         course_id = info["course_" + str(i)]
         if not course_id:
             continue
-        course_id = int(course_id)
-	print "got course: " + str(course_id)
-        newCanTutors.append(
+        if course_id.endswith('cur'):
+            course_id = course_id[:-3] #take off last 3 chars of course_id to remove 'cur'
+            current = True
+        else:
+            course_id = int(course_id)
+        if course_id in newCanTutors:
+            return signup(
+                          request,
+                          message="Error with form, please re-enter your information.  Do not list the same course multiple times.")
+        newCanTutors[course_id] = (
             tutor.CanTutor(person=person,
                            course_id=course_id,
                            season=currentSeason(),
                            year=CURRENT_YEAR,
-                           current=False)) #TODO change this!
+                           current=current))
     
     #data is validated, so safe to update database
     oldAvailabilities.delete() #delete old ones
@@ -191,10 +199,11 @@ def submit_signup(request):
     tutor.CanTutor.objects.filter(person=person,
                                   season=currentSeason(),
                                   year=CURRENT_YEAR).delete()
-    for elem in newCanTutors:
-        elem.save()
+    for key in newCanTutors:
+        newCanTutors[key].save()
     
     return HttpResponseRedirect('/tutor/signup')
+    #return signup(request, message="Made CanTutor assignments: " + str(newCanTutors))
     #return render_to_response("tutor/signup.html", {},  context_instance = RequestContext(request))
 
 @login_required
@@ -255,9 +264,9 @@ def view_signups(request):
         if availability.slot not in availabilitiesDict:
             availabilitiesDict[availability.slot] = [[], []]
         
-        if availability.atSoda():
+        if availability.at_soda():
             officeIndex = 0
-        if availability.atCory():
+        if availability.at_cory():
             officeIndex = 1
         person = availability.person
         
@@ -287,9 +296,9 @@ def view_signups(request):
                                    "missing":HOUR_EXCEPTIONS[fullname] | DEFAULT_HOURS}
             happiness[fullname]["net"] = -1 * SCORE_MISS_PENALTY * happiness[fullname]["missing"]
         
-        if assignment.atSoda():
+        if assignment.at_soda():
             officeIndex = 0
-        if assignment.atCory():
+        if assignment.at_cory():
             officeIndex = 1
         
         #scan for the preference
@@ -340,7 +349,7 @@ def view_signups(request):
     for time in context['timeslots']:
         row = NamedList(name=time)
         for day in context['days']:
-            slot = tutor.makeSlot(day=day, time=time)
+            slot = tutor.make_slot(day=day, time=time)
             #return signup(request, str(availabilitiesDict))
             row.append({"name":slot,
                         "sodaoptions":availabilitiesDict[slot][0],
@@ -360,6 +369,7 @@ def view_signups(request):
     
     context['info'] = info
     context['happiness'] = happiness
+    
     return render_to_response("tutor/view_signups.html",
                               context,
                               context_instance = RequestContext(request))
@@ -384,9 +394,9 @@ def submit_assignments(request):
     
     for day in TUTORING_DAYS:
         for time in TUTORING_TIMES:
-            slot = tutor.makeSlot(day=day, time=time)
+            slot = tutor.make_slot(day=day, time=time)
             for office in [SODA, CORY]:
-                officeslot = tutor.makeOfficeSlot(day=day, time=time, office=office)
+                officeslot = tutor.make_office_slot(day=day, time=time, office=office)
                 #selected_people is a DICTIONARY mapping id to person object
                 people_ids = [int(x) for x in info.getlist(officeslot)]
                 selected_people = hknmodels.Person.objects.in_bulk(people_ids)
@@ -412,7 +422,7 @@ def submit_assignments(request):
         assignment.save()
     
     return HttpResponseRedirect("/tutor/view_signups")
-#    return HttpResponse("would have made " + str(debugcount) + " assignments at version " + str(version))
+#    return HttpResponse("made " + str(len(new_assignments)) + " assignments at version " + str(version))
 
 def admin(request):
     return render_to_response('tutor/admin.html',

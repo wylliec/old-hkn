@@ -19,7 +19,7 @@ class CourseManager(models.Manager):
         else:
             (dept_abbr, coursenumber) = query.split(" ")
 
-	dept_abbr = Department.get_proper_abbr(dept_abbr)
+	dept_abbr = Department.proper_abbr(dept_abbr)
 
 	print dept_abbr
 	print coursenumber
@@ -46,13 +46,17 @@ class Department(models.Model):
         return self.name
     
     """ replaces COMPSCI (correct abbreviation) with CS (common abbreviation) and the like """
-    def get_abbr(self):
-        return DEPT_ABBR_OVERRIDE[self.abbr.upper] or self.abbr
+    def nice_abbr(abbr):
+        return DEPT_ABBR_OVERRIDE[abbr.upper()] or abbr
+    nice_abbr = staticmethod(nice_abbr)
+    
+    def my_nice_abbr(self):
+        return Department.nice_abbr(self.abbr)
     
     """ replaces CS (common abbreviation) with COMPSCI (correct abbreviation) and the like """
-    def get_proper_abbr(abbr):
+    def proper_abbr(abbr):
         return DEPT_ABBR_CORRECT[abbr.upper()] or abbr
-    get_proper_abbr = staticmethod(get_proper_abbr)
+    proper_abbr = staticmethod(proper_abbr)
 
     
 class Course(models.Model):
@@ -78,7 +82,7 @@ class Course(models.Model):
     """ A description of the course """
     
     def __str__(self):
-        return "%s%s: %s" % (self.department_abbr, self.number, self.name)
+        return "%s%s: %s" % (Department.nice_abbr(self.department_abbr), self.number, self.name)
     
     class Meta:
         unique_together = (("department", "number"),)

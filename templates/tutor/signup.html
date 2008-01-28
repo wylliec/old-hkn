@@ -28,10 +28,18 @@ function updateonenter(e) {
 	}
 	return true;
 }
-nextNumCourse = 1;
+nextNumCourse = 0;
 missingInts = new Array();
-function addCourse(name, course_id){
+function addCourse(name, course_id, current){
 	var nameNum
+	var current_str
+	if(current){
+		current_note = ' (current)'
+		current_str = 'cur'
+	} else {
+		current_note = ''
+		current_str = ''
+	}
 	if(missingInts.length > 0){
 		nameNum = missingInts[missingInts.length - 1]
 		missingInts.length--
@@ -39,24 +47,31 @@ function addCourse(name, course_id){
 		nameNum = nextNumCourse
 		if(nameNum <= {{MAX_COURSES}}){
 			nextNumCourse++;
-			$("#maxNumCourses").attr("value", nameNum);
+			$("#maxNumCourses").attr("value", nameNum + 1);
 		} else {
 			alert("Too many Courses!")
 			return
 		}
 	}
 	var newhtml =
-		'<div id="course' + course_id +'">' +
-		name +
-		'<a href="javascript:void(0);" onClick="removeCourse('+course_id+');">' +
-		' remove </a>' +
-		'<input name="course_' + nameNum + '" type=hidden value=' + course_id + ' /><br />' +
+		'<div id="course_' + course_id +'">' +
+		name + current_note + 
+		'<a href="javascript:void(0);" onClick="removeCourse(' +
+			course_id +
+			',' + 
+			nameNum + 
+			');">' +
+		'<br />' +
+		'remove </a>' +
+		'<input name="course_' + nameNum + '" type=hidden value="' + course_id + current_str + '" />' +
+		'<hr />' + 
 		'</div>';
 	var classesDiv = $("#classes");
 	classesDiv.html(classesDiv.html() + newhtml);
 }
-function removeCourse(course_id){
-	$('#course'+course_id).remove();
+function removeCourse(courseNum, nameNum){
+	$('#course_'+courseNum).remove();
+	missingInts[missingInts.length] = nameNum
 }
 
 </script>
@@ -103,18 +118,23 @@ function removeCourse(course_id){
     
     <div>
 		<div style="margin: 0px auto;">
-			Search for class (like "cs61a"):
+			Search for class (like "cs61", "cs61c", "ee", or "cheme"):
 			<input id="course_query" onkeypress="return updateonenter(event);"/>
 			<a href="javascript:void(0);" onclick="update_courses();">Search</a>
 		</div>
 		<br />
-		<div id="results_container" style="border: 1px solid gray; width: 40%; float: left; height: 10em; overflow: hidden;"> 
+		<div id="results_container" style="border: 1px solid gray; width: 40%; float: left; height: 25em; overflow: hidden;"> 
 			<h2>Search Results: </h2>
-			<div id="results" style="height: 5em; overflow: scroll">None yet, search above!</div>
+			<div id="results" style="height: 20em; overflow: scroll">
+				<hr />
+				None yet, search above!
+			</div>
 		</div>
-		<div id="classes_container" style="border: 1px solid gray; width: 40%; margin-right: 10%; float: right; height: 10em; overflow: hidden;"> 
+		<div id="classes_container" style="border: 1px solid gray; width: 40%; margin-right: 10%; float: right; height: 25em; overflow: hidden;"> 
 			<h2>Courses Added:</h2>
-			<div id="classes" style="height: 5em; overflow: scroll"></div>
+			<div id="classes" style="height: 20em; overflow: scroll">
+				<hr />
+			</div>
 		</div>
     </div>
     
@@ -127,7 +147,7 @@ function removeCourse(course_id){
 
 <script type="text/javascript">
 {% for canTutor in prevCanTutor %}
-addCourse('{{canTutor.course}}', '{{canTutor.course_id}}');
+addCourse('{{canTutor.course}}', '{{canTutor.course_id}}', {{canTutor.current|lower}});
 {% endfor %}
 </script>
 

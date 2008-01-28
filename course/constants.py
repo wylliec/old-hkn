@@ -18,6 +18,24 @@ EXAMS_PREFERENCE.add_descriptions(((EXAMS_PREFERENCE.UNKNOWN, "Unknown"), (EXAMS
 
 #NiceDict from allcaps official department abbreviations to preferred abbreviations
 DEPT_ABBR_OVERRIDE = NiceDict(False, {
-    "COMPSCI":"CS",
-    "EL ENG": "EE"})
+    "ASTRON":  "ASTRO",
+    "BIOLOGY": "BIO",
+    "BIO ENG": "BIOE",
+    "BUS ADM": "BA",
+    "CHM ENG": "CHEME",
+    "CIV ENG": "CIVE",
+    "COG SCI": "COGSCI",
+    "COMPSCI": "CS",
+    "EL ENG":  "EE",
+    "ENGIN":   "E",
+    "HISTORY": "HIST", #not actually used
+    "IND ENG": "IEOR",
+    "INTEGBI": "IB",
+    "LINGUIS": "LING", #not actually used
+    "MAT SCI": "MSE",
+    "MEC ENG": "ME",
+    "MCELLBI": "MCB",
+    "PHYSICS": "PHYS",
+    "POL SCI": "POLISCI", #not actually used
+    })
 DEPT_ABBR_CORRECT = DEPT_ABBR_OVERRIDE.invertedCopy() #goes from preferred abbreviations to true ones
