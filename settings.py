@@ -96,6 +96,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'hkn.auth.middleware.AuthenticationMiddleware',
+    'hkn.main.middleware.LayoutMiddleware',
     'django.middleware.doc.XViewMiddleware',
 )
 
