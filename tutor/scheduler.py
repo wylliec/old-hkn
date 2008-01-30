@@ -3,7 +3,7 @@
 from hkn.tutor.constants import *
 from hkn.utils import NiceDict
 
-import heapq, random, sys, time
+import heapq, random, sys, time, thread
 
 """
 Notes, terms, and oddities:
@@ -600,61 +600,120 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     
     iterations = 0
     maxIterations = 10**3 #TODO change!
+    feedbackPeriod = 250 #number of iterations to go between printing stuff to user
+    currentMaxIterations = maxIterations
     bestSoFar = []
     goalsFound = 0
     maxKept = 100
-    while iterations < maxIterations and state != None: #TODO change!
-        if iterations % 1000 == 0:
-            print "\titeration: %d, best goal of %d: %d" % (iterations, goalsFound, stateTracker.maximumCost)
-#            print "\tstats: %s" % stateTracker.stats
-#            print "\tstate: %s" % dict(state)
-        iterations += 1
-        stateTracker.visit(state)
-        
-        if state.isGoal():
-            tmp = state.copy()
-            tmp.meta['parent'] = 'removed'
-#            print "\tfound goal: %s" % tmp
-            
-            goalsFound += 1
-            
-            #no successors, this is a goal state.  Try to find a better one by hill climbing
-            state = my_hill_climb(state)
-            
-            #tell stateTracker about this state and the new max cost
-            stateTracker.push(state)
-            stateTracker.visit(state)
-            stateTracker.maximumCost = state.estCost()
-            
-            #add this new state to our list of bestSoFar
-            bestSoFar.insert(0, state)
-            if len(bestSoFar) > maxKept:
-                bestSoFar.pop() #dump least good in bestSoFar
-            
-            state = stateTracker.pop() #get some other "good" state from stateTracker
-        else:
-#            print "\tlooking for successors"
-            successors = stateTracker.filtered_successors(state)
-            if len(successors) == 0:
-#                print "\tbacktracking"
-                state = stateTracker.backtrack(state)
-                if state == None:
-#                    print "\tbacktrack failed, looking for new state"
-                    state = stateTracker.pop()
-#                    if state == None:
-#                        print "\tstate is now None"
-#                    else:
-#                        print "\tstate is now %s" % dict(state)
-            else:
-                state = min(successors)
-            
-    print "\tstateTracker stats: %s" % str(stateTracker.stats)
-    print "\tfound %d goals in %d iterations" % (goalsFound, iterations)
-    bestCosts = "best goals had costs: ["
-    for goal in bestSoFar:
-        bestCosts += str(goal.meta['cost']) + ","
-    print bestCosts[:-1] + ']'
+    bestCost = 0
+    startTime = time.time()
+    oldTime = startTime
+    lastGoalTime = 0.0
+    charHolder = ['']
+    signalHolder = [True, True]
     
+    #create thread to handle user input
+    thread.start_new_thread(read_one_char_into_buffer, (charHolder, signalHolder))
+    try:
+        while state != None:
+            char = charHolder[0]
+            if len(char) > 0:
+                print "reading char from main thread"
+                if char == 'x':
+                    print "halting execution"
+                    break
+                elif char == 'p':
+                    print "dumping to schedulerDump.txt"
+                    #open file and dump
+                    dumpFile = open('schedulerDump.txt', 'w')
+                    dumpFile.write("Created at iteration " + str(iterations) + '\n\n')
+                    for e in bestSoFar:
+                        dumpFile.write(e.pretty_print() + '\n\n')
+                    dumpFile.close()
+                elif char == 'c':
+                    print "continuing execution"
+                    currentMaxIterations = iterations + maxIterations
+                charHolder[0] = ''
+                signalHolder[1] = True #signal to start reading characters again
+            if iterations % feedbackPeriod == 0:
+                newTime = time.time()
+                if iterations >= currentMaxIterations:
+                    print '===================================='
+                    print 'Completed %d iterations. in %d seconds' % (iterations,
+                                                                      newTime - startTime)
+                    print 'Found %d goals.  Best goal\'s cost:%d' % (goalsFound,
+                                                                     bestCost)
+                    print "Last %d iterations took %d seconds" % (feedbackPeriod,
+                                                                      (newTime - oldTime))
+                    print "Last goal found %d seconds ago" % newTime - lastGoalTime
+                    print ''
+                    print "Press 'x' and Enter to halt execution and return the best so far"
+                    print "Press 'p' and Enter to print the best solutions to schedulerDump.txt"
+                    print "Press 'c' and Enter to continue execution and suppress this message\
+    for %d iterations" % maxIterations
+                    print '===================================='
+                else:
+                    print "\titeration: %d, best goal of %d: %d" % (iterations,
+                                                                    goalsFound,
+                                                                    bestCost)
+                    print "Last %d iterations took %d seconds" % (feedbackPeriod,
+                                                                  (newTime - oldTime))
+            oldTime = newTime
+    #            print "\tstats: %s" % stateTracker.stats
+    #            print "\tstate: %s" % dict(state)
+            iterations += 1
+            stateTracker.visit(state)
+            
+            if state.isGoal():
+                tmp = state.copy()
+                tmp.meta['parent'] = 'removed'
+    #            print "\tfound goal: %s" % tmp
+                
+                goalsFound += 1
+                lastGoalTime = time.time()
+                
+                #no successors, this is a goal state.  Try to find a better one by hill climbing
+                state = my_hill_climb(state)
+                
+                #tell stateTracker about this state and the new max cost
+                stateTracker.push(state)
+                stateTracker.visit(state)
+                stateTracker.maximumCost = state.estCost()
+                bestCost = state.estCost()
+                
+                #add this new state to our list of bestSoFar
+                bestSoFar.insert(0, state)
+                if len(bestSoFar) > maxKept:
+                    bestSoFar.pop() #dump least good in bestSoFar
+                
+                state = stateTracker.pop() #get some other "good" state from stateTracker
+            else:
+    #            print "\tlooking for successors"
+                successors = stateTracker.filtered_successors(state)
+                if len(successors) == 0:
+    #                print "\tbacktracking"
+                    state = stateTracker.backtrack(state)
+                    if state == None:
+    #                    print "\tbacktrack failed, looking for new state"
+                        state = stateTracker.pop()
+    #                    if state == None:
+    #                        print "\tstate is now None"
+    #                    else:
+    #                        print "\tstate is now %s" % dict(state)
+                else:
+                    state = min(successors)
+                
+        print "\tstateTracker stats: %s" % str(stateTracker.stats)
+        print "\tfound %d goals in %d iterations" % (goalsFound, iterations)
+        bestCosts = "best goals had costs: ["
+        for goal in bestSoFar:
+            bestCosts += str(goal.meta['cost']) + ","
+        print bestCosts[:-1] + ']'
+    except:
+        signalHolder[0] = False #be sure to stop the other thread
+        raise
+    
+    signalHolder[0] = False #be sure to stop the other thread
     return bestSoFar
 
 @track_timing
@@ -872,6 +931,23 @@ def get_total_cost(state=State(),
     
     return cost
 
+def read_one_char_into_buffer(charHolder, signalHolder):
+    """
+    does not put any "space" onto buffer.  Meant to be called in a thread.  Exits when it sees
+    an 'x'
+    """
+    stdin = sys.stdin #std in file descriptor
+    temp = ''
+    while signalHolder[0]:
+        while signalHolder[1]:
+            temp = stdin.read(1)
+            if len(temp) > 0 and not temp.isspace():
+                signalHolder[1] = False #rest until signalled to read another character
+                charHolder[0] = temp
+                print "placed character into charHolder: %s (may have to try many times)" % temp.__repr__()
+                if temp == 'x':
+                    print "reader exiting"
+                    return
 
 def parse_into_availabilities_by_slot(coryTimes, sodaTimes):
     """
