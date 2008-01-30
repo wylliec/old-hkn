@@ -92,6 +92,44 @@ class Slot:
             otherOffice = CORY
         return Slot(self.day, self.time, otherOffice)
     
+    def earlierSlot(self):
+        """
+        returns the slot one hour earlier, same office and day
+        Returns None if this is the earliest slot
+        """
+        earlierTime = None
+        for time in TUTORING_TIMES:
+            if time == self.time:
+                break
+            earlierTime = time
+        if earlierTime == None:
+            return None
+        return Slot(self.day,earlierTime, self.office)
+    
+    def allAdjacentSlots(self):
+        """
+        returns all slots that are within one hour, regardless of office
+        """
+        earlierTime = None
+        laterTime = None
+        last_iter = False
+        for time in TUTORING_TIMES:
+            if last_iter:
+                laterTime = time
+                break
+            if time == self.time:
+                last_iter = True
+            else:
+                earlierTime = time
+        ret = []
+        for time in (earlierTime, laterTime):
+            if time != None:
+                slot = Slot(self.day, time, self.office)
+                ret.append(slot)
+                ret.append(slot.otherOfficeSlot())
+        
+        return ret
+    
 class State(dict):
     """
     Simply a dictionary with an instance variable "meta" that can be used for storing
@@ -611,30 +649,32 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     lastGoalTime = 0.0
     charHolder = ['']
     signalHolder = [True, True]
-    
+    lock = thread.allocate_lock()
     #create thread to handle user input
-    thread.start_new_thread(read_one_char_into_buffer, (charHolder, signalHolder))
+    thread.start_new_thread(read_one_char_into_buffer, (charHolder, signalHolder, lock))
     try:
         while state != None:
-            char = charHolder[0]
-            if len(char) > 0:
-                print "reading char from main thread"
-                if char == 'x':
-                    print "halting execution"
-                    break
-                elif char == 'p':
-                    print "dumping to schedulerDump.txt"
-                    #open file and dump
-                    dumpFile = open('schedulerDump.txt', 'w')
-                    dumpFile.write("Created at iteration " + str(iterations) + '\n\n')
-                    for e in bestSoFar:
-                        dumpFile.write(e.pretty_print() + '\n\n')
-                    dumpFile.close()
-                elif char == 'c':
-                    print "continuing execution"
-                    currentMaxIterations = iterations + maxIterations
-                charHolder[0] = ''
-                signalHolder[1] = True #signal to start reading characters again
+            if lock.acquire(0): #only acquire if can do so without waiting
+                char = charHolder[0]
+                if len(char) > 0:
+                    print "reading char from main thread"
+                    if char == 'x':
+                        print "halting execution"
+                        break
+                    elif char == 'p':
+                        print "dumping to schedulerDump.txt"
+                        #open file and dump
+                        dumpFile = open('schedulerDump.txt', 'w')
+                        dumpFile.write("Created at iteration " + str(iterations) + '\n\n')
+                        for e in bestSoFar:
+                            dumpFile.write(e.pretty_print() + '\n\n')
+                        dumpFile.close()
+                    elif char == 'c':
+                        print "continuing execution"
+                        currentMaxIterations = iterations + maxIterations
+                    charHolder[0] = ''
+                    signalHolder[1] = True #signal to start reading characters again
+                lock.release()
             if iterations % feedbackPeriod == 0:
                 newTime = time.time()
                 if iterations >= currentMaxIterations:
@@ -789,15 +829,46 @@ def get_successors(state=State(),
     return ret
 
 @track_timing
-def heuristic(state=State(), costs=NiceDict(0, {'base':1}), availabilitiesBySlot = NiceDict([])):
+def heuristic(state=State(),
+              costs=NiceDict(0, {'base':1}),
+              availabilitiesBySlot = NiceDict([]),
+              adjacency_checker = are_adjacent_hours,
+              slotsByPerson = NiceDict(DEFAULT_HOURS, HOUR_EXCEPTIONS)):
     """
     Returns: integer estimate of optimal future costs from this state
     Arguments:
         state - dictionary from slots to assignments, None for none assigned
         costs - see documentation at top
         availabilitiesBySlot - see documentation for generateSchedule
+        
+    Not a very smart heuristic right now.  Handles adjacencies poorly, puts
+    most optimistic person in each slot according to get_cost
     """
-    return 0
+    ret = 0
+    
+    my_get_cost = lambda state, slot, person: get_cost(initialState=state,
+                                                       slot=slot,
+                                                       person=person,
+                                                       costs=costs,
+                                                       adjacency_checker=adjacency_checker,
+                                                       availabilitiesBySlot=availabilitiesBySlot)
+    
+    for slot in state:
+        if state[slot] == None:
+            avails = availabilitiesBySlot[slot]
+            if len(avails) == 0:
+                return 10**10 #this is an unsolvable state
+            ret += min([my_get_cost(state, slot, detail[0]) for detail in avails])
+            
+            #assume that we could have filled an empty earlier slot for the same person
+            #only count earlier slots, so we don't double count (as badly)
+            earlierSlot = slot.earlierSlot()
+            if earlierSlot != None:
+                if state[earlierSlot] == None:
+                    ret -= costs['adjacent_same_office']
+                elif state[earlierSlot.otherOfficeSlot()] == None:
+                    ret -= costs['adjacent']
+    return ret
 
 @track_timing
 def hill_climb(initialState=State(),
@@ -842,18 +913,21 @@ def get_cost(initialState=State(),
     with the given initial state.
     """
     
-#    raise "I have a bug in this code, doesn't prefer adjacent slots"
-    
-#    adjacencies = 0 #TODO remove
-    
     cost = costs['base']
-    for key in initialState:
-        if key != slot and initialState[key] == person and adjacency_checker(key, slot):
+    if adjacency_checker == are_adjacent_hours:
+        #safe to use allAdjacentSlots
+        slots = [s for s in slot.allAdjacentSlots() if s in initialState]
+        #don't need to execute code to know they're adjacent, so use dummy function
+        my_adjacency_checker = lambda x, y: True
+    else:
+        slots = initialState
+        my_adjacency_checker = adjacency_checker
+    for key in slots:
+        if key != slot and initialState[key] == person and my_adjacency_checker(key, slot):
             if key.office == slot.office:
                 cost -= costs['adjacent_same_office']
             else:
                 cost -= costs['adjacent']
-#            adjacencies += 1 #TODO remove
     found = False
     for detail in availabilitiesBySlot[slot]:
         if detail[0] == person:
@@ -861,8 +935,6 @@ def get_cost(initialState=State(),
             found = True
             break
     
-    #TODO remove below
-#    print "\tget_cost returning cost %d, found %d adjacencies for assigning (%s, %s) to state %s" % (cost, adjacencies, slot, person, dict(initialState))
     
     return cost
 
@@ -931,14 +1003,17 @@ def get_total_cost(state=State(),
     
     return cost
 
-def read_one_char_into_buffer(charHolder, signalHolder):
+def read_one_char_into_buffer(charHolder, signalHolder, lock):
     """
     does not put any "space" onto buffer.  Meant to be called in a thread.  Exits when it sees
     an 'x'
     """
     stdin = sys.stdin #std in file descriptor
     temp = ''
+    lock.acquire()
     while signalHolder[0]:
+        lock.release()
+        lock.acquire()
         while signalHolder[1]:
             temp = stdin.read(1)
             if len(temp) > 0 and not temp.isspace():
@@ -947,6 +1022,7 @@ def read_one_char_into_buffer(charHolder, signalHolder):
                 print "placed character into charHolder: %s (may have to try many times)" % temp.__repr__()
                 if temp == 'x':
                     print "reader exiting"
+                    lock.release()
                     return
 
 def parse_into_availabilities_by_slot(coryTimes, sodaTimes):
@@ -1141,7 +1217,7 @@ def run_tests(verbose = False):
 #        schedules += r.pretty_print() + '\n\n'
 #    print "found schedules: \n" + schedules
 
-    print "test 6: 60 slots, only 1 optimal schedule, 2^30 possible ones"
+    print "test 6: 60 slots, only 1 optimal schedule, 4^30 possible ones"
     
     availsCory = "Ac1p As1, Dc1p Ds1, Gc1p Gs1, Jc1p Js1, Mc1p Ms1\n"
     availsCory +="Ac1p As1, Dc1p Ds1, Gc1p Gs1, Jc1p Js1, Mc1p Ms1\n"
@@ -1169,3 +1245,39 @@ def run_tests(verbose = False):
     print "found schedules: \n" + schedules
     
     print "passed %d of %d tests" % (PASSED[0], PASSED[0]+ FAILED[0])
+    
+def test_heuristic():
+    print "testing heuristic"
+    
+    costs = {'base': max(SCORE_ADJACENT, SCORE_ADJACENT_SAME_OFFICE) * 2 +
+                 max(SCORE_PREFERENCE.values()) +
+                 SCORE_CORRECT_OFFICE +
+                 1,
+         'adjacent': SCORE_ADJACENT,
+         'adjacent_same_office': SCORE_ADJACENT_SAME_OFFICE}
+    costs['preference'] = {}
+    for int_key in SCORE_PREFERENCE:
+        costs['preference'][int_key] = SCORE_PREFERENCE[int_key]
+        costs['preference'][int_key - 0.5] = SCORE_PREFERENCE[int_key] + SCORE_CORRECT_OFFICE
+    
+    s = State()
+    
+    availsCory = "A1p B1p\n"
+    availsCory +="A1p B2p"
+    
+    availsSoda = "A1p B1\n"
+    availsSoda +="A1p B2"
+    availabilitiesBySlot = parse_into_availabilities_by_slot(availsCory, availsSoda)
+    
+    s.initialize_keys(availabilitiesBySlot)
+    
+    slotsByPerson = NiceDict(2)
+    
+    expected = 4 * (costs['base'] - costs['preference'][0.5]) - 2 * costs['adjacent_same_office']
+    result = heuristic(s, costs, availabilitiesBySlot, slotsByPerson = slotsByPerson)
+    if expected == result:
+        print "start heuristic is correct"
+    else:
+        print "expected %d, start state heuristic: %d" % (expected, result)
+    
+    
