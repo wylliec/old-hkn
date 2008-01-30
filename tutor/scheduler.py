@@ -47,6 +47,13 @@ class Slot:
         return 'day' in otherstuff and 'time' in otherstuff and 'office' in otherstuff and \
             self.day == other.day and self.time == other.time and self.office == other.office
     
+    def otherOfficeSlot(self):
+        if self.office == CORY:
+            otherOffice = SODA
+        else:
+            otherOffice = CORY
+        return Slot(self.day, self.time, otherOffice)
+    
 class State(dict):
     """
     Simply a dictionary with an instance variable "meta" that can be used for storing
@@ -57,7 +64,7 @@ class State(dict):
     
     States may be hashed (unlike dictionaries)
     
-    also has makeChild, estCost, isGoal, and initialize_keys methods
+    also has makeChild, estCost, isGoal, initialize_keys, and pretty_print methods
     
     meta may contain:
         parent - parent state, will be None if no known parent.  Always present.
@@ -170,6 +177,25 @@ class State(dict):
         ret = 0
         for key in self:
             ret += key.__hash__() * str(self[key]).__hash__()
+        return ret
+    
+    def pretty_print(self):
+        ret = ""
+        
+        for office in (CORY, SODA):
+            ret += office
+            for day in TUTORING_DAYS:
+                ret += "\t" + day[0:4]
+            ret += '\n'
+            for time in TUTORING_TIMES:
+                ret += time
+                for day in TUTORING_DAYS:
+                    slot = Slot(day, time, office)
+                    if slot in self:
+                        ret += "\t" + str(self[slot])
+                    else:
+                        ret += "\t"
+                ret += "\n"
         return ret
     
 class PriorityQueue:
@@ -524,6 +550,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
         if iterations % 1000 == 0:
             print "\titeration: %d, best goal of %d: %d" % (iterations, goalsFound, stateTracker.maximumCost)
 #            print "\tstats: %s" % stateTracker.stats
+#            print "\tstate: %s" % dict(state)
         iterations += 1
         stateTracker.visit(state)
         
@@ -598,14 +625,17 @@ def get_successors(state=State(),
             else:
                 numAssigned[person] += 1
     
+    otherOfficeSlot = emptySlot.otherOfficeSlot()
     for person in [detail[0] for detail in availabilitiesBySlot[emptySlot]]:
-        if numAssigned[person] >= slotsByPerson[person]:
-            continue #person cannot tutor any more, so assign to other
+        if numAssigned[person] >= slotsByPerson[person] or state[otherOfficeSlot] == person:
+            #person cannot tutor any more, or is already tutoring this time in another
+            # office, so assign to other
+            continue
         successor = state.makeChild(emptySlot, person)
         ret.append(successor)
     
-    if len(ret) == 0 and not state.isGoal():
-        raise "returned no successors for non-goal state %s" % dict(state)
+#    if len(ret) == 0 and not state.isGoal():
+#        raise "returned no successors for non-goal state %s" % dict(state)
     if len(ret) > 0:
         for e in ret:
             if state.noneCount <= e.noneCount:
@@ -769,11 +799,14 @@ def run_tests(verbose = False):
             if ret == expected:
                 print "passed test\n"
                 PASSED[0] += 1
-                return
+                return ret
         except:
             print "Unexpected error:", sys.exc_info()[0]
+            raise
         print "failed test, expected %s\n\t but got %s\n" % (expected, ret)
         FAILED[0] += 1
+        return ret
+    
     def run_test(maxCost, minLength, availabilitiesBySlot, slotsByPerson):
         ret = "Test did not finish"
         try:
@@ -786,12 +819,13 @@ def run_tests(verbose = False):
             if len(ret) >= minLength and ret[0].estCost() <= maxCost:
                 print "passed test\n"
                 PASSED[0] += 1
-                return
+                return ret
         except:
             print "Unexpected error:", sys.exc_info()
             raise
         print "failed test, expected maxCost %s minLength %s\n\t but got %s\n" % (maxCost, minLength, ret)
-        FAILED[0] += 1    
+        FAILED[0] += 1
+        return ret
     
     def parse_into_availabilities_by_slot(coryTimes, sodaTimes):
         """
@@ -822,8 +856,9 @@ def run_tests(verbose = False):
             for hourAvailString in timesString.split('\n'):
                 dayIndex = 0
                 for dayAvailString in hourAvailString.split(','):
-                    for detailString in dayAvailString.strip().split(' '):
-#                        print "detailString: %s" % detailString
+                    for detailString in dayAvailString.split(' '):
+                        if detailString == '':
+                            continue
                         if detailString[-1:] == 'p':
                             preference = int(detailString[-2:-1]) - 0.5
                             person = detailString[:-2]
@@ -848,15 +883,13 @@ def run_tests(verbose = False):
     print "Running tests on scheduler..."
     
     
-    mondayMorningSodaSlot = Slot(TUTORING_DAYS[0], TUTORING_TIMES[0], SODA)
+    print "test 1: two slots, two people, each only 1 availability"
     
-    print "test 1: one slot, one person, one availability"
+    availabilitiesBySlot = parse_into_availabilities_by_slot("A1p", "B1p")
     
-    availabilitiesBySlot = {mondayMorningSodaSlot: [
-                                            ['OnlyPerson', 0.5],
-                                            ]}
-    slotsByPerson = {'OnlyPerson':1}
-    expected = [State({mondayMorningSodaSlot:'OnlyPerson'})]
+    slotsByPerson = NiceDict(1)
+    expected = [State({Slot(TUTORING_DAYS[0], TUTORING_TIMES[0], CORY):'A',
+                       Slot(TUTORING_DAYS[0], TUTORING_TIMES[0], SODA):'B'})]
     
     run_test_exact(expected, availabilitiesBySlot, slotsByPerson)
     
@@ -893,6 +926,7 @@ def run_tests(verbose = False):
     
     run_test(32, 1, availabilitiesBySlot, slotsByPerson)
     
+    
     print "test 4: eight slots, four people, all available, differing preferences, few\
         solutions, nontrivial"
     
@@ -906,5 +940,36 @@ def run_tests(verbose = False):
     slotsByPerson = NiceDict(2)
     
     run_test(38, 1, availabilitiesBySlot, slotsByPerson)
+    
+    
+    print "test 5: eight slots, three people, gaps and preferences in availabilities"
+    
+    availsCory = "A1p B1p C1p, A1p B2p C1p\n"
+    availsCory +="A2p     C2p, A2p B1p C1p"
+    
+    availsSoda = "A1 B1p C1, A1 B2p C1\n"
+    availsSoda +="A2     C2, A2 B1p C1"
+    availabilitiesBySlot = parse_into_availabilities_by_slot(availsCory, availsSoda)
+    
+    slotsByPerson = NiceDict(2, {'A':3, 'B':3})
+
+    """
+    expected optimal schedule:
+    Cory  M    T
+    11    A1p  A1p
+    12    A2p  C1p
+    
+    Soda  M    T
+    11    B1p  B2p
+    12    C2   B1p
+    
+    cost of 56
+    """
+    
+    results = run_test(56, 1, availabilitiesBySlot, slotsByPerson)
+#    schedules = ""
+#    for r in results:
+#        schedules += str(r.meta['cost']) + ':\n' + r.pretty_print() + '\n\n'
+#    print "found schedules: " + schedules
     
     print "passed %d of %d tests" % (PASSED[0], PASSED[0]+ FAILED[0])
