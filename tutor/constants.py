@@ -17,10 +17,11 @@ MIN_VERSION = 1
 MAX_COURSES = 50
 
 #used for scoring assignment utility, aka "happiness"
-SCORE_CORRECT_OFFICE = 1
+SCORE_CORRECT_OFFICE = 2
 SCORE_MISS_PENALTY = 10000 #should be larger than slots * best score possible
-SCORE_PREFERENCE = {1:3, 2:0} #maps from preference rank to score
-SCORE_ADJACENT = 0 #not yet working
+SCORE_PREFERENCE = {1:6, 2:0} #maps from preference rank to score
+SCORE_ADJACENT = 1
+SCORE_ADJACENT_SAME_OFFICE = 2
 
 #In the future, the below contents will be managed by scripts and should NOT be managed manually
 CURRENT_SEASON_NAME = "Spring" #DO NOT EDIT THIS
