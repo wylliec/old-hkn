@@ -383,7 +383,8 @@ def view_signups(request):
     return render_to_response("tutor/view_signups.html",
                               context,
                               context_instance = RequestContext(request))
-    
+
+@login_required
 def submit_assignments(request):
     context = basicContext(request)
     info = QueryDictWrapper(request.POST, defaultValue=False)
@@ -438,6 +439,21 @@ def admin(request):
     return render_to_response('tutor/admin.html',
                               basicContext(request, {'showAdminLinks':True}),
                               context_instance = RequestContext(request))
+
+@login_required
+def params_for_scheduler(request):
+    if request.method != 'POST':
+        return HttpResponseRedirect("/tutor/admin")
+    
+    randomSeed = request.POST.get('randomSeed', False)
+    if randomSeed == '': randomSeed = False
+    
+    maximumCost = request.POST.get('maximumCost', False)
+    if maximumCost == '': maximumCost = False
+    
+    return HttpResponse(tutor.Availability.parameters_for_scheduler(
+         randomSeed=randomSeed,
+         maximumCost=maximumCost))
 
 
 #helper methods

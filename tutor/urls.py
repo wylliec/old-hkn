@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     (r'^view_signups/$', 'hkn.tutor.views.view_signups'),
     (r'^submit_assignments/$', 'hkn.tutor.views.submit_assignments'),
     (r'^admin/$', 'hkn.tutor.views.admin'),
+    (r'^admin/params_for_scheduler/$', 'hkn.tutor.views.params_for_scheduler'),
     )

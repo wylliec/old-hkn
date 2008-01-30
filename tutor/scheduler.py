@@ -634,6 +634,8 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                         get_successors = my_get_successors,
                         heuristic=my_heuristic,
                         get_cost=my_get_cost)
+    if options['maximumCost'] and options['maximumCost'] > 0:
+        stateTracker.increaseMaximumCostTo(options['maximumCost'])
     stateTracker.push(state)
     
     iterations = 0
@@ -689,8 +691,8 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                     print ''
                     print "Press 'x' and Enter to halt execution and return the best so far"
                     print "Press 'p' and Enter to print the best solutions to schedulerDump.txt"
-                    print "Press 'c' and Enter to continue execution and suppress this message\
-    for %d iterations" % maxIterations
+                    print "Press 'c' and Enter to continue execution and suppress this message \
+for %d iterations" % maxIterations
                     print '===================================='
                 else:
                     print "\titeration: %d, best goal of %d: %d" % (iterations,
@@ -1077,6 +1079,23 @@ def parse_into_availabilities_by_slot(coryTimes, sodaTimes):
     #end for timesString
     
     return ret
+
+def generate_from_file():
+    try:
+        from hkn.tutor.parameters import *
+    except:
+        print "Could not find valid file 'parameters.py'"
+    clear_timing()
+    ret = generate_schedule(availabilitiesBySlot=parse_into_availabilities_by_slot(coryTimes,
+                                                                                   sodaTimes),
+                            slotsByPerson=NiceDict(defaultHours, exceptions),
+                            scoring=scoring,
+                            options=NiceDict(False, options))
+    print_timing()
+    for state in ret:
+        print "\n\n%s" % state.pretty_print()
+    
+    print "This method is not yet complete"
 
 def run_tests(verbose = False):
     """

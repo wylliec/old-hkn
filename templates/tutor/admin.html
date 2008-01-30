@@ -7,12 +7,21 @@
 
 
 {% block tutorcontent %}
+
 Under Construction <br />
 Will have:
 <ul>
     <li>Change semester / year / finalsState for signups</li>
-	<li>Generate schedule for semester / year / finalsState</li>
 	<li>Change semester / year / finalsState / version for main tutoring schedule display</li>
 	<li>View tutoring feedback</li>
 </ul>
+
+Get parameters for running the schedule generator locally.<br />
+<form action="{% url hkn.tutor.views.params_for_scheduler %}" method="POST">
+These two are optional (should probably leave alone):<br />
+<label for="randomSeed">randomSeed:</label><input name="randomSeed" /><br />
+<label for="maximumCost">maximumCost:</label><input name="maximumCost" /><br />
+<input type="submit" value="Submit" />
+</form>
+
 {% endblock %}
