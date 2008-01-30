@@ -3,7 +3,7 @@
 from hkn.tutor.constants import *
 from hkn.utils import NiceDict
 
-import heapq, random, sys
+import heapq, random, sys, time
 
 """
 Notes, terms, and oddities:
@@ -23,6 +23,44 @@ for unpreferred offices at days/times that people can make.  Lower preference is
 "state" is a dictionary from slots to assignments, None for none assigned
 
 """
+
+totalTimes = {}
+totalCalls = {}
+maxTimes = {}
+
+def track_timing(func):
+    """
+    used to track how much time is spent on each method
+    """
+    def wrapper(*arg, **kwargs):
+        t1 = time.time()
+        res = func(*arg, **kwargs)
+        t2 = time.time()
+        funcName = func.func_name
+        if funcName not in totalTimes:
+            totalTimes[funcName] = 0.0
+            totalCalls[funcName] = 0.0
+            maxTimes[funcName] = 0.0
+        totalTimes[funcName] += (t2-t1)*1000.0
+        totalCalls[funcName] += 1.0
+        maxTimes[funcName] = max(maxTimes[funcName], (t2 - t1) * 1000.0)
+        return res
+    return wrapper
+
+def clear_timing():
+    for key in totalTimes.keys():
+        del totalTimes[key]
+    for key in totalCalls.keys():
+        del totalCalls[key]
+    for key in maxTimes.keys():
+        del maxTimes[key]
+        
+def print_timing():
+    print "=======TIMING STATISTICS (in ms)=========="
+    print "name%18.18s   %s\t%s\t\t%s\t\t%s" % ("", "average", "max", "total", "count")
+    for func in totalTimes:
+        print "%22.22s  %8.3f\t%8.3f\t%10.3f\t%6d" % (func, totalTimes[func] / totalCalls[func], maxTimes[func], totalTimes[func], totalCalls[func])
+    print "======END TIMING STATISTICS======="
 
 class Slot:
     def __init__(self, day, time, office):
@@ -77,6 +115,7 @@ class State(dict):
     def __init__(self, *a, **kw):
         self.meta = {'parent':None}#should be a shallow dictionary, i.e. all keys and values are strings or numbers
         self.noneCount = 0
+        self.hashValue = False
         dict.__init__(self, *a, **kw)
     
     def initialize_keys(self, keys):
@@ -112,6 +151,8 @@ class State(dict):
         return ret
     
     def __setitem__(self, key, value):
+        if self.hashValue:
+            raise "cannot modify state after calling it's hash funciton"
         if key in self:
             if self[key] == None and value != None:
                 self.noneCount -= 1
@@ -173,19 +214,28 @@ class State(dict):
     def __ge__(self, other):
         return self.estCost() >= other.estCost()
     
+    @track_timing
     def __hash__(self):
+        if self.hashValue:
+            return self.hashValue
         ret = 0
         for key in self:
             ret += key.__hash__() * str(self[key]).__hash__()
+        self.hashValue = ret
         return ret
     
     def pretty_print(self):
         ret = ""
         
+        if 'cost' in self.meta:
+            ret += 'cost: ' + str(self.meta['cost'])
+            ret += ', heuristic: ' + str(self.meta['heuristic'])
+            ret += '\n'
+        
         for office in (CORY, SODA):
             ret += office
             for day in TUTORING_DAYS:
-                ret += "\t" + day[0:4]
+                ret += "\t" + day[0:3]
             ret += '\n'
             for time in TUTORING_TIMES:
                 ret += time
@@ -297,6 +347,7 @@ class StateTracker:
                       'backtracks':0,
                       'successors':0}
     
+    @track_timing
     def push(self, state):
         """
         Push an unvisited state into the StateTracker.  If state is already in
@@ -309,6 +360,7 @@ class StateTracker:
         self.visited[state] = [state, False]
         self.stats['pushed'] += 1
     
+    @track_timing
     def filtered_successors(self, state):
         """
         Returns list of successor States of the given state, filtering out states with
@@ -371,6 +423,7 @@ class StateTracker:
         
         return ret
     
+    @track_timing
     def pop(self):
         """
         Returns a "good" candidate for exploring.  Currently just the lowest cost state
@@ -388,6 +441,7 @@ class StateTracker:
             return None
         return ret
     
+    @track_timing
     def backtrack(self, state):
         """
         Returns the next state that would be found via backtracking the pseudo DFS.  If
@@ -405,6 +459,7 @@ class StateTracker:
             successors = self.filtered_successors(parent)
         return min(successors)
     
+    @track_timing
     def visit(self, state):
         """
         mark state as visited
@@ -425,6 +480,7 @@ class StateTracker:
         if elem != None:
             self.secondaryPriorityQueue.push(elem, elem.estCost())
 
+@track_timing
 def are_adjacent_hours(slotA, slotB):
     """
     Returns whether slotA and slotB have adjacent hours, assuming slot is defined as
@@ -452,6 +508,7 @@ def are_adjacent_hours(slotA, slotB):
                 return False
     raise "Cannot find time for neither " + str(slotA) + " nor " + str(slotB)
 
+@track_timing
 def generate_schedule(availabilitiesBySlot = NiceDict([]),
                       adjacency_checker = are_adjacent_hours,
                       slotsByPerson = NiceDict(DEFAULT_HOURS, HOUR_EXCEPTIONS),
@@ -542,7 +599,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     stateTracker.push(state)
     
     iterations = 0
-    maxIterations = 10**4 #TODO change!
+    maxIterations = 10**3 #TODO change!
     bestSoFar = []
     goalsFound = 0
     maxKept = 100
@@ -600,6 +657,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     
     return bestSoFar
 
+@track_timing
 def get_successors(state=State(),
                    availabilitiesBySlot=NiceDict([]),
                    slotsByPerson=NiceDict(DEFAULT_HOURS, HOUR_EXCEPTIONS)):
@@ -610,32 +668,60 @@ def get_successors(state=State(),
     
     slotAssigned and personAssigned are the slot / person assigned when coming from parent
     
-    INCOMPLETE - this is a "correct" but dumb version
+    INCOMPLETE - this is a "correct" but slightly dumb version
+    
+    Algorithm notes:
+    
+    Finds slot with fewest remaining availabilities and generates successors from who can
+    still fill that slot
+    
+    Does not consider people who can only fill a few slots
     """
     ret = []
-    emptySlot = None
+    emptySlots = []
     numAssigned = NiceDict(0)
     for slot in state:
+#        print "considering slot" + str(slot)
         person = state[slot]
         if person == None:
-            emptySlot = slot
+            #keep track of this empty spot for later
+            emptySlots.append(slot)
         else:
+            #note that this person has been assigned
             if person not in numAssigned:
                 numAssigned[person] = 1
             else:
                 numAssigned[person] += 1
     
-    otherOfficeSlot = emptySlot.otherOfficeSlot()
-    for person in [detail[0] for detail in availabilitiesBySlot[emptySlot]]:
-        if numAssigned[person] >= slotsByPerson[person] or state[otherOfficeSlot] == person:
-            #person cannot tutor any more, or is already tutoring this time in another
-            # office, so assign to other
-            continue
+    #numAssigned is now correct
+    
+    availsInEmptySlot = []
+    numAvailsInEmptySlot = 10000 #much larger than anything possible
+    for slot in emptySlots:
+        people = []
+        numPeople = 0
+        otherOfficeSlot = slot.otherOfficeSlot()
+        for person in [detail[0] for detail in availabilitiesBySlot[slot]]:
+#                print 'considering person: ' + person
+            if numAssigned[person] >= slotsByPerson[person] or state[otherOfficeSlot] == person:
+                #person cannot tutor more, or is tutoring this time in another office
+#                    print 'skipping person who is full or tutoring in other office'
+                continue
+            people.append(person)
+            numPeople += 1
+        
+        #see if this is fewer than previously seen
+        if numPeople < numAvailsInEmptySlot:
+#                print "considering slot with availabilities for: " + str(people)
+            #consider this slot as a candidate for generating fewest successors
+            emptySlot = slot
+            availsInEmptySlot = people
+            numAvailsInEmptySlot = numPeople
+    
+    for person in availsInEmptySlot:
         successor = state.makeChild(emptySlot, person)
         ret.append(successor)
     
-#    if len(ret) == 0 and not state.isGoal():
-#        raise "returned no successors for non-goal state %s" % dict(state)
     if len(ret) > 0:
         for e in ret:
             if state.noneCount <= e.noneCount:
@@ -643,6 +729,7 @@ def get_successors(state=State(),
     
     return ret
 
+@track_timing
 def heuristic(state=State(), costs=NiceDict(0, {'base':1}), availabilitiesBySlot = NiceDict([])):
     """
     Returns: integer estimate of optimal future costs from this state
@@ -653,6 +740,7 @@ def heuristic(state=State(), costs=NiceDict(0, {'base':1}), availabilitiesBySlot
     """
     return 0
 
+@track_timing
 def hill_climb(initialState=State(),
               costs=NiceDict(0, {'base':1}),
               slotsByPerson=NiceDict(DEFAULT_HOURS, HOUR_EXCEPTIONS),
@@ -683,6 +771,7 @@ def hill_climb(initialState=State(),
 
 
 #helpful methods below
+@track_timing
 def get_cost(initialState=State(),
             slot=Slot("Monday", "1-2", SODA),
             person="Person Object",
@@ -718,6 +807,7 @@ def get_cost(initialState=State(),
     
     return cost
 
+@track_timing
 def get_cost_difference(oldState=State(),
                         newState=State(),
                         costs=NiceDict(0, {'base':1}),
@@ -748,6 +838,7 @@ def get_cost_difference(oldState=State(),
                                     baseState=commonAncestor)
     return costToNewState - costToOldState
 
+@track_timing
 def get_total_cost(state=State(),
                    costs=NiceDict(0, {'base':1}),
                    adjacency_checker=are_adjacent_hours,
@@ -780,6 +871,60 @@ def get_total_cost(state=State(),
         tempState[key] = state[key]
     
     return cost
+
+
+def parse_into_availabilities_by_slot(coryTimes, sodaTimes):
+    """
+    converts strings into availabilitiesBySlot object.
+    Expects the string to be of the form:
+    
+        each line corresponds to one time period
+        within each line, days are separated by commas
+        within each day-hour section, preference details are separated by spaces
+        each preference detail takes the form: (PersonName)(preference)[p if preferred office]
+        
+        example for people named A, B, C, and D (you may use longer names):
+        
+        corytimes =
+            A1p B1p C1p D2, A1p B2p C1p D1\n
+            A1p B2p C2p D2, A2p B1p C1p D1
+        
+        ->
+        
+        {Slot<Monday 11a-12 Cory>: [(A, 0.5), (B, 0.5), (C, 0.5), (D, 2)],
+         ...
+         Slot<Tuesday 12-1 Cory>: [(A, 1.5), (B, 0.5), (C, 0.5), (D, 1)],
+        }
+    """
+    ret = {}
+    office = CORY
+    for timesString in (coryTimes, sodaTimes):
+        hourIndex = 0
+        for hourAvailString in timesString.split('\n'):
+            dayIndex = 0
+            for dayAvailString in hourAvailString.split(','):
+                for detailString in dayAvailString.split(' '):
+                    if detailString == '':
+                        continue
+                    if detailString[-1:] == 'p':
+                        preference = int(detailString[-2:-1]) - 0.5
+                        person = detailString[:-2]
+                    else:
+                        preference = int(detailString[-1:])
+                        person = detailString[:-1]
+                    slot = Slot(TUTORING_DAYS[dayIndex], TUTORING_TIMES[hourIndex], office)
+                    if slot not in ret:
+                        ret[slot] = []
+                    ret[slot].append((person, preference))
+                #end for detailString
+                dayIndex += 1
+            #end for dayAvailString
+            hourIndex += 1
+        #end for hourAvailString
+        office = SODA
+    #end for timesString
+    
+    return ret
 
 def run_tests(verbose = False):
     """
@@ -827,59 +972,6 @@ def run_tests(verbose = False):
         FAILED[0] += 1
         return ret
     
-    def parse_into_availabilities_by_slot(coryTimes, sodaTimes):
-        """
-        converts strings into availabilitiesBySlot object.
-        Expects the string to be of the form:
-        
-            each line corresponds to one time period
-            within each line, days are separated by commas
-            within each day-hour section, preference details are separated by spaces
-            each preference detail takes the form: (PersonName)(preference)[p if preferred office]
-            
-            example for people named A, B, C, and D (you may use longer names):
-            
-            corytimes =
-                A1p B1p C1p D2, A1p B2p C1p D1\n
-                A1p B2p C2p D2, A2p B1p C1p D1
-            
-            ->
-            
-            {Slot<Monday 11a-12 Cory>: [(A, 0.5), (B, 0.5), (C, 0.5), (D, 2)],
-             ...
-            }
-        """
-        ret = {}
-        office = CORY
-        for timesString in (coryTimes, sodaTimes):
-            hourIndex = 0
-            for hourAvailString in timesString.split('\n'):
-                dayIndex = 0
-                for dayAvailString in hourAvailString.split(','):
-                    for detailString in dayAvailString.split(' '):
-                        if detailString == '':
-                            continue
-                        if detailString[-1:] == 'p':
-                            preference = int(detailString[-2:-1]) - 0.5
-                            person = detailString[:-2]
-                        else:
-                            preference = int(detailString[-1:])
-                            person = detailString[:-1]
-                        slot = Slot(TUTORING_DAYS[dayIndex], TUTORING_TIMES[hourIndex], office)
-                        if slot not in ret:
-                            ret[slot] = []
-                        ret[slot].append((person, preference))
-                    #end for detailString
-                    dayIndex += 1
-                #end for dayAvailString
-                hourIndex += 1
-            #end for hourAvailString
-            office = SODA
-        #end for timesString
-        
-        return ret
-    
-    
     print "Running tests on scheduler..."
     
     
@@ -924,8 +1016,9 @@ def run_tests(verbose = False):
         availabilitiesBySlot[slot] = avails
     slotsByPerson = NiceDict(2)
     
+    clear_timing()
     run_test(32, 1, availabilitiesBySlot, slotsByPerson)
-    
+    print_timing()
     
     print "test 4: eight slots, four people, all available, differing preferences, few\
         solutions, nontrivial"
@@ -969,7 +1062,34 @@ def run_tests(verbose = False):
     results = run_test(56, 1, availabilitiesBySlot, slotsByPerson)
 #    schedules = ""
 #    for r in results:
-#        schedules += str(r.meta['cost']) + ':\n' + r.pretty_print() + '\n\n'
-#    print "found schedules: " + schedules
+#        schedules += r.pretty_print() + '\n\n'
+#    print "found schedules: \n" + schedules
+
+    print "test 6: 60 slots, only 1 optimal schedule, 2^30 possible ones"
+    
+    availsCory = "Ac1p As1, Dc1p Ds1, Gc1p Gs1, Jc1p Js1, Mc1p Ms1\n"
+    availsCory +="Ac1p As1, Dc1p Ds1, Gc1p Gs1, Jc1p Js1, Mc1p Ms1\n"
+    availsCory +="Bc1p Bs1, Ec1p Es1, Hc1p Hs1, Kc1p Ks1, Nc1p Ns1\n"
+    availsCory +="Bc1p Bs1, Ec1p Es1, Hc1p Hs1, Kc1p Ks1, Nc1p Ns1\n"
+    availsCory +="Cc1p Cs1, Fc1p Fs1, Ic1p Is1, Lc1p Ls1, Oc1p Os1\n"
+    availsCory +="Cc1p Cs1, Fc1p Fs1, Ic1p Is1, Lc1p Ls1, Oc1p Os1\n"
+    
+    availsSoda = "As1p Ac1, Ds1p Dc1, Gs1p Gc1, Js1p Jc1, Ms1p Mc1\n"
+    availsSoda +="As1p Ac1, Ds1p Dc1, Gs1p Gc1, Js1p Jc1, Ms1p Mc1\n"
+    availsSoda +="Bs1p Bc1, Es1p Ec1, Hs1p Hc1, Ks1p Kc1, Ns1p Nc1\n"
+    availsSoda +="Bs1p Bc1, Es1p Ec1, Hs1p Hc1, Ks1p Kc1, Ns1p Nc1\n"
+    availsSoda +="Cs1p Cc1, Fs1p Fc1, Is1p Ic1, Ls1p Lc1, Os1p Oc1\n"
+    availsSoda +="Cs1p Cc1, Fs1p Fc1, Is1p Ic1, Ls1p Lc1, Os1p Oc1\n"
+    
+    availabilitiesBySlot = parse_into_availabilities_by_slot(availsCory, availsSoda)
+    
+    slotsByPerson = NiceDict(2)
+    clear_timing()
+    results = run_test(240, 1, availabilitiesBySlot, slotsByPerson)
+    print_timing()
+    schedules = ""
+    for r in results[:3]:
+        schedules += r.pretty_print() + '\n\n'
+    print "found schedules: \n" + schedules
     
     print "passed %d of %d tests" % (PASSED[0], PASSED[0]+ FAILED[0])
