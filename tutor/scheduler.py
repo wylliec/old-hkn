@@ -72,7 +72,7 @@ class Slot:
         ret = 0
         if self.office == SODA:
             ret += 1
-        return ret + self.day.__hash__() * 203 + self.time.__hash__() * 3
+        return int((ret + self.day.__hash__() / 3 + self.time.__hash__() / 3))
 
     def __str__(self):
         return self.day + ' ' + self.time + ' ' + self.office
@@ -220,9 +220,9 @@ class State(dict):
             return self.hashValue
         ret = 0
         for key in self:
-            ret += key.__hash__() * str(self[key]).__hash__()
+            ret += key.__hash__() % 3000 * str(self[key]).__hash__() % 3000
         self.hashValue = ret
-        return ret
+        return self.hashValue
     
     def pretty_print(self):
         ret = ""
@@ -645,7 +645,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                                                                      bestCost)
                     print "Last %d iterations took %d seconds" % (feedbackPeriod,
                                                                       (newTime - oldTime))
-                    print "Last goal found %d seconds ago" % newTime - lastGoalTime
+                    print "Last goal found %d seconds ago" % (newTime - lastGoalTime)
                     print ''
                     print "Press 'x' and Enter to halt execution and return the best so far"
                     print "Press 'p' and Enter to print the best solutions to schedulerDump.txt"
