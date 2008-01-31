@@ -435,6 +435,7 @@ def submit_assignments(request):
     return HttpResponseRedirect("/tutor/view_signups")
 #    return HttpResponse("made " + str(len(new_assignments)) + " assignments at version " + str(version))
 
+@login_required
 def admin(request):
     exceptions = []
     for e in HOUR_EXCEPTIONS:

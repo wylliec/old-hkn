@@ -11,17 +11,119 @@
 Under Construction <br />
 Will have:
 <ul>
-    <li>Change semester / year / finalsState for signups</li>
-	<li>Change semester / year / finalsState / version for main tutoring schedule display</li>
+    <li>Change finalsState for signups</li>
+	<li>Change finalsState / version for main tutoring schedule display</li>
 	<li>View tutoring feedback</li>
 </ul>
 
 Get parameters for running the schedule generator locally.<br />
 <form action="{% url hkn.tutor.views.params_for_scheduler %}" method="POST">
-These two are optional (should probably leave alone):<br />
-<label for="randomSeed">randomSeed:</label><input name="randomSeed" /><br />
-<label for="maximumCost">maximumCost:</label><input name="maximumCost" /><br />
-<input type="submit" value="Submit" />
+	These two are optional (should probably leave alone):<br />
+	<table>
+		<tr>
+			<td><label for="randomSeed">randomSeed:</label></td>
+			<td><input name="randomSeed" /></td>
+		</tr>
+		<tr>
+			<td><label for="maximumCost">maximumCost:</label></td>
+			<td><input name="maximumCost" /></td>
+		</tr>
+	</table>
+	After clicking submit, save the page as parameters.py in the hkn.tutor directory.
+	<br />
+	<input type="submit" value="Get Scheduler Parameters" />
+
+</form>
+<br />
+<br />
+<br />
+Change semester, year, or how much each person tutors.<br />
+<form action="{% url hkn.tutor.views.admin %}" method="POST">
+	<table>
+		<tr>
+			<td>
+				<label for="CURRENT_SEASON_NAME">
+					Current Season Name:
+				</label>
+			</td>
+			<td>
+				<select name="CURRENT_SEASON_NAME">
+					<option>Spring</option>
+					<option>Fall</option>
+					<option>Summer</option>
+				</select>
+				<br />
+			</td>
+			<td>
+				Current Value: {{ CURRENT_SEASON_NAME }}
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<label for="CURRENT_YEAR">
+					Current Year:
+				</label>
+			</td>
+			<td>
+				<input name="CURRENT_YEAR" /><br />
+			</td>
+			<td>
+				Current Value: {{ CURRENT_YEAR }}
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<label for="DEFAULT_HOURS">
+					Default Hours each person tutors:
+				</label>
+			</td>
+			<td>
+				<input name="DEFAULT_HOURS" /><br />
+			</td>
+			<td>
+				Current Value: {{ DEFAULT_HOURS }}
+			</td>
+		</tr>
+	</table>
+	<br />
+	Current Exceptions:<br />
+	{% if not exceptions %}
+		(No Exceptions)
+	{% else %}
+	<table>
+		<tr>
+			<td>Name (id)</td><td>Hours</td>
+		</tr>
+		{% for e in exceptions %}
+		<tr>
+			{% for part in e %}
+			<td>
+				{{ part }}
+			</td>
+			{% endfor %}
+		<tr>
+		{% endfor %}
+	</table>
+	{% endif %}
+	
+	<br />
+	<br />
+	Add exceptions in the form: personA_id = hours, personB_id = hours <br />
+	example: 319 = 3, 17 = 3<br />
+	If you want to change somebody's exceptions, you must add and remove at the same time. <br />
+	<input name="newExceptions" />
+	<br />
+	<br />
+	Remove exceptions in a comma-separated list of person id's.  Spaces are ignored. <br />
+	<input name="removeExceptions" />
+	<br />
+	<br />
+	<input type="submit" value="Submit semester / hour changes" />
+
 </form>
 
+
 {% endblock %}
+
