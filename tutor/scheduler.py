@@ -549,7 +549,7 @@ def are_adjacent_hours(slotA, slotB):
 @track_timing
 def generate_schedule(availabilitiesBySlot = NiceDict([]),
                       adjacency_checker = are_adjacent_hours,
-                      slotsByPerson = NiceDict(DEFAULT_HOURS, HOUR_EXCEPTIONS),
+                      slotsByPerson = False, #need to provide this
                       scoring = {"correct_office":SCORE_CORRECT_OFFICE,
                                  "miss_penalty":SCORE_MISS_PENALTY,
                                  "adjacent":SCORE_ADJACENT,
@@ -565,7 +565,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     Arguments:
         availabilitiesBySlot: Dictionary from slot to list of "preference details"
         slotsByPerson: Dictionary from person to number of slots that person should be
-            assigned
+            assigned.  Must be provided.
         adjacency_checker - function that takes 2 slots and returns True if they are
             adjacent, False otherwise
         scoring: Dictionary that describes how to score utility / happiness.  Includes:
@@ -761,7 +761,7 @@ for %d iterations" % maxIterations
 @track_timing
 def get_successors(state=State(),
                    availabilitiesBySlot=NiceDict([]),
-                   slotsByPerson=NiceDict(DEFAULT_HOURS, HOUR_EXCEPTIONS)):
+                   slotsByPerson=False):
     """
     Returns: list of states that are successsors to the given state, or empty list if none.
     Each state will have 'parent', 'slotAssigned', and 'personAssigned', but missing
@@ -835,7 +835,7 @@ def heuristic(state=State(),
               costs=NiceDict(0, {'base':1}),
               availabilitiesBySlot = NiceDict([]),
               adjacency_checker = are_adjacent_hours,
-              slotsByPerson = NiceDict(DEFAULT_HOURS, HOUR_EXCEPTIONS)):
+              slotsByPerson = False):
     """
     Returns: integer estimate of optimal future costs from this state
     Arguments:
@@ -875,7 +875,7 @@ def heuristic(state=State(),
 @track_timing
 def hill_climb(initialState=State(),
               costs=NiceDict(0, {'base':1}),
-              slotsByPerson=NiceDict(DEFAULT_HOURS, HOUR_EXCEPTIONS),
+              slotsByPerson=False,
               adjacency_checker=are_adjacent_hours,
               availabilitiesBySlot=NiceDict([])):
     """

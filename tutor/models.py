@@ -26,14 +26,8 @@ class Availability(models.Model):
     def at_soda(self):
         return self.office == "Soda"
     
-    def parameters_for_scheduler(seasonName = CURRENT_SEASON_NAME,
-                                 year = CURRENT_YEAR,
-                                 randomSeed = False,
-                                 maximumCost = False):
-        """
-        Returns info (string) to be used by scheduler to generate a schedule.
-        May provide a randomSeed and an upper bound guess for the maximumCost.
-        """
+    def availabilities_by_slot(seasonName = CURRENT_SEASON_NAME,
+                               year = CURRENT_YEAR):
         
         season = courses.Season.objects.get(name__iexact=seasonName)
         
@@ -42,7 +36,6 @@ class Availability(models.Model):
            year=year)
         
         availabilitiesBySlot = NiceDict([])
-        people = {}
         
         for availability in availabilities:
             slot = scheduler.Slot(get_day_from_slot(availability.slot),
@@ -78,6 +71,22 @@ class Availability(models.Model):
                 #note that this slot is preferred
                 detail[1] -= 0.5
         
+        return availabilitiesBySlot
+    
+    availabilities_by_slot = staticmethod(availabilities_by_slot)
+    
+    def parameters_for_scheduler(seasonName = CURRENT_SEASON_NAME,
+                                 year = CURRENT_YEAR,
+                                 randomSeed = False,
+                                 maximumCost = False):
+        """
+        Returns info (string) to be used by scheduler to generate a schedule.
+        May provide a randomSeed and an upper bound guess for the maximumCost.
+        """
+        
+        availabilitiesBySlot = Availability.availabilities_by_slot(seasonName=seasonName,
+                                                                   year=year)
+        
         ret = "#HKN Mu Chapter parameters for tutoring schedule generator\n"
         ret +='#Generated for %s %s at %s\n' % (seasonName,
                                                 year,
@@ -89,17 +98,18 @@ class Availability(models.Model):
         ret += 'options = %s\n' % {'randomSeed':randomSeed, 'maximumCost':maximumCost}
         
         exceptions = {}
-        for person in HOUR_EXCEPTIONS:
+        for person_id in HOUR_EXCEPTIONS:
+            person = Person.get(id=person_id)
             identifier = str(person.id) + person.first.split(' ')[0] + person.last[0]
-            exceptions[identifier] = HOUR_EXCEPTIONS[person]
+            exceptions[identifier] = HOUR_EXCEPTIONS[person_id]
         ret += 'exceptions = %s\n' % exceptions
         ret += 'defaultHours = %d\n' % DEFAULT_HOURS
         
         scoring = {"correct_office":SCORE_CORRECT_OFFICE,
-                                 "miss_penalty":SCORE_MISS_PENALTY,
-                                 "adjacent":SCORE_ADJACENT,
-                                 "adjacent_same_office":SCORE_ADJACENT_SAME_OFFICE,
-                                 "preference":SCORE_PREFERENCE}
+                   "miss_penalty":SCORE_MISS_PENALTY,
+                   "adjacent":SCORE_ADJACENT,
+                   "adjacent_same_office":SCORE_ADJACENT_SAME_OFFICE,
+                   "preference":SCORE_PREFERENCE}
         ret += 'scoring = %s\n' % scoring
         
         ret += '\n'
@@ -138,27 +148,7 @@ class Availability(models.Model):
             ret += '"\n' #end quote for office string
         
         return ret
-        
-#        #set up assignment objects
-#        new_assignments = []
-#        assignmentsDict = schedule_info['assignments']
-#        for slotInfo in assignmentsDict:
-#            slotname = make_slot(day=slotInfo['day'], time=slotInfo['time'])
-#            new_assignments.append(
-#                Assignment(person=assignmentsDict[slotInfo]['person'],
-#                           slot=slotname,
-#                           office=slotInfo['office'],
-#                           season=season,
-#                           year=year,
-#                           version=version)
-#                           )
-#        
-#        #save assignment objects
-#        for elem in new_assignments:
-#            elem.save()
-#        
-#        #return
-#        return schedule_info['happiness']
+    
     parameters_for_scheduler = staticmethod(parameters_for_scheduler)
     
     

@@ -303,7 +303,7 @@ def view_signups(request):
                                    "second_choices":0,
                                    "adjacencies":0,
                                    "correct_office_count":0,
-                                   "missing":HOUR_EXCEPTIONS[fullname] | DEFAULT_HOURS}
+                                   "missing":HOUR_EXCEPTIONS[person.id] | DEFAULT_HOURS}
             happiness[fullname]["net"] = -1 * SCORE_MISS_PENALTY * happiness[fullname]["missing"]
         
         if assignment.at_soda():
@@ -436,10 +436,57 @@ def submit_assignments(request):
 #    return HttpResponse("made " + str(len(new_assignments)) + " assignments at version " + str(version))
 
 def admin(request):
-    return render_to_response('tutor/admin.html',
-                              basicContext(request, {'showAdminLinks':True}),
-                              context_instance = RequestContext(request))
-
+    exceptions = []
+    for e in HOUR_EXCEPTIONS:
+        person = hknmodels.Person.objects.get(id=e)
+        exceptions.append(["%s %s (%d)" % (person.first, person.last, person.id),
+                           HOUR_EXCEPTIONS[e]])
+    if len(exceptions) == 0: exceptions = False
+    
+    context = basicContext(request, {'showAdminLinks':True,
+                                     'DEFAULT_HOURS':DEFAULT_HOURS,
+                                     'CURRENT_SEASON_NAME':CURRENT_SEASON_NAME,
+                                     'CURRENT_YEAR':CURRENT_YEAR,
+                                     'exceptions':exceptions})
+    
+    if request.method != "POST":
+        return render_to_response('tutor/admin.html',
+                                  context,
+                                  context_instance = RequestContext(request))
+    
+    info = QueryDictWrapper(request.POST)
+    changes = {}
+    try:
+        if info['newExceptions'] and info['newExceptions'] != '':
+            newExceptions = {}
+            changes['newExceptions'] = newExceptions
+            data = info['newExceptions'].replace(' ', '')
+            for pair in data.split(','):
+                parts = pair.strip().split('=')
+                newExceptions[int(parts[0].strip())] = int(parts[1].strip())
+                
+        if info['removeExceptions'] and info['removeExceptions'] != '':
+            removeExceptions = []
+            changes['removeExceptions'] = removeExceptions
+            for id in info['removeExceptions'].replace(' ', '').split(','):
+                removeExceptions.append(int(id))
+        
+        if info['CURRENT_SEASON_NAME'] and info['CURRENT_SEASON_NAME'] != '':
+            changes['CURRENT_SEASON_NAME'] = info['CURRENT_SEASON_NAME']
+        
+        if info['CURRENT_YEAR'] and info['CURRENT_YEAR'] != '':
+            changes['CURRENT_YEAR'] = int(info['CURRENT_YEAR'])
+        
+        if info['DEFAULT_HOURS'] and info['DEFAULT_HOURS'] != '':
+            changes['DEFAULT_HOURS'] = int(info['DEFAULT_HOURS'])
+        
+        update_constants(changes)
+        return HttpResponse('Changes Successful!<br/><a href=".">return</a>')
+    except:
+        context['message'] = 'Error with submission'
+        return render_to_response('tutor/admin.html',
+                                  context,
+                                  context_instance = RequestContext(request))
 @login_required
 def params_for_scheduler(request):
     if request.method != 'POST':
@@ -475,3 +522,84 @@ def currentSeason():
     if len(CURRENT_SEASON_HOLDER) == 0:
         CURRENT_SEASON_HOLDER.append(courses.Season.objects.get(name__iexact =CURRENT_SEASON_NAME))
     return CURRENT_SEASON_HOLDER[0]
+
+def update_constants(argDict):
+    """
+    Edit the constants file according to the arguments passed in.
+    
+    newExceptions should be a dictionary from person_id -> hours to tutor
+    removeExceptions should be a list of person_ids to remove
+    anything else should be an upper-cased constant name and it's new value
+        example:
+            update_constants({'newExceptions': {319:3, 18:4},
+                             'removeExceptions': [13, 15, 152],
+                             'DEFAULT_HOURS': 1,
+                             'CURRENT_SEASON_NAME': "Fall"})
+    """
+    constsFile = open('tutor/constants.py', 'r')
+    text = constsFile.read() #read the whole file
+    constsFile.close()
+    
+    newText = ''
+    
+    inAutomanagedSection = False
+    inExceptions = False
+    for line in text.split('\n'):
+        if line == '#BEGIN AUTOMANAGED':
+            inAutomanagedSection = True
+            newText += line + '\n'
+            continue
+        elif line == '#END AUTOMANAGED':
+            inAutomanagedSection = False
+            newText += line + '\n'
+            continue
+        
+        if not inAutomanagedSection:
+            newText += line + '\n' #just copy it to newText
+            continue
+        else:
+            if line == '#BEGIN EXCEPTIONS':
+                inExceptions = True
+                newText += line + '\n'
+                #add any new exceptions to the top
+                if 'newExceptions' in argDict:
+                    for person_id in argDict['newExceptions']:
+                        newText += "%s: %s,#DO NOT EDIT THIS\n" % (person_id,
+                               argDict['newExceptions'][person_id])
+                continue
+            elif line == '#END EXCEPTIONS':
+                inExceptions = False
+                newText += line + '\n'
+                continue
+            if line[0] == '#':
+                newText += line + '\n' #ignore lines of comments
+                continue
+            elif inExceptions:
+                #see if we should remove an exception, or leave it alone
+                if 'removeExceptions' in argDict:
+                    parts = line.split(':')
+                    if int(parts[0]) in argDict['removeExceptions']:
+                        #do not include this exception
+                        continue
+                    newText += line + '\n' #keep this exception
+                    continue
+            else:
+                parts = line.split(' ')
+                variable = parts[0]
+                if variable in argDict:
+                    val = argDict[variable]
+                    if str(val) == val:
+                        val = "'%s'" % val #make sure we have quotes for strings
+                    newText += "%s = %s #DO NOT EDIT THIS\n" % (variable, val)
+                    continue
+                else:
+                    newText += line + '\n' #keep this assignment
+                    continue
+    
+    #remove any excessive newlines from the end of the file.  They're annoying.
+    while newText.endswith('\n\n') or newText.endswith('\r\r') or newText.endswith('\r\n\r\n'):
+        newText = newText[:-1]
+    
+    constsFile = open('tutor/constants.py','w+') #truncates the file
+    constsFile.write(newText)
+    constsFile.close()

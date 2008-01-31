@@ -23,14 +23,16 @@ SCORE_PREFERENCE = {1:6, 2:0} #maps from preference rank to score
 SCORE_ADJACENT = 1
 SCORE_ADJACENT_SAME_OFFICE = 2
 
-#In the future, the below contents will be managed by scripts and should NOT be managed manually
-CURRENT_SEASON_NAME = "Spring" #DO NOT EDIT THIS
+#In the future, the below contents will be managed by scripts and should NOT be managed manually.
+#They can be edited using hkn.tutor.view.update_constants
+#BEGIN AUTOMANAGED
+CURRENT_SEASON_NAME = 'Spring' #DO NOT EDIT THIS
 CURRENT_YEAR = 2008 #DO NOT EDIT THIS
 #number of hours each person normally tutors
 DEFAULT_HOURS = 2 #DO NOT EDIT THIS
-#exceptions for people who do not tutor the default hours.  Maps from full name (first + " " + last)
-#to hours
+#exceptions for people who do not tutor the default hours.  Maps from person id to hours
 HOUR_EXCEPTIONS = NiceDict(False,{#DO NOT EDIT THIS
 #BEGIN EXCEPTIONS
 #END EXCEPTIONS
 }) #DO NOT EDIT THIS
+#END AUTOMANAGED
