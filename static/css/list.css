@@ -1,9 +1,9 @@
 table.list {
-  margin: 1em 1em 1em 2em;
+  margin: 1em 2% 1em 2%;
   background: whitesmoke;
   border-collapse: collapse;
   font-size: small;
-  width: 100%;
+  width: 96%;
 }
 table.list th, table.list td {
   border: 1px silver solid;
