@@ -7,7 +7,7 @@ from hkn.course import models as coursemodel
 from hkn.info import models as infomodel
 
 
-def output_html():
+def output_html(version=False):
 
     def day_abbrev(day):
         return day[0:2]
@@ -26,7 +26,9 @@ def output_html():
     
     startTime = military_time(TUTORING_TIMES[0].split("-")[0])
     endTime = military_time(TUTORING_TIMES[-1].split("-")[1])
-
+    
+    version = version or tutormodel.Assignment.get_max_version()
+    
     HTML_STRING = ""
     
 #    Output semester and office hours information
@@ -37,13 +39,13 @@ def output_html():
     HTML_STRING += "SODAEND " + endTime + "\n"
     HTML_STRING += "INTERVAL 60"
     
-#    Obtain the list of current tutors and output their tutoring availability to the file
+#    Obtain the list of current tutors and output their tutoring assignments to the file
     seasonID = coursemodel.Season.objects.get(name = CURRENT_SEASON_NAME.lower()).id
     people = infomodel.Person.objects.all()
     for person in people:
         personID = person.id
-        availabilities = tutormodel.Availability.objects.filter(person = personID, season = seasonID, year = CURRENT_YEAR)
-        if len(availabilities) == 0:
+        assignments = tutormodel.Assignment.objects.filter(person = personID, season = seasonID, year = CURRENT_YEAR, version = version)
+        if len(assignments) == 0:
             continue
         tutors = tutormodel.CanTutor.objects.filter(person = personID, season = seasonID, year = CURRENT_YEAR)
 
@@ -56,13 +58,13 @@ def output_html():
 #        Output available times by location
         coryTimes = "CORYTIMES"
         sodaTimes = "SODATIMES"
-        for availability in availabilities:
-            slotDay = day_abbrev(tutormodel.get_day_from_slot(availability.slot))
-            print tutormodel.get_time_from_slot(availability.slot)
-            slotTime = military_time(tutormodel.get_time_from_slot(availability.slot).split("-")[0])
-            if availability.office == CORY:
+        for assignment in assignments:
+            slotDay = day_abbrev(tutormodel.get_day_from_slot(assignment.slot))
+            print tutormodel.get_time_from_slot(assignment.slot)
+            slotTime = military_time(tutormodel.get_time_from_slot(assignment.slot).split("-")[0])
+            if assignment.at_cory():
                 coryTimes = coryTimes + " " + slotDay + slotTime
-            if availability.office == SODA:
+            if assignment.at_soda():
                 sodaTimes = sodaTimes + " " + slotDay + slotTime
         HTML_STRING += coryTimes + "\n"
         HTML_STRING += sodaTimes + "\n"
