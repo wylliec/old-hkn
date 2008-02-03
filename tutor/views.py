@@ -20,6 +20,7 @@ from hkn.utils import QueryDictWrapper
 
 from hkn.tutor.constants import *
 from hkn.tutor.scheduler import State
+from hkn.tutor import output
 
 
 def schedule(request):
@@ -36,6 +37,9 @@ def feedback(request):
     return render_to_response('tutor/feedback.html',
                               basicContext(request),
                               context_instance = RequestContext(request))
+
+def tutor_list(request):
+    return HttpResponse(output.output_html())
 
 # Create your views here.
 @login_required
