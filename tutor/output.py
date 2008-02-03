@@ -13,10 +13,16 @@ def output_html():
         return day[0:2]
     
     def military_time(time):
-        if time[-1] == "a" or time == "12":
-            return time[0:-1] + "00"
-        else:
-            return str(int(time)+12) + "00"
+        offset = 12
+        if time[-1] == "a":
+            offset = 0
+            time = time[0:-1]
+        if time == "12":
+            offset = offset - 12
+        time = int(time) + offset
+        if time < 10:
+            return "0" + str(time) + "00"
+        return str(time) + "00"
     
     startTime = military_time(TUTORING_TIMES[0].split("-")[0])
     endTime = military_time(TUTORING_TIMES[-1].split("-")[1])
@@ -51,8 +57,9 @@ def output_html():
         coryTimes = "CORYTIMES"
         sodaTimes = "SODATIMES"
         for availability in availabilities:
-            slotDay = day_abbrev(get_day_from_slot(availability.slot))
-            slotTime = military_time(get_time_from_slot(availability.slot)[0:1])
+            slotDay = day_abbrev(tutormodel.get_day_from_slot(availability.slot))
+            print tutormodel.get_time_from_slot(availability.slot)
+            slotTime = military_time(tutormodel.get_time_from_slot(availability.slot).split("-")[0])
             if availability.office == CORY:
                 coryTimes = coryTimes + " " + slotDay + slotTime
             if availability.office == SODA:
@@ -65,7 +72,7 @@ def output_html():
         for tutor in tutors:
             course = tutor.course
             true_dept_abbr = course.department_abbr
-            preferred_dept_abbr = models.Department.nice_abbr(true_dept_abbr)
+            preferred_dept_abbr = coursemodel.Department.nice_abbr(true_dept_abbr)
             courseList = courseList + " " + preferred_dept_abbr + course.number
         HTML_STRING += courseList + "\n"
         
