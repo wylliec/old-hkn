@@ -68,7 +68,7 @@ def output_html():
         HTML_STRING += sodaTimes + "\n"
         
 #        Output tutor's courses
-        courseList = "COURSES"
+        courseList = "CLASSES"
         for tutor in tutors:
             course = tutor.course
             true_dept_abbr = course.department_abbr
