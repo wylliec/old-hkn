@@ -97,6 +97,17 @@ class Availability(models.Model):
         
         ret += 'options = %s\n' % {'randomSeed':randomSeed, 'maximumCost':maximumCost}
         
+        ret += 'CORY = "%s"\n' % CORY
+        ret += 'SODA = "%s"\n' % SODA
+        ret += 'TUTORING_DAYS = %s\n' % (TUTORING_DAYS,)
+        ret += 'TUTORING_TIMES = %s\n' % (TUTORING_TIMES,)
+        ret += 'SCORE_CORRECT_OFFICE = %d\n' % (SCORE_CORRECT_OFFICE,)
+        ret += 'SCORE_MISS_PENALTY = %d\n' % (SCORE_MISS_PENALTY,)
+        ret += 'SCORE_PREFERENCE = %s\n' % (SCORE_PREFERENCE,)
+        ret += 'SCORE_ADJACENT = %d\n' % (SCORE_ADJACENT,)
+        ret += 'SCORE_ADJACENT_SAME_OFFICE = %d\n' % (SCORE_ADJACENT_SAME_OFFICE,)
+        ret += 'DEFAULT_HOURS = %s\n' % (DEFAULT_HOURS,)
+        
         exceptions = {}
         for person_id in HOUR_EXCEPTIONS:
             person = Person.get(id=person_id)
@@ -172,15 +183,43 @@ class Assignment(models.Model):
     def at_soda(self):
         return self.office == "Soda"
     
-    def get_max_version(seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR):
+    def get_max_version(seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR, season = False):
         """
         NOTE: this is REALLY INEFFICIENT!
         gets the max version of all assignments for given year and season name
         """
-        season = courses.Season.objects.get(name=seasonName)
+        season = season or courses.Season.objects.get(name__iexact = seasonName)
         return max([x.version for x in Assignment.objects.filter(season=season, year=year)])
     get_max_version = staticmethod(get_max_version)
     
+    def make_assignments_from_state(state, seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR):
+        """
+        convert a state into assignments.  Expects that each value in state is a string
+        prefixed with a valid person id.
+        """
+        
+        assignments = []
+        
+        season = courses.Season.objects.get(name__iexact = seasonName)
+        
+        version = Assignment.get_max_version(year=year, season=season) + 1
+        
+        for slot in state:
+            person_id = get_integer_prefix(state[slot])
+            assignments.append(Assignment(person_id=person_id,
+                                          slot=make_slot(slot.day, slot.time),
+                                          office=slot.office,
+                                          season=season,
+                                          year=year,
+                                          version=version))
+        
+        #all assignments created successfully, so save them
+        for a in assignments:
+            a.save()
+        
+        return
+    
+    make_assignments_from_state = staticmethod(make_assignments_from_state)
 
 class CanTutor(models.Model):
     """ Models who can tutor what for a particular season/year. """
@@ -229,3 +268,13 @@ def get_time_from_office_slot(officeSlot):
     return officeSlot.split(' ')[1]
 def get_office_from_office_slot(officeSlot):
     return officeSlot.split(' ')[2]
+def get_integer_prefix(string):
+    temp = ''
+    for char in string:
+        if char in ['0','1','2','3','4','5','6','7','8','9']:
+            temp += char
+        else:
+            break
+    if temp == '':
+        raise ValueError("no integer prefix!")
+    return int(temp)

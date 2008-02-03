@@ -1,9 +1,67 @@
+#!python
 #holds methods used to calculate a schedule given preference and scoring information
 
-from hkn.tutor.constants import *
-from hkn.utils import NiceDict
-
 import heapq, random, sys, time, thread
+
+try:
+    from hkn.tutor.constants import *
+except:
+    try:
+        from parameters import CORY, SODA, TUTORING_DAYS, TUTORING_TIMES,\
+SCORE_CORRECT_OFFICE, SCORE_MISS_PENALTY, SCORE_PREFERENCE, SCORE_ADJACENT,\
+SCORE_ADJACENT_SAME_OFFICE, DEFAULT_HOURS
+        print "read from parameters.py"
+    except:
+        raise "cannot find neither hkn.tutor.constants nor parameters"
+try:
+    from hkn.utils import NiceDict
+except:
+    class NiceDict(dict):
+        def __init__(self, defaultValue = False, *a, **kw):
+            self.defaultValue = defaultValue
+            dict.__init__(self, *a, **kw)
+        
+        """
+        reverses a NiceDict so that values map to keys, does not gracefully handle
+        non-unique values
+        """
+        def invertedCopy(self):
+            ret = NiceDict(self.defaultValue)
+            for key in self:
+                if self[key] in ret:
+                    raise 'Duplicate value "' + self[key] + '", cannot invert!'
+                ret[self[key]] = key
+            return ret
+        def __getitem__(self, key):
+            try:
+                return dict.__getitem__(self, key)
+            except KeyError:
+                return self.__missing__(key)
+        
+        def __missing__(self, key):
+            return self.defaultValue
+        
+        def copy(self):
+            return self.__copy__(self)
+        
+        def __copy__(self):
+            return type(self)(self.defaultValue, self)
+        
+        def __deepcopy__(self, memo):
+            import copy
+            return type(self)(self.defaultValue,
+                              copy.deepcopy(self.items()))
+        def __repr__(self):
+            return 'NiceDict(%s, %s)' % (self.defaultValue,
+                                            dict.__repr__(self))
+
+
+#used for reading characters from input
+charHolder = ['']
+signalHolder = [True, True]
+#readlock = thread.allocate_lock()
+inputReader = [None]
+
 
 """
 Notes, terms, and oddities:
@@ -263,7 +321,11 @@ class State(dict):
         return self.hashValue
     
     def pretty_print(self):
-        ret = ""
+        """
+        prints this state in a nice to read fashion.  Be careful if editing this method,
+        since it must still be parsable by parse_into_states
+        """
+        ret = "----------\n"
         
         if 'cost' in self.meta:
             ret += 'cost: ' + str(self.meta['cost'])
@@ -284,7 +346,45 @@ class State(dict):
                     else:
                         ret += "\t"
                 ret += "\n"
+        ret += "----------\n"
         return ret
+    
+    def parse_into_states(data):
+        """
+        parse a string of pretty printed states back into a list of states.  Returned states
+        will always have string values.
+        """
+        ret = []
+        for stateString in data.split('----------\n'):
+            if stateString == '':
+                continue
+            try:
+                stateStringLines = stateString.split('\n')
+                state = State()
+                
+                #read cost info (heuristic always 0, no point in getting it)
+                state.meta['cost'] = int(stateStringLines[0].split(',')[0][5:])
+                
+                #drop the cost line
+                stateStringLines = stateStringLines[1:]
+                for office in (CORY, SODA):
+                    #drop the line describing the office / days
+                    stateStringLines = stateStringLines[1:]
+                    for time in TUTORING_TIMES:
+                        timeAssignments = stateStringLines[0].split('\t')
+                        timeAssignments = timeAssignments[1:] #drop the time from the front
+                        for day in TUTORING_DAYS:
+                            if timeAssignments[0] != '':
+                                state[Slot(day, time, office)] = timeAssignments[0].strip()
+                            timeAssignments = timeAssignments[1:] #done processing this assignment
+                        stateStringLines = stateStringLines[1:] #done processing this line
+                
+                ret.append(state)
+            except:
+                #do nothing, don't add this one to the list
+                raise
+        return ret
+    parse_into_states = staticmethod(parse_into_states)
     
 class PriorityQueue:
   """
@@ -649,19 +749,24 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     startTime = time.time()
     oldTime = startTime
     lastGoalTime = 0.0
-    charHolder = ['']
-    signalHolder = [True, True]
-    lock = thread.allocate_lock()
-    #create thread to handle user input
-    thread.start_new_thread(read_one_char_into_buffer, (charHolder, signalHolder, lock))
+    #create thread to handle user input if one not in use
+    if inputReader[0] == None:
+        print "creating new input reader"
+        inputReader[0] = thread.start_new_thread(read_one_char_into_buffer, ())
+    else:
+        #reset reader data
+        print "resetting input reader, lock state is %s" % 'disabled'#readlock.locked()
+        charHolder[0] = ''
+        signalHolder[0] = True
+        signalHolder[1] = True
     try:
         while state != None:
-            if lock.acquire(0): #only acquire if can do so without waiting
+            if True:#readlock.acquire(0): #only acquire if can do so without waiting
                 char = charHolder[0]
                 if len(char) > 0:
-                    print "reading char from main thread"
                     if char == 'x':
                         print "halting execution"
+#                        readlock.release()
                         break
                     elif char == 'p':
                         print "dumping to schedulerDump.txt"
@@ -676,7 +781,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                         currentMaxIterations = iterations + maxIterations
                     charHolder[0] = ''
                     signalHolder[1] = True #signal to start reading characters again
-                lock.release()
+#                readlock.release()
             if iterations % feedbackPeriod == 0:
                 newTime = time.time()
                 if iterations >= currentMaxIterations:
@@ -1005,26 +1110,42 @@ def get_total_cost(state=State(),
     
     return cost
 
-def read_one_char_into_buffer(charHolder, signalHolder, lock):
+def read_one_char_into_buffer():
     """
     does not put any "space" onto buffer.  Meant to be called in a thread.  Exits when it sees
     an 'x'
     """
     stdin = sys.stdin #std in file descriptor
     temp = ''
-    lock.acquire()
-    while signalHolder[0]:
-        lock.release()
-        lock.acquire()
-        while signalHolder[1]:
+    while True:
+#        readlock.acquire()
+        keep_running = signalHolder[0]
+#        readlock.release()
+        if not keep_running:
+            break
+        
+        while True:
+#            readlock.acquire()
+            readyToReceive = signalHolder[1]
+#            readlock.release()
+            if not readyToReceive:
+                break
+            
             temp = stdin.read(1)
             if len(temp) > 0 and not temp.isspace():
+#                readlock.acquire()
                 signalHolder[1] = False #rest until signalled to read another character
-                charHolder[0] = temp
-                print "placed character into charHolder: %s (may have to try many times)" % temp.__repr__()
+                charHolder[0] = temp[0]
+                print "placed character into charHolder: %s (may have to try many times)" % temp[0].__repr__()
+#                readlock.release()
+                
                 if temp == 'x':
                     print "reader exiting"
-                    lock.release()
+#                    readlock.acquire()
+                    signalHolder[0] = False
+                    signalHolder[1] = False
+                    inputReader[0] = None
+#                    readlock.release()
                     return
 
 def parse_into_availabilities_by_slot(coryTimes, sodaTimes):
@@ -1080,11 +1201,89 @@ def parse_into_availabilities_by_slot(coryTimes, sodaTimes):
     
     return ret
 
-def generate_from_file():
+def random_availabilities_by_slot():
+    """
+    Returns an availabilitiesBySlot object with random availabilities and preferences.
+    May not be solvable.
+    
+    Written by Ryan Zheng, edited by Darren Lo to work as a function
+    """
+    retry = True
+    while(retry):
+        retry = False
+        cory = []
+        soda = []
+        both = []
+        counts = {}
+        
+        for i in range(10):
+            for list, ch in zip((cory, soda, both), ('c', 's', 'b')):
+                list.append(chr(65+i) + ch)
+        
+        corystr = ''
+        sodastr = ''
+        for j in range(6):
+            for i in range(5):
+                for c in cory:
+                    if(random.random() < .4):
+                        if c not in counts:
+                            counts[c] = 0
+                        counts[c] += 1
+                        pref = str(int(random.random() * 2) + 1)
+                        corystr += c + pref + "p "
+                        sodastr += c + pref + " "
+                for c in soda:
+                    if(random.random() < .4):
+                        if c not in counts:
+                            counts[c] = 0
+                        counts[c] += 1
+                        pref = str(int(random.random() * 2) + 1)
+                        corystr += c + pref + " "
+                        sodastr += c + pref + "p "
+                for c in both:
+                    if(random.random() < .4):
+                        if c not in counts:
+                            counts[c] = 0
+                        counts[c] += 1
+                        pref = str(int(random.random() * 2) + 1)
+                        corystr += c + pref + "p "
+                        sodastr += c + pref + "p "
+        
+                if i != 4:
+                    corystr += ", "
+                    sodastr += ", "
+                else:
+                    corystr += "\n"
+                    sodastr += "\n"
+        
+        for c in counts:
+            if counts[c] < 2:
+                retry = True
+                #can't solve because somebody has fewer than 2 availabilities
+    
+    #construct dictionary
+    return parse_into_availabilities_by_slot(corystr, sodastr)
+
+def generate_from_random(destFileName = "randomSchedulerOutput.txt"):
+    clear_timing()
+    ret = generate_schedule(availabilitiesBySlot=random_availabilities_by_slot(),
+                            slotsByPerson=NiceDict(2),
+                            options=NiceDict(False))
+    print_timing()
+    dump = open(destFileName, 'w+') #truncates file if it exists
+    for state in ret:
+        s = state.pretty_print()
+        print s
+        dump.write(s)
+    
+    print "wrote output to %s" % destFileName
+    
+def generate_from_file(destFileName = "schedulerOutput.txt"):
     try:
-        from hkn.tutor.parameters import *
+        from parameters import coryTimes, sodaTimes, defaultHours, exceptions, scoring, options
     except:
         print "Could not find valid file 'parameters.py'"
+        return
     clear_timing()
     ret = generate_schedule(availabilitiesBySlot=parse_into_availabilities_by_slot(coryTimes,
                                                                                    sodaTimes),
@@ -1092,10 +1291,14 @@ def generate_from_file():
                             scoring=scoring,
                             options=NiceDict(False, options))
     print_timing()
+    dump = open(destFileName, 'w+') #truncates file if it exists
     for state in ret:
-        print "\n\n%s" % state.pretty_print()
+        s = state.pretty_print()
+        print s
+        dump.write(s)
     
-    print "This method is not yet complete"
+    print "wrote output to %s" % destFileName
+    
 
 def run_tests(verbose = False):
     """
@@ -1299,4 +1502,10 @@ def test_heuristic():
     else:
         print "expected %d, start state heuristic: %d" % (expected, result)
     
-    
+
+
+if __name__=="__main__":
+    if len(sys.argv) > 1:
+        generate_from_file(sys.argv[1])
+    else:
+        generate_from_file()

@@ -26,9 +26,9 @@ class NiceDict(dict):
         return ret
     def __getitem__(self, key):
         try:
-	    return dict.__getitem__(self, key)
-	except KeyError:
-	    return self.__missing__(key)
+            return dict.__getitem__(self, key)
+        except KeyError:
+            return self.__missing__(key)
     
     def __missing__(self, key):
         return self.defaultValue

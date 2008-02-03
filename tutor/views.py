@@ -19,7 +19,7 @@ from hkn.utils import NamedList
 from hkn.utils import QueryDictWrapper
 
 from hkn.tutor.constants import *
-
+from hkn.tutor.scheduler import State
 
 
 def schedule(request):
@@ -436,7 +436,7 @@ def submit_assignments(request):
 #    return HttpResponse("made " + str(len(new_assignments)) + " assignments at version " + str(version))
 
 @login_required
-def admin(request):
+def admin(request, message = False):
     exceptions = []
     for e in HOUR_EXCEPTIONS:
         person = hknmodels.Person.objects.get(id=e)
@@ -448,7 +448,8 @@ def admin(request):
                                      'DEFAULT_HOURS':DEFAULT_HOURS,
                                      'CURRENT_SEASON_NAME':CURRENT_SEASON_NAME,
                                      'CURRENT_YEAR':CURRENT_YEAR,
-                                     'exceptions':exceptions})
+                                     'exceptions':exceptions,
+                                     'message':message})
     
     if request.method != "POST":
         return render_to_response('tutor/admin.html',
@@ -503,6 +504,26 @@ def params_for_scheduler(request):
          randomSeed=randomSeed,
          maximumCost=maximumCost))
 
+@login_required
+def submit_schedule(request):
+    if request.method != 'POST':
+        return HttpResponseRedirect("/tutor/admin")
+    
+    data = request.POST.get('schedule', False)
+    if not data:
+        return HttpResponseRedirect("/tutor/admin")
+    
+    #remove all \r
+    data = data.replace('\r', '')
+    
+    states = State.parse_into_states(data)
+    if len(states) != 1 or not states[0].isGoal():
+        return admin(request, 'Incorrect data for schedule.  Be sure you copied\
+data exactly as output by the scheduler, and that you only have 1 assignment.')
+    
+    tutor.Assignment.make_assignments_from_state(states[0])
+    
+    return HttpResponseRedirect("/tutor/admin")
 
 #helper methods
 def basicContext(request, info = {}):
