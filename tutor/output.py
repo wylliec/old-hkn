@@ -82,5 +82,5 @@ def output_html():
 #    Write to file
     FILE = open("schedule.html","w")
     FILE.write(HTML_STRING)
-    """
     FILE.close()
+    """
