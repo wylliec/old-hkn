@@ -360,7 +360,7 @@ def view_signups(request):
             else:
                 happiness[fullname]["net"] -= SCORE_MISS_PENALTY
         else:
-            raise "missing availability found for " + fullname +", assignment to slot " + assignment.slot
+            return HttpResponse( "missing availability found for " + fullname +", assignment to slot " + assignment.slot)
         
         slot_preference["assigned"] = True #mark this as an assigned preference
         
@@ -372,7 +372,7 @@ def view_signups(request):
             happiness[fullname]['second_choices'] += 1
             happiness[fullname]['net'] += SCORE_PREFERENCE[2]
         else:
-            raise "invalid preference for " + fullname + ", assignment to slot " + assignment.slot
+            return HttpResponse( "invalid preference for " + fullname + ", assignment to slot " + assignment.slot)
     
     #Go through again and update happiness for adjacencies.
     #Only count something as an adjacency if the person was also assigned to the time just before
