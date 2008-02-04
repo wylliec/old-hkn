@@ -41,17 +41,16 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
         <td>{{ row.name }}</td>
         {% for elem in row %}
         <td style="width:{{ signup_col_width }}">
-            Soda:
-            <select name="{{ elem.name }} {{ SODA }}" multiple="yes"/>
-                {% for option in elem.sodaoptions %}
-                <option value="{{ option.id }}"{% if option.assigned %} selected="yes"{% endif %}>{{ option.name }} - {{ option.preference }}</option>
-                {% endfor %}
-            </select>
-            
-            <br />
             Cory:
             <select name="{{ elem.name }} {{ CORY }}" multiple="yes"/>
                 {% for option in elem.coryoptions %}
+                <option value="{{ option.id }}"{% if option.assigned %} selected="yes"{% endif %}>{{ option.name }} - {{ option.preference }}{% if option.preferredOffice %}p{% endif %}</option>
+                {% endfor %}
+            </select>
+            <br />
+            Soda:
+            <select name="{{ elem.name }} {{ SODA }}" multiple="yes"/>
+                {% for option in elem.sodaoptions %}
                 <option value="{{ option.id }}"{% if option.assigned %} selected="yes"{% endif %}>{{ option.name }} - {{ option.preference }}</option>
                 {% endfor %}
             </select>
@@ -68,7 +67,8 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
     <li>+{{score_office}} for assignment to correct office</li>
     <li>+{{score_preferred}} for assignment to preferred time</li>
     <li>+{{score_less_preferred}} for assignment to less preferred time</li>
-    <li>+{{score_adjacent}} for each pair of adjacent hours (currently not working)</li>
+    <li>+{{score_adjacent_same_office}} for each pair of adjacent hours in the same office</li>
+    <li>+{{score_adjacent}} for each pair of adjacent hours to different offices</li>
     </ul>
     
     <br />
@@ -84,7 +84,8 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
             <td>Net Happiness</td>
             <td>First Choices</td>
             <td>Second Choices</td>
-            <td>Adjacencies (not working)</td>
+			<td>Adjacencies (same office)</td>
+            <td>Adjacencies (different office)</td>
             <td>Correct Office</td>
             <td>Missing (target - assigned)</td>
         </tr>
@@ -94,6 +95,7 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
             <td>{{ elem.net }}</td>
             <td>{{ elem.first_choices }}</td>
             <td>{{ elem.second_choices }}</td>
+            <td>{{ elem.same_office_adjacencies }}</td>
             <td>{{ elem.adjacencies }}</td>
             <td>{{ elem.correct_office_count }}</td>
             <td>{{ elem.missing }}</td>

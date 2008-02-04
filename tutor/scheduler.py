@@ -120,6 +120,36 @@ def print_timing():
         print "%22.22s  %8.3f\t%8.3f\t%10.3f\t%6d" % (func, totalTimes[func] / totalCalls[func], maxTimes[func], totalTimes[func], totalCalls[func])
     print "======END TIMING STATISTICS======="
 
+
+@track_timing
+def are_adjacent_hours(slotA, slotB):
+    """
+    Returns whether slotA and slotB have adjacent hours, assuming slot is defined as
+    a dictionary with the key "time" and values according to TUTORING_TIMES
+    
+    Does not care if times are in different offices.  Identical times are not adjacent.
+    
+    Raises exception if cannot find either time in TUTORING_TIMES
+    """
+    if slotA.day != slotB.day:
+        return False
+    justSeen = False
+    slotATime = slotA.time
+    slotBTime = slotB.time
+    if slotATime == slotBTime:
+        return False
+    for time in TUTORING_TIMES:
+        if time == slotATime or time == slotBTime:
+            if justSeen:
+                return True
+            else:
+                justSeen = True
+        else:
+            if justSeen:
+                return False
+    raise "Cannot find time for neither " + str(slotA) + " nor " + str(slotB)
+
+
 class Slot:
     def __init__(self, day, time, office):
         self.day = day
@@ -143,14 +173,14 @@ class Slot:
         return 'day' in otherstuff and 'time' in otherstuff and 'office' in otherstuff and \
             self.day == other.day and self.time == other.time and self.office == other.office
     
-    def otherOfficeSlot(self):
+    def other_office_slot(self):
         if self.office == CORY:
             otherOffice = SODA
         else:
             otherOffice = CORY
         return Slot(self.day, self.time, otherOffice)
     
-    def earlierSlot(self):
+    def earlier_slot(self):
         """
         returns the slot one hour earlier, same office and day
         Returns None if this is the earliest slot
@@ -164,7 +194,7 @@ class Slot:
             return None
         return Slot(self.day,earlierTime, self.office)
     
-    def allAdjacentSlots(self):
+    def all_adjacent_slots(self):
         """
         returns all slots that are within one hour, regardless of office
         """
@@ -184,7 +214,7 @@ class Slot:
             if time != None:
                 slot = Slot(self.day, time, self.office)
                 ret.append(slot)
-                ret.append(slot.otherOfficeSlot())
+                ret.append(slot.other_office_slot())
         
         return ret
     
@@ -198,7 +228,7 @@ class State(dict):
     
     States may be hashed (unlike dictionaries)
     
-    also has makeChild, estCost, isGoal, initialize_keys, and pretty_print methods
+    also has make_child, estCost, isGoal, initialize_keys, and pretty_print methods
     
     meta may contain:
         parent - parent state, will be None if no known parent.  Always present.
@@ -225,7 +255,7 @@ class State(dict):
                 self[key] = None
         return self
     
-    def makeChild(self, slot, person):
+    def make_child(self, slot, person):
         """
         makes a Child (successor) of this state.  Copies the state, adds an assignment in
         given slot to given person, removes incorrect info from meta and fixes the parent
@@ -266,6 +296,9 @@ class State(dict):
         this is a goal if all keys are not None and there is at least one key
         """
         return len(self) > 0 and self.noneCount == 0
+    
+    def is_adjacent(self, other, adjacency_checker = are_adjacent_hours):
+        return adjacency_checker(self, other)
         
     def copy(self):
         return self.__copy__()
@@ -362,8 +395,9 @@ class State(dict):
                 stateStringLines = stateString.split('\n')
                 state = State()
                 
-                #read cost info (heuristic always 0, no point in getting it)
+                #read cost and heuristic info
                 state.meta['cost'] = int(stateStringLines[0].split(',')[0][5:])
+                state.meta['heuristic'] = int(stateStringLines[0].split(',')[1][10:])
                 
                 #drop the cost line
                 stateStringLines = stateStringLines[1:]
@@ -459,6 +493,9 @@ class StateTracker:
     
     The function pointer get_successors must take a single argument "state"
     
+    All states in visited have both 'cost' and 'heuristic' in their meta information
+    and have been pushed to the priority queue.
+    
     All states pushed into StateTracker are keys in visited.  Visited states
     evaluate to true in visited[state][1].  The key is stored in visited[state][0]
     
@@ -467,7 +504,7 @@ class StateTracker:
     def __init__(self,
                  maximumCost=0,
                  get_successors=lambda state:[],
-                 heuristic=lambda state: 0,
+                 heuristic=lambda state, stateTracker=False: 0,
                  get_cost=lambda state, slot, person:1):
         self.priorityQueue = PriorityQueue()
         self.secondaryPriorityQueue = PriorityQueue() #stores states with costs over maximumCost
@@ -476,7 +513,7 @@ class StateTracker:
         
         self.maximumCost = maximumCost
         self.get_successors = get_successors
-        self.heuristic = heuristic
+        self.heuristic = lambda state: heuristic(state, stateTracker = self)
         self.get_cost = get_cost
         
         self.stats = {'pushed':0,
@@ -529,10 +566,15 @@ class StateTracker:
                     if visitedInfo[1]:
 #                        print '--ignoring successor, already visited'
                         continue #don't return one we've visited
-                    #replace s with the one in visited, which already has cost and heuristic calculated
+                    #replace s with the one in visited, which already has cost calculated
                     s = visitedInfo[0]
+#                    if 'heuristic' not in s.meta:
+#                        #calculate heuristic
+#                        s.meta['heuristic'] = self.heuristic(s)
+#                        self.push(s)
                 else:
-                    #calculate cost and heuristic
+                    #calculate cost.  All states with cost are in visited, and all states in visited
+                    #have costs.  This is not in visited.
                     s.meta['cost'] = state.meta['cost'] + self.get_cost(state,
                                                                         s.meta['slotAssigned'],
                                                                         s.meta['personAssigned'])
@@ -540,6 +582,7 @@ class StateTracker:
                     
                     #store this state
                     self.push(s)
+                
             elif s in self.visited and self.visited[s][1]:
 #                print '--ignoring successor, already visited (case 2)'
                 continue #don't return one we've visited
@@ -619,34 +662,6 @@ class StateTracker:
             self.secondaryPriorityQueue.push(elem, elem.estCost())
 
 @track_timing
-def are_adjacent_hours(slotA, slotB):
-    """
-    Returns whether slotA and slotB have adjacent hours, assuming slot is defined as
-    a dictionary with the key "time" and values according to TUTORING_TIMES
-    
-    Does not care if times are in different offices.  Identical times are not adjacent.
-    
-    Raises exception if cannot find either time in TUTORING_TIMES
-    """
-    if slotA.day != slotB.day:
-        return False
-    justSeen = False
-    slotATime = slotA.time
-    slotBTime = slotB.time
-    if slotATime == slotBTime:
-        return False
-    for time in TUTORING_TIMES:
-        if time == slotATime or time == slotBTime:
-            if justSeen:
-                return True
-            else:
-                justSeen = True
-        else:
-            if justSeen:
-                return False
-    raise "Cannot find time for neither " + str(slotA) + " nor " + str(slotB)
-
-@track_timing
 def generate_schedule(availabilitiesBySlot = NiceDict([]),
                       adjacency_checker = are_adjacent_hours,
                       slotsByPerson = False, #need to provide this
@@ -705,9 +720,10 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                                                      availabilitiesBySlot = availabilitiesBySlot,
                                                      slotsByPerson = slotsByPerson)
     
-    my_heuristic = lambda state: heuristic(state=state,
-                                           costs=costs,
-                                           availabilitiesBySlot=availabilitiesBySlot)
+    my_heuristic = lambda state, stateTracker=False: heuristic(state=state,
+                                                       costs=costs,
+                                                       availabilitiesBySlot=availabilitiesBySlot,
+                                                       stateTracker=stateTracker)
     
     my_hill_climb = lambda state: hill_climb(initialState=state,
                                             costs=costs,
@@ -723,17 +739,18 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                                                        availabilitiesBySlot=availabilitiesBySlot)
     
     
+    stateTracker = StateTracker(
+                        get_successors = my_get_successors,
+                        heuristic=my_heuristic,
+                        get_cost=my_get_cost)
+    
     state = options['initialState']
     if not state:
         state = State().initialize_keys(availabilitiesBySlot)
         state.meta['parent'] = None
         state.meta['cost'] = 0
-        state.meta['heuristic'] = my_heuristic(state)
+        state.meta['heuristic'] = my_heuristic(state, stateTracker=stateTracker)
     
-    stateTracker = StateTracker(
-                        get_successors = my_get_successors,
-                        heuristic=my_heuristic,
-                        get_cost=my_get_cost)
     if options['maximumCost'] and options['maximumCost'] > 0:
         stateTracker.increaseMaximumCostTo(options['maximumCost'])
     stateTracker.push(state)
@@ -906,10 +923,10 @@ def get_successors(state=State(),
     for slot in emptySlots:
         people = []
         numPeople = 0
-        otherOfficeSlot = slot.otherOfficeSlot()
+        other_office_slot = slot.other_office_slot()
         for person in [detail[0] for detail in availabilitiesBySlot[slot]]:
 #                print 'considering person: ' + person
-            if numAssigned[person] >= slotsByPerson[person] or state[otherOfficeSlot] == person:
+            if numAssigned[person] >= slotsByPerson[person] or state[other_office_slot] == person:
                 #person cannot tutor more, or is tutoring this time in another office
 #                    print 'skipping person who is full or tutoring in other office'
                 continue
@@ -925,7 +942,7 @@ def get_successors(state=State(),
             numAvailsInEmptySlot = numPeople
     
     for person in availsInEmptySlot:
-        successor = state.makeChild(emptySlot, person)
+        successor = state.make_child(emptySlot, person)
         ret.append(successor)
     
     if len(ret) > 0:
@@ -940,25 +957,44 @@ def heuristic(state=State(),
               costs=NiceDict(0, {'base':1}),
               availabilitiesBySlot = NiceDict([]),
               adjacency_checker = are_adjacent_hours,
-              slotsByPerson = False):
+              slotsByPerson = False,
+              stateTracker = StateTracker()):
     """
     Returns: integer estimate of optimal future costs from this state
     Arguments:
         state - dictionary from slots to assignments, None for none assigned
         costs - see documentation at top
         availabilitiesBySlot - see documentation for generateSchedule
+        slotsByPerson - dictionary from person to total # slots to be assigned
+        stateTracker - provide to allow memoization of costs
         
     Not a very smart heuristic right now.  Handles adjacencies poorly, puts
     most optimistic person in each slot according to get_cost
     """
     ret = 0
     
-    my_get_cost = lambda state, slot, person: get_cost(initialState=state,
-                                                       slot=slot,
-                                                       person=person,
-                                                       costs=costs,
-                                                       adjacency_checker=adjacency_checker,
-                                                       availabilitiesBySlot=availabilitiesBySlot)
+    def my_get_cost(state, slot, person):
+        """
+        was, memoized get cost using stateTracker, but that turned out to be slower
+        """
+#        newState = state.make_child(slot, person)
+#        if newState in stateTracker.visited:
+#            #replace newState with the correct instance of newState
+#            newState = stateTracker.visited[newState][0]
+#            if 'cost' in newState:
+#                return stateTracker.visited[newState][0].meta['cost'] - state.meta['cost']
+#            #need to calculate cost
+#        else:
+#            stateTracker.visited[newState] = [newState, False]
+        temp = get_cost(initialState=state,
+                        slot=slot,
+                        person=person,
+                        costs=costs,
+                        adjacency_checker=adjacency_checker,
+                        availabilitiesBySlot=availabilitiesBySlot)
+#        newState.meta['cost'] = state.meta['cost'] + temp
+        return temp
+    
     
     for slot in state:
         if state[slot] == None:
@@ -969,11 +1005,11 @@ def heuristic(state=State(),
             
             #assume that we could have filled an empty earlier slot for the same person
             #only count earlier slots, so we don't double count (as badly)
-            earlierSlot = slot.earlierSlot()
-            if earlierSlot != None:
-                if state[earlierSlot] == None:
+            earlier_slot = slot.earlier_slot()
+            if earlier_slot != None:
+                if state[earlier_slot] == None:
                     ret -= costs['adjacent_same_office']
-                elif state[earlierSlot.otherOfficeSlot()] == None:
+                elif state[earlier_slot.other_office_slot()] == None:
                     ret -= costs['adjacent']
     return ret
 
@@ -1022,8 +1058,8 @@ def get_cost(initialState=State(),
     
     cost = costs['base']
     if adjacency_checker == are_adjacent_hours:
-        #safe to use allAdjacentSlots
-        slots = [s for s in slot.allAdjacentSlots() if s in initialState]
+        #safe to use all_adjacent_slots
+        slots = [s for s in slot.all_adjacent_slots() if s in initialState]
         #don't need to execute code to know they're adjacent, so use dummy function
         my_adjacency_checker = lambda x, y: True
     else:

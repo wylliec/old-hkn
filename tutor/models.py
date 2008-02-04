@@ -26,9 +26,21 @@ class Availability(models.Model):
     def at_soda(self):
         return self.office == "Soda"
     
-    def availabilities_by_slot(seasonName = CURRENT_SEASON_NAME,
-                               year = CURRENT_YEAR):
+    def availabilities_by_slot(seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR,
+                               person_converter = lambda person:'%d%s%s' %
+                                           (person.id, person.first.split(' ')[0], person.last[0])):
+        """
+        turns availabilities into an availabilitiesBySlot mapping from a Slot object to
+        a list of preference details.  A preference detail is a list of [person representation, preference*]
         
+        preference* is the preference level, reduced by 0.5 if it is in a preferred office.
+        
+        Lower preference is always better
+        
+        person_converter is a method that takes a person and stores it however you want to
+        in the returned dictionary.  By default it stores a person as a string with parts:
+          [id][first word of first name][first letter of last name]
+        """
         season = courses.Season.objects.get(name__iexact=seasonName)
         
         availabilities = Availability.objects.select_related(depth=1).filter(
@@ -50,13 +62,12 @@ class Availability(models.Model):
             
             person = availability.person
             
-            #person is stored as str(id) + first word of first name + first letter of last name
-            prev.append([str(person.id) + person.first.split(' ')[0] + person.last[0],
+            prev.append([person_converter(person),
                          availability.preference])
         
         #change preferences in availabilitiesBySlot to account for preferred offices
         for slot in availabilitiesBySlot:
-            otherSlot = slot.otherOfficeSlot()
+            otherSlot = slot.other_office_slot()
             for detail in availabilitiesBySlot[slot]:
                 #check if this person already has a preference detail in the other office
                 found = False
@@ -220,6 +231,7 @@ class Assignment(models.Model):
         return
     
     make_assignments_from_state = staticmethod(make_assignments_from_state)
+    
 
 class CanTutor(models.Model):
     """ Models who can tutor what for a particular season/year. """

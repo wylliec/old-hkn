@@ -19,7 +19,7 @@ from hkn.utils import NamedList
 from hkn.utils import QueryDictWrapper
 
 from hkn.tutor.constants import *
-from hkn.tutor.scheduler import State
+from hkn.tutor.scheduler import State, Slot
 from hkn.tutor import output
 
 
@@ -234,6 +234,7 @@ def view_signups(request):
     context['score_office'] = SCORE_CORRECT_OFFICE
     context['score_preferred'] = SCORE_PREFERENCE[1]
     context['score_less_preferred'] = SCORE_PREFERENCE[2]
+    context['score_adjacent_same_office'] = SCORE_ADJACENT_SAME_OFFICE
     context['score_adjacent'] = SCORE_ADJACENT
     
     assignments = tutor.Assignment.objects.filter(
@@ -256,95 +257,84 @@ def view_signups(request):
         context['message'] = "No assignments available for specified version"
         context['version'] = False
     
-    #Note: select_related(depth=1) will grab all immediately related models by foreign key
-    #so it will grab the person at the same time, requiring fewer database hits later
-    availabilities = tutor.Availability.objects.select_related(depth=1).filter(
-           season=currentSeason(),
-           year=CURRENT_YEAR)
+    availabilitiesBySlot = tutor.Availability.availabilities_by_slot(
+                                               person_converter = lambda x:x)
     
-    if len(availabilities) == 0:
+    if len(availabilitiesBySlot) == 0:
         return HttpResponse("There are no availbilities, must have at least 1 to view schedule")
     
-    #Terminology: "slot preference" is {name, preference, assigned} for some particular slot
+    people = {} #dictionary from id to person object
     
-    #set up dictionary of slot ->
-    #  [list of soda slot preferences, list of cory slot preferences]
-    availabilitiesDict = NiceDict([
-       [{"name":"Nobody", "preference":0, "assigned":False},],
-       [{"name":"Nobody", "preference":0, "assigned":False},]])
-    #Note: this is super inefficient!  This pulls from the person table MANY times, not sure how to preload that info
-    #because this isn't RoR /rant
-    for availability in availabilities:
-        if availability.slot not in availabilitiesDict:
-            availabilitiesDict[availability.slot] = [[], []]
+    #Terminology: "slot preference" is {name, preference, preferredOffice, assigned}
+    #for some particular slot
+    
+    #set up dictionary of Slot -> list of slot preferences
+    availabilitiesDict = NiceDict([{"name":"Nobody", "preference":0, "assigned":False},])
+    for slot in availabilitiesBySlot:
+        if slot not in availabilitiesDict:
+            availabilitiesDict[slot] = []
         
-        if availability.at_soda():
-            officeIndex = 0
-        if availability.at_cory():
-            officeIndex = 1
-        person = availability.person
+        for detail in availabilitiesBySlot[slot]:
+            person = detail[0]
+            people[person.id] = person
+            
+            preference = detail[1]
+            
+            to_append = {"name":person.last + ", " + person.first,
+                         "preference":0,
+                         "preferredOffice":False,
+                         "assigned":False,
+                         "id": person.id}
+            
+            #preferred offices have preference = preference_level - 0.5
+            if int(preference) != preference:
+                to_append['preference'] = int(preference) + 1
+                to_append['preferredOffice'] = True
+            else:
+                to_append['preference'] = preference
+            
+            availabilitiesDict[slot].append(to_append)
         
-        availabilitiesDict[availability.slot][officeIndex].append(
-            {"name":person.last + ", " + person.first,
-             "preference":availability.preference,
-             "assigned":False,
-             "id": person.id})
-        
+    
     #take note of which slots are assigned for the given or latest version, calculate "happiness"
     happiness = {} #full name -> dictionaries of: net, first_choices, second_choices, adjacent, correct_office_count, missing
-    #Note: this is super inefficient!  This pulls from the person table MANY times, not sure how to preload that info
-    #because this isn't RoR /rant
     for assignment in assignments:
-        person = assignment.person
+        person = people[assignment.person_id]
         fullname = person.last + ", " + person.first
-        if assignment.slot not in availabilitiesDict:
-            assignmentsDict[assignment.slot] = [
-                {"name": "Unassigned", "preference":0, "assigned":False},
-                {"name": "Unassigned", "preference":0, "assigned":False}]
+        slot = Slot(tutor.get_day_from_slot(assignment.slot),
+                    tutor.get_time_from_slot(assignment.slot),
+                    assignment.office)
+        
         if fullname not in happiness:
             happiness[fullname] = {"net":0,
                                    "first_choices":0,
                                    "second_choices":0,
                                    "adjacencies":0,
+                                   "same_office_adjacencies":0,
                                    "correct_office_count":0,
                                    "missing":HOUR_EXCEPTIONS[person.id] | DEFAULT_HOURS}
             happiness[fullname]["net"] = -1 * SCORE_MISS_PENALTY * happiness[fullname]["missing"]
         
-        if assignment.at_soda():
-            officeIndex = 0
-        if assignment.at_cory():
-            officeIndex = 1
-        
         #scan for the preference
-        #note: slot_preference is actually a list of 0 or 1 slot preferences
-        slot_preference = [x for x in availabilitiesDict[assignment.slot][officeIndex] if x["name"] == fullname]
-        if len(slot_preference) == 1:
-            happiness[fullname]["correct_office_count"] += 1
-            happiness[fullname]["net"] += SCORE_CORRECT_OFFICE
-            happiness[fullname]["missing"] -= 1
-            if(happiness[fullname]["missing"] >= 0):
-                happiness[fullname]["net"] += SCORE_MISS_PENALTY
-            else:
-                happiness[fullname]["net"] -= SCORE_MISS_PENALTY
-        elif len(slot_preference) == 0:
-            #check other office
-            slot_preference = [x for x in availabilitiesDict[assignment.slot][(officeIndex + 1) % 2] if x["name"] == fullname]
+        slot_preferences = [x for x in availabilitiesDict[slot] if x["name"] == fullname]
+        if len(slot_preferences) == 1:
+            slot_preference = slot_preferences[0]
+            if slot_preference['preferredOffice']:
+                #bonus for correct office
+                happiness[fullname]["correct_office_count"] += 1
+                happiness[fullname]["net"] += SCORE_CORRECT_OFFICE
+                
+            #no penalty for bad office
             
-            if len(slot_preference) != 1:
-                raise "improper availability found for " + fullname +", assignment to slot " + assignment.slot
-            #TODO adjust net for bad office choice?
             happiness[fullname]["missing"] -= 1
             if(happiness[fullname]["missing"] >= 0):
                 happiness[fullname]["net"] += SCORE_MISS_PENALTY
             else:
                 happiness[fullname]["net"] -= SCORE_MISS_PENALTY
         else:
-            raise "improper availability found for " + fullname +", assignment to slot " + assignment.slot
+            raise "missing availability found for " + fullname +", assignment to slot " + assignment.slot
         
-        slot_preference = slot_preference[0]
-        #note: slot_preference is now just a slot preference
-        
-        slot_preference["assigned"] = True #mark this as the assigned preference
+        slot_preference["assigned"] = True #mark this as an assigned preference
         
         #update happiness according first or second choice
         if slot_preference['preference'] == 1:
@@ -356,7 +346,46 @@ def view_signups(request):
         else:
             raise "invalid preference for " + fullname + ", assignment to slot " + assignment.slot
     
+    #Go through again and update happiness for adjacencies.
+    #Only count something as an adjacency if the person was also assigned to the time just before
+    #this one, so we don't double count.
+    for assignment in assignments:
+        person = people[assignment.person_id]
+        fullname = person.last + ", " + person.first
+        slot = Slot(tutor.get_day_from_slot(assignment.slot),
+                    tutor.get_time_from_slot(assignment.slot),
+                    assignment.office)
+        
+        earlierSlot = slot.earlier_slot()
+        if earlierSlot == None:
+            continue
+        if 1 == len([x for x in availabilitiesDict[earlierSlot] if x['id'] == person.id]):
+            happiness[fullname]['same_office_adjacencies'] += 1
+            happiness[fullname]['net'] += SCORE_ADJACENT_SAME_OFFICE
+        elif 1 == len([x for x in availabilitiesDict[earlierSlot.other_office_slot()]
+                       if x['id'] == person.id]):
+            happiness[fullname]['adjacencies'] += 1
+            happiness[fullname]['net'] += SCORE_ADJACENT
     
+    def optionCompare(x, y):
+        """
+        should x go after y?  is x ~> y?  1 => yes, 0 => maybe, -1 => no
+        """
+        if x['preference'] < y['preference']:
+            return -1
+        elif y['preference'] < x['preference']:
+            return 1
+        
+        if y['preferredOffice'] != x['preferredOffice']:
+            if y['preferredOffice']:
+                return 1
+            else:
+                return -1
+        
+        if x['name'] > y['name']:
+            return 1
+        else:
+            return -1
     
     info = [] #list of rows.  Each row is list of dictionaries
     #create each row for "info"
@@ -364,10 +393,12 @@ def view_signups(request):
         row = NamedList(name=time)
         for day in context['days']:
             slot = tutor.make_slot(day=day, time=time)
+            corySlotObj = Slot(day, time, CORY)
+            sodaSlotObj = Slot(day, time, SODA)
             #return signup(request, str(availabilitiesDict))
             row.append({"name":slot,
-                        "sodaoptions":availabilitiesDict[slot][0],
-                        "coryoptions":availabilitiesDict[slot][1]})
+                        "sodaoptions":sorted(availabilitiesDict[sodaSlotObj], optionCompare),
+                        "coryoptions":sorted(availabilitiesDict[corySlotObj], optionCompare)})
         info.append(row)
     
     #convert happiness into a list sturcture so can iterate over it in the template
