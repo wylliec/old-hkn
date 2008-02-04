@@ -51,7 +51,7 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
             Soda:
             <select name="{{ elem.name }} {{ SODA }}" multiple="yes"/>
                 {% for option in elem.sodaoptions %}
-                <option value="{{ option.id }}"{% if option.assigned %} selected="yes"{% endif %}>{{ option.name }} - {{ option.preference }}</option>
+                <option value="{{ option.id }}"{% if option.assigned %} selected="yes"{% endif %}>{{ option.name }} - {{ option.preference }}{% if option.preferredOffice %}p{% endif %}</option>
                 {% endfor %}
             </select>
         </td>
