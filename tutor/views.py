@@ -43,7 +43,7 @@ def tutor_list(request):
 
 @login_required
 def availabilities_table(request):
-    avails = tutor.Availability.objects.filter(season=currentSeason(), year=CURRENT_YEAR).order_by(person_id).select_related(depth=1)
+    avails = tutor.Availability.objects.filter(season=currentSeason(), year=CURRENT_YEAR).order_by('slot').select_related(depth=1)
     context = basicContext(request)
     context['avails'] = avails
     return render_to_response('tutor/availabilities_table.html',
