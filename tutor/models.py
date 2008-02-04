@@ -200,7 +200,10 @@ class Assignment(models.Model):
         gets the max version of all assignments for given year and season name
         """
         season = season or courses.Season.objects.get(name__iexact = seasonName)
-        return max([x.version for x in Assignment.objects.filter(season=season, year=year)])
+        assigns = Assignment.objects.filter(season=season, year=year)
+        if len(assigns) == 0:
+            return MIN_VERSION - 1
+        return max([x.version for x in assigns])
     get_max_version = staticmethod(get_max_version)
     
     def make_assignments_from_state(state, seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR):
