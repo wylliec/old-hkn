@@ -54,6 +54,7 @@ def availabilities_table(request):
         for d in abs_old[slot]:
             dict = {}
             row.append({'person': d[0], 'slot': slot.day + ' ' + slot.time, 'office':slot.office, 'preference': d[1]})
+	abs.append(row)
 
     context['abs'] = abs
     
@@ -458,9 +459,9 @@ def view_signups(request):
         temp['count'] = availCounts_old[key]
         idx = -1
     for i in range(len(availCounts)):
-            if availCounts[i]['count'] < temp['count']:
-                idx = i
-                break
+        if availCounts[i]['count'] < temp['count']:
+            idx = i
+            break
 
         if idx < 0:
             availCounts.append(temp)
