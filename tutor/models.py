@@ -86,7 +86,8 @@ class Availability(models.Model):
     def parameters_for_scheduler(seasonName = CURRENT_SEASON_NAME,
                                  year = CURRENT_YEAR,
                                  randomSeed = False,
-                                 maximumCost = False):
+                                 maximumCost = False,
+                                 machineNum = False):
         """
         Returns info (string) to be used by scheduler to generate a schedule.
         May provide a randomSeed and an upper bound guess for the maximumCost.
@@ -103,7 +104,7 @@ class Availability(models.Model):
         ret +="#location as hkn.tutor.scheduler.  Run scheduler.generate_from_file()\n"
         ret += '\n'
         
-        ret += 'options = %s\n' % {'randomSeed':randomSeed, 'maximumCost':maximumCost}
+        ret += 'options = %s\n' % {'randomSeed':randomSeed, 'maximumCost':int(maximumCost), 'machineNum':machineNum}
         
         ret += 'CORY = "%s"\n' % CORY
         ret += 'SODA = "%s"\n' % SODA

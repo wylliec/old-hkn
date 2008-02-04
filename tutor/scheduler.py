@@ -672,7 +672,9 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                                  "adjacent_same_office":SCORE_ADJACENT_SAME_OFFICE,
                                  "preference":SCORE_PREFERENCE},
                       options = NiceDict(False,
-                                         {"random_seed":False
+                                         {"random_seed":False,
+                                          "machineNum":False,
+                                          "maximumCost":False
                                           })
                       ):
     """
@@ -694,11 +696,17 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                 assignment to a slot of that preference level
         options: Dictionary mapping from options names to values
             random_seed: provide a random seed for calculations
+            machineNum: if multiple machines are executing, assign each a integer increasing from 0
+            maximumCost: ignore states with costs higher than this
     """
     if not options['random_seed']:
         random.seed() #uses system time or an operating system's source of randomness
     else:
         random.seed(randomSeed)
+
+    #generosity is the disposition to choose a nongreedy successor, which goes down over time
+    #because it's the opposite of greediness! -rzheng
+    generosity = options['machineNum'] or 0
     
     """
     see documentation at top for costs
@@ -866,7 +874,12 @@ for %d iterations" % maxIterations
     #                    else:
     #                        print "\tstate is now %s" % dict(state)
                 else:
-                    state = min(successors)
+                    if generosity > 0:
+                        successors.sort()
+                        state = successors[generosity % len(successors)]
+                        generosity = generosity / len(successors)
+                    else:
+                        state = min(successors)
                 
         print "\tstateTracker stats: %s" % str(stateTracker.stats)
         print "\tfound %d goals in %d iterations" % (goalsFound, iterations)
@@ -1043,10 +1056,10 @@ def hill_climb(initialState=State(),
 #    Returns a new state with the three specified entries swapped
 #    Swaps person in slot one to slot two, slot two to slot three, and slot three to slot one
     def three_swap_state(state, slotOne, slotTwo, slotThree):
-        newState = state.copy()
-        newState[slotOne] = initialState[slotThree]
-        newState[slotTwo] = initialState[slotOne]
-        newState[slotThree] = initialState[slotTwo]
+        newState = State(state)
+        newState[slotOne] = state[slotThree]
+        newState[slotTwo] = state[slotOne]
+        newState[slotThree] = state[slotTwo]
         return newState
     
 #    Begin Hillclimbing
@@ -1054,17 +1067,18 @@ def hill_climb(initialState=State(),
 #    We could have beam search by tracking more states in potentialStatesAndCosts.
     betterStates = 0
     worseStates = 0
-    bestStateAndCost = (initialState, 0)
+    bestStateAndCost = (State(initialState), 0)
     bestDiffs = []
     potentialStatesAndCosts = [bestStateAndCost]
     while len(potentialStatesAndCosts) > 0:
+        print "climbing hill"
         state, cost = potentialStatesAndCosts.pop(0)
         for slotOne in state:
             for slotTwo in state:
-                if slotTwo <= slotOne:
+                if slotTwo <= slotOne or slotOne.time == slotTwo.time:
                     continue
                 for slotThree in state:
-                    if slotThree <= slotTwo:
+                    if slotThree <= slotTwo or slotTwo.time == slotThree.time or slotOne.time == slotThree.time:
                         continue
                     personOne = state[slotOne]
                     personTwo = state[slotTwo]
@@ -1087,6 +1101,7 @@ def hill_climb(initialState=State(),
                     
                     if personOneToSlotTwo and personTwoToSlotThree and personThreeToSlotOne:
                         newState = three_swap_state(state, slotOne, slotTwo, slotThree)
+                        newState.meta['swap'] = "%s -> %s -> %s" % (slotOne , slotTwo , slotThree)
                         costDiff = my_get_cost_difference(state, newState)
                         if costDiff < 0:
                             betterStates += 1
@@ -1100,6 +1115,7 @@ def hill_climb(initialState=State(),
                     
                     if personOneToSlotThree and personTwoToSlotOne and personThreeToSlotTwo:
                         newState = three_swap_state(state, slotOne, slotThree, slotTwo)
+                        newState.meta['swap'] = "%s -> %s -> %s" % (slotThree , slotTwo , slotOne)
                         costDiff = my_get_cost_difference(state, newState)
                         if costDiff < 0:
                             betterStates += 1
@@ -1110,6 +1126,8 @@ def hill_climb(initialState=State(),
                                 potentialStatesAndCosts = [(newStateAndCost)]
                         else:
                             worseStates += 1
+        print "cost delta = ", bestStateAndCost[1]
+        print bestStateAndCost[0].meta['swap']
     
     print 'HillClimb Stats'
     print 'Number of Better States = ', betterStates
@@ -1395,18 +1413,22 @@ def generate_from_random(destFileName = "randomSchedulerOutput.txt"):
     
     print "wrote output to %s" % destFileName
     
-def generate_from_file(destFileName = "schedulerOutput.txt"):
+def generate_from_file(destFileName = "schedulerOutput.txt", options=NiceDict(False)):
     try:
-        from parameters import coryTimes, sodaTimes, defaultHours, exceptions, scoring, options
+        from parameters import coryTimes, sodaTimes, defaultHours, exceptions, scoring
+        from parameters import options as poptions
     except:
         print "Could not find valid file 'parameters.py'"
         return
+    for key in poptions:
+        if key in options:
+            poptions[key] = options[key]
     clear_timing()
     ret = generate_schedule(availabilitiesBySlot=parse_into_availabilities_by_slot(coryTimes,
                                                                                    sodaTimes),
                             slotsByPerson=NiceDict(defaultHours, exceptions),
                             scoring=scoring,
-                            options=NiceDict(False, options))
+                            options=NiceDict(False, poptions))
     print_timing()
     dump = open(destFileName, 'w+') #truncates file if it exists
     for state in ret:
@@ -1619,10 +1641,67 @@ def test_heuristic():
     else:
         print "expected %d, start state heuristic: %d" % (expected, result)
     
+def hill_climb_test():
+    from parameters import coryTimes, sodaTimes
+    str = "----------\n\
+cost: 351, heuristic: 0\n\
+Cory	Mon	Tue	Wed	Thu	Fri\n\
+11a-12	52WayneF	54YasinA	360SandyW	364JerryZ	23IngridL\n\
+12-1	36MichaelT	54YasinA	322KeatonM	30JudyH	215VishayN\n\
+1-2	46ShervinJ	190NirA	35MatthewE	36MichaelT	365RyanZ\n\
+2-3	46ShervinJ	11BrianK	35MatthewE	183JohnnyT	215VishayN\n\
+3-4	52WayneF	6AngelaH	335MichelleA	25JarodP	365RyanZ\n\
+4-5	48SurajG	6AngelaH	333MinX	25JarodP	217SuhaasP\n\
+Soda	Mon	Tue	Wed	Thu	Fri\n\
+11a-12	360SandyW	224HishamZ	319DarrenL	183JohnnyT	48SurajG\n\
+12-1	30JudyH	39NielsJ	39NielsJ	224HishamZ	12BrianL\n\
+1-2	197MichaelC	23IngridL	322KeatonM	190NirA	13BrianT\n\
+2-3	197MichaelC	319DarrenL	24JamesL	364JerryZ	217SuhaasP\n\
+3-4	335MichelleA	20GeorgeC	24JamesL	11BrianK	333MinX\n\
+4-5	13BrianT	20GeorgeC	12BrianL	314ChrisL	314ChrisL\n\
+----------"
+
+    costs = {'base': max(SCORE_ADJACENT, SCORE_ADJACENT_SAME_OFFICE) * 2 +
+                 max(SCORE_PREFERENCE.values()) +
+                 SCORE_CORRECT_OFFICE +
+                 1,
+         'adjacent': SCORE_ADJACENT,
+         'adjacent_same_office': SCORE_ADJACENT_SAME_OFFICE}
+    costs['preference'] = {}
+    for int_key in SCORE_PREFERENCE:
+        costs['preference'][int_key] = SCORE_PREFERENCE[int_key]
+        costs['preference'][int_key - 0.5] = SCORE_PREFERENCE[int_key] + SCORE_CORRECT_OFFICE
+
+    availabilitiesBySlot = parse_into_availabilities_by_slot(coryTimes, sodaTimes)
+
+    state = State.parse_into_states(str)
+    newState = hill_climb(initialState=state[0], costs=costs, slotsByPerson=NiceDict(2), availabilitiesBySlot=availabilitiesBySlot)
+    print newState.pretty_print()
 
 
 if __name__=="__main__":
-    if len(sys.argv) > 1:
-        generate_from_file(sys.argv[1])
-    else:
-        generate_from_file()
+    import getopt
+    try:
+        opts, args = getopt.getopt(sys.argv, "fmcr", ["file=", "machine=", "maxcost=", "randseed="])
+    except getopt.GetoptError:
+        print "Valid options:"
+        print "  -f NAME --file=NAME    output file name"
+        print "  -m NUM  --machine=NUM  machine number"
+        print "  -c NUM  --maxcost=NUM  maximum cost"
+        print "  -r NUM  --randseed=NUM random seed"
+        sys.exit(1)
+    filename = "schedulerOutput.txt"
+    machineNum = False
+    cost = False
+    seed = False
+    for opt, arg in opts:
+        if opt in ('-f', '--file'):
+            filename = arg
+        elif opt in ('-m', '--machine'):
+            machineNum = arg
+        elif opt in ('-c', '--maxcost'):
+            cost = arg
+        elif opt in ('-r', '--randseed'):
+            seed = arg
+
+    generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed})

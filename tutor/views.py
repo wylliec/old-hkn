@@ -590,9 +590,13 @@ def params_for_scheduler(request):
     maximumCost = request.POST.get('maximumCost', False)
     if maximumCost == '': maximumCost = False
     
+    machineNum = request.POST.get('machineNum', False)
+    if machineNum == '': machineNum = False
+    
     return HttpResponse(tutor.Availability.parameters_for_scheduler(
          randomSeed=randomSeed,
-         maximumCost=maximumCost))
+         maximumCost=maximumCost,
+         machineNum=machineNum))
 
 @login_required
 def submit_schedule(request):
