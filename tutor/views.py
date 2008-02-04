@@ -46,6 +46,17 @@ def availabilities_table(request):
     avails = tutor.Availability.objects.filter(season=currentSeason(), year=CURRENT_YEAR).order_by('slot').select_related(depth=1)
     context = basicContext(request)
     context['avails'] = avails
+
+    abs_old = tutor.Availability.availabilities_by_slot(person_converter = lambda person: str(person))
+    abs = []
+    for slot in abs_old:
+        row = []
+        for d in abs_old[slot]:
+            dict = {}
+            row.append({'person': d[0], 'slot': slot.day + ' ' + slot.time, 'office':slot.office, 'preference': d[1]})
+
+    context['abs'] = abs
+    
     return render_to_response('tutor/availabilities_table.html',
                               context,
                               context_instance = RequestContext(request))
@@ -446,7 +457,7 @@ def view_signups(request):
         temp['name'] = key
         temp['count'] = availCounts_old[key]
         idx = -1
-	for i in range(len(availCounts)):
+    for i in range(len(availCounts)):
             if availCounts[i]['count'] < temp['count']:
                 idx = i
                 break

@@ -17,4 +17,18 @@
 {% endfor %}
 </table>
 
+<table>
+        <tr><td>person</td><td>slot</td><td>office</td><td>preference</td></tr>
+{% for s in abs %}
+	{% for a in s %}
+<tr>
+        <td>{{ a.person }}</td>
+        <td>{{ a.slot }}</td>
+        <td>{{ a.office }}</td>
+        <td>{{ a.preference }}</td>
+</tr>
+	{% endfor %}
+{% endfor %}
+</table>
+
 {% endblock %}
