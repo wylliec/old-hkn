@@ -54,7 +54,7 @@ def availabilities_table(request):
         for d in abs_old[slot]:
             dict = {}
             row.append({'person': d[0], 'slot': slot.day + ' ' + slot.time, 'office':slot.office, 'preference': d[1]})
-	abs.append(row)
+        abs.append(row)
 
     context['abs'] = abs
     
@@ -291,7 +291,7 @@ def view_signups(request):
     #for some particular slot
     
     #set up dictionary of Slot -> list of slot preferences
-    availabilitiesDict = NiceDict([{"name":"Nobody", "preference":0, "assigned":False},])
+    availabilitiesDict = NiceDict([{"name":"Nobody", "preference":0, 'preferredOffice':False, "assigned":False, 'id':-1},])
     for slot in availabilitiesBySlot:
         if slot not in availabilitiesDict:
             availabilitiesDict[slot] = []
@@ -359,20 +359,27 @@ def view_signups(request):
                 happiness[fullname]["net"] += SCORE_MISS_PENALTY
             else:
                 happiness[fullname]["net"] -= SCORE_MISS_PENALTY
+            
+            slot_preference["assigned"] = True #mark this as an assigned preference
+            #update happiness according first or second choice
+            if slot_preference['preference'] == 1:
+                happiness[fullname]['first_choices'] += 1
+                happiness[fullname]['net'] += SCORE_PREFERENCE[1]
+            elif slot_preference['preference'] == 2:
+                happiness[fullname]['second_choices'] += 1
+                happiness[fullname]['net'] += SCORE_PREFERENCE[2]
+            else:
+                return HttpResponse( "invalid preference for " + fullname + ", assignment to slot " + assignment.slot)
         else:
-            return HttpResponse( "missing availability found for " + fullname +", assignment to slot " + assignment.slot)
+            #return HttpResponse( "missing availability found for " + fullname +", assignment to slot " + assignment.slot)
+            happiness[fullname]['net'] -= SCORE_MISS_PENALTY
+            #otherSlot = slot.other_office_slot()
+            if slot not in availabilitiesDict:
+                availabilitiesDict[slot] = []
+            availabilitiesDict[slot].append({'name':fullname, 'preference':False, 'preferredOffice':False, 'assigned':True, 'id':person.id})
+            #availabilitiesDict[slot.other_office_slot()].append({'name':fullname, 'preference':0, 'preferredOffice':False, 'assigned':False, 'id':person.id})
         
-        slot_preference["assigned"] = True #mark this as an assigned preference
         
-        #update happiness according first or second choice
-        if slot_preference['preference'] == 1:
-            happiness[fullname]['first_choices'] += 1
-            happiness[fullname]['net'] += SCORE_PREFERENCE[1]
-        elif slot_preference['preference'] == 2:
-            happiness[fullname]['second_choices'] += 1
-            happiness[fullname]['net'] += SCORE_PREFERENCE[2]
-        else:
-            return HttpResponse( "invalid preference for " + fullname + ", assignment to slot " + assignment.slot)
     
     #Go through again and update happiness for adjacencies.
     #Only count something as an adjacency if the person was also assigned to the time just before
