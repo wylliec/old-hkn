@@ -59,6 +59,21 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
     {% endfor %}
     </tr>
     </table>
+
+    <br />
+    Availabilities Counts:
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Availabilities</td>
+        </tr>
+        {% for t in availCounts %}
+        <tr>
+            <td>{{ t.name }}</td>
+            <td>{{ t.count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
     
     <br /><br /><br />
     
@@ -84,7 +99,7 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
             <td>Net Happiness</td>
             <td>First Choices</td>
             <td>Second Choices</td>
-			<td>Adjacencies (same office)</td>
+            <td>Adjacencies (same office)</td>
             <td>Adjacencies (different office)</td>
             <td>Correct Office</td>
             <td>Missing (target - assigned)</td>

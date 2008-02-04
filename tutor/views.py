@@ -124,7 +124,7 @@ def submit_signup(request):
     person = request.user.person
 
     try:
-    	numCourses = atoi(info["maxNumCourses"])
+        numCourses = atoi(info["maxNumCourses"])
     except:
         return signup(
             request,
@@ -241,6 +241,7 @@ def view_signups(request):
            season=currentSeason(),
            year=CURRENT_YEAR)
     
+    availCounts = {}
     if len(assignments) == 0:
         context['version'] = False
     else:
@@ -273,10 +274,16 @@ def view_signups(request):
     for slot in availabilitiesBySlot:
         if slot not in availabilitiesDict:
             availabilitiesDict[slot] = []
-        
+
         for detail in availabilitiesBySlot[slot]:
             person = detail[0]
             people[person.id] = person
+
+            fullname = person.last + ", " + person.first
+            if fullname not in availCounts:
+                availCounts[fullname] = .5
+            else:
+                availCounts[fullname] += .5
             
             preference = detail[1]
             
@@ -414,6 +421,16 @@ def view_signups(request):
     
     context['info'] = info
     context['happiness'] = happiness
+
+    availCounts_old = availCounts
+    availCounts = []
+    for key in availCounts_old:
+        temp = {}
+        temp['name'] = key
+        temp['count'] = availCounts_old[key]
+        availCounts.append(temp)
+
+    context['availCounts'] = availCounts
     
     return render_to_response("tutor/view_signups.html",
                               context,
