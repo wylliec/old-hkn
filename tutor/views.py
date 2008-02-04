@@ -387,11 +387,11 @@ def view_signups(request):
         earlierSlot = slot.earlier_slot()
         if earlierSlot == None:
             continue
-        if 1 == len([x for x in availabilitiesDict[earlierSlot] if x['id'] == person.id]):
+        if 1 == len([x for x in availabilitiesDict[earlierSlot] if x['id'] == person.id and x['assigned']]):
             happiness[fullname]['same_office_adjacencies'] += 1
             happiness[fullname]['net'] += SCORE_ADJACENT_SAME_OFFICE
         elif 1 == len([x for x in availabilitiesDict[earlierSlot.other_office_slot()]
-                       if x['id'] == person.id]):
+                       if x['id'] == person.id and x['assigned']]):
             happiness[fullname]['adjacencies'] += 1
             happiness[fullname]['net'] += SCORE_ADJACENT
     
