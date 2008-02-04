@@ -581,7 +581,8 @@ class StateTracker:
                     s.meta['heuristic'] = self.heuristic(s)
                     
                     #store this state
-                    self.push(s)
+                    if s.meta['heuristic']:
+                        self.push(s)
                 
             elif s in self.visited and self.visited[s][1]:
 #                print '--ignoring successor, already visited (case 2)'
@@ -961,6 +962,7 @@ def heuristic(state=State(),
               stateTracker = StateTracker()):
     """
     Returns: integer estimate of optimal future costs from this state
+             if unsolvable, return False
     Arguments:
         state - dictionary from slots to assignments, None for none assigned
         costs - see documentation at top
@@ -1000,7 +1002,7 @@ def heuristic(state=State(),
         if state[slot] == None:
             avails = availabilitiesBySlot[slot]
             if len(avails) == 0:
-                return 10**10 #this is an unsolvable state
+                return False #this is an unsolvable state
             ret += min([my_get_cost(state, slot, detail[0]) for detail in avails])
             
             #assume that we could have filled an empty earlier slot for the same person
@@ -1037,6 +1039,78 @@ def hill_climb(initialState=State(),
                                                                                    costs=costs,
                                                                                    adjacency_checker=adjacency_checker,
                                                                                    availabilitiesBySlot=availabilitiesBySlot)
+    return initialState
+    
+#    Returns a new state with the three specified entries swapped
+#    Swaps person in slot one to slot two, slot two to slot three, and slot three to slot one
+    def three_swap_state(state, slotOne, slotTwo, slotThree):
+        newState = state.copy()
+        newState[slotOne] = initialState[slotThree]
+        newState[slotTwo] = initialState[slotOne]
+        newState[slotThree] = initialState[slotTwo]
+        return newState
+    
+    
+    swapChoiceOne = None
+    swapChoiceTwo = None
+    bestDiff = 0
+    bestDiffs = []
+    for slotOne in initialState:
+        for slotTwo in initialState:
+            if slotTwo <= slotOne:
+                continue
+            for slotThree in initialState:
+                if slotThree <= slotTwo:
+                    continue
+                personOne = initialState[slotOne]
+                personTwo = initialState[slotTwo]
+                personThree = initialState[slotThree]
+                personOneToSlotTwo = False
+                personOneToSlotThree = False
+                personTwoToSlotOne = False
+                personTwoToSlotThree = False
+                personThreeToSlotOne = False
+                personThreeToSlotTwo = False
+                for person in [detail[0] for detail in availabilitiesBySlot[slotOne]]:
+                    personThreeToSlotOne = personThreeToSlotOne | person==personThree
+                    personTwoToSlotOne = personTwoToSlotOne | person==personTwo
+                for person in [detail[0] for detail in availabilitiesBySlot[slotTwo]]:
+                    personOneToSlotTwo = personOneToSlotTwo | person==personOne
+                    personThreeToSlotTwo = personThreeToSlotTwo | person==personThree
+                for person in [detail[0] for detail in availabilitiesBySlot[slotThree]]:
+                    personTwoToSlotThree = personTwoToSlotThree | person==personTwo
+                    personOneToSlotThree = personOneToSlotThree | person==personOne
+                
+                if personOneToSlotTwo and personTwoToSlotThree and personThreeToSlotOne:
+                    newState = three_swap_state(initialState, slotOne, slotTwo, slotThree)
+                    costDiff = my_get_cost_difference(initialState, newState)
+                    if costDiff < 0:
+                        bestDiffs.append((slotOne, slotTwo, slotThree))
+                
+                if personOneToSlotThree and personTwoToSlotOne and personThreeToSlotTwo:
+                    newState = three_swap_state(initialState, slotOne, slotTwo, slotThree)
+                    costDiff = my_get_cost_difference(initialState, newState)
+                    if costDiff < 0:
+                        bestDiffs.append((slotOne, slotTwo, slotThree))
+        people = []
+        numPeople = 0
+        otherOfficeSlot = slot.otherOfficeSlot()
+        for person in [detail[0] for detail in availabilitiesBySlot[slot]]:
+#                print 'considering person: ' + person
+            if numAssigned[person] >= slotsByPerson[person] or state[otherOfficeSlot] == person:
+                #person cannot tutor more, or is tutoring this time in another office
+#                    print 'skipping person who is full or tutoring in other office'
+                continue
+            people.append(person)
+            numPeople += 1
+        
+        #see if this is fewer than previously seen
+        if numPeople < numAvailsInEmptySlot:
+#                print "considering slot with availabilities for: " + str(people)
+            #consider this slot as a candidate for generating fewest successors
+            emptySlot = slot
+            availsInEmptySlot = people
+            numAvailsInEmptySlot = numPeople
     
     return initialState
 
