@@ -63,7 +63,7 @@ class Availability(models.Model):
             person = availability.person
             
             prev.append([person_converter(person),
-                         availability.preference])
+                         availability.preference - 0.5])
         
         #change preferences in availabilitiesBySlot to account for preferred offices
         for slot in availabilitiesBySlot:
@@ -77,10 +77,7 @@ class Availability(models.Model):
                         break
                 if not found:
                     #no detail found for this person.  They must not prefer the other slot
-                    availabilitiesBySlot[otherSlot].append([detail[0], detail[1]])
-                
-                #note that this slot is preferred
-                detail[1] -= 0.5
+                    availabilitiesBySlot[otherSlot].append([detail[0], int(detail[1] + 0.5)])
         
         return availabilitiesBySlot
     
