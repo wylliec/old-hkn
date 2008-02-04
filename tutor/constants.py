@@ -33,6 +33,9 @@ DEFAULT_HOURS = 2 #DO NOT EDIT THIS
 #exceptions for people who do not tutor the default hours.  Maps from person id to hours
 HOUR_EXCEPTIONS = NiceDict(False,{#DO NOT EDIT THIS
 #BEGIN EXCEPTIONS
+48: 3,#DO NOT EDIT THIS
+335: 3,#DO NOT EDIT THIS
+36: 3,#DO NOT EDIT THIS
 #END EXCEPTIONS
 }) #DO NOT EDIT THIS
 #END AUTOMANAGED
