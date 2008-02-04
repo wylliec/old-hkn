@@ -397,7 +397,7 @@ class State(dict):
                 
                 #read cost and heuristic info
                 state.meta['cost'] = int(stateStringLines[0].split(',')[0][5:])
-                state.meta['heuristic'] = int(stateStringLines[0].split(',')[1][10:])
+                state.meta['heuristic'] = int(stateStringLines[0].split(',')[1][11:])
                 
                 #drop the cost line
                 stateStringLines = stateStringLines[1:]
