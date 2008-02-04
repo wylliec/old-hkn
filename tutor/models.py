@@ -119,7 +119,7 @@ class Availability(models.Model):
         
         exceptions = {}
         for person_id in HOUR_EXCEPTIONS:
-            person = Person.get(id=person_id)
+            person = Person.objects.get(id=person_id)
             identifier = str(person.id) + person.first.split(' ')[0] + person.last[0]
             exceptions[identifier] = HOUR_EXCEPTIONS[person_id]
         ret += 'exceptions = %s\n' % exceptions
