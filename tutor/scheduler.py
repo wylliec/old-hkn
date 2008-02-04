@@ -1,4 +1,4 @@
-#!python
+#!/usr/bin/python
 #holds methods used to calculate a schedule given preference and scoring information
 
 import heapq, random, sys, time, thread
@@ -706,7 +706,8 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
 
     #generosity is the disposition to choose a nongreedy successor, which goes down over time
     #because it's the opposite of greediness! -rzheng
-    generosity = options['machineNum'] or 0
+    generosity = int(options['machineNum'] or 0)
+    print "Running with generosity ", generosity
     
     """
     see documentation at top for costs
@@ -1696,15 +1697,19 @@ Soda	Mon	Tue	Wed	Thu	Fri\n\
 
 
 if __name__=="__main__":
-    import getopt
-    try:
-        opts, args = getopt.getopt(sys.argv, "fmcr", ["file=", "machine=", "maxcost=", "randseed="])
-    except getopt.GetoptError:
+    def usage():
         print "Valid options:"
         print "  -f NAME --file=NAME    output file name"
         print "  -m NUM  --machine=NUM  machine number"
         print "  -c NUM  --maxcost=NUM  maximum cost"
         print "  -r NUM  --randseed=NUM random seed"
+        print "  -h      --help"
+
+    import getopt
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], 'fmcr', ['file=', 'machine=', 'maxcost=', 'randseed='])
+    except getopt.GetoptError:
+        usage()
         sys.exit(1)
     filename = "schedulerOutput.txt"
     machineNum = False
@@ -1719,5 +1724,8 @@ if __name__=="__main__":
             cost = arg
         elif opt in ('-r', '--randseed'):
             seed = arg
+        elif opt in ('-h', '--help'):
+            usage()
+            sys.exit(0)
 
     generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed})
