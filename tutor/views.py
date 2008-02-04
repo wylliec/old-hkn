@@ -465,10 +465,10 @@ def view_signups(request):
         temp['name'] = key
         temp['count'] = availCounts_old[key]
         idx = -1
-    for i in range(len(availCounts)):
-        if availCounts[i]['count'] < temp['count']:
-            idx = i
-            break
+        for i in range(len(availCounts)):
+            if availCounts[i]['count'] < temp['count']:
+                idx = i
+                break
 
         if idx < 0:
             availCounts.append(temp)
