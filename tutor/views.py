@@ -415,7 +415,15 @@ def view_signups(request):
     for key in happiness_old:
         temp = happiness_old[key]
         temp['name'] = key
-        happiness.append(temp)
+        idx = -1
+        for i in range(len(happiness)):
+            if happiness[i]['net'] < temp['net']:
+                idx = i
+                break
+        if idx < 0:
+            happiness.append(temp)
+        else:
+            happiness.insert(idx, temp)
         total += temp['net']
     context['total_happiness'] = total
     
