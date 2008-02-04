@@ -7,7 +7,7 @@
 {% block tutorcontent %}
 <table>
         <tr><td>person</td><td>slot</td><td>office</td><td>preference</td></tr>
-(% for a in avails %}
+{% for a in avails %}
 <tr>
         <td>{{ a.person }}</td>
         <td>{{ a.slot }}</td>
