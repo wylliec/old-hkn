@@ -17,7 +17,10 @@ Will have:
 </ul>
 
 <br />
-<a href="{% url hkn.tutor.views.tutor_list %}">View hkntutor data</a> (save the page as data.hkntutor, pass into HKNTutor.exe data.hkntutor > schedulespring2008.html)
+<form action="{% url hkn.tutor.views.tutor_list %}" method="POST">
+<input type="text" name="version" /><br />
+<input type="submit" value="View hkntutor data" /> (save the page as data.hkntutor, pass into HKNTutor.exe data.hkntutor > schedulespring2008.html)
+</form>
 <br /> <br />
 
 Get parameters for running the schedule generator locally.<br />

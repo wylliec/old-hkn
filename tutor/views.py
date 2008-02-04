@@ -38,8 +38,9 @@ def feedback(request):
                               basicContext(request),
                               context_instance = RequestContext(request))
 
+@login_required
 def tutor_list(request):
-    return HttpResponse(output.output_html())
+    return HttpResponse(output.output_html(request.POST.get('version', False)))
 
 @login_required
 def availabilities_table(request):
