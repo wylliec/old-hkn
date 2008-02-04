@@ -47,7 +47,7 @@ def output_html(version=False):
         assignments = tutormodel.Assignment.objects.filter(person = personID, season = seasonID, year = CURRENT_YEAR, version = version)
         if len(assignments) == 0:
             continue
-        tutors = tutormodel.CanTutor.objects.filter(person = personID, season = seasonID, year = CURRENT_YEAR)
+        canTutor = tutormodel.CanTutor.objects.filter(person = personID, season = seasonID, year = CURRENT_YEAR)
 
         HTML_STRING += "\n\nBEGINTUTOR\n"
         
@@ -71,11 +71,13 @@ def output_html(version=False):
         
 #        Output tutor's courses
         courseList = "CLASSES"
-        for tutor in tutors:
-            course = tutor.course
+        for entry in canTutor:
+            course = entry.course
             true_dept_abbr = course.department_abbr
             preferred_dept_abbr = coursemodel.Department.nice_abbr(true_dept_abbr)
             courseList = courseList + " " + preferred_dept_abbr + course.number
+            if entry.current:
+                courseList = courseList + "cur"
         HTML_STRING += courseList + "\n"
         
         HTML_STRING += "ENDTUTOR"
