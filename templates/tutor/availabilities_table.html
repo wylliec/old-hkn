@@ -1,0 +1,20 @@
+{% extends "tutor/base.html" %}
+
+{% block extratitle %} Tutoring - Feedback {% endblock %}
+
+{% block subtitle %} Tutoring - Feedback {% endblock %}
+
+{% block tutorcontent %}
+<table>
+        <tr><td>person</td><td>slot</td><td>office</td><td>preference</td></tr>
+(% for a in avails %}
+<tr>
+        <td>{{ a.person }}</td>
+        <td>{{ a.slot }}</td>
+        <td>{{ a.office }}</td>
+        <td>{{ a.preference }}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -41,6 +41,15 @@ def feedback(request):
 def tutor_list(request):
     return HttpResponse(output.output_html())
 
+@login_required
+def availabilities_table(request):
+    avails = tutor.Availability.objects.filter(season=currentSeason(), year=CURRENT_YEAR).order_by(person_id).select_related(depth=1)
+    context = basicContext(request)
+    context['avails'] = avails
+    return render_to_response('tutor/availabilities_table.html',
+                              context,
+                              context_instance = RequestContext(request))
+
 # Create your views here.
 @login_required
 def signup(request, message = False):
