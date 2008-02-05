@@ -681,7 +681,8 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                       options = NiceDict(False,
                                          {"random_seed":False,
                                           "machineNum":False,
-                                          "maximumCost":False
+                                          "maximumCost":False,
+                                          "patience":False,
                                           })
                       ):
     """
@@ -705,6 +706,8 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
             random_seed: provide a random seed for calculations
             machineNum: if multiple machines are executing, assign each a integer increasing from 0
             maximumCost: ignore states with costs higher than this
+            patience: # of iterations to go without finding a goal before restarting from new state
+             - default is 5000, for infinite patience, provide value <= 0
     """
     if not options['random_seed']:
         random.seed() #uses system time or an operating system's source of randomness
@@ -714,7 +717,8 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     #generosity is the disposition to choose a nongreedy successor, which goes down over time
     #because it's the opposite of greediness! -rzheng
     generosity = int(options['machineNum'] or 0)
-    print "Running with generosity ", generosity
+    max_patience = int(options['patience'] or 5000)
+    print "Running with generosity %d, patience %d" % (generosity, max_patience)
     
     """
     see documentation at top for costs
@@ -773,9 +777,10 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     stateTracker.push(state)
     
     iterations = 0
-    maxIterations = 10**3 #TODO change!
+    patience = max_patience
+    maxIterations = 10**4 #TODO change!
     maxIterationsIncrement = maxIterations
-    feedbackPeriod = 250 #number of iterations to go between printing stuff to user
+    feedbackPeriod = 500 #number of iterations to go between printing stuff to user
     currentMaxIterations = maxIterationsIncrement
     bestSoFar = []
     goalsFound = 0
@@ -812,11 +817,12 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                         stateTracker.maximumCost = tmp - 1
                     elif char == 'r':
                         state = stateTracker.pop()
+                        patience = max_patience
                         if state == None:
                             print "Error with scheduler, should not have nothing to pop!"
                             print "length of priorityQ: %d" % len(stateTracker.priorityQueue)
                             sys.exit()
-                        print "resetting state to next best unvisited state with %d\
+                        print "resetting state to next best unvisited state with %d \
 slots to-be-assigned" % state.noneCount
                     elif char == 'x':
                         print "halting execution"
@@ -841,6 +847,8 @@ slots to-be-assigned" % state.noneCount
                     signalHolder[1] = True #signal to start reading characters again
 #                readlock.release()
             if iterations % feedbackPeriod == 0 or showStats:
+                #make sure patience doesn't integer underflow
+                if patience < 0: patience = 0
                 if not showStats: newTime = time.time()
                 if iterations >= currentMaxIterations or showStats:
                     print '===================================='
@@ -880,9 +888,10 @@ by %d iterations" % maxIterations
     #            print "\tstats: %s" % stateTracker.stats
     #            print "\tstate: %s" % dict(state)
             iterations += 1
-            stateTracker.visit(state)
+            patience -= 1
             
             if state.isGoal():
+                stateTracker.visit(state)
                 tmp = state.copy()
                 tmp.meta['parent'] = 'removed'
     #            print "\tfound goal: %s" % tmp
@@ -905,7 +914,18 @@ by %d iterations" % maxIterations
                     bestSoFar.pop() #dump least good in bestSoFar
                 
                 state = stateTracker.pop() #get some other "good" state from stateTracker
+                patience = max_patience
+            elif patience == 0:
+                #we have run out of patience, restart
+                print "===Restarting on iteration %d===" % iterations
+                print "---Ran out of patience on state with cost %d, heuristic %d, noneCount %d" % (
+                                    state.meta['cost'], state.meta['heuristic'], state.noneCount)
+                state = stateTracker.pop()
+                print "+++Restarted to state with with cost %d, heuristic %d, noneCount %d" % (
+                                    state.meta['cost'], state.meta['heuristic'], state.noneCount)
+                patience = max_patience
             else:
+                stateTracker.visit(state)
     #            print "\tlooking for successors"
                 successors = stateTracker.filtered_successors(state)
                 if len(successors) == 0:
@@ -914,6 +934,7 @@ by %d iterations" % maxIterations
                     if state == None:
     #                    print "\tbacktrack failed, looking for new state"
                         state = stateTracker.pop()
+                        patience = max_patience
     #                    if state == None:
     #                        print "\tstate is now None"
     #                    else:

@@ -601,10 +601,16 @@ def params_for_scheduler(request):
     machineNum = request.POST.get('machineNum', False)
     if machineNum == '': machineNum = False
     
-    return HttpResponse(tutor.Availability.parameters_for_scheduler(
-         randomSeed=randomSeed,
-         maximumCost=maximumCost,
-         machineNum=machineNum))
+    patience = request.POST.get('patience', False)
+    if patience == '': patience = False
+    
+    text = tutor.Availability.parameters_for_scheduler(
+             randomSeed=randomSeed and int(randomSeed),
+             maximumCost=maximumCost and int(maximumCost),
+             machineNum=machineNum and int(machineNum),
+             patience=patience and int(patience))
+    text = text.replace('\n', '#<br />\n') #so it's more readable
+    return HttpResponse(text)
 
 @login_required
 def submit_schedule(request):
