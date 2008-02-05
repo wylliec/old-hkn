@@ -75,7 +75,14 @@ def output_html(version=False):
             course = entry.course
             true_dept_abbr = course.department_abbr
             preferred_dept_abbr = coursemodel.Department.nice_abbr(true_dept_abbr)
-            courseList = courseList + " " + preferred_dept_abbr + course.number
+            number = course.number
+            #get rid of trailing L or N, like CS61BL and EE20N
+            if number[-1].lower() in ('l', 'n'):
+                number = number[:-1]
+            #move honors or cross-listed prefix to the end, so not confused with department
+            if number[0].lower() in ('h', 'c'):
+                number = number[1:] + number[0]
+            courseList = courseList + " " + preferred_dept_abbr + number
             if entry.current:
                 courseList = courseList + "cur"
         HTML_STRING += courseList + "\n"
