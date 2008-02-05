@@ -243,6 +243,8 @@ class State(dict):
         self.noneCount = 0
         self.hashValue = False
         dict.__init__(self, *a, **kw)
+        if len(self) != 0:
+            self.noneCount = len([x for x in self.values() if x == None])
     
     def initialize_keys(self, keys):
         """
@@ -485,6 +487,12 @@ class PriorityQueue:
     """
     return len(self.heap) == 0
 
+  def __len__(self):
+    """
+        added by Darren
+    """
+    return len(self.dict)
+
 class StateTracker:
     """
     Tracks all states.  Knows the tree of execution and can find unexplored
@@ -579,9 +587,8 @@ class StateTracker:
                                                                         s.meta['slotAssigned'],
                                                                         s.meta['personAssigned'])
                     s.meta['heuristic'] = self.heuristic(s)
-                    
                     #store this state
-                    if s.meta['heuristic']:
+                    if s.meta['heuristic'] is not False:
                         self.push(s)
                 
             elif s in self.visited and self.visited[s][1]:
@@ -767,13 +774,15 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     
     iterations = 0
     maxIterations = 10**3 #TODO change!
+    maxIterationsIncrement = maxIterations
     feedbackPeriod = 250 #number of iterations to go between printing stuff to user
-    currentMaxIterations = maxIterations
+    currentMaxIterations = maxIterationsIncrement
     bestSoFar = []
     goalsFound = 0
     maxKept = 100
     bestCost = 0
     startTime = time.time()
+    showStats = False #whether you should show stats and info this iteration
     oldTime = startTime
     lastGoalTime = 0.0
     #create thread to handle user input if one not in use
@@ -791,7 +800,25 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
             if True:#readlock.acquire(0): #only acquire if can do so without waiting
                 char = charHolder[0]
                 if len(char) > 0:
-                    if char == 'x':
+                    if char == 'h':
+                        showStats = True
+                    elif char == 'i':
+                        tmp = stateTracker.maximumCost
+                        print "increasing maximumCost from %d to %d" % (tmp, tmp + 1)
+                        stateTracker.increaseMaximumCostTo(tmp + 1)
+                    elif char == 'd':
+                        tmp = stateTracker.maximumCost
+                        print "decreasing maximumCost from %d to %d" % (tmp, tmp - 1)
+                        stateTracker.maximumCost = tmp - 1
+                    elif char == 'r':
+                        state = stateTracker.pop()
+                        if state == None:
+                            print "Error with scheduler, should not have nothing to pop!"
+                            print "length of priorityQ: %d" % len(stateTracker.priorityQueue)
+                            sys.exit()
+                        print "resetting state to next best unvisited state with %d\
+slots to-be-assigned" % state.noneCount
+                    elif char == 'x':
                         print "halting execution"
 #                        readlock.release()
                         break
@@ -805,13 +832,17 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                         dumpFile.close()
                     elif char == 'c':
                         print "continuing execution"
-                        currentMaxIterations = iterations + maxIterations
+                        currentMaxIterations = iterations + maxIterationsIncrement
+                    elif char == 's':
+                        print "continuing execution, reducing frequency of large info message"
+                        maxIterationsIncrement += maxIterations
+                        currentMaxIterations = iterations + maxIterationsIncrement
                     charHolder[0] = ''
                     signalHolder[1] = True #signal to start reading characters again
 #                readlock.release()
-            if iterations % feedbackPeriod == 0:
-                newTime = time.time()
-                if iterations >= currentMaxIterations:
+            if iterations % feedbackPeriod == 0 or showStats:
+                if not showStats: newTime = time.time()
+                if iterations >= currentMaxIterations or showStats:
                     print '===================================='
                     print 'Completed %d iterations. in %d seconds' % (iterations,
                                                                       newTime - startTime)
@@ -819,20 +850,33 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                                                                      bestCost)
                     print "Last %d iterations took %d seconds" % (feedbackPeriod,
                                                                       (newTime - oldTime))
-                    print "Last goal found %d seconds ago" % (newTime - lastGoalTime)
+                    if lastGoalTime > 0: print "Last goal found %d seconds ago" % (newTime - lastGoalTime)
                     print ''
-                    print "Press 'x' and Enter to halt execution and return the best so far"
+                    print "Press 'h' and Enter to immediately print out this message and statistics"
+                    print "Press 'i' and Enter to increment the maximumCost by 1"
+                    print "Press 'd' and Enter to decrement the maximumCost by 1"
+                    print "Press 'r' and Enter to reset the current state to the best unvisited state"
                     print "Press 'p' and Enter to print the best solutions to schedulerDump.txt"
+                    print "Press 'x' and Enter to halt execution and return the best so far"
                     print "Press 'c' and Enter to continue execution and suppress this message \
-for %d iterations" % maxIterations
+for %d iterations" % maxIterationsIncrement
+                    print "Press 's' and Enter to increase iterations between seeing this message \
+by %d iterations" % maxIterations
                     print '===================================='
+                    
                 else:
                     print "\titeration: %d, best goal of %d: %d" % (iterations,
                                                                     goalsFound,
                                                                     bestCost)
                     print "Last %d iterations took %d seconds" % (feedbackPeriod,
                                                                   (newTime - oldTime))
-            oldTime = newTime
+            if showStats:
+                showStats = False
+                print "\tstateTracker stats: %s" % str(stateTracker.stats)
+                print_timing()
+                print "current state has cost %d, heuristic %d, noneCount %d" % (state.meta['cost'], state.meta['heuristic'], state.noneCount)
+            else:
+                oldTime = newTime
     #            print "\tstats: %s" % stateTracker.stats
     #            print "\tstate: %s" % dict(state)
             iterations += 1
@@ -976,7 +1020,8 @@ def heuristic(state=State(),
               stateTracker = StateTracker()):
     """
     Returns: integer estimate of optimal future costs from this state
-             if unsolvable, return False
+             if unsolvable, return False.  Remember False == 0, but can check
+             using 'heuristic() is False'
     Arguments:
         state - dictionary from slots to assignments, None for none assigned
         costs - see documentation at top
@@ -984,14 +1029,17 @@ def heuristic(state=State(),
         slotsByPerson - dictionary from person to total # slots to be assigned
         stateTracker - provide to allow memoization of costs
         
+    Just returns the noneCount of state.  Minimum cost per assignment is 1
+    
+    ==below is disabled==
     Not a very smart heuristic right now.  Handles adjacencies poorly, puts
     most optimistic person in each slot according to get_cost
     """
     ret = 0
-    
+    return state.noneCount
     def my_get_cost(state, slot, person):
         """
-        was, memoized get cost using stateTracker, but that turned out to be slower
+        memoized get cost using stateTracker, but that turned out to be slower
         """
 #        newState = state.make_child(slot, person)
 #        if newState in stateTracker.visited:
