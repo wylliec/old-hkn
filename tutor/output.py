@@ -53,7 +53,7 @@ def output_html(version=False):
         
 #        Output tutor name
         person = infomodel.Person.objects.get(id = personID)
-        HTML_STRING += "NAME " + person.name() + "\n"
+        HTML_STRING += "NAME " + person.first.split(' ')[0] + ' ' + person.last + "\n"
         
 #        Output available times by location
         coryTimes = "CORYTIMES"
