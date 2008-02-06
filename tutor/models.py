@@ -247,6 +247,17 @@ class CanTutor(models.Model):
     year = models.PositiveIntegerField()
     current = models.BooleanField()
     
+    def __cmp__(self, other):
+        return cmp(self.course,
+                   other.course) or \
+               cmp(self.year,
+                   other.year) or \
+               cmp(self.season.order,
+                   other.season.order) or \
+               cmp(other.current, #this is on purpose, we want current first
+                   self.current) or \
+               cmp(self.person_id,
+                   other.person_id)
 
 
 #Models pertaining to tutoring attendance

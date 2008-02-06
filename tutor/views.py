@@ -80,10 +80,12 @@ def signup(request, message = False):
     context['prefer_both'] = False
     context['prefer_soda'] = False
     context['prefer_cory'] = False
-    context['prevCanTutor'] = tutor.CanTutor.objects.filter(
+    prevCanTutor = [ct for ct in tutor.CanTutor.objects.filter(
            person=request.user.person,
            season=currentSeason(),
-           year=CURRENT_YEAR)
+           year=CURRENT_YEAR).select_related(depth=1)]
+    prevCanTutor.sort()#CanTutor has __cmp__()
+    context['prevCanTutor'] = prevCanTutor
     
     #initialize using previous time / day availability data
     prev = [] #list of rows.  Each row is list of Strings

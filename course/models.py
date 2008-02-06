@@ -81,8 +81,22 @@ class Course(models.Model):
     description = models.TextField()
     """ A description of the course """
     
+    def unprefixed_number(self):
+        """
+        moves honors and cross-listed prefixes to end of number
+        """
+        ret = self.number
+        if ret[0].lower() in ('h', 'c'):
+            ret = ret[1:] + ret[0]
+        return ret
+    
     def __str__(self):
         return "%s%s: %s" % (Department.nice_abbr(self.department_abbr), self.number, self.name)
+    
+    def __cmp__(self, other):
+        return cmp(self.department_abbr,
+                   other.department_abbr) or cmp(self.unprefixed_number(),
+                                                 other.unprefixed_number())
     
     class Meta:
         unique_together = (("department", "number"),)
