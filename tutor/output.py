@@ -60,7 +60,7 @@ def output_html(version=False):
         sodaTimes = "SODATIMES"
         for assignment in assignments:
             slotDay = day_abbrev(tutormodel.get_day_from_slot(assignment.slot))
-            print tutormodel.get_time_from_slot(assignment.slot)
+#            print tutormodel.get_time_from_slot(assignment.slot)
             slotTime = military_time(tutormodel.get_time_from_slot(assignment.slot).split("-")[0])
             if assignment.at_cory():
                 coryTimes = coryTimes + " " + slotDay + slotTime
