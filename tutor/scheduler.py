@@ -1131,99 +1131,101 @@ def hill_climb(initialState=State(),
         newState[slotTwo] = state[slotOne]
         newState[slotThree] = state[slotTwo]
         return newState
+
+    # helper method for swapping three slots
+    # takes 3 slots and the current cost
+    # returns False if invalid
+    # returns a tuple of newState, costDiff, newStateAndCost
+    def trySwap(slotOne, slotTwo, slotThree, cost):
+        newState = three_swap_state(state, slotOne, slotTwo, slotThree)
+        for slot in (slotOne, slotTwo, slotThree):
+            other = slot.other_office_slot()
+            if newState[other] == newState[slot]:
+                return False
+        newState.meta['swap'] = "%s -> %s -> %s" % (slotOne , slotTwo , slotThree)
+        costDiff = my_get_cost_difference(state, newState)
+
+        newCost = cost + costDiff
+        newStateAndCost = (newState, newCost)
+
+        return (newState, costDiff, newStateAndCost)
     
 #    Begin Hillclimbing
 #    Currently, the hill climber only keeps track one state.
 #    We could have beam search by tracking more states in potentialStatesAndCosts.
     betterStates = 0
     worseStates = 0
+    invalidStates = 0
     bestStateAndCost = (State(initialState), 0)
     bestStateAndCost[0].meta['swap'] = "no swap"
     bestDiffs = []
     potentialStatesAndCosts = [bestStateAndCost]
-    while len(potentialStatesAndCosts) > 0:
-        print "climbing hill"
-        state, cost = potentialStatesAndCosts.pop(0)
-        for slotOne in state:
-            for slotTwo in state:
-                if str(slotTwo) <= str(slotOne):
+
+    slots = []
+    for slotOne in initialState:
+        for slotTwo in initialState:
+            if str(slotTwo) <= str(slotOne):
+                continue
+            for slotThree in initialState:
+                if str(slotThree) <= str(slotTwo):
                     continue
-                for slotThree in state:
-                    if str(slotThree) <= str(slotTwo):
-                        continue
-                    personOne = state[slotOne]
-                    personTwo = state[slotTwo]
-                    personThree = state[slotThree]
-                    personOneToSlotTwo = False
-                    personOneToSlotThree = False
-                    personTwoToSlotOne = False
-                    personTwoToSlotThree = False
-                    personThreeToSlotOne = False
-                    personThreeToSlotTwo = False
-                    for person in [detail[0] for detail in availabilitiesBySlot[slotOne]]:
-                        personThreeToSlotOne = personThreeToSlotOne | (person==personThree)
-                        personTwoToSlotOne = personTwoToSlotOne | (person==personTwo)
-                    for person in [detail[0] for detail in availabilitiesBySlot[slotTwo]]:
-                        personOneToSlotTwo = personOneToSlotTwo | (person==personOne)
-                        personThreeToSlotTwo = personThreeToSlotTwo | (person==personThree)
-                    for person in [detail[0] for detail in availabilitiesBySlot[slotThree]]:
-                        personTwoToSlotThree = personTwoToSlotThree | (person==personTwo)
-                        personOneToSlotThree = personOneToSlotThree | (person==personOne)
-                    
-                    if personOneToSlotTwo and personTwoToSlotThree and personThreeToSlotOne:
-                        newState = three_swap_state(state, slotOne, slotTwo, slotThree)
-                        valid = True
-                        for slot in (slotOne, slotTwo, slotThree):
-                            other = slot.other_office_slot()
-                            if newState[other] == newState[slot]:
-                                valid = False
-                                break
-                        if valid:
-                            newState.meta['swap'] = "%s -> %s -> %s" % (slotOne , slotTwo , slotThree)
-                            costDiff = my_get_cost_difference(state, newState)
-                            if costDiff < 0:
-                                betterStates += 1
-                                newCost = cost + costDiff
-                                newStateAndCost = (newState, newCost)
-                                if newCost < bestStateAndCost[1]:
-                                    bestStateAndCost = newStateAndCost
-                                    potentialStatesAndCosts = [(newStateAndCost)]
-                            else:
-                                worseStates += 1
-                    
-                    if personOneToSlotThree and personTwoToSlotOne and personThreeToSlotTwo:
-                        newState = three_swap_state(state, slotOne, slotThree, slotTwo)
-                        valid = True
-                        for slot in (slotOne, slotTwo, slotThree):
-                            other = slot.other_office_slot()
-                            if newState[other] == newState[slot]:
-                                valid = False
-                                break
-                        if valid:
-                            newState.meta['swap'] = "%s -> %s -> %s" % (slotThree , slotTwo , slotOne)
-                            costDiff = my_get_cost_difference(state, newState)
-                            if costDiff < 0:
-                                betterStates += 1
-                                newCost = cost + costDiff
-                                newStateAndCost = (newState, newCost)
-                                if newCost < bestStateAndCost[1]:
-                                    bestStateAndCost = newStateAndCost
-                                    potentialStatesAndCosts = [(newStateAndCost)]
-                            else:
-                                worseStates += 1
+                slots.append((slotOne, slotTwo, slotThree))
+    availDict = NiceDict(False)
+    for slot in initialState:
+        for person in [detail[0] for detail in availabilitiesBySlot[slot]]:
+            availDict[(person, slot)] = True
+
+    iteration = 0
+    while len(potentialStatesAndCosts) > 0:
+        iteration += 1
+        print "climbing hill", iteration
+        state, cost = potentialStatesAndCosts.pop(0)
+        for slotOne, slotTwo, slotThree in slots:
+            personOne = state[slotOne]
+            personTwo = state[slotTwo]
+            personThree = state[slotThree]
+
+            if availDict[(personOne, slotTwo)] and availDict[(personTwo, slotThree)] and availDict[(personThree, slotOne)]:
+                temp = trySwap(slotOne, slotTwo, slotThree, cost)
+                if temp is not False:
+                    newState, costDiff, newStateAndCost = temp
+                    if costDiff < 0:
+                        betterStates += 1
+                        if newStateAndCost[1] < bestStateAndCost[1]:
+                            bestStateAndCost = newStateAndCost
+                            potentialStatesAndCosts = [(newStateAndCost)]
+                    else:
+                        worseStates += 1
+                else:
+                    invalidStates += 1
+            
+            if availDict[(personThree, slotTwo)] and availDict[(personTwo, slotOne)] and availDict[(personOne, slotThree)]:
+                temp = trySwap(slotThree, slotTwo, slotOne, cost)
+                if temp is not False:
+                    newState, costDiff, newStateAndCost = temp
+                    if costDiff < 0:
+                        betterStates += 1
+                        if newStateAndCost[1] < bestStateAndCost[1]:
+                            bestStateAndCost = newStateAndCost
+                            potentialStatesAndCosts = [newStateAndCost]
+                    else:
+                        worseStates += 1
+                else:
+                    invalidStates += 1
+
         print "cost delta = ", bestStateAndCost[1]
         print bestStateAndCost[0].meta['swap']
         print bestStateAndCost[0].pretty_print()
     
     print 'HillClimb Stats'
-    print 'Number of Better States = ', betterStates
-    print 'Number of Worse States = ', worseStates, '\n'
+    print 'Total Iterations =', iterations
+    print 'Number of Better States =', betterStates
+    print 'Number of Worse States =', worseStates
+    print 'Number of Invalid States =', invalidStates, '\n'
     bestState, bestCost = bestStateAndCost
     bestState.meta['cost'] = initialState.meta['cost'] + bestCost
     bestState.meta['heuristic'] = 0
     return bestState
-
-
 
 
 #helpful methods below
@@ -1798,3 +1800,6 @@ if __name__=="__main__":
             sys.exit(0)
 
     generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed})
+
+# indentation stuff for the people who use vim -rzheng
+# vim: set expandtab softtabstop=4 tabstop=4 shiftwidth=4:
