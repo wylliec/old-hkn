@@ -268,7 +268,7 @@ class State(dict):
                      'incomingArcsCache':{}}
         if availabilitiesBySlot:
             self.meta['remainingAvailabilitiesBySlot'] = dict(availabilitiesBySlot)
-        if slotsByPerson:
+        if slotsByPerson is not False:
             self.meta['remainingSlotsByPerson'] = slotsByPerson
         self.noneCount = 0
         self.hashValue = False
@@ -538,7 +538,9 @@ class State(dict):
             index = 0
             ret = True
             for person in [detail[0] for detail in availsU]:
-                slotMax = sBPerson[person]
+                #if person is assigned to this spot, then allow them 1 extra slotMax
+                #to let them be in this spot
+                slotMax = sBPerson[person] + (self[slotU] == person)
                 if slotMax == 0:
                     toRemove.insert(0, index)
                 else:
@@ -546,7 +548,11 @@ class State(dict):
                     personOK = False
                     for otherPerson in [detail[0] for detail in aBSlot[slotV]]:
                         if otherPerson == person:
-                            if slotMax == 1 or sameDayTime:
+                            #if person is assigned in slot V, then allow 1 more spot
+                            #for the person to be in slotV.  tempSlot max is >= the number
+                            #of times between slotU and slotV that person can be assigned.
+                            tempSlotMax = slotMax + (self[slotV] == person)
+                            if tempSlotMax == 1 or sameDayTime:
                                 continue #can't assign person to slotU and slotV
                         personOK = True
                         break
@@ -565,14 +571,11 @@ class State(dict):
             if length <= 1:
                 #provide hint to getSuccessors
                 
-                #TODO figure out why it's possible for below to happen
-#                if self[slotU] != None and length == 0:
-#                    raise "this should be impossible"
                 if self[slotU] == None or length == 0:
                     self.meta['getSuccessorsSlotHint'] = slotU
                 if length == 0:
                     #no possible solution, immediately halt arc consistency
-#                    print "halting arc_consistency, no possible solution for state %s" % slotU
+#                    print "halting arc_consistency, no possible solution for slot %s" % slotU
                     return None
             return ret
         
@@ -966,6 +969,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
             preference: Dictionary that maps from preference level (int) to score for
                 assignment to a slot of that preference level
         options: Dictionary mapping from options names to values
+            initialState: state from which to start
             random_seed: provide a random seed for calculations
             machineNum: if multiple machines are executing, assign each a integer increasing from 0
             maximumCost: ignore states with costs higher than this
@@ -1049,7 +1053,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     patience = max_patience
     maxIterations = 10**4 #TODO change!
     maxIterationsIncrement = maxIterations
-    feedbackPeriod = 50 #number of iterations to go between printing stuff to user
+    feedbackPeriod = 500 #number of iterations to go between printing stuff to user
     currentMaxIterations = maxIterationsIncrement
     bestSoFar = []
     goalsFound = 0
@@ -1923,9 +1927,7 @@ def run_tests(verbose = False):
     slotsByPerson = NiceDict(1)
     expected = [State({Slot(TUTORING_DAYS[0], TUTORING_TIMES[0], CORY):'A',
                        Slot(TUTORING_DAYS[0], TUTORING_TIMES[0], SODA):'B'})]
-    
     run_test_exact(expected, availabilitiesBySlot, slotsByPerson)
-    
     
     
     print "test 2: four slots, two people, all available"
@@ -2033,7 +2035,7 @@ def run_tests(verbose = False):
         schedules += r.pretty_print() + '\n\n'
     print "found schedules: \n" + schedules
     
-    print "passed %d of %d tests" % (PASSED[0], PASSED[0]+ FAILED[0])
+    print "passed %d of %d tests" % (PASSED[0], PASSED[0] + FAILED[0])
     
 def test_heuristic():
     print "testing heuristic"
@@ -2115,10 +2117,11 @@ if __name__=="__main__":
         print "  -c NUM  --maxcost=NUM  maximum cost"
         print "  -r NUM  --randseed=NUM random seed"
         print "  -h      --help"
+        print "  -t      --test         run tests"
 
     import getopt
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'fmcr', ['file=', 'machine=', 'maxcost=', 'randseed='])
+        opts, args = getopt.getopt(sys.argv[1:], 'fmcrt', ['file=', 'machine=', 'maxcost=', 'randseed=', 'test'])
     except getopt.GetoptError:
         usage()
         sys.exit(1)
@@ -2137,6 +2140,9 @@ if __name__=="__main__":
             seed = arg
         elif opt in ('-h', '--help'):
             usage()
+            sys.exit(0)
+        elif opt in ('-t', '--test'):
+            run_tests(True)
             sys.exit(0)
 
     generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed})
