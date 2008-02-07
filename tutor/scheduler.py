@@ -155,15 +155,14 @@ class Slot:
         self.day = day
         self.time = time
         self.office = office
-        self.hash = None
-    
-    def __hash__(self):
-        if self.hash != None: return self.hash
+
         ret = 0
         if self.office == SODA:
             ret += 1
-        self.hash = int((ret + self.day.__hash__() / 3 + self.time.__hash__() / 3))
-        return self.hash
+        self.hashValue = int((ret + hash(self.day) / 3 + hash(self.time) / 3))
+    
+    def __hash__(self):
+        return self.hashValue
 
     def __str__(self):
         return self.day + ' ' + self.time + ' ' + self.office
