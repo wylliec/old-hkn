@@ -1175,10 +1175,10 @@ def hill_climb(initialState=State(),
         for person in [detail[0] for detail in availabilitiesBySlot[slot]]:
             availDict[(person, slot)] = True
 
-    iteration = 0
+    iterations = 0
     while len(potentialStatesAndCosts) > 0:
-        iteration += 1
-        print "climbing hill", iteration
+        iterations += 1
+        print "climbing hill", iterations
         state, cost = potentialStatesAndCosts.pop(0)
         for slotOne, slotTwo, slotThree in slots:
             personOne = state[slotOne]
