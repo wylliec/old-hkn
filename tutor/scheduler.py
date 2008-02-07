@@ -1135,7 +1135,7 @@ def hill_climb(initialState=State(),
     # helper method for swapping three slots
     # takes 3 slots and the current cost
     # returns False if invalid
-    # returns a tuple of newState, costDiff, newStateAndCost
+    # returns a tuple of (newStateAndCost, costDiff) otherwise
     def trySwap(slotOne, slotTwo, slotThree, cost):
         newState = three_swap_state(state, slotOne, slotTwo, slotThree)
         for slot in (slotOne, slotTwo, slotThree):
@@ -1143,12 +1143,14 @@ def hill_climb(initialState=State(),
             if newState[other] == newState[slot]:
                 return False
         newState.meta['swap'] = "%s -> %s -> %s" % (slotOne , slotTwo , slotThree)
-        costDiff = my_get_cost_difference(state, newState)
+        ancestor = State(newState)
+        ancestor[slotOne] = ancestor[slotTwo] = ancestor[slotThree] = None
+        costDiff = my_get_cost_difference(state, newState, ancestor)
 
         newCost = cost + costDiff
         newStateAndCost = (newState, newCost)
 
-        return (newState, costDiff, newStateAndCost)
+        return (newStateAndCost, costDiff)
     
 #    Begin Hillclimbing
 #    Currently, the hill climber only keeps track one state.
@@ -1188,7 +1190,7 @@ def hill_climb(initialState=State(),
             if availDict[(personOne, slotTwo)] and availDict[(personTwo, slotThree)] and availDict[(personThree, slotOne)]:
                 temp = trySwap(slotOne, slotTwo, slotThree, cost)
                 if temp is not False:
-                    newState, costDiff, newStateAndCost = temp
+                    newStateAndCost, costDiff = temp
                     if costDiff < 0:
                         betterStates += 1
                         if newStateAndCost[1] < bestStateAndCost[1]:
@@ -1202,7 +1204,7 @@ def hill_climb(initialState=State(),
             if availDict[(personThree, slotTwo)] and availDict[(personTwo, slotOne)] and availDict[(personOne, slotThree)]:
                 temp = trySwap(slotThree, slotTwo, slotOne, cost)
                 if temp is not False:
-                    newState, costDiff, newStateAndCost = temp
+                    newStateAndCost, costDiff = temp
                     if costDiff < 0:
                         betterStates += 1
                         if newStateAndCost[1] < bestStateAndCost[1]:
