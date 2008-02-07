@@ -42,7 +42,7 @@ except:
             return self.defaultValue
         
         def copy(self):
-            return self.__copy__(self)
+            return self.__copy__()
         
         def __copy__(self):
             return type(self)(self.defaultValue, self)
@@ -222,15 +222,22 @@ class Slot:
     
 class State(dict):
     """
-    Simply a dictionary with an instance variable "meta" that can be used for storing
+    A dictionary with an instance variable "meta" that can be used for storing
     useful metadata about this state.  noneCount and meta is copied (maybe shallow) when
     State is copied
+    
+    if you want to do extraCalculations (arc consistency and some cacheing), you must
+    provide arguments:
+        availabilitiesBySlot - dictionary described elswhere in this file
+        slotsByPerson - NiceDict described elsewhere as well
+        extraCalculations - set this to True
     
     States may be compared, in which case they are compared by estCost()
     
     States may be hashed (unlike dictionaries)
     
-    also has make_child, estCost, isGoal, initialize_keys, and pretty_print methods
+    Has make_child, estCost, isGoal, initialize_keys, pretty_print, and other helpful
+    methods
     
     meta may contain:
         parent - parent state, will be None if no known parent.  Always present.
@@ -239,14 +246,37 @@ class State(dict):
         children - all (as of last calculated) unvisited successors
         slotAssigned - slot assigned between parent and this state
         personAssigned - person assigned between parent and this state
+        getSuccessorsSlotHint - slot for telling getSuccessors which slot has the fewest
+                                availabilities
+        remainingAvailabilitiesBySlot - like availabilitiesBySlot, but with impossible ones
+                                        removed
+        remainingSlotsByPerson - like slotsByPerson, but takes into account how many slots
+                                 have already been assigned
+        inconsistentArcs - set of arcs like (slotU, slotV) that are potentially inconsistent
+        incomingArcsCache - dictionary from slot to tuple of arcs, shared by all related states
     """
-    def __init__(self, *a, **kw):
-        self.meta = {'parent':None}#should be a shallow dictionary, i.e. all keys and values are strings or numbers
+    
+    runArcConsistency = True
+    
+    def __init__(self,
+                 base = {},
+                 availabilitiesBySlot = False, #expects a dictionary if not False
+                 slotsByPerson = False, #expects a NiceDict if not False
+                 extraCalculations = False):
+        self.meta = {'parent':None,
+                     'inconsistentArcs':set(),
+                     'incomingArcsCache':{}}
+        if availabilitiesBySlot:
+            self.meta['remainingAvailabilitiesBySlot'] = dict(availabilitiesBySlot)
+        if slotsByPerson:
+            self.meta['remainingSlotsByPerson'] = slotsByPerson
         self.noneCount = 0
         self.hashValue = False
-        dict.__init__(self, *a, **kw)
-        if len(self) != 0:
-            self.noneCount = len([x for x in self.values() if x == None])
+        self.extraCalculations = extraCalculations
+        self.arcConsistencyDone = False
+        dict.__init__(self)
+        for key in base:
+            self[key] = base[key]
     
     def initialize_keys(self, keys):
         """
@@ -259,14 +289,23 @@ class State(dict):
                 self[key] = None
         return self
     
-    def make_child(self, slot, person):
+    @track_timing
+    def make_child(self, slot, person, extraCalculations = True):
         """
         makes a Child (successor) of this state.  Copies the state, adds an assignment in
         given slot to given person, removes incorrect info from meta and fixes the parent
         pointer.  Sets meta info about the slot and person just assigned.
+        
+        You may want to set extraCalculations=False when making a child if you have a
+        cache of State objects.  You can save some calculation by replacing the returned
+        State with an equivalent one from your cache if you disable arc consistency.
         """
+        #note: arc consistency already disabled during copy, since there's no nneed
+        #to calculate anything if just copying
+        
+#        print "making child into slot %s for person %s" % (slot, person)
         ret = self.copy()
-        ret[slot] = person
+        
         meta = ret.meta
         meta['parent'] = self
         meta['slotAssigned'] = slot
@@ -277,20 +316,98 @@ class State(dict):
             del meta['cost']
         if 'heuristic' in meta:
             del meta['heuristic']
+        if 'getSuccessorsSlotHint' in meta:
+            del meta['getSuccessorsSlotHint']
+        
+        if not extraCalculations:
+            ret.extraCalculations = False
+            ret[slot] = person
+            ret.extraCalculations = self.extraCalculations
+        else:
+            ret[slot] = person
         
         return ret
     
-    def __setitem__(self, key, value):
-        if self.hashValue:
-            raise "cannot modify state after calling it's hash funciton"
-        if key in self:
-            if self[key] == None and value != None:
+    @track_timing
+    def __setitem__(self, slot, person):
+        """
+        Ensures hashValue has not been set
+        
+        Updates noneCount
+        
+        Does NOT run arc consistency on remainingAvailabilitiesBySlot in meta.
+        It will only do the trivial update that says there's no availabilities
+        for the newly assigned key.
+        
+        If extraCalculations is True:
+          Makes updates to remainingAvailabilitiesBySlot,
+          remainingSlotsByPerson, and inconsistentArcs in meta
+        
+        stores key value pair
+        """
+        
+#        print "setting %s to %s" % (slot, person)
+        
+        #make sure hashValue is not already set
+        if self.hashValue is not False:
+            raise "cannot modify state after calling its hash funciton"
+        if self.arcConsistencyDone:
+            raise "cannot modify state after performing arc consistency"
+        
+        #update noneCount
+        if slot in self:
+            if self[slot] == None and person != None:
                 self.noneCount -= 1
-            elif self[key] != None and value == None:
+            elif self[slot] != None and person == None:
                 self.noneCount += 1
-        elif value == None:
+        elif person == None:
             self.noneCount += 1
-        dict.__setitem__(self, key, value)
+        
+        self.calculations_for_assignment(slot, person)
+        
+        #actually store the item
+        dict.__setitem__(self, slot, person)
+    
+    def calculations_for_assignment(self, slot, person):
+        """
+        this separates the extraCalculations from __setitem__ so that,
+        if __setitem__ is called while self.extraCalculations is False,
+        the calculations can still be performed later.
+        """
+        if person != None and self.extraCalculations:
+            #update information in meta
+            aBSlot = self.meta['remainingAvailabilitiesBySlot']
+            
+            #only the assigned person is allowed for this slot
+            detailToKeep = None
+            for detail in aBSlot[slot]:
+                if detail[0] == person:
+                    detailToKeep = detail
+            aBSlot[slot] = [detailToKeep]
+            
+            otherOfficeSlot = slot.other_office_slot()
+            if otherOfficeSlot in self and self[otherOfficeSlot] != None:
+                #No assignment to other office, remove this person from the other office if there
+                index = 0
+                found = False
+                for detail in aBSlot[otherOfficeSlot]:
+                    if detail[0] == person:
+                        found = True
+                        break
+                    index += 1
+                if found:
+                    aBSlot[otherOfficeSlot].pop(index)
+        
+            #update remainingSlotsByPerson
+            #may not be a key in remainingSlotsByPerson
+            if person not in self.meta['remainingSlotsByPerson']:
+                self.meta['remainingSlotsByPerson'][person] = \
+                    self.meta['remainingSlotsByPerson'][person] - 1#should have a default value
+            else:
+                self.meta['remainingSlotsByPerson'][person] -= 1
+        
+            #update set of inconsistent arcs
+            self.requeue_incoming_arcs_to(slot)
     
     def estCost(self):
         return self.meta['cost'] + self.meta['heuristic']
@@ -308,9 +425,22 @@ class State(dict):
         return self.__copy__()
     
     def __copy__(self):
-        temp = type(self)(self)
-        temp.meta = self.meta.copy()
+        #be sure to disable arc consistency so doesn't recalculate inconsistentArcs
+        temp = type(self)(base = self, extraCalculations = False)
+        meta = dict(self.meta)
+        if 'remainingAvailabilitiesBySlot' in self.meta:
+            aBSlot = self.meta['remainingAvailabilitiesBySlot']
+            d = {}
+            for slot in aBSlot:
+                d[slot] = aBSlot[slot][:] #copy the list
+            meta['remainingAvailabilitiesBySlot'] = d
+        if 'remainingSlotsByPerson' in self.meta:
+            meta['remainingSlotsByPerson'] = self.meta['remainingSlotsByPerson'].copy()
+        if 'inconsistentArcs' in self.meta:
+            meta['inconsistentArcs'] = self.meta['inconsistentArcs'].copy()
+        temp.meta = meta
         temp.noneCount = self.noneCount
+        temp.extraCalculations = self.extraCalculations
         return temp
     
     def __deepcopy__(self, memo):
@@ -357,6 +487,109 @@ class State(dict):
         self.hashValue = ret
         return self.hashValue
     
+    @track_timing
+    def requeue_incoming_arcs_to(self, slotU):
+        if self.arcConsistencyDone:
+            raise "cannot requeue arcs after running arc consistency"
+        if not (self.extraCalculations and State.runArcConsistency):
+            return
+        
+        inconsistentArcs = self.meta['inconsistentArcs']
+        
+        cache = self.meta['incomingArcsCache']
+        if slotU in cache:
+            newArcs = cache[slotU]
+        else:
+            newArcs = []
+            for slot in self.meta['remainingAvailabilitiesBySlot']:
+                if slot == slotU:
+                    continue
+                newArcs.append((slot, slotU))
+            newArcs = tuple(newArcs)
+            cache[slotU] = newArcs
+        for arc in newArcs:
+            inconsistentArcs.add(arc)
+#        if len(inconsistentArcs) == 325:
+#            if self.meta['personAssigned'] == '6AngelaH' and \
+#                self.meta['slotAssigned'] == Slot('Thursday', '3-4', CORY):
+#                print "found the problem source!  requeue to slot %s" % slotU
+    
+    @track_timing
+    def arc_consistency(self):
+        if self.arcConsistencyDone:
+            raise "already did arc consistency!"
+        if not (State.runArcConsistency and self.extraCalculations):
+            return
+        aBSlot = self.meta['remainingAvailabilitiesBySlot']
+        sBPerson = self.meta['remainingSlotsByPerson']
+        
+        inconsistentArcs = self.meta['inconsistentArcs'] #keys are slots over which to iterate
+        
+        @track_timing
+        def make_consistent(slotU, slotV):
+            """
+            Returns True if arc was consistent.  If was not, alters aBSlot[slotU] and
+            returns False.  If arc consistency should immediately halt because there is
+            no possible solution, returns None.
+            """
+            sameDayTime = (slotU.time == slotV.time and slotU.day == slotV.day)
+            availsU = aBSlot[slotU]
+            toRemove = []
+            index = 0
+            ret = True
+            for person in [detail[0] for detail in availsU]:
+                slotMax = sBPerson[person]
+                if slotMax == 0:
+                    toRemove.insert(0, index)
+                else:
+                    #check if something in slotU is ok with this person in slotU
+                    personOK = False
+                    for otherPerson in [detail[0] for detail in aBSlot[slotV]]:
+                        if otherPerson == person:
+                            if slotMax == 1 or sameDayTime:
+                                continue #can't assign person to slotU and slotV
+                        personOK = True
+                        break
+                    if not personOK:
+                        ret = False
+                        toRemove.insert(0, index)
+                index += 1
+            
+            #remove all bad indices
+            
+            for index in toRemove:
+                #toRemove is in descending index order, so this is safe
+                availsU.pop(index)
+            
+            length = len(availsU)
+            if length <= 1:
+                #provide hint to getSuccessors
+                
+                #TODO figure out why it's possible for below to happen
+#                if self[slotU] != None and length == 0:
+#                    raise "this should be impossible"
+                if self[slotU] == None or length == 0:
+                    self.meta['getSuccessorsSlotHint'] = slotU
+                if length == 0:
+                    #no possible solution, immediately halt arc consistency
+#                    print "halting arc_consistency, no possible solution for state %s" % slotU
+                    return None
+            return ret
+        
+        #perform arc consistency
+        while len(inconsistentArcs) != 0:
+            slotU, slotV = inconsistentArcs.pop()
+            result = make_consistent(slotU, slotV)
+            if result is not True:
+#                print "inconsistent arc found"
+                if result is None:
+                    #this is the signal to halt arc consistency becauase this cannot lead
+                    #to a solution
+                    break
+                self.requeue_incoming_arcs_to(slotU)
+        self.arcConsistencyDone = True
+        
+    
     def pretty_print(self):
         """
         prints this state in a nice to read fashion.  Be careful if editing this method,
@@ -390,6 +623,11 @@ class State(dict):
         """
         parse a string of pretty printed states back into a list of states.  Returned states
         will always have string values.
+        
+        If you want to use this as a proper state with extraCalculations set, it is suggested
+        that you generate a new state and pass in this method's return value as a first
+        argument.
+          Ex: State(State.parse_into_states(data), [other options])
         """
         ret = []
         for stateString in data.split('----------\n'):
@@ -397,7 +635,7 @@ class State(dict):
                 continue
             try:
                 stateStringLines = stateString.split('\n')
-                state = State()
+                state = State(extraCalculations = False)
                 
                 #read cost and heuristic info
                 state.meta['cost'] = int(stateStringLines[0].split(',')[0][5:])
@@ -523,7 +761,8 @@ class StateTracker:
         
         self.maximumCost = maximumCost
         self.get_successors = get_successors
-        self.heuristic = lambda state: heuristic(state, stateTracker = self)
+        self.heuristic = lambda state: heuristic(state,
+                                                 stateTracker = self)
         self.get_cost = get_cost
         
         self.stats = {'pushed':0,
@@ -557,6 +796,20 @@ class StateTracker:
         Does not recalculate cost or heuristic for states that are already known.
         """
 #        print "\tfiltered_successors called"
+        
+        #TODO remove
+        if 'inconsistentArcs' in state.meta:
+            if len(state.meta['inconsistentArcs']) != 0:
+                if 'getSuccessorsSlotHint' not in state.meta or len(state.meta['remainingAvailabilitiesBySlot'][state.meta['getSuccessorsSlotHint']]) != 0:
+                    print "bad argument state with noneCount %d, assignments: %s" % (state.noneCount, dict(state))
+                    if 'getSuccessorsSlotHint' not in state.meta:
+                        print "no hint"
+                    else:
+                        print "length in hinted slot %s was %d" % (state.meta['getSuccessorsSlotHint'], len(state.meta['remainingAvailabilitiesBySlot'][state.meta['getSuccessorsSlotHint']]))
+                    print "arcConsistencyDone? %s" % state.arcConsistencyDone
+                    print "last assignment: slot %s, person %s" % (state.meta['slotAssigned'], state.meta['personAssigned'])
+                    raise "arc consistency should be run before calling filtered successors, found %d inconsistent arcs" % len(state.meta['inconsistentArcs'])
+
         allSuccessors = None
         knowAllCosts = False
         if 'children' in state.meta:
@@ -583,6 +836,13 @@ class StateTracker:
 #                        s.meta['heuristic'] = self.heuristic(s)
 #                        self.push(s)
                 else:
+                    #never seen this state before
+                    #update inconsistent arcs (these were not performed by get_successor)
+                    s.calculations_for_assignment(s.meta['slotAssigned'], s.meta['personAssigned'])
+                    #run arc consistency before calculating cost, since this may affect
+                    #cost and heuristic efficiency and accuracy
+                    s.arc_consistency()
+                    
                     #calculate cost.  All states with cost are in visited, and all states in visited
                     #have costs.  This is not in visited.
                     s.meta['cost'] = state.meta['cost'] + self.get_cost(state,
@@ -610,7 +870,7 @@ class StateTracker:
         if not knowAllCosts:
             self.stats['successors'] += returned
 
-#        print "\tfiltered_successors returning %s" % ret
+#        print "\tfiltered_successors returning %d results" % len(ret)
         
         return ret
     
@@ -657,7 +917,8 @@ class StateTracker:
         """
         if not self.visited[state][1]:
             self.stats['visited'] += 1
-            self.visited[state] = [state, True]
+        
+        self.visited[state] = [state, True]
     
     def increaseMaximumCostTo(self, newMaxCost):
         if self.maximumCost > newMaxCost:
@@ -769,10 +1030,16 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     
     state = options['initialState']
     if not state:
-        state = State().initialize_keys(availabilitiesBySlot)
+        state = State(availabilitiesBySlot = availabilitiesBySlot,
+                      slotsByPerson = slotsByPerson,
+                      extraCalculations = True)
+        state.initialize_keys(availabilitiesBySlot)
         state.meta['parent'] = None
         state.meta['cost'] = 0
         state.meta['heuristic'] = my_heuristic(state, stateTracker=stateTracker)
+    else:
+        #assume state.meta['inconsistentArcs'] was set up naturally
+        state.arc_consistency()
     
     if options['maximumCost'] and options['maximumCost'] > 0:
         stateTracker.increaseMaximumCostTo(options['maximumCost'])
@@ -782,7 +1049,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
     patience = max_patience
     maxIterations = 10**4 #TODO change!
     maxIterationsIncrement = maxIterations
-    feedbackPeriod = 500 #number of iterations to go between printing stuff to user
+    feedbackPeriod = 50 #number of iterations to go between printing stuff to user
     currentMaxIterations = maxIterationsIncrement
     bestSoFar = []
     goalsFound = 0
@@ -804,6 +1071,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
         signalHolder[1] = True
     try:
         while state != None:
+#            print "state with noneCount %d" % state.noneCount
             if True:#readlock.acquire(0): #only acquire if can do so without waiting
                 char = charHolder[0]
                 if len(char) > 0:
@@ -894,9 +1162,7 @@ by %d iterations" % maxIterations
             
             if state.isGoal():
                 stateTracker.visit(state)
-                tmp = state.copy()
-                tmp.meta['parent'] = 'removed'
-    #            print "\tfound goal: %s" % tmp
+                print "\tfound goal with cost %d: %s" % (state.meta['cost'], dict(state)) #TODO remove
                 
                 goalsFound += 1
                 lastGoalTime = time.time()
@@ -928,19 +1194,19 @@ by %d iterations" % maxIterations
                 patience = max_patience
             else:
                 stateTracker.visit(state)
-    #            print "\tlooking for successors"
+#                print "\tlooking for successors"
                 successors = stateTracker.filtered_successors(state)
                 if len(successors) == 0:
-    #                print "\tbacktracking"
+#                    print "\tbacktracking" #TODO remove
                     state = stateTracker.backtrack(state)
                     if state == None:
-    #                    print "\tbacktrack failed, looking for new state"
+#                        print "\tbacktrack failed, looking for new state" #TODO remove
                         state = stateTracker.pop()
                         patience = max_patience
-    #                    if state == None:
-    #                        print "\tstate is now None"
-    #                    else:
-    #                        print "\tstate is now %s" % dict(state)
+#                        if state == None: #TODO remove
+#                            print "\tstate is now None" #TODO remove
+#                        else: #TODO remove
+#                            print "\tstate is now %s" % dict(state) #TODO remove
                 else:
                     if generosity > 0:
                         successors.sort()
@@ -948,10 +1214,11 @@ by %d iterations" % maxIterations
                         generosity = generosity / len(successors)
                     else:
                         state = min(successors)
+#                    print "picked successor with slot %s, person %s" % (state.meta['slotAssigned'], state.meta['personAssigned'])
                 
         print "\tstateTracker stats: %s" % str(stateTracker.stats)
         print "\tfound %d goals in %d iterations" % (goalsFound, iterations)
-        bestCosts = "best goals had costs: ["
+        bestCosts = "best goals had costs: [ "
         for goal in bestSoFar:
             bestCosts += str(goal.meta['cost']) + ","
         print bestCosts[:-1] + ']'
@@ -973,7 +1240,8 @@ def get_successors(state=State(),
     
     slotAssigned and personAssigned are the slot / person assigned when coming from parent
     
-    INCOMPLETE - this is a "correct" but slightly dumb version
+    Ignores availabilitiesBySlot and slotsByPerson if remainingAvailabilitiesBySlot
+    and remainingSlotsByPerson are in state.meta
     
     Algorithm notes:
     
@@ -983,56 +1251,118 @@ def get_successors(state=State(),
     Does not consider people who can only fill a few slots
     """
     ret = []
-    emptySlots = []
-    numAssigned = NiceDict(0)
-    for slot in state:
-#        print "considering slot" + str(slot)
-        person = state[slot]
-        if person == None:
-            #keep track of this empty spot for later
-            emptySlots.append(slot)
-        else:
-            #note that this person has been assigned
-            if person not in numAssigned:
-                numAssigned[person] = 1
-            else:
-                numAssigned[person] += 1
     
-    #numAssigned is now correct
-    
-    availsInEmptySlot = []
-    numAvailsInEmptySlot = 10000 #much larger than anything possible
-    for slot in emptySlots:
-        people = []
-        numPeople = 0
-        other_office_slot = slot.other_office_slot()
-        for person in [detail[0] for detail in availabilitiesBySlot[slot]]:
-#                print 'considering person: ' + person
-            if numAssigned[person] >= slotsByPerson[person] or state[other_office_slot] == person:
-                #person cannot tutor more, or is tutoring this time in another office
-#                    print 'skipping person who is full or tutoring in other office'
-                continue
-            people.append(person)
-            numPeople += 1
+    if 'getSuccessorsSlotHint' in state.meta:
+        #something already figured out what our successor should be, so use that slot
         
-        #see if this is fewer than previously seen
-        if numPeople < numAvailsInEmptySlot:
-#                print "considering slot with availabilities for: " + str(people)
-            #consider this slot as a candidate for generating fewest successors
-            emptySlot = slot
-            availsInEmptySlot = people
-            numAvailsInEmptySlot = numPeople
-    
-    for person in availsInEmptySlot:
-        successor = state.make_child(emptySlot, person)
-        ret.append(successor)
-    
-    if len(ret) > 0:
-        for e in ret:
-            if state.noneCount <= e.noneCount:
-                raise "successor does not have more assignments than parent"
-    
-    return ret
+        slot = state.meta['getSuccessorsSlotHint']
+        if 'remainingAvailabilitiesBySlot' in state.meta:
+            details = state.meta['remainingAvailabilitiesBySlot'][slot]
+        else:
+            details = remainingAvailabilitiesBySlot[slot]
+        
+        for detail in details:
+            ret.append(state.make_child(slot, detail[0]))
+        
+#        print "get_successors followed hint for slot %s, returning %d states" % (slot, len(ret))
+        
+        return ret
+        #end hint-using algorithm
+    elif 'remainingAvailabilitiesBySlot' in state.meta:
+        #new get_successors algorithm that uses remainingAvailabilitiesBySlot
+        
+        #we know that remainingAvailabilitiesBySlot only has actual values, so just get
+        #generate successors from the smallest of these that are unassigned.
+        
+        aBSlot = state.meta['remainingAvailabilitiesBySlot']
+#        print "remainingAvailabilitiesBySlot has length %d" % len(aBSlot)
+        bestSoFar = []
+        bestLength = 10000 #much larger than what could come up
+        bestSlot = None
+        for slot in state:
+            if state[slot] == None:
+#                print "found empty slot"
+                #nobody assigned yet, check through availabilities to find slot with
+                #fewest availabilities
+                candidate = aBSlot[slot]
+#                print "people in a slot: %s" % str([detail[0] for detail in candidate])
+                candidateLength = len(candidate)
+                if candidateLength == 1:
+                    bestSoFar = candidate
+                    bestLength = candidateLength
+                    bestSlot = slot
+                    break #can't do better than 1
+                if candidateLength < bestLength:
+                    bestSoFar = candidate
+                    bestLength = candidateLength
+                    bestSlot = slot
+        
+        for detail in bestSoFar:
+            #don't perform extraCalculations because may be cached, caller will execute them
+            #if needed
+            tmp = state.make_child(bestSlot, detail[0], extraCalculations = False)
+            tmp.extraCalculations = True
+            ret.append(tmp)
+
+#        print "get_successors used remainingAvailabilitiesBySlot, returning %d states for slot %s" % (len(ret), bestSlot)
+        
+        return ret
+        #end new algorithm
+    else:
+        #old algorithm here
+        
+        emptySlots = []
+        numAssigned = NiceDict(0)
+        for slot in state:
+    #        print "considering slot" + str(slot)
+            person = state[slot]
+            if person == None:
+                #keep track of this empty spot for later
+                emptySlots.append(slot)
+            else:
+                #note that this person has been assigned
+                if person not in numAssigned:
+                    numAssigned[person] = 1
+                else:
+                    numAssigned[person] += 1
+        
+        #numAssigned is now correct
+        
+        availsInEmptySlot = []
+        numAvailsInEmptySlot = 10000 #much larger than anything possible
+        for slot in emptySlots:
+            people = []
+            numPeople = 0
+            other_office_slot = slot.other_office_slot()
+            for person in [detail[0] for detail in availabilitiesBySlot[slot]]:
+    #                print 'considering person: ' + person
+                if numAssigned[person] >= slotsByPerson[person] or state[other_office_slot] == person:
+                    #person cannot tutor more, or is tutoring this time in another office
+    #                    print 'skipping person who is full or tutoring in other office'
+                    continue
+                people.append(person)
+                numPeople += 1
+            
+            #see if this is fewer than previously seen
+            if numPeople < numAvailsInEmptySlot:
+    #                print "considering slot with availabilities for: " + str(people)
+                #consider this slot as a candidate for generating fewest successors
+                emptySlot = slot
+                availsInEmptySlot = people
+                numAvailsInEmptySlot = numPeople
+        
+        for person in availsInEmptySlot:
+            #caller may have cached calculations, so don't perform extraCalculations
+            successor = state.make_child(emptySlot, person, extraCalculations = False)
+            ret.append(successor)
+        
+        if len(ret) > 0:
+            for e in ret:
+                if state.noneCount <= e.noneCount:
+                    raise "successor does not have more assignments than parent"
+        
+        return ret
+        #end old algorithm
 
 @track_timing
 def heuristic(state=State(),
@@ -1128,7 +1458,7 @@ def hill_climb(initialState=State(),
 #    Returns a new state with the three specified entries swapped
 #    Swaps person in slot one to slot two, slot two to slot three, and slot three to slot one
     def three_swap_state(state, slotOne, slotTwo, slotThree):
-        newState = State(state)
+        newState = State(state, extraCalculations = False)
         newState[slotOne] = state[slotThree]
         newState[slotTwo] = state[slotOne]
         newState[slotThree] = state[slotTwo]
@@ -1160,7 +1490,7 @@ def hill_climb(initialState=State(),
     betterStates = 0
     worseStates = 0
     invalidStates = 0
-    bestStateAndCost = (State(initialState), 0)
+    bestStateAndCost = (State(initialState, extraCalculations = False), 0)
     bestStateAndCost[0].meta['swap'] = "no swap"
     bestDiffs = []
     potentialStatesAndCosts = [bestStateAndCost]
@@ -1245,6 +1575,10 @@ def get_cost(initialState=State(),
     with the given initial state.
     """
     
+    if 'remainingAvailabilitiesBySlot' in initialState.meta:
+        #remaining availabilities likely smaller, so a bit faster to scan through
+        availabilitiesBySlot = initialState.meta['remainingAvailabilitiesBySlot']
+    
     cost = costs['base']
     if adjacency_checker == are_adjacent_hours:
         #safe to use all_adjacent_slots
@@ -1281,9 +1615,11 @@ def get_cost_difference(oldState=State(),
     Returns (total cost of given newState) - (total cost of given oldState)
     
     More efficient than calling get_total_cost on each
+    
+    Helps efficiency to provide a commonAncestor
     """
     if commonAncestor == None:
-        commonAncestor = State()
+        commonAncestor = State(extraCalculations = False)
         for key in oldState:
             oldPerson = oldState[key]
             if newState[key] == oldPerson:
@@ -1320,7 +1656,7 @@ def get_total_cost(state=State(),
     if baseState:
         tempState = baseState.copy()
     else:
-        tempState=State()
+        tempState=State(extraCalculations = False)
         for key in state:
             tempState[key] = None
     
@@ -1713,8 +2049,6 @@ def test_heuristic():
         costs['preference'][int_key] = SCORE_PREFERENCE[int_key]
         costs['preference'][int_key - 0.5] = SCORE_PREFERENCE[int_key] + SCORE_CORRECT_OFFICE
     
-    s = State()
-    
     availsCory = "A1p B1p\n"
     availsCory +="A1p B2p"
     
@@ -1722,9 +2056,11 @@ def test_heuristic():
     availsSoda +="A1p B2"
     availabilitiesBySlot = parse_into_availabilities_by_slot(availsCory, availsSoda)
     
-    s.initialize_keys(availabilitiesBySlot)
-    
     slotsByPerson = NiceDict(2)
+    
+    s = State(availabilitiesBySlot = availabilitiesBySlot, slotsByPerson = slotsByPerson,
+              extraCalculations = True)
+    s.initialize_keys(availabilitiesBySlot)
     
     expected = 4 * (costs['base'] - costs['preference'][0.5]) - 2 * costs['adjacent_same_office']
     result = heuristic(s, costs, availabilitiesBySlot, slotsByPerson = slotsByPerson)

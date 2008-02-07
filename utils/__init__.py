@@ -34,7 +34,7 @@ class NiceDict(dict):
         return self.defaultValue
     
     def copy(self):
-        return self.__copy__(self)
+        return self.__copy__()
     
     def __copy__(self):
         return type(self)(self.defaultValue, self)
