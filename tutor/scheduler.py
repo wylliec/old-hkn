@@ -1439,7 +1439,8 @@ def hill_climb(initialState=State(),
               costs=NiceDict(0, {'base':1}),
               slotsByPerson=False,
               adjacency_checker=are_adjacent_hours,
-              availabilitiesBySlot=NiceDict([])):
+              availabilitiesBySlot=NiceDict([]),
+              beamLength=3):
     """
     Returns: best state found, with cost info in the meta.  If did any hill climbing,
     meta['parent'] is None.  Returned state must have meta['cost'] be the correct cost, and
@@ -1458,11 +1459,14 @@ def hill_climb(initialState=State(),
                                                                                    costs=costs,
                                                                                    adjacency_checker=adjacency_checker,
                                                                                    availabilitiesBySlot=availabilitiesBySlot)
+
+    if initialState.meta['cost'] == 0:
+        initialState.meta['cost'] = get_total_cost(state=initialState, costs=costs, adjacency_checker=adjacency_checker, availabilitiesBySlot=availabilitiesBySlot)
     
 #    Returns a new state with the three specified entries swapped
 #    Swaps person in slot one to slot two, slot two to slot three, and slot three to slot one
     def three_swap_state(state, slotOne, slotTwo, slotThree):
-        newState = State(state, extraCalculations = False)
+        newState = State(state)
         newState[slotOne] = state[slotThree]
         newState[slotTwo] = state[slotOne]
         newState[slotThree] = state[slotTwo]
@@ -1489,15 +1493,14 @@ def hill_climb(initialState=State(),
         return (newStateAndCost, costDiff)
     
 #    Begin Hillclimbing
-#    Currently, the hill climber only keeps track one state.
-#    We could have beam search by tracking more states in potentialStatesAndCosts.
     betterStates = 0
     worseStates = 0
     invalidStates = 0
-    bestStateAndCost = (State(initialState, extraCalculations = False), 0)
+    #bestDiffs = [] #unused at the moment...
+
+    bestStateAndCost = (State(initialState), 0)
     bestStateAndCost[0].meta['swap'] = "no swap"
-    bestDiffs = []
-    potentialStatesAndCosts = [bestStateAndCost]
+    newStateAndCosts = [bestStateAndCost]
 
     slots = []
     for slotOne in initialState:
@@ -1514,43 +1517,55 @@ def hill_climb(initialState=State(),
             availDict[(person, slot)] = True
 
     iterations = 0
-    while len(potentialStatesAndCosts) > 0:
+    while len(newStateAndCosts) > 0:
+        currentStatesAndCosts = newStateAndCosts
+        newStateAndCosts = []
         iterations += 1
         print "climbing hill", iterations
-        state, cost = potentialStatesAndCosts.pop(0)
-        for slotOne, slotTwo, slotThree in slots:
-            personOne = state[slotOne]
-            personTwo = state[slotTwo]
-            personThree = state[slotThree]
 
-            if availDict[(personOne, slotTwo)] and availDict[(personTwo, slotThree)] and availDict[(personThree, slotOne)]:
-                temp = trySwap(slotOne, slotTwo, slotThree, cost)
-                if temp is not False:
-                    newStateAndCost, costDiff = temp
-                    if costDiff < 0:
-                        betterStates += 1
-                        if newStateAndCost[1] < bestStateAndCost[1]:
-                            bestStateAndCost = newStateAndCost
-                            potentialStatesAndCosts = [(newStateAndCost)]
-                    else:
-                        worseStates += 1
-                else:
-                    invalidStates += 1
-            
-            if availDict[(personThree, slotTwo)] and availDict[(personTwo, slotOne)] and availDict[(personOne, slotThree)]:
-                temp = trySwap(slotThree, slotTwo, slotOne, cost)
-                if temp is not False:
-                    newStateAndCost, costDiff = temp
-                    if costDiff < 0:
-                        betterStates += 1
-                        if newStateAndCost[1] < bestStateAndCost[1]:
-                            bestStateAndCost = newStateAndCost
-                            potentialStatesAndCosts = [newStateAndCost]
-                    else:
-                        worseStates += 1
-                else:
-                    invalidStates += 1
+        while len(currentStatesAndCosts) > 0:
+            state, cost = currentStatesAndCosts.pop(0)
+            for slotOne, slotTwo, slotThree in slots:
+                personOne = state[slotOne]
+                personTwo = state[slotTwo]
+                personThree = state[slotThree]
 
+                c1 = availDict[(personOne, slotTwo)] and availDict[(personTwo, slotThree)] and availDict[(personThree, slotOne)]
+                c2 = availDict[(personThree, slotTwo)] and availDict[(personTwo, slotOne)] and availDict[(personOne, slotThree)]
+
+                if c1 or c2:
+                    temps = []
+                    if c1:
+                        temps.append(trySwap(slotOne, slotTwo, slotThree, cost))
+                    if c2:
+                        temps.append(trySwap(slotThree, slotTwo, slotOne, cost))
+
+                    for temp in temps:
+                        if temp is not False:
+                            newStateAndCost, costDiff = temp
+                            if costDiff < 0:
+                                betterStates += 1
+                                loc = -1
+                                for i in range(len(newStateAndCosts)):
+                                    s, c = newStateAndCosts[i]
+                                    if c < newStateAndCost[1]:
+                                        loc = i
+                                        break
+                                if loc < 0 and len(newStateAndCosts) < beamLength:
+                                    newStateAndCosts.append(newStateAndCost)
+                                else:
+                                    newStateAndCosts.insert(loc, newStateAndCost)
+                                    if len(newStateAndCosts) > beamLength:
+                                        newStateAndCosts.pop()
+                            else:
+                                worseStates += 1
+                        else:
+                            invalidStates += 1
+
+        if(len(newStateAndCosts) > 0):
+            bestStateAndCost = newStateAndCosts[0]
+
+        print "Best state so far in beam:"
         print "cost delta = ", bestStateAndCost[1]
         print bestStateAndCost[0].meta['swap']
         print bestStateAndCost[0].pretty_print()
@@ -1561,7 +1576,8 @@ def hill_climb(initialState=State(),
     print 'Number of Worse States =', worseStates
     print 'Number of Invalid States =', invalidStates, '\n'
     bestState, bestCost = bestStateAndCost
-    bestState.meta['cost'] = initialState.meta['cost'] + bestCost
+    #bestState.meta['cost'] = initialState.meta['cost'] + bestCost
+    bestState.meta['cost'] = get_total_cost(state=bestState, costs=costs, adjacency_checker=adjacency_checker, availabilitiesBySlot=availabilitiesBySlot)
     bestState.meta['heuristic'] = 0
     return bestState
 
@@ -2071,8 +2087,9 @@ def test_heuristic():
     else:
         print "expected %d, start state heuristic: %d" % (expected, result)
     
-def hill_climb_test():
+def hill_climb_test(beamLength=3):
     from parameters import coryTimes, sodaTimes
+    """
     str = "----------\n\
 cost: 351, heuristic: 0\n\
 Cory	Mon	Tue	Wed	Thu	Fri\n\
@@ -2090,6 +2107,43 @@ Soda	Mon	Tue	Wed	Thu	Fri\n\
 3-4	335MichelleA	20GeorgeC	24JamesL	11BrianK	333MinX\n\
 4-5	13BrianT	20GeorgeC	12BrianL	314ChrisL	314ChrisL\n\
 ----------"
+    """
+    """
+    str = "----------\n\
+cost: 10000, heuristic: 0\n\
+Cory	Mon	Tue	Wed	Thu	Fri\n\
+11a-12	322KeatonM	54YasinA	24JamesL	183JohnnyT	24JamesL\n\
+12-1	52WayneF	54YasinA	197MichaelC	183JohnnyT	215VishayN\n\
+1-2	36MichaelT	23IngridL	12BrianL	46ShervinJ	36MichaelT\n\
+2-3	52WayneF	217SuhaasP	35MatthewE	46ShervinJ	215VishayN\n\
+3-4	360SandyW	6AngelaH	25JarodP	23IngridL	365RyanZ\n\
+4-5	360SandyW	6AngelaH	13BrianT	25JarodP	48SurajG\n\
+Soda	Mon	Tue	Wed	Thu	Fri\n\
+11a-12	319DarrenL	364JerryZ	20GeorgeC	364JerryZ	335MichelleA\n\
+12-1	333MinX	39NielsJ	20GeorgeC	30JudyH	48SurajG\n\
+1-2	36MichaelT	322KeatonM	335MichelleA	190NirA	35MatthewE\n\
+2-3	197MichaelC	319DarrenL	217SuhaasP	190NirA	13BrianT\n\
+3-4	12BrianL	11BrianK	39NielsJ	11BrianK	314ChrisL\n\
+4-5	335MichelleA	30JudyH	333MinX	314ChrisL	365RyanZ\n\
+----------"
+    """
+    str = "----------\n\
+cost: 290, heuristic: 0\n\
+Cory	Mon	Tue	Wed	Thu	Fri\n\
+11a-12	360SandyW	54YasinA	39NielsJ	364JerryZ	54YasinA\n\
+12-1	360SandyW	36MichaelT	322KeatonM	30JudyH	215VishayN\n\
+1-2	36MichaelT	23IngridL	35MatthewE	46ShervinJ	36MichaelT\n\
+2-3	46ShervinJ	11BrianK	35MatthewE	25JaredP	215VishayN\n\
+3-4	12BrianL	6AngelaH	25JaredP	23IngridL	365RyanZ\n\
+4-5	48SurajG	30JudyH	12BrianL	6AngelaH	365RyanZ\n\
+Soda	Mon	Tue	Wed	Thu	Fri\n\
+11a-12	52WayneF	364JerryZ	24JamesL	183JohnnyT	24JamesL\n\
+12-1	52WayneF	39NielsJ	335MichelleA	183JohnnyT	48SurajG\n\
+1-2	197MichaelC	319DarrenL	322KeatonM	190NirA	48SurajG\n\
+2-3	217SuhaasP	319DarrenL	335MichelleA	190NirA	333MinX\n\
+3-4	217SuhaasP	20GeorgeC	197MichaelC	11BrianK	333MinX\n\
+4-5	13BrianT	20GeorgeC	13BrianT	314ChrisL	314ChrisL\n\
+----------"
 
     costs = {'base': max(SCORE_ADJACENT, SCORE_ADJACENT_SAME_OFFICE) * 2 +
                  max(SCORE_PREFERENCE.values()) +
@@ -2105,7 +2159,7 @@ Soda	Mon	Tue	Wed	Thu	Fri\n\
     availabilitiesBySlot = parse_into_availabilities_by_slot(coryTimes, sodaTimes)
 
     state = State.parse_into_states(str)
-    newState = hill_climb(initialState=state[0], costs=costs, slotsByPerson=NiceDict(2), availabilitiesBySlot=availabilitiesBySlot)
+    newState = hill_climb(initialState=state[0], costs=costs, slotsByPerson=NiceDict(2), availabilitiesBySlot=availabilitiesBySlot, beamLength=beamLength)
     print newState.pretty_print()
 
 
