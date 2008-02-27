@@ -135,6 +135,9 @@
     <course name="Social Implications of Computer Technology" number="C195" units="2">
         Topics include electronic community; the changing nature of work; technological risks; the information economy; intellectual property; privacy; artificial intelligence and the sense of self; pornography and censorship; professional ethics. Students will lead discussions on some of these topics. Also listed as Interdisciplinary Studies Field Maj C155.
     </course>
+    <course name="Honors Seminar for Computer Science Majors" number="H196" units="3">
+        Study in-depth of several topics in computer science to be chosen by the instructor. Students will assess current literature in the topics and present critiques to the class. Each student will carry out a project.
+    </course>
     <course name="Senior Honors Thesis Research" number="H196A" units="1-4">
         Thesis work under the supervision of a faculty member. To obtain credit the student must, at the end of two semesters, submit a satisfactory thesis to the Electrical Engineering and Computer Science department archive. A total of four units must be taken. The units many be distributed between one or two semesters in any way. H196A-H196B count as graded technical elective units, but may not be used to satisfy the requirement for 27 upper division technical units in the College of Letters and Science with a major in Computer Science.
     </course>

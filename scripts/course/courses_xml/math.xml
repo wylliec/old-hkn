@@ -91,10 +91,10 @@
         Introduction to signal processing including Fourier analysis and wavelets. Theory, algorithms, and applications to one-dimensional signals and multidimensional images.
     </course>
     <course name="Mathematical Tools for the Physical Sciences" number="121A" units="4">
-        Functions of a complex variable, Fourier series, finite-dimensional linear systems. Infinite-dimensional linear systems, orthogonal expansions, special functions, partial differential equations arising in mathematical physics. Intended for students in the physical sciences who are not planning to take more advanced mathematics courses.
+        Intended for students in the physical sciences who are not planning to take more advanced mathematics courses. Rapid review of series and partial differentiation, complex variables and analytic functions, integral transforms, calculus of variations.
     </course>
     <course name="Mathematical Tools for the Physical Sciences" number="121B" units="4">
-        Functions of a complex variable, Fourier series, finite-dimensional linear systems. Infinite-dimensional linear systems, orthogonal expansions, special functions, partial differential equations arising in mathematical physics. Intended for students in the physical sciences who are not planning to take more advanced mathematics courses.
+        Intended for students in the physical sciences who are not planning to take more advanced mathematics courses. Special functions, series solutions of ordinary differential equations, partial differential equations arising in mathematical physics, probability theory.
     </course>
     <course name="Ordinary Differential Equations" number="123" units="4">
         Existence and uniqueness of solutions, linear systems, regular singular points. Other topics selected from analytic systems, autonomous systems, Sturm-Liouville Theory.
@@ -119,6 +119,9 @@
     </course>
     <course name="Introduction to the Theory of Sets" number="135" units="4">
         Set-theoretical paradoxes and means of avoiding them. Sets, relations, functions, order and well-order. Proof by transfinite induction and definitions by transfinite recursion. Cardinal and ordinal numbers and their arithmetic. Construction of the real numbers. Axiom of choice and its consequences.
+    </course>
+    <course name="Incompleteness and Undecidability" number="136" units="4">
+        Functions computable by algorithm, Turing machines, Church's thesis. Unsolvability of the halting problem, Rice's theorem. Recursively enumerable sets, creative sets, many-one reductions. Self-referential programs. Godel's incompleteness theorems, undecidability of validity, decidable and undecidable theories.
     </course>
     <course name="Metric Differential Geometry" number="140" units="4">
         Frenet formulas, isoperimetric inequality, local theory of surfaces in Euclidean space, first and second fundamental forms. Gaussian and mean curvature, isometries, geodesics, parallelism, the Gauss-Bonnet-Von Dyck Theorem.
