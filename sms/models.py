@@ -11,14 +11,14 @@ class SMSInfo(models.Model):
     activated = models.BooleanField(default = False)
 
     # the person's passcode
-    passcode = models.CharField(maxlength = 20, default = "")
+    passcode = models.CharField(max_length = 20, default = "")
 
     # the person's carrier
-    carrier = models.CharField(maxlength = 50)
+    carrier = models.CharField(max_length = 50)
 
     # the person's usual phone-email address
     # like 55555555555@vtext.com
-    phone_email = models.CharField(maxlength=70)
+    phone_email = models.CharField(max_length=70)
 
     # cache the response to their last query so we can page responses
     cached_response = models.TextField()

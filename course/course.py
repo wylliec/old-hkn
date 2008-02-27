@@ -14,3 +14,21 @@ def find_course(request):
     (courses, pages) = filter_objects(Course, list_context, query_objects = query_function)
     return render_to_response("course/ajax/find_course.html", {"courses" : courses}, context_instance = RequestContext(request))
     
+def course_autocomplete(request):
+    def iter_results(courses):
+        if courses:
+            for r in courses:
+                yield '%s|%s\n' % (r.short_name(space = True), r.id)
+    
+    if not request.GET.get('q'):
+        return HttpResponse(mimetype='text/plain')
+    
+    q = request.GET.get('q')
+    limit = request.GET.get('limit', 15)
+    try:
+        limit = int(limit)
+    except ValueError:
+        return HttpResponseBadRequest() 
+
+    courses = Course.objects.query(q)[:limit]
+    return HttpResponse(iter_results(courses), mimetype='text/plain')

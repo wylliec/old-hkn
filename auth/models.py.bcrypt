@@ -1,6 +1,6 @@
 from django.db import models
 from django.db import backend, connection, models
-import datetime
+import bcrypt, datetime
 
 from hkn.info.models import *
 
@@ -79,14 +79,12 @@ class User(models.Model):
         return self.username
 
     def setPassword(self, password):
-#        salt = bcrypt.gensalt()
-#        hashed = bcrypt.hashpw(password, salt)
-#        self.password = hashed
-		self.password = password
+        salt = bcrypt.gensalt()
+        hashed = bcrypt.hashpw(password, salt)
+        self.password = hashed
 
     def checkPassword(self, password):
-#        return bcrypt.hashpw(password, self.password[:-30]) == self.password    
-    	return password == self.password
+        return bcrypt.hashpw(password, self.password[:-30]) == self.password;
 
     def getFullName(self):	
         return "%s %s" % (self.person.first, self.person.last)

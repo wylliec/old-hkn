@@ -1,6 +1,8 @@
 from hkn.enum import EnumType
 
-FILE_UPLOAD_DIR = '/home/clay/website/temp'
+FILE_UPLOAD_DIR = 'exam'
+
+VALID_EXTENSIONS = ["doc", ".pdf", ".html", ".htm", ".txt"]
 
 EXAM_TYPE_MIDTERM = "mt"
 EXAM_TYPE_FINAL = "f"

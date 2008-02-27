@@ -30,10 +30,9 @@ def importDepartment(department):
 	name = department.getAttribute('name').strip()
 	abbr = department.getAttribute('abbr').strip()
 	try:
-		dpt = Department.objects.get(name__iexact = name, abbr__iexact = abbr)
+		dpt = Department.objects.get(abbr__iexact = abbr)
 	except Department.DoesNotExist:
-		dpt = Department(name = name, abbr = abbr)
-		dpt.save()
+		raise Exception, "department for abbr %s doesn't exist! " % (abbr, )
 
 	for course in department.getElementsByTagName("course"):
 		importCourse(dpt, course)

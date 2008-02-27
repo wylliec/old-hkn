@@ -17,7 +17,7 @@ def message(request, msg):
     return render_to_response("event/message.html", {"message" : msg},  context_instance = RequestContext(request))
 
 def event_from_form_instance(form, event = Event()):
-    cd = form.clean_data
+    cd = form.cleaned_data
     for k in cd.keys():
         setattr(event, k, cd[k])
 

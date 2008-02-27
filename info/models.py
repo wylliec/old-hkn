@@ -71,13 +71,13 @@ class Position(models.Model):
     
     position_id = models.AutoField(primary_key = True)
     
-    short_name = models.CharField(maxlength=15)
+    short_name = models.CharField(max_length=15)
     """
     Corresponds to usual HKN-name for positions (which is also usually the mailing list names)
     e.g. act, compserv, pres, vp, etc.
     """
 
-    long_name = models.CharField(maxlength=50)
+    long_name = models.CharField(max_length=50)
     """
     A longer name, e.g. Industrial Relations, Computer Services
     """
@@ -169,15 +169,15 @@ class Person(models.Model):
     id = models.AutoField(primary_key = True)
 
 
-    first = models.CharField(maxlength = 30)
+    first = models.CharField(max_length = 30)
     """ Person's first name (sometimes preferred name, see L{realfirst})"""
 
 
-    last = models.CharField(maxlength=30)
+    last = models.CharField(max_length=30)
     """ Person's last name """
     
 
-    realfirst = models.CharField(maxlength=30)
+    realfirst = models.CharField(max_length=30)
     """ 
     Real first name (the Person's official name, if it isn't already in L{first}).
     Can be empty if the Person's first name is their official name
@@ -299,27 +299,27 @@ class ExtendedInfo(models.Model):
         >>>> extendedinfo.person"""
     
 
-    sid = models.CharField(maxlength=10)
+    sid = models.CharField(max_length=10)
     """ The person's SID. Try to use this as little as possible, will be phased out gradually. """
     
 
-    grad_semester = models.CharField(maxlength=5)
+    grad_semester = models.CharField(max_length=5)
     """ The person's graduation semester. Usually taken at initiation time, so subject to change. """
     
 
-    local_phone = models.CharField(maxlength=20)
+    local_phone = models.CharField(max_length=20)
     """ Local phone number, usually cell phone. """
     
 
-    perm_phone = models.CharField(maxlength=20)
+    perm_phone = models.CharField(max_length=20)
     """ Permanent phone number, usually home phone (?) """
     
 
-    local_addr = models.CharField(maxlength=100)
+    local_addr = models.CharField(max_length=100)
     """ Local address """
     
 
-    perm_addr = models.CharField(maxlength=100)
+    perm_addr = models.CharField(max_length=100)
     """ Permanent (home) address """
 
     def __str__(self):
@@ -366,7 +366,7 @@ class CandidateInfo(models.Model):
         >>>> candidateinfo.person"""
     
 
-    candidate_semester = models.CharField(maxlength=5)
+    candidate_semester = models.CharField(max_length=5)
     """ The person's candidate semester. """
     
 
@@ -397,7 +397,7 @@ class Officership(models.Model):
         
 
     officership_id = models.AutoField(primary_key = True)
-    semester = models.CharField(maxlength=5)
+    semester = models.CharField(max_length=5)
     """The L{semester} of this officership."""
     
 

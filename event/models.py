@@ -49,8 +49,8 @@ class Event(models.Model):
     today = TodayEventsManager()
 
     id = models.AutoField(primary_key = True)
-    name = models.CharField(maxlength=100)
-    location = models.CharField(maxlength=100)
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
     description = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
@@ -68,7 +68,7 @@ class Event(models.Model):
     
 
 
-    event_type = models.CharField(maxlength = 10, choices = EVENT_TYPE.choices())
+    event_type = models.CharField(max_length = 10, choices = EVENT_TYPE.choices())
 
     gcal_id = models.TextField(blank = True)
 

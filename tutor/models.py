@@ -15,8 +15,8 @@ class Availability(models.Model):
     """ Models a person's time and office availability for a given season/year. """
     
     person = models.ForeignKey(Person)
-    slot = models.CharField(maxlength = 30)
-    office = models.CharField(maxlength = 5, choices = (OFFICE_CHOICES)) #Soda or Cory
+    slot = models.CharField(max_length = 30)
+    office = models.CharField(max_length = 5, choices = (OFFICE_CHOICES)) #Soda or Cory
     season = models.ForeignKey(courses.Season)
     year = models.PositiveIntegerField()
     preference = models.IntegerField()
@@ -180,8 +180,8 @@ class Assignment(models.Model):
     """ Models when a person will tutor for a given season/year and schedule version. """
     
     person = models.ForeignKey(Person)
-    slot = models.CharField(maxlength = 30)
-    office = models.CharField(maxlength = 5, choices = (OFFICE_CHOICES)) #Soda or Cory
+    slot = models.CharField(max_length = 30)
+    office = models.CharField(max_length = 5, choices = (OFFICE_CHOICES)) #Soda or Cory
     season = models.ForeignKey(courses.Season)
     year = models.PositiveIntegerField()
     
@@ -276,7 +276,7 @@ class CourseTutored(models.Model):
     """ Models a course tutored to a tutee during a particular attendance """
     attendance = models.ForeignKey(Attendance)
     course = models.ForeignKey(courses.Course)
-    topics = models.CharField(maxlength = 150)
+    topics = models.CharField(max_length = 150)
     """ Description of topics tutored """
 
 

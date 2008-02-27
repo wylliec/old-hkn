@@ -1,13 +1,13 @@
 #!/bin/sh
-../manage.py --noinput reset auth
-../manage.py --noinput reset cand
-../manage.py --noinput reset course
-../manage.py --noinput reset event
-../manage.py --noinput reset info
-../manage.py --noinput reset request
-../manage.py --noinput reset tutor
-../manage.py --noinput flush
-../manage.py --noinput syncdb
+../manage.py reset --noinput auth
+../manage.py reset --noinput cand
+../manage.py reset --noinput course
+../manage.py reset --noinput event
+../manage.py reset --noinput info
+../manage.py reset --noinput request
+../manage.py reset --noinput tutor
+../manage.py flush --noinput
+../manage.py syncdb --noinput
 ./create_positions.py
 echo  'c' | ./import_people.py
 echo  'a' | ./import_people.py
@@ -17,6 +17,8 @@ echo  'a' | ./import_people.py
 ./import_usernames_cached.py
 ./create_random_rsvps.py
 ./import_seasons.py
+./import_departments.py
 ./import_courses.py
 ./import_instructors.py
-#./import_klasses.py
+cd klass/xml && tar xvfj schedules.tbz && cd ../..
+./import_klasses.py
