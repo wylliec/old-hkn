@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<department abbr="econ">
+    <instructor first="George" last="Akerlof" middle="A."/>
+    <instructor first="Robert" last="Anderson" middle="M."/>
+    <instructor first="Alan" last="Auerbach" middle=""/>
+    <instructor first="Pranab" last="Bardhan" middle="K."/>
+    <instructor first="Clair" last="Brown" middle="R."/>
+    <instructor first="David" last="Card" middle=""/>
+    <instructor first="Roger" last="Craine" middle=""/>
+    <instructor first="Jan" last="Vries" middle="de"/>
+    <instructor first="Bradford" last="DeLong" middle="J."/>
+    <instructor first="Aaron" last="Edlin" middle=""/>
+    <instructor first="Barry" last="Eichengreen" middle=""/>
+    <instructor first="Joseph" last="Farrell" middle="V."/>
+    <instructor first="Richard" last="Gilbert" middle="J."/>
+    <instructor first="Benjamin" last="Hermalin" middle="E."/>
+    <instructor first="Charles" last="Jones" middle="I."/>
+    <instructor first="Michael" last="Katz" middle=""/>
+    <instructor first="Ronald" last="Lee" middle="D."/>
+    <instructor first="John" last="Morgan" middle=""/>
+    <instructor first="Maurice" last="Obstfeld" middle=""/>
+    <instructor first="James" last="Powell" middle="L."/>
+    <instructor first="Yingyi" last="Qian" middle=""/>
+    <instructor first="John" last="Quigley" middle="M."/>
+    <instructor first="Matthew" last="Rabin" middle=""/>
+    <instructor first="Michael" last="Reich" middle=""/>
+    <instructor first="Gerard" last="Roland" middle=""/>
+    <instructor distinguished="true" first="Christina" last="Romer" middle="D."/>
+    <instructor first="David" last="Romer" middle=""/>
+    <instructor first="Daniel" last="Rubinfeld" middle=""/>
+    <instructor first="Paul" last="Ruud" middle=""/>
+    <instructor first="Emmanuel" last="Saez" middle=""/>
+    <instructor first="Suzanne" last="Scotchmer" middle=""/>
+    <instructor first="Christina" last="Shannon" middle=""/>
+    <instructor first="Carl" last="Shapiro" middle="B."/>
+    <instructor distinguished="true" first="Laura" last="Tyson" middle="D."/>
+    <instructor first="Hal" last="Varian" middle=""/>
+    <instructor first="Irma" last="Adelman" middle=""/>
+    <instructor first="George" last="Break" middle=""/>
+    <instructor first="Albert" last="Fishlow" middle=""/>
+    <instructor first="David" last="Gale" middle=""/>
+    <instructor first="Steven" last="Goldman" middle="M."/>
+    <instructor first="Gregory" last="Grossman" middle=""/>
+    <instructor first="Bronwyn" grad_prof="true" last="Hall" middle="H."/>
+    <instructor first="Charles" last="Hitch" middle="J."/>
+    <instructor first="Theodore" last="Keeler" middle="E."/>
+    <instructor first="John" last="Letiche" middle="M."/>
+    <instructor first="Daniel" grad_prof="true" last="McFadden" middle="L."/>
+    <instructor first="James" last="Pierce" middle="L."/>
+    <instructor first="Thomas" last="Rothenberg" middle="J."/>
+    <instructor first="Stephen" last="Smale" middle=""/>
+    <instructor first="Lloyd" last="Ulman" middle=""/>
+    <instructor first="Benjamin" last="Ward" middle="N."/>
+    <instructor first="Oliver" grad_prof="true" last="Williamson" middle=""/>
+    <instructor first="Janet" last="Yellen" middle=""/>
+    <instructor first="Kenneth" last="Chay" middle="Y."/>
+    <instructor first="Chang-Tai" last="Hsieh" middle=""/>
+    <instructor first="Botond" last="Koszegi" middle=""/>
+    <instructor first="David" last="Lee" middle=""/>
+    <instructor first="Edward" last="Miguel" middle=""/>
+    <instructor first="Enrico" last="Moretti" middle=""/>
+    <instructor first="David" last="Ahn" middle="S."/>
+    <instructor first="Raj" last="Chetty" middle=""/>
+    <instructor first="Stefano" last="DellaVigna" middle=""/>
+    <instructor first="Pierre-Olivier" last="Gourinchas" middle=""/>
+    <instructor first="Michael" last="Jansson" middle=""/>
+    <instructor first="Shachar" last="Kariv" middle=""/>
+    <instructor first="Ulrike" last="Malmendier" middle=""/>
+    <instructor first="Alexandre" last="Mas" middle=""/>
+    <instructor first="Yuliy" last="Sannikov" middle=""/>
+    <instructor first="Adam" last="Szeidl" middle=""/>
+    <instructor first="Bryan" last="Graham" middle=""/>
+    <instructor distinguished="true" first="Martha" last="Olney" middle="L."/>
+    <instructor first="Kenneth" last="Train" middle="E."/>
+</department>

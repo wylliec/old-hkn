@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<department abbr="ast">
+    <instructor first="David" last="Attwood" middle="T."/>
+    <instructor first="Constance" last="Chang-Hasnain" middle=""/>
+    <instructor first="Ronald" last="Gronsky" middle=""/>
+    <instructor first="Philip" last="Marcus" middle="S."/>
+    <instructor first="Paulo" last="Monteiro" middle=""/>
+    <instructor first="Rachel" last="Segalman" middle=""/>
+    <instructor first="Yuri" last="Suzuki" middle=""/>
+    <instructor first="Junqiao" last="Wu" middle=""/>
+</department>
