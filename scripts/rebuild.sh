@@ -22,3 +22,4 @@ echo  'a' | ./import_people.py
 ./import_instructors.py
 cd klass/xml && tar xvfj schedules.tbz && cd ../..
 ./import_klasses.py
+./generate_exams.py
