@@ -1,7 +1,7 @@
 # widgets.py
 
 from django import newforms as forms
-from django.newforms.widgets import flatatt
+from django.newforms.widgets import flatatt, Widget
 from django.newforms.util import smart_unicode
 from django.utils.html import escape
 from django.utils.simplejson import JSONEncoder
@@ -17,8 +17,10 @@ class JQueryAutoComplete(forms.TextInput):
         self.options = None
         self.attrs = {'autocomplete': 'off'}
         self.source = source
-        if len(options) > 0:
+        if len(options) > 0 and type(options) == type({}):
             self.options = JSONEncoder().encode(options)
+        elif type(options) == type(''):
+            self.options = options
         
         self.attrs.update(attrs)
     
@@ -51,3 +53,55 @@ class JQueryAutoComplete(forms.TextInput):
             'attrs' : flatatt(final_attrs),
             'js' : self.render_js(final_attrs['id']),
         }
+
+class ModelAutocomplete(Widget):
+
+    autocomplete_field = "%s_auto"    
+    hidden_id_field = "%s_id"
+    
+    def __init__(self, source, attrs={}):
+        """source can be a list containing the autocomplete values or a
+        string containing the url used for the XHR request.
+        
+        For available options see the autocomplete sample page::
+        http://jquery.bassistance.de/autocomplete/"""
+        
+        self.options = None
+        self.attrs = {'autocomplete': 'off'}
+        self.source = source
+        
+        self.attrs.update(attrs)
+        
+
+    def get_options(self):
+        return """{formatResult : function(row, text) {
+            $("#%(hidden_id_field_id)s").attr("value", row[1]);
+            return text;
+        } } """
+        
+    def render_hidden_id_field(self, name):
+        return u'''<input type="hidden" id="id_%s" name="%s">''' % (ModelAutocomplete.hidden_id_field % name, ModelAutocomplete.hidden_id_field % name)
+
+    def render(self, name, value=None, attrs=None):
+        try:
+            obj_txt, obj_id = value.split("||")
+        except (AttributeError, TypeError, ValueError):
+            obj_txt = obj_id = None
+        
+        self.options = self.get_options() % { "hidden_id_field_id" : "id_" + ModelAutocomplete.hidden_id_field % name }
+        
+        output = []
+        
+        autocomplete_box = JQueryAutoComplete(self.source, self.options, self.attrs)
+        autocomplete_html = autocomplete_box.render(ModelAutocomplete.autocomplete_field % name, obj_txt)
+        output.append(autocomplete_html)
+        
+        output.append(self.render_hidden_id_field(name))
+        
+        return '\n'.join(output)
+    
+    def value_from_datadict(self, data, name):
+        obj_txt = data.get(ModelAutocomplete.autocomplete_field % name)
+        obj_id = data.get(ModelAutocomplete.hidden_id_field % name)    
+        return obj_txt + "|" + obj_id
+
