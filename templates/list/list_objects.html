@@ -10,6 +10,7 @@
 	<br/><br/>
 {% endblock %}
 
+{% block objects_nav_top %}
 {% spaceless %}
 <table width="100%">
 <td align="left">
@@ -27,11 +28,13 @@ Showing {% include "list/controls/per_page.html" %} per page.
 </td>
 </table>
 {% endspaceless %}
+{% endblock %}
 
 {% block objects_content %}
 	MAIN LIST CONTENT HERE ^_^
 {% endblock %}
 
+{% block objects_nav_bottom %}
 {% spaceless %}
 <table width="100%">
 <td align="left">
@@ -49,6 +52,7 @@ Showing {% include "list/controls/per_page.html" %} per page.
 </td>
 </table>
 {% endspaceless %}
+{% endblock %}
 
 {% block objects_query_bottom %}
 {% include "list/controls/query.html" %}
