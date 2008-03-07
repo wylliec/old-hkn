@@ -37,8 +37,6 @@ def createInstructor(dpt, name):
     inst.save()
     return inst
 
-
-
 def getInstructor(dpt, name):
     names = name.replace(",", "").split(" ")
     (first, middle, last) = (None, None, None)
@@ -66,8 +64,9 @@ def getInstructor(dpt, name):
         return objects[0]
     elif len(objects) == 0:
         raise Instructor.DoesNotExist, "could not find instructor with lastname, firstname, and department!"
-
-    objects = objects.filter(middle__istartswith = middle)
+    
+    if middle:
+        objects = objects.filter(middle__istartswith = middle)
     if len(objects) == 1:
         return objects[0]
     elif len(objects) == 0:
@@ -167,8 +166,8 @@ def importFromXmlFile(klassFile):
         importSemester(semester)
         
 def main():
-    klassFiles = glob.glob("klass/xml/*2008*.xml")
-
+    klassFiles = glob.glob("klass/xml/*2007*.xml")
+#    klassFiles += glob.glob("klass/xml/*2007*.xml")
     for klassFile in klassFiles:
         print "Importing klasses from " + klassFile
         importFromXmlFile(klassFile)
