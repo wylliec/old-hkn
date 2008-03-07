@@ -56,10 +56,10 @@ def get_list_context(request, default_sort, default_category = "objects", defaul
         max = atoi(default_max)
         
     try:
-        categories = category.split(",")
+        categories = category.split("|")
     except:
         categories = [category]
-    category = ",".join(categories)
+    category = "|".join(categories)
     
     list_context = {"category" : category, "categories" : categories, "sort" : sort, "page" : page, "max" : max, "query" : query}
     
