@@ -40,6 +40,8 @@ def getSemesterStart(sem = getCurrentSemester()):
     s = sem[0:2]
     y = "20" + sem[2:4]
     if s == "fa":
+        return datetime.datetime(atoi(y), 8, 1)
+    elif s == "su":
         return datetime.datetime(atoi(y), 6, 1)
     else:
         return datetime.datetime(atoi(y), 1, 1)
@@ -59,6 +61,8 @@ def getSemesterEnd(sem = getCurrentSemester()):
     y = "20" + sem[2:4]
     if s == "fa":
         return datetime.datetime(atoi(y), 12, 31)
+    elif s == "su":
+        return datetime.datetime(atoi(y), 7, 30)
     else:
         return datetime.datetime(atoi(y), 5, 31)
 
