@@ -1,0 +1,75 @@
+{% extends "list/list_objects.html" %}
+
+{% block objects_query_top %}
+{% endblock %}
+
+{% block filter_categories_top %}
+course: <input type="text" class="list_filter" autocomplete="off" name="course" id="id_course_query" value="{{ course_filter }}"/>
+instructor: <input type="text" class="list_filter" autocomplete="off" name="instructor" id="id_instructor_query" value="{{ instructor_filter }}"/>
+<br/>
+after: <select name="after" class="list_filter" id="id_select_after" value="{{ after_filter }}"><option value="sp00">Spring 2000</option><option value="sp01">Spring 2001</option><option value="sp02">Spring 2002</option><option value="sp03">Spring 2003</option></select>
+type: <select name="type" class="list_filter" id="id_select_type" value="{{ type_filter }}"><option value="">All</option><option value="mt">Midterm</option><option value="f">Final</option><option value="q">Quiz</option><option value="r">Review</option></select>
+number: <select name="number" class="list_filter" id="id_select_number" value="{{ number_filter }}"><option value="">All</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+<br/><br/>	
+<a id="id_filter_link" href="javascript:void(0)"> go! </a>
+
+<script type="text/javascript"><!--//
+	$('#id_course_query').autocomplete('/course/course_autocomplete', {extraParams : {"instructor" : $('#id_instructor_query').attr("value") } });
+	$('#id_instructor_query').autocomplete('/course/instructor_autocomplete', { extraParams : {course_query : function () { return $('#id_course_query').attr("value") } }  });	
+	$('#id_select_after').attr('value', '{{ after_filter }}');
+	$('#id_select_type').attr('value', '{{ type_filter }}');
+	$('#id_select_number').attr('value', '{{ number_filter }}');	
+	$('#id_filter_link').bind("click", function (e) {
+		category = "";
+		$('.list_filter').each( function (index, e) {
+			ee = $(e);
+			if(ee.attr("value") != undefined) {
+				category += ee.attr("name") + ":" + ee.attr("value") + "|";
+			}
+		});
+		filter('{{ sort }}', '1', '{{ max }}', category, '');
+	});
+	
+	setInstructor = function(instr) {
+		$('#id_instructor_query').attr("value", instr);	
+		$('#id_filter_link').click();
+	}
+	//--></script>
+<br/>
+
+
+	<br/><br/>
+{% endblock %}
+
+{% block objects_nav_top %}
+{% endblock %}
+
+{% block objects_nav_bottom %}
+{% endblock %}
+
+{% block objects_content %}
+{% for course_item in exams_dict.items %}
+<h1> {{ course_item.0.short_name }}</h1>
+<table class="list"><tr>
+<th>Semester</th>
+<th>Instructor</th>
+<th>Exam</th>
+<th>Formats</th>
+</tr>
+
+{% for exam in course_item.1 %}
+<tr>
+	<td>{{ exam.klass.semester }}</td>
+	<td><a href="javascript:void(0)" onclick="setInstructor('{{ exam.klass.instructors }}');"> {{ exam.klass.instructors|title }}</a></td>
+	<td><a href="{{ exam.get_file_url }}">{{ exam.get_exam_description }}</a></td>
+	<td>{{ exam.get_exam_format }}</td> 
+</tr>
+
+{% endfor %}
+</table>
+<br/>
+{% endfor %}
+{% endblock %}
+
+{% block objects_query_bottom %}
+{% endblock %}
