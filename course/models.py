@@ -1,28 +1,27 @@
 from django.db import models
 from hkn.course.constants import SEMESTER, EXAMS_PREFERENCE, DEPT_ABBR_OVERRIDE, DEPT_ABBR_CORRECT
+import re
 
-class CourseManager(models.Manager):
+class CourseManager(models.Manager):    
+    course_patterns = (
+                     re.compile(r'(?P<dept>\w*)\s*(?P<course>\w*)'),  # matches "CS 61A"
+                     re.compile(r'(?P<dept>[A-Za-z]+)(?P<course>\d\w*)'),  # matches "CS61A"
+                     re.compile(r'(?P<dept>\w+)'),  # matches "CS"
+                     )    
+    def parse_query(self, query):
+        for course_pattern in CourseManager.course_patterns:
+            m = course_pattern.match(query)
+            if m:
+                return (Department.proper_abbr(m.groupdict().get("dept")), m.groupdict().get("course"))
+            
+        return (None, None)
+    
     def query(self, query, objects = None):
         if objects == None:
             objects = self.get_query_set()
             
-        dept_abbr = None
-        coursenumber = None
-        if query.find(" ") == -1:
-            for i, c in enumerate(query):
-                if c.isdigit():
-                    dept_abbr = query[:i]
-                    coursenumber = query[i:]
-                    break
-                else:
-                    dept_abbr = query  
-        else:
-            (dept_abbr, coursenumber) = query.split(" ")
-    
-        dept_abbr = Department.proper_abbr(dept_abbr)
-    
-    #print dept_abbr
-    #print coursenumber
+
+        (dept_abbr, coursenumber) = self.parse_query(query)
     
         objects = objects.filter(department_abbr__iexact = dept_abbr)        
         if coursenumber:
@@ -61,7 +60,9 @@ class Department(models.Model):
     
     """ replaces CS (common abbreviation) with COMPSCI (correct abbreviation) and the like """
     def proper_abbr(abbr):
-        return DEPT_ABBR_CORRECT[abbr.upper()] or abbr
+        if abbr:
+            return DEPT_ABBR_CORRECT[abbr.upper()]
+        return None
     proper_abbr = staticmethod(proper_abbr)
 
     
@@ -128,6 +129,9 @@ class Season(models.Model):
     def __str__(self):
         return self.name
     
+    def abbr(self):
+        return self.name[:2]
+    
     
 class Klass(models.Model):
     id = models.AutoField(primary_key = True)
@@ -167,14 +171,63 @@ class Klass(models.Model):
     """ The klass newsgroup """
     
     def semester(self):
-        return (str(self.season) + str(self.year.year))
+        return (self.season.abbr() + str(self.year.year)[2:4])
+    
+    def instructors(self):
+        last_names = [inst.last for inst in self.instructor_set.all()]
+        return ", ".join(last_names)
     
     def __str__(self):
         return "%s %s" % (str(self.course.short_name()), self.semester())
     
+class InstructorManager(models.Manager):
+    
+    instructor_patterns = (
+                     re.compile(r'(?P<last>\w*),\s*(?P<first>\w*)\s*\[(?P<dept>\w*)\]'),  # matches "Harvey, Brian [CS]"
+                     re.compile(r'(?P<last>\w*),\s*(?P<first>\w*)'),                      # matches "Harvey, Brian"
+                     re.compile(r'(?P<first>\w*)\s+(?P<last>\w*)'),                      # matches "Brian Harvey"
+                     re.compile(r'(?P<last>\w*)'),                      # matches "Harvey"
+                     )
+    def parse_query(self, query):        
+        for instructor_pattern in InstructorManager.instructor_patterns:
+            m = instructor_pattern.match(query)
+            if m:
+                d = m.groupdict()
+                return (d.get("last"), d.get("first"), Department.proper_abbr(d.get("dept")))            
+        return (None, None, None)
+    
+    def query(self, query, objects = None, course_query = None, dept_abbr = None, course_number = None):
+        if objects == None:
+            objects = self.get_query_set()
+            
+        if not (dept_abbr or course_number) and course_query:
+            (dept_abbr, course_number) = Course.objects.parse_query(course_query)
+        
+        if dept_abbr and course_number:
+            courses = Course.objects.filter(department_abbr__iexact = dept_abbr, number__icontains = course_number)
+        elif dept_abbr:
+            courses = Course.objects.filter(department_abbr__iexact = dept_abbr)
+        else:
+            courses = None
+        
+        (last, first, dd) = self.parse_query(query)
+
+        if first and last:
+            objects = objects.filter(last__istartswith = last, first__istartswith = first)
+        elif last:
+            objects = objects.filter(last__istartswith = last)
+        else:
+            return Instructor.objects.none()
+            
+        if courses:
+            return objects.filter(klasses__course__in = courses).distinct()
+        else:
+            return objects
     
 class Instructor(models.Model):
     """ Models an instructor. """
+    
+    objects = InstructorManager()
     
     id = models.AutoField(primary_key = True)
     
@@ -210,3 +263,15 @@ class Instructor(models.Model):
     
     def __str__(self):
         return "%s %s %s" % (self.first, self.middle, self.last)
+    
+    def short_name(self, first = False, dept = False):
+        if first:
+            first = self.first
+        else:
+            first = self.first[0]
+            
+            
+        if dept:
+            return "%s, %s [%s]" % (self.last, first, self.department.my_nice_abbr())
+        else:
+            return "%s, %s" % (self.last, first)
