@@ -2,14 +2,14 @@ from django import newforms as forms
 from string import atoi
 import datetime
 from django.core import urlresolvers
-from hkn.main.widgets import JQueryAutoComplete
+from hkn.main.widgets import JQueryAutoComplete, ModelAutocomplete
 from hkn.exam.constants import EXAM_TYPE, VALID_EXTENSIONS
 from hkn.course.constants import SEMESTER
 from hkn.course.models import *
 import os
 
 class ExamForm(forms.Form):
-    course = forms.CharField(widget = JQueryAutoComplete("/course/course_autocomplete"))
+    course = forms.CharField(widget = ModelAutocomplete("/course/course_autocomplete"))
     season = forms.ChoiceField(choices = SEMESTER.choices())
     year = forms.IntegerField(min_value = 1990, max_value = 2100)
     
