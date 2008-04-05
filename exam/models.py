@@ -104,7 +104,7 @@ class Exam(models.Model):
         return os.path.splitext(self.get_file_filename())[1]
     
     def get_exam_filename(self):
-        return ("%s_%s_%s_%s%d" % (self.klass.course.short_name(), self.klass.semester(), self.klass.section, self.exam_type, self.number)).replace(" ", "-")
+        return ("%s_%s_%s_%s%d" % (self.klass.course.short_name(), self.klass.semester(), self.klass.section, self.exam_type, self.number or 0)).replace(" ", "-")
     
     def auto_exam_date(self):
         semester_start_date = hkn.semester.getSemesterStart(self.klass.semester())

@@ -14,20 +14,22 @@
 <HR>
 {% endblock %} 
 
+{# If you do not want this block to appear at all, simply place an empty 'subfooter' block in the child template. #}
+{% block subfooter %}
+<a href="/exam/browse/">Browse</a> | 
+<a href="/exam/list/">Search</a> | 
+<a href="/exam/submit/">Submit</a> | 
+<!--
+<a href="/exam/committee/">Exam Files Committee</a> | 
+<a href="/exam/onlineexams/">Online Exams</a> | 
+<a href="/exam/faq/">Exam Files FAQ</a> | 
+-->
+<HR>
+{% endblock %} 
 
 {% block examcontent %}
-<font color="red">This page lacks a properly formatted 'examcontent' block. (Content goes here!)</font>
 {% endblock %}
 
 
-{# If you do not want this block to appear at all, simply place an empty 'subfooter' block in the child template. #}
-{% block subfooter %}
-<HR>
-<a href="/exam/">Exam Files Home</a> | 
-<a href="/exam/faq/">Exam Files FAQ</a> | 
-<a href="/exam/committee/">Exam Files Committee</a> | 
-<a href="/exam/onlineexams/">Online Exams</a> | 
-<a href="/exam/submit/">Submit an Exam</a>
-{% endblock %} 
 
 {% endblock %}

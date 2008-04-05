@@ -25,7 +25,7 @@ def get_category_string(courses = None, exam_types = None, exam_numbers = None):
         if len(exam_numbers) > 0:
             numbers_string = "number:" + "|number:".join(exam_numbers)
 
-    return "%s|%s|%s" % (courses_string, types_string, numbers_string)
+    return "|".join([st for st in [courses_string, types_string, numbers_string] if len(st) > 0])
            
 
 def list_exams(request, course = None, exam_type = None):
@@ -33,6 +33,7 @@ def list_exams(request, course = None, exam_type = None):
     d = get_list_context(request, default_sort = "-exam_date", default_category = category, default_max = "100")    
     d["objects_url"] = urlresolvers.reverse("hkn.exam.list.list_exams_ajax")
     #d["extra_javascript"] = "event/ajax/list_events_javascript.html"
+    d["parent_template"] = "exam/exam.html"
     return render_to_response("list/list.html", d, context_instance=RequestContext(request))
 
 CATEGORY_FILTERS = {"course" : lambda objects, value: Exam.objects.query_course(value, objects),
@@ -47,12 +48,13 @@ def get_exams_for_categories(categories, objects = None):
         for value in values:
             return_objects = return_objects | object_filter(objects, value)
         return return_objects
+
+    if len(categories) == 0:
+        return Exam.objects.none()
     
     if objects == None:
         objects = Exam.objects.all()
         
-    if len(categories) == 0:
-        return objects
     
     for category_type in CATEGORY_FILTERS.keys():
         values = [c[len(category_type)+1:] for c in categories if c.startswith(category_type)]
@@ -63,18 +65,21 @@ def get_exams_for_categories(categories, objects = None):
 
 def list_exams_ajax(request):
     list_context = get_list_context(request, default_sort = "-exam_date", default_max = "100")
+
     
     exams = get_exams_for_categories(list_context["categories"])
-    exams_courses = exams.order_by('course_id').values('course').distinct()[:5]
-
-    course_ids = [c["course"] for c in exams_courses]
-    exams = get_exams_for_categories(list_context["categories"], Exam.objects.filter(course__in = course_ids)).order_by('course_id', 'exam_type', 'number')
-    
     exams_dict = {}
-    for course_id in course_ids:
-        c = Course.objects.get(pk = course_id)
-        exams_for_course = [e for e in exams if e.course_id == course_id]
-        exams_dict[c] = exams_for_course
+
+    if len(exams) > 0:
+        exams_courses = exams.order_by('course_id').values('course').distinct()[:5]
+
+        course_ids = [c["course"] for c in exams_courses]
+        exams = get_exams_for_categories(list_context["categories"], Exam.objects.filter(course__in = course_ids)).order_by('course_id', 'exam_type', 'number')
+    
+        for course_id in course_ids:
+            c = Course.objects.get(pk = course_id)
+            exams_for_course = [e for e in exams if e.course_id == course_id]
+            exams_dict[c] = exams_for_course
     
     list_context["exams"] = exams
     list_context["exams_dict"] = exams_dict
