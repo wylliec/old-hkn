@@ -61,7 +61,7 @@ class Department(models.Model):
     """ replaces CS (common abbreviation) with COMPSCI (correct abbreviation) and the like """
     def proper_abbr(abbr):
         if abbr:
-            return DEPT_ABBR_CORRECT[abbr.upper()]
+            return DEPT_ABBR_CORRECT.get(abbr.upper(), abbr.upper())
         return None
     proper_abbr = staticmethod(proper_abbr)
 
@@ -108,6 +108,9 @@ class Course(models.Model):
             return "%s %s" % (Department.nice_abbr(self.department_abbr), self.number)
         else:
             return "%s%s" % (Department.nice_abbr(self.department_abbr), self.number)
+
+    def short_name_space(self):
+        return self.short_name(True)
     
     def __cmp__(self, other):
         return cmp(self.department_abbr,
@@ -206,7 +209,7 @@ class InstructorManager(models.Manager):
                 return (d.get("last"), d.get("first"), Department.proper_abbr(d.get("dept")))            
         return (None, None, None)
     
-    def query(self, query, objects = None, course_query = None, dept_abbr = None, course_number = None):
+    def query(self, query, objects = None, course_query = None, dept_abbr = None, course_number = None, courses = None):
         if objects == None:
             objects = self.get_query_set()
             
@@ -217,8 +220,6 @@ class InstructorManager(models.Manager):
             courses = Course.objects.filter(department_abbr__iexact = dept_abbr, number__icontains = course_number)
         elif dept_abbr:
             courses = Course.objects.filter(department_abbr__iexact = dept_abbr)
-        else:
-            courses = None
         
         (last, first, dd) = self.parse_query(query)
 
