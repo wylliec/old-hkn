@@ -1,6 +1,7 @@
-{% extends "hkn.html" %}
+{% extends parent_template %}
 
 {% block extrahead %}
+{{ block.super }}
 <link href="{{ROOT_URL}}css/list.css" rel="stylesheet" />
 
 <script language="javascript">
@@ -53,6 +54,7 @@ $(document).ready(function() {
 
 
 {% block content %}
+{{ block.super }}
 {{ extra_body }}
 
 <div id="objects_div">
