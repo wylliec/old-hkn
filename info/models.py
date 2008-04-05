@@ -203,7 +203,7 @@ class Person(models.Model):
     """ A list of officership positions (i.e. not candidate committee) that this Person has held in the past. """
 
 
-    member_status = models.IntegerField()
+    member_status = models.IntegerField(choices = MEMBER_TYPE.choices())
     """ The person's member status. See L{hkn.info.constants.MEMBER_TYPE} for some more details. """
     
 
@@ -284,6 +284,9 @@ class Person(models.Model):
 
     class Meta:
         ordering = ["first", "last"]
+
+    class Admin:
+        search_fields = ['last', 'first']
 
 class ExtendedInfo(models.Model):
     """
@@ -382,8 +385,10 @@ class CandidateInfo(models.Model):
     """ a comment that can be set at initiation time by the VP """
 
     def __str__(self):
-        return "%s %s (%s)" % (self.candidate_committee.short_name, self.candidate_semester, self.initiation_comment)
+        return "%s %s %s" % (self.person.name(), self.candidate_committee, self.candidate_semester)
             
+    class Admin:
+        pass
 
 
 
@@ -415,4 +420,7 @@ class Officership(models.Model):
     """
 
     def __str__(self):
-        return "%s %s %s %s" % (self.semester, self.position.short_name, self.person.first, self.person.last)
+        return "%s %s %s" % (self.person.name(), self.semester, self.position.short_name)
+
+    class Admin:
+        pass
