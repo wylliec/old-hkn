@@ -66,7 +66,7 @@ class ModelAutocomplete(Widget):
         For available options see the autocomplete sample page::
         http://jquery.bassistance.de/autocomplete/"""
         
-        self.options = None
+        self.options = []
         self.attrs = {'autocomplete': 'off'}
         self.source = source
         
@@ -82,13 +82,19 @@ class ModelAutocomplete(Widget):
     def render_hidden_id_field(self, name):
         return u'''<input type="hidden" id="id_%s" name="%s">''' % (ModelAutocomplete.hidden_id_field % name, ModelAutocomplete.hidden_id_field % name)
 
+    def render_result_javascript(self, name):
+        return """<script language="javascript">
+            $('input#id_%s').result(function(event, data, formatted) {
+                $("input#id_%s").attr("value", data[1]);
+            })</script>""" % (ModelAutocomplete.autocomplete_field % name, ModelAutocomplete.hidden_id_field % name)
+
     def render(self, name, value=None, attrs=None):
         try:
-            obj_txt, obj_id = value.split("||")
+            obj_txt, obj_id = value.split("|")
         except (AttributeError, TypeError, ValueError):
             obj_txt = obj_id = None
         
-        self.options = self.get_options() % { "hidden_id_field_id" : "id_" + ModelAutocomplete.hidden_id_field % name }
+        #self.options = self.get_options() % { "hidden_id_field_id" : "id_" + ModelAutocomplete.hidden_id_field % name }
         
         output = []
         
@@ -97,10 +103,11 @@ class ModelAutocomplete(Widget):
         output.append(autocomplete_html)
         
         output.append(self.render_hidden_id_field(name))
+        output.append(self.render_result_javascript(name))
         
         return '\n'.join(output)
     
-    def value_from_datadict(self, data, name):
+    def value_from_datadict(self, data, files, name):
         obj_txt = data.get(ModelAutocomplete.autocomplete_field % name)
         obj_id = data.get(ModelAutocomplete.hidden_id_field % name)    
         return obj_txt + "|" + obj_id
