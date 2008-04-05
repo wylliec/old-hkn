@@ -65,6 +65,9 @@ class Department(models.Model):
         return None
     proper_abbr = staticmethod(proper_abbr)
 
+    class Admin:
+        pass
+
     
 class Course(models.Model):
     """ Models a course (not to be confused with a klass, which is the teaching of a course in a particular semester"""
@@ -114,6 +117,8 @@ class Course(models.Model):
     class Meta:
         unique_together = (("department", "number"),)
         
+    class Admin:
+        pass
     
 class Season(models.Model):
     """ Models a season, i.e. fall, spring, or summer """
@@ -132,6 +137,8 @@ class Season(models.Model):
     def abbr(self):
         return self.name[:2]
     
+    class Admin:
+        pass
     
 class Klass(models.Model):
     id = models.AutoField(primary_key = True)
@@ -179,6 +186,9 @@ class Klass(models.Model):
     
     def __str__(self):
         return "%s %s" % (str(self.course.short_name()), self.semester())
+
+    class Admin:
+        pass
     
 class InstructorManager(models.Manager):
     
@@ -223,6 +233,7 @@ class InstructorManager(models.Manager):
             return objects.filter(klasses__course__in = courses).distinct()
         else:
             return objects
+
     
 class Instructor(models.Model):
     """ Models an instructor. """
@@ -275,3 +286,6 @@ class Instructor(models.Model):
             return "%s, %s [%s]" % (self.last, first, self.department.my_nice_abbr())
         else:
             return "%s, %s" % (self.last, first)
+
+    class Admin:
+        pass

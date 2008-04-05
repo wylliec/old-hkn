@@ -123,3 +123,6 @@ class Exam(models.Model):
         if not self.submitted:
             self.submitted = datetime.datetime.now()
         super(Exam, self).save()
+
+    class Admin:
+        list_filter = ['exam_type']

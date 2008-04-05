@@ -13,6 +13,8 @@ class Permission(models.Model):
     def __str__(self):
         return self.name
 
+    class Admin:
+        pass
 try:
     everyone_permission = Permission.objects.get(codename = "everyone")
 except:
@@ -26,6 +28,9 @@ class Group(models.Model):
     def __str__(self):
         return self.name
 
+    class Admin:
+        pass
+
 class UserManager(models.Manager):
     def create_user(self, person, username, password):
         "Creates and saves a User with the given username, e-mail and password."
@@ -34,7 +39,7 @@ class UserManager(models.Manager):
         user.user_created = now
         user.pam_login = False
         user.last_login = now
-        user.setPassword(password)
+        user.set_password(password)
         user.force_password_change = False
         user.force_info_update = False
         user.is_superuser = False
@@ -78,13 +83,13 @@ class User(models.Model):
     def __str__(self):
         return self.username
 
-    def setPassword(self, password):
+    def set_password(self, password):
 #        salt = bcrypt.gensalt()
 #        hashed = bcrypt.hashpw(password, salt)
 #        self.password = hashed
 		self.password = password
 
-    def checkPassword(self, password):
+    def check_password(self, password):
 #        return bcrypt.hashpw(password, self.password[:-30]) == self.password    
     	return password == self.password
 
@@ -139,11 +144,27 @@ class User(models.Model):
                 return False
         return True
 
+    def has_module_perms(self, app_label):
+        if not self.is_active:
+            return False
+
+        if self.is_superuser:
+            return True
+
+        return bool(len([p for p in self.get_all_permissions() if p[:p.index('.')] == app_label]))
+
+
     def is_anonymous(self):
         return False
 
+    def is_staff(self):
+        return self.is_superuser
+
     def is_authenticated(self):
         return True
+
+    class Admin:
+        pass
 
 class AnonymousUser(object):
     person_id = None
@@ -193,6 +214,9 @@ class AnonymousUser(object):
         return [everyone_permission]
 
     def has_module_perms(self, module):
+        return False
+
+    def is_staff(self):
         return False
 
     def is_anonymous(self):
