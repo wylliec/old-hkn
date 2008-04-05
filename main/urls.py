@@ -25,6 +25,9 @@ urlpatterns = patterns('',
      (r'^authenticate/$', 'hkn.auth.login.authenticate'),
 
 
+     (r'^admin/', include('hkn.admin.urls')),
+
+
     # default static
     (r'^images/site/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + '/static/images/site'}),
     (r'^images/(?P<path>.*)$', 'django.views.static.serve', {'document_root': IMAGES_PATH}),
