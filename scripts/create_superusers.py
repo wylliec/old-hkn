@@ -14,12 +14,12 @@ me = Person.objects.get(first="Hisham")
 me.member_status = MEMBER_TYPE.OFFICER
 me.save()
 u = me.user
-u.setPassword("monkey")
+u.set_password("monkey")
 u.is_superuser = True
 u.save()
 
 me = Person.objects.get(first="Vishay")
 u = me.user
-u.setPassword("monkey6969")
+u.set_password("monkey6969")
 u.is_superuser = True
 u.save()
