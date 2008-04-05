@@ -125,6 +125,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
 #    'django.contrib.admin',
     'hkn.info',
+    'hkn.admin',
     'hkn.auth',
     'hkn.sms',
     'hkn.event',
