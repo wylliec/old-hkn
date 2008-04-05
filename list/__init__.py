@@ -59,6 +59,7 @@ def get_list_context(request, default_sort, default_category = "objects", defaul
         categories = category.split("|")
     except:
         categories = [category]
+    categories = [cat for cat in categories if len(cat) > 0]
     category = "|".join(categories)
     
     list_context = {"category" : category, "categories" : categories, "sort" : sort, "page" : page, "max" : max, "query" : query}
@@ -67,6 +68,7 @@ def get_list_context(request, default_sort, default_category = "objects", defaul
         list_context["reverse_sort_" + sort] = "-"
         
     list_context["per_page"] = ("10", "25", "50", "100")
+    list_context["parent_template"] = "hkn.html"
     
     return list_context
 
