@@ -119,6 +119,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 "django.core.context_processors.i18n")
 
 INSTALLED_APPS = (
+    'hkn.auth',
 #    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -126,7 +127,6 @@ INSTALLED_APPS = (
 #    'django.contrib.admin',
     'hkn.info',
     'hkn.admin',
-    'hkn.auth',
     'hkn.sms',
     'hkn.event',
     'hkn.gcal',
