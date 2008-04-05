@@ -88,10 +88,13 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 	
 	{% if user.is_anonymous %}
 	<form action="{% url hkn.auth.login.authenticate %}" method="post" enctype="multipart/form-data">
-	User: <input class="inputbox" type="text" name="username" value="" size=15/><br>
-	Pass: <input class="inputbox" type="password" name="password" value="" size=15/><br>
+    <label class="small" for="login_username">User</label><br/>
+    <input id="login_username" class="inputbox" type="text" name="username" value="" size=15/><br/>
+    <label class="small" for="login_password">Password</label><br/>
+	<input class="inputbox" type="password" name="password" value="" size=15/><br/>
+    <input type="submit" class="button" style="margin-top: 3px;" value="Login" />
 	<input type="hidden" name="redirect_url" value="/" />
-	<input type="submit" class="button" value="Login" />
+    </form>
 	{% else %}
 	<span class="logout"> you are {{ user.username }} <a href="{% url hkn.auth.login.logout %}">(logout)</a></span>
 	{% endif %}
