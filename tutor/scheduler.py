@@ -296,9 +296,10 @@ class State(dict):
         given slot to given person, removes incorrect info from meta and fixes the parent
         pointer.  Sets meta info about the slot and person just assigned.
         
-        You may want to set extraCalculations=False when making a child if you have a
-        cache of State objects.  You can save some calculation by replacing the returned
-        State with an equivalent one from your cache if you disable arc consistency.
+        You almost certainly want to set extraCalculations=False when making a child if you
+        have a cache of State objects.  You can save some calculation by replacing the
+        returned State with an equivalent one from your cache if you disable arc consistency.
+        
         """
         #note: arc consistency already disabled during copy, since there's no nneed
         #to calculate anything if just copying
@@ -374,6 +375,7 @@ class State(dict):
         if __setitem__ is called while self.extraCalculations is False,
         the calculations can still be performed later.
         """
+        
         if person != None and self.extraCalculations:
             #update information in meta
             aBSlot = self.meta['remainingAvailabilitiesBySlot']
@@ -397,7 +399,7 @@ class State(dict):
                     index += 1
                 if found:
                     aBSlot[otherOfficeSlot].pop(index)
-        
+            
             #update remainingSlotsByPerson
             #may not be a key in remainingSlotsByPerson
             if person not in self.meta['remainingSlotsByPerson']:
@@ -405,7 +407,7 @@ class State(dict):
                     self.meta['remainingSlotsByPerson'][person] - 1#should have a default value
             else:
                 self.meta['remainingSlotsByPerson'][person] -= 1
-        
+            
             #update set of inconsistent arcs
             self.requeue_incoming_arcs_to(slot)
     
@@ -561,22 +563,45 @@ class State(dict):
                         toRemove.insert(0, index)
                 index += 1
             
-            #remove all bad indices
+#            if not ret:
+#                print "\nInconsistencies in arc from %s to %s:" % (slotU, slotV)
+#                for index in toRemove:
+#                    print "\t\t%s" % availsU[index][0]    
+#                print ""
+#                print "\tAvails in destination:"
+#                for detail in aBSlot[slotV]:
+#                    print detail[0]
+#                print "\tAvails in source before removal:"
+#                for detail in aBSlot[slotU]:
+#                    print detail[0]
+#                print "\tstate:"
+#                print self.pretty_print()
             
+            #remove all bad indices
             for index in toRemove:
                 #toRemove is in descending index order, so this is safe
                 availsU.pop(index)
             
             length = len(availsU)
-            if length <= 1:
+            if length == 1 and self[slotU] == None or length == 0:
                 #provide hint to getSuccessors
                 
                 if self[slotU] == None or length == 0:
+#                    print "setting hint for slot with avails length %d for slot %s, avails:" %(length, slotU)
+#                    for detail in self.meta['remainingAvailabilitiesBySlot'][slotU]:
+#                        print detail[0]
                     self.meta['getSuccessorsSlotHint'] = slotU
                 if length == 0:
                     #no possible solution, immediately halt arc consistency
 #                    print "halting arc_consistency, no possible solution for slot %s" % slotU
                     return None
+            
+#            if not ret:
+#                print "\tAvails in source after removal:"
+#                for detail in aBSlot[slotU]:
+#                    print detail[0]
+#                print "end\n"
+            
             return ret
         
         #perform arc consistency
@@ -874,6 +899,14 @@ class StateTracker:
             self.stats['successors'] += returned
 
 #        print "\tfiltered_successors returning %d results" % len(ret)
+#        print "successors are:"
+#        for elem in ret:
+#            print "%s: %s" % (elem.meta['slotAssigned'], elem.meta['personAssigned'])
+#        if 'slotAssigned' in state.meta:
+#            print "for state: noneCount/assignment: %d %s: %s" % (state.noneCount, state.meta['slotAssigned'], state.meta['personAssigned'])
+#        else:
+#            print "for state with no slotAssigned"
+#        print "\n"
         
         return ret
     
@@ -1075,7 +1108,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
         signalHolder[1] = True
     try:
         while state != None:
-#            print "state with noneCount %d" % state.noneCount
+#            print "iteration %d, state with noneCount %d" % (iterations, state.noneCount)
             if True:#readlock.acquire(0): #only acquire if can do so without waiting
                 char = charHolder[0]
                 if len(char) > 0:
@@ -1166,7 +1199,7 @@ by %d iterations" % maxIterations
             
             if state.isGoal():
                 stateTracker.visit(state)
-                print "\tfound goal with cost %d: %s" % (state.meta['cost'], dict(state)) #TODO remove
+                print "\tfound goal:\n%s" % state.pretty_print()
                 
                 goalsFound += 1
                 lastGoalTime = time.time()
@@ -1266,7 +1299,9 @@ def get_successors(state=State(),
             details = remainingAvailabilitiesBySlot[slot]
         
         for detail in details:
-            ret.append(state.make_child(slot, detail[0]))
+            tmp = state.make_child(slot, detail[0], extraCalculations = False)
+            tmp.extraCalculations = True
+            ret.append(tmp)
         
 #        print "get_successors followed hint for slot %s, returning %d states" % (slot, len(ret))
         
@@ -1280,6 +1315,7 @@ def get_successors(state=State(),
         
         aBSlot = state.meta['remainingAvailabilitiesBySlot']
 #        print "remainingAvailabilitiesBySlot has length %d" % len(aBSlot)
+        
         bestSoFar = []
         bestLength = 10000 #much larger than what could come up
         bestSlot = None
@@ -2196,7 +2232,7 @@ if __name__=="__main__":
             usage()
             sys.exit(0)
         elif opt in ('-t', '--test'):
-            run_tests(True)
+            run_tests()
             sys.exit(0)
 
     generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed})
