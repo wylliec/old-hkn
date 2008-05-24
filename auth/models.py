@@ -115,7 +115,7 @@ class User(models.Model):
                 WHERE perm.permission_id = gp.permission_id
                     AND gp.group_id = ug.group_id
                     AND ug.user_id = %s""" 
-            cursor.execute(sql, [self.person_id])
+            cursor.execute(sql, [self.id])
             self._group_perm_cache = sets.Set(["%s" % (row[0],) for row in cursor.fetchall()])
         return self._group_perm_cache
 
@@ -167,7 +167,7 @@ class User(models.Model):
         pass
 
 class AnonymousUser(object):
-    person_id = None
+    id = None
     username = ''
 
     def __init__(self):

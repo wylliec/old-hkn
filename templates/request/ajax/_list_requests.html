@@ -1,8 +1,7 @@
-{% extends "list/list_objects.html" %}
+{% extends "ajaxlist/_objects_view.html" %}
 
 {% block objects_content %}
-
-<table class="list"><tr>
+<table class="ajaxlist_list"><tr>
 <th>Confirm</th>
 <th>Links</th>
 <th>Description</th>
@@ -10,11 +9,7 @@
 <th></th>
 </tr>
 {% for r in requests %}
-<div id="request_{{r.id }}">
-
-{% include "request/ajax/list_requests_row.html" %}
-
-</div>
+<div id="request_{{r.id }}"> {% include "request/ajax/_list_requests_row.html" %} </div>
 {% endfor %}
 </table>
 {% endblock %}

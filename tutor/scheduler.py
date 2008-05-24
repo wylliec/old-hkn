@@ -14,7 +14,7 @@ SCORE_ADJACENT_SAME_OFFICE, DEFAULT_HOURS
     except:
         raise "cannot find neither hkn.tutor.constants nor parameters"
 try:
-    from hkn.utils import NiceDict
+    from nice_types import NiceDict
 except:
     class NiceDict(dict):
         def __init__(self, defaultValue = False, *a, **kw):

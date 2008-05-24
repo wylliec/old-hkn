@@ -5,12 +5,15 @@ import re, django, sys, pickle, glob, datetime, pdb
 from string import atoi
 from xml.dom import minidom
 
-from course.constants import DEFAULT_DEPARTMENTS
+import sys
+sys.path.append("course")
+from constants import DEFAULT_DEPARTMENTS
+sys.path.remove("course")
 
 import hkn_settings
 
-from hkn.course.models import *
-from hkn.course.constants import EXAMS_PREFERENCE
+from course.models import *
+from course.constants import EXAMS_PREFERENCE
 
 #bad_klasses = ( "MEC ENG-297--Summer-2008", "INTEGBI-116-SAKANARI, J A-Summer-2008", "INTEGBI-141-NIERMANN, G L-Summer-2008", "MCELLBI-63-REYES, J A-Summer-2008" )
 

@@ -6,8 +6,8 @@ from xml.dom import minidom
 
 import hkn_settings
 
-from hkn.course.models import *
-from hkn.course.constants import EXAMS_PREFERENCE
+from course.models import *
+from course.constants import EXAMS_PREFERENCE
 
 def importInstructor(dpt, instructor):
 	first = instructor.getAttribute("first")

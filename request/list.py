@@ -6,19 +6,12 @@ from django.core import urlresolvers
 from hkn.info.models import *
 from hkn.info.utils import *
 from hkn.auth.decorators import *
-from hkn.list import get_list_context, filter_objects
+from ajaxlist import get_list_context, filter_objects
 from string import atoi
 from django.utils import simplejson
 from hkn.request.types import METAINFO_FUNCTIONS
 from hkn.request.models import *
 
-#@permission_required("all.view.basic")
-def list_requests(request, category):
-    d = get_list_context(request, default_sort = "submitted", default_category = category)    
-    #d["objects_url"] = "/request/list_requests_ajax/"
-    d["objects_url"] = urlresolvers.reverse("hkn.request.list.list_requests_ajax")    
-    d["extra_javascript"] = "request/ajax/list_requests_javascript.html"
-    return render_to_response("list/list.html", d, context_instance=RequestContext(request))
 
 
 def add_requests_metainfo(requests):
@@ -26,27 +19,27 @@ def add_requests_metainfo(requests):
         METAINFO_FUNCTIONS[r.type](r)
     return requests
 
-def list_requests_ajax(request):
-    list_context = get_list_context(request, default_sort = "submitted")
+def get_list_requests_context(request, category = None):
+    list_context = get_list_context(request, default_sort = "submitted", default_category = category)
     query_requests = lambda objects, query: Request.objects.query(query, objects)
     filter_permissions = lambda objects: Request.objects.for_user(request.user, objects)
-    (requests, pages) = filter_objects(Request, list_context, query_objects = query_requests, category_map = {"all" : "objects"}, filter_permissions = filter_permissions, final_filter = add_requests_metainfo)
-    
-#    if request.POST:
-#        for req in requests:
-#            attr_confirmed = str(req.id) + ".confirmed"
-#            attr_comment = str(req.id) + ".comment"
-#            
-#            confirmed = request.POST.get(attr_confirmed, False)
-#            comment = request.POST.get(attr_comment, "")
-#            
-#            req.set_confirm(confirmed, comment)
-#            req.save()
-    
+    requests = filter_objects(Request, list_context, query_objects = query_requests, category_map = {"all" : "objects"}, filter_permissions = filter_permissions, final_filter = add_requests_metainfo)
     list_context["requests"] = requests
     list_context["filter_categories"] = {"All Requests" : "all", "Active Requests" : "actives", "Inactive Requests" : "inactives"}
-    list_context["page_range"] = range(1, pages+1)
-    return render_to_response("request/ajax/list_requests.html", list_context, context_instance = RequestContext(request))
+    list_context["view_template"] = "request/ajax/_list_requests.html"
+
+    return list_context
+
+#@permission_required("all.view.basic")
+def list_requests(request, category):
+    list_context = get_list_requests_context(request, category)
+    list_context["objects_url"] = urlresolvers.reverse("hkn.request.list.list_requests_ajax")    
+    list_context["extra_javascript"] = "request/ajax/_list_requests_javascript.html"
+    return render_to_response("ajaxlist/ajaxview.html", list_context, context_instance=RequestContext(request))
+
+def list_requests_ajax(request):
+    list_context = get_list_requests_context(request)
+    return render_to_response("request/ajax/_list_requests.html", list_context, context_instance = RequestContext(request))
 
 def list_requests_confirm_ajax(request, request_id):
     try:

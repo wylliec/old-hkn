@@ -10,13 +10,13 @@ from string import atoi
 
 from hkn.auth.decorators import *
 
-from hkn.course import models as courses
+from course import models as courses
 from hkn.tutor import models as tutor
 from hkn.info import models as hknmodels
 
-from hkn.utils import NiceDict
-from hkn.utils import NamedList
-from hkn.utils import QueryDictWrapper
+from nice_types import NiceDict
+from nice_types import NamedList
+from nice_types import QueryDictWrapper
 
 from hkn.tutor.constants import *
 from hkn.tutor.scheduler import State, Slot

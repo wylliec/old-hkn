@@ -6,7 +6,7 @@ from xml.dom import minidom
 
 import hkn_settings
 
-from hkn.course.models import *
+from course.models import *
 
 def importDepartment(department):
 	name = department.getAttribute('name').strip()

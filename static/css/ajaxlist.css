@@ -1,20 +1,20 @@
-table.list {
+table.ajaxlist_list {
   margin: 1em 2% 1em 2%;
   background: whitesmoke;
   border-collapse: collapse;
   font-size: small;
   width: 96%;
 }
-table.list th, table.list td {
+table.ajaxlist_list th, table.ajaxlist_list td {
   border: 1px silver solid;
   padding: 0.2em;
 }
-table.list th {
+table.ajaxlist_list th {
   background: gainsboro;
   font-size: medium;
   text-align: left;
 }
-table.list caption {
+table.ajaxlist_list caption {
   margin-left: inherit;
   margin-right: inherit;
 }

@@ -1,5 +1,5 @@
 confirmRequest = function(request_id, approved) {
-	confirm_url = "{% url hkn.request.list.list_requests_confirm_ajax %}" + request_id + "/";
+	confirm_url = "{% url request-ajax-confirm %}" + request_id + "/";
 	comment_text = $("#" + request_id + "_comment").text();
 	post_parameters = {"confirm" : approved, "comment" : comment_text};
 	

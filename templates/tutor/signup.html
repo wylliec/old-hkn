@@ -13,7 +13,7 @@ You are logged in as <b>{{ user.person.first }} {{ user.person.last }}</b> <br /
 <script language="javascript">
 function update_courses() {
 	var inp = document.getElementById("course_query").value;
-	query_url = "{% url hkn.course.course.find_course %}?query=" + escape(inp);
+	query_url = "{% url course.course.find_course %}?query=" + escape(inp);
 	$("#results").load(query_url);
 	return false;
 }

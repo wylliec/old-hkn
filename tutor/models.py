@@ -1,10 +1,10 @@
 #tutoring models
 from django.db import models
-from hkn.course import models as courses
 from hkn.info.models import Person
 from hkn.tutor.constants import *
 import hkn.tutor.scheduler as scheduler
 
+from course import models as courses
 import time
 
 # Create your models here.

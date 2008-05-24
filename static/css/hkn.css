@@ -1,9 +1,15 @@
-.inputbox {
-	background:#FFFFFF none repeat scroll 0%;
-	border:1px solid #999999;
-	color:#333333;
+select {
+    border: 1px solid black;
+    padding: 2px;
+    font-size: 10px;
+}
+input {
+    border: 1px solid black;
+    font-size: 10px;
+    padding: 3px;
 }
 
+/*
 .button {
 	background:#666666 none repeat scroll 0%;
 	border:1px solid #000000;
@@ -11,7 +17,7 @@
 	font-size:0.75em;
 	line-height:100%;
 	padding:3px;
-}
+}*/
 
 a {
 	font-weight:bold;

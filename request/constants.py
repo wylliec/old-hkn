@@ -1,4 +1,4 @@
-from hkn.enum import EnumType
+from nice_types import EnumType
 
 
 EXAM = 0

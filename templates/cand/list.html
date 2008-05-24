@@ -1,11 +1,12 @@
 {% extends "cand/hkn.html" %}
 
-{% block extrahead %}
-<link href="{{ROOT_URL}}css/list.css" rel="stylesheet" />
+{% block head %}
+{{ block.super }}
+<link href="/css/ajaxlist.css" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
-<table class="list"><tr>
+<table class="ajaxlist_list"><tr>
 <th>Name</th>
 <th>Description</th>
 <th>Time</th>

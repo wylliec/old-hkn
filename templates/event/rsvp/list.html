@@ -1,6 +1,7 @@
 {% extends "event/hkn.html" %}
 
-{% block extrahead %}
+{% block head %}
+{{ block.super }}
 <link href="{{ROOT_URL}}css/list.css" rel="stylesheet" />
 <title>RSVPs: {{ event.name }} </title>
 {% endblock %}

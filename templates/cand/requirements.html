@@ -1,13 +1,14 @@
 {% extends "cand/hkn.html" %}
 
-{% block extrahead %}
-<link href="{{ROOT_URL}}css/list.css" rel="stylesheet" />
+{% block head %}
+{{block.super}}
+<link href="/css/ajaxlist.css" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
 {% for rts in type_rsvps.items %}
 <span style="font-size:24">{{ rts.0 }}</span>
-<table class="list"><tr>
+<table class="ajaxlist_list"><tr>
 <th>Name</th>
 <th>Description</th>
 <th>Time</th>

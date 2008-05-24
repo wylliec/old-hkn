@@ -1,4 +1,4 @@
-from hkn.enum import EnumType
+from nice_types import EnumType
 
 RSVP_TYPE_NONE = 0
 RSVP_TYPE_WHOLE = 1

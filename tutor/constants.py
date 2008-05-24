@@ -1,5 +1,4 @@
-#from hkn.enum import EnumType
-from hkn.utils import NiceDict
+from nice_types import NiceDict
 
 CORY = "Cory"
 SODA = "Soda"

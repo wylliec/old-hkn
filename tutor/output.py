@@ -1,9 +1,9 @@
 from hkn import semester
 
-from hkn.utils import NiceDict
+from nice_types import NiceDict
 from hkn.tutor.constants import *
 from hkn.tutor import models as tutormodel
-from hkn.course import models as coursemodel
+from course import models as coursemodel
 from hkn.info import models as infomodel
 
 

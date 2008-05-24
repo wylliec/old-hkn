@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-{% load hkn_extras %}
+{% block head %}
 {% block title %}<title>HKN {% block extratitle%} {% endblock %}</title>{% endblock %}
 <link rel="stylesheet" type="text/css" href="{{ROOT_URL}}css/hkn-liquid.css">
 <link rel="stylesheet" type="text/css" href="{{ROOT_URL}}css/info.css">
@@ -9,14 +9,12 @@
 <meta NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
 fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% block js %}
-<!-- <script type="text/javascript" src="/js/protoaculous1.6.packed.js" > </script> -->
 <script type="text/javascript" src="{{ROOT_URL}}js/jquery-1.2.1.js" > </script>
 <script type="text/javascript" src="{{ROOT_URL}}js/jquery.form.js"></script>
 <script type="text/javascript" src="{{ROOT_URL}}js/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="{{ROOT_URL}}js/jquery.dimensions.js"></script>
 <script type="text/javascript" src="{{ROOT_URL}}js/jquery.bgiframe.js"></script>
 {% endblock %}
-{% block extrahead %}
 {% endblock %}
 </head>
 
@@ -78,11 +76,14 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 	<br><a href="{% url hkn.tutor.views.contact %}">Contact Tutoring</a>
 	<br>
 
-
+	<br><span class="title">Exam Files</span>
+	<br><a href="{% url exam-browse %}">Browse Exams</a>
+	<br><a href="{% url exam-list %}">Search Exams</a>
+	<br><a href="{% url exam-submit %}">Submit Exam</a>
+	<br>
 	
 	<br><span class="title">Student Services</span>
 	<br><a href="/student/CourseSurvey">Course Survey</a>
-	<br><a href="/exam/">Online Exams</a>
 	<br>
 	<br>
 	
@@ -112,7 +113,6 @@ SRC="/images/shield256.gif" WIDTH="75" HEIGHT="122" BORDER=0></A>
 <div id="content">
 <!-- start main content block -->
 {% block content %}
-	Content goes here! Extend "content" block in template :) :) :) <3 <3 <3
 {% endblock %}
 <!-- end main content block -->
 </div>

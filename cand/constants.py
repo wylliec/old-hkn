@@ -1,4 +1,4 @@
-from hkn.enum import EnumType
+from nice_types import EnumType
 
 
 APP_YEAR_OTHER = 0

@@ -10,7 +10,7 @@ from django.core.paginator import ObjectPaginator, InvalidPage
 from django import newforms as forms
 from django.shortcuts import get_object_or_404
 
-from hkn.list import get_list_context, filter_objects
+from ajaxlist import get_list_context, filter_objects
 
 from hkn.event.constants import RSVP_TYPE, EVENT_TYPE
 

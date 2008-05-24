@@ -6,8 +6,8 @@ from xml.dom import minidom
 
 import hkn_settings
 
-from hkn.course.models import *
-from hkn.course.constants import EXAMS_PREFERENCE, SEMESTER
+from course.models import *
+from course.constants import EXAMS_PREFERENCE, SEMESTER
 
 def main():
 	try:

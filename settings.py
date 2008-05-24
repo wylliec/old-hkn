@@ -21,6 +21,7 @@ from hknsettings import SERVER_ROOT
 if not SERVER_ROOT.endswith("hkn/"):
     raise Exception, "Your SERVER_ROOT is configured incorrectly in /hkn/settings.py. Make sure it ends with \"hkn/\" (including the final slash)"
 
+EXAMS_USER_MODULE = 'hkn.auth.models.User'
 
 # don't change this
 IMAGES_PATH = "/home/hzarka/hkn-website-images/"
@@ -125,6 +126,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
 #    'django.contrib.admin',
+    'ajaxlist',
     'hkn.info',
     'hkn.admin',
     'hkn.sms',
@@ -132,10 +134,10 @@ INSTALLED_APPS = (
     'hkn.gcal',
     'hkn.cand',
     'hkn.yearbook',
-    'hkn.exam',
+    'exam',
     'hkn.tutor',
     'hkn.resume',
     'hkn.request',
     'hkn.main',
-    'hkn.course',
+    'course',
 )

@@ -1,6 +1,6 @@
 from hkn.event.models import *
 from hkn.event.forms import *
-from hkn.list import get_list_context
+from ajaxlist import get_list_context
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext

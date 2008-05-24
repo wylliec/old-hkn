@@ -2,9 +2,9 @@
 
 import hkn_settings
 
-from hkn.course.models import *
-from hkn.exam.models import *
-from hkn.exam.constants import EXAM_TYPE
+from course.models import *
+from exam.models import *
+from exam.constants import EXAM_TYPE
 import random, datetime
 
 def createExamForKlass(k, tp, num):

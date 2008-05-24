@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
 from hkn.info.models import *
 
-from hkn.list import get_list_context, filter_objects
+from ajaxlist import get_list_context, filter_objects
 
 from string import atoi
 

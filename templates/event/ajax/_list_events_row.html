@@ -1,0 +1,6 @@
+<tr>
+	<td><a href="{% url hkn.event.event.view object.id %}">{{ object.name }}</a><br><span style="font-size: 10">(<a href="{% url hkn.event.rsvp.list.list_for_event object.id %}">{{ object.num_rsvps }} rsvps </a> : <a href="javascript:void(0)" onclick="show_rsvp_form({{object.id}});">rsvp</a> <a href="{% url hkn.event.event.edit object.id %}">edit</a>)</span></td>
+	<td>{{ object.description }}<BR><div id="rsvp_{{object.id}}"> </div></td>
+	<td>{{ object.start_time|date:"l m/d g:ia" }}-{{ object.end_time|date:"g:ia" }}</td>
+	<td><a href="javascript:void(0)" onclick="filter('{{ sort }}', '1', '{{ max }}', '{{ category }},' + '{{ object.event_type }}', '{{ query }}');"> {{ object.get_event_type }} </a> </td>
+</tr>

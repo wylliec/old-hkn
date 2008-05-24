@@ -83,7 +83,7 @@ def addUser(person):
     user = User(person = person, username = uname)
     user.user_created = now
     user.last_login = now
-    user.setPassword(DEFAULT_PASSWORD)
+    user.set_password(DEFAULT_PASSWORD)
     user.is_superuser = False
     user.is_active = True
     user.pam_login = False
