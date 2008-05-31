@@ -1,0 +1,10 @@
+{% load ajaxlist_extras %}
+
+{% for cat in filter_categories.items %}
+	{% ifin cat.1 categories %}
+	<strong> <img src="/images/site/selected.png"> <a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page }}', '{{ max }}', '{{ cat.1 }}', '{{ query }}');"> {{cat.0}} </a> </strong>
+	{% else %}
+	<a href="javascript:void(0)" onclick="filter('{{ sort }}', '{{ page }}', '{{ max }}', '{{ cat.1 }}', '{{ query }}');"> {{cat.0}} </a>
+	{% endifin %}
+	<br/>
+{% endfor %}

@@ -1,0 +1,12 @@
+{% extends "exam/exam.html" %}
+
+{% block subtitle %}Exam Files - Submit Exam{% endblock %}
+
+{% block examcontent %}
+<form enctype="multipart/form-data" action="" method="post">
+	<table>
+		{{ form }}
+	</table>
+	<input class="button" type=submit value = "Submit!" />
+</form>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% block objects_query_top %}
+	{% include "ajaxlist/controls/query.html" %}
+	<br/><br/>
+{% endblock %}
+
+{% block filter_categories_top %}
+	{% if filter_categories %}
+		{% include "ajaxlist/controls/category_filter.html" %}
+	{% endif %}
+	<br/><br/>
+{% endblock %}
+
+{% block objects_nav_top %}
+{% spaceless %}
+<table width="100%">
+<td align="left">
+{% block per_page_top %}
+Showing {% include "ajaxlist/controls/per_page.html" %} per page.
+{% endblock %}
+{% block objects_info_top %}
+	{% include "ajaxlist/controls/objects_info.html" %}
+{% endblock %}
+</td>
+<td align="right">
+{% block pages_top %}
+	{% include "ajaxlist/controls/pager.html" %}
+{% endblock %}
+</td>
+</table>
+{% endspaceless %}
+{% endblock %}
+
+{% block objects_content %}
+{% if list_objects|length_is:"0" %}
+Your query produced no results!
+{% else %}
+{% if grid_view %}
+{% include "ajaxlist/_objects_grid.html" %}
+{% else %}
+{% include "ajaxlist/_objects_list.html" %}
+{% endif %}
+{% endif %}
+{% endblock %}
+
+{% block objects_nav_bottom %}
+{% spaceless %}
+<table width="100%">
+<td align="left">
+{% block per_page_bottom %}
+Showing {% include "ajaxlist/controls/per_page.html" %} per page. 
+{% endblock %}
+{% block objects_info_bottom %}
+{% include "ajaxlist/controls/objects_info.html" %}
+{% endblock %}
+</td>
+<td align="right">
+{% block pages_bottom %}
+{% include "ajaxlist/controls/pager.html" %}
+{% endblock %}
+</td>
+</table>
+{% endspaceless %}
+{% endblock %}
+
+{% block objects_query_bottom %}
+{% include "ajaxlist/controls/query.html" %}
+<br/><br/>
+{% endblock %}

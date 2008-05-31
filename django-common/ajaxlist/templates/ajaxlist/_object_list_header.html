@@ -1,0 +1,9 @@
+{% if list_headers %}
+<tr>
+{% for header in list_headers.items %}
+<th>{% if header.1 %}<a href="javascript:void(0);" onclick="resort('{{header.1}}');">{{header.0}}</a>{% else %}{{header.0}}{% endif %}</th>
+{% endfor %}
+</tr>
+{% else %}
+OBJECT LIST HEADER
+{% endif %}

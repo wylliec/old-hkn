@@ -1,0 +1,42 @@
+{% extends "exam/exam.html" %}
+
+{% block subtitle %}Exam Files - Browse Department{% endblock %}
+
+{% block examcontent %}
+<style type="text/css">
+div.browse_wrapper {
+    float: left;
+    width: 20em;
+    margin-left: 1em;
+}
+
+div.browse_clear {
+    clear: left;
+}
+
+ol.browse_ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ol.browse_ol li {
+    margin: 0;
+    padding: 0;
+    line-height: 1.3em;
+    font-size: small;
+}
+
+</style>
+{% for courses_list in courses_lists %}
+<div class="browse_wrapper">
+<ol class="browse_ol">
+  {% for course in courses_list %}
+  <li><a href="/exam/list/{{course.short_name_space}}/">{{course.short_name_space}}</a></li>
+  {% endfor %}
+</ol>
+</div>
+{% endfor %}
+<div class="browse_clear" > &nbsp; </div>
+<br />
+{% endblock %}
