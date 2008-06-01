@@ -5,7 +5,7 @@ import django, sys
 sys.path.append("../..")
 import hkn.settings
 sys.path.remove("../..")
-sys.path.append("/home/hzarka/django-common/")
+sys.path.append(hkn.settings.DJANGO_COMMON)
 
 setup_environ(hkn.settings)
 
