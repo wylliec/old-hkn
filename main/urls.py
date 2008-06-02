@@ -25,7 +25,7 @@ urlpatterns = patterns('',
      (r'^authenticate/$', 'hkn.auth.login.authenticate'),
 
 
-     (r'^admin/', include('hkn.admin.urls')),
+     #(r'^admin/', include('hkn.admin.urls')),
 
 
     # default static
