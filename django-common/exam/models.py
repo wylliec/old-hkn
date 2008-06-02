@@ -4,7 +4,8 @@ import datetime, re, os, string
 from course.models import *
 from constants import FILE_UPLOAD_DIR, EXAM_TYPE
 
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from hkn.auth.models import User
 
 
 class ExamManager(models.Manager):
