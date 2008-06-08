@@ -24,6 +24,7 @@ if not SERVER_ROOT.endswith("hkn/"):
 DJANGO_COMMON = SERVER_ROOT + "django-common/"
 
 EXAMS_USER_MODULE = 'hkn.auth.models.User'
+EXAM_LOGIN_REQUIRED = False
 
 # don't change this
 IMAGES_PATH = "/home/django/hkn-website-images/"
