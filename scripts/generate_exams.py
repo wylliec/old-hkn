@@ -29,7 +29,7 @@ def createExamsForKlass(k):
 
 def main():
     depts = ["COMPSCI", "EL ENG"]
-    klasses = Klass.objects.filter(course__department_abbr__in = depts)
+    klasses = list(Klass.objects.filter(course__department_abbr__in = depts))
     for k in klasses:
         createExamsForKlass(k)
 
