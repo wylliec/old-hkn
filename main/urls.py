@@ -29,7 +29,7 @@ urlpatterns = patterns('',
 
 
     # default static
-    (r'^/static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + '/static'}),
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + '/static'}),
 
 )
     
