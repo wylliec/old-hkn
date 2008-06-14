@@ -15,7 +15,11 @@
 # HKN-Specific Settings #
 #########################
 
-from hknsettings import SERVER_ROOT
+import os
+SERVER_ROOT = os.path.join(os.getcwd(), os.path.dirname(__file__))
+
+if SERVER_ROOT.endswith('hkn'):
+    SERVER_ROOT = SERVER_ROOT + '/'
 
 # make sure SERVER_ROOT ends with hkn/
 if not SERVER_ROOT.endswith("hkn/"):
@@ -75,11 +79,13 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = SERVER_ROOT + "media/"
+MEDIA_ROOT = SERVER_ROOT + "files/"
 
 # URL that handles the media served from MEDIA_ROOT.
 # Example: "http://media.lawrence.com"
-MEDIA_URL = ''
+MEDIA_URL = '/files/'
+
+STATIC_PREFIX = '/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
