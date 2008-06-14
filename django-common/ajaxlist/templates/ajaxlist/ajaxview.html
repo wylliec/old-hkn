@@ -34,10 +34,10 @@ function toggleOptionsDiv(options_div, img_div) {
 	var toggle_img = document.getElementById(img_div);	
 	if ( options.style.display != 'none' ) {
 		options.style.display = 'none';
-		toggle_img.src = "/images/site/plus.gif";
+		toggle_img.src = "{{STATIC_PREFIX}}images/site/plus.gif";
 	} else {
 		options.style.display = '';
-		toggle_img.src = "/images/site/minus.gif";		
+		toggle_img.src = "{{STATIC_PREFIX}}images/site/minus.gif";		
 	}
 }
 
