@@ -5,7 +5,8 @@ from course.models import *
 from constants import FILE_UPLOAD_DIR, EXAM_TYPE
 
 #from django.contrib.auth.models import User
-from hkn.auth.models import User
+import auth.models
+
 
 
 class ExamManager(models.Manager):
@@ -95,7 +96,7 @@ class Exam(models.Model):
     topics = models.TextField()
     """ A text block of topics relevant to this exam. """
     
-    submitter = models.ForeignKey(User, null = True)
+    submitter = models.ForeignKey(auth.models.User, null = True)
     """ the person who submitted this exam """
     
     submitted = models.DateTimeField()
