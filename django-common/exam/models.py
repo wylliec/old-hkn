@@ -1,15 +1,16 @@
-from django.db import models
 import datetime, re, os, string
+
+#from django.contrib.auth.models import User
+from hkn.auth.models import User
 
 from course.models import *
 from constants import FILE_UPLOAD_DIR, EXAM_TYPE
 
-#from django.contrib.auth.models import User
-import auth.models
+
+from django import db
 
 
-
-class ExamManager(models.Manager):
+class ExamManager(db.models.Manager):
     def query_course(self, query, objects = None):
         if objects == None:
             objects = self.get_query_set()
@@ -59,50 +60,50 @@ def get_semester_start(sem):
         return datetime.datetime(string.atoi(y), 1, 1)
 
 
-class Exam(models.Model):
+class Exam(db.models.Model):
     """ Models an exam. """
     
     objects = ExamManager()
     
-    id = models.AutoField(primary_key = True)
+    id = db.models.AutoField(primary_key = True)
     
-    klass = models.ForeignKey(Klass)
+    klass = db.models.ForeignKey(Klass)
     """ The particular klass in which the exam was given. """
     
-    course = models.ForeignKey(Course)
+    course = db.models.ForeignKey(Course)
     """ The course this exam is for (cached) """
     
-    file = models.FileField(null = True, upload_to = FILE_UPLOAD_DIR)
+    file = db.models.FileField(null = True, upload_to = FILE_UPLOAD_DIR)
     """ The local filesystem path to where the actual exam is stored. """
     
-    exam_type = models.CharField(choices = EXAM_TYPE.choices(), max_length = 10)
+    exam_type = db.models.CharField(choices = EXAM_TYPE.choices(), max_length = 10)
     """ The type of exam (e.g., Midterm, Final). """
     
-    number = models.IntegerField(blank = True)
+    number = db.models.IntegerField(blank = True)
     """ The exam number. If unique (i.e., only one final), leave this field blank. """ 
     
-    version = models.CharField(max_length = 1, blank = True)
+    version = db.models.CharField(max_length = 1, blank = True)
     """ The version of the exam. If only one version, leave this field blank. """
 
-    is_solution = models.BooleanField()
+    is_solution = db.models.BooleanField()
     """ True if this is the solutions file (i.e., not the original exam). """
     
-    paper_only = models.BooleanField()
+    paper_only = db.models.BooleanField()
     """ True if HKN has a paper copy but does not have a PDF version. """
     
-    publishable = models.BooleanField()
+    publishable = db.models.BooleanField()
     """ True if HKN has permission to post this exam publicly online. """
 
-    topics = models.TextField()
+    topics = db.models.TextField()
     """ A text block of topics relevant to this exam. """
     
-    submitter = models.ForeignKey(auth.models.User, null = True)
+    submitter = db.models.ForeignKey(User, null = True)
     """ the person who submitted this exam """
     
-    submitted = models.DateTimeField()
+    submitted = db.models.DateTimeField()
     """ when this exam was submitted """
     
-    exam_date = models.DateTimeField()
+    exam_date = db.models.DateTimeField()
     """ when the exam was administered. used for sorting """   
 
     def __str__(self):

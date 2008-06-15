@@ -1,4 +1,3 @@
-from django.db import models
 from django.db import backend, connection, models
 import datetime
 
@@ -15,10 +14,16 @@ class Permission(models.Model):
 
     class Admin:
         pass
-try:
-    everyone_permission = Permission.objects.get(codename = "everyone")
-except:
-    everyone_permission = None
+
+everyone_permission = None
+def get_everyone_permission():
+    global everyone_permission
+    if everyone_permission == None:
+        try:
+            everyone_permission = Permission.objects.get(codename = "everyone")
+        except:
+            everyone_permission = None
+    return everyone_permission
 
 class Group(models.Model):
     id = models.AutoField(primary_key = True)
@@ -206,12 +211,12 @@ class AnonymousUser(object):
     user_permissions = property(_get_user_permissions)
 
     def has_perm(self, perm):
-        if perm == everyone_permission:
+        if perm == get_everyone_permission():
             return True
         return False
 
     def get_all_permissions(self):
-        return [everyone_permission]
+        return [get_everyone_permission()]
 
     def has_module_perms(self, module):
         return False
@@ -224,3 +229,5 @@ class AnonymousUser(object):
 
     def is_authenticated(self):
         return False
+
+
