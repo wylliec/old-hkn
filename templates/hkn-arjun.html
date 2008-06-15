@@ -4,19 +4,15 @@
 
 {% load hkn_extras %}
 {% block title %}<title>HKN {% block extratitle%} {% endblock %}</title>{% endblock %}
-<link rel="stylesheet" type="text/css" href="{{ROOT_URL}}css/hkn-arjun.css">
-<link rel="stylesheet" type="text/css" href="{{ROOT_URL}}css/info.css">
-<link rel="stylesheet" type="text/css" href="{{ROOT_URL}}css/jquery.autocomplete.css">
+{% block css %}
+{% include "css_common.inc" %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_PREFIX}}css/hkn-arjun.css">
+{% endblock %}
 <meta NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
 fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% block js %}
-<!-- <script type="text/javascript" src="/js/protoaculous1.6.packed.js" > </script> -->
-<script type="text/javascript" src="{{ROOT_URL}}js/jquery-1.2.1.js" > </script>
-<script type="text/javascript" src="{{ROOT_URL}}js/jquery.form.js"></script>
-<script type="text/javascript" src="{{ROOT_URL}}js/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="{{ROOT_URL}}js/jquery.dimensions.js"></script>
-<script type="text/javascript" src="{{ROOT_URL}}js/jquery.bgiframe.js"></script>
-<script type="text/javascript" src="{{ROOT_URL}}js/navigation.js"></script>
+{% include "js_common.inc" %}
+<script type="text/javascript" src="{{STATIC_PREFIX}}js/navigation.js"></script>
 {% endblock %}
 {% block extrahead %}
 {% endblock %}
@@ -25,7 +21,7 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 <body {% block body_extra %} {% endblock %}>
 
 <div id="logo">
-	<img src ="/images/site/LogoDraftPlain.png">
+	<img src ="{{STATIC_PREFIX}}images/site/LogoDraftPlain.png">
 </div>
 	
 
