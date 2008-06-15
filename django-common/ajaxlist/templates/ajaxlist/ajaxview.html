@@ -1,8 +1,12 @@
 {% extends parent_template %}
 
+{% block css %}
+{{block.super}}
+<link href="{{STATIC_PREFIX}}css/ajaxlist.css" rel="stylesheet" />
+{% endblock %}
+
 {% block head %}
 {{ block.super }}
-<link href="/css/ajaxlist.css" rel="stylesheet" />
 
 <script language="javascript">
 function filter(sort, page, max, category, query) {

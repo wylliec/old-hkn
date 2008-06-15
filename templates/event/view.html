@@ -2,7 +2,6 @@
 
 {% block head %}
 {{block.super}}
-<link href="{{STATIC_PREFIX}}css/list.css" rel="stylesheet" />
 
 <script language="javascript">
 function filter(sort, page, max, category, query) {
@@ -28,6 +27,11 @@ function queryOnEnter(e, sort, page, max, category) {
 	return true;
 }
 </script>
+{% endblock %}
+
+{% block css %}
+{{block.super}}
+<link href="{{STATIC_PREFIX}}css/list.css" rel="stylesheet" />
 {% endblock %}
 
 {% block body_extra %} onLoad='filter("{{ sort }}", "{{ page }}", "{{ max }}", "{{ event.id }}", "{{ query|escape }}");' {% endblock %}

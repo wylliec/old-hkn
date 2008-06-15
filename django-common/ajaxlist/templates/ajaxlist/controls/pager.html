@@ -1,7 +1,7 @@
 {% load ajaxlist_extras %}
 
 {% spaceless %}
-<img src="/images/site/arrow_desc.gif">
+<img src="{{STATIC_PREFIX}}images/site/arrow_desc.gif">
 {% if has_previous_page %}
 <a href="javascript:void(0);" onclick="filter('{{ sort }}', '{{ page|add:"-1" }}', '{{ max }}', '{{ category }}', '{{ query }}');">Previous</a>
 {% else %}
@@ -23,5 +23,5 @@ Previous
 {% else %}
 Next
 {% endif %}
-<img src="/images/site/arrow_asc.gif">
+<img src="{{STATIC_PREFIX}}images/site/arrow_asc.gif">
 {% endspaceless %}

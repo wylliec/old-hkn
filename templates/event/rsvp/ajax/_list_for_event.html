@@ -24,7 +24,7 @@
 {% for rsvp in rsvps %}
 <tr>
 	<td> {% if show_confirm_form %} <input type=checkbox name="{{rsvp.id}}.vp_confirm" {% if rsvp.vp_confirm %} checked="yes" {% endif %} /> {% endif %} 
-	<img id="toggle_{{ rsvp.id }}" src="/images/site/plus.gif" onClick='toggleOptionsDiv("options_{{rsvp.id}}", "toggle_{{rsvp.id}}")' /> 
+	<img id="toggle_{{ rsvp.id }}" src="{{STATIC_PREFIX}}images/site/plus.gif" onClick='toggleOptionsDiv("options_{{rsvp.id}}", "toggle_{{rsvp.id}}")' /> 
 	{{ rsvp.person.name }}
 	<div id="options_{{ rsvp.id }}" style="display: none; font-size:10">
 		<br>rsvp: <a href="{% url hkn.event.rsvp.rsvp.view rsvp.id %}">view</a> <a href="{% url hkn.event.rsvp.rsvp.edit rsvp.event_id %}">edit</a> <a href="{% url hkn.event.rsvp.rsvp.delete rsvp.id %}">del</a> 
