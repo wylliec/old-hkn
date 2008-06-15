@@ -1,0 +1,247 @@
+html{
+	height: 100%;
+}
+
+body{
+	height:100%;
+	background-color: white;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	text-align:center;
+
+}
+
+h1 {
+  color: #003366;
+  font-weight: bold;
+  font-size: large;
+  font-family: arial, helvetica, sans-serif;
+}
+
+h2 {
+  font-size: large;
+  font-family: arial, helvetica, sans-serif;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: medium;
+  font-family: arial, helvetica, sans-serif;
+}
+
+#logo {
+	margin:auto;
+	background-color: #e5f200;
+}	
+
+#navigation{
+	font-family: "Trebuchet MS",Arial,tahoma,sans-serif;
+	width: 100%;
+	margin: 0;
+	font-size: 15px;
+	height: 52px;
+	z-index:50;
+	vertical-align: middle;
+	background: #e5f200 url("/images/site/navbar.png") top repeat-x;
+
+}
+
+#toplevel{
+	position: relative;
+	height: 26px;
+	clear: both;
+	margin: 0 auto;
+	width: 100%;
+	text-align:center;
+	display:inline; 
+}
+
+#toplevel ul, .submenu ul{
+	padding: 0;
+    margin: 0;
+    list-style: none;
+	height: 26px;
+	text-align:center;
+}
+
+#toplevel li, .submenu li {
+	display:inline;
+    padding: 0;
+    margin: 0;
+	height: 26px;
+}
+
+.submenu{
+	height: 26px;
+	display:none;
+}
+
+/*
+
+
+
+#navigation ul a.top:link, #navigation ul a.top:visited{
+    float: left;
+    border-left: 1px solid #576178;
+    border-right: 1px solid #1f2635;
+    text-decoration: none;
+    color: #124876;
+    height: 13px;
+	padding: 6px 10px;
+}
+
+#navigation ul a.sub:link, #navigation ul a.sub:visited{
+    display: none;
+}
+
+#navigation ul li:hover a.sub:link, #navigation ul li:hover a.sub:visited{
+	display: block;
+	float: none;
+	position: relative;
+	background: #e5f200;
+    border-left: 1px solid #576178;
+    border-right: 1px solid #1f2635;
+    text-decoration: none;
+    color: #124876;
+    height: 13px;
+	padding: 6px 10px;
+}
+
+
+#navigation ul li a.top.current, #navigation ul li a.top:hover {
+    background: #124876;
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+#navigation ul li a.top.current{
+    text-decoration: none;
+}
+
+#navigation ul li ul{
+	display:none;
+	width: 100%;
+}
+
+#navigation ul li:hover ul{
+	display:block;
+	position:absolute;
+	left:0;
+	top:100%;
+	width: 100%;	
+}*/
+
+#container{
+	height: auto;
+	margin: 5%;
+	padding: 5%;
+	border: 2px solid #083643;
+	background-color: #CEF09D;
+	overflow:visible;
+}
+
+#container #leftshadow{
+	position: relative;
+	top:-5%;
+	left:-7%;
+	width: 1%;
+	background: url("/images/site/leftshadow.png") repeat-y;
+	height:110%;
+}
+
+div #rightshadow{
+	position: absolute;
+	top:0%;
+	right:101%;
+	width: 10px;
+	background: url("/images/site/leftshadow.png") repeat-y;
+	height:100%;
+}
+
+/* Currently unused for dropshadows:
+#content {
+	height: 80%;
+	float:left;
+	padding: 5%;
+	width: 80%;
+	background: #00ff00;
+}
+
+#leftshadow{
+	float:left;
+	margin-left: 3%;
+	background: url("/images/site/leftshadow.png") repeat-y;
+	width: 10px;
+	height:100%;
+}
+
+#midcontainer{
+	float:left;
+	background: #0000ff;
+	width: 80%;
+	text-align: center;
+}
+
+#rightshadow{
+	float:left;
+	background: url("/images/site/rightshadow.png") repeat-y;
+	width: 10px;
+	height: 100%;
+	clear:right;
+}
+*/
+
+#footer {
+	position: relative;
+	clear: both;
+	width: 96%;
+	height: 15px;
+	padding: 5px 2% 5px 2%;
+	background-color: #000066;
+	font-family: Verdana, Arial, Helvetica;
+	font-size: x-small;
+	font-weight: bold;
+	color: #EEC000;
+}
+
+#footer a {
+	background-color: #000066;
+	font-family: Verdana, Arial, Helvetica;
+	font-size: x-small;
+	font-weight: bold;
+	color: #EEC000;
+}
+
+	/*f2cc24, e5f200, 4f7cf2, 124876*/
+/*#navigation ul .subitem{
+	display:none;
+	border-bottom: solid;
+	border-left: solid;
+	border-right: solid;
+	border-width: 1px;
+	border-color: #000000;
+}
+#navigation ul .item{
+	border-right: solid;
+	border-width: 1px;
+	border-color: #000000;
+}
+
+#navigation ul a {
+	padding: 11px 25px;
+}
+
+#navigation ul:hover .subitem{
+	display:block;
+	background-color:#E5F200;
+	padding:1px;
+}
+#navigation ul:hover .subitem {color: #124876;text-decoration:none;}
+#navigation ul:hover .subitem a:hover {background-color:#124876; color:#E5F200; text-decoration:none;}
+
+#navigation ul{width:100px;float:left;margin:0px;padding:0px;background-color:#E5F200;list-style:none;}
+#calendar {
+	margin-top: 25px;
+}
+*/
