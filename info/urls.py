@@ -7,20 +7,17 @@ urlpatterns = patterns('',
 
     # View URL patterns go here:
         #(r'^$', 'hkn.info.list.list_all'),
-        (r'^view/(?P<person_id>\d+)/$', 'hkn.info.person.view'),
-        (r'^pictures/(?P<person_id>\d+)/$', 'hkn.info.person.pictures')	,		
-        
+        url(r'^view/(?P<person_id>\d+)/$', 'hkn.info.person.view', name="person-view"),
+        url(r'^thumbnail/(?P<person_id>\d+)/$', 'hkn.info.person.pictures', name="person-thumbnail"),
 
-        (r'^list/(?P<category>.*)/$', 'hkn.info.list.list_people'),
-        (r'^list/$', 'hkn.info.list.list_people', {"category" : "all"}),
-        (r'^list_people_ajax/$', 'hkn.info.list.list_people_ajax'),
-        (r'^quiz/(?P<category>.*)/$', 'hkn.info.quiz.quiz'),
+        url(r'^list/(?P<category>.*)/$', 'hkn.info.list.list_people', name="person-list-category"),
+        url(r'^list/$', 'hkn.info.list.list_people', {"category" : "all"}, name="person-list-all"),
+        url(r'^list_people_ajax/$', 'hkn.info.list.list_people_ajax', "person-list-ajax"),
+        url(r'^quiz/(?P<category>.*)/$', 'hkn.info.quiz.quiz', "person-quiz-category"),
 
-        (r'^find_person/$', 'hkn.info.find.find_person'),
-        (r'^elect/$', 'hkn.info.elect.elect'),
-        (r'^revolt/$', 'hkn.info.elect.revolt'),		
-        
-
+        url(r'^find_person/$', 'hkn.info.find.find_person'),
+        url(r'^elect/$', 'hkn.info.elect.elect'),
+        url(r'^revolt/$', 'hkn.info.elect.revolt'),		
 
         #(r'^?P<committee>\w/$', 'hkn.info.list.list_committee'),
     )					    

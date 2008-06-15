@@ -19,6 +19,8 @@ def import_people(filename, member_status):
     for line in f:
         addLine(line, member_status)
 
+lion_file_content = file('lion.gif', 'rb').read()
+
 def addLine(line, member_status):
     (first, last, realfirst, cand_com, email, lp, pp, la, pa, sid, gradsem, candsem) = line.split("\t")
     c = Person()
@@ -32,8 +34,11 @@ def addLine(line, member_status):
     else:
         c.school_email = email
     
-
     c.member_status = member_status
+
+    uname = get_username_for_person(c)
+    c.save_profile_picture_file(uname + ".gif",  lion_file_content)   
+
     c.save()
 
     ci = ExtendedInfo()
@@ -57,26 +62,26 @@ def addLine(line, member_status):
     candidateinfo.comment = ""
     candidateinfo.initiated = False
     candidateinfo.person = c
+    candidateinfo.save_candidate_picture_file(uname + ".gif",  lion_file_content)   
     candidateinfo.save()
 
-    
-
-
-    addUser(c)
+    addUser(c, uname)
 
 everyoneGroup = Group.objects.get(name = "everyone")
 candidatesGroup = Group.objects.get(name = "candidates")
 
-def addUser(person):
-    pw = person.extendedinfo.sid
-    if len(pw) == 0:
-        pw = person.email().split("@")[0]
+def get_username_for_person(person):
     uname = (str(person.first[0]) + person.last).lower()
     count = 0
     while not User.objects.isValidUsername(uname):
         count += 1
         uname = uname + str(count)
+    return uname
 
+def addUser(person, uname):
+    pw = person.extendedinfo.sid
+    if len(pw) == 0:
+        pw = person.email().split("@")[0]
     #user = User.objects.create_user(person, uname, pw)
     import datetime
     now = datetime.datetime.now()
@@ -93,8 +98,8 @@ def addUser(person):
     user.groups.add(everyoneGroup)
     if person.member_status == 2:
         user.groups.add(candidatesGroup)
-        
-
+    
+    
     user.save()
     
 

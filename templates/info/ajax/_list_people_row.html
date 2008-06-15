@@ -1,6 +1,6 @@
 <tr>
-	<td><a href="/info/pictures/{{ object.id }}"><img height=60 width=80 src="{{ object.thumbnail_url }}"></a></td>
-	<td><a href="/info/details/{{ object.id }}">{{ object.name }}</a><br><span style="font-size: 10"><a href="{% url hkn.event.rsvp.list.list_for_person object.id %}">see rsvps</a></span> </td>
+	<td><a href="{% url person-view object.id %}"><img height=60 width=80 src="{{ object.get_profile_picture_url }}"></a></td>
+	<td><a href="{% url person-view object.id %}">{{ object.name }}</a><br><span style="font-size: 10"><a href="{% url hkn.event.rsvp.list.list_for_person object.id %}">see rsvps</a></span> </td>
 	<td>{{ object.email }}</td>
 	<td>{{ object.extendedinfo.get_phone }}</td>
 </tr>

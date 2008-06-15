@@ -30,7 +30,6 @@ class PeopleManager(models.Manager):
         return persons
         
 
-
 class CandidateManager(PeopleManager):
     def get_query_set(self):
         return super(CandidateManager, self).get_query_set().filter(candidateinfo__candidate_semester = semester.getCurrentSemester())
@@ -86,7 +85,6 @@ class Position(models.Model):
         return "%s (%s)" % (self.long_name, self.short_name)
 
 
-# Create your models here.
 class Person(models.Model):
     """
     On its own, the Person class holds general information on people, including their name, email, hkn member status,
@@ -205,6 +203,9 @@ class Person(models.Model):
 
     member_status = models.IntegerField(choices = MEMBER_TYPE.choices())
     """ The person's member status. See L{hkn.info.constants.MEMBER_TYPE} for some more details. """
+
+    profile_picture = models.ImageField(upload_to = "profile_pictures")
+    """ The person's profile picture"""
     
 
 
@@ -383,6 +384,9 @@ class CandidateInfo(models.Model):
 
     initiation_comment = models.TextField()
     """ a comment that can be set at initiation time by the VP """
+
+    candidate_picture = models.ImageField(upload_to="candidate_pictures")
+    """ candidate picture """
 
     def __str__(self):
         return "%s %s %s" % (self.person.name(), self.candidate_committee, self.candidate_semester)

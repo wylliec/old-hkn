@@ -5,7 +5,7 @@
 <ALIGN = CENTER><big><b>{{ person.first }} {{ person.last }}</b></big></H1>
 <br>
 <body>
-<img ALIGN = CENTER src="{{ person.picture_url }}">
+<img ALIGN = CENTER src="{{ person.get_profile_picture_url }}">
 <table>
 <tr>
 <td><b>Contact Information</b></td>
@@ -23,5 +23,5 @@
 <td>{{ person.email }} </td>
 </tr>
 </table>
-<a href = "/info/list/">List All</a>
+<a href = "{% url person-list-all %}">List All</a>
 {% endblock %}

@@ -106,19 +106,20 @@ def get_list_for_event_context(request, event_id = None):
     list_context["show_confirm_form"] = show_confirm_form(request)
     list_context["view_template"] = "event/rsvp/ajax/_list_for_event.html"
 
-    return (list_context, rsvps, list_context["show_confirm_form"])
+    return (list_context, list_context["show_confirm_form"])
     
 
 def list_for_event(request, event_id):
-    (list_context, rsvps, show_confirm_form) = get_list_for_event_context(request, event_id)
-    d["objects_url"] = urlresolvers.reverse("hkn.event.rsvp.list.list_for_event_ajax")
+    (list_context, show_confirm_form) = get_list_for_event_context(request, event_id)
+    list_context["objects_url"] = urlresolvers.reverse("hkn.event.rsvp.list.list_for_event_ajax")
     #if show_confirm_form:
     #    d["extra_javascript"] = "event/rsvp/ajax/list_rsvps_javascript.html"    
     return render_to_response("ajaxlist/ajaxview.html", list_context, context_instance = RequestContext(request))
 
 
 def list_for_event_ajax(request):    
-    (list_context, rsvps, show_confirm_form) = get_list_for_event_context(request, event_id)
+    (list_context, show_confirm_form) = get_list_for_event_context(request)
+    rsvps = list_context["rsvps"]
         
     if request.POST and show_confirm_form:
         for rsvp in rsvps:

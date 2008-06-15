@@ -31,5 +31,8 @@ urlpatterns = patterns('',
     # default static
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + '/static'}),
 
+    # media
+    (r'^files/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + '/files'}),
+
 )
     
