@@ -39,7 +39,7 @@ def edit(request, event_id = "-1"):
         if form.is_valid():
             e = event_from_form_instance(form, e)
             e.save()
-            return HttpResponseRedirect("/event/list")
+            return HttpResponseRedirect("/event/list/")
     else:
         if new:
             form = EventForm()
