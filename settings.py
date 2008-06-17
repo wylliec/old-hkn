@@ -149,4 +149,8 @@ INSTALLED_APPS = (
     'hkn.request',
     'hkn.main',
     'course',
+    'tagging',
+    'review',
 )
+
+EXAM_LOGIN_REQUIRED = False

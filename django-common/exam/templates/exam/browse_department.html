@@ -28,15 +28,22 @@ ol.browse_ol li {
 }
 
 </style>
+
+{% if empty %}
+No exams available for this department.
+{% else %}
+
 {% for courses_list in courses_lists %}
 <div class="browse_wrapper">
 <ol class="browse_ol">
   {% for course in courses_list %}
-  <li><a href="/exam/list/{{course.short_name_space}}/">{{course.short_name_space}}</a></li>
+  <li><a href="/exam/list/{{course.short_name_space}}/">{{course.short_name_space}}</a> ({{course.exam_set.count}}) </li>
   {% endfor %}
 </ol>
 </div>
 {% endfor %}
 <div class="browse_clear" > &nbsp; </div>
 <br />
+{% endif %}
+
 {% endblock %}

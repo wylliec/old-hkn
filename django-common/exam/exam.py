@@ -49,5 +49,6 @@ def submit(request):
 
     return render_to_response("exam/submit.html", {"form" : form}, context_instance=RequestContext(request))    
 
+
 if EXAM_LOGIN_REQUIRED:
     submit = login_required(submit)

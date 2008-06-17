@@ -10,10 +10,12 @@ from string import atoi
 
 from models import *
 
+
 try:
     from settings import EXAM_LOGIN_REQUIRED
 except:
     EXAM_LOGIN_REQUIRED = True
+
 
 def get_category_string(courses = None, exam_types = None, exam_numbers = None):
     courses_string = types_string = numbers_string = ""
