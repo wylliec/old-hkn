@@ -1,5 +1,7 @@
-# a valid value should look something like this:
-SERVER_ROOT = "/home/gilbertchou/Projects/trunk/hkn/"
+# the SERVER_ROOT variable no longer needs to be detected. It is detected automagically in settings.py
 
-## SERVER_ROOT = "/dev/null"
+# the following are some variables that CAN be set here
+
+GCAL_ENABLE = False
+# FORCE_LOGIN = False
 
