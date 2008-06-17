@@ -1,6 +1,11 @@
 from hkn.gcal.constants import GCAL
 from hkn.gcal.utils import getCalendarEntry
 
+try:
+    from hkn.hknsettings import GCAL_ENABLE
+except:
+    GCAL_ENABLE = False
+
 
 def gcal(request):
    return {"gcal" : GcalQuery()}
@@ -9,6 +14,8 @@ def gcal(request):
 
 class GcalQuery(object):
    def query_string(self):
+    if not GCAL_ENABLE:
+        return ""
     s = ""
     for etype in GCAL.calendar_titles.keys():
         c = getCalendarEntry(etype)

@@ -8,6 +8,11 @@ import os, pickle
 from constants import RSVP_TYPE, EVENT_TYPE
 from string import atoi
 
+try:
+    from hkn.hknsettings import GCAL_ENABLED
+except:
+    GCAL_ENABLED = False
+
 
 class AllEventsManager(models.Manager):
     def query(self, query, events = None):
@@ -112,12 +117,12 @@ class Event(models.Model):
         return "%s - %s" % (tr[0].strftime(format), tr[1].strftime(format))
 
     def save(self, gcal = True):
-        if gcal:
+        if gcal and GCAL_ENABLED:
             gcalInterface.eventSaved(self)
         models.Model.save(self)
 
     def delete(self, gcal = True):
-        if gcal:
+        if gcal and GCAL_ENABLED:
             gcalInterface.eventDeleted(self)
         models.Model.delete(self)
 
