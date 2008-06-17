@@ -1,0 +1,24 @@
+{% extends "review/review.html" %}
+
+{% block subtitle %}Review Problems - {{tag}} {% endblock %}
+
+{% block reviewcontents %}
+
+<table>
+<tr>
+	<th>Title</th>
+	<th>Difficulty</th>
+	<th>Question</th>
+	<th>Answer</th>
+</tr>
+{% for p in problems %}
+	{% include "review/_problem.html" %}
+{% endfor %}
+</table>
+
+<h4>Related Tags:</h4>
+{% for t in rel_tags %}
+	<a href="/review/tag/{{t}}">{{t}}</a>{% if not forloop.last %}, {% endif %}
+{% endfor %}
+
+{% endblock %}

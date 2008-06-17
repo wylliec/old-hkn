@@ -1,0 +1,22 @@
+{% extends "review/review.html" %}
+
+{% block subtitle %}Review Problems - View Problem {% endblock %}
+
+{% block reviewcontents %}
+
+<table>
+	<tr><th>Title:</th><td>{{problem.name}}</td></tr>
+	<tr><th>Description:</th><td>{{problem.description}}</td></tr>
+	<tr><th>Tags:</th>
+		<td>
+			{% for t in problem.tag_list %}
+				<a href="/review/tag/{{t}}">{{t}}</a>{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		</td>
+	</tr>
+	<tr><th>Difficulty:</th><td>{{problem.difficulty}}</td></tr>
+	<tr><th>Question:</th><td><a href={{problem.get_question_url}}>[link]</a></td></tr>
+	<tr><th>Answer:</th><td><a href={{problem.get_answer_url}}>[link]</a></td></tr>
+</table>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "review/review.html" %}
+
+{% block subtitle %} Review Problems - Browse Tags {% endblock %}
+
+{% block reviewcontents %}
+
+<ul>
+{% for t in tags %}
+	<li><a href="/review/tag/{{t.name}}">{{t}}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

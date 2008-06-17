@@ -1,0 +1,26 @@
+{% extends "review/review.html" %}
+
+{% block subtitle %}Review Problems - Search {% endblock %}
+
+{% block reviewcontents %}
+<form method="GET">
+Search by tag:
+<input type="text" name="input" />
+<input type="submit" value="Submit" />
+</form>
+
+{% if results %}
+<table>
+<tr>
+	<th>Title</th>
+	<th>Difficulty</th>
+	<th>Question</th>
+	<th>Answer</th>
+</tr>
+{% for p in results %}
+	{% include "review/_problem.html" %}
+{% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}

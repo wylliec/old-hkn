@@ -1,0 +1,13 @@
+{% extends "review/review.html" %}
+
+{% block subtitle %} Review Problems - Submit Problem{% endblock %}
+
+{% block reviewcontents %}
+<form method="POST" enctype="multipart/form-data">
+	<table>
+		{{form}}
+	</table>
+	<input class="button" type="submit" value="Submit" />
+</form>
+
+{% endblock %}
