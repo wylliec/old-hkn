@@ -212,6 +212,12 @@ class Person(models.Model):
     def __str__(self):
         return "%s %s %s (%s)" % (str(self.id), self.first, self.last, self.email() )
 
+    def get_current_position(self):
+        officerships = self.officership_set.filter(semester = semester.getCurrentSemester())
+        if len(officerships) == 0:
+            return None
+        return officerships[0].position
+
     def email(self):
         """
         Returns a person's preferred email if available, and school email otherwise.
