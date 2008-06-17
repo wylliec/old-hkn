@@ -18,7 +18,7 @@
 
 <h4>Related Tags:</h4>
 {% for t in rel_tags %}
-	<a href="/review/tag/{{t}}">{{t}}</a>{% if not forloop.last %}, {% endif %}
+	<a href={% url review-tag tag_name=t %}>{{t}}</a>{% if not forloop.last %}, {% endif %}
 {% endfor %}
 
 {% endblock %}

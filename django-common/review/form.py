@@ -6,6 +6,7 @@ import os
 VALID_EXTENSIONS = [".pdf"]
 
 class ProblemForm(ModelForm):
+	difficulty = forms.IntegerField(min_value=0, max_value=10)
 	
 	def clean_question(self):
 		uf = self.cleaned_data["question"]
@@ -24,3 +25,4 @@ class ProblemForm(ModelForm):
 		
 	class Meta:
 		model = Problem
+		exclude = ('num_ratings',)

@@ -10,7 +10,7 @@
 	<tr><th>Tags:</th>
 		<td>
 			{% for t in problem.tag_list %}
-				<a href="/review/tag/{{t}}">{{t}}</a>{% if not forloop.last %}, {% endif %}
+				<a href={% url review-tag tag_name=t %}>{{t}}</a>{% if not forloop.last %}, {% endif %}
 			{% endfor %}
 		</td>
 	</tr>

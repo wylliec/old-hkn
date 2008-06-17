@@ -6,7 +6,7 @@
 
 <ul>
 {% for t in tags %}
-	<li><a href="/review/tag/{{t.name}}">{{t}}</a></li>
+	<li><a href={% url review-tag tag_name=t %}>{{t}}</a></li>
 {% endfor %}
 </ul>
 
