@@ -2,11 +2,11 @@ from django.conf.urls.defaults import *
 from settings import SERVER_ROOT
 
 urlpatterns = patterns('',
-    (r'^$', 'review.views.search'),
-    (r'^submit/$', 'review.views.submit'),
-    (r'^tag/(?P<tag_name>.*)/$', 'review.views.view_tag'),
-    (r'^problem/(?P<problem_id>.*)/$', 'review.views.view_problem'),
-    (r'^browse/$', 'review.views.browse_review_tags'),  
-    (r'^search$', 'review.views.search'),
-    (r'^search?input=', 'review.views.search'),
+    url(r'^$', 'review.views.search'),
+    url(r'^submit/$', 'review.views.submit', name='review-submit'),
+    url(r'^tag/(?P<tag_name>.*)/$', 'review.views.view_tag', name='review-view-tag'),
+    url(r'^problem/(?P<problem_id>.*)/$', 'review.views.view_problem', name='review-view-problem'),
+    url(r'^browse/$', 'review.views.browse_review_tags', name='review-browse-tags'),  
+    url(r'^search/$', 'review.views.search', name='review-search'),
+    url(r'^search?input=', 'review.views.search'),
 )

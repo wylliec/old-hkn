@@ -44,7 +44,7 @@ def submit(request):
 		form = ProblemForm(request.POST, request.FILES)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect("review/")
+			return HttpResponseRedirect("/review/")
 	else :
 		form = ProblemForm()
 		
