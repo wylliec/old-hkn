@@ -8,6 +8,7 @@ import datetime
 from models import Problem
 from form import ProblemForm
 from tagging.models import Tag, TaggedItem
+import tagging.utils
 
 try: 
 	from settings import EXAM_LOGIN_REQUIRED
@@ -23,8 +24,18 @@ def search(request):
 		return render_to_response("review/search.html", context_instance=RequestContext(request))
 	
 def browse_review_tags(request):
-	tags = Tag.objects.usage_for_model(Problem)
-	return render_to_response("review/browse_review_tags.html", {'tags' : tags}, context_instance=RequestContext(request))
+	tags = Tag.objects.cloud_for_model(Problem, steps=4, distribution=tagging.utils.LINEAR)
+	sorted_tags = []
+	last_char = None
+	for t in tags:
+		if last_char == t.name[0]:
+			sorted_tags[-1].append(t)
+		else:
+			last_char = t.name[0]
+			sorted_tags.append([t])
+		
+		
+	return render_to_response("review/browse_review_tags.html", {'tags' : sorted_tags}, context_instance=RequestContext(request))
 	
 def view_tag(request, tag_name = None):
 	tag = get_object_or_404(Tag, name = tag_name)

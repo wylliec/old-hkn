@@ -1,13 +1,27 @@
 {% extends "review/review.html" %}
+{% block css %}
+{{block.super}}
+<style type="text/css">
+	.font1{font-size: small}
+	.font2{font-size:medium}
+	.font3{font-size:large}
+	.font4{font-size:x-large}
+</style>
+{% endblock %}
 
 {% block subtitle %} Review Problems - Browse Tags {% endblock %}
 
 {% block reviewcontents %}
 
-<ul>
-{% for t in tags %}
-	<li><a href={% url review-tag tag_name=t %}>{{t}}</a></li>
+{% for tag_group in tags %}
+<div>
+	{% for t in tag_group %}
+		<a class="font{{t.font_size}}" href={% url review-tag tag_name=t %}>{{t}}</a>
+	
+	{% endfor %}
+</div>
 {% endfor %}
-</ul>
+
+
 
 {% endblock %}
