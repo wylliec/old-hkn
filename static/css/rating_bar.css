@@ -1,0 +1,15 @@
+div.rating_bar {
+	height: 8px;
+	width: 50px;
+	border: 1px solid black;
+}
+
+div.rating_bar div {
+	height: 8px;
+	border-right: 1px solid black;
+}
+
+div.rating_bar div.c0, div.rating_bar div.c1 { background-color: green}
+div.rating_bar div.c2 { background-color: yellow}
+div.rating_bar div.c3 { background-color: orange}
+div.rating_bar div.c4 { background-color: red}

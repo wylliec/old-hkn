@@ -2,6 +2,11 @@
 
 {% block subtitle %}Review Problems - {{tag}} {% endblock %}
 
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" type="text/css" href="/static/css/rating_bar.css">
+{% endblock %}
+
 {% block reviewcontents %}
 
 <table>

@@ -1,5 +1,10 @@
 {% extends "review/review.html" %}
 
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" type="text/css" href="/static/css/rating_bar.css">
+{% endblock %}
+
 {% block subtitle %}Review Problems - View Problem {% endblock %}
 
 {% block reviewcontents %}
@@ -14,7 +19,7 @@
 			{% endfor %}
 		</td>
 	</tr>
-	<tr><th>Difficulty:</th><td>{{problem.difficulty}}</td></tr>
+	<tr><th>Difficulty:</th><td>{% with problem.difficulty as val %} {% include "review/_bar.html" %} {% endwith %}</td></tr>
 	<tr><th>Question:</th><td><a href={{problem.get_question_url}}>[link]</a></td></tr>
 	<tr><th>Answer:</th><td><a href={{problem.get_answer_url}}>[link]</a></td></tr>
 </table>

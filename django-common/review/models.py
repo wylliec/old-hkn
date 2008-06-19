@@ -27,7 +27,7 @@ class Problem(models.Model):
 	def rate(self, value):
 		self.num_ratings += 1
 		self.difficulty = float(self.difficulty*(self.num_ratings-1) + value) / float(self.num_ratings)
-		
+	
 	def __str__(self):
 		return self.name
 	
