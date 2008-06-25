@@ -1,9 +1,12 @@
 from django.shortcuts import get_object_or_404, render_to_response
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
 from django.contrib.auth.decorators import login_required
+
 import datetime
+import sets
+import os
 
 from models import Problem
 from form import ProblemForm
@@ -61,7 +64,68 @@ def submit(request):
 		
 	return render_to_response("review/submit.html", {'form' : form}, context_instance=RequestContext(request))
 	
-	
 
+def view_selected(request):
+	problems = []
+	if 'selected_problems' in request.session:
+		for id in request.session['selected_problems']:
+			problems.append(get_object_or_404(Problem, pk=id))
+			
+	return render_to_response("review/selected.html", {'problems':problems}, context_instance=RequestContext(request))
+	
+def add_selected(request):
+	if request.POST:
+		additions = request.POST['problems'].split(' ')
+		if 'selected_problems' in request.session:
+			for a in additions:
+				request.session['selected_problems'].add(a)
+		else:
+			request.session['selected_problems'] = set(additions)
+	else:
+		raise Http404
+
+def remove_selected(request):
+	if request.POST:
+		remove = request.POST['problems'].split(' ')
+		if 'selected_problems' in request.session:
+			for r in remove:
+				request.session['selected_problems'].remove(r)
+	else:
+		raise Http404
+
+def merge_problems(request):
+	command = "pdftk "
+	problems = []
+	if 'selected_problems' in request.session:
+		for id in request.session['selected_problems']:
+			problems.append(get_object_or_404(Problem, pk=id))
+	
+	for p in problems:
+		command+= p.get_question_url()[1:] + " "
+		
+	command += "output tmp.pdf"
+	
+	os.system(command)
+	result = file("tmp.pdf", "rb")
+	return HttpResponse(result.read(), mimetype='application/pdf')
+	
+	
+def merge_solutions(request):
+	command = "pdftk "
+	problems = []
+	if 'selected_problems' in request.session:
+		for id in request.session['selected_problems']:
+			problems.append(get_object_or_404(Problem, pk=id))
+	
+	for p in problems:
+		print p.get_answer_url()
+		command+= p.get_answer_url()[1:]+ " "
+	
+	command += "output tmp.pdf"
+	
+	os.system(command)
+	result = file("tmp.pdf", "rb")
+	return HttpResponse(result.read(), mimetype='application/pdf')
+		
 if EXAM_LOGIN_REQUIRED:
     submit = login_required(submit)

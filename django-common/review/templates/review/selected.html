@@ -1,7 +1,5 @@
 {% extends "review/review.html" %}
 
-{% block subtitle %}Review Problems - {{tag}} {% endblock %}
-
 {% block css %}
 {{block.super}}
 <link rel="stylesheet" type="text/css" href="/static/css/rating_bar.css">
@@ -20,12 +18,17 @@ $(document).ready(function(){
 		$.post(url, { problems : checks.join(' ')});
 		$("p").html(checks.join(' '));
 	}
-	$("#add_probs").click(function(){postChecks("{% url review-add-selected %}");});
+	$("#rem_probs").click(function(){
+							postChecks("{% url review-remove-selected %}");
+							location.reload();
+						});
 });
 		
 </script>
 
 {% endblock %}
+
+{% block subtitle %}Review Problems - Selected Problems {% endblock %}
 
 {% block reviewcontents %}
 
@@ -41,16 +44,11 @@ $(document).ready(function(){
 {% endfor %}
 </table>
 <br />
+
 <div style="float:right">
-<a href={% url review-selected %}>View Selected Problems</a>
-<input type="button" value="Add to Selected Problems" id="add_probs" />
+<a href={% url review-merge-problems %}>Merge Problems</a>
+<a href={% url review-merge-solutions %}>Merge Solutions</a>
+<input type="button" value="Remove from Selected Problems" id="rem_probs" />
 </div>
-
-<p> test block of stufff </p>
-
-<h4>Related Tags:</h4>
-{% for t in rel_tags %}
-	<a href={% url review-tag tag_name=t %}>{{t}}</a>{% if not forloop.last %}, {% endif %}
-{% endfor %}
 
 {% endblock %}
