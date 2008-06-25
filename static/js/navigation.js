@@ -1,6 +1,16 @@
 $(document).ready(function() {
-	$(".submenu:first").show();
-	$(".navigation_toplevel_item:first").addClass("selected");
+	current = location.pathname.replace(/\//g,'');
+	
+	if (current != null) {
+		id = "#" + current;
+		$(id).addClass("selected");
+		submenuid = "#" + current + "_submenu";
+		$(submenu).show();	
+	}
+	else {			
+		$(".navigation_toplevel_item:first").addClass("selected");	
+		$(".submenu:first").show();
+	}
 	$(".navigation_toplevel_item").bind("click", 
 		function () {
 			$(".submenu").hide();
