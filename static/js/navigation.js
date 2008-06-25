@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	current = location.pathname.replace(/\//g,'');
+	current = location.pathname.replace('/','');
+	current = current.substring(0,current.indexOf('/'));
 	
 	if (current != null) {
 		id = "#" + current;
