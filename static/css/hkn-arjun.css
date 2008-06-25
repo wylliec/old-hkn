@@ -32,7 +32,7 @@ h3 {
 
 #logo {
 	margin:auto;
-	background-color: #e5f200;
+	background: url("/images/site/watermark.png");
 }	
 
 #navigation{
@@ -40,16 +40,16 @@ h3 {
 	width: 100%;
 	margin: 0;
 	font-size: 15px;
-	height: 52px;
+	height: 70px;
 	z-index:50;
 	vertical-align: middle;
-	background: #e5f200 url("/images/site/navbar.png") top repeat-x;
+	background: #8CCC20;
 
 }
 
 #toplevel{
 	position: relative;
-	height: 26px;
+	height: 30px;
 	clear: both;
 	margin: 0 auto;
 	width: 100%;
@@ -57,24 +57,83 @@ h3 {
 	display:inline; 
 }
 
-#toplevel ul, .submenu ul{
+
+#toplevel ul{
 	padding: 0;
     margin: 0;
     list-style: none;
-	height: 26px;
+	height: 30px;
 	text-align:center;
+	background: #2351CC;
+	line-height: 30px;
 }
 
-#toplevel li, .submenu li {
+#toplevel li {
 	display:inline;
     padding: 0;
     margin: 0;
-	height: 26px;
+	height: 30px;
+	text-align:center;
+}
+
+#toplevel li a {
+	text-align:center;
+	height: 20px;
+	text-decoration: none;
+	color: #ffffff;
+	padding: 5px 7px 5px 12px;
+	display:inline;
+}
+
+#toplevel li a.selected, #toplevel li a.selected:hover {
+	background: #8CCC20 url("/images/site/menu-toplevel-selected.png") repeat-x;
+}
+
+#toplevel li a:hover{
+	background: #2C31AD;
 }
 
 .submenu{
-	height: 26px;
+	font-size: 13px;
+	height: 24px;
 	display:none;
+}
+
+.submenu ul{
+	padding: 0;
+    margin: 0;
+    list-style: none;
+	height: 24px;
+	text-align:center;
+	background: #8CCC20;
+	line-height: 24px;
+}
+
+.submenu li {
+	display:inline;
+    padding: 0;
+    margin: 0;
+	height: 24px;
+	text-align:center;
+}
+
+.submenu li a {
+	text-align:center;
+	height: 18px;
+	text-decoration: none;
+	color: #ffffff;
+	padding: 3px 7px 3px 12px;
+	display:inline;
+}
+
+.submenu li a:hover {
+	background: #568F59;
+}
+
+#navbar_shadow{
+	height:16px;
+	width:100%;
+	background: #ffffff url("/images/site/navbarshadow.png") repeat-x;
 }
 
 /*
@@ -195,22 +254,22 @@ div #rightshadow{
 #footer {
 	position: relative;
 	clear: both;
-	width: 96%;
+	width: 100%;
 	height: 15px;
 	padding: 5px 2% 5px 2%;
-	background-color: #000066;
+	background-color: #2C31AD;
 	font-family: Verdana, Arial, Helvetica;
 	font-size: x-small;
 	font-weight: bold;
-	color: #EEC000;
+	color: #FFFFFF;
 }
 
 #footer a {
-	background-color: #000066;
+	background-color: #2C31AD;
 	font-family: Verdana, Arial, Helvetica;
 	font-size: x-small;
 	font-weight: bold;
-	color: #EEC000;
+	color: #FFFFFF;
 }
 
 	/*f2cc24, e5f200, 4f7cf2, 124876*/
