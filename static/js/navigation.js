@@ -5,7 +5,7 @@ $(document).ready(function() {
 		id = "#" + current;
 		$(id).addClass("selected");
 		submenuid = "#" + current + "_submenu";
-		$(submenu).show();	
+		$(submenuid).show();	
 	}
 	else {			
 		$(".navigation_toplevel_item:first").addClass("selected");	
