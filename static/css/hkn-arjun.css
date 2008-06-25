@@ -32,7 +32,7 @@ h3 {
 
 #logo {
 	margin:auto;
-	background: url("{{STATIC_PREFIX}}images/site/watermark.png");
+	background: url("/static/images/site/watermark.png");
 }	
 
 #navigation{
@@ -86,7 +86,7 @@ h3 {
 }
 
 #toplevel li a.selected, #toplevel li a.selected:hover {
-	background: #8CCC20 url("{{STATIC_PREFIX}}images/site/menu-toplevel-selected.png") repeat-x;
+	background: #8CCC20 url("/static/images/site/menu-toplevel-selected.png") repeat-x;
 }
 
 #toplevel li a:hover{
@@ -133,7 +133,7 @@ h3 {
 #navbar_shadow{
 	height:16px;
 	width:100%;
-	background: #ffffff url("{{STATIC_PREFIX}}images/site/navbarshadow.png") repeat-x;
+	background: #ffffff url("/static/images/site/navbarshadow.png") repeat-x;
 }
 
 /*
