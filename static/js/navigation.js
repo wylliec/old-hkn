@@ -13,7 +13,7 @@ $(document).ready(function() {
 	}
 	$(".navigation_toplevel_item").bind("click", 
 		function () {
-			$(".submenu").hide();
+			$(id).hide();
 			$(".navigation_toplevel_item").removeClass("selected");
 			$(this).addClass("selected");
 			$(this).blur();

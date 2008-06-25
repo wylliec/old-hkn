@@ -1,6 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
+ <!--[if IE]>
+  <style type="text/css">
+  #toplevel li a {
+  padding: 0 0 0 3px;
+  }
+ </style>
+ <![endif]-->
 
 {% load hkn_extras %}
 {% block title %}<title>HKN {% block extratitle%} {% endblock %}</title>{% endblock %}
@@ -30,32 +37,44 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 <ul class="navigation_toplevel">
 <li>	
 	<a href = "#" class = "navigation_toplevel_item" id = "people">
-		People
+		<span>
+			People
+		</span>
 	</a>
 </li>
 <li>
 	<a href = "#" class = "navigation_toplevel_item" id = "event">
-		Events
+		<span>
+			Events
+		</span>
 	</a>
 </li>
 <li>
 	<a href = "#" class = "navigation_toplevel_item" id = "candidates">
-		Candidates
+		<span>
+			Candidates
+		</span>
 	</a>
 </li>
 <li>
 	<a href = "#" class = "navigation_toplevel_item" id = "request">
-		Requests
+		<span>
+			Requests
+		</span>
 	</a>
 </li> 
 <li>
 	<a href = "#" class = "navigation_toplevel_item" id = "tutor">
-		Tutoring
+		<span>
+			Tutoring
+		</span>
 	</a>
 </li> 
 <li>
 	<a href = "#" class = "navigation_toplevel_item" id = "services">
-		Services
+		<span>
+			Services
+		</span>
 	</a>
 </li> 
 </ul>
