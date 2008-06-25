@@ -16,6 +16,7 @@ $(document).ready(function() {
 			$(".submenu").hide();
 			$(".navigation_toplevel_item").removeClass("selected");
 			$(this).addClass("selected");
+			$(this).blur();
 			$(".submenu").hide();
 			id = "#" + $(this).attr("id") + "_submenu";
 			$(id).fadeIn("fast");		
