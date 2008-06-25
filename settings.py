@@ -30,6 +30,8 @@ DJANGO_COMMON = SERVER_ROOT + "django-common/"
 EXAMS_USER_MODULE = 'hkn.auth.models.User'
 EXAM_LOGIN_REQUIRED = False
 
+SESSION_SAVE_EVERY_REQUEST = True
+
 # don't change this
 IMAGES_PATH = "/home/django/hkn-website-images/"
 
@@ -152,5 +154,3 @@ INSTALLED_APPS = (
     'tagging',
     'review',
 )
-
-EXAM_LOGIN_REQUIRED = False
