@@ -1,9 +1,8 @@
 $(document).ready(function() {
 	current = location.pathname.replace('/','');
 	current = current.substring(0,current.indexOf('/'));
-	
-	if (current != null) {
-		id = "#" + current;
+	id = "#" + current;	
+	if ($(id).length != 0) {
 		$(id).addClass("selected");
 		submenuid = "#" + current + "_submenu";
 		$(submenuid).show();	
