@@ -87,7 +87,7 @@ h3 {
 
 #toplevel li a.selected, #toplevel li a.selected:hover {
 	padding: 5px 7px 5px 10px;
-	background: #8CCC20 url("/static/images/site/menu-toplevel-selected.png") no-repeat top left;
+	background: #8CCC20 url("/static/images/site/menu-toplevel-selected.png") repeat-x;
 }
 
 #toplevel li a:hover{
