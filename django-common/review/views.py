@@ -20,8 +20,13 @@ except:
 
 def search(request):
 	if request.GET:
-		tags = request.GET['input']
+		tags = lower(request.GET['input'])
+		if tags.find(',') == -1:
+			tags = r'"' + tags + r'"'
 		results = TaggedItem.objects.get_by_model(Problem, tags)
+		
+		
+		
 		return render_to_response("review/search.html", {'results' : results}, context_instance=RequestContext(request))
 	else:
 		return render_to_response("review/search.html", context_instance=RequestContext(request))
@@ -93,7 +98,7 @@ def remove_selected(request):
 	else:
 		raise Http404
 
-def merge_problems(request):
+def merge_problems(request, solutions):
 	command = "pdftk "
 	problems = []
 	if 'selected_problems' in request.session:
@@ -101,31 +106,24 @@ def merge_problems(request):
 			problems.append(get_object_or_404(Problem, pk=id))
 	
 	for p in problems:
-		command+= p.get_question_url()[1:] + " "
+		if not solutions:
+			command+= p.get_question_url()[1:] + " "
+		else:
+			command+= p.get_answer_url()[1:]+ " "
 		
 	command += "output tmp.pdf"
 	
 	os.system(command)
 	result = file("tmp.pdf", "rb")
-	return HttpResponse(result.read(), mimetype='application/pdf')
+	response = HttpResponse(result.read(), mimetype='application/pdf')
 	
+	if not solutions:
+		response['Content-Disposition'] = 'attachment; filename=review_questions.pdf'
+	else:
+		response['Content-Disposition'] = 'attachment; filename=review_solutions.pdf'
 	
-def merge_solutions(request):
-	command = "pdftk "
-	problems = []
-	if 'selected_problems' in request.session:
-		for id in request.session['selected_problems']:
-			problems.append(get_object_or_404(Problem, pk=id))
+	return response
 	
-	for p in problems:
-		print p.get_answer_url()
-		command+= p.get_answer_url()[1:]+ " "
-	
-	command += "output tmp.pdf"
-	
-	os.system(command)
-	result = file("tmp.pdf", "rb")
-	return HttpResponse(result.read(), mimetype='application/pdf')
 		
 if EXAM_LOGIN_REQUIRED:
     submit = login_required(submit)

@@ -5,6 +5,25 @@
 <link rel="stylesheet" type="text/css" href="/static/css/rating_bar.css">
 {% endblock %}
 
+{% block js %}
+{{block.super}}
+<script type="text/javascript">
+$(document).ready(function(){
+	function postChecks(url){
+		var checks = [];
+		$(":checked").each(function(){
+			checks.push(this.value);
+		});
+		
+		$.post(url, { problems : checks.join(' ')});
+		$("p").html(checks.join(' '));
+	}
+	$("#add_probs").click(function(){postChecks("{% url review-add-selected %}");});
+});
+		
+</script>
+{% endblock %}
+
 {% block subtitle %}Review Problems - Search {% endblock %}
 
 {% block reviewcontents %}
@@ -26,6 +45,14 @@ Search by tag:
 	{% include "review/_problem.html" %}
 {% endfor %}
 </table>
+<br />
+<div style="float:right">
+<a href={% url review-selected %}>View Selected Problems</a>
+<input type="button" value="Add to Selected Problems" id="add_probs" />
+</div>
+
+<p> test block of stuff </p>
+
 {% endif %}
 
 {% endblock %}

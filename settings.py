@@ -32,6 +32,9 @@ EXAM_LOGIN_REQUIRED = False
 
 SESSION_SAVE_EVERY_REQUEST = True
 
+#django-tagging setting
+FORCE_LOWERCASE_TAGS = True
+
 # don't change this
 IMAGES_PATH = "/home/django/hkn-website-images/"
 

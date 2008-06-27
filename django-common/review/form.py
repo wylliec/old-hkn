@@ -8,6 +8,14 @@ VALID_EXTENSIONS = [".pdf"]
 class ProblemForm(ModelForm):
 	difficulty = forms.IntegerField(min_value=0, max_value=10)
 	
+	def clean_tags(self):
+		uf = self.cleaned_data["tags"]
+		
+		if uf.find(',') == -1:
+			uf = r'"' + uf + r'"'
+		
+		return uf
+	
 	def clean_question(self):
 		uf = self.cleaned_data["question"]
 		ext = os.path.splitext(uf.filename)[1]

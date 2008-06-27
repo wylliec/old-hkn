@@ -11,6 +11,6 @@ urlpatterns = patterns('',
     url(r'^selected/$', 'review.views.view_selected', name='review-selected'),
     url(r'^selected/add/$', 'review.views.add_selected', name='review-add-selected'), 
     url(r'^selected/remove/$', 'review.views.remove_selected', name='review-remove-selected'), 
-    url(r'^selected/merge/problems$', 'review.views.merge_problems', name='review-merge-problems'),
-    url(r'^selected/merge/solutions$', 'review.views.merge_solutions', name='review-merge-solutions'),
+    url(r'^selected/merge/problems$', 'review.views.merge_problems', {'solutions':False}, name='review-merge-problems'),
+    url(r'^selected/merge/solutions$', 'review.views.merge_problems', {'solutions':True}, name='review-merge-solutions'),
 )
