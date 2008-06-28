@@ -1820,7 +1820,7 @@ def parse_into_availabilities_by_slot(coryTimes, sodaTimes):
     
     return ret
 
-def random_availabilities_by_slot():
+def random_availabilities_by_slot(prob=.4):
     """
     Returns an availabilitiesBySlot object with random availabilities and preferences.
     May not be solvable.
@@ -1844,7 +1844,7 @@ def random_availabilities_by_slot():
         for j in range(6):
             for i in range(5):
                 for c in cory:
-                    if(random.random() < .4):
+                    if(random.random() < prob):
                         if c not in counts:
                             counts[c] = 0
                         counts[c] += 1
@@ -1852,7 +1852,7 @@ def random_availabilities_by_slot():
                         corystr += c + pref + "p "
                         sodastr += c + pref + " "
                 for c in soda:
-                    if(random.random() < .4):
+                    if(random.random() < prob):
                         if c not in counts:
                             counts[c] = 0
                         counts[c] += 1
@@ -1860,7 +1860,7 @@ def random_availabilities_by_slot():
                         corystr += c + pref + " "
                         sodastr += c + pref + "p "
                 for c in both:
-                    if(random.random() < .4):
+                    if(random.random() < prob):
                         if c not in counts:
                             counts[c] = 0
                         counts[c] += 1
@@ -1883,9 +1883,9 @@ def random_availabilities_by_slot():
     #construct dictionary
     return parse_into_availabilities_by_slot(corystr, sodastr)
 
-def generate_from_random(destFileName = "randomSchedulerOutput.txt"):
+def generate_from_random(destFileName = "randomSchedulerOutput.txt", probability=.5):
     clear_timing()
-    ret = generate_schedule(availabilitiesBySlot=random_availabilities_by_slot(),
+    ret = generate_schedule(availabilitiesBySlot=random_availabilities_by_slot(probability),
                             slotsByPerson=NiceDict(2),
                             options=NiceDict(False))
     print_timing()
