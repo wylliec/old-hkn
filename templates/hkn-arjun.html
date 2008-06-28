@@ -175,54 +175,6 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% endblock %}
 </div>	
 
-<!--location mapper-->
-<!--<div id="location">
-{% block location %}
-	Wednesday, October 10, 2007
-{% endblock %}
-</div>-->
-
-
-<!--main content starts-->
-<!--<div id="sidebar">
-
-{% block sidebar %}
-        <table of contents>
-	
-	<br><span class="title">u want a revolution</span>
-	<br><a href="{% url hkn.info.elect.elect %}">Elect New Officers</a>
-	<br><a href="{% url hkn.info.elect.revolt %}">New Officer Revolt</a>
-	<br>
-
-
-
-
-	
-
-	<br>
-	<br>
-	
-	{% if user.is_anonymous %}
-	<form action="{% url hkn.auth.login.authenticate %}" method="post" enctype="multipart/form-data">
-    <label class="small" for="login_username">User</label><br/>
-    <input id="login_username" class="inputbox" type="text" name="username" value="" size=15/><br/>
-    <label class="small" for="login_password">Password</label><br/>
-	<input class="inputbox" type="password" name="password" value="" size=15/><br/>
-    <input type="submit" class="button" style="margin-top: 3px;" value="Login" />
-	<input type="hidden" name="redirect_url" value="/" />
-    </form>
-	{% else %}
-	<span class="logout"> you are {{ user.username }} <a href="{% url hkn.auth.login.logout %}">(logout)</a></span>
-	{% endif %}
-
-
-<!--
-	<IMG SRC="/images/trans.gif" WIDTH="11" HEIGHT="1" ALT="" BORDER="0">
-	<br><br><A href="/images/shield_huge.gif"><IMG 
-SRC="/images/shield256.gif" WIDTH="75" HEIGHT="122" BORDER=0></A>
-->
-{% endblock %}
-</div>
 
 <div id = "container">
 
