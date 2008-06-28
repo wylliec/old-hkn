@@ -1,3 +1,12 @@
+/** This function sets up the menu. It creates listeners for all of the links and displays
+ * the appropriate submenu when needed.
+ */
+/**
+ * Finds what path we're at currently and extracts the lowest subdirectory.
+ * It will then look to see if there is a toplevel menu that has that name. If so,
+ * it will make it selected. If not it will pick the first one it finds and make that 
+ * selected.
+ */
 $(document).ready(function() {
 	current = location.pathname.replace('/','');
 	current = current.substring(0,current.indexOf('/'));
