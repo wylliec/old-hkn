@@ -207,10 +207,10 @@ h3 {
 
 #container{
 	height: auto;
-	margin: 5%;
+	margin: 1%;
 	padding: 5%;
-	border: 2px solid #083643;
-	background-color: #CEF09D;
+	border: 1px solid #2C31AD;
+	background-color: #8C9DCC;
 	overflow:visible;
 }
 
