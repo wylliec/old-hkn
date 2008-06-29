@@ -210,7 +210,7 @@ h3 {
 	margin: 1%;
 	padding: 5%;
 	border: 1px solid #2C31AD;
-	background-color: #8C9DCC;
+	background-color: #EFF7FF;
 	overflow:visible;
 }
 
@@ -269,52 +269,28 @@ div #rightshadow{
 	position: relative;
 	clear: both;
 	width: 96%;
-	height: 15px;
+	height: 20px;
+	line-height:20px;
 	padding: 5px 2% 5px 2%;
 	background-color: #2C31AD;
 	font-family: Verdana, Arial, Helvetica;
-	font-size: x-small;
-	font-weight: bold;
-	color: #FFFFFF;
+	font-size: small;
+	color: #9CC2DC;
 }
 
 #footer a {
-	background-color: #2C31AD;
 	font-family: Verdana, Arial, Helvetica;
-	font-size: x-small;
-	font-weight: bold;
+	font-size: small;
 	color: #FFFFFF;
+	text-decoration: none;
 }
 
-	/*f2cc24, e5f200, 4f7cf2, 124876*/
-/*#navigation ul .subitem{
-	display:none;
-	border-bottom: solid;
-	border-left: solid;
-	border-right: solid;
-	border-width: 1px;
-	border-color: #000000;
-}
-#navigation ul .item{
-	border-right: solid;
-	border-width: 1px;
-	border-color: #000000;
+#footer-left{
+	float: left;
+	text-align: left;
 }
 
-#navigation ul a {
-	padding: 11px 25px;
+#footer-right{
+	float: right; 
+	text-align: right;
 }
-
-#navigation ul:hover .subitem{
-	display:block;
-	background-color:#E5F200;
-	padding:1px;
-}
-#navigation ul:hover .subitem {color: #124876;text-decoration:none;}
-#navigation ul:hover .subitem a:hover {background-color:#124876; color:#E5F200; text-decoration:none;}
-
-#navigation ul{width:100px;float:left;margin:0px;padding:0px;background-color:#E5F200;list-style:none;}
-#calendar {
-	margin-top: 25px;
-}
-*/
