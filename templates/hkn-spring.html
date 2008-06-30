@@ -1,120 +1,150 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Eta Kappa Nu (HKN), Mu Chapter</title>
 
-<head>
-{% block head %}
-	{% block title %}<title>HKN {% block extratitle%} {% endblock %}</title>{% endblock %}
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
-	fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
-	{% include 'css_common.inc' %}
-	<link rel="stylesheet" type="text/css" href="{{STATIC_PREFIX}}css/hkn-spring.css">
-	{% block js %}
-	{% include 'js_common.inc' %}
-	{% endblock %}
-{% endblock %}
-</head>
-<body {% block body_extra %} {% endblock %}>
-<div id="header">
-{% block header %}
-Something goes here
-{% endblock %}
-</div>
-<div id="userbar">
-	Something here
-</div>
+        <title>HKN {% block extratitle%} {% endblock %}</title>
+        <meta http-equiv="Content-Type" content=
+        "text/html; charset=UTF-8" />
+        <meta name="Keywords" content=
+        "HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3" />
+        <link rel="stylesheet" type="text/css" href=
+        "{{STATIC_PREFIX}}css/hkn-spring.css" />
+    </head>
 
-<div id="maindiv">
-	<div id="bodytop">
-		<div id="topform">
-			{% if user.is_anonymous %}
-	<form action="{% url hkn.auth.login.authenticate %}" method="post" enctype="multipart/form-data"><input id="login_username" class="inputbox" type="text" name="username" value="" size="15" /><input class="inputbox" type="password" name="password" value="" size="15" /><input type="submit" class="button" style="margin-top: 3px;" value="Login" /><input type="hidden" name="redirect_url" value="/" /></form>
-	{% else %}
-	<span class="logout">Welcome, {{ user.username }}! <a href="{% url hkn.auth.login.logout %}">(logout)</a></span>
-	{% endif %}
-		</div>
-		<div id="tabs">
-			<ul id="nav">
-				<li><a href="#">Home</a></li>
-				<li id="active"><a href="#">Student Services</a></li>
-				<li><a href="#">Industry</a></li>
-				<li><a href="#">Alumni</a></li>
-			</ul>
-		</div>
-	</div>
-	<table id="maintable" cellspacing="0">
-		<tr>
-			<td id="content">
-				<h2>Secondary Header</h2>
-				<!-- start main content block -->
-				{% block content %}
-				{% endblock %}
-				<!-- end main content block -->
-			</td>
-			<td id="sidebar">
-				{% block sidebar %}
-				<h2>Welcome to HKN!</h2>
-				<p>Eta Kappa Nu (HKN) is the national Electrical Engineering honor society. The Berkeley chapter is among the most active engineering societies at Cal, providing academic services to fellow undergraduates.</p>
+    <body block="" body_extra="" endblock="">
+        {% block head %} {% block title %}{% endblock %}   {% include 'css_common.inc' %}  {% block js %} {% include 'js_common.inc' %} {% endblock %} {% endblock %}   
 
-				<h2>People</h2>
+        <div id="header">
+            {% block header %} Something goes here {% endblock %}
+        </div>
+
+        <div id="userbar">
+            Eta Kappa Nu, Mu Chapter
+        </div>
+
+        <div id="maindiv">
+            <div id="bodytop">
+                <div id="topform">
+                    {% if user.is_anonymous %} 
+
+                    <form action=
+                    "{% url hkn.auth.login.authenticate %}" method=
+                    "post" enctype="multipart/form-data">
+                        <input id="login_username" class="inputbox"
+                        type="text" name="username" value="" size=
+                        "15" /><input class="inputbox" type=
+                        "password" name="password" value="" size=
+                        "15" /><input type="submit" class="button"
+                        style="margin-top: 3px;" value=
+                        "Login" /><input type="hidden" name=
+                        "redirect_url" value="/" />
+                    </form>
+                    {% else %} <span class="logout">Welcome, {{
+                    user.username }}! <a href=
+                    "{% url hkn.auth.login.logout %}">(logout)</a></span>
+                    {% endif %}
+                </div>
+
+                <div id="tabs">
+                    <ul id="nav">
+                    <li id="active">
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Student Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Industry Relations</a>
+                    </li>
+                    <li>
+                        <a href="#">Events</a>
+                    </li>
+                    <li>
+                        <a href="#">Alumni</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+
+            <table id="maintable" cellspacing="0">
+                <tr>
+                    <td id="content">
+                    	
+                        <!-- start main content block 
+                        <h2>Secondary Header</h2>-->
+                        <!-- start main content block -->
+                        {% block content %} {% endblock %} 
+                        <!-- end main content block -->
+                         
+                    </td>
+
+                    <td id="sidebar">
+                        {% block sidebar %} 
+
+                        <h2>Welcome to HKN!</h2>
+
+                        <p>Eta Kappa Nu (HKN) is the national
+                        Electrical Engineering honor society. The
+                        Berkeley chapter is among the most active
+                        engineering societies at Cal, providing
+                        academic services to fellow
+                        undergraduates.</p>
+
+                        
+				<h2>Student Services</h2>
 				<ul>
-					<li><a href="{% url hkn.info.list.list_people category="candidates"%}">Candidate Information</a></li>
-					<li><a href="{% url hkn.info.list.list_people category="officers"%}">Officer Information</a></li>	
+					<li><a href="#">Tutoring</a></li>
+					<li><a href="#">Course Surveys</a></li>
+					<li><a href="#">Exam Archive</a></li>
+				</ul>
+				<h2>Industry Relations</h2>
+				<ul>
+					<li><a href="#">Resume Books</a></li>
+					<li><a href="#">Infosessions</a></li>
+					<li><a href="#">Career Fair</a></li>
 				</ul>
 
 				<h2>Events</h2>
 				<ul>
-					<li><a href="{% url hkn.event.event.new %}">New Event</a></li>
-					<li><a href="{% url hkn.event.list.list_events category="future" %}">Upcoming Events</a></li>
-					<li><a href="{% url hkn.event.list.list_events category="past" %}">Past Events</a></li>
-					<li><a href="{% url hkn.event.rsvp.list.list_for_person person_id="me" %}">My RSVPs</a></li>
-					<li><a href="{% url hkn.event.event.calendar %}">Events Calendar</a></li>
+					<li><a href="#">Calendar of Events</a></li>
+					<li><a href="#">Upcoming Events</a></li>
+					<li><a href="#">Past Events</a></li>
 				</ul>
 
-				<h2>Candidates</h2>
+				<h2>Alumni</h2>
 				<ul>
-					<li><a href="{% url hkn.cand.initiate.initiate category="all"%}">Initiate Candidates!</a></li>
-					<li><a href="{% url hkn.cand.confirm.requirements %}">My Confirmed Attendance</a></li>
+					<li><a href="#">Registration</a></li>
+					<li><a href="#">Alumni Newsletter</a></li>
 				</ul>
 
-				<h2>Requests</h2>
+				<h2>About</h2>
 				<ul>
-					<li><a href="{% url hkn.request.list.list_requests category="actives"%}">Confirm Requests [{{ requests|length }}]</A></li>
+					<li><a href="#">Current Officers</a></li>
+					<li><a href="#">Gallery and Yearbook</a></li>
+					<li><a href="#">Contact Information</a></li>
 				</ul>
+                        {% endblock %}
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-				<h2>u want a revolution</h2>
-				<ul>
-					<li><a href="{% url hkn.info.elect.elect %}">Elect New Officers</a></li>
-					<li><a href="{% url hkn.info.elect.revolt %}">New Officer Revolt</a></li>
-				</ul>
+        <div id="footer">
+            <div style="float:right">
+               Eta Kappa Nu, Mu Chapter (<a href="mailto:www@hkn.eecs.berkeley.edu">www@hkn.eecs.berkeley.edu</a>)
+            </div>
 
-				<h2>Tutoring</h2>
-				<ul>
-					<li><a href="{% url hkn.tutor.views.schedule %}">Tutoring Schedule</a></li>
-					<li><a href="{% url hkn.tutor.views.feedback %}">Tutoring Feedback</a></li>
-					<li><a href="{% url hkn.tutor.views.contact %}">Contact Tutoring</a></li>
-				</ul>
-
-				<h2>Exam Files</h2>
-				<ul>
-					<li><a href="{% url exam-browse %}">Browse Exams</a></li>
-					<li><a href="{% url exam-list %}">Search Exams</a></li>
-					<li><a href="{% url exam-submit %}">Submit Exam</a></li>
-				</ul>
-
-				<h2>Student Services</h2>
-				<ul>
-					<li><a href="/student/CourseSurvey">Course Survey</a></li>
-				</ul>
-				{% endblock %}
-			</td>
-		</tr>
-	</table>
-</div>
-	
-<div id="footer">
-	<div style="float:right">Eta Kappa Nu, Mu Chapter (290 Cory: 510.642.7346 | <a href="mailto:www@hkn.eecs.berkeley.edu">www@hkn.eecs.berkeley.edu</a>)</div>
-	<div><a href="#">HOME</a> | <a href="#">ABOUT</a> | <a href="#">CONTACT</a></div>
-</div>
-</body>
+            <div>
+                <a href="#">HOME</a> | <a href="#">ABOUT</a> | <a
+                href="#">CONTACT</a>
+            </div>
+        </div>
+    </body>
 </html>
+

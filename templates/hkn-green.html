@@ -4,7 +4,7 @@
 <head>
 
 {% load hkn_extras %}
-{% block title %}<title>HKN {% block extratitle%} {% endblock %}</title>{% endblock %}
+{% block title %}<title>Eta Kappa Nu (HKN), Mu Chapter {% block extratitle%} {% endblock %}</title>{% endblock %}
 {% block css %}
 {% include "css_common.inc" %}
 <link rel="stylesheet" type="text/css" href="{{STATIC_PREFIX}}css/hkn-green.css">
@@ -29,57 +29,84 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 <div id="navigation">
 <div id ="toplevel">
 <ul class="navigation_toplevel">
-<li>	
-	<a href = "#" class = "navigation_toplevel_item" id = "people">
-		People
+<li>
+	<a href = "#" class = "navigation_toplevel_item" id = "home">
+		Home
 	</a>
 </li>
+<li>
+	<a href = "#" class = "navigation_toplevel_item" id = "services">
+		Student Services
+	</a>
+</li>
+<li>
+	<a href = "#" class = "navigation_toplevel_item" id = "indrel">
+		Industry Relations
+	</a>
+</li> 
 <li>
 	<a href = "#" class = "navigation_toplevel_item" id = "event">
 		Events
 	</a>
-</li>
+</li> 
 <li>
-	<a href = "#" class = "navigation_toplevel_item" id = "candidates">
-		Candidates
-	</a>
-</li>
-<li>
-	<a href = "#" class = "navigation_toplevel_item" id = "request">
-		Requests
+	<a href = "#" class = "navigation_toplevel_item" id = "alumni">
+		Alumni
 	</a>
 </li> 
 <li>
-	<a href = "#" class = "navigation_toplevel_item" id = "tutor">
-		Tutoring
-	</a>
-</li> 
-<li>
-	<a href = "#" class = "navigation_toplevel_item" id = "services">
-		Services
+	<a href = "#" class = "navigation_toplevel_item" id = "about">
+		About
 	</a>
 </li> 
 </ul>
 </div>
-<div class = "submenu" id = "people_submenu">
+
+<div class = "submenu" id ="services_submenu">
 <ul class="navigation_sublevel">
 <li>	
-	<a href="{% url hkn.info.list.list_people category="candidates"%}" class = "navigation_sublevel_item">
-		Candidate Information
+	<a href="/tutor">
+		Tutoring
 	</a>
 </li>
 <li>	
-	<a href="{% url hkn.info.list.list_people category="officers"%}" class = "navigation_sublevel_item">
-		Officer Information
+	<a href="/student/CourseSurvey">
+		Course Surveys
+	</a>
+</li>
+<li>	
+	<a href="/exam/">
+		Online Exams
 	</a>
 </li>
 </ul>
 </div>
+
+<div class = "submenu" id ="indrel_submenu">
+<ul class="navigation_sublevel">
+<li>	
+	<a href="#">
+		Resume Books
+	</a>
+</li>
+<li>	
+	<a href="#">
+		Infosessions
+	</a>
+</li>
+<li>	
+	<a href="#">
+		Career Fair
+	</a>
+</li>
+</ul>
+</div>
+
 <div class = "submenu" id ="event_submenu">
 <ul class="navigation_sublevel">
 <li>	
-	<a href="{% url hkn.event.event.new %}" class = "navigation_sublevel_item">
-		New Event
+	<a href="{% url hkn.event.event.calendar %}" class = "navigation_sublevel_item">
+		Events Calendar
 	</a>
 </li>
 <li>	
@@ -92,76 +119,53 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 		Past Events
 	</a>	
 </li>
-<li>
-	<a href="{% url hkn.event.rsvp.list.list_for_person person_id="me" %}">
-		My RSVPs
-	</a>
-</li>
-<li>
-	<a href="{% url hkn.event.event.calendar %}">
-		Events Calendar
-	</a>
-</li>
 </ul>
 </div>
-<div class = "submenu" id ="candidates_submenu">
+
+<div class = "submenu" id ="alumni_submenu">
 <ul class="navigation_sublevel">
 <li>	
-	<a href="{% url hkn.cand.initiate.initiate category="all"%}">
-		Initiate Candidates!
+	<a href="#" class = "navigation_sublevel_item">
+		Registration
 	</a>
 </li>
 <li>	
-	<a href="{% url hkn.cand.confirm.requirements %}">
-		My Confirmed Attendance
-	</a>
-</li>
-</ul>
-</div>
-<div class = "submenu" id ="request_submenu">
-<ul class="navigation_sublevel">
-<li>	
-	<a href="{% url hkn.request.list.list_requests category="actives"%}">
-		Confirm Requests [{{ requests|length }}]
+	<a href="#" class = "navigation_sublevel_item">
+		Alumni Newsletter
 	</a>
 </li>
 </ul>
 </div>
 
-<div class = "submenu" id ="tutor_submenu">
-<ul class="navigation_sublevel">
-<li>	
-	<a href="{% url hkn.tutor.views.schedule %}">
-		Tutoring Schedule
-	</a>
-</li>
-<li>	
-	<a href="{% url hkn.tutor.views.feedback %}">
-		Tutoring Feedback
-	</a>
-</li>
-<li>	
-	<a href="{% url hkn.tutor.views.contact %}">
-		Contact Tutoring
-	</a>
-</li>
 
-</ul>
+
+<div class = "submenu" id ="home_submenu">
+<!--<ul class="navigation_sublevel">
+<li>	
+	<a href="#" class = "navigation_sublevel_item">
+		Registration
+	</a>
+</li>
+<li>	
+	<a href="#" class = "navigation_sublevel_item">
+		Alumni Newsletter
+	</a>
+</li>
+</ul>-->
 </div>
-
-<div class = "submenu" id ="services_submenu">
-<ul class="navigation_sublevel">
+<div class = "submenu" id ="about_submenu">
+<!--<ul class="navigation_sublevel">
 <li>	
-	<a href="/student/CourseSurvey">
-		Course Surveys
+	<a href="#" class = "navigation_sublevel_item">
+		Registration
 	</a>
 </li>
 <li>	
-	<a href="/exam/">
-		Online Exams
+	<a href="#" class = "navigation_sublevel_item">
+		Alumni Newsletter
 	</a>
 </li>
-</ul>
+</ul>-->
 </div>
 
 <div id="navbar_shadow"></div>
@@ -180,9 +184,12 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 
 <!--content-->
 <!-- start main content block -->
+
 {% block content %}
 	Content goes here! Extend "content" block in template :) :) :) <3 <3 <3
 {% endblock %}
+
+
 <!-- end main content block -->
 
 </div>
@@ -191,7 +198,8 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 <div id="footer">
 
 <div id="footer-left">
-	<a href="#">HOME</a> | <a href="#">CONTACT</a>	
+                <a href="#">HOME</a> | <a href="#">ABOUT</a> | <a
+                href="#">CONTACT</a>
 </div>
 <div id="footer-right">Eta Kappa Nu, Mu Chapter (<a href="mailto:www@hkn.eecs.berkeley.edu">www@hkn.eecs.berkeley.edu</a>)</div>
 </div>
