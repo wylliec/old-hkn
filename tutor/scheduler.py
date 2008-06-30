@@ -982,7 +982,8 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                                           "machineNum":False,
                                           "maximumCost":False,
                                           "patience":False,
-                                          })
+                                          }),
+                      beamLength = 3
                       ):
     """
     Returns:
@@ -1050,7 +1051,8 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                                             costs=costs,
                                             slotsByPerson=slotsByPerson,
                                             adjacency_checker=adjacency_checker,
-                                            availabilitiesBySlot=availabilitiesBySlot)
+                                            availabilitiesBySlot=availabilitiesBySlot,
+                                            beamLength=beamLength)
     
     my_get_cost = lambda state, slot, person: get_cost(initialState=state,
                                                        slot=slot,
@@ -1529,9 +1531,12 @@ def hill_climb(initialState=State(),
         return (newStateAndCost, costDiff)
     
 #    Begin Hillclimbing
+    print "Beginning hill climbing with beam length of", beamLength
     betterStates = 0
     worseStates = 0
     invalidStates = 0
+    repeatStates = 0
+    ignoredStates = 0
     #bestDiffs = [] #unused at the moment...
 
     bestStateAndCost = (State(initialState), 0)
@@ -1559,9 +1564,13 @@ def hill_climb(initialState=State(),
         iterations += 1
         print "climbing hill", iterations
 
+        lastIndex = 0
         while len(currentStatesAndCosts) > 0:
             state, cost = currentStatesAndCosts.pop(0)
-            for slotOne, slotTwo, slotThree in slots:
+            breakFlag = False
+            for k in xrange(len(slots)):
+                if breakFlag: break
+                slotOne, slotTwo, slotThree = slots[(k + lastIndex) % len(slots)]
                 personOne = state[slotOne]
                 personTwo = state[slotTwo]
                 personThree = state[slotThree]
@@ -1584,15 +1593,23 @@ def hill_climb(initialState=State(),
                                 loc = -1
                                 for i in range(len(newStateAndCosts)):
                                     s, c = newStateAndCosts[i]
-                                    if c < newStateAndCost[1]:
+                                    if c > newStateAndCost[1]:
                                         loc = i
                                         break
-                                if loc < 0 and len(newStateAndCosts) < beamLength:
+                                if beamLength == 0 or loc < 0 and len(newStateAndCosts) < beamLength:
                                     newStateAndCosts.append(newStateAndCost)
-                                else:
+                                    if beamLength == 0:
+                                        lastIndex = (k + lastIndex) % len(slots)
+                                        breakFlag = True
+                                        break
+                                elif loc < 0:
+                                    ignoredStates += 1
+                                elif newStateAndCost not in newStateAndCosts:
                                     newStateAndCosts.insert(loc, newStateAndCost)
                                     if len(newStateAndCosts) > beamLength:
                                         newStateAndCosts.pop()
+                                else:
+                                    repeatStates += 1
                             else:
                                 worseStates += 1
                         else:
@@ -1610,7 +1627,9 @@ def hill_climb(initialState=State(),
     print 'Total Iterations =', iterations
     print 'Number of Better States =', betterStates
     print 'Number of Worse States =', worseStates
-    print 'Number of Invalid States =', invalidStates, '\n'
+    print 'Number of Invalid States =', invalidStates
+    print 'Number of Ignored States =', ignoredStates
+    print 'Number of Repeat States =', repeatStates, '\n'
     bestState, bestCost = bestStateAndCost
     #bestState.meta['cost'] = initialState.meta['cost'] + bestCost
     bestState.meta['cost'] = get_total_cost(state=bestState, costs=costs, adjacency_checker=adjacency_checker, availabilitiesBySlot=availabilitiesBySlot)
@@ -1883,11 +1902,12 @@ def random_availabilities_by_slot(prob=.4):
     #construct dictionary
     return parse_into_availabilities_by_slot(corystr, sodastr)
 
-def generate_from_random(destFileName = "randomSchedulerOutput.txt", probability=.5):
+def generate_from_random(destFileName = "randomSchedulerOutput.txt", probability = .5, beamLength = 3):
     clear_timing()
     ret = generate_schedule(availabilitiesBySlot=random_availabilities_by_slot(probability),
                             slotsByPerson=NiceDict(2),
-                            options=NiceDict(False))
+                            options=NiceDict(False),
+                            beamLength=beamLength)
     print_timing()
     dump = open(destFileName, 'w+') #truncates file if it exists
     for state in ret:
@@ -1897,7 +1917,7 @@ def generate_from_random(destFileName = "randomSchedulerOutput.txt", probability
     
     print "wrote output to %s" % destFileName
     
-def generate_from_file(destFileName = "schedulerOutput.txt", options=NiceDict(False)):
+def generate_from_file(destFileName = "schedulerOutput.txt", options=NiceDict(False), beamLength = 3):
     try:
         from parameters import coryTimes, sodaTimes, defaultHours, exceptions, scoring
         from parameters import options as poptions
@@ -1912,7 +1932,8 @@ def generate_from_file(destFileName = "schedulerOutput.txt", options=NiceDict(Fa
                                                                                    sodaTimes),
                             slotsByPerson=NiceDict(defaultHours, exceptions),
                             scoring=scoring,
-                            options=NiceDict(False, poptions))
+                            options=NiceDict(False, poptions),
+                            beamLength=beamLength)
     print_timing()
     dump = open(destFileName, 'w+') #truncates file if it exists
     for state in ret:
@@ -2000,7 +2021,7 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
     dump.close()
 
 # Hill climbs the output of glpsol and outputs the optimal schedule
-def create_schedule_from_lp_output(resultFileName = "results.txt", beamLength = 1):
+def create_schedule_from_lp_output(resultFileName = "results.txt", beamLength = 3):
     results = open(resultFileName, "r")
 
     state = State(extraCalculations = False)
@@ -2339,10 +2360,13 @@ if __name__=="__main__":
         print "  -t      --test         run tests"
         print "  -l      --lp           create lp"
         print "  -L      --lpr          hill climb the LP solution"
+        print "  -g NAME --lpfile=NAME  lp input filename (default: lp.txt)"
+        print "  -G NAME --lprfile=NAME lp output filename (default: results.txt)"
+        print "  -b NUM  --beam=NUM     beam length to use in hill climbing (default: 3, use 0 to use first available swap)"
 
     import getopt
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'fmcrtlL', ['file=', 'machine=', 'maxcost=', 'randseed=', 'test', 'lp', 'lpr'])
+        opts, args = getopt.getopt(sys.argv[1:], 'f:m:c:r:tlLg:G:b:', ['file=', 'machine=', 'maxcost=', 'randseed=', 'test', 'lp', 'lpr', 'lpfile=', 'lprfile=', 'beam='])
     except getopt.GetoptError:
         usage()
         sys.exit(1)
@@ -2352,6 +2376,9 @@ if __name__=="__main__":
     seed = False
     lp = False
     lpr = False
+    lpfile = "lp.txt"
+    lprfile = "results.txt"
+    beamLength = 3
     for opt, arg in opts:
         if opt in ('-f', '--file'):
             filename = arg
@@ -2371,13 +2398,19 @@ if __name__=="__main__":
             lp = True
         elif opt in ('-L', '--lpr'):
             lpr = True
+        elif opt in ('-g', '--lpfile'):
+            lpfile = arg
+        elif opt in ('-G', '--lprfile'):
+            lprfile = arg
+        elif opt in ('-b', '--beam'):
+            beamLength = int(arg)
 
     if lpr:
-        create_schedule_from_lp_output()
+        create_schedule_from_lp_output(lprfile, beamLength)
     elif lp:
-        create_lp_from_parameters()
+        create_lp_from_parameters(lpfile)
     else:
-        generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed})
+        generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed}, beamLength=beamLength)
 
 # indentation stuff for the people who use vim -rzheng
 # vim: set expandtab softtabstop=4 tabstop=4 shiftwidth=4:
