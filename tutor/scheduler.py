@@ -1,7 +1,7 @@
 #!/usr/bin/python
 #holds methods used to calculate a schedule given preference and scoring information
 
-import heapq, random, sys, time, thread
+import heapq, random, sys, time, thread, re
 
 try:
     from hkn.tutor.constants import *
@@ -1921,7 +1921,136 @@ def generate_from_file(destFileName = "schedulerOutput.txt", options=NiceDict(Fa
         dump.write(s)
     
     print "wrote output to %s" % destFileName
-    
+
+# Generates a linear program input in fixed mps format, given parameters.py
+def create_lp_from_parameters(destFileName = "lp.txt"):
+    try:
+        from parameters import coryTimes, sodaTimes, defaultHours, exceptions, scoring
+        from parameters import options as poptions
+    except:
+        print "Could not find valid file 'parameters.py'"
+        return
+    availBySlot = {}
+    people = set()
+
+    hourIndex = 0
+    for hourAvailString in coryTimes.split('\n'):
+        dayIndex = 0
+        for dayAvailString in hourAvailString.split(','):
+            for detailString in dayAvailString.split(' '):
+                if detailString == '':
+                    continue
+                if detailString[-1:] == 'p':
+                    person = detailString[:-2]
+                else:
+                    person = detailString[:-1]
+                slot = (TUTORING_DAYS[dayIndex], TUTORING_TIMES[hourIndex])
+                if slot not in availBySlot:
+                    availBySlot[slot] = []
+                availBySlot[slot].append(person)
+                people.add(person)
+            #end for detailString
+            dayIndex += 1
+        #end for dayAvailString
+        hourIndex += 1
+    #end for hourAvailString
+
+    dump = open(destFileName, 'w+') #truncates file if it exists
+
+    dump.write("set slots;\n")
+    dump.write("set offices;\n")
+    dump.write("set people;\n")
+    dump.write("var personInSlot{p in people, s in slots, o in offices} binary;\n")
+    dump.write("maximize happiness: sum{p in people, s in slots, o in offices} personInSlot[p, s, o];\n")
+
+    # every slot filled
+    for d in TUTORING_DAYS:
+        for t in TUTORING_TIMES:
+            t = t.replace("-", "TO")
+            for o in [CORY, SODA]:
+                dump.write("s.t. onePersonPerSlot%s%s%s: sum{p in people} personInSlot[p, '%s%s', '%s'] == 1;\n" % (d, t, o, d, t, o))
+
+    # can't be in both offices at once
+    for p in people:
+        for d in TUTORING_DAYS:
+            for t in TUTORING_TIMES:
+                t = t.replace("-", "TO")
+                dump.write("s.t. notOmnipresent%s%s%s: sum{o in offices} personInSlot['%s', '%s%s', o] <= 1;\n" % (p, d, t, p, d, t))
+
+    # maximum hours to tutor
+    for p in people:
+        x = defaultHours
+        if p in exceptions:
+            x = exceptions[p]
+        dump.write("s.t. totalHours%s: sum{s in slots, o in offices} personInSlot['%s', s, o] <= %d;\n" % (p, p, x))
+
+    # can't make these slots
+    for p in people:
+        for slot in availBySlot:
+            if p not in availBySlot[slot]:
+                d, t = slot
+                t = t.replace("-", "TO")
+                dump.write("s.t. unavailable%s%s%s: sum{o in offices} personInSlot['%s', '%s%s', o] == 0;\n" % (p, d, t, p, d, t))
+
+    dump.write("data;\n")
+    dump.write("set slots := %s;\n" % (" ".join([x + y.replace("-", "TO") for x in TUTORING_DAYS for y in TUTORING_TIMES])))
+    dump.write("set offices := %s;\n" % (" ".join([CORY, SODA])))
+    dump.write("set people := %s;\n" % (" ".join([x for x in people])))
+    dump.write("end;\n")
+    dump.close()
+
+# Hill climbs the output of glpsol and outputs the optimal schedule
+def create_schedule_from_lp_output(resultFileName = "results.txt", beamLength = 1):
+    results = open(resultFileName, "r")
+
+    state = State(extraCalculations = False)
+    state.meta['cost'] = 0
+    state.meta['heuristic'] = 0
+
+    line1 = results.readline()
+    while line1 != "":
+        if line1.find("personInSlot") != -1:
+            line2 = results.readline()
+            t = line2.find("  1  ")
+            if t != -1:
+                t = line2.find("  0  ", t)
+                if t != -1:
+                    m = re.match("[^']*'(.*)',(\D*)([^,]*),(.*)]", line1)
+                    person, day, time, office = m.groups()
+                    time = time.replace("TO", "-")
+
+                    slot = Slot(day, time, office)
+                    state[slot] = person
+        line1 = results.readline()
+
+    print state.pretty_print()
+
+    try:
+        from parameters import coryTimes, sodaTimes, defaultHours, exceptions, scoring
+        from parameters import options as poptions
+    except:
+        print "Could not find valid file 'parameters.py'"
+        return
+
+    costs = {'base': max(SCORE_ADJACENT, SCORE_ADJACENT_SAME_OFFICE) * 2 +
+                 max(SCORE_PREFERENCE.values()) +
+                 SCORE_CORRECT_OFFICE +
+                 1,
+         'adjacent': SCORE_ADJACENT,
+         'adjacent_same_office': SCORE_ADJACENT_SAME_OFFICE}
+    costs['preference'] = {}
+    for int_key in SCORE_PREFERENCE:
+        costs['preference'][int_key] = SCORE_PREFERENCE[int_key]
+        costs['preference'][int_key - 0.5] = SCORE_PREFERENCE[int_key] + SCORE_CORRECT_OFFICE
+
+    availabilitiesBySlot = parse_into_availabilities_by_slot(coryTimes, sodaTimes)
+
+    newState = hill_climb(initialState=state, costs=costs, slotsByPerson=NiceDict(2), availabilitiesBySlot=availabilitiesBySlot, beamLength=beamLength)
+
+    print "LP solution:"
+    print state.pretty_print()
+    print "Final result:"
+    print newState.pretty_print()
 
 def run_tests(verbose = False):
     """
@@ -2208,10 +2337,12 @@ if __name__=="__main__":
         print "  -r NUM  --randseed=NUM random seed"
         print "  -h      --help"
         print "  -t      --test         run tests"
+        print "  -l      --lp           create lp"
+        print "  -L      --lpr          hill climb the LP solution"
 
     import getopt
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'fmcrt', ['file=', 'machine=', 'maxcost=', 'randseed=', 'test'])
+        opts, args = getopt.getopt(sys.argv[1:], 'fmcrtlL', ['file=', 'machine=', 'maxcost=', 'randseed=', 'test', 'lp', 'lpr'])
     except getopt.GetoptError:
         usage()
         sys.exit(1)
@@ -2219,6 +2350,8 @@ if __name__=="__main__":
     machineNum = False
     cost = False
     seed = False
+    lp = False
+    lpr = False
     for opt, arg in opts:
         if opt in ('-f', '--file'):
             filename = arg
@@ -2234,8 +2367,17 @@ if __name__=="__main__":
         elif opt in ('-t', '--test'):
             run_tests()
             sys.exit(0)
+        elif opt in ('-l', '--lp'):
+            lp = True
+        elif opt in ('-L', '--lpr'):
+            lpr = True
 
-    generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed})
+    if lpr:
+        create_schedule_from_lp_output()
+    elif lp:
+        create_lp_from_parameters()
+    else:
+        generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed})
 
 # indentation stuff for the people who use vim -rzheng
 # vim: set expandtab softtabstop=4 tabstop=4 shiftwidth=4:
