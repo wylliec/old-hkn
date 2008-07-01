@@ -1953,6 +1953,9 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
         return
     availBySlot = {}
     people = set()
+    coryPref = set()
+    sodaPref = set()
+    timePref = {}
 
     hourIndex = 0
     for hourAvailString in coryTimes.split('\n'):
@@ -1963,12 +1966,18 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
                     continue
                 if detailString[-1:] == 'p':
                     person = detailString[:-2]
+                    preference = int(detailString[-2:-1])
+                    coryPref.add(person)
                 else:
+                    preference = int(detailString[-1:])
                     person = detailString[:-1]
                 slot = (TUTORING_DAYS[dayIndex], TUTORING_TIMES[hourIndex])
                 if slot not in availBySlot:
                     availBySlot[slot] = []
                 availBySlot[slot].append(person)
+                if slot not in timePref:
+                    timePref[slot] = {}
+                timePref[slot][person] = preference
                 people.add(person)
             #end for detailString
             dayIndex += 1
@@ -1976,13 +1985,32 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
         hourIndex += 1
     #end for hourAvailString
 
+    hourIndex = 0
+    for hourAvailString in sodaTimes.split('\n'):
+        dayIndex = 0
+        for dayAvailString in hourAvailString.split(','):
+            for detailString in dayAvailString.split(' '):
+                if detailString == '':
+                    continue
+                if detailString[-1:] == 'p':
+                    person = detailString[:-2]
+                    sodaPref.add(person)
+            #end for detailString
+            dayIndex += 1
+        #end for dayAvailString
+        hourIndex += 1
+    #end for hourAvailString
+
+
     dump = open(destFileName, 'w+') #truncates file if it exists
 
     dump.write("set slots;\n")
     dump.write("set offices;\n")
     dump.write("set people;\n")
+    dump.write("param officePreference{p in people, o in offices};\n")
+    dump.write("param timePreference{s in slots, p in people};\n")
     dump.write("var personInSlot{p in people, s in slots, o in offices} binary;\n")
-    dump.write("maximize happiness: sum{p in people, s in slots, o in offices} personInSlot[p, s, o];\n")
+    dump.write("maximize happiness: sum{p in people, s in slots, o in offices} personInSlot[p, s, o] * (officePreference[p, o] + timePreference[s, p]);\n")
 
     # every slot filled
     for d in TUTORING_DAYS:
@@ -2017,6 +2045,36 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
     dump.write("set slots := %s;\n" % (" ".join([x + y.replace("-", "TO") for x in TUTORING_DAYS for y in TUTORING_TIMES])))
     dump.write("set offices := %s;\n" % (" ".join([CORY, SODA])))
     dump.write("set people := %s;\n" % (" ".join([x for x in people])))
+
+    dump.write("param officePreference : %s %s :=\n" % (CORY, SODA));
+    for p in people:
+        if p in coryPref:
+            c = 1
+        else:
+            c = .5
+        if p in sodaPref:
+            s = 1
+        else:
+            s = .5
+        dump.write("%s %f %f\n" % (p, c, s))
+    dump.write(";\n")
+
+    dump.write("param timePreference : ")
+    for p in people:
+        dump.write("%s " % (p))
+    dump.write(":=\n")
+    for slot in timePref:
+        d, t = slot
+        t = t.replace("-", "TO")
+        dump.write("%s%s " % (d, t))
+        for p in people:
+            pref = 3
+            if p in timePref[slot]:
+                pref = timePref[slot][p]
+            dump.write("%f " % (3 - pref))
+        dump.write("\n")
+    dump.write(";\n")
+
     dump.write("end;\n")
     dump.close()
 
