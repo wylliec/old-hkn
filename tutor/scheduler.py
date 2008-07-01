@@ -2080,30 +2080,6 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
 
 # Hill climbs the output of glpsol and outputs the optimal schedule
 def create_schedule_from_lp_output(resultFileName = "results.txt", beamLength = 3):
-    results = open(resultFileName, "r")
-
-    state = State(extraCalculations = False)
-    state.meta['cost'] = 0
-    state.meta['heuristic'] = 0
-
-    line1 = results.readline()
-    while line1 != "":
-        if line1.find("personInSlot") != -1:
-            line2 = results.readline()
-            t = line2.find("  1  ")
-            if t != -1:
-                t = line2.find("  0  ", t)
-                if t != -1:
-                    m = re.match("[^']*'(.*)',(\D*)([^,]*),(.*)]", line1)
-                    person, day, time, office = m.groups()
-                    time = time.replace("TO", "-")
-
-                    slot = Slot(day, time, office)
-                    state[slot] = person
-        line1 = results.readline()
-
-    print state.pretty_print()
-
     try:
         from parameters import coryTimes, sodaTimes, defaultHours, exceptions, scoring
         from parameters import options as poptions
@@ -2123,6 +2099,31 @@ def create_schedule_from_lp_output(resultFileName = "results.txt", beamLength = 
         costs['preference'][int_key - 0.5] = SCORE_PREFERENCE[int_key] + SCORE_CORRECT_OFFICE
 
     availabilitiesBySlot = parse_into_availabilities_by_slot(coryTimes, sodaTimes)
+
+    state = State(extraCalculations = False)
+    state.meta['heuristic'] = 0
+
+    results = open(resultFileName, "r")
+
+    line1 = results.readline()
+    while line1 != "":
+        if line1.find("personInSlot") != -1:
+            line2 = results.readline()
+            t = line2.find("  1  ")
+            if t != -1:
+                t = line2.find("  0  ", t)
+                if t != -1:
+                    m = re.match("[^']*'(.*)',(\D*)([^,]*),(.*)]", line1)
+                    person, day, time, office = m.groups()
+                    time = time.replace("TO", "-")
+
+                    slot = Slot(day, time, office)
+                    state[slot] = person
+        line1 = results.readline()
+
+    state.meta['cost'] = get_total_cost(state=state, costs=costs, adjacency_checker=are_adjacent_hours, availabilitiesBySlot=availabilitiesBySlot)
+
+    print state.pretty_print()
 
     newState = hill_climb(initialState=state, costs=costs, slotsByPerson=NiceDict(2), availabilitiesBySlot=availabilitiesBySlot, beamLength=beamLength)
 
