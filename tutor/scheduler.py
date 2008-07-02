@@ -1616,9 +1616,10 @@ def hill_climb(initialState=State(),
                             invalidStates += 1
 
         if(len(newStateAndCosts) > 0):
-            bestStateAndCost = newStateAndCosts[0]
+            if bestStateAndCost[1] > newStateAndCosts[0][1]:
+                bestStateAndCost = newStateAndCosts[0]
 
-        print "Best state so far in beam:"
+        print "Best state so far:"
         print "cost delta = ", bestStateAndCost[1]
         print bestStateAndCost[0].meta['swap']
         print bestStateAndCost[0].pretty_print()
