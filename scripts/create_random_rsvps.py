@@ -9,15 +9,17 @@ from request.models import *
 def make_rsvp(p, e):
     if True:
         ra = random.random()
-        if ra < .3:
+        if ra < .10:
             r, created = RSVP.objects.get_or_create(person = p, event = e, transport = 0)
 
             req = r.request_confirmation()
 
-            if ra < .05:
-                if ra < .005:
+	    ra = random.random()
+
+            if ra < .5:
+                if ra < .05:
                     req.set_confirm(False, "")				
-                elif ra < .045:
+                elif ra < .45:
                     req.set_confirm(True, "")				
                 else:
                     r.vp_confirm = None

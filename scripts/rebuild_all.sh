@@ -1,6 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 ./clear_database.sh
+
+echo 'Importing minimal events fixture'
+../manage.py loaddata ../fixtures/events.json
 
 ./create_positions.py
 echo  'c' | ./import_people.py
@@ -11,8 +14,6 @@ echo  'a' | ./import_people.py
 
 #echo 'Importing events from webcal'
 #./import_events_from_webcal.py
-echo 'Importing minimal events fixture'
-cd .. && ./manage loaddata fixtures/events.json && cd scripts
 echo 'Creating random RSVPs'
 ./create_random_rsvps.py
 
