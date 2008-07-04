@@ -9,8 +9,10 @@ echo  'a' | ./import_people.py
 ./import_officership_cached.py
 ./import_usernames_cached.py
 
-echo 'Importing events from webcal'
-./import_events_from_webcal.py
+#echo 'Importing events from webcal'
+#./import_events_from_webcal.py
+echo 'Importing minimal events fixture'
+cd .. && ./manage loaddata fixtures/events.json && cd scripts
 echo 'Creating random RSVPs'
 ./create_random_rsvps.py
 
