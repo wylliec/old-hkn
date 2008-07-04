@@ -1,7 +1,5 @@
 from hkn.event.models import *
 from hkn.event.forms import *
-from hkn.request.models import *
-from hkn.request.constants import REQUEST_TYPE
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse, Http404
@@ -75,9 +73,7 @@ def request_confirmation(request, rsvp_id = "-1"):
     if rsvp.person_id != request.user.person_id:
         return message(request, "Can't request to confirm for RSVP!")
     
-
-    req = Request.objects.request_confirmation(REQUEST_TYPE.RSVP, rsvp, request.user.person)
-    req.save()
+    rsvp.request_confirmation()
     
 
     return message(request, "You have requested a confirmation for this RSVP.")

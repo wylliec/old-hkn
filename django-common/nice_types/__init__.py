@@ -1,3 +1,10 @@
+from django.db import models
+
+class QuerySetManager(models.Manager):
+    def get_query_set(self):
+        return self.model.QuerySet(self.model)
+
+
 """
 has a default value instead of throwing an error
 allows for useful behavior of [] operations

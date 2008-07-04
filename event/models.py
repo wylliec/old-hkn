@@ -1,4 +1,5 @@
 from django.db import models
+from django.core import urlresolvers
 from hkn.info.models import *
 from hkn.auth.models import *
 from hkn import semester
@@ -7,6 +8,9 @@ from hkn.gcal import gcalInterface
 import os, pickle
 from constants import RSVP_TYPE, EVENT_TYPE
 from string import atoi
+
+import request
+import request.models
 
 try:
     from hkn.hknsettings import GCAL_ENABLED
@@ -233,14 +237,14 @@ class RSVP(models.Model):
 
     comment = models.TextField(blank = True)
 
-    vp_confirm = models.NullBooleanField()
+    vp_confirm = models.NullBooleanField(default = None)
     vp_comment = models.TextField(blank = True)
 
     # store pickle'd data that is relevant
     rsvp_data_pkl = models.TextField()
 
-    def save(self):
-        super(RSVP, self).save()
+    #def save(self):
+    #    super(RSVP, self).save()
 
     def set_rsvp_data(self, rsvp_data):
         self.rsvp_data_pkl = pickle.dumps(rsvp_data)
@@ -250,7 +254,6 @@ class RSVP(models.Model):
 
     def is_block(self):
         return self.event.rsvp_type == RSVP_TYPE.BLOCK
-
 
     def get_block_descriptions(self):
         rsvp_data = self.get_rsvp_data()
@@ -263,11 +266,26 @@ class RSVP(models.Model):
     def __str__(self):
         e = self.event
         return str(self.person) + " : " + str(self.event)
-    
+
+    def request_confirmation(self):
+        return request.models.request_confirmation(self, self.person.user, Permission.objects.get(codename="group_vp"))
 
     class Meta:
         unique_together = (("event", "person"),)
 
+def get_rsvp_metainfo(rsvp, request):
+    metainfo = {}
+
+    metainfo['title'] = "Confirm RSVP"
+    metainfo['description'] = "Confirm %s's RSVP for %s" % (rsvp.person.name(), rsvp.event.name)
+    metainfo['links'] = (("rsvp", urlresolvers.reverse("hkn.event.rsvp.rsvp.view", kwargs = {"rsvp_id" : rsvp.id})),
+                     ("person", urlresolvers.reverse("hkn.info.person.view", kwargs = {"person_id" : rsvp.person_id})),
+                     ("event", urlresolvers.reverse("hkn.event.event.view", kwargs = {"event_id" : rsvp.event_id})))
+    metainfo['confirm'] = rsvp.vp_confirm 
+    metainfo['comment'] = rsvp.vp_comment
+    return metainfo
+
+request.register(RSVP, get_rsvp_metainfo, confirmation_attr='vp_confirm', comment_attr='vp_comment')
 
 
 class RSVPData:
@@ -276,6 +294,3 @@ class RSVPData:
 
     def __str__(self):
         return "Blocks: " + str(self.blocks)
-
-
-

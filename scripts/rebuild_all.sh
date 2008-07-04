@@ -21,5 +21,6 @@ echo 'Creating random RSVPs'
 cd klass/xml && tar xvfj schedules.tbz && cd ../..
 ./import_klasses.py
 ./generate_exams.py
+./generate_review_problems.py
 
 

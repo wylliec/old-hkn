@@ -7,6 +7,7 @@
 ../manage.py reset --noinput info
 ../manage.py reset --noinput request
 ../manage.py reset --noinput tutor
+../manage.py reset --noinput review
 ../manage.py flush --noinput
 ../manage.py syncdb --noinput
 
