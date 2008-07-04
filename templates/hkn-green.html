@@ -1,10 +1,10 @@
 	<?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html>
-<head>
-
 {% load hkn_extras %}
-{% block title %}<title>Eta Kappa Nu (HKN), Mu Chapter {% block extratitle%} {% endblock %}</title>{% endblock %}
+<head>
+{% block head %}
+<title>{% block title %}Eta Kappa Nu (HKN), Mu Chapter {% endblock %}</title>
 {% block css %}
 {% include "css_common.inc" %}
 <link rel="stylesheet" type="text/css" href="{{STATIC_PREFIX}}css/hkn-green.css">
@@ -15,7 +15,6 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% include "js_common.inc" %}
 <script type="text/javascript" src="{{STATIC_PREFIX}}js/navigation.js"></script>
 {% endblock %}
-{% block extrahead %}
 {% endblock %}
 </head>
 
@@ -186,7 +185,6 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 <!-- start main content block -->
 
 {% block content %}
-	Content goes here! Extend "content" block in template :) :) :) <3 <3 <3
 {% endblock %}
 
 
