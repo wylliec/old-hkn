@@ -1,4 +1,18 @@
 from django.db import models
+import pickle
+
+class PickleField(models.TextField):
+    __metaclass__ = models.SubfieldBase
+
+    def to_python(self, value):
+        if type(value) == type('') and len(value) > 0:
+            return pickle.loads(value)
+        return None
+
+    def get_db_prep_save(self, value):
+        if value is None:
+            return ''
+        return pickle.dumps(value)
 
 class QuerySetManager(models.Manager):
     def get_query_set(self):

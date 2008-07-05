@@ -29,9 +29,9 @@ def rsvp_from_form_instance(form, rsvp = RSVP()):
     else:
         rsvp.transport = 0
     if cd.has_key('rsvp_data'):
-        rsvp.set_rsvp_data(RSVPData(cd['rsvp_data']))
+        rsvp.rsvp_data = RSVPData(cd['rsvp_data'])
     else:
-        rsvp.rsvp_data_pkl = ""
+        rsvp.rsvp_data = ""
     
 
     return rsvp

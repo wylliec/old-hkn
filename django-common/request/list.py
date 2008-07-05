@@ -52,7 +52,7 @@ def list_requests_confirm_ajax(request, request_id):
         elif confirmed == "false":
             confirmed = False
         comment = request.POST.get("comment", "")
-        r.set_confirm(confirmed, comment)
+        r.set_confirm(confirmed, comment, confirmed_by=request.user)
         r.save()
     
     r.set_metainfo()

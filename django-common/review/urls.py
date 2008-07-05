@@ -1,5 +1,4 @@
 from django.conf.urls.defaults import *
-from settings import SERVER_ROOT
 
 urlpatterns = patterns('',
     url(r'^$', 'review.views.search', name='review-home'),

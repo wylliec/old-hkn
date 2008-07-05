@@ -9,8 +9,10 @@ import os, pickle
 from constants import RSVP_TYPE, EVENT_TYPE
 from string import atoi
 
+from nice_types import PickleField
+
 import request
-import request.models
+import request.utils
 
 try:
     from hkn.hknsettings import GCAL_ENABLED
@@ -241,24 +243,14 @@ class RSVP(models.Model):
     vp_comment = models.TextField(blank = True)
 
     # store pickle'd data that is relevant
-    rsvp_data_pkl = models.TextField()
-
-    #def save(self):
-    #    super(RSVP, self).save()
-
-    def set_rsvp_data(self, rsvp_data):
-        self.rsvp_data_pkl = pickle.dumps(rsvp_data)
-
-    def get_rsvp_data(self):
-        return pickle.loads(self.rsvp_data_pkl)
+    rsvp_data = PickleField()
 
     def is_block(self):
         return self.event.rsvp_type == RSVP_TYPE.BLOCK
 
     def get_block_descriptions(self):
-        rsvp_data = self.get_rsvp_data()
         desc = []
-        for block in rsvp_data.blocks:
+        for block in self.rsvp_data.blocks:
             bn = atoi(block)
             desc.append(self.event.get_formatted_time_range_for_block(bn))
         return ", ".join(desc)
@@ -268,7 +260,7 @@ class RSVP(models.Model):
         return str(self.person) + " : " + str(self.event)
 
     def request_confirmation(self):
-        return request.models.request_confirmation(self, self.person.user, Permission.objects.get(codename="group_vp"))
+        return request.utils.request_confirmation(self, self.person.user, Permission.objects.get(codename="group_vp"))
 
     class Meta:
         unique_together = (("event", "person"),)
@@ -281,11 +273,10 @@ def get_rsvp_metainfo(rsvp, request):
     metainfo['links'] = (("rsvp", urlresolvers.reverse("hkn.event.rsvp.rsvp.view", kwargs = {"rsvp_id" : rsvp.id})),
                      ("person", urlresolvers.reverse("hkn.info.person.view", kwargs = {"person_id" : rsvp.person_id})),
                      ("event", urlresolvers.reverse("hkn.event.event.view", kwargs = {"event_id" : rsvp.event_id})))
-    metainfo['confirm'] = rsvp.vp_confirm 
-    metainfo['comment'] = rsvp.vp_comment
+    metainfo['confirmed'] = rsvp.vp_confirm 
     return metainfo
 
-request.register(RSVP, get_rsvp_metainfo, confirmation_attr='vp_confirm', comment_attr='vp_comment')
+request.register(RSVP, get_rsvp_metainfo, confirmation_attr='vp_confirm')
 
 
 class RSVPData:
