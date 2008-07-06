@@ -6,6 +6,7 @@ urlpatterns = patterns('',
 
     # main page
      (r'^$', 'hkn.main.views.main'),
+     (r'^css/hkn-(?P<css_file>\w*).css$', 'hkn.main.themes.theme_css'),
 
     # other inclusions
     (r'^info/', include('hkn.info.urls')),
