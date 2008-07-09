@@ -206,13 +206,11 @@ h3 {
 }*/
 
 #container{
-	height: auto;
-	margin: 1%;
-	padding: 5%;
-	border: 1px solid #2C31AD;
-	background-color: #EFF7FF;
-	text-align: left;
-	overflow:visible;
+	background: #F3F8F8;
+	padding: 0 8px;
+	margin: 10px;
+	border: 1px #5C7C0B solid;
+	width: auto;
 }
 
 #container #leftshadow{
@@ -265,33 +263,18 @@ div #rightshadow{
 	clear:right;
 }
 */
-
+/* footer area */
 #footer {
-	position: relative;
-	clear: both;
-	width: 96%;
-	height: 20px;
-	line-height:20px;
-	padding: 5px 2% 5px 2%;
-	background-color: #2C31AD;
-	font-family: Verdana, Arial, Helvetica;
-	font-size: small;
-	color: #9CC2DC;
-}
-
-#footer a {
-	font-family: Verdana, Arial, Helvetica;
-	font-size: small;
-	color: #FFFFFF;
-	text-decoration: none;
-}
-
-#footer-left{
-	float: left;
+	background: #048DB4;
+	color: #ACD7EE;
+	font-size: 95%;
+	line-height: 130%;
+	padding: 8px 10px;
 	text-align: left;
 }
-
+#footer a, #footer a:visited {
+	color: #ffffff;
+}
 #footer-right{
-	float: right; 
-	text-align: right;
+	float: right;
 }
