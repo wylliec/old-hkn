@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from hkn.settings import SERVER_ROOT, IMAGES_PATH
+from hkn.settings import SERVER_ROOT, IMAGES_PATH, MEDIA_ROOT, MEDIA_URL
 from hkn.main import admin_site
 
 urlpatterns = patterns('',
@@ -33,7 +33,7 @@ urlpatterns = patterns('',
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + '/static'}),
 
     # media
-    (r'^files/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + '/files'}),
+    (r'^files/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
 
 )
     
