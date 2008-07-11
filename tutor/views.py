@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django import newforms as forms
 from string import atoi
 
-from hkn.auth.decorators import *
+from django.contrib.auth.decorators import *
 
 from course import models as courses
 from hkn.tutor import models as tutor

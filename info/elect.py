@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
 from hkn.info.models import *
 from hkn.info import utils
-from hkn.auth.decorators import *
+from django.contrib.auth.decorators import *
 from hkn import semester
 from string import atoi
 

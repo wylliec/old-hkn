@@ -7,7 +7,7 @@ import hkn_settings
 
 from hkn.info.models import *
 from hkn.info.utils import *
-from hkn.auth.models import *
+from django.contrib.auth.models import *
 from hkn.event.models import *
 
 import MySQLdb

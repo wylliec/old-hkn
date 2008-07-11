@@ -2,10 +2,11 @@ from nice_types import EnumType
 
 
             
-
-
 ANONYMOUS = 0
-"""An anonymous member: has never been a candidate"""
+"""Anonymous member"""
+
+REGISTERED = 3
+"""A registered member; has never been a candidate"""
 
 EXCANDIDATE = 5
 """An ex-candidate: was a candidate at one point, but never became a member"""
@@ -26,7 +27,7 @@ EXOFFICER = 20
 OFFICER = 25
 """An officer: for the current semester"""
 
-MEMBER_TYPE = EnumType(ANONYMOUS = ANONYMOUS, EXCANDIDATE = EXCANDIDATE, CANDIDATE = CANDIDATE, MEMBER = MEMBER, FOGIE = FOGIE, EXOFFICER = EXOFFICER, OFFICER = OFFICER)
+MEMBER_TYPE = EnumType(ANONYMOUS = ANONYMOUS, REGISTERED = REGISTERED, EXCANDIDATE = EXCANDIDATE, CANDIDATE = CANDIDATE, MEMBER = MEMBER, FOGIE = FOGIE, EXOFFICER = EXOFFICER, OFFICER = OFFICER)
 """
 Namespace for member type related constants. 
 
@@ -56,4 +57,4 @@ Additionally, you can do the following to get the description::
 
 """
 
-MEMBER_TYPE.add_descriptions(((MEMBER_TYPE.ANONYMOUS, "Anonymous"), (MEMBER_TYPE.EXCANDIDATE, "Ex-Candidate"), (MEMBER_TYPE.CANDIDATE, "Candidate"), (MEMBER_TYPE.MEMBER, "Member"), (MEMBER_TYPE.FOGIE, "Fogie"), (MEMBER_TYPE.OFFICER, "Officer")))
+MEMBER_TYPE.add_descriptions(((MEMBER_TYPE.ANONYMOUS, "Anonymous"), (MEMBER_TYPE.REGISTERED, "Registered Member" ), (MEMBER_TYPE.EXCANDIDATE, "Ex-Candidate"), (MEMBER_TYPE.CANDIDATE, "Candidate"), (MEMBER_TYPE.MEMBER, "Member"), (MEMBER_TYPE.FOGIE, "Fogie"), (MEMBER_TYPE.OFFICER, "Officer")))

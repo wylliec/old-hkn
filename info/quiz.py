@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
 from hkn.info.models import *
-from hkn.auth.decorators import *
+from django.contrib.auth.decorators import *
 from string import atoi
 
 #@login_required

@@ -27,8 +27,9 @@ if not SERVER_ROOT.endswith("hkn/"):
 
 DJANGO_COMMON = SERVER_ROOT + "django-common/"
 
-EXAMS_USER_MODULE = 'hkn.auth.models.User'
+EXAMS_USER_MODULE = 'django.contrib.auth.models.User'
 EXAM_LOGIN_REQUIRED = False
+LOGIN_URL = "/login/"
 
 SESSION_SAVE_EVERY_REQUEST = True
 
@@ -110,7 +111,8 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'hkn.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'hkn.main.middleware.HknAuthMiddleware',
     'hkn.main.middleware.LayoutMiddleware',
     'django.middleware.doc.XViewMiddleware',
 )
@@ -125,25 +127,23 @@ TEMPLATE_DIRS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-"hkn.auth.context_processor.auth",
 "hkn.main.context_processor.hkn_vars",
 "request.context_processor.requests",
 "hkn.gcal.context_processor.gcal",
-#"django.core.context_processors.auth",
+"django.core.context_processors.auth",
 "django.core.context_processors.debug",
 "django.core.context_processors.i18n")
 
 INSTALLED_APPS = (
-    'hkn.auth',
+    'django.contrib.auth',
 #    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-#    'django.contrib.admin',
+    'django.contrib.admin',
     'ajaxlist',
     'request',
     'hkn.info',
-#    'hkn.admin',
     'hkn.sms',
     'hkn.event',
     'hkn.gcal',

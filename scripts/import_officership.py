@@ -7,7 +7,7 @@ import hkn_settings
 
 from hkn.info.models import *
 from hkn.info.utils import *
-from hkn.auth.utils import *
+from django.contrib.auth.utils import *
 from hkn.info.constants import MEMBER_TYPE
 from hkn import semester
 
@@ -49,7 +49,7 @@ def import_officers(filename):
         else:
             officer.member_status = MEMBER_TYPE.EXOFFICER
         officer.save()
-        officership.append((officer.email(), position.short_name, semester))
+        officership.append((officer.email, position.short_name, semester))
     pklFile = file(pklFilename, 'w')
     pickle.dump(officership, pklFile)
     print officership

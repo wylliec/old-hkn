@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from hkn.settings import SERVER_ROOT, IMAGES_PATH
+from hkn.main import admin_site
 
 urlpatterns = patterns('',
     # Example:
@@ -22,12 +23,10 @@ urlpatterns = patterns('',
     (r'^course/', include('course.urls')),        
 
     # authentication pages
-     (r'^login/$', 'hkn.auth.login.login'),
-     (r'^logout/$', 'hkn.auth.login.logout'),
-     (r'^authenticate/$', 'hkn.auth.login.authenticate'),
+     (r'^login/$', 'django.contrib.auth.views.login'),
+     (r'^logout/$', 'django.contrib.auth.views.logout'),
 
-
-     #(r'^admin/', include('hkn.admin.urls')),
+     (r'^admin/(.*)', admin_site.root),
 
 
     # default static

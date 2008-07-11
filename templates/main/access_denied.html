@@ -1,0 +1,5 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+  <font color="red">Access denied. {% if user.is_anonymous %} Maybe you should <a href="{% url django.contrib.auth.views.login %}?next={{ request.path }}">login?</a> {% endif %} </font>
+{% endblock %}

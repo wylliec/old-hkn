@@ -3,6 +3,7 @@
 import hkn_settings
 
 from review.models import *
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 import random, datetime
 
@@ -14,8 +15,11 @@ def generate_review():
     p.name = "a problem incorporating %s" % (', '.join(tagz),)
     p.tags = ', '.join(tagz)
     p.difficulty = random.randint(1,5)
-    p.save_question_file('q.pdf', 'a question')
-    p.save_answer_file('a.pdf', 'an answer')
+    rn = random.randint(1, 10000)
+    question_file = SimpleUploadedFile('q%d.pdf' % rn, 'a question')
+    p.save_question_file('q%d.pdf' % rn, question_file)
+    answer_file = SimpleUploadedFile('a%d.pdf' % rn, 'an answer')
+    p.save_answer_file('a%d.pdf' % rn,answer_file)
     p.save()
 
 

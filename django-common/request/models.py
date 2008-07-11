@@ -3,11 +3,11 @@ from django.db.models.query import QuerySet
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 
-from nice_types import QuerySetManager, PickleField
+from nice_types.db import QuerySetManager, PickleField
 
 from request.constants import REQUEST_METAINFO_ATTR, REQUEST_OBJECT_CONFIRM_ATTR, REQUEST_OBJECT_COMMENT_ATTR, REQUEST_OBJECT_METAINFO_ATTR
 
-from hkn.auth.models import User, Permission
+from django.contrib.auth.models import User, Permission
 
 class RequestManager(QuerySetManager):
     pass
@@ -47,6 +47,8 @@ class Request(models.Model):
 
     class QuerySet(QuerySet):
         def for_user(self, user):
+            if user.is_anonymous():
+                return self.none()
             return self.filter(permission__in = user.get_all_permissions())
 
         def ft_query(self, query):

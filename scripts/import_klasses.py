@@ -115,7 +115,7 @@ def importKlass(dpt, klass, year, season):
             course = getCourse(dpt, number)
     except Exception, e:
         tpls = "%s-%s-%s-%s-%s" % (dpt.abbr, number, instructor, season, year)
-        print "Couldn't match: " + tpls
+        #print "Couldn't match: " + tpls
         #if tpls not in bad_klasses:
         #    raise e
         #else:
@@ -136,7 +136,7 @@ def importKlass(dpt, klass, year, season):
         else:
             inst = None
     except Instructor.DoesNotExist:
-        print "Could not find instructor: " + instructor
+        #print "Could not find instructor: " + instructor
         inst = createInstructor(dpt, instructor)
         
 

@@ -18,12 +18,17 @@ def handleFile(initiates_file):
     else:
         print "unknown: " + initiates_file
     semester = semester + yr
-    print "Working on " + semester
+    print "Setting initiates from " + semester
     for l in f:
         name = l.strip()
         p = matchPerson(name, semester)
-        p.member_status = MEMBER_TYPE.MEMBER
-        p.save()
+        if p:
+#            print "Matched %s" % p.name
+            if p.member_type < MEMBER_TYPE.MEMBER:
+                p.member_type = MEMBER_TYPE.MEMBER
+            p.save()
+        else:
+            print "Could not match %s" % name
 
 def matchPerson(name, semester):
     names = name.split(" ")
@@ -46,7 +51,7 @@ def matchPerson(name, semester):
 
     for pn in potential_names:
         try:
-            p = Person.objects.get(first__iexact = pn["first"], last__iexact = pn["last"], candidateinfo__candidate_semester = semester)
+            p = Person.objects.get(first_name__iexact = pn["first"], last_name__iexact = pn["last"], candidateinfo__candidate_semester = semester)
             break
         except Person.DoesNotExist:
             pass
@@ -54,16 +59,11 @@ def matchPerson(name, semester):
 
         try:
             if nickname:
-                p = Person.objects.get(first__iexact = nickname, last__iexact = pn["last"], candidateinfo__candidate_semester = semester)
+                p = Person.objects.get(first_name__iexact = nickname, last_name__iexact = pn["last"], candidateinfo__candidate_semester = semester)
                 break
         except Person.DoesNotExist:
             pass
 
-    if p == None:
-        print "Could not match: " + name
-    else:
-       # print "Matched %s to %s" % (name, p.name())
-        pass
     return p
 
 

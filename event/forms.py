@@ -1,12 +1,18 @@
 from django.db import models
-from hkn.info.models import *
-from hkn.auth.models import *
+from django.db.models import Q
+from django.contrib.auth.models import *
 from hkn.event.models import *
 from hkn.event.constants import EVENT_TYPE, RSVP_TYPE
+from hkn.main.models import HKN
+from hkn.info.models import *
 
 from django import newforms as forms
 from string import atoi
 import os
+
+class PermissionField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return obj.name
 
 class EventForm(forms.Form):
     name = forms.CharField()
@@ -23,8 +29,9 @@ class EventForm(forms.Form):
     event_type = forms.ChoiceField(choices = EVENT_TYPE.choices())
     
 
-    view_permission = forms.ModelChoiceField(queryset = Permission.objects.all())
-    rsvp_permission = forms.ModelChoiceField(queryset = Permission.objects.all())
+    #view_permission = forms.ModelChoiceField(queryset = Permission.objects.filter(Q(content_type = ContentType.objects.get_for_model(HKN)) | Q(content_type = ContentType.objects.get_for_model(Position))))
+    view_permission = PermissionField(queryset = Permission.objects.filter(content_type = ContentType.objects.get_for_model(HKN), codename__startswith = "hkn_"))
+    rsvp_permission = PermissionField(queryset = Permission.objects.filter(content_type = ContentType.objects.get_for_model(HKN), codename__startswith = "hkn_"))
 
 
 #	gcal_id = forms.CharField(widget = forms.HiddenInput, required = False)

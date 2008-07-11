@@ -1,6 +1,6 @@
 from django.db import models
 from hkn.info.models import *
-from hkn.auth.models import *
+from django.contrib.auth.models import *
 from hkn.event.models import *
 
 from hkn.cand.constants import APP_YEAR, EECS_OPTION

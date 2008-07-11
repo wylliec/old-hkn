@@ -1,34 +1,34 @@
 from django.db import models
 from django.db.models import Q
+from django.db.models.query import QuerySet
+from django.contrib.auth.models import User, Group, Permission
+from django.contrib.contenttypes.models import ContentType
+
+
 from utils import normalizeEmail, normalizeCommitteeName
 from hkn import semester
 from hkn.info.constants import MEMBER_TYPE
 from hkn.settings import IMAGES_PATH
-import os
+import os, datetime
 
-class PeopleManager(models.Manager):
-    def from_email(self, email):
-        email = normalizeEmail(email)
-        return self.get_query_set().get(Q(school_email__iexact = email) | Q(preferred_email__iexact = email))
+from nice_types.db import QuerySetManager, PickleField
 
-    def email_contains(self, email):
-        email = normalizeEmail(email)
-        return self.get_query_set().filter(Q(school_email__icontains = email) | Q(preferred_email__icontains = email))
-    
-
-    def query(self, query, objects = None):
-        if objects == None:
-            objects = self.get_query_set()
-            
-
-        persons = objects
-        if query and len(query.strip()) != 0:
-            for q in query.split(" "):
-                if len(q.strip()) == 0:
-                    continue
-                persons = persons.filter(Q(first__icontains = q) | Q(last__icontains = q) | Q(user__username__icontains = q))
-        return persons
+class PeopleManager(QuerySetManager):
+        def from_email(self, email):
+            email = normalizeEmail(email)
+            return self.get(Q(school_email__iexact = email) | Q(email__iexact = email))
         
+        def create_person(self, first_name, last_name, username, email, member_type, password=None):
+            now = datetime.datetime.now()
+            person = self.model(first_name=first_name, last_name=last_name, email=email, username=username, password="placeholder", last_login=now, date_joined=now, member_type=member_type, privacy={})
+            if password:
+                person.set_password(password)
+            else:
+                person.set_unusable_password()
+            person.save()
+            return person
+
+            
 
 class CandidateManager(PeopleManager):
     def get_query_set(self):
@@ -36,22 +36,22 @@ class CandidateManager(PeopleManager):
 
 class OfficerManager(PeopleManager):
     def get_query_set(self):
-        return super(OfficerManager, self).get_query_set().filter(member_status = MEMBER_TYPE.OFFICER)
+        return super(OfficerManager, self).get_query_set().filter(member_type = MEMBER_TYPE.OFFICER)
 
 class AllOfficerManager(PeopleManager):
     def get_query_set(self):
-        return super(AllOfficerManager, self).get_query_set().filter(member_status__gte = MEMBER_TYPE.FOGIE)
+        return super(AllOfficerManager, self).get_query_set().filter(member_type__gte = MEMBER_TYPE.FOGIE)
 
 class MemberManager(PeopleManager):
     def get_query_set(self):
-        return super(MemberManager, self).get_query_set().filter(member_status__gte = MEMBER_TYPE.MEMBER)
+        return super(MemberManager, self).get_query_set().filter(member_type__gte = MEMBER_TYPE.MEMBER)
 
 class PositionManager(models.Manager):
-    def getPosition(self, com_name):
+    def get_position(self, com_name):
         com_name = normalizeCommitteeName(com_name)
         return super(PositionManager, self).get_query_set().get(short_name = com_name)
 
-class Position(models.Model):
+class Position(Group):
     """
     The Position class represents a particular HKN position: pres, vp, rsec, indrel, compserv, etc. etc.
     
@@ -62,13 +62,9 @@ class Position(models.Model):
     positions = objects = PositionManager()
     """
     PositionManager that provides utility functions, e.g.::
-            >>>> position = Position.{position | objects}.getPosition("pres")
-            >>>> position = Position.{position | objects}.getPosition("president")
+            >>>> position = Position.{position | objects}.get_position("pres")
+            >>>> position = Position.{position | objects}.get_position("president")
     """
-    
-    
-    
-    position_id = models.AutoField(primary_key = True)
     
     short_name = models.CharField(max_length=15)
     """
@@ -76,16 +72,29 @@ class Position(models.Model):
     e.g. act, compserv, pres, vp, etc.
     """
 
-    long_name = models.CharField(max_length=50)
-    """
-    A longer name, e.g. Industrial Relations, Computer Services
-    """
+    def __unicode__(self):
+        return "%s (%s)" % (self.name, self.short_name)
 
-    def __str__(self):
-        return "%s (%s)" % (self.long_name, self.short_name)
+    def _get_permission_name(self):
+        return "Members of %s" % self.name
+
+    def _get_permission_codename(self):
+        return "group_%s" % self.short_name
+
+    def save(self):
+        if not self.id:
+            position_type = ContentType.objects.get_for_model(Position)
+            perm, created = Permission.objects.get_or_create(content_type = position_type, name = self._get_permission_name(), codename = self._get_permission_codename())
+            if created:
+                perm.save()
+        
+        super(Position, self).save()
+        if perm:
+            self.permissions.add(perm)
 
 
-class Person(models.Model):
+
+class Person(User):
     """
     On its own, the Person class holds general information on people, including their name, email, hkn member status,
     and positions held.
@@ -104,7 +113,7 @@ class Person(models.Model):
     object has one associated person) you can do the following::
         >>>> rsvps  = some_person.rsvp_set
 
-    For other objects for wmodels.ManyToManyField(Position)hich there are many-to-many correspondences (e.g. each Person has held lots of Positions, but
+    For other objects for which models.ManyToManyField(Position) there are many-to-many correspondences (e.g. each Person has held lots of Positions, but
     each Position can also have many Persons that have occupied that position)::
         >>>> positions = some_person.positions
 
@@ -164,17 +173,6 @@ class Person(models.Model):
     Same as above, but all initiated members.
     """
 
-    id = models.AutoField(primary_key = True)
-
-
-    first = models.CharField(max_length = 30)
-    """ Person's first name (sometimes preferred name, see L{realfirst})"""
-
-
-    last = models.CharField(max_length=30)
-    """ Person's last name """
-    
-
     realfirst = models.CharField(max_length=30)
     """ 
     Real first name (the Person's official name, if it isn't already in L{first}).
@@ -187,30 +185,66 @@ class Person(models.Model):
     Person's official school email address. Probably a bad idea to issue lookup queries on this,
     see the object managers for some utility functions to help out with this 
     """
-    
-
-    preferred_email = models.EmailField()
-    """ 
-    Person's preferred email address, where email should go. Probably a bad idea to issue lookup 
-    queries on this (since sometimes we only have school_email, see the object managers for some 
-    utility functions to help out with this 
-    """
-    
 
     positions = models.ManyToManyField(Position)
     """ A list of officership positions (i.e. not candidate committee) that this Person has held in the past. """
 
 
-    member_status = models.IntegerField(choices = MEMBER_TYPE.choices())
+    member_type = models.IntegerField(db_column="member_type", choices = MEMBER_TYPE.choices())
     """ The person's member status. See L{hkn.info.constants.MEMBER_TYPE} for some more details. """
+
+    def get_member_status(self):
+        return MEMBER_TYPE._descriptions[self.member_type]
+    member_status = property(get_member_status)
+
+    def reconcile_status(self):
+        officer_semesters = Officership.objects.filter(person=self).values_list('semester', flat=True)
+        if unicode(semester.getCurrentSemester()) in officer_semesters:
+            self.member_type = MEMBER_TYPE.OFFICER
+        else:
+            self.member_type = MEMBER_TYPE.FOGIE
+    
+    
+    def reconcile_groups(self):
+        groups = Group.objects.filter(name__in = ("candidates", "members", "officers", "current_officers"))
+        for g in self.groups.filter(id__in = groups.values('pk').query):
+            self.groups.remove(g)
+        groups_dict = {}
+        for group in groups:
+            groups_dict[group.name] = group
+
+        if self.member_type == MEMBER_TYPE.CANDIDATE:
+            self.groups.add(groups_dict["candidates"])
+        if self.member_type >= MEMBER_TYPE.MEMBER:
+            self.groups.add(groups_dict["members"])
+        if self.member_type >= MEMBER_TYPE.EXOFFICER:
+            self.groups.add(groups_dict["officers"])
+        if self.member_type >= MEMBER_TYPE.OFFICER:
+            self.groups.add(groups_dict["current_officers"])
 
     profile_picture = models.ImageField(upload_to = "profile_pictures")
     """ The person's profile picture"""
-    
+
+    officer_picture = models.ImageField(null=True, upload_to = "officer_pictures")
+    """ The person's officer picture"""
 
 
-    def __str__(self):
-        return "%s %s %s (%s)" % (str(self.id), self.first, self.last, self.email() )
+    def format_phone(self):
+        """ Helper function for the above. """
+        if len(self.phone) == 10:
+            return "(" + self.phone[0:3] + ") " + self.phone[3:6] + "-" + self.phone[6:10]
+        else:
+            return self.phone
+
+    phone = models.CharField(max_length=20)
+    """ Phone number, usually cell phone. """
+
+    phone_number = property(format_phone)
+
+    privacy = PickleField()
+
+    def __unicode__(self):
+        return "%s %s %s (%s)" % (str(self.id), self.first_name, self.last_name, self.email )
 
     def get_current_position(self):
         officerships = self.officership_set.filter(semester = semester.getCurrentSemester())
@@ -218,55 +252,23 @@ class Person(models.Model):
             return None
         return officerships[0].position
 
-    def email(self):
-        """
-        Returns a person's preferred email if available, and school email otherwise.
-        """
-        if len(self.preferred_email) > 0:
-            return self.preferred_email
-        return self.school_email
+    def get_committee(self):
+        if self.member_type == MEMBER_TYPE.CANDIDATE:
+            committee_name = self.candidateinfo.candidate_committee.name
+            if committee_name and len(committee_name) > 0:
+                return "%s Candidate" % (committee_name)
+            return ""
+        elif self.member_type == MEMBER_TYPE.OFFICER:
+            return self.get_current_position().name
+        return ""
 
-    def name(self):
+    def get_name(self):
         """
         Returns the person's full name (first + last).
         """
-        return self.first + " " + self.last
+        return "%s %s" % (self.first_name, self.last_name)
 
-    def picture_url(self):
-        semester = self.candidateinfo.candidate_semester
-        pic_url = "candidate_images/" + semester + "/normal/" + self.first + "_" + self.last + ".JPG"
-        if not os.path.exists(os.path.join(IMAGES_PATH, pic_url)):
-            return "/images/candidate_images/thumbnails/default.JPG"
-        return "/images/" + pic_url
-
-    def thumbnail_url(self):
-        if self.member_status >= 4 and self.has_officer_pic():
-            return self.officer_url()
-        semester = self.candidateinfo.candidate_semester
-        thumb_url = "candidate_images/" + semester + "/thumbnails/" + self.first + "_" + self.last + ".JPG"
-        if not os.path.exists(os.path.join(IMAGES_PATH, thumb_url)):
-            return "/images/candidate_images/thumbnails/default.JPG"
-        return "/images/" + thumb_url
-
-    def officer_url(self):
-        un = self.user.username
-        url1 = "officerpics/" + un + ".jpg"
-        url2 = "officerpics/" + un + ".gif"
-        if os.path.exists(os.path.join(IMAGES_PATH, url1)):
-            return "/images/" + url1
-        if os.path.exists(os.path.join(IMAGES_PATH, url2)):
-            return "/images/" + url2
-        return "/images/officerpics/lion.jpg"
-
-    def has_officer_pic(self):
-        un = self.user.username
-        url1 = "officerpics/" + un + ".jpg"
-        url2 = "officerpics/" + un + ".gif"
-        if os.path.exists(os.path.join(IMAGES_PATH, url1)):
-            return True
-        if os.path.exists(os.path.join(IMAGES_PATH, url2)):
-            return True
-        return False
+    name = property(get_name)
 
     def is_initiated(self):
         """
@@ -285,15 +287,72 @@ class Person(models.Model):
         @param initiate: True to set MEMBER_TYPE to Member, False for Candidate
         """
         if initiate:
-            self.member_status = MEMBER_TYPE.MEMBER
+            self.member_type = MEMBER_TYPE.MEMBER
         else:
-            self.member_status = MEMBER_TYPE.CANDIDATE
+            self.member_type = MEMBER_TYPE.CANDIDATE
+
+    def save(self):
+        if type(self.privacy) != type({}):
+            self.privacy = {}
+        is_update = self.id is not None
+        super(Person, self).save()
+        self.reconcile_groups()
+        if not is_update:
+            self.groups.add(Group.objects.get(name="everyone"))
+
+    class RestrictedPerson(object):
+        def __init__(self, person, accessor):
+            self.person = person
+            self.privacy = person.privacy
+            self.accessor_type = accessor.member_type
+            self.view_all = accessor.has_perm("info.view_restricted")
+    
+        def __getattr__(self, attr):
+            if (self.accessor_type >= self.privacy.get(attr, -1)) or self.view_all:
+                return getattr(self.person, attr)
+            return ""
+
+    def set_restricted_accessor(self, accessor):
+        setattr(self,'restricted', Person.RestrictedPerson(self, accessor))
+
+    class QuerySet(QuerySet):
+    
+        def email_contains(self, email):
+            email = normalizeEmail(email)
+            return self.filter(Q(school_email__icontains = email) | Q(preferred_email__icontains = email))
+    
+        def filter_restricted(self, accessing_user):
+            person_ctype = ContentType.objects.get_for_model(Person)
+            self = self.exclude(member_type__lte = MEMBER_TYPE.REGISTERED)
+            if not accessing_user.has_perm("info.view_excandidates"):
+                self = self.exclude(member_type = MEMBER_TYPE.EXCANDIDATE)
+            if not accessing_user.has_perm("info.view_candidates"):
+                self = self.exclude(member_type = MEMBER_TYPE.CANDIDATE)
+            if not accessing_user.has_perm("info.view_members"):
+                self = self.exclude(Q(member_type = MEMBER_TYPE.MEMBER) | Q(member_type = MEMBER_TYPE.EXOFFICER))
+            if not accessing_user.has_perm("info.view_officers"):
+                self = self.exclude(member_type = MEMBER_TYPE.OFFICER)
+            return self
+
+        def ft_query(self, query):
+            persons = self
+            if query and len(query.strip()) != 0:
+                for q in query.split(" "):
+                    if len(q.strip()) == 0:
+                        continue
+                    persons = persons.filter(Q(first__icontains = q) | Q(last__icontains = q) | Q(user__username__icontains = q))
+            return persons
 
     class Meta:
-        ordering = ["first", "last"]
+        verbose_name = "Person"
+        verbose_name_plural = "People"
+        ordering = ["first_name", "last_name"]
+        permissions = (("view_officers", "View Officer Information"),
+                       ("view_members", "View Member Information"),
+                       ("view_candidates", "View Candidate Information"),
+                       ("view_excandidates", "View Ex-Candidate Information"),
+                       ("view_restricted", "View Restricted Information"))
 
-    class Admin:
-        search_fields = ['last', 'first']
 
 class ExtendedInfo(models.Model):
     """
@@ -302,61 +361,25 @@ class ExtendedInfo(models.Model):
     Due to incomplete records from semesters past, not all of this information may be present for many people, so be sure
     to sanity check!
     """
-        
 
     person = models.OneToOneField(Person, primary_key = True)
     """A reference to a L{Person} object. To get a handle of the associated Person, do::
-        >>>> extendedinfo.person"""
-    
-
+        >>>> candidateinfo.person"""
+        
     sid = models.CharField(max_length=10)
     """ The person's SID. Try to use this as little as possible, will be phased out gradually. """
-    
 
     grad_semester = models.CharField(max_length=5)
     """ The person's graduation semester. Usually taken at initiation time, so subject to change. """
     
-
-    local_phone = models.CharField(max_length=20)
-    """ Local phone number, usually cell phone. """
-    
-
-    perm_phone = models.CharField(max_length=20)
-    """ Permanent phone number, usually home phone (?) """
-    
-
-    local_addr = models.CharField(max_length=100)
+    local_addr = models.TextField()
     """ Local address """
-    
 
-    perm_addr = models.CharField(max_length=100)
+    perm_addr = models.TextField()
     """ Permanent (home) address """
 
-    def __str__(self):
-        return "%s %s %s (%s)" % (self.person.first, self.person.last, self.sid, self.get_phone() )
-
-    def get_phone(self):
-        """
-        Gets a formatted version of local_phone if available and perm_phone otherwise.
-
-        Format is (###) ###-####
-
-        @rtype: string
-        @return: their local phone number if on file, permanent otherwise.
-        """
-                
-
-        if self.local_phone is not None and len(self.local_phone) > 0:
-            return self.format_phone(self.local_phone)
-        return self.format_phone(self.perm_phone)
-    
-
-    def format_phone(self, phone):
-        """ Helper function for the above. """
-        if len(phone) == 10:
-            return "(" + phone[0:3] + ") " + phone[3:6] + "-" + phone[6:10]
-        else:
-            return phone
+    def __unicode__(self):
+        return "<ExtendedInfo %s %s>" % (self.first_name, self.last_name)
 
     class Admin:
         pass
@@ -369,12 +392,10 @@ class CandidateInfo(models.Model):
     Note that actual initiation information is not stored in this object. Look at Person.member_type to determine whether this
     person successfully initiated (or call person.is_initiated())
     """
-        
 
     person = models.OneToOneField(Person, primary_key = True)
     """A reference to a L{Person} object. To get a handle of the associated Person, do::
         >>>> candidateinfo.person"""
-    
 
     candidate_semester = models.CharField(max_length=5)
     """ The person's candidate semester. """
@@ -385,8 +406,7 @@ class CandidateInfo(models.Model):
     
 
     initiated = models.BooleanField()
-    """ whether this person initiated this semester """
-    
+    """ whether this person initiated in the semester indicated by candidate_semester """
 
     initiation_comment = models.TextField()
     """ a comment that can be set at initiation time by the VP """
@@ -394,8 +414,8 @@ class CandidateInfo(models.Model):
     candidate_picture = models.ImageField(upload_to="candidate_pictures")
     """ candidate picture """
 
-    def __str__(self):
-        return "%s %s %s" % (self.person.name(), self.candidate_committee, self.candidate_semester)
+    def __unicode__(self):
+        return "%s %s %s" % (self.person.name, self.candidate_committee, self.candidate_semester)
             
     class Admin:
         pass
@@ -412,16 +432,16 @@ class Officership(models.Model):
         
 
     officership_id = models.AutoField(primary_key = True)
+
+
     semester = models.CharField(max_length=5)
     """The L{semester} of this officership."""
-    
 
     position = models.ForeignKey(Position)
     """
     A reference to a L{Position} object. To get the handle of the associated Position, do::
         >>>> officership_object.position
     """	
-    
 
     person = models.ForeignKey(Person)
     """
@@ -429,8 +449,16 @@ class Officership(models.Model):
         >>>> officership_object.person
     """
 
-    def __str__(self):
-        return "%s %s %s" % (self.person.name(), self.semester, self.position.short_name)
+    def __unicode__(self):
+        return "%s %s %s" % (self.person.name, self.semester, self.position.short_name)
+
+    def save(self):
+        super(Officership, self).save()
+        self.person.reconcile_status()
+        self.person.groups.add(self.position)
+        self.person.save()
 
     class Admin:
         pass
+
+from hkn.info import admin

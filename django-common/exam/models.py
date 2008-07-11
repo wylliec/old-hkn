@@ -1,7 +1,7 @@
 import datetime, re, os, string
 
 #from django.contrib.auth.models import User
-from hkn.auth.models import User
+from django.contrib.auth.models import User
 
 from course.models import *
 from constants import FILE_UPLOAD_DIR, EXAM_TYPE

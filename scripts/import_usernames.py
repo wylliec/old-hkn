@@ -7,7 +7,7 @@ import hkn_settings
 
 from hkn.info.models import *
 from hkn.info.utils import *
-from hkn.auth.utils import *
+from django.contrib.auth.utils import *
 
 for o in Person.all_officers.all():
     u = o.user
@@ -18,7 +18,7 @@ for o in Person.all_officers.all():
 
 oss = []
 for o in Person.all_officers.all():
-    os = (o.email(), o.user.username)
+    os = (o.email, o.user.username)
     oss.append(os)
 
 print oss

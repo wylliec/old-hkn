@@ -1,4 +1,4 @@
-from hkn.auth.models import *
+from django.contrib.auth.models import *
 from hkn.event.models import *
 from hkn.event.forms import *
 from django.shortcuts import render_to_response
@@ -57,7 +57,7 @@ def get_list_for_person_context(request, person_id = None):
 
 def list_for_person(request, person_id):
     if len(person_id) == 0 or person_id == "me":
-        person_id = str(request.user.person_id)
+        person_id = str(request.user.person.id)
 
     (list_context, rsvps, show_confirm_form) = get_list_for_person_context(request, person_id)
     list_context["objects_url"] = urlresolvers.reverse("hkn.event.rsvp.list.list_for_person_ajax")
@@ -92,7 +92,7 @@ def list_for_person_ajax(request):
     return render_to_response("event/rsvp/ajax/_list_for_person.html", list_context, context_instance = RequestContext(request))
 
 def get_list_for_event_context(request, event_id = None):
-    list_context = get_list_context(request, default_sort = "person__first", default_category = event_id)
+    list_context = get_list_context(request, default_sort = "person__first_name", default_category = event_id)
     list_context["rsvps"] = filter_objects(RSVP, list_context, get_objects_for_categories = get_rsvps_for_event, sort_objects = sort_rsvps, query_objects = query_rsvps_by_person)
 
     event_id = list_context["categories"][0]

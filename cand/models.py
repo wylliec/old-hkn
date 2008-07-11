@@ -4,6 +4,9 @@ from hkn.info.models import *
 from hkn.event.models import *
 import os
 
+import request
+import request.utils
+from request.models import Request
 
 class CandidateApplication(models.Model):
     person = models.ForeignKey(Person)
@@ -19,6 +22,32 @@ class CandidateApplication(models.Model):
     q4 = models.TextField()
     q5 = models.TextField()
 
+class Challenge(models.Model):
+    candidate = models.ForeignKey(Person)
 
+    title = models.CharField(max_length=40)
+    description = models.TextField()
+    
+    confirmed = models.BooleanField()
 
+    confirm_request = models.ForeignKey(Request)
+
+    def request_confirmation(self, confirm_with):
+        self.confirm_request =  request.utils.request_confirmation(self, self.candidate.user, permission=None, permission_user=confirm_with)
+        self.save()
+        return self.confirm_request
+
+    def save(self):
+        if self.confirm_request is None:
+            raise Exception('Challenge must request confirmation first! call request_confirmation to save')
+        super(Challenge, self).save()
+
+def get_challenge_metainfo(challenge, request):
+    metainfo = {}
+    metainfo['title'] = 'Confirm Challenge'
+    metainfo['description'] = '''Confirm %s's challenge "%s" ''' % (challenge.candidate.name(), challenge.title)
+    metainfo['links'] = tuple()
+    metainfo['confirmed'] = challenge.confirmed
+
+request.register(Challenge, get_challenge_metainfo, confirmation_attr='confirmed')
 

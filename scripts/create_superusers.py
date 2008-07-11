@@ -7,19 +7,18 @@ import hkn_settings
 from hkn.info.constants import MEMBER_TYPE
 
 from hkn.info.models import *
-from hkn.auth.models import *
+from django.contrib.auth.models import *
 
 
-me = Person.objects.get(first="Hisham")
-me.member_status = MEMBER_TYPE.OFFICER
+me = Person.objects.get(username="hzarka")
+me.member_type = MEMBER_TYPE.OFFICER
+me.set_password("monkey")
+me.is_superuser = True
+me.is_staff = True
 me.save()
-u = me.user
-u.set_password("monkey")
-u.is_superuser = True
-u.save()
 
-me = Person.objects.get(first="Vishay")
-u = me.user
-u.set_password("monkey6969")
-u.is_superuser = True
-u.save()
+me = Person.objects.get(username="vishay")
+me.set_password("monkey6969")
+me.is_superuser = True
+me.is_staff = True
+me.save()

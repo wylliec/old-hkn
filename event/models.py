@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import *
 from django.core import urlresolvers
+
 from hkn.info.models import *
-from hkn.auth.models import *
 from hkn import semester
 from hkn.info.constants import MEMBER_TYPE
 from hkn.gcal import gcalInterface
@@ -9,7 +10,7 @@ import os, pickle
 from constants import RSVP_TYPE, EVENT_TYPE
 from string import atoi
 
-from nice_types import PickleField
+from nice_types.db import PickleField
 
 import request
 import request.utils
@@ -83,7 +84,7 @@ class Event(models.Model):
 
     gcal_id = models.TextField(blank = True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
     def rsvp_whole(self):
@@ -132,6 +133,11 @@ class Event(models.Model):
             gcalInterface.eventDeleted(self)
         models.Model.delete(self)
 
+    class Meta:
+        verbose_name = "Event"
+        verbose_name_plural = "Events"
+
+
 def getCandidates():
     return Person.candidates.all()
     #return Person.fogies.all()
@@ -156,6 +162,9 @@ class RSVPManager(models.Manager):
     
 
     def order(self, sort_field, rsvps):
+        # the below should no longder be necessary with queryset-refactor
+        # but let's keep it around for now just in case...
+        return rsvps.order_by(sort_field)
         if sort_field.find("event__") != -1:
             sort_field = sort_field.replace("event__", "")
             return RSVP.objects.order_by_event_field(sort_field, rsvps)
@@ -202,7 +211,7 @@ class RSVPManager(models.Manager):
             for q in query.split(" "):
                 if len(q.strip()) == 0:
                     continue
-                rsvps = rsvps.filter(Q(person__first__icontains = q) | Q(person__last__icontains = q) | Q(person__user__username__icontains = q))
+                rsvps = rsvps.filter(Q(person__first__icontains = q) | Q(person__last__icontains = q) | Q(person__username__icontains = q))
         return rsvps
     
 
@@ -216,7 +225,7 @@ class RSVPManager(models.Manager):
                 if len(q.strip()) == 0:
                     continue
                 rsvps = rsvps.filter(Q(event__name__icontains = q) | Q(event__location__icontains = q) | Q(event__description__icontains = q)
-                                     | Q(person__first__icontains = q) | Q(person__last__icontains = q) | Q(person__user__username__icontains = q))
+                                     | Q(person__first__icontains = q) | Q(person__last__icontains = q) | Q(person__username__icontains = q))
         return rsvps
 
         
@@ -260,7 +269,7 @@ class RSVP(models.Model):
         return str(self.person) + " : " + str(self.event)
 
     def request_confirmation(self):
-        return request.utils.request_confirmation(self, self.person.user, Permission.objects.get(codename="group_vp"))
+        return request.utils.request_confirmation(self, self.person, Permission.objects.get(codename="group_vp"))
 
     class Meta:
         unique_together = (("event", "person"),)
@@ -269,7 +278,7 @@ def get_rsvp_metainfo(rsvp, request):
     metainfo = {}
 
     metainfo['title'] = "Confirm RSVP"
-    metainfo['description'] = "Confirm %s's RSVP for %s" % (rsvp.person.name(), rsvp.event.name)
+    metainfo['description'] = "Confirm %s's RSVP for %s" % (rsvp.person.name, rsvp.event.name)
     metainfo['links'] = (("rsvp", urlresolvers.reverse("hkn.event.rsvp.rsvp.view", kwargs = {"rsvp_id" : rsvp.id})),
                      ("person", urlresolvers.reverse("hkn.info.person.view", kwargs = {"person_id" : rsvp.person_id})),
                      ("event", urlresolvers.reverse("hkn.event.event.view", kwargs = {"event_id" : rsvp.event_id})))
@@ -285,3 +294,5 @@ class RSVPData:
 
     def __str__(self):
         return "Blocks: " + str(self.blocks)
+
+from hkn.event import admin

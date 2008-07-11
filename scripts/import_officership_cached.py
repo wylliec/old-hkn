@@ -7,13 +7,13 @@ import hkn_settings
 
 from hkn.info.models import *
 from hkn.info.utils import *
-from hkn.auth.utils import *
 import hkn.semester
 
 from hkn.info.constants import MEMBER_TYPE
 
 officership_filename = "data/officership-all.pkl"
 
+print "Importing cached officership records"
 def import_officers():
     global officership_filename
     f = file(officership_filename, 'r')
@@ -21,31 +21,23 @@ def import_officers():
 
     for officership_semester in officership_by_semester.values():
         for officership in officership_semester:
-            print officership
             person = matchPerson(officership[0])
             username = officership[1]
             position = matchPosition(officership[2])
             semester = officership[3]
+
+            if person is None:
+                print "could not match %s" % officership[0]
+                continue
+            if position is None:
+                print "could not match %s" % officership[2]
+                continue
+            
     
 
-            try:
-                os = Officership.objects.get(person = person, position = position, semester = semester)
+            os, created = Officership.objects.get_or_create(person = person, position = position, semester = semester)
+            if not created:
                 print "Officership: " + str(os) + " already existed!"
-            except Officership.DoesNotExist:
-                os = Officership(person = person, position = position, semester = semester)
-                os.save()
-                g = Group.objects.get(name = position.short_name)
-                user = person.user
-                user.is_superuser = True
-                user.groups.add(g)
-                user.save()
-
-                if semester == hkn.semester.getCurrentSemester():
-                    person.member_status = MEMBER_TYPE.OFFICER
-                else:
-                    person.member_status = MEMBER_TYPE.FOGIE
-                person.save()
-            
 
 
 
@@ -65,7 +57,7 @@ def matchPosition(name):
         pass
 
     try:
-        p = Position.objects.get(long_name = name.strip())
+        p = Position.objects.get(name = name.strip())
         return p
     except ObjectDoesNotExist:
         pass

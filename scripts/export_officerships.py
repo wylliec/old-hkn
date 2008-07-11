@@ -12,7 +12,7 @@ officership_filename = "data/officership-all.pkl"
 
 
 def officershipTuple(os):
-    return (os.person.email(), os.person.user.username, os.position.short_name, os.semester)
+    return (os.person.email, os.person.user.username, os.position.short_name, os.semester)
 
 def export_officers():
     global officership_filename
