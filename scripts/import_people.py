@@ -61,7 +61,7 @@ def addLine(line, member_status):
         c.school_email = email
     
     lion_file = SimpleUploadedFile(uname + ".gif", lion_file_content)
-    c.save_profile_picture_file(lion_file.file_name, lion_file)
+    c.save_profile_picture_file(lion_file.name, lion_file)
 
     c.save()
 
@@ -84,7 +84,7 @@ def addLine(line, member_status):
     candidateinfo.comment = ""
     candidateinfo.initiated = False
     lion_file = SimpleUploadedFile(uname + ".gif", lion_file_content)
-    candidateinfo.save_candidate_picture_file(lion_file.file_name, lion_file)
+    candidateinfo.save_candidate_picture_file(lion_file.name, lion_file)
     candidateinfo.save()
 
 everyoneGroup = Group.objects.get(name = "everyone")

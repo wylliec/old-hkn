@@ -31,6 +31,6 @@ for offs in oss:
         path = os.path.join(os.path.expanduser('~/hkn-website-images/officerpics/'), "%s." % offs[1])
         if os.path.exists(path + ext):
             picfile = SimpleUploadedFile("%s.%s" % (offs[1], ext), file(path+ext).read())
-            person.save_officer_picture_file(picfile.file_name, picfile)
+            person.save_officer_picture_file(picfile.name, picfile)
     person.save()
 
