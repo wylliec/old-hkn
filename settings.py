@@ -37,7 +37,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 FORCE_LOWERCASE_TAGS = True
 
 # don't change this
-IMAGES_PATH = "/home/django/hkn-website-images/"
+IMAGES_PATH = os.path.expanduser("~/hkn-website-images/")
 
 ROOT_URL = ""
 

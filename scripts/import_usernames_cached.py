@@ -5,6 +5,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 import re, django, sys, pickle, os
 
 import hkn_settings
+from hkn.settings import IMAGES_PATH
 
 from hkn.info.models import *
 from hkn.info.utils import *
@@ -28,9 +29,10 @@ for offs in oss:
     person = matchPerson(offs[0])
     person.username = offs[1]
     for ext in ("gif", "jpg"):
-        path = os.path.join(os.path.expanduser('~/hkn-website-images/officerpics/'), "%s." % offs[1])
-        if os.path.exists(path + ext):
-            picfile = SimpleUploadedFile("%s.%s" % (offs[1], ext), file(path+ext).read())
+        name = "%s.%s" % (offs[1], ext)
+        path = os.path.join(os.path.join(IMAGES_PATH, 'officerpics/'), name)
+        if os.path.exists(path):
+            picfile = SimpleUploadedFile(name, file(path).read())
             person.save_officer_picture_file(picfile.name, picfile)
     person.save()
 
