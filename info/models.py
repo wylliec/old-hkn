@@ -340,7 +340,7 @@ class Person(User):
                 for q in query.split(" "):
                     if len(q.strip()) == 0:
                         continue
-                    persons = persons.filter(Q(first__icontains = q) | Q(last__icontains = q) | Q(user__username__icontains = q))
+                    persons = persons.filter(Q(first_name__icontains = q) | Q(last_name__icontains = q) | Q(username__icontains = q))
             return persons
 
     class Meta:
