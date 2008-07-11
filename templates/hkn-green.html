@@ -46,6 +46,11 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 	</a>
 </li> 
 <li>
+	<a href="#" class="navigation_toplevel_item" id="info">
+		People
+	</a>
+</li> 
+<li>
 	<a href="#" class="navigation_toplevel_item" id="alumni">
 		Alumni Network
 	</a>
@@ -93,6 +98,26 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 <li>	
 	<a href="#">
 		Career Fair
+	</a>
+</li>
+</ul>
+</div>
+
+<div class="submenu" id ="info_submenu">
+<ul class="navigation_sublevel">
+<li>	
+	<a href="{% url person-list-category category="officers" %}" class="navigation_sublevel_item">
+        Officers
+	</a>
+</li>
+<li>	
+	<a href="{% url person-list-category category="members" %}" class="navigation_sublevel_item">
+        Members
+	</a>
+</li>
+<li>	
+	<a href="{% url person-list-category category="candidates" %}" class="navigation_sublevel_item">
+        Candidates
 	</a>
 </li>
 </ul>
