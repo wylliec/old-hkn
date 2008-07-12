@@ -6,7 +6,7 @@
 
 {% block tutorcontent %}
 
-You are logged in as <b>{{ user.person.first }} {{ user.person.last }}</b> <br />
+You are logged in as <b>{{ user.person.first_name }} {{ user.person.last_name }}</b>.<br />
 <br />
 <br />
 
@@ -116,7 +116,7 @@ function removeCourse(courseNum, nameNum){
     
     <br /><br /><br />
     
-    <div>
+    <div style="height: 30em;">
 		<div style="margin: 0px auto;">
 			Search for class (like "cs61", "cs61c", "ee", or "cheme"):
 			<input id="course_query" onkeypress="return updateonenter(event);"/>
@@ -136,13 +136,11 @@ function removeCourse(courseNum, nameNum){
 				<hr />
 			</div>
 		</div>
+    
+		<input name="maxNumCourses" id="maxNumCourses" type=hidden value="{{ canTutor|length }}" />
+    
+		<input style="float: left; margin-right: 20em;" type="submit" value="Submit" />
     </div>
-    
-    <input name="maxNumCourses" id="maxNumCourses" type=hidden value="{{ canTutor|length }}" />
-    
-    <br /><br /><br />
-    
-    <input style="float: left; margin-right: 20em;" type="submit" value="Submit" />
 </form>
 
 <script type="text/javascript">

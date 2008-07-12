@@ -1,4 +1,4 @@
-{% if courses|length_is:"0" %}
+{% if not courses or courses|length_is:"0" %}
 <hr />
 No courses matching query found.
 <br />

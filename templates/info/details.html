@@ -1,17 +1,16 @@
 {% extends "info/hkn.html" %}
 
-
 {% block content %}
-<ALIGN = CENTER><big><b>{{ person.first }} {{ person.last }}</b></big></H1>
+<h1 align="center"><big><b>{{ person.first_name }} {{ person.last_name }}</b></big></h1>
 <br>
 <body>
-<img ALIGN = CENTER src="{{ person.get_profile_picture_url }}">
+<img src="{{ person.get_profile_picture_url }}">
 <table>
 <tr>
 <td><b>Contact Information</b></td>
 </tr>
 <tr>
-<td>{{ person.first }} {{ person.last }}</td>
+<td>{{ person.first_name }} {{ person.last_name }}</td>
 </tr>
 <tr>
 <td>{{ info.phone }}</td>
@@ -23,5 +22,5 @@
 <td>{{ person.email }} </td>
 </tr>
 </table>
-<a href = "{% url person-list-all %}">List All</a>
+<a href="{% url person-list-all %}">List All</a>
 {% endblock %}
