@@ -22,10 +22,116 @@ from hkn.tutor.constants import *
 from hkn.tutor.scheduler import State, Slot
 from hkn.tutor import output
 
+from operator import itemgetter
+from re import match
+
 
 def schedule(request):
+    context = basicContext(request, {'showAdminLinks':True})
+    context['days'] = TUTORING_DAYS
+    context['timeslots'] = TUTORING_TIMES
+    context['message'] = False
+    context['SODA'] = SODA
+    context['CORY'] = CORY
+    context['year'] = CURRENT_YEAR
+    context['season'] = str(currentSeason()).title()
+    
+    assignments = tutor.Assignment.objects.filter(
+           season=currentSeason(),
+           year=CURRENT_YEAR)
+    
+    availCounts = {}
+    if len(assignments) == 0:
+        context['version'] = False
+    else:
+        context['version'] = request.GET.get('version', False)
+        if not context['version']:
+            #NOTE: this method of finding the max version is stupid, don't know how to do it nice in django
+            context['version'] = max([elem.version for elem in assignments])
+    
+    if context['version']:
+        assignments = assignments.filter(version=context['version'])
+        if len(assignments) == 0:
+            context['message'] = "Version " + str(context['version']) + " does not exist."
+            context['version'] = False
+    else:
+        context['message'] = "Tutoring schedule not available."
+        assignments = tutor.Assignment.objects.none() #returns empty result set
+    
+    if not context['version']:
+        return render_to_response('tutor/schedule.html',
+                                  context,
+                                  context_instance = RequestContext(request))
+
+    realAssignments = {} #dictionary from slot to person object
+    for assignment in assignments:
+        person = assignment.person
+        slot = Slot(tutor.get_day_from_slot(assignment.slot),
+                    tutor.get_time_from_slot(assignment.slot),
+                    assignment.office)
+        realAssignments[slot] = person
+        
+    canTutorData = tutor.CanTutor.objects.filter(
+           season=currentSeason(),
+           year=CURRENT_YEAR)
+
+    info = [] #list of dictionaries, which contain time and row.  Each row is list of dictionaries
+    for time in context['timeslots']:
+        dict = {}
+        row = NamedList(name=time)
+        dict["timeslot"] = time
+        dict["row"] = row
+        info.append(dict)
+        for day in context['days']:
+            slot = tutor.make_slot(day=day, time=time)
+
+            corySlotObj = Slot(day, time, CORY)
+            person = realAssignments[corySlotObj]
+            coryname = person.get_name()
+            data = canTutorData.filter(person=person)
+            list = [x.course.short_name() + (data.current and "cur" or "") for x in data]
+            coryclasses = " ".join(list)
+
+            sodaSlotObj = Slot(day, time, SODA)
+            person = realAssignments[sodaSlotObj]
+            sodaname = person.get_name()
+            data = canTutorData.filter(person=person)
+            list = [x.course.short_name() + (data.current and "cur" or "") for x in data]
+            sodaclasses = " ".join(list)
+
+            row.append({"sodaname":sodaname,
+                        "sodaclasses":sodaclasses,
+                        "coryname":coryname,
+                        "coryclasses":coryclasses})
+        info.append(row)
+
+    canTutor = {} #dictionary of dept -> list of courses
+    for x in canTutorData:
+        course = x.course
+        if course.deptartment not in canTutor:
+            canTutor[course.department] = []
+        if course.number not in canTutor[course.department]:
+            canTutor[course.department].append(course.number)
+
+    def courseSort(x, y):
+        nx = int(match("\d+", x).group(0))
+        ny = int(match("\d+", y).group(0))
+        r = cmp(nx, ny)
+        if r == 0:
+            return cmp(x, y)
+        return r
+
+    sortedCanTutor = [] #list of {"dept":?, "courses":?}
+    for x in canTutor:
+        canTutor[x].sort(courseSort)
+        sortedCanTutor.append({"dept":x, "courses":canTutor[x]})
+    sortedCanTutor.sort(key=itemgetter("dept"))
+
+    context['info'] = info
+    context['canTutor'] = sortedCanTutor
+
     return render_to_response('tutor/schedule.html',
-                              basicContext(request),
+                              context,
                               context_instance = RequestContext(request))
 
 def contact(request):
@@ -158,7 +264,7 @@ def submit_signup(request):
     if numCourses > MAX_COURSES:
         return signup(
             request,
-            message="You may not sign up for more than 50 courses. " + str(numCourses))
+            message="You may not sign up for more than %d courses. " % (MAX_COURSES) + str(numCourses))
     
     #set up tuple of offices
     if info["office"] == "Both":
@@ -303,7 +409,7 @@ def view_signups(request):
             person = detail[0]
             people[person.id] = person
 
-            fullname = person.last + ", " + person.first
+            fullname = person.last_name + ", " + person.first_name
             if fullname not in availCounts:
                 availCounts[fullname] = .5
             else:
@@ -311,7 +417,7 @@ def view_signups(request):
             
             preference = detail[1]
             
-            to_append = {"name":person.last + ", " + person.first,
+            to_append = {"name":person.last_name + ", " + person.first_name,
                          "preference":0,
                          "preferredOffice":False,
                          "assigned":False,
@@ -331,7 +437,7 @@ def view_signups(request):
     happiness = {} #full name -> dictionaries of: net, first_choices, second_choices, adjacent, correct_office_count, missing
     for assignment in assignments:
         person = people[assignment.person_id]
-        fullname = person.last + ", " + person.first
+        fullname = person.last_name + ", " + person.first_name
         slot = Slot(tutor.get_day_from_slot(assignment.slot),
                     tutor.get_time_from_slot(assignment.slot),
                     assignment.office)
@@ -389,7 +495,7 @@ def view_signups(request):
     #this one, so we don't double count.
     for assignment in assignments:
         person = people[assignment.person_id]
-        fullname = person.last + ", " + person.first
+        fullname = person.last_name + ", " + person.first_name
         slot = Slot(tutor.get_day_from_slot(assignment.slot),
                     tutor.get_time_from_slot(assignment.slot),
                     assignment.office)
@@ -540,7 +646,7 @@ def admin(request, message = False):
     exceptions = []
     for e in HOUR_EXCEPTIONS:
         person = hknmodels.Person.objects.get(id=e)
-        exceptions.append(["%s %s (%d)" % (person.first, person.last, person.id),
+        exceptions.append(["%s %s (%d)" % (person.first_name, person.last_name, person.id),
                            HOUR_EXCEPTIONS[e]])
     if len(exceptions) == 0: exceptions = False
     
@@ -735,3 +841,5 @@ def update_constants(argDict):
     constsFile = open('tutor/constants.py','w+') #truncates the file
     constsFile.write(newText)
     constsFile.close()
+
+# vim: set expandtab softtabstop=4 tabstop=4 shiftwidth=4:

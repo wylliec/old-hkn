@@ -2,8 +2,65 @@
 
 {% block extratitle %} Tutoring - Schedule {% endblock %}
 
-{% block subtitle %} Tutoring - Schedule {% endblock %}
+{% block subtitle %} Tutoring - {{ season }} {{ year }} Schedule {% endblock %}
 
 {% block tutorcontent %}
-Under Construction
+
+{% if not message %}
+<h3>
+	Soda Office (345 Soda Hall) Schedule
+</h3>
+<table>
+	<tr>
+		<th>
+		</th>
+		{% for day in days %}
+		<th>
+			{{ day }}
+		</th>
+		{% endfor %}
+	</tr>
+	{% for dict in info %}
+	<tr>
+		<td class="time">
+			{{ dict.timeslot }}
+		</td>
+		{% for elem in dict.row %}
+		<td class="person {{ elem.sodaclasses }}">
+			{{ elem.sodaname }}
+		</td>
+		{% endfor %}
+	</tr>
+	{% endfor %}
+</table>
+<br />
+
+<h3>
+	Cory Office (290 Cory Hall) Schedule
+</h3>
+<table>
+	<tr>
+		<th>
+		</th>
+		{% for day in days %}
+		<th>
+			{{ day }}
+		</th>
+		{% endfor %}
+	</tr>
+	{% for dict in info %}
+	<tr>
+		<td class="time" style="width: 10%">
+			{{ dict.timeslot }}
+		</td>
+		{% for elem in dict.row %}
+		<td class="person {{ elem.coryclasses }}" style="width: 18%">
+			{{ elem.coryname }}
+		</td>
+		{% endfor %}
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+
 {% endblock %}
