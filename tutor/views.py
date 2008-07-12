@@ -23,7 +23,7 @@ from hkn.tutor.scheduler import State, Slot
 from hkn.tutor import output
 
 from operator import itemgetter
-from re import match
+from re import match, search
 
 
 def schedule(request):
@@ -89,14 +89,14 @@ def schedule(request):
             person = realAssignments[corySlotObj]
             coryname = person.get_name()
             data = canTutorData.filter(person=person)
-            list = [x.course.short_name() + (data.current and "cur" or "") for x in data]
+            list = [x.course.short_name() + (x.current and "cur" or "") for x in data]
             coryclasses = " ".join(list)
 
             sodaSlotObj = Slot(day, time, SODA)
             person = realAssignments[sodaSlotObj]
             sodaname = person.get_name()
             data = canTutorData.filter(person=person)
-            list = [x.course.short_name() + (data.current and "cur" or "") for x in data]
+            list = [x.course.short_name() + (x.current and "cur" or "") for x in data]
             sodaclasses = " ".join(list)
 
             row.append({"sodaname":sodaname,
@@ -108,14 +108,14 @@ def schedule(request):
     canTutor = {} #dictionary of dept -> list of courses
     for x in canTutorData:
         course = x.course
-        if course.deptartment not in canTutor:
+        if course.department not in canTutor:
             canTutor[course.department] = []
         if course.number not in canTutor[course.department]:
             canTutor[course.department].append(course.number)
 
     def courseSort(x, y):
-        nx = int(match("\d+", x).group(0))
-        ny = int(match("\d+", y).group(0))
+        nx = int(search("\d+", x).group(0))
+        ny = int(search("\d+", y).group(0))
         r = cmp(nx, ny)
         if r == 0:
             return cmp(x, y)

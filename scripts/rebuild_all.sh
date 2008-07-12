@@ -14,6 +14,8 @@ echo  'a' | ./import_people.py
 ./set_initiates.py
 ./generate_privacy_settings.py
 
+./import_tutor_data.py
+
 #echo 'Importing events from webcal'
 #./import_events_from_webcal.py
 echo 'Importing minimal events fixture'
