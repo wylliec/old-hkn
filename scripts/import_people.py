@@ -43,9 +43,9 @@ def addLine(line, member_status):
 
     email = normalizeEmail(email)
     try:
-        Person.objects.from_email(email)
+        p = Person.objects.from_email(email)
         print "Found duplicate person with email %s!" % email
-        return
+	p.delete()
     except Person.DoesNotExist:
         pass
 
