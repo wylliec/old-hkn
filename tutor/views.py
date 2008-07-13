@@ -74,6 +74,7 @@ def schedule(request):
     canTutorData = tutor.CanTutor.objects.filter(
            season=currentSeason(),
            year=CURRENT_YEAR)
+    realCanTutorData = None
 
     info = [] #list of dictionaries, which contain time and row.  Each row is list of dictionaries
     for time in context['timeslots']:
@@ -89,6 +90,8 @@ def schedule(request):
             person = realAssignments[corySlotObj]
             coryname = person.get_name()
             data = canTutorData.filter(person=person)
+            if realCanTutorData is None: realCanTutorData = data #we only want canTutor data for tutors
+            else: realCanTutorData |= data
             list = [x.course.short_name() + (x.current and "cur" or "") for x in data]
             coryclasses = " ".join(list)
 
@@ -96,6 +99,7 @@ def schedule(request):
             person = realAssignments[sodaSlotObj]
             sodaname = person.get_name()
             data = canTutorData.filter(person=person)
+            realCanTutorData |= data
             list = [x.course.short_name() + (x.current and "cur" or "") for x in data]
             sodaclasses = " ".join(list)
 
@@ -103,10 +107,9 @@ def schedule(request):
                         "sodaclasses":sodaclasses,
                         "coryname":coryname,
                         "coryclasses":coryclasses})
-        info.append(row)
 
     canTutor = {} #dictionary of dept -> list of courses
-    for x in canTutorData:
+    for x in realCanTutorData:
         course = x.course
         if course.department not in canTutor:
             canTutor[course.department] = []
@@ -124,7 +127,7 @@ def schedule(request):
     sortedCanTutor = [] #list of {"dept":?, "courses":?}
     for x in canTutor:
         canTutor[x].sort(courseSort)
-        sortedCanTutor.append({"dept":x, "courses":canTutor[x]})
+        sortedCanTutor.append({"dept":x, "shortdept": x.my_nice_abbr(), "courses":canTutor[x]})
     sortedCanTutor.sort(key=itemgetter("dept"))
 
     context['info'] = info

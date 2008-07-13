@@ -7,60 +7,125 @@
 {% block tutorcontent %}
 
 {% if not message %}
-<h3>
-	Soda Office (345 Soda Hall) Schedule
-</h3>
-<table>
-	<tr>
-		<th>
-		</th>
-		{% for day in days %}
-		<th>
-			{{ day }}
-		</th>
-		{% endfor %}
-	</tr>
-	{% for dict in info %}
-	<tr>
-		<td class="time">
-			{{ dict.timeslot }}
-		</td>
-		{% for elem in dict.row %}
-		<td class="person {{ elem.sodaclasses }}">
-			{{ elem.sodaname }}
-		</td>
-		{% endfor %}
-	</tr>
-	{% endfor %}
-</table>
-<br />
+<script type="text/javascript">
+<!--
+var color = "#6f6";
+var colorcur = "#fb6";
 
-<h3>
-	Cory Office (290 Cory Hall) Schedule
-</h3>
-<table>
-	<tr>
-		<th>
-		</th>
-		{% for day in days %}
-		<th>
-			{{ day }}
-		</th>
+var locked = false;
+var tutoringcss = document.createElement('style');
+tutoringcss.type = 'text/css';
+tutoringcss.rel = 'stylesheet';
+document.getElementsByTagName("head")[0].appendChild(tutoringcss);
+
+// Highlight using these funky colors.
+function highlight(className) {
+	if(!locked) tutoringcss.innerHTML = '.' + className + 'cur { background: ' + colorcur + ' !important; }' +
+				'.' + className + ' { background: ' + color + ' !important; }';
+}
+
+// Get rid of the css.
+function unhighlight(className){
+	if(!locked) tutoringcss.innerHTML = "";
+}
+
+// Highlight and stay highlighted until we click something else.
+// If you do click a different class, highlight it instead of clearing.
+function locklight(className){
+	if (!locked){
+		highlight(className);
+		locked = className;
+	}
+	else if(locked != className){
+		locked = false;
+		highlight(className);
+		locked = className;
+	}
+	else{
+		locked = false;
+		highlight(className);
+	}
+
+	return false;
+}
+//-->
+</script>
+<div style="float: left; max-width: 80%; text-align: center">
+	<table style="width: 100%">
+		<tr>
+			<td colspan="6">
+				<h3>
+					Soda Office (345 Soda Hall) Schedule
+				</h3>
+			</td>
+		</tr>
+		<tr>
+			<th>
+			</th>
+			{% for day in days %}
+			<th>
+				{{ day }}
+			</th>
+			{% endfor %}
+		</tr>
+		{% for dict in info %}
+		<tr>
+			<td class="time">
+				{{ dict.timeslot }}
+			</td>
+			{% for elem in dict.row %}
+			<td class="person {{ elem.sodaclasses }}" style="width: 18%">
+				{{ elem.sodaname }}
+			</td>
+			{% endfor %}
+		</tr>
 		{% endfor %}
-	</tr>
-	{% for dict in info %}
-	<tr>
-		<td class="time" style="width: 10%">
-			{{ dict.timeslot }}
-		</td>
-		{% for elem in dict.row %}
-		<td class="person {{ elem.coryclasses }}" style="width: 18%">
-			{{ elem.coryname }}
-		</td>
+
+		<tr>
+			<td colspan="6">
+				<h3>
+					Cory Office (290 Cory Hall) Schedule
+				</h3>
+			</td>
+		</tr>
+		<tr>
+			<th>
+			</th>
+			{% for day in days %}
+			<th>
+				{{ day }}
+			</th>
+			{% endfor %}
+		</tr>
+		{% for dict in info %}
+		<tr>
+			<td class="time">
+				{{ dict.timeslot }}
+			</td>
+			{% for elem in dict.row %}
+			<td class="person {{ elem.coryclasses }}">
+				{{ elem.coryname }}
+			</td>
+			{% endfor %}
+		</tr>
 		{% endfor %}
-	</tr>
+	</table>
+</div>
+
+<div style="float: left; max-width: 20%">
+	{% for data in canTutor %}
+	<div>
+		<div style="font-weight: bold;">
+			{{ data.dept }}
+		</div>
+		{% for course in data.courses %}
+		<a href="#" class="{{ data.shortdept }}{{ course }}" onmouseover="highlight('{{ data.shortdept }}{{ course }}')" onmouseout="unhighlight('{{ data.shortdept }}{{ course }}')" onclick="return locklight('{{ data.shortdept }}{{ course }}')">{{ course }}</a>
+		{% endfor %}
+	</div>
 	{% endfor %}
-</table>
+</div>
+<div style="clear:both">
+</div>
 {% endif %}
 
 {% endblock %}
