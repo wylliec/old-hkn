@@ -188,6 +188,7 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% endblock %}
 </div>	
 
+{% block container %}
 
 <div id="container">
 <!--content-->
@@ -197,9 +198,11 @@ You are logged in as {{user.username}}.
 {% block content %}
 {% endblock %}
 
+
 <!-- end main content block -->
 
 </div>
+{% endblock%}
 
 <div id="footer">
 	<div id="footer-right">Eta Kappa Nu, Mu Chapter (<a href="mailto:www@hkn.eecs.berkeley.edu">www@hkn.eecs.berkeley.edu</a>)</div>
