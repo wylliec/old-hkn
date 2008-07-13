@@ -1,9 +1,21 @@
 {% extends "main/base.html" %}
 
 
-{% block content %}
-<center>
-<iframe src="http://www.google.com/calendar/hosted/mu.etakappanu.net/embed?title=HKN%20Events&amp;showNav=0&amp;showTabs=0&amp;showCurrentTime=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF{{gcal.query_string }}" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
-</center>
+{% block container %}
+<div id = "landing_left_wrapper">
+	<div id = "landing_left_content">
+		left
+	</div>
+</div>
+<div id = "landing_middle_wrapper">
+	<div id = "landing_middle_content">
+		right
+	</div>
+</div>
+<div id = "landing_right_wrapper">
+	<div id = "landing_right_content">
+		middle 
+	</div>
+</div>	
 {%endblock %}
 
