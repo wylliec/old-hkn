@@ -309,6 +309,7 @@ div #rightshadow{
 */
 /* footer area */
 #footer {
+	clear:both;
 	background: #048DB4;
 	color: #ACD7EE;
 	font-size: 95%;
