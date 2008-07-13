@@ -65,6 +65,9 @@ class Department(models.Model):
         return None
     proper_abbr = staticmethod(proper_abbr)
 
+    def __cmp__(self, other):
+        return cmp(self.name, other.name)
+
     class Admin:
         pass
 
