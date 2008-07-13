@@ -1,12 +1,12 @@
 {% extends "tutor/base.html" %}
 
-{% block extratitle %} Tutoring - View Signups {% endblock %}
+{% block title %} {{ block.super }} - View Signups {% endblock %}
 
 {% block subtitle %} Tutoring - View Signups {% endblock %}
 
 {% block tutorcontent %}
 {% if version %}
-You are viewing version {{ version }}
+You are viewing version {{ version }}.
 {% else %}
 Version unavailable.  Viewing null assignment.
 {% endif %}

@@ -1,12 +1,12 @@
 {% extends "tutor/base.html" %}
 
-{% block extratitle %} Tutoring - Signup {% endblock %}
+{% block title %} {{ block.super }} - Signup {% endblock %}
 
 {% block subtitle %} Tutoring - Signup {% endblock %}
 
 {% block tutorcontent %}
 
-You are logged in as <b>{{ user.person.first_name }} {{ user.person.last_name }}</b>.<br />
+You are logged in as <b>{{ user.person.name }}</b>.<br />
 <br />
 <br />
 

@@ -2,9 +2,7 @@
 
 {# all tutoring pages should extend this template, and have message defined as False or a nonempty String #}
 
-{% block extratitle %} Tutoring {% endblock %}
-
-{# Note: there is a 'extrahead' hook available to use (above the main HKN graphic in the header). #}
+{% block title %} {{ block.super }} - Tutoring {% endblock %}
 
 {% block content %}
 
@@ -23,8 +21,6 @@
 <a href="{% url hkn.tutor.views.view_signups %}">View Signups</a>
  | <a href="{% url hkn.tutor.views.admin %}">Administration Controls</a>
 {% endif %}
-<hr />
-<h1>{% block subtitle %}Tutoring{% endblock %}</h1>
 <hr />
 {% endblock %}
 
