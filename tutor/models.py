@@ -28,7 +28,7 @@ class Availability(models.Model):
     
     def availabilities_by_slot(seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR,
                                person_converter = lambda person:'%d%s%s' %
-                                           (person.id, person.first.split(' ')[0], person.last[0])):
+                                           (person.id, person.first_name.split(' ')[0], person.last_name[0])):
         """
         turns availabilities into an availabilitiesBySlot mapping from a Slot object to
         a list of preference details.  A preference detail is a list of [person representation, preference*]
@@ -124,7 +124,7 @@ class Availability(models.Model):
         exceptions = {}
         for person_id in HOUR_EXCEPTIONS:
             person = Person.objects.get(id=person_id)
-            identifier = str(person.id) + person.first.split(' ')[0] + person.last[0]
+            identifier = str(person.id) + person.first_name.split(' ')[0] + person.last_name[0]
             exceptions[identifier] = HOUR_EXCEPTIONS[person_id]
         ret += 'exceptions = %s\n' % exceptions
         ret += 'defaultHours = %d\n' % DEFAULT_HOURS

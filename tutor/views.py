@@ -22,7 +22,6 @@ from hkn.tutor.constants import *
 from hkn.tutor.scheduler import State, Slot
 from hkn.tutor import output
 
-from operator import itemgetter
 from re import match, search
 
 
@@ -128,7 +127,6 @@ def schedule(request):
     for x in canTutor:
         canTutor[x].sort(courseSort)
         sortedCanTutor.append({"dept":x, "shortdept": x.my_nice_abbr(), "courses":canTutor[x]})
-    sortedCanTutor.sort(key=itemgetter("dept"))
 
     context['info'] = info
     context['canTutor'] = sortedCanTutor
