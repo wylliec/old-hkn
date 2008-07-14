@@ -26,12 +26,10 @@ from re import match, search
 
 
 def schedule(request):
-    context = basicContext(request, {'showAdminLinks':True})
+    context = basicContext(request)
     context['days'] = TUTORING_DAYS
     context['timeslots'] = TUTORING_TIMES
     context['message'] = False
-    context['SODA'] = SODA
-    context['CORY'] = CORY
     context['year'] = CURRENT_YEAR
     context['season'] = str(currentSeason()).title()
     
@@ -68,44 +66,41 @@ def schedule(request):
         slot = Slot(tutor.get_day_from_slot(assignment.slot),
                     tutor.get_time_from_slot(assignment.slot),
                     assignment.office)
-        realAssignments[slot] = person
+        if slot in realAssignments:
+            realAssignments[slot].append(person)
+        else:
+            realAssignments[slot] = [person]
         
     canTutorData = tutor.CanTutor.objects.filter(
            season=currentSeason(),
            year=CURRENT_YEAR)
     realCanTutorData = None
 
+    seenTutors = {} #cache the work that we do...
     info = [] #list of dictionaries, which contain time and row.  Each row is list of dictionaries
-    for time in context['timeslots']:
-        dict = {}
-        row = NamedList(name=time)
-        dict["timeslot"] = time
-        dict["row"] = row
-        info.append(dict)
-        for day in context['days']:
-            slot = tutor.make_slot(day=day, time=time)
+    for office, header in ((CORY, "Cory Office (290 Cory Hall) Schedule"),
+                            (SODA, "Soda Office (345 Soda Hall) Schedule")):
+        schedule = []
+        for time in context['timeslots']:
+            row = NamedList(name=time)
+            scheduleRow = {"timeslot":time, "row":row}
+            for day in context['days']:
+                slot = Slot(day, time, office)
+                people = realAssignments[slot]
+                curTimeSlot = []
+                for person in people:
+                    name = person.get_name()
 
-            corySlotObj = Slot(day, time, CORY)
-            person = realAssignments[corySlotObj]
-            coryname = person.get_name()
-            data = canTutorData.filter(person=person)
-            if realCanTutorData is None: realCanTutorData = data #we only want canTutor data for tutors
-            else: realCanTutorData |= data
-            list = [x.course.short_name() + (x.current and "cur" or "") for x in data]
-            coryclasses = " ".join(list)
-
-            sodaSlotObj = Slot(day, time, SODA)
-            person = realAssignments[sodaSlotObj]
-            sodaname = person.get_name()
-            data = canTutorData.filter(person=person)
-            realCanTutorData |= data
-            list = [x.course.short_name() + (x.current and "cur" or "") for x in data]
-            sodaclasses = " ".join(list)
-
-            row.append({"sodaname":sodaname,
-                        "sodaclasses":sodaclasses,
-                        "coryname":coryname,
-                        "coryclasses":coryclasses})
+                    if person not in seenTutors:
+                        data = canTutorData.filter(person=person)
+                        if realCanTutorData is None: realCanTutorData = data #we only want canTutor data for tutors
+                        else: realCanTutorData |= data
+                        seenTutors[person] = " ".join([x.course.short_name() + (x.current and "cur" or "") for x in data])
+                    classes = seenTutors[person]
+                    curTimeSlot.append({"name":name, "classes":classes})
+                row.append(curTimeSlot)
+            schedule.append(scheduleRow)
+        info.append({"office":office, "header":header, "schedule":schedule})
 
     canTutor = {} #dictionary of dept -> list of courses
     for x in realCanTutorData:

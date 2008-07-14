@@ -50,16 +50,13 @@ function locklight(className){
 }
 //-->
 </script>
-<div style="float: left; max-width: 80%; text-align: center">
+<div style="float: left; width: 80%; text-align: center">
+	{% for officeinfo in info %}
+	<h3>
+		{{ officeinfo.header }}
+	</h3>
 	<table style="width: 100%">
 		<tr>
-			<td colspan="6">
-				<h3>
-					Soda Office (345 Soda Hall) Schedule
-				</h3>
-			</td>
-		</tr>
-		<tr>
 			<th>
 			</th>
 			{% for day in days %}
@@ -68,54 +65,29 @@ function locklight(className){
 			</th>
 			{% endfor %}
 		</tr>
-		{% for dict in info %}
+		{% for scheduleRow in officeinfo.schedule %}
 		<tr>
 			<td class="time">
-				{{ dict.timeslot }}
+				{{ scheduleRow.timeslot }}
 			</td>
-			{% for elem in dict.row %}
-			<td class="person {{ elem.sodaclasses }}" style="width: 18%">
-				{{ elem.sodaname }}
-			</td>
-			{% endfor %}
-		</tr>
-		{% endfor %}
-
-		<tr>
-			<td colspan="6">
-				<h3>
-					Cory Office (290 Cory Hall) Schedule
-				</h3>
-			</td>
-		</tr>
-		<tr>
-			<th>
-			</th>
-			{% for day in days %}
-			<th>
-				{{ day }}
-			</th>
-			{% endfor %}
-		</tr>
-		{% for dict in info %}
-		<tr>
-			<td class="time">
-				{{ dict.timeslot }}
-			</td>
-			{% for elem in dict.row %}
-			<td class="person {{ elem.coryclasses }}">
-				{{ elem.coryname }}
-			</td>
+			{% for dayinfo in scheduleRow.row %}
+			<td style="width: 18%; background-color: #dddddd; padding: 3px">
+				{% for person in dayinfo %}
+				<div class="person {{ person.classes }}" style="margin-top: 3px; margin-bottom: 3px">
+					{{ person.name }}
+				</div>
+				{% endfor %}
 			{% endfor %}
 		</tr>
 		{% endfor %}
 	</table>
+	{% endfor %}
 </div>
 
 <div style="float: left; max-width: 20%">
 	{% for data in canTutor|dictsort:"dept" %}
 	<div>
-		<div style="font-weight: bold;">
+		<div style="font-weight: bold">
 			{{ data.dept }}
 		</div>
 		{% for course in data.courses %}
