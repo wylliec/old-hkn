@@ -1478,7 +1478,8 @@ def hill_climb(initialState=State(),
               slotsByPerson=False,
               adjacency_checker=are_adjacent_hours,
               availabilitiesBySlot=NiceDict([]),
-              beamLength=3):
+              beamLength=3,
+              debug=False):
     """
     Returns: best state found, with cost info in the meta.  If did any hill climbing,
     meta['parent'] is None.  Returned state must have meta['cost'] be the correct cost, and
@@ -1501,8 +1502,8 @@ def hill_climb(initialState=State(),
     if initialState.meta['cost'] == 0:
         initialState.meta['cost'] = get_total_cost(state=initialState, costs=costs, adjacency_checker=adjacency_checker, availabilitiesBySlot=availabilitiesBySlot)
     
-#    Returns a new state with the three specified entries swapped
-#    Swaps person in slot one to slot two, slot two to slot three, and slot three to slot one
+    # Returns a new state with the three specified entries swapped
+    # Swaps person in slot one to slot two, slot two to slot three, and slot three to slot one
     def three_swap_state(state, slotOne, slotTwo, slotThree):
         newState = State(state)
         newState[slotOne] = state[slotThree]
@@ -1530,8 +1531,9 @@ def hill_climb(initialState=State(),
 
         return (newStateAndCost, costDiff)
     
-#    Begin Hillclimbing
-    print "Beginning hill climbing with beam length of", beamLength
+    # Begin Hillclimbing
+    if debug:
+        print "Beginning hill climbing with beam length of", beamLength
     betterStates = 0
     worseStates = 0
     invalidStates = 0
@@ -1562,7 +1564,8 @@ def hill_climb(initialState=State(),
         currentStatesAndCosts = newStateAndCosts
         newStateAndCosts = []
         iterations += 1
-        print "climbing hill", iterations
+        if debug:
+            print "climbing hill", iterations
 
         lastIndex = 0
         while len(currentStatesAndCosts) > 0:
@@ -1619,18 +1622,20 @@ def hill_climb(initialState=State(),
             if bestStateAndCost[1] > newStateAndCosts[0][1]:
                 bestStateAndCost = newStateAndCosts[0]
 
-        print "Best state so far:"
-        print "cost delta = ", bestStateAndCost[1]
-        print bestStateAndCost[0].meta['swap']
-        print bestStateAndCost[0].pretty_print()
+        if debug:
+            print "Best state so far:"
+            print "cost delta = ", bestStateAndCost[1]
+            print bestStateAndCost[0].meta['swap']
+            print bestStateAndCost[0].pretty_print()
     
-    print 'HillClimb Stats'
-    print 'Total Iterations =', iterations
-    print 'Number of Better States =', betterStates
-    print 'Number of Worse States =', worseStates
-    print 'Number of Invalid States =', invalidStates
-    print 'Number of Ignored States =', ignoredStates
-    print 'Number of Repeat States =', repeatStates, '\n'
+    if debug:
+        print 'HillClimb Stats'
+        print 'Total Iterations =', iterations
+        print 'Number of Better States =', betterStates
+        print 'Number of Worse States =', worseStates
+        print 'Number of Invalid States =', invalidStates
+        print 'Number of Ignored States =', ignoredStates
+        print 'Number of Repeat States =', repeatStates, '\n'
     bestState, bestCost = bestStateAndCost
     #bestState.meta['cost'] = initialState.meta['cost'] + bestCost
     bestState.meta['cost'] = get_total_cost(state=bestState, costs=costs, adjacency_checker=adjacency_checker, availabilitiesBySlot=availabilitiesBySlot)
@@ -2013,26 +2018,28 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
     dump.write("var personInSlot{p in people, s in slots, o in offices} binary;\n")
     dump.write("maximize happiness: sum{p in people, s in slots, o in offices} personInSlot[p, s, o] * (officePreference[p, o] + timePreference[s, p]);\n")
 
+    lines = []
+
     # every slot filled
     for d in TUTORING_DAYS:
         for t in TUTORING_TIMES:
             t = t.replace("-", "TO")
             for o in [CORY, SODA]:
-                dump.write("s.t. onePersonPerSlot%s%s%s: sum{p in people} personInSlot[p, '%s%s', '%s'] == 1;\n" % (d, t, o, d, t, o))
+                lines.append("s.t. onePersonPerSlot%s%s%s: sum{p in people} personInSlot[p, '%s%s', '%s'] == 1;\n" % (d, t, o, d, t, o)) #tweak ==, <=
 
     # can't be in both offices at once
     for p in people:
         for d in TUTORING_DAYS:
             for t in TUTORING_TIMES:
                 t = t.replace("-", "TO")
-                dump.write("s.t. notOmnipresent%s%s%s: sum{o in offices} personInSlot['%s', '%s%s', o] <= 1;\n" % (p, d, t, p, d, t))
+                lines.append("s.t. notOmnipresent%s%s%s: sum{o in offices} personInSlot['%s', '%s%s', o] <= 1;\n" % (p, d, t, p, d, t))
 
     # maximum hours to tutor
     for p in people:
         x = defaultHours
         if p in exceptions:
             x = exceptions[p]
-        dump.write("s.t. totalHours%s: sum{s in slots, o in offices} personInSlot['%s', s, o] <= %d;\n" % (p, p, x))
+        lines.append("s.t. totalHours%s: sum{s in slots, o in offices} personInSlot['%s', s, o] <= %d;\n" % (p, p, x)) #tweak <=, ==, remember parameters.py settings
 
     # can't make these slots
     for p in people:
@@ -2040,7 +2047,12 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
             if p not in availBySlot[slot]:
                 d, t = slot
                 t = t.replace("-", "TO")
-                dump.write("s.t. unavailable%s%s%s: sum{o in offices} personInSlot['%s', '%s%s', o] == 0;\n" % (p, d, t, p, d, t))
+                lines.append("s.t. unavailable%s%s%s: sum{o in offices} personInSlot['%s', '%s%s', o] == 0;\n" % (p, d, t, p, d, t))
+
+    import random
+    random.shuffle(lines)
+    for line in lines:
+        dump.write(line)
 
     dump.write("data;\n")
     dump.write("set slots := %s;\n" % (" ".join([x + y.replace("-", "TO") for x in TUTORING_DAYS for y in TUTORING_TIMES])))
@@ -2057,7 +2069,7 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
             s = 1
         else:
             s = .5
-        dump.write("%s %f %f\n" % (p, c, s))
+        dump.write("%s %f %f\n" % (p, c, s)) #tweak the difference
     dump.write(";\n")
 
     dump.write("param timePreference : ")
@@ -2072,7 +2084,7 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
             pref = 3
             if p in timePref[slot]:
                 pref = timePref[slot][p]
-            dump.write("%f " % (3 - pref))
+            dump.write("%f " % (3 - pref)) #tweak the difference
         dump.write("\n")
     dump.write(";\n")
 
@@ -2080,7 +2092,7 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
     dump.close()
 
 # Hill climbs the output of glpsol and outputs the optimal schedule
-def create_schedule_from_lp_output(resultFileName = "results.txt", beamLength = 3):
+def create_schedule_from_lp_output(resultFileName = "results.txt", beamLength = 3, debug=False):
     try:
         from parameters import coryTimes, sodaTimes, defaultHours, exceptions, scoring
         from parameters import options as poptions
@@ -2124,14 +2136,17 @@ def create_schedule_from_lp_output(resultFileName = "results.txt", beamLength = 
 
     state.meta['cost'] = get_total_cost(state=state, costs=costs, adjacency_checker=are_adjacent_hours, availabilitiesBySlot=availabilitiesBySlot)
 
-    print state.pretty_print()
+    if debug:
+        print state.pretty_print()
 
-    newState = hill_climb(initialState=state, costs=costs, slotsByPerson=NiceDict(2), availabilitiesBySlot=availabilitiesBySlot, beamLength=beamLength)
+    newState = hill_climb(initialState=state, costs=costs, slotsByPerson=NiceDict(2), availabilitiesBySlot=availabilitiesBySlot, beamLength=beamLength, debug=debug)
 
-    print "LP solution:"
-    print state.pretty_print()
-    print "Final result:"
-    print newState.pretty_print()
+    if debug:
+        print "LP solution:"
+        print state.pretty_print()
+        print "Final result:"
+        print newState.pretty_print()
+    return newState
 
 def run_tests(verbose = False):
     """
@@ -2423,10 +2438,11 @@ if __name__=="__main__":
         print "  -g NAME --lpfile=NAME  lp input filename (default: lp.txt)"
         print "  -G NAME --lprfile=NAME lp output filename (default: results.txt)"
         print "  -b NUM  --beam=NUM     beam length to use in hill climbing (default: 3, use 0 to use first available swap)"
+        print "  -a NUM  --lpall=NUM    run the lp NUM times"
 
     import getopt
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'f:m:c:r:tlLg:G:b:', ['file=', 'machine=', 'maxcost=', 'randseed=', 'test', 'lp', 'lpr', 'lpfile=', 'lprfile=', 'beam='])
+        opts, args = getopt.getopt(sys.argv[1:], 'f:m:c:r:tlLg:G:b:a:', ['file=', 'machine=', 'maxcost=', 'randseed=', 'test', 'lp', 'lpr', 'lpfile=', 'lprfile=', 'beam=', 'lpall='])
     except getopt.GetoptError:
         usage()
         sys.exit(1)
@@ -2436,6 +2452,7 @@ if __name__=="__main__":
     seed = False
     lp = False
     lpr = False
+    lpall = 0
     lpfile = "lp.txt"
     lprfile = "results.txt"
     beamLength = 3
@@ -2464,9 +2481,30 @@ if __name__=="__main__":
             lprfile = arg
         elif opt in ('-b', '--beam'):
             beamLength = int(arg)
+        elif opt in ('-a', '--lpall'):
+            lpall = int(arg)
 
-    if lpr:
-        create_schedule_from_lp_output(lprfile, beamLength)
+    if lpall > 0:
+        results = []
+        for i in xrange(lpall):
+            create_lp_from_parameters(lpfile)
+            import os
+            os.system("glpsol --model " + lpfile + " --output " + lprfile)
+            print "Running iteration", i
+            state = create_schedule_from_lp_output(lprfile, beamLength, False)
+            if len(results) > 0:
+                if results[0].meta['cost'] > state.meta['cost']:
+                    results = [state]
+                elif results[0].meta['cost'] == state.meta['cost']:
+                    results.append(state)
+            else:
+                results.append(state)
+
+        print "FINAL RESULTS:"
+        for x in results:
+            print x.pretty_print()
+    elif lpr:
+        create_schedule_from_lp_output(lprfile, beamLength, True)
     elif lp:
         create_lp_from_parameters(lpfile)
     else:
