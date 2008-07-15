@@ -144,7 +144,6 @@ INSTALLED_APPS = (
     'ajaxlist',
     'request',
     'hkn.info',
-    'hkn.sms',
     'hkn.event',
     'hkn.gcal',
     'hkn.cand',

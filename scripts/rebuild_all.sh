@@ -14,7 +14,6 @@ echo  'a' | ./import_people.py
 ./set_initiates.py
 ./generate_privacy_settings.py
 
-./import_tutor_data.py
 
 #echo 'Importing events from webcal'
 #./import_events_from_webcal.py
@@ -34,3 +33,5 @@ cd klass/xml && tar xvfj schedules.tbz && cd ../..
 
 ./generate_exams.py
 ./generate_review_problems.py
+
+./import_tutor_data.py
