@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.query import QuerySet
 from django.contrib.auth.models import *
 from django.core import urlresolvers
 
@@ -10,7 +11,7 @@ import os, pickle
 from constants import RSVP_TYPE, EVENT_TYPE
 from string import atoi
 
-from nice_types.db import PickleField
+from nice_types.db import PickleField, QuerySetManager
 
 import request
 import request.utils
@@ -21,7 +22,7 @@ except:
     GCAL_ENABLED = False
 
 
-class AllEventsManager(models.Manager):
+class AllEventsManager(QuerySetManager):
     def query(self, query, events = None):
         if events == None:
             events = self.get_query_set()
@@ -32,22 +33,22 @@ class AllEventsManager(models.Manager):
                 events = events.filter(Q(name__icontains = q) | Q(location__icontains = q) | Q(description__icontains = q))
         return events
 
-class FutureEventsManager(models.Manager):
+class FutureEventsManager(AllEventsManager):
         def get_query_set(self):
                 start_time = datetime.date.today() - datetime.timedelta(days = 1)
                 return super(FutureEventsManager, self).get_query_set().filter(start_time__gte = start_time)
 
-class PastEventsManager(models.Manager):
+class PastEventsManager(AllEventsManager):
         def get_query_set(self):
                 start_time = datetime.date.today() - datetime.timedelta(days = 1)
                 return super(PastEventsManager, self).get_query_set().filter(start_time__lt = start_time)
 
-class TodayEventsManager(models.Manager):
+class TodayEventsManager(AllEventsManager):
         def get_query_set(self):
                 start_time = datetime.date.today() 
                 return super(TodayEventsManager, self).get_query_set().filter(start_time__year = start_time.year, start_time__month = start_time.month, start_time__day = start_time.day)
 
-class SemesterEventsManager(models.Manager):
+class SemesterEventsManager(AllEventsManager):
     def get_query_set(self):
         start_time = semester.getSemesterStart()
         return super(SemesterEventsManager, self).get_query_set().filter(start_time__gte = start_time)
@@ -86,6 +87,16 @@ class Event(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class QuerySet(QuerySet):
+        def filter_permissions(self, user):
+            perms = user.get_all_permissions()
+            events = list(self)
+            for event in events:
+                view_perm_code = "%s.%s" % (event.view_permission.content_type.app_label, event.view_permission.codename)
+                if view_perm_code not in perms:
+                    events.remove(event)
+            return events
 
     def rsvp_whole(self):
         return self.rsvp_type == RSVP_TYPE.WHOLE

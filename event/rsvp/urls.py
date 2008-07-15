@@ -11,7 +11,7 @@ urlpatterns = patterns('',
         (r'^edit_ajax/$', 'hkn.event.rsvp.rsvp.edit_ajax'),       
         
         # list views
-        (r'^list_event/(?P<event_id>.*)/$', 'hkn.event.rsvp.list.list_for_event'),
+        url(r'^list_event/(?P<event_id>.*)/$', 'hkn.event.rsvp.list.list_for_event', name="rsvps-for-event"),
         (r'^list_event/$', 'hkn.event.rsvp.list.list_for_event', {"event_id" : "-1"}),        
         (r'^list_for_event_ajax/$', 'hkn.event.rsvp.list.list_for_event_ajax'),
         (r'^list_for_event_small_ajax/$', 'hkn.event.rsvp.list.list_for_event_small_ajax'),        

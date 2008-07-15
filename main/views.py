@@ -1,10 +1,12 @@
-from hkn.event.models import *
-from hkn.event.forms import *
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
-from django.core.paginator import ObjectPaginator, InvalidPage
-from django import newforms as forms
+
+from hkn.event.models import *
 
 def main(request):
-    return render_to_response("main/main.html", context_instance=RequestContext(request))
+    events = Event.objects.order_by('-start_time').filter_permissions(request.user)[:10]
+    d = {}
+    d['today_events'] = events[:2]
+    d['week_events'] = events[2:]
+    return render_to_response("main/main.html", d, context_instance=RequestContext(request))

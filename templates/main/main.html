@@ -4,7 +4,20 @@
 {% block container %}
 <div id = "landing_left_wrapper">
 	<div id = "landing_left_content">
-		left
+        <table class="landing_events">
+            <tr> <td colspan=3> <h1>Today's Events</h1> </td> </tr>
+            {% for event in today_events %}
+            <tr>
+                <td>{{event.start_time|date:"l" }}<br>{{event.start_time|date:"f"}}-{{event.end_time|date:"f"}}<td><a class="infobox" rel="{% url event-infobox event.id %}" href="{% url event-view event.id %}" style="display: block">{{event.name}}</a></td><td>{{event.location}}</td>
+            </tr>
+            {% endfor %}
+            <tr> <td colspan=3> <h1>This Week's Events</h1> </td> </tr>
+            {% for event in week_events %}
+            <tr>
+                <td>{{event.start_time|date:"l" }}<br>{{event.start_time|date:"f"}}-{{event.end_time|date:"f"}}<td><a class="infobox" rel="{% url event-infobox event.id %}" href="{% url event-view event.id %}" style="display: block">{{event.name}}</a></td><td>{{event.location}}</td>
+            </tr>
+            {% endfor %}
+        </table>
 	</div>
 </div>
 <div id = "landing_middle_wrapper">
@@ -17,5 +30,19 @@
 		middle 
 	</div>
 </div>	
+
+<script>
+$('a.infobox').cluetip({
+      cluetipClass: 'jtip', 
+      arrows: true, 
+      dropShadow: false,
+      hoverIntent: false,
+      sticky: true,
+      mouseOutClose: true,
+      closePosition: 'title',
+      closeText: '<img src="/static/images/site/close.png" alt="close" />'
+    });
+</script>
+
 {%endblock %}
 

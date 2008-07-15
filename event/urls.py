@@ -7,7 +7,8 @@ urlpatterns = patterns('',
         
 
         (r'^calendar/$', 'hkn.event.event.calendar'),
-        (r'^view/(?P<event_id>.*)/$', 'hkn.event.event.view'),
+        url(r'^view/(?P<event_id>.*)/$', 'hkn.event.event.view', name="event-view"),
+        url(r'^infobox/(?P<event_id>.*)/$', 'hkn.event.event.infobox', name="event-infobox"),
 
         (r'^rsvp/', include('hkn.event.rsvp.urls')),
     )					    
