@@ -8,7 +8,7 @@ register = template.Library()
 control_templates = { 	
 					"search" : "ajaxlist/controls/query2.html", 
 					"pager" : "ajaxlist/controls/pager2.html",
-					"per_page" : "ajaxlist/controls/per_page.html",
+					"per_page" : "ajaxlist/controls/per_page2.html",
 				}
 	
 class AjaxJSNode(template.Node):

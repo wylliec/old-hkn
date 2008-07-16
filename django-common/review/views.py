@@ -126,7 +126,7 @@ def merge_problems(request, solutions):
 
 def test(request):
 	sort_by = "name"
-	p = request.POST.get("page", 1)
+	p = int(request.POST.get("page", 1))
 	
 	d = {}
 	problems = Problem.objects.all()
@@ -134,6 +134,7 @@ def test(request):
 	problems, d = paginate_objects(problems, d, page=p)
 	d['list_objects'] = problems
 	d['printinfo'] = request.POST.get("action", "None")
+	d['page'] = p
 
 	if request.is_ajax():
 		return render_ajaxwrapper_response("review/test.html", d, context_instance=RequestContext(request))

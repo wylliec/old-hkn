@@ -1,6 +1,11 @@
 {% extends "review/review.html" %}
 {% load ajaxtable %}
 
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" type="text/css" href="/static/css/rating_bar.css">
+{% endblock %}
+
 {% block js %}
 {{block.super}}
 {% ajaxlist_js %}

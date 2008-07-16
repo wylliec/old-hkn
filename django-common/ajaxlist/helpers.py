@@ -12,7 +12,6 @@ class NodeNotFound(Exception):
 
 def get_node(nodelist, node):
 	for n in nodelist:
-		print n
 		if isinstance(n, node):
 			return n
 		try:
@@ -62,7 +61,7 @@ def paginate_objects(objects, list_context, page=1, max_per_page=20):
 	list_context["has_next_page"] = p.has_next()
 	list_context["has_previous_page"] = p.has_previous()
 	list_context["page_range"] = paginator.page_range
-	
+
 	return p.object_list, list_context
 	
 	
