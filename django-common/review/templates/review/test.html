@@ -1,0 +1,17 @@
+{% extends "review/review.html" %}
+{% load ajaxtable %}
+
+{% block js %}
+{{block.super}}
+{% ajaxlist_js %}
+{% endblock %}
+
+{% block reviewcontents %}
+
+{% control search %}
+{% ajaxwrapper %}
+<p>{{printinfo}}</p>
+	{% control pager %} 
+	{% ajaxtable list_objects "review/_header.html" "review/_problem.html" %}
+{% endajaxwrapper %}
+{% endblock %}

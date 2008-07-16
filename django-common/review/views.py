@@ -10,6 +10,7 @@ import os
 
 from models import Problem
 from form import ProblemForm
+from ajaxlist.helpers import sort_objects, paginate_objects, render_ajaxwrapper_response
 from tagging.models import Tag, TaggedItem
 import tagging.utils
 
@@ -41,7 +42,6 @@ def browse_review_tags(request):
 		else:
 			last_char = t.name[0]
 			sorted_tags.append([t])
-		
 		
 	return render_to_response("review/browse_review_tags.html", {'tags' : sorted_tags}, context_instance=RequestContext(request))
 	
@@ -123,7 +123,22 @@ def merge_problems(request, solutions):
 		response['Content-Disposition'] = 'attachment; filename=review_solutions.pdf'
 	
 	return response
+
+def test(request):
+	sort_by = "name"
+	p = request.POST.get("page", 1)
 	
+	d = {}
+	problems = Problem.objects.all()
+	problems = sort_objects(problems, "name")
+	problems, d = paginate_objects(problems, d, page=p)
+	d['list_objects'] = problems
+	d['printinfo'] = request.POST.get("action", "None")
+
+	if request.is_ajax():
+		return render_ajaxwrapper_response("review/test.html", d, context_instance=RequestContext(request))
+	else:
+		return render_to_response("review/test.html", d, context_instance=RequestContext(request))
 		
 if EXAM_LOGIN_REQUIRED:
     submit = login_required(submit)

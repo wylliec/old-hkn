@@ -89,4 +89,3 @@ def filter_objects(clazz, list_context, query_objects = None, filter_permissions
     list_context["num_hits"] = paginator.hits
     
     return page_objects
-

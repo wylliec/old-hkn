@@ -1,0 +1,29 @@
+{% load ajaxlist_extras %}
+
+{% spaceless %}
+<span class="pager" >
+<img src="/static/images/site/arrow_desc.gif">
+{% if has_previous_page %}
+<a class="prev_page" href="#" >Previous</a>
+{% else %}
+Previous
+{% endif %}
+|
+<select id="page">
+{% for page_i in page_range %}
+	{% ifequal page_i page %}
+		<option value="{{ page_i }}" selected="yes">{{ page_i }}</option>
+	{% else %}
+		<option value="{{ page_i }}">{{ page_i }}</option>	
+	{% endifequal %}
+{% endfor %}
+</select>
+|
+{% if has_next_page %}
+<a class="next_page" href="#" >Next</a>
+{% else %}
+Next
+{% endif %}
+<img src="/static/images/site/arrow_asc.gif">
+</span>
+{% endspaceless %}

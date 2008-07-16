@@ -1,6 +1,7 @@
-<table class="ajaxlist_list">
-{% if header_template %} {% include header_template %} {% else %} {% include "ajaxlist/_object_list_header.html" %} {% endif %}
-{% for object in list_objects %}
-<div id="ajaxlist_row_{{object.id}}"> {% if row_template %} {% include row_template %} {% else %} {% include "ajaxlist/_object_list_row.html" %} {% endif %} </div>
+{% load ajaxtable %}
+<table class="ajaxtable">
+{% include header_template %} 
+{% special_for list_objects %}
+{% include row_template %}
 {% endfor %}
 </table>
