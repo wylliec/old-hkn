@@ -3,7 +3,7 @@
 import new
 from django.template.loader_tags import BlockNode, ExtendsNode
 from django.template import loader, Context, RequestContext, TextNode
-from ajaxlist.templatetags.ajaxtable import AjaxWrapperNode
+from django.templatetags.ajaxtable import AjaxWrapperNode
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 
@@ -73,7 +73,7 @@ from ajaxlist.helpers import get_node
 from ajaxlist.helpers import render_ajaxwrapper_response
 from ajaxlist.helpers import render_ajaxwrapper
 
-from ajaxlist.templatetags.ajaxtable import AjaxWrapperNode
+from django.templatetags.ajaxtable import AjaxWrapperNode
 from django.template.loader import get_template
 t = get_template("review/test.html")
 isinstance(t.nodelist[0].nodelist[-1].nodelist[-2], AjaxWrapperNode)
