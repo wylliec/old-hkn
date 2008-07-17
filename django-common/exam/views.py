@@ -27,7 +27,7 @@ def split_list(li, splits):
 
 def browse(request):
     departments = list(Department.objects.order_by("name"))
-    departments = [d for d in departments if len(d.course_set.all()) > 20]
+    departments = [d for d in departments if len(d.course_set.all()) > 20 and department_exams(d) > 0]
     dept_lists = split_list(departments, 2)
 
     d = {"dept_lists" : dept_lists}
@@ -41,6 +41,13 @@ def browse_department(request, department_abbr):
     courses_lists = split_list(courses, 2)
     d = {"courses_lists" : courses_lists, "department" : department, "empty" : empty}
     return render_to_response("exam/browse_department.html", d, context_instance=RequestContext(request))
+
+#Helper
+def department_exams(department):
+	total = 0
+	for c in department.course_set.all():
+		total += c.exam_set.count()
+	return total
 
 if EXAM_LOGIN_REQUIRED:
     browse = login_required(browse)

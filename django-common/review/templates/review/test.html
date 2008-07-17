@@ -17,6 +17,6 @@
 {% ajaxwrapper %}
 <p>{{printinfo}}</p>
 	{% control pager %} 
-	{% ajaxtable list_objects "review/_header.html" "review/_problem.html" %}
+	{% ajaxtable list_objects "review/_header.html" "review/_problem.html" checks=on %}
 {% endajaxwrapper %}
 {% endblock %}

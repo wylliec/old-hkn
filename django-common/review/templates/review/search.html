@@ -1,4 +1,5 @@
 {% extends "review/review.html" %}
+{% load ajaxtable %}
 
 {% block css %}
 {{block.super}}
@@ -7,6 +8,8 @@
 
 {% block js %}
 {{block.super}}
+{% ajaxlist_js %}
+
 <script type="text/javascript">
 $(document).ready(function(){
 	function postChecks(url){
@@ -34,17 +37,9 @@ Search by tag:
 </form>
 
 {% if results %}
-<table>
-<tr>
-	<th>Title</th>
-	<th>Difficulty</th>
-	<th>Question</th>
-	<th>Answer</th>
-</tr>
-{% for p in results %}
-	{% include "review/_problem.html" %}
-{% endfor %}
-</table>
+{% ajaxwrapper %}
+	{% ajaxtable results "review/_header.html" "review/_problem.html" checks=on %}
+{% endajaxwrapper %}
 <br />
 <div style="float:right">
 <a href={% url review-selected %}>View Selected Problems</a>

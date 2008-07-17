@@ -1,4 +1,5 @@
 {% extends "review/review.html" %}
+{% load ajaxtable %}
 
 {% block css %}
 {{block.super}}
@@ -7,6 +8,7 @@
 
 {% block js %}
 {{block.super}}
+{% ajaxlist_js %}
 <script type="text/javascript">
 $(document).ready(function(){
 	function postChecks(url){
@@ -32,17 +34,9 @@ $(document).ready(function(){
 
 {% block reviewcontents %}
 
-<table>
-<tr>
-	<th>Title</th>
-	<th>Difficulty</th>
-	<th>Question</th>
-	<th>Answer</th>
-</tr>
-{% for p in problems %}
-	{% include "review/_problem.html" %}
-{% endfor %}
-</table>
+{% ajaxwrapper %}
+	{% ajaxtable problems "review/_header.html" "review/_problem.html" checks=on %}
+{% endajaxwrapper %}
 <br />
 
 <div style="float:right">

@@ -1,5 +1,5 @@
 from django.template.loader import get_template
-from django.template import VariableNode, NodeList, TextNode
+from django.template import VariableNode, NodeList, TextNode, Variable
 from django.template.loader_tags import IncludeNode
 from django import template
 
@@ -10,7 +10,33 @@ control_templates = {
 					"pager" : "ajaxlist/controls/pager2.html",
 					"per_page" : "ajaxlist/controls/per_page2.html",
 				}
+
+table_defaults = 	{
+					"checks" : "off",
+				}
+			
+
+class AjaxTableNode(template.Node):
+	def __init__(self, objects, header_template, row_template, options):
+		self.objects = Variable(objects)
+		self.header_template = header_template
+		self.row_template = row_template
+		for k in table_defaults:
+			if not options.get(k, None):
+				options[k] = table_defaults[k]
+		self.options = options
 	
+	def __repr__(self):
+		return "<AjaxTableNode>"
+	
+	def render(self, context):
+		context.update(self.options)
+		context['list_objects'] = self.objects.resolve(context)
+		context['header_template'] = self.header_template
+		context['row_template'] = self.row_template
+		t = get_template("ajaxlist/_objects_list.html")
+		return  t.render(context)
+		
 class AjaxJSNode(template.Node):
 	def __init__(self):
 		self.js_path = "/static/js/ajaxlist.js"
@@ -96,21 +122,35 @@ class SpecialForNode(template.defaulttags.ForNode):
 			# Boolean values designating first and last times through loop.
 			loop_dict['first'] = (i == 0)
 			loop_dict['last'] = (i == len_values - 1)
-
+			context['object'] = item
 			context[loop_var] = item
+			
 			for node in self.nodelist_loop:
 				nodelist.append(node.render(context))
 		
 		return nodelist.render(context)
 
-@register.inclusion_tag("ajaxlist/_objects_list.html")
-def ajaxtable(objects, header, row):
-	d = {}
-	d['list_objects'] = objects
-	d['header_template'] = header
-	d['row_template'] = row
+@register.tag(name="ajaxtable")
+def do_ajaxtable(parser, token):
+	bits = token.split_contents()
+	if len(bits) < 4:
+		raise TemplateSyntaxError("'ajaxtable' should have at least 3 arguments")
 	
-	return d
+	objects = bits[1] 
+	
+	#remove double quotes
+	header = bits[2][1:-1] 
+	row = bits[3][1:-1]
+
+	options = {}
+	try:
+		for o in bits[4:]:
+			k, v = o.split('=')
+			options[k] = v
+	except:
+		raise TemplateSyntaxError("AjaxTable options have the format [key]=[value]")
+		
+	return AjaxTableNode(objects, header, row, options)
 	
 @register.tag(name="special_for")
 def do_special_for(parser, token):
@@ -149,6 +189,9 @@ def row_variable(nodelist, context):
 	
 	for node in nodelist:
 		if isinstance(node, IncludeNode):
+			print node.template_name
+			print node.template_name.resolve(context)
+			print get_template(node.template_name.resolve(context))
 			return row_variable(get_template(node.template_name.resolve(context)).nodelist, context)
 		if isinstance(node, VariableNode):
 			return node.filter_expression.var.__str__().split(".")[0]

@@ -1,7 +1,7 @@
 {% load ajaxlist_extras %}
 
 {% spaceless %}
-<span class="pager" >
+<div class="pager"  style="text-align:right">
 <img src="/static/images/site/arrow_desc.gif">
 {% if has_previous_page %}
 <a class="prev_page" href="#" >Previous</a>
@@ -25,5 +25,5 @@ Previous
 Next
 {% endif %}
 <img src="/static/images/site/arrow_asc.gif">
-</span>
+</div>
 {% endspaceless %}

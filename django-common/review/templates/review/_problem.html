@@ -1,7 +1,5 @@
-<tr class="problem_row">
-	<td><a href="{% url review-problem problem_id=p.id %}">{{p.name}}</a></td>
-	<td>{%with p.difficulty as val %}{% include "review/_bar.html" %} {% endwith %}</td>
-	<td><a href={{p.get_question_url}}>[link]</a></td>
-	<td><a href={{p.get_answer_url}}>[link]</a></td>
-	<td><input type="checkbox"  value="{{p.id}}" /></td>
-</tr>
+<td><a href="{% url review-problem problem_id=p.id %}">{{p.name}}</a></td>
+<td>{%with p.difficulty as val %}{% include "review/_bar.html" %} {% endwith %}</td>
+<td><a href={{p.get_question_url}}>[link]</a></td>
+<td><a href={{p.get_answer_url}}>[link]</a></td>
+

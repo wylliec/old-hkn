@@ -64,7 +64,14 @@ def paginate_objects(objects, list_context, page=1, max_per_page=20):
 
 	return p.object_list, list_context
 	
-	
+def retrieve_checks(dict, num_objects):
+	checks = [ ]
+	for i in range(num_objects):
+		val = dict.get("object["+str(i)+"]", None) 
+		if val:
+			checks.append(val)
+		
+	return checks
 """
 
 from django.template.context import Context

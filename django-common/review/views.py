@@ -10,7 +10,7 @@ import os
 
 from models import Problem
 from form import ProblemForm
-from ajaxlist.helpers import sort_objects, paginate_objects, render_ajaxwrapper_response
+from ajaxlist.helpers import sort_objects, paginate_objects, render_ajaxwrapper_response, retrieve_checks
 from tagging.models import Tag, TaggedItem
 import tagging.utils
 
@@ -135,7 +135,7 @@ def test(request):
 	d['list_objects'] = problems
 	d['printinfo'] = request.POST.get("action", "None")
 	d['page'] = p
-
+	
 	if request.is_ajax():
 		return render_ajaxwrapper_response("review/test.html", d, context_instance=RequestContext(request))
 	else:
