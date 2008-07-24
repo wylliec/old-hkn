@@ -6,7 +6,7 @@ from hkn.info.models import Person, Officership
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'username', 'member_type', 'email')
     search_fields = ('last_name', 'first_name', 'username', 'email')
-    filter_horizontal = ('member_type',)
+#    filter_horizontal = ('member_type',)
     list_filter = ('member_type',)
     fieldsets = (
         ('Basic Information', {'fields' : ('first_name', 'last_name', 'email', 'member_type')}),
