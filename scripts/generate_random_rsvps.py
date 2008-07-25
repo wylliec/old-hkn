@@ -26,19 +26,24 @@ def make_rsvp(p, e):
                     r.save()		
                 req.save()						
 
-for p in list(Person.candidates.all()):
-    for e in list(Event.objects.all()):
-        make_rsvp(p, e)
+
+def main():
+    for p in list(Person.candidates.all()):
+        for e in list(Event.objects.all()):
+            make_rsvp(p, e)
         
 
-for p in list(Person.officers.all()):
-    for e in list(Event.objects.all()):
-        make_rsvp(p, e)
+    for p in list(Person.officers.all()):
+        for e in list(Event.objects.all()):
+            make_rsvp(p, e)
 
-p = Person.objects.get(first_name = "Hisham")
-if not p in Person.officers.all():
-    for e in list(Event.objects.all()):
-        make_rsvp(p, e)
+    p = Person.objects.get(first_name = "Hisham")
+    if not p in Person.officers.all():
+        for e in list(Event.objects.all()):
+            make_rsvp(p, e)
+
+if __name__ == "__main__":
+    main()
 
         
 

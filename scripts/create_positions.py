@@ -27,7 +27,8 @@ hkn_positions = (("pres", "President"),
 ("facadvisor", "Faculty Advisor"),
 ("", "Unknown"))
 
-print "Creating Positions for HKN committees"
-for hkn_pos in hkn_positions:
-    p = Position(short_name = hkn_pos[0], name = hkn_pos[1])
-    p.save()
+def main():
+    print "Creating Positions for HKN committees"
+    for hkn_pos in hkn_positions:
+        p = Position(short_name = hkn_pos[0], name = hkn_pos[1])
+        p.save()

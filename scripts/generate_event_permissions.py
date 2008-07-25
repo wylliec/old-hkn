@@ -10,9 +10,13 @@ everyone, candidates_plus, members_plus, officer = map(Permission.objects.get_fo
 view_p  = (everyone, officer)
 rsvp_p  = (candidates_plus, members_plus, officer)
 
-import random
-for e in list(Event.objects.all()):
-    e.view_permission = random.choice(view_p)
-    e.rsvp_permission = random.choice(rsvp_p)
-    e.save()
+def main():
+    import random
+    for e in list(Event.objects.all()):
+        e.view_permission = random.choice(view_p)
+        e.rsvp_permission = random.choice(rsvp_p)
+        e.save()
+
+if __name__ == "__main__":
+    main()
 

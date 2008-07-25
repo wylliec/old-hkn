@@ -22,17 +22,20 @@ def matchPerson(email):
         print "Error: email " + email + " not found! Pkl file invalid"
     return None
 
+def main():
+    oss = pickle.load(pklFile)
+    print "Setting HKN Officer usernames"
+    for offs in oss:
+        person = matchPerson(offs[0])
+        person.username = offs[1]
+        for ext in ("gif", "jpg"):
+            name = "%s.%s" % (offs[1], ext)
+            path = os.path.join(os.path.join(IMAGES_PATH, 'officerpics/'), name)
+            if os.path.exists(path):
+                picfile = SimpleUploadedFile(name, file(path).read())
+                person.save_officer_picture_file(picfile.name, picfile)
+        person.save()
 
-oss = pickle.load(pklFile)
-print "Setting HKN Officer usernames"
-for offs in oss:
-    person = matchPerson(offs[0])
-    person.username = offs[1]
-    for ext in ("gif", "jpg"):
-        name = "%s.%s" % (offs[1], ext)
-        path = os.path.join(os.path.join(IMAGES_PATH, 'officerpics/'), name)
-        if os.path.exists(path):
-            picfile = SimpleUploadedFile(name, file(path).read())
-            person.save_officer_picture_file(picfile.name, picfile)
-    person.save()
+if __name__ == "__main__":
+    main()
 

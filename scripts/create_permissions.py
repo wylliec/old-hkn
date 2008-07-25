@@ -11,9 +11,13 @@ default_permissions = {
 "group_vp" : ("info.view_restricted",)
 }
 
-print "Creating HKN Groups and Permissions"
-for name, value in default_permissions.items():
-    g, created = Group.objects.get_or_create(name = name)
-    for perm in value:
-        permission = Permission.objects.get_for_name(perm)
-        g.permissions.add(Permission.objects.get_for_name(perm))
+def main():
+    print "Creating HKN Groups and Permissions"
+    for name, value in default_permissions.items():
+        g, created = Group.objects.get_or_create(name = name)
+        for perm in value:
+            permission = Permission.objects.get_for_name(perm)
+            g.permissions.add(Permission.objects.get_for_name(perm))
+
+if __name__ == '__main__':
+    main()

@@ -67,6 +67,10 @@ def matchPerson(name, semester):
     return p
 
 
-initiates_files = glob.glob("data/initiates/initiates_*.txt")
-for initiates_file in initiates_files:
-    handleFile(initiates_file)
+def main():
+    initiates_files = glob.glob("data/initiates/initiates_*.txt")
+    for initiates_file in initiates_files:
+        handleFile(initiates_file)
+
+if __name__ == "__main__":
+    main()

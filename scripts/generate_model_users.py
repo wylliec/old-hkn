@@ -8,7 +8,10 @@ from hkn.info.constants import MEMBER_TYPE
 from hkn.info.models import *
 from django.contrib.auth.models import *
 
-created = {}
-for name in MEMBER_TYPE.names():
-    created[name.lower()] = Person.objects.create_person(name.title(), "Example", name.lower(), "tcquest+%s@gmail.com" % name.lower(), getattr(MEMBER_TYPE, name))
+def main():
+    created = {}
+    for name in MEMBER_TYPE.names():
+        created[name.lower()] = Person.objects.create_person(name.title(), "Example", name.lower(), "tcquest+%s@gmail.com" % name.lower(), getattr(MEMBER_TYPE, name))
 
+if __name__=="__main__":
+    main()
