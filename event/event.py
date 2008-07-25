@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
 from django.core import urlresolvers
-from django import newforms as forms
+from django import forms
 
 from constants import RSVP_TYPE, EVENT_TYPE
 

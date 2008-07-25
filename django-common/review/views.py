@@ -8,8 +8,8 @@ import datetime
 import sets
 import os
 
-from models import Problem
-from form import ProblemForm
+from review.models import Problem
+from review.form import ProblemForm
 from ajaxlist.helpers import sort_objects, paginate_objects, render_ajaxwrapper_response, retrieve_checks
 from tagging.models import Tag, TaggedItem
 import tagging.utils

@@ -1,8 +1,8 @@
 # widgets.py
 
-from django import newforms as forms
-from django.newforms.widgets import flatatt, Widget
-from django.newforms.util import smart_unicode
+from django import forms
+from django.forms.widgets import flatatt, Widget
+from django.forms.util import smart_unicode
 from django.utils.html import escape
 from django.utils.simplejson import JSONEncoder
 

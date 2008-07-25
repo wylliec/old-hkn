@@ -6,7 +6,7 @@ from hkn.event.constants import EVENT_TYPE, RSVP_TYPE
 from hkn.main.models import HKN
 from hkn.info.models import *
 
-from django import newforms as forms
+from django import forms
 from string import atoi
 import os
 

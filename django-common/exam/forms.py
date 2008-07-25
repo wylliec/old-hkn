@@ -1,4 +1,4 @@
-from django import newforms as forms
+from django import forms
 from string import atoi
 import datetime
 from django.core import urlresolvers

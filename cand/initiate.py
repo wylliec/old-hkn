@@ -1,12 +1,11 @@
 from hkn.cand.models import *
 from hkn.event.models import *
-from hkn.event.forms import *
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
 from django.core import urlresolvers
-from django import newforms as forms
+from django import forms
 
 from hkn.event.constants import RSVP_TYPE, EVENT_TYPE
 from ajaxlist import get_list_context, filter_objects

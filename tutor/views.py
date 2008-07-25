@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
 #from django.core.paginator import ObjectPaginator, InvalidPage
-from django import newforms as forms
+from django import forms
 from string import atoi
 
 from django.contrib.auth.decorators import *

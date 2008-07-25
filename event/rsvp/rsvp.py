@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.template import RequestContext
 from django.core.paginator import ObjectPaginator, InvalidPage
-from django import newforms as forms
+from django import forms
 from django.shortcuts import get_object_or_404
 
 from ajaxlist import get_list_context, filter_objects

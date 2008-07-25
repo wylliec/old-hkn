@@ -1,6 +1,6 @@
-from django.newforms.models import ModelForm
-from django import newforms as forms
-from models import Problem
+from django.forms.models import ModelForm
+from django import forms
+from review.models import Problem
 import os
 
 VALID_EXTENSIONS = [".pdf"]

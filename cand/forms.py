@@ -5,7 +5,7 @@ from hkn.event.models import *
 
 from hkn.cand.constants import APP_YEAR, EECS_OPTION
 
-from django import newforms as forms
+from django import forms
 import os
 
 class CandidateApplicationForm(forms.Form):
