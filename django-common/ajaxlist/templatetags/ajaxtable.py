@@ -32,8 +32,18 @@ class AjaxTableNode(template.Node):
 	def render(self, context):
 		context.update(self.options)
 		context['list_objects'] = self.objects.resolve(context)
-		context['header_template'] = self.header_template
-		context['row_template'] = self.row_template
+		
+		if self.header_template[0] == '"':
+			header_template = self.header_template[1:-1]
+		else:
+			header_template = context.get(self.header_template, None)
+		if self.row_template[0] == '"':
+			row_template = self.row_template[1:-1]
+		else:
+			row_template = context.get(self.row_template, None)
+		
+		context['header_template'] = header_template
+		context['row_template'] = row_template
 		t = get_template("ajaxlist/_objects_list.html")
 		return  t.render(context)
 		
@@ -137,10 +147,8 @@ def do_ajaxtable(parser, token):
 		raise TemplateSyntaxError("'ajaxtable' should have at least 3 arguments")
 	
 	objects = bits[1] 
-	
-	#remove double quotes
-	header = bits[2][1:-1] 
-	row = bits[3][1:-1]
+	header = bits[2] 
+	row = bits[3]
 
 	options = {}
 	try:
@@ -189,15 +197,12 @@ def row_variable(nodelist, context):
 	
 	for node in nodelist:
 		if isinstance(node, IncludeNode):
-			print node.template_name
-			print node.template_name.resolve(context)
-			print get_template(node.template_name.resolve(context))
 			return row_variable(get_template(node.template_name.resolve(context)).nodelist, context)
 		if isinstance(node, VariableNode):
 			return node.filter_expression.var.__str__().split(".")[0]
 	
 	return "object"
-	
+
 
 """
 from django.template.loader import get_template

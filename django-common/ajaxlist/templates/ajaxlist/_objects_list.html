@@ -6,7 +6,7 @@
 </tr>
 {% special_for list_objects %}
 <tr class="{% cycle 'even' 'odd' %}">
-{% ifequal checks "on" %}<td><input class="ajaxinfo" type="checkbox" name="object[{{forloop.counter0}}]" value="{{object.id}}" /></td>{% endifequal %}
+{% ifequal checks "on" %}<td><input class="ajaxlist_check" type="checkbox" name="object[{{forloop.counter0}}]" value="{{object.id}}" /></td>{% endifequal %}
 {% include row_template %}
 </tr>
 {% endfor %}

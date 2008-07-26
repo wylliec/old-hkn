@@ -1,6 +1,7 @@
 {% extends "review/review.html" %}
 {% load ajaxtable %}
 
+{% block subtitle %} Review Problem - Test {% endblock %}
 {% block css %}
 {{block.super}}
 <link rel="stylesheet" type="text/css" href="/static/css/rating_bar.css">
@@ -18,5 +19,12 @@
 <p>{{printinfo}}</p>
 	{% control pager %} 
 	{% ajaxtable list_objects "review/_header.html" "review/_problem.html" checks=on %}
+	{% control pager %}
 {% endajaxwrapper %}
+<br />
+<div style="float:right">
+<a href={% url review-selected %}>View Selected Problems</a>
+<input type="button" value="Add to Selected Problems" id="add_probs" onclick="send_ajaxinfo('add_selected', '{% url review-add-selected %}')"/>
+</div>
+
 {% endblock %}

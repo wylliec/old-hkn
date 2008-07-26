@@ -22,7 +22,7 @@ def get_node(nodelist, node):
 			pass
 		
 	return None
-    
+
 ####################
 # Ajaxlist View helpers
 ####################
@@ -44,10 +44,22 @@ def render_ajaxwrapper(template, context):
 		return b.render_inside(context)
 	else:
 		raise NodeNotFound
+		
+def get_ajaxinfo(dict):
+	d = {}
+	d['sort_by'] = dict.get("sort_by", "?")
+	d['order'] = dict.get("order", "up")
+	d['action'] = dict.get("action", "None") 
+	d['page'] = int(dict.get("page", 1))
+	return d
 
-def sort_objects(objects, field_name):   
+def sort_objects(objects, field_name, order):   
 	""" Sort objects by a field name """
-	return objects.order_by(field_name)
+	prefix = ""
+	if order == "down":
+		prefix = "-"
+		
+	return objects.order_by(prefix + field_name)
 
 def paginate_objects(objects, list_context, page=1, max_per_page=20):
 	"""
@@ -64,14 +76,21 @@ def paginate_objects(objects, list_context, page=1, max_per_page=20):
 
 	return p.object_list, list_context
 	
-def retrieve_checks(dict, num_objects):
-	checks = [ ]
-	for i in range(num_objects):
-		val = dict.get("object["+str(i)+"]", None) 
-		if val:
-			checks.append(val)
-		
-	return checks
+def add_to_session(request, name, id_list):
+	if 'ajaxlist_'+name in request.session:
+		for id in id_list:
+			request.session["ajaxlist_"+name].add(id)
+	else:
+		request.session["ajaxlist_"+name].set(id_list)
+	
+def remove_from_session(request, name, id_list):
+	if 'ajaxlist_'+name in request.session:
+		for id in id_list:
+			request.session['ajaxlist_'+name].remove(id)
+
+def fetch_from_session(request, name):
+	if 'ajaxlist_'+name in request.session:
+		return request.session['ajaxlist_'+name]
 """
 
 from django.template.context import Context

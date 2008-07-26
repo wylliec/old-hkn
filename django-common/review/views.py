@@ -10,7 +10,7 @@ import os
 
 from review.models import Problem
 from review.form import ProblemForm
-from ajaxlist.helpers import sort_objects, paginate_objects, render_ajaxwrapper_response, retrieve_checks
+from ajaxlist.helpers import get_ajaxinfo, sort_objects, paginate_objects, render_ajaxwrapper_response
 from tagging.models import Tag, TaggedItem
 import tagging.utils
 
@@ -81,6 +81,7 @@ def view_selected(request):
 def add_selected(request):
 	if request.POST:
 		additions = request.POST['problems'].split(' ')
+
 		if 'selected_problems' in request.session:
 			for a in additions:
 				request.session['selected_problems'].add(a)
@@ -125,16 +126,15 @@ def merge_problems(request, solutions):
 	return response
 
 def test(request):
-	sort_by = "name"
-	p = int(request.POST.get("page", 1))
+	d = get_ajaxinfo(request.POST)
+	if d['sort_by'] == "?":
+		d['sort_by'] = "name"
 	
-	d = {}
 	problems = Problem.objects.all()
-	problems = sort_objects(problems, "name")
-	problems, d = paginate_objects(problems, d, page=p)
+	problems = sort_objects(problems, d['sort_by'], d['order'])
+	problems, d = paginate_objects(problems, d, page=d['page'])
 	d['list_objects'] = problems
-	d['printinfo'] = request.POST.get("action", "None")
-	d['page'] = p
+	d['printinfo'] = d['action']
 	
 	if request.is_ajax():
 		return render_ajaxwrapper_response("review/test.html", d, context_instance=RequestContext(request))

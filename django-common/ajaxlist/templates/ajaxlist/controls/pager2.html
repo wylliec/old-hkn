@@ -9,12 +9,12 @@
 Previous
 {% endif %}
 |
-<select id="page">
+<select class="page">
 {% for page_i in page_range %}
 	{% ifequal page page_i %}
 		<option value="{{ page_i }}" selected="yes">{{ page_i}}</option>
 	{% else %}
-		<option class="{{page}}" value="{{ page_i }}">{{ page_i}}</option>	
+		<option value="{{ page_i }}">{{ page_i}}</option>	
 	{% endifequal %}
 {% endfor %}
 </select>
