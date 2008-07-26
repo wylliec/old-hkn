@@ -35,7 +35,7 @@ def main():
     for a in cantutors:
         username, cname, current = a
         person = Person.objects.get(username=username)
-        course = Course.objects.query(cname)[0]
+        course = Course.objects.ft_query(cname)[0]
         cantut, created = CanTutor.objects.get_or_create(person=person, course=course, season=season, year=2008, current=current)
         if not created:
             existed += 1

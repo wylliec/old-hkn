@@ -71,7 +71,7 @@ def get_list_exams_context(request, category = None):
     exams_dict = {}
 
     if len(exams) > 0:
-        exams_courses = exams.order_by('course_id').values('course').distinct()[:5]
+        exams_courses = exams.order_by('id').values('course').distinct()[:5]
 
         course_ids = [c["course"] for c in exams_courses]
         exams = get_exams_for_categories(list_context["categories"], Exam.objects.filter(course__in = course_ids)).order_by('course_id', 'exam_type', 'number')

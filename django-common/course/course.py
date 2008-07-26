@@ -11,7 +11,7 @@ from string import atoi
 
 def find_course(request):
     list_context = get_list_context(request, default_sort = "department_abbr", default_max = "20")
-    query_function = lambda objects, query: Course.objects.query(query, objects = objects)
+    query_function = lambda objects, query: Course.objects.ft_query(query, objects = objects)
     temp = filter_objects(Course, list_context, query_objects = query_function)
     courses = None
     if temp:
@@ -34,5 +34,5 @@ def course_autocomplete(request):
     except ValueError:
         return HttpResponseBadRequest() 
 
-    courses = Course.objects.query(q)[:limit]
+    courses = Course.objects.ft_query(q)[:limit]
     return HttpResponse(iter_results(courses), mimetype='text/plain')

@@ -21,33 +21,41 @@ def normalize_dept(abbr):
     dept_replace = {"BUS ADM" : "UGBA"}
     return dept_replace.get(abbr, abbr)
 
+instructor_patterns = (
+                         re.compile(r'(?P<last>\w*),\s*(?P<first>\w*)'),                      # matches "Harvey, B"
+                         re.compile(r'(?P<last>\w*),\s*(?P<first>\w)\s*(?P<middle>\w)'),                      # matches "Harvey, B H"
+                         )
+
+def safe_title(fun):
+    def st(e):
+        if e:
+            return e.title()
+        return ""
+    def do_it(*args, **kwargs):
+        return map(lambda e: st(e), fun(*args, **kwargs))
+    return do_it
+
+@safe_title                         
+def parse_name(name):
+    for instructor_pattern in Instructor.QuerySet.instructor_patterns:
+        m = instructor_pattern.match(name)
+        if m:
+            d = m.groupdict()
+            return (d.get("first"), d.get("middle"), d.get("last"))
+    return ("", "", "")
+
 def createInstructor(dpt, name):
     if name == "THE STAFF":
         return None
-    commasplit = name.split(", ")
-    last = commasplit[0]
-    if len(commasplit) > 1:
-        first_middle = commasplit[1].split(" ")
-        if len(first_middle) == 1:
-            first = first_middle[0]
-            middle = ""
-        else:
-            first, middle = first_middle
-    else:
-        first, middle = ("", "")
+    first, middle, last = parse_name(name)
     
     inst = Instructor(department = dpt, first = first, middle = middle, last = last, email = "", distinguished_teacher = False, exams_preference = EXAMS_PREFERENCE.UNKNOWN)
     inst.save()
     return inst
-
+    
+                             
 def getInstructor(dpt, name):
-    names = name.replace(",", "").split(" ")
-    (first, middle, last) = (None, None, None)
-    last = names[0]
-    if len(names) == 2:
-        first = names[1]
-    if len(names) == 3:
-        middle = names[2]
+    (first, middle, last) = parse_name(name)
 
     objects = Instructor.objects.filter(last__iexact = last)
     if len(objects) == 1:
@@ -85,8 +93,7 @@ def getCourse(dpt, number, endswith = False):
 
 
 def getSeason(season):
-    return Season.objects.get(name__iexact = season)
-    
+    return Season.objects.get(name__iexact = season)    
 
 def importKlass(dpt, klass, year, season):
     name = klass.getAttribute("name")
@@ -113,6 +120,10 @@ def importKlass(dpt, klass, year, season):
                 course = getCourse(dpt, number, endswith = True)
         else:
             course = getCourse(dpt, number)
+    except Course.DoesNotExist, e:
+        course = Course(department=dpt, number=number, name=name, description="")
+        course.save()
+        #print "COURSE: created %s: '%s' '%s'" % (str(course), dpt.abbr, number)
     except Exception, e:
         tpls = "%s-%s-%s-%s-%s" % (dpt.abbr, number, instructor, season, year)
         #print "Couldn't match: " + tpls
@@ -169,8 +180,9 @@ def importFromXmlFile(klassFile):
         importSemester(semester)
         
 def main():
+#    klassFiles = glob.glob("klass/xml/*.xml")
     klassFiles = glob.glob("klass/xml/*2007*.xml")
-#    klassFiles += glob.glob("klass/xml/*2007*.xml")
+    klassFiles += glob.glob("klass/xml/*2008*.xml")
     for klassFile in klassFiles:
         print "Importing klasses from " + klassFile
         importFromXmlFile(klassFile)
