@@ -6,39 +6,20 @@ from django.contrib.auth.models import User
 from course.models import *
 from constants import FILE_UPLOAD_DIR, EXAM_TYPE
 
+from django.db.models.query import QuerySet
+from nice_types.db import QuerySetManager
 
 from django import db
 
 
-class ExamManager(db.models.Manager):
-    def query_course(self, query, objects = None):
-        if objects == None:
-            objects = self.get_query_set()
-            
-        (dept_abbr, coursenumber) = Course.objects.parse_query(query)
-        if dept_abbr:
-            objects = objects.filter(klass__course__department_abbr__iexact = dept_abbr)        
-        if coursenumber:
-            objects = objects.filter(klass__course__number__iexact = coursenumber)    
-        
-        return objects
-    
-    def query_instructor(self, query, objects = None):
-        if objects == None:
-            objects = self.get_query_set()
-        
-        (last, first, dd) = Instructor.objects.parse_query(query)
 
-        if first and last:
-            objects = objects.filter(klass__instructor__first__icontains = first, klass__instructor__last__icontains = last)
-        elif last:
-            objects = objects.filter(klass__instructor__last__icontains = last)
+class ExamManager(db.models.Manager):
+        def query_course(self, query):                          
+            return self.get_query_set().query_course(query)
         
-        return objects
-        
-        
+        def query_instructor(self, query):   
+            return self.get_query_set().query_instructor(query)      
             
-        
 def get_semester_start(sem):
     """
     Gets the start time of the semester, assumed to be in ssyy format.
@@ -72,6 +53,9 @@ class Exam(db.models.Model):
     
     course = db.models.ForeignKey(Course)
     """ The course this exam is for (cached) """
+    
+    department = db.models.ForeignKey(Department)
+    """ The department this exam is for (cached) """    
     
     file = db.models.FileField(null = True, upload_to = FILE_UPLOAD_DIR)
     """ The local filesystem path to where the actual exam is stored. """
@@ -113,6 +97,25 @@ class Exam(db.models.Model):
         if self.publishable:
             s += " (publishable)"
         return s
+        
+    class QuerySet(QuerySet):
+        def query_course(self, query):              
+            (dept_abbr, coursenumber) = Course.objects.parse_query(query)
+            if dept_abbr:
+                return self.filter(klass__course__department_abbr__iexact = dept_abbr)        
+            if coursenumber:
+                return self.filter(klass__course__number__iexact = coursenumber)    
+            
+            return self
+        
+        def query_instructor(self, query):            
+            (last, first, dd) = Instructor.objects.parse_query(query)
+
+            if first and last:
+                return self.filter(klass__instructor__first__icontains = first, klass__instructor__last__icontains = last)
+            elif last:
+                return self.filter(klass__instructor__last__icontains = last)            
+            return self
     
     def get_exam_description(self):
         solutions = ""
@@ -143,6 +146,8 @@ class Exam(db.models.Model):
             self.exam_date = self.auto_exam_date()
         if self.course_id == None:
             self.course = self.klass.course
+        if self.department_id == None:
+            self.department = self.course.department
         if not self.submitted:
             self.submitted = datetime.datetime.now()
         super(Exam, self).save()
