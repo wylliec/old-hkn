@@ -9,45 +9,19 @@
 {% block js %}
 {{block.super}}
 {% ajaxlist_js %}
-
-<script type="text/javascript">
-$(document).ready(function(){
-	function postChecks(url){
-		var checks = [];
-		$(":checked").each(function(){
-			checks.push(this.value);
-		});
-		
-		$.post(url, { problems : checks.join(' ')});
-		$("p").html(checks.join(' '));
-	}
-	$("#add_probs").click(function(){postChecks("{% url review-add-selected %}");});
-});
-		
-</script>
 {% endblock %}
 
 {% block subtitle %}Review Problems - Search {% endblock %}
 
 {% block reviewcontents %}
-<form method="GET">
-Search by tag:
-<input type="text" name="input" />
-<input type="submit" value="Submit" />
-</form>
+<span>Search by tag: {% control search %}</span> 
 
-{% if results %}
-{% ajaxwrapper %}
-	{% ajaxtable results "review/_header.html" "review/_problem.html" checks=on %}
+{% ajaxwrapper problems %}
+	{% if results %}
+	{% control pager %}
+	{% ajaxtable results "review/_header.html" "review/_problem.html"  checks=on%}
+	{% control pager %}
+	{% endif %}
 {% endajaxwrapper %}
-<br />
-<div style="float:right">
-<a href={% url review-selected %}>View Selected Problems</a>
-<input type="button" value="Add to Selected Problems" id="add_probs" />
-</div>
-
-<p> test block of stuff </p>
-
-{% endif %}
 
 {% endblock %}

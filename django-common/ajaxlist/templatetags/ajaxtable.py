@@ -9,10 +9,13 @@ control_templates = {
 					"search" : "ajaxlist/controls/query2.html", 
 					"pager" : "ajaxlist/controls/pager2.html",
 					"per_page" : "ajaxlist/controls/per_page2.html",
+					"notify" : "ajaxlist/controls/notify.html",
+					"spinner" : "ajaxlist/controls/spinner.html",
 				}
 
 table_defaults = 	{
 					"checks" : "off",
+					"remove_item" : "off",
 				}
 			
 
@@ -31,7 +34,10 @@ class AjaxTableNode(template.Node):
 	
 	def render(self, context):
 		context.update(self.options)
-		context['list_objects'] = self.objects.resolve(context)
+		try:
+			context['list_objects'] = self.objects.resolve(context)
+		except:
+			pass
 		
 		if self.header_template[0] == '"':
 			header_template = self.header_template[1:-1]
@@ -69,13 +75,17 @@ class AjaxControlNode(template.Node):
 		return t.render(context)
 	
 class AjaxWrapperNode(template.Node):
-	def __init__(self, nodelist):
-		nodelist.insert(0, TextNode('<div id="ajaxwrapper">'))
+	def __init__(self, nodelist, options):
+		identifier = "none"
+		if len(options) >= 1:
+			identifier = options[0]
+			
+		nodelist.insert(0, TextNode('<div id="ajaxwrapper" identifier="'+ identifier +'">'))
 		nodelist.append(TextNode("</div>"))
 		self.nodelist = nodelist
 		
 	def __repr__(self):
-		return "<AjaxWrapperNode>"
+		return "<AjaxWrapperNode: " + self.identifier+ ">"
 	
 	def render(self, context):
 		return self.nodelist.render(context)
@@ -175,9 +185,11 @@ def do_special_for(parser, token):
 
 @register.tag(name="ajaxwrapper")
 def do_ajaxwrapper(parser, token):
+	bits = token.split_contents()
+	
 	nodelist = parser.parse(("endajaxwrapper",))
 	parser.delete_first_token()
-	return AjaxWrapperNode(nodelist)
+	return AjaxWrapperNode(nodelist, bits[1:])
 
 @register.tag(name="control")
 def do_control(parser, token):

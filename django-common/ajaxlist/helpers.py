@@ -18,6 +18,14 @@ def get_node(nodelist, node):
 			ret = get_node(n.nodelist, node)
 			if ret:
 				return ret
+				
+			ret = get_node(n.nodelist_true, node)
+			if ret:
+				return ret
+			
+			ret = get_node(n.nodelist_false, node)
+			if ret:
+				return ret
 		except:
 			pass
 		
@@ -48,9 +56,22 @@ def render_ajaxwrapper(template, context):
 def get_ajaxinfo(dict):
 	d = {}
 	d['sort_by'] = dict.get("sort_by", "?")
+	if d['sort_by'] == "undefined":
+		d['sort_by'] = "?"
+	
 	d['order'] = dict.get("order", "up")
+	if d['order'] == "undefined":
+		d['order'] = "up"
+		
 	d['action'] = dict.get("action", "None") 
-	d['page'] = int(dict.get("page", 1))
+	
+	p = dict.get("page", 1)
+	try: 
+		p = int(p)
+	except:
+		p = 1
+		
+	d['page'] = p
 	return d
 
 def sort_objects(objects, field_name, order):   
@@ -67,6 +88,7 @@ def paginate_objects(objects, list_context, page=1, max_per_page=20):
 	
 	Returns the objects on the page specified and the context
 	"""
+	
 	paginator = Paginator(objects, max_per_page)
 	p = paginator.page(page) 
 	
@@ -75,22 +97,7 @@ def paginate_objects(objects, list_context, page=1, max_per_page=20):
 	list_context["page_range"] = paginator.page_range
 
 	return p.object_list, list_context
-	
-def add_to_session(request, name, id_list):
-	if 'ajaxlist_'+name in request.session:
-		for id in id_list:
-			request.session["ajaxlist_"+name].add(id)
-	else:
-		request.session["ajaxlist_"+name].set(id_list)
-	
-def remove_from_session(request, name, id_list):
-	if 'ajaxlist_'+name in request.session:
-		for id in id_list:
-			request.session['ajaxlist_'+name].remove(id)
 
-def fetch_from_session(request, name):
-	if 'ajaxlist_'+name in request.session:
-		return request.session['ajaxlist_'+name]
 """
 
 from django.template.context import Context

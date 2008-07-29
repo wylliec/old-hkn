@@ -9,40 +9,20 @@
 {% block js %}
 {{block.super}}
 {% ajaxlist_js %}
-<script type="text/javascript">
-$(document).ready(function(){
-	function postChecks(url){
-		var checks = [];
-		$(":checked").each(function(){
-			checks.push(this.value);
-		});
-		
-		$.post(url, { problems : checks.join(' ')});
-		$("p").html(checks.join(' '));
-	}
-	$("#rem_probs").click(function(){
-							postChecks("{% url review-remove-selected %}");
-							location.reload();
-	});
-});
-		
-</script>
-
 {% endblock %}
 
 {% block subtitle %}Review Problems - Selected Problems {% endblock %}
 
 {% block reviewcontents %}
 
-{% ajaxwrapper %}
-	{% ajaxtable problems "review/_header.html" "review/_problem.html" checks=on %}
+{% ajaxwrapper problems %}
+	{% ajaxtable problems "review/_header.html" "review/_problem.html"  remove_item=on%}
 {% endajaxwrapper %}
 <br />
 
-<div style="float:right">
+<div>
 <a href={% url review-merge-problems %}>Merge Problems</a>
 <a href={% url review-merge-solutions %}>Merge Solutions</a>
-<input type="button" value="Remove from Selected Problems" id="rem_probs" />
 </div>
 
 {% endblock %}

@@ -1,9 +1,9 @@
-// Sort information:
-//  info[sort_by], info[order]
-//
 IMG_ORDER = { "up" : "/static/images/site/arrow_asc.gif", "down" : "/static/images/site/arrow_desc.gif" };
 
+
 function register_listeners(){
+	$("#ajaxwrapper input.ajaxlist_remove_item").click(function () { remove_item($(this).parent().parent(), $(this).attr("value")); return false; });
+	$("#ajaxwrapper input.ajaxlist_check").change(function () { checkbox_changed($(this).attr("checked"), $(this).attr("value")); return false; });
 	$("#ajaxwrapper th.sortable").click(function() { send_ajaxinfo("sort_by="+$(this).attr("name"), "#"); return false; });
 	$("#ajaxwrapper th.sortable").append("<img />");
 	$("#ajaxwrapper a.next_page").click(function () { send_ajaxinfo("next", "#"); return false; });
@@ -11,7 +11,31 @@ function register_listeners(){
 	$("#ajaxwrapper select.page").change(function () { send_ajaxinfo("change_page="+this.options[this.selectedIndex].value, "#"); return false; });
 }
 
+function remove_item(row_object, value){
+	var identifier = $("#ajaxwrapper").attr("identifier");
+	$.post("/ajaxlist/remove/", {"identifier" : identifier, "value" : value}, function () { $(row_object).remove();});
+}
+
+function checkbox_changed(state, value){
+	var s;
+	var identifier = $("#ajaxwrapper").attr("identifier");
+	var address = "/ajaxlist/"
+	
+	if(state == true) {
+		s = "on"
+		address += "add/"
+	} else {
+		s = "off"
+		address += "remove/"
+	}
+	
+	//alert(s + ", " + value + ", " + identifier + ", " + address);
+	$.post(address, {"identifier" : identifier, "value" : value} );
+}
+
+
 function send_ajaxinfo(action, url){
+	$("img.ajaxspinner").show();
 	var info = {};
 	info["action"] = action;
 	
@@ -26,12 +50,13 @@ function send_ajaxinfo(action, url){
 	if(action == "prev") info["page"] = info["page"] - 1;
 	else if(action == "next") info["page"] = info["page"] + 1;
 	
-	//info["checks"] = $("#ajaxwrapper table.ajaxtable tr :checked").map(function() { return this.value; }).get().join(" ");
-	//alert(info["checks"]);
-	
 	// Retrieve sort information
 	var sort_by = $("#ajaxwrapper th.sortable[selected='yes']").attr("name");
 	var order = $("#ajaxwrapper th.sortable[selected='yes'] img").attr("order");
+	if (order == undefined) {
+		order = "up"
+	}
+	// Update sort information if sorting by a different field
 	if(action_pair[0] == 'sort_by'){
 		if(sort_by == action_pair[1]) {
 			if (order == "up") {
@@ -39,26 +64,36 @@ function send_ajaxinfo(action, url){
 			} else {
 				order = "up";
 			}
-		} 
+		} else {
+			order = "up"
+		}
 		
 		sort_by = action_pair[1];
 	}
 	info["sort_by"] = sort_by;
 	info["order"] = order;
 	
+	// Add any additional info
 	$(".ajaxinfo").each( function() {
 		info[this.name] = this.value;
 	});
 	
 	//alert("Action: " + action + ", Page: " + info["page"] +", URL: " + url +", Sort_by: " + sort_by + ", Order: " + order);
 	
+	// Send post request
 	$.post(url, info, function(data){
 		//alert("POST request returned");
 		$("#ajaxwrapper").html(data);
 		register_listeners();
+		
+		if (sort_by == undefined){
+			sort_by = $("#ajaxwrapper th.sortable[default='on']").attr("name");
+		}
+
 		$("#ajaxwrapper th.sortable[name='"+sort_by+"']").attr("selected", "yes");
 		$("#ajaxwrapper th.sortable[name='"+sort_by+"'] img").attr("order", order);
 		$("#ajaxwrapper th.sortable[name='"+sort_by+"'] img").attr("src", IMG_ORDER[order]);
+		$("img.ajaxspinner").hide()
 	});
 	
 	return false;

@@ -1,13 +1,15 @@
 {% load ajaxtable %}
 <table class="ajaxtable">
 <tr>
-{% ifequal checks "on" %}<td></td>{% endifequal %}
 {% include header_template %} 
+{% ifequal checks "on" %}<td></td>{% endifequal %}
+{% ifequal remove_item "on" %}<td></td>{% endifequal %}
 </tr>
 {% special_for list_objects %}
 <tr class="{% cycle 'even' 'odd' %}">
-{% ifequal checks "on" %}<td><input class="ajaxlist_check" type="checkbox" name="object[{{forloop.counter0}}]" value="{{object.id}}" /></td>{% endifequal %}
 {% include row_template %}
+{% ifequal checks "on" %}<td><input class="ajaxlist_check" type="checkbox" name="object[{{forloop.counter0}}]" value="{{object.id}}" /></td>{% endifequal %}
+{% ifequal remove_item "on" %}<td><input type="image" class="ajaxlist_remove_item" src="/static/images/site/close.png" value="{{object.id}}" /></td>{% endifequal %}
 </tr>
 {% endfor %}
 </table>

@@ -20,18 +20,28 @@ except:
 	EXAM_LOGIN_REQUIRED = True
 
 def search(request):
-	if request.GET:
-		tags = lower(request.GET['input'])
-		if tags.find(',') == -1:
-			tags = r'"' + tags + r'"'
-		results = TaggedItem.objects.get_by_model(Problem, tags)
-		
-		
-		
-		return render_to_response("review/search.html", {'results' : results}, context_instance=RequestContext(request))
-	else:
+	tags = request.POST.get("query", None)
+	if not tags:
 		return render_to_response("review/search.html", context_instance=RequestContext(request))
 	
+	tags = tags.lower()
+	if tags.find(',') == -1:
+		tags = r'"' + tags + r'"'
+	
+	d = get_ajaxinfo(request.POST)
+	if d['sort_by'] == "?":
+		d['sort_by'] = "name"
+	
+	problems = TaggedItem.objects.get_by_model(Problem, tags)
+	problems = sort_objects(problems, d['sort_by'], d['order'])
+	problems, d = paginate_objects(problems, d, page=d['page'])
+	d['results'] = problems
+
+	if request.is_ajax():
+		return render_ajaxwrapper_response("review/search.html", d, context_instance=RequestContext(request))
+	else:
+		return render_to_response("review/search.html", d, context_instance=RequestContext(request))
+		
 def browse_review_tags(request):
 	tags = Tag.objects.cloud_for_model(Problem, steps=4, distribution=tagging.utils.LINEAR)
 	sorted_tags = []
@@ -46,13 +56,26 @@ def browse_review_tags(request):
 	return render_to_response("review/browse_review_tags.html", {'tags' : sorted_tags}, context_instance=RequestContext(request))
 	
 def view_tag(request, tag_name = None):
+	d = get_ajaxinfo(request.POST)
+	if d['sort_by'] == "?":
+		d['sort_by'] = "name"
+		
 	tag = get_object_or_404(Tag, name = tag_name)
-	rel_tags = Tag.objects.related_for_model(tag_name, Problem)
+	rel_tags = Tag.objects.related_for_model(r'"' + tag_name + r'"' , Problem)
 	problems = TaggedItem.objects.get_by_model(Problem, tag) 
 	if not problems:
 		raise Http404
-		
-	return render_to_response("review/view_tag.html", {'rel_tags': rel_tags , 'tag':tag_name, 'problems':problems}, context_instance=RequestContext(request))
+	
+	problems = sort_objects(problems, d['sort_by'], d['order'])
+	problems, d = paginate_objects(problems, d, page=d['page'])
+	d['tag'] = tag_name
+	d['rel_tags'] = rel_tags
+	d['problems'] = problems
+	
+	if request.is_ajax():
+		return render_ajaxwrapper_response("review/view_tag.html", d, context_instance=RequestContext(request))
+	else:
+		return render_to_response("review/view_tag.html", d, context_instance=RequestContext(request))
 
 def view_problem(request, problem_id = None):
 	problem = get_object_or_404(Problem, pk = problem_id)
@@ -69,7 +92,15 @@ def submit(request):
 		
 	return render_to_response("review/submit.html", {'form' : form}, context_instance=RequestContext(request))
 	
+def view_selected(request):
+	problems = []
+	if 'ajaxlist_problems' in request.session:
+		for id in request.session['ajaxlist_problems']:
+			problems.append(get_object_or_404(Problem, pk=id))
+			
+	return render_to_response("review/selected.html", {'problems':problems}, context_instance=RequestContext(request))
 
+"""
 def view_selected(request):
 	problems = []
 	if 'selected_problems' in request.session:
@@ -77,7 +108,7 @@ def view_selected(request):
 			problems.append(get_object_or_404(Problem, pk=id))
 			
 	return render_to_response("review/selected.html", {'problems':problems}, context_instance=RequestContext(request))
-	
+
 def add_selected(request):
 	if request.POST:
 		additions = request.POST['problems'].split(' ')
@@ -98,12 +129,13 @@ def remove_selected(request):
 				request.session['selected_problems'].remove(r)
 	else:
 		raise Http404
+"""
 
 def merge_problems(request, solutions):
 	command = "pdftk "
 	problems = []
-	if 'selected_problems' in request.session:
-		for id in request.session['selected_problems']:
+	if 'ajaxlist_problems' in request.session:
+		for id in request.session['ajaxlist_problems']:
 			problems.append(get_object_or_404(Problem, pk=id))
 	
 	for p in problems:
@@ -130,7 +162,7 @@ def test(request):
 	if d['sort_by'] == "?":
 		d['sort_by'] = "name"
 	
-	problems = Problem.objects.all()
+	problems = Problem.objects.filter(name__contains = request.POST.get("query", ""))
 	problems = sort_objects(problems, d['sort_by'], d['order'])
 	problems, d = paginate_objects(problems, d, page=d['page'])
 	d['list_objects'] = problems

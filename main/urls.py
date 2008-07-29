@@ -10,6 +10,7 @@ urlpatterns = patterns('',
      (r'^css/hkn-(?P<css_file>\w*).css$', 'hkn.main.themes.theme_css'),
 
     # other inclusions
+    (r'ajaxlist/', include('ajaxlist.urls')),
     (r'^info/', include('hkn.info.urls')),
     (r'^event/', include('hkn.event.urls')),
     (r'^cand/', include('hkn.cand.urls')),

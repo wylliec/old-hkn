@@ -11,40 +11,17 @@
 {% block js %}
 {{block.super}}
 {% ajaxlist_js %}
-<script type="text/javascript">
-$(document).ready(function(){
-	function postChecks(url){
-		var checks = [];
-		$(":checked").each(function(){
-			checks.push(this.value);
-		});
-		
-		$.post(url, { problems : checks.join(' ')});
-		$("p").html(checks.join(' '));
-	}
-	$("#add_probs").click(function(){postChecks("{% url review-add-selected %}");});
-});
-		
-</script>
-
 {% endblock %}
 
 {% block reviewcontents %}
 
-{% ajaxwrapper %}
+{% ajaxwrapper problems %}
 	{% ajaxtable problems "review/_header.html" "review/_problem.html" checks=on %}
 {% endajaxwrapper %}
-<br />
-<div style="float:right">
-<a href={% url review-selected %}>View Selected Problems</a>
-<input type="button" value="Add to Selected Problems" id="add_probs" />
-</div>
-
-<p> test block of stufff </p>
 
 <h4>Related Tags:</h4>
 {% for t in rel_tags %}
-	<a href={% url review-tag tag_name=t %}>{{t}}</a>{% if not forloop.last %}, {% endif %}
+	<a href="{% url review-tag tag_name=t %}">{{t}}</a>{% if not forloop.last %}, {% endif %}
 {% endfor %}
 
 {% endblock %}
