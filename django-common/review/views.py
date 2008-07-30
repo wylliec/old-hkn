@@ -10,7 +10,7 @@ import os
 
 from review.models import Problem
 from review.form import ProblemForm
-from ajaxlist.helpers import get_ajaxinfo, sort_objects, paginate_objects, render_ajaxwrapper_response
+from ajaxlist.helpers import get_ajaxinfo, sort_objects, paginate_objects, render_ajaxlist_response
 from tagging.models import Tag, TaggedItem
 import tagging.utils
 
@@ -22,7 +22,10 @@ except:
 def search(request):
 	tags = request.POST.get("query", None)
 	if not tags:
-		return render_to_response("review/search.html", context_instance=RequestContext(request))
+		if request.is_ajax():
+			return 
+		else:
+			return render_to_response("review/search.html", context_instance=RequestContext(request))
 	
 	tags = tags.lower()
 	if tags.find(',') == -1:
@@ -36,11 +39,8 @@ def search(request):
 	problems = sort_objects(problems, d['sort_by'], d['order'])
 	problems, d = paginate_objects(problems, d, page=d['page'])
 	d['results'] = problems
-
-	if request.is_ajax():
-		return render_ajaxwrapper_response("review/search.html", d, context_instance=RequestContext(request))
-	else:
-		return render_to_response("review/search.html", d, context_instance=RequestContext(request))
+	
+	return render_ajaxlist_response(request.is_ajax(), "review/search.html", d, context_instance=RequestContext(request))
 		
 def browse_review_tags(request):
 	tags = Tag.objects.cloud_for_model(Problem, steps=4, distribution=tagging.utils.LINEAR)
@@ -72,11 +72,8 @@ def view_tag(request, tag_name = None):
 	d['rel_tags'] = rel_tags
 	d['problems'] = problems
 	
-	if request.is_ajax():
-		return render_ajaxwrapper_response("review/view_tag.html", d, context_instance=RequestContext(request))
-	else:
-		return render_to_response("review/view_tag.html", d, context_instance=RequestContext(request))
-
+	return render_ajaxlist_response(request.is_ajax(), "review/view_tag.html", d, context_instance=RequestContext(request))
+	
 def view_problem(request, problem_id = None):
 	problem = get_object_or_404(Problem, pk = problem_id)
 	return render_to_response("review/view_problem.html", {'problem':problem}, context_instance=RequestContext(request))
@@ -97,9 +94,9 @@ def view_selected(request):
 	if 'ajaxlist_problems' in request.session:
 		for id in request.session['ajaxlist_problems']:
 			problems.append(get_object_or_404(Problem, pk=id))
-			
-	return render_to_response("review/selected.html", {'problems':problems}, context_instance=RequestContext(request))
-
+	
+	return render_ajaxlist_response(request.is_ajax(), "review/selected.html", {'problems' : problems}, context_instance=RequestContext(request))
+	
 """
 def view_selected(request):
 	problems = []
@@ -168,10 +165,7 @@ def test(request):
 	d['list_objects'] = problems
 	d['printinfo'] = d['action']
 	
-	if request.is_ajax():
-		return render_ajaxwrapper_response("review/test.html", d, context_instance=RequestContext(request))
-	else:
-		return render_to_response("review/test.html", d, context_instance=RequestContext(request))
+	return render_ajaxlist_response(request.is_ajax(), "review/test.html", d, context_instance=RequestContext(request))
 		
 if EXAM_LOGIN_REQUIRED:
     submit = login_required(submit)

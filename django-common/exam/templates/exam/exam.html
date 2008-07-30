@@ -2,17 +2,12 @@
 
 {# Base template for all Exam Files related pages. All Exam Files pages should inherit from this base. #}
 
-{% block extratitle %} Exam Files {% endblock %}
-
 {# Note: there is a 'extrahead' hook available to use (above the main HKN graphic in the header). #}
 
 {% block content %}
 
 {# If you do not want this block to appear at all, simply place an empty 'subheader' block in the child template. #}
-{% block subheader %}
-<h1>{% block subtitle %}Exam Files{% endblock %}</h1>
-<HR>
-{% endblock %} 
+
 
 {# If you do not want this block to appear at all, simply place an empty 'subfooter' block in the child template. #}
 {% block subfooter %}

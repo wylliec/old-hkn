@@ -21,5 +21,6 @@
 	{% ajaxtable list_objects "review/_header.html" "review/_problem.html" checks=on %}
 	{% control pager %}
 {% endajaxwrapper %}
-
+<br />
+<a href="{% url review-selected %}">View Selected Problems </a>
 {% endblock %}

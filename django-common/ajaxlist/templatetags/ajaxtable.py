@@ -52,6 +52,31 @@ class AjaxTableNode(template.Node):
 		context['row_template'] = row_template
 		t = get_template("ajaxlist/_objects_list.html")
 		return  t.render(context)
+	
+class AjaxSelectedNode(template.Node):
+	def __init__(self, value):
+		self.value = Variable(value)
+		
+	def __repr__(self):
+		return "<AjaxSelectedNode: %s>" % self.value
+	
+	def render(self,context):
+		set = context['request'].session.get("ajaxlist_" + context['ajaxlist_identifier'], None)
+		if not set:
+			return ""
+		
+		try:
+			value = self.value.resolve(context)
+		except:
+			value = self.value
+		
+		value = str(value)
+		
+		if value in set:
+			return "checked=true"
+		else:
+			return ""
+		
 		
 class AjaxJSNode(template.Node):
 	def __init__(self):
@@ -79,18 +104,21 @@ class AjaxWrapperNode(template.Node):
 		identifier = "none"
 		if len(options) >= 1:
 			identifier = options[0]
-			
+		
 		nodelist.insert(0, TextNode('<div id="ajaxwrapper" identifier="'+ identifier +'">'))
 		nodelist.append(TextNode("</div>"))
 		self.nodelist = nodelist
+		self.identifier = identifier
 		
 	def __repr__(self):
 		return "<AjaxWrapperNode: " + self.identifier+ ">"
 	
 	def render(self, context):
+		context['ajaxlist_identifier'] = self.identifier
 		return self.nodelist.render(context)
 		
 	def render_inside(self, context):
+		context['ajaxlist_identifier'] = self.identifier
 		return NodeList(self.nodelist[1:-1]).render(context)
 
 class SpecialForNode(template.defaulttags.ForNode):
@@ -203,7 +231,15 @@ def do_control(parser, token):
 @register.tag(name="ajaxlist_js")
 def do_ajaxlist_js(parser, token):
 	return AjaxJSNode()
+
+@register.tag(name="ajaxlist_selected")
+def do_ajaxlist_selected(parser, token):
+	bits = token.split_contents()
+	if len(bits) != 2:
+		raise TempateSyntaxError("'ajaxlist_selected' should have one argument")
 	
+	return AjaxSelectedNode(bits[1])
+
 # Helpers
 def row_variable(nodelist, context):
 	
@@ -214,7 +250,6 @@ def row_variable(nodelist, context):
 			return node.filter_expression.var.__str__().split(".")[0]
 	
 	return "object"
-
 
 """
 from django.template.loader import get_template

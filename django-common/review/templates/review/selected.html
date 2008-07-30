@@ -16,13 +16,19 @@
 {% block reviewcontents %}
 
 {% ajaxwrapper problems %}
+	{% if problems %}
 	{% ajaxtable problems "review/_header.html" "review/_problem.html"  remove_item=on%}
+	{% else %}
+	<p> No problems have been selected. </p>
+	{% endif %}
 {% endajaxwrapper %}
 <br />
 
+{% if problems %}
 <div>
 <a href={% url review-merge-problems %}>Merge Problems</a>
 <a href={% url review-merge-solutions %}>Merge Solutions</a>
 </div>
+{% endif %}
 
 {% endblock %}

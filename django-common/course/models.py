@@ -5,6 +5,9 @@ from constants import SEMESTER, EXAMS_PREFERENCE, DEPT_ABBRS, DEPT_ABBRS_INV, DE
 import re
 
 class CourseManager(QuerySetManager):
+    def get_query_set(self):
+         return Course.QuerySet(self.model)
+
     def parse_query(self, *args, **kwargs):
         return self.get_query_set().parse_query(*args, **kwargs)
 
@@ -15,6 +18,9 @@ class CourseManager(QuerySetManager):
         return self.get_query_set().query_exact(*args, **kwargs)
 
 class DepartmentManager(QuerySetManager):
+    def get_query_set(self):
+	return Department.QuerySet(self.model)
+    
     def ft_query(self, *args, **kwargs):
         return self.get_query_set().ft_query(*args, **kwargs)
     

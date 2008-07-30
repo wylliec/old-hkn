@@ -18,6 +18,8 @@
 {% ajaxwrapper problems %}
 	{% ajaxtable problems "review/_header.html" "review/_problem.html" checks=on %}
 {% endajaxwrapper %}
+<br/>
+<a href="{% url review-selected %}">View Selected Problems </a>
 
 <h4>Related Tags:</h4>
 {% for t in rel_tags %}

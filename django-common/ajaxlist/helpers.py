@@ -1,6 +1,7 @@
 # file template.py
 
 import new
+from django.shortcuts import render_to_response
 from django.template.loader_tags import BlockNode, ExtendsNode
 from django.template import loader, Context, RequestContext, TextNode
 from django.templatetags.ajaxtable import AjaxWrapperNode
@@ -34,7 +35,13 @@ def get_node(nodelist, node):
 ####################
 # Ajaxlist View helpers
 ####################
-    
+
+def render_ajaxlist_response(is_ajax, template, dictionary, context_instance=None, mimetype=None):
+	if is_ajax:
+		return render_ajaxwrapper_response(template, dictionary, context_instance=context_instance, mimetype=mimetype)
+	else:
+		return render_to_response(template, dictionary, context_instance=context_instance, mimetype=mimetype)
+
 def render_ajaxwrapper_response(template, dictionary, context_instance=None, mimetype=None):
 	""" Returns an HttpResponse object with the contents in the ajaxwrapper tag of the template"""
 	t = loader.get_template(template)
