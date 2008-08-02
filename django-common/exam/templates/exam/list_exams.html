@@ -1,0 +1,21 @@
+{% extends "exam/exam.html" %}
+{% load ajaxtable %}
+
+{% block js %}
+{{block.super}}
+{% ajaxlist_js %}
+{% endblock %}
+
+{% block subtitle %}Exam Files - List Exams{% endblock %}
+
+{% block examcontent %}
+
+{% ajaxwrapper exams %}
+	{% if exams %}
+	{% control pager %}
+	{% ajaxtable exams "exam/_header.html" "exam/_row.html" %}
+	{% control pager %}
+	{% endif %}
+{% endajaxwrapper %}
+
+{% endblock %}

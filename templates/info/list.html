@@ -1,0 +1,20 @@
+{% extends "info/hkn.html" %}
+{% load ajaxtable %}
+
+{% block js %}
+{{block.super}}
+{% ajaxlist_js %}
+{% endblock %}
+
+{% block content %}
+{% control search %}
+{% ajaxwrapper people %}
+{% if people %}
+	{% control pager %}
+	{% ajaxtable people "info/ajax/_list_people_header.html" "info/ajax/_list_people_row.html" %}
+	{% control pager %}
+{% else %}
+	No results
+{% endif %}
+{% endajaxwrapper %}
+{% endblock %}

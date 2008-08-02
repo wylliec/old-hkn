@@ -1,4 +1,3 @@
-<tr>
 	<td><a href="{% url person-view object.id %}">
         {% if object.officer_picture %}
             <img height=60 width=80 src="{{ object.get_officer_picture_url }}"></a></td>
@@ -10,4 +9,3 @@
 	<td>{{ object.restricted.email }}</td>
     <td>{{ object.get_committee }}</td>
 	<td>{{ object.restricted.phone }}</td>
-</tr>

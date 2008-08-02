@@ -12,7 +12,7 @@ urlpatterns = patterns('',
 
         url(r'^list/(?P<category>.*)/$', 'hkn.info.list.list_people', name="person-list-category"),
         url(r'^list/$', 'hkn.info.list.list_people', {"category" : "all"}, name="person-list-all"),
-        url(r'^list_people_ajax/$', 'hkn.info.list.list_people_ajax', name="person-list-ajax"),
+        #url(r'^list_people_ajax/$', 'hkn.info.list.list_people_ajax', name="person-list-ajax"),
         url(r'^quiz/(?P<category>.*)/$', 'hkn.info.quiz.quiz', "person-quiz-category"),
 
         url(r'^find_person/$', 'hkn.info.find.find_person'),

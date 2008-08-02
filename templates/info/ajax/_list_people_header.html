@@ -1,8 +1,7 @@
-<tr>
 <th>Image</th>
-<th> Name (<a href="javascript:void(0)" onclick="filter('{{ reverse_sort_first }}first', '{{ page }}', '{{ max }}', '{{ category }}', '{{ query }}')">First</a> <a href="javascript:void(0)" onclick="filter('{{ reverse_sort_last }}last', '{{ page }}', '{{ max }}', '{{ category }}', '{{ query }}')">Last</a>) </th>
+<th> Name (<span class="sortable" name="first"><a href="#">First</a></span> <span class="sortable" name="last"><a href="#">Last</a></span>) </th>
 <th>Member Status</th>
-<th><a href="javascript:void(0)" onclick="filter('{{ reverse_sort_email }}email', '{{ page }}', '{{ max }}', '{{ category }}', '{{ query }}')">Email</a></th>
+<th class="sortable" name="email"><a href="#">Email</a></th>
 <th>Committee</th>
 <th>Phone</th>
-</tr>
+
