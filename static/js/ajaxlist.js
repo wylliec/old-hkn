@@ -2,6 +2,7 @@ IMG_ORDER = { "up" : "/static/images/site/arrow_asc.gif", "down" : "/static/imag
 
 
 function register_listeners(){
+	$("#ajaxwrapper .ajaxlist_post").click(function() { send_ajaxinfo("post="+$(this).attr("key")+"="+$(this).attr("val"), "#"); return false; });
 	$("#ajaxwrapper input.ajaxlist_remove_item").click(function () { remove_item($(this).parent().parent(), $(this).attr("value")); return false; });
 	$("#ajaxwrapper input.ajaxlist_check").change(function () { checkbox_changed($(this).attr("checked"), $(this).attr("value")); return false; });
 	$("#ajaxwrapper .sortable").click(function() { send_ajaxinfo("sort_by="+$(this).attr("name"), "#"); return false; });
@@ -49,6 +50,11 @@ function send_ajaxinfo(action, url){
 	info["action"] = action;
 	
 	var action_pair = action.split("=");
+	
+	// Post action?
+	if (action_pair[0] == "post"){
+		info[action_pair[1]] = action_pair[2];
+	}
 	
 	// Retrieve the page
 	var page = parseInt( $("#ajaxwrapper select.page option:selected:first").text() );

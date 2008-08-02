@@ -50,9 +50,13 @@ def list_exams(request, course=None, exam_type=None):
 		d['sort_by'] = "exam_date"
 	d['order'] = 'down'
 	
+	instructor = request.POST.get("instructor", None)
+	
 	exams = Exam.objects.all()
 	if course:
 		exams = exams.query_course(course)
+	if instructor:
+		exams = exams.query_instructor(instructor)
 	if exam_type:
 		exams = exams.filter(exam_type=exam_type)
 	

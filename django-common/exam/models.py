@@ -104,7 +104,9 @@ class Exam(db.models.Model):
     class QuerySet(QuerySet):
 	def query_course(self, query):              
             (dept_abbr, coursenumber) = Course.objects.parse_query(query)
-	  
+	     
+	    if dept_abbr and coursenumber:
+		    return self.filter(klass__course__department__abbr__iexact = dept_abbr, klass__course__number__iexact = coursenumber)
 	    if dept_abbr:
 		    return self.filter(klass__course__department__abbr__iexact = dept_abbr)        
             if coursenumber:

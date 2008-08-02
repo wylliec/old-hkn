@@ -1,4 +1,4 @@
 <td>{{ exam.klass.pretty_semester }}</td>
-<td><a href="javascript:void(0)" onclick="setInstructor('{{ exam.klass.instructors }}');"> {{ exam.klass.instructors|title }}</a></td>
+<td><a class="ajaxlist_post" href="#" key="instructor" val="{{ exam.klass.instructors }}"> {{ exam.klass.instructors|title }}</a></td>
 <td><a href="{{ exam.get_file_url }}">{{ exam.get_exam_description }}</a></td>
 <td>{{ exam.get_exam_format }}</td>

@@ -97,6 +97,9 @@ def paginate_objects(objects, list_context, page=1, max_per_page=20):
 	"""
 	
 	paginator = Paginator(objects, max_per_page)
+	if page > paginator.page_range[-1]:
+		page = 1
+		
 	p = paginator.page(page) 
 	
 	list_context["has_next_page"] = p.has_next()
