@@ -44,10 +44,11 @@ def list_people(request, category):
 	d = get_ajaxinfo(request.POST)
 	if d['sort_by'] == "?":
 		d['sort_by'] = "first_name"
+		
 	try:
 		people = Person.__dict__[category].manager.all()
-		if "query" in d:
-			people = people.ft_query(d['query'])
+		if "query" in request.POST:
+			people = people.ft_query(request.POST['query'])
 		people = people.filter_restricted(request.user)
 	except:
 		raise Http404
