@@ -19,174 +19,171 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 </head>
 
 <body {% block body_extra %} {% endblock %}>
-
-<div id="logo">
-	<a href="{% url hkn.main %}">
-		<img src ="{{STATIC_PREFIX}}images/site/LogoDraftPlain.png" style="border:none">
-	</a>
-</div>
-	
-
-<div id="navigation">
-<div id ="toplevel">
-<ul class="navigation_toplevel">
-<li>
-	<a href="#" class="navigation_toplevel_item" id="services">
-		Student Services
-	</a>
-</li>
-<li>
-	<a href="#" class="navigation_toplevel_item" id="indrel">
-		Industry Relations
-	</a>
-</li> 
-<li>
-	<a href="#" class="navigation_toplevel_item" id="event">
-		Events
-	</a>
-</li> 
-<li>
-	<a href="#" class="navigation_toplevel_item" id="info">
-		People
-	</a>
-</li> 
-<li>
-	<a href="#" class="navigation_toplevel_item" id="alumni">
-		Alumni Network
-	</a>
-</li> 
-<li>
-	<a href="#" class="navigation_toplevel_item" id="about">
-		About HKN
-	</a>
-</li> 
-</ul>
-</div>
-
-<div class="submenu" id ="services_submenu">
-<ul class="navigation_sublevel">
-<li>	
-	<a href="/tutor">
-		Tutoring
-	</a>
-</li>
-<li>	
-	<a href="/student/CourseSurvey">
-		Course Surveys
-	</a>
-</li>
-<li>	
-	<a href="/exam/">
-		Online Exams
-	</a>
-</li>
-</ul>
-</div>
-
-<div class="submenu" id ="indrel_submenu">
-<ul class="navigation_sublevel">
-<li>	
-	<a href="#">
-		Resume Books
-	</a>
-</li>
-<li>	
-	<a href="#">
-		Infosessions
-	</a>
-</li>
-<li>	
-	<a href="#">
-		Career Fair
-	</a>
-</li>
-</ul>
-</div>
-
-<div class="submenu" id ="info_submenu">
-<ul class="navigation_sublevel">
-<li>	
-	<a href="{% url person-list-category category="officers" %}" class="navigation_sublevel_item">
-        Officers
-	</a>
-</li>
-<li>	
-	<a href="{% url person-list-category category="members" %}" class="navigation_sublevel_item">
-        Members
-	</a>
-</li>
-<li>	
-	<a href="{% url person-list-category category="candidates" %}" class="navigation_sublevel_item">
-        Candidates
-	</a>
-</li>
-</ul>
-</div>
-
-<div class="submenu" id ="event_submenu">
-<ul class="navigation_sublevel">
-<li>	
-	<a href="{% url hkn.event.event.calendar %}" class="navigation_sublevel_item">
-		Events Calendar
-	</a>
-</li>
-<li>	
-	<a href="{% url hkn.event.list.list_events category="future" %}" class="navigation_sublevel_item">
-		Upcoming Events
-	</a>
-</li>
-<li>
-	<a href="{% url hkn.event.list.list_events category="past" %}">
-		Past Events
-	</a>	
-</li>
-</ul>
-</div>
-
-<div class="submenu" id ="alumni_submenu">
-<ul class="navigation_sublevel">
-<li>	
-	<a href="#" class="navigation_sublevel_item">
-		Registration
-	</a>
-</li>
-<li>	
-	<a href="#" class="navigation_sublevel_item">
-		Alumni Newsletter
-	</a>
-</li>
-</ul>
-</div>
-<div class="submenu" id ="about_submenu">
-<ul class="navigation_sublevel">
-<li>	
-	<a href="#" class="navigation_sublevel_item">
-		Contact Information
-	</a>
-</li>
-<li>	
-	<a href="#" class="navigation_sublevel_item">
-		Gallery and Yearbook
-	</a>
-</li>
-<li>	
-	<a href="#" class="navigation_sublevel_item">
-		Current Officers
-	</a>
-</li>
-</ul>
-</div>
-
-<div id="navbar_shadow"></div>
-
-</div>
-
-<!--page title-->
-<div id="header">
 {% block header %}
-<!--<IMG SRC="/images/titles/hkntitle.gif" ALT="HKN Main Page" BORDER="0" HEIGHT="100" WIDTH="330">-->
+<div id="header">
+	<div id="logo">
+		<a href="{% url hkn.main %}">
+			<img src ="{{STATIC_PREFIX}}images/site/LogoDraftPlain.png" style="border:none">
+		</a>
+	</div>
+
+	<div id="navigation">
+		<div id="toplevel">
+			<ul class="navigation_toplevel">
+			<li>
+				<a href="#" class="navigation_toplevel_item" id="services">
+					Student Services
+				</a>
+			</li>
+			<li>
+				<a href="#" class="navigation_toplevel_item" id="indrel">
+					Industry Relations
+				</a>
+			</li> 
+			<li>
+				<a href="#" class="navigation_toplevel_item" id="event">
+					Events
+				</a>
+			</li> 
+			<li>
+				<a href="#" class="navigation_toplevel_item" id="info">
+					People
+				</a>
+			</li> 
+			<li>
+				<a href="#" class="navigation_toplevel_item" id="alumni">
+					Alumni Network
+				</a>
+			</li> 
+			<li>
+				<a href="#" class="navigation_toplevel_item" id="about">
+					About HKN
+				</a>
+			</li> 
+			</ul>
+		</div>
+
+		<div class="submenu" id="services_submenu">
+			<ul class="navigation_sublevel">
+			<li>	
+				<a href="/tutor/">
+					Tutoring
+				</a>
+			</li>
+			<li>	
+				<a href="/student/CourseSurvey/">
+					Course Surveys
+				</a>
+			</li>
+			<li>	
+				<a href="/exam/">
+					Online Exams
+				</a>
+			</li>
+			</ul>
+		</div>
+
+		<div class="submenu" id ="indrel_submenu">
+			<ul class="navigation_sublevel">
+			<li>	
+				<a href="#">
+					Resume Books
+				</a>
+			</li>
+			<li>	
+				<a href="#">
+					Infosessions
+				</a>
+			</li>
+			<li>	
+				<a href="#">
+					Career Fair
+				</a>
+			</li>
+			</ul>
+		</div>
+
+		<div class="submenu" id="info_submenu">
+			<ul class="navigation_sublevel">
+			<li>	
+				<a href="{% url person-list-category category="officers" %}" class="navigation_sublevel_item">
+					Officers
+				</a>
+			</li>
+			<li>	
+				<a href="{% url person-list-category category="members" %}" class="navigation_sublevel_item">
+					Members
+				</a>
+			</li>
+			<li>	
+				<a href="{% url person-list-category category="candidates" %}" class="navigation_sublevel_item">
+					Candidates
+				</a>
+			</li>
+			</ul>
+		</div>
+
+		<div class="submenu" id="event_submenu">
+			<ul class="navigation_sublevel">
+			<li>	
+				<a href="{% url hkn.event.event.calendar %}" class="navigation_sublevel_item">
+					Events Calendar
+				</a>
+			</li>
+			<li>	
+				<a href="{% url hkn.event.list.list_events category="future" %}" class="navigation_sublevel_item">
+					Upcoming Events
+				</a>
+			</li>
+			<li>
+				<a href="{% url hkn.event.list.list_events category="past" %}">
+					Past Events
+				</a>	
+			</li>
+			</ul>
+		</div>
+
+		<div class="submenu" id="alumni_submenu">
+			<ul class="navigation_sublevel">
+			<li>	
+				<a href="#" class="navigation_sublevel_item">
+					Registration
+				</a>
+			</li>
+			<li>	
+				<a href="#" class="navigation_sublevel_item">
+					Alumni Newsletter
+				</a>
+			</li>
+			</ul>
+		</div>
+		<div class="submenu" id="about_submenu">
+			<ul class="navigation_sublevel">
+			<li>	
+				<a href="#" class="navigation_sublevel_item">
+					Contact Information
+				</a>
+			</li>
+			<li>	
+				<a href="#" class="navigation_sublevel_item">
+					Gallery and Yearbook
+				</a>
+			</li>
+			<li>	
+				<a href="#" class="navigation_sublevel_item">
+					Current Officers
+				</a>
+			</li>
+			</ul>
+		</div>
+
+		<div id="navbar_shadow"></div>
+
+	</div>
+</div>
 {% endblock %}
-</div>	
+
+<div id="content"><div id="userbar">Welcome, {{user.username}} (Settings &middot; Logout)</div>
 
 {% block container %}
 
@@ -194,19 +191,18 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 <!--content-->
 <!-- start main content block -->
 <h2>{% block subtitle %}{% endblock %}</h2>
-You are logged in as {{user.username}}.
 {% block content %}
 {% endblock %}
-
 
 <!-- end main content block -->
 
 </div>
 {% endblock%}
+</div>
 
 <div id="footer">
 	<div id="footer-right">Eta Kappa Nu, Mu Chapter (<a href="mailto:www@hkn.eecs.berkeley.edu">www@hkn.eecs.berkeley.edu</a>)</div>
-	<div id="footer-left"><a href="#">HOME</a> | <a href="#">ABOUT</a> | <a href="#">CONTACT</a></div>
+	<div id="footer-left"><a href="/">HOME</a> | <a href="#">ABOUT</a> | <a href="#">CONTACT</a></div>
 </div>
 
 </body>

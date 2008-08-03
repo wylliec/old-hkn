@@ -1,14 +1,12 @@
-html{
+html {
 	height: 100%;
 }
 
-body{
+body {
 	height:100%;
-	background-color: white;
 	font-size: 14px;
 	margin: 0;
 	padding: 0;
-	text-align:center;
 
 }
 
@@ -38,19 +36,14 @@ h3 {
 #navigation{
 	font-family: "Trebuchet MS",Arial,tahoma,sans-serif;
 	width: 100%;
-	margin: 0;
 	font-size: 15px;
 	height: 70px;
-	z-index:50;
-	vertical-align: middle;
 	background: #8CCC20;
 
 }
 
 #toplevel{
-	position: relative;
 	height: 30px;
-	clear: both;
 	margin: 0 auto;
 	width: 100%;
 	text-align:center;
@@ -82,7 +75,6 @@ h3 {
 	text-decoration: none;
 	color: #ffffff;
 	padding: 5px 7px 5px 12px;
-	display:inline;
 }
 
 #toplevel li a.selected, #toplevel li a.selected:hover {
@@ -102,7 +94,6 @@ h3 {
 }*/
 
 .submenu{
-	z-index: 0;
 	font-size: 13px;
 	height: 24px;
 	display:none;
@@ -140,6 +131,10 @@ h3 {
 	background: #568F59;
 }
 
+#header {
+	text-align: center;
+}
+
 #navbar_shadow{
 	/*clear: both;
 	position:absolute;
@@ -150,60 +145,6 @@ h3 {
 	z-index: -1;
 }
 
-/*
-
-
-
-#navigation ul a.top:link, #navigation ul a.top:visited{
-    float: left;
-    border-left: 1px solid #576178;
-    border-right: 1px solid #1f2635;
-    text-decoration: none;
-    color: #124876;
-    height: 13px;
-	padding: 6px 10px;
-}
-
-#navigation ul a.sub:link, #navigation ul a.sub:visited{
-    display: none;
-}
-
-#navigation ul li:hover a.sub:link, #navigation ul li:hover a.sub:visited{
-	display: block;
-	float: none;
-	position: relative;
-	background: #e5f200;
-    border-left: 1px solid #576178;
-    border-right: 1px solid #1f2635;
-    text-decoration: none;
-    color: #124876;
-    height: 13px;
-	padding: 6px 10px;
-}
-
-
-#navigation ul li a.top.current, #navigation ul li a.top:hover {
-    background: #124876;
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-#navigation ul li a.top.current{
-    text-decoration: none;
-}
-
-#navigation ul li ul{
-	display:none;
-	width: 100%;
-}
-
-#navigation ul li:hover ul{
-	display:block;
-	position:absolute;
-	left:0;
-	top:100%;
-	width: 100%;	
-}*/
 
 #landing_left_wrapper{
 	background-color: #FFFFFF;
@@ -248,13 +189,20 @@ h3 {
 	text-align:left;
 }
 
+#content {
+	margin: 10px;
+	width: auto;
+}
+
+#userbar {
+	padding: 5px 8px;
+}
+
 #container{
 	background: #F3F8F8;
 	padding: 0 8px;
-	margin: 10px;
 	border: 1px #5C7C0B solid;
 	width: auto;
-	text-align:left;
 }
 
 #container #leftshadow{
@@ -275,38 +223,7 @@ div #rightshadow{
 	height:100%;
 }
 
-/* Currently unused for dropshadows:
-#content {
-	height: 80%;
-	float:left;
-	padding: 5%;
-	width: 80%;
-	background: #00ff00;
-}
 
-#leftshadow{
-	float:left;
-	margin-left: 3%;
-	background: url("/images/site/leftshadow.png") repeat-y;
-	width: 10px;
-	height:100%;
-}
-
-#midcontainer{
-	float:left;
-	background: #0000ff;
-	width: 80%;
-	text-align: center;
-}
-
-#rightshadow{
-	float:left;
-	background: url("/images/site/rightshadow.png") repeat-y;
-	width: 10px;
-	height: 100%;
-	clear:right;
-}
-*/
 /* footer area */
 #footer {
 	clear:both;
