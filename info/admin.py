@@ -11,7 +11,7 @@ class PersonAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Basic Information', {'fields' : ('first_name', 'last_name', 'email', 'member_type')}),
         ('Account Information', {'fields' : ('username', 'password', 'is_staff', 'is_active', 'is_superuser')}),
-        ('HKN Information', {'fields' : ('member_type',)})
+        ('HKN Information', {'fields' : ()})
         )
 
 

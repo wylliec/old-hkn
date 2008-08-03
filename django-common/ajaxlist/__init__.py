@@ -1,5 +1,5 @@
 from django.template import RequestContext
-from django.core.paginator import ObjectPaginator
+from django.core.paginator import Paginator
 from string import atoi
 
 
@@ -77,15 +77,15 @@ def filter_objects(clazz, list_context, query_objects = None, filter_permissions
         objects = final_filter(objects)
 
     page = list_context["page"]    
-    paginator = ObjectPaginator(objects, list_context["max"])
-    page_objects = paginator.get_page(page-1)    
+    paginator = Paginator(objects, list_context["max"])
+    p = paginator.page(page-1)
+    
 
     
-    list_context["has_next_page"] = paginator.has_next_page(page - 1)
-    list_context["has_previous_page"] = paginator.has_previous_page(page - 1)
-    list_context["first_on_page"] = paginator.first_on_page(page - 1)
-    list_context["last_on_page"] = paginator.last_on_page(page - 1)    
-    list_context["page_range"] = range(1, paginator.pages + 1)
-    list_context["num_hits"] = paginator.hits
+    list_context["has_next_page"] = p.has_next()
+    list_context["has_previous_page"] = p.has_previous()
+    list_context["first_on_page"] = p.start_index()
+    list_context["last_on_page"] = p.end_index()
+    list_context["page_range"] = paginator.page_range
     
-    return page_objects
+    return p.object_list
