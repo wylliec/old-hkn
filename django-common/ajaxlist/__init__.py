@@ -78,7 +78,7 @@ def filter_objects(clazz, list_context, query_objects = None, filter_permissions
 
     page = list_context["page"]    
     paginator = Paginator(objects, list_context["max"])
-    p = paginator.page(page-1)
+    p = paginator.page(page)
     
 
     
