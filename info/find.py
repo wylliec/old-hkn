@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
-from django.core.paginator import ObjectPaginator, InvalidPage
 from hkn.info.models import *
 
 from ajaxlist import get_list_context, filter_objects

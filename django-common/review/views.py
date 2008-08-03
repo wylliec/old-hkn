@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.template import RequestContext
-from django.core.paginator import ObjectPaginator, InvalidPage
 from django.contrib.auth.decorators import login_required
 
 import datetime

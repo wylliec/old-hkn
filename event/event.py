@@ -4,7 +4,6 @@ from ajaxlist import get_list_context
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
-from django.core.paginator import ObjectPaginator, InvalidPage
 from django.core import urlresolvers
 from django import forms
 
