@@ -75,6 +75,18 @@ def view_tag(request, tag_name = None):
 	
 def view_problem(request, problem_id = None):
 	problem = get_object_or_404(Problem, pk = problem_id)
+	if request.is_ajax():
+		rating = request.POST.get("rating", None)
+		try:
+			rating = int(rating)
+		except:
+			raise Http404
+			
+		if rating and rating >= 0 and rating <= 10:
+			problem.rate(rating)
+			problem.save()
+		return render_to_response("review/_bar.html", {'val':problem.difficulty}, context_instance=RequestContext(request))
+		
 	return render_to_response("review/view_problem.html", {'problem':problem}, context_instance=RequestContext(request))
 	
 def submit(request):

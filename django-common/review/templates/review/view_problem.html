@@ -5,6 +5,23 @@
 <link rel="stylesheet" type="text/css" href="/static/css/rating_bar.css">
 {% endblock %}
 
+{% block js %}
+{{block.super}}
+<script type="text/javascript">
+$(document).ready(function () {
+	$("span#rater select").change(function() {
+		$.post(location.href, { "rating" : this.options[this.selectedIndex].value}, 
+			function (data) {
+				$("div.rating_bar").before(data).remove();
+				$("span#rater").remove();
+			}
+		);
+		
+	});
+});
+</script>
+{% endblock %}
+
 {% block subtitle %}Review Problems - View Problem {% endblock %}
 
 {% block reviewcontents %}
@@ -19,9 +36,26 @@
 			{% endfor %}
 		</td>
 	</tr>
-	<tr><th>Difficulty:</th><td>{% with problem.difficulty as val %} {% include "review/_bar.html" %} {% endwith %}</td></tr>
+	<tr><th>Difficulty:</th><td>{% with problem.difficulty as val %} {% include "review/_bar.html" %} {% endwith %}   </td></tr>
 	<tr><th>Question:</th><td><a href={{problem.get_question_url}}>[link]</a></td></tr>
 	<tr><th>Answer:</th><td><a href={{problem.get_answer_url}}>[link]</a></td></tr>
 </table>
+<br />
+<span id="rater">Rate Difficulty: 
+<select>
+	<option value="N/A" selected="yes">N/A</option>
+	<option value="1">1</option>
+	<option value="2"> 2</option>
+	<option value="3"> 3</option>
+	<option value="4"> 4</option>
+	<option value="5"> 5</option>
+	<option value="6"> 6</option>
+	<option value="7"> 7</option>
+	<option value="8"> 8</option>
+	<option value="9"> 9</option>
+	<option value="10">10</option>
+</select>
+</span>
+
 
 {% endblock %}
