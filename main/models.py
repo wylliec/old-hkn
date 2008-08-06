@@ -27,4 +27,5 @@ class PermissionManager(models.Manager):
         return self.get_query_set().get(Q(content_type__app_label = app_label) & Q(codename = codename))
 
 PermissionManager().contribute_to_class(Permission, "objects")
-setattr(AnonymousUser, 'get_all_permissions', lambda anonuser: Permission.objects.filter(codename="everyone"))
+setattr(AnonymousUser, 'get_all_permissions', lambda anonuser: [Permission.objects.get(codename="hkn_everyone").full_codename()])
+setattr(Permission, 'full_codename', lambda perm: "%s.%s" % (perm.content_type.app_label, perm.codename))
