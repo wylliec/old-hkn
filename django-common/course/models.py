@@ -5,9 +5,6 @@ from constants import SEMESTER, EXAMS_PREFERENCE, DEPT_ABBRS, DEPT_ABBRS_INV, DE
 import re
 
 class CourseManager(QuerySetManager):
-    def get_query_set(self):
-         return Course.QuerySet(self.model)
-
     def parse_query(self, *args, **kwargs):
         return self.get_query_set().parse_query(*args, **kwargs)
 
@@ -19,7 +16,7 @@ class CourseManager(QuerySetManager):
 
 class DepartmentManager(QuerySetManager):
     def get_query_set(self):
-	return Department.QuerySet(self.model)
+        return Department.QuerySet(self.model)
     
     def ft_query(self, *args, **kwargs):
         return self.get_query_set().ft_query(*args, **kwargs)
@@ -121,7 +118,9 @@ class Course(models.Model):
                 m = course_pattern.match(query)
                 if m:
                     dept = m.groupdict().get("dept").upper()
-                    coursenumber = m.groupdict().get("course").upper()
+                    coursenumber = m.groupdict().get("course")
+                    if coursenumber:
+                        coursenumber = coursenumber.upper()
                     if not (dept in DEPT_ABBRS_SET) and dept[:-1] in DEPT_ABBRS_SET:
                         return (Department.proper_abbr(dept[:-1]), "%s%s" % (dept[-1], coursenumber))
                     return (Department.proper_abbr(dept), coursenumber)
@@ -316,7 +315,7 @@ class Instructor(models.Model):
         
         def ft_query(self, query, course_query = None, dept_abbr = None, course_number = None, courses = None):
             if not (dept_abbr or course_number) and course_query:
-                (dept_abbr, course_number) = self.parse_query(course_query)
+                (dept_abbr, course_number) = Course.objects.parse_query(course_query)
             
             if dept_abbr and course_number:
                 courses = Course.objects.filter(department_abbr__iexact = dept_abbr, number__icontains = course_number)

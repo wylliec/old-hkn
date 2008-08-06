@@ -9,7 +9,7 @@ DEPT_ABBRS = {
     "ASTRON": ("ASTRO",),
     "BIOLOGY": ("BIO",),
     "BIO ENG": ("BIOE",),
-    "BUS ADM": ("BA",),
+    "UGBA": ("BA",),
     "CHM ENG": ("CHEME",),
     "CIV ENG": ("CIVE", "CEE", "CE",),
     "COG SCI": ("COGSCI",),

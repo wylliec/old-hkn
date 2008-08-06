@@ -25,7 +25,7 @@ def instructor_autocomplete(request):
     
     course_query = request.GET.get("course_query")
 
-    instructors = Instructor.objects.query(q, course_query=course_query)
+    instructors = Instructor.objects.ft_query(q, course_query=course_query)
     if len(instructors) == 0:
         instructors = Instructor.objects.query(q)
     instructors = instructors[:limit]    
