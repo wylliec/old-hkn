@@ -1,0 +1,9 @@
+<div width=400 style="background: #048DB4; text-align: left">
+    <img width=60 height=80 src="{{ person.get_profile_picture_url }}"></img><br/>
+    <span style="font-weight: bold">{{person.name}}</span><br>
+    {% for assign in assignments %}
+    <span style="font-style: italic">
+        {{ assign.slot }} @ {{assign.office}}
+    </span><br/>
+    {% endfor %}
+</div>
