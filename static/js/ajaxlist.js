@@ -4,13 +4,15 @@ PLUS_MINUS = { "plus" : "/static/images/site/plus.gif", "minus" : "/static/image
 
 function register_listeners(){
 	$("#ajaxwrapper .ajaxlist_post").click(function() { send_ajaxinfo("post="+$(this).attr("key")+"="+$(this).attr("val"), "#"); return false; });
-	$("#ajaxwrapper input.ajaxlist_remove_item").click(function () { remove_item($(this).parent().parent(), $(this).attr("value")); return false; });
-	$("#ajaxwrapper input.ajaxlist_check").change(function () { checkbox_changed($(this).attr("checked"), $(this).attr("value")); return false; });
+	$("#ajaxwrapper .ajaxlist_remove_item").click(function () { remove_item($(this).parent().parent(), $(this).attr("value")); return false; });
+	$("#ajaxwrapper .ajaxlist_check").change(function () { checkbox_changed($(this).attr("checked"), $(this).attr("value")); return false; });
 	$("#ajaxwrapper .sortable").click(function() { send_ajaxinfo("sort_by="+$(this).attr("name"), "#"); return false; });
 	$("#ajaxwrapper .sortable").append("<img />");
 	$("#ajaxwrapper a.next_page").click(function () { send_ajaxinfo("next", "#"); return false; });
 	$("#ajaxwrapper a.prev_page").click(function () { send_ajaxinfo("prev", "#"); return false; });
 	$("#ajaxwrapper select.page").change(function () { send_ajaxinfo("change_page="+this.options[this.selectedIndex].value, "#"); return false; });
+	
+	$(".ajaxlist_clear_items").click(function () { clear_items(); return false; });
 
 	$("#query_button").click(function () { send_ajaxinfo("search", "#"); return false; });
 	$("#query_field").keypress( function (e) { if(e.which == 13) { send_ajaxinfo("search", "#"); } });
@@ -27,6 +29,16 @@ function remove_item(row_object, value){
 				$(row_object).remove(); 
 			}
 			
+		}
+	);
+}
+
+function clear_items(){
+	var identifier = $("#ajaxwrapper").attr("identifier");
+	$.post(ajaxlist_checkbox_post_address, {"action": "clear", "identifier" : identifier, "value" : undefined},
+		function () {
+			alert("reloading");
+			window.location.reload( true);
 		}
 	);
 }
