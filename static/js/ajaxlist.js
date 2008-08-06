@@ -1,4 +1,7 @@
 IMG_ORDER = { "up" : "/static/images/site/arrow_asc.gif", "down" : "/static/images/site/arrow_desc.gif" };
+PLUS_MINUS = { "plus" : "/static/images/site/plus.gif", "minus" : "/static/images/site/minus.gif" };
+
+
 
 
 function register_listeners(){
@@ -10,6 +13,9 @@ function register_listeners(){
 	$("#ajaxwrapper a.next_page").click(function () { send_ajaxinfo("next", "#"); return false; });
 	$("#ajaxwrapper a.prev_page").click(function () { send_ajaxinfo("prev", "#"); return false; });
 	$("#ajaxwrapper select.page").change(function () { send_ajaxinfo("change_page="+this.options[this.selectedIndex].value, "#"); return false; });
+
+	$("#query_button").click(function () { send_ajaxinfo("search", "#"); return false; });
+	$("#query_field").keypress( function (e) { if(e.which == 13) { send_ajaxinfo("search", "#"); } });
 }
 
 function remove_item(row_object, value){
@@ -26,25 +32,38 @@ function remove_item(row_object, value){
 	);
 }
 
+//function suc(data, status) {
+  //  alert("success " + status);
+ //   alert("" + data);
+//}
+
+ajaxlist_checkbox_post_address = "/ajaxlist/"
 function checkbox_changed(state, value){
-	var s;
 	var identifier = $("#ajaxwrapper").attr("identifier");
-	var address = "/ajaxlist/"
 	
 	if(state == true) {
-		s = "on"
-		address += "add/"
+	    action = "add";
+	} else if(state == undefined) {
+	    action = "remove";
 	} else {
-		s = "off"
-		address += "remove/"
+	    action = "unknown";
 	}
-	
-	//alert(s + ", " + value + ", " + identifier + ", " + address);
-	$.post(address, {"identifier" : identifier, "value" : value} );
+
+//	alert(action + ", " + value + ", " + identifier + ", " + ajaxlist_checkbox_post_address);
+	$.ajax({
+	    url: ajaxlist_checkbox_post_address,
+	    type: "POST",
+	    data: {"action" : action, "identifier" : identifier, "value" : value},
+	    dataType: "script",
+//	    success: suc,
+	    });
 }
 
-
 function send_ajaxinfo(action, url){
+    if(url == "#") {
+        url = window.location.pathname;
+    }
+    
 	$("img.ajaxspinner").show();
 	var info = {};
 	info["action"] = action;
@@ -95,8 +114,11 @@ function send_ajaxinfo(action, url){
 	
 	//alert("Action: " + action + ", Page: " + info["page"] +", URL: " + url +", Sort_by: " + sort_by + ", Order: " + order);
 	
-	// Send post request
-	$.post(url, info, function(data){
+	info = $.param(info);
+    url = url + "?" + info 
+
+	// Send get request
+	$.get(url, "", function(data){
 		//alert("POST request returned");
 		$("#ajaxwrapper").html(data);
 		register_listeners();
@@ -119,7 +141,19 @@ function send_ajaxinfo(action, url){
 $(document).ready(function (){
 	register_listeners();
 	$("#ajaxwrapper .sortable[default='on']").attr("selected", "yes");
-	$("#ajaxwrapper .sortable[default='on'] img").attr("src", IMG_ORDER["up"]).attr("order", "up");
-	$("#query_button").click(function () { send_ajaxinfo("search", "#"); return false; });
-	$("#query_field").keypress( function (e) { if(e.which == 13) { send_ajaxinfo("search", "#"); } });
+	$("#ajaxwrapper .sortable[default='on'] img").attr("src", IMG_ORDER["up"]).attr("order", "up");	
 });
+
+
+function toggle_options_div(options_div, img_div) {
+    var options = document.getElementById(options_div);
+    var toggle_img = document.getElementById(img_div);
+    if ( options.style.display != 'none' ) {
+        options.style.display = 'none';
+        toggle_img.src = PLUS_MINUS["plus"];
+    } else {
+        options.style.display = '';
+        toggle_img.src = PLUS_MINUS["minus"];
+    }
+}
+

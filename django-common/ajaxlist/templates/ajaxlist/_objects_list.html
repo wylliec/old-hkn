@@ -8,7 +8,7 @@
 {% special_for list_objects %}
 <tr class="{% cycle 'even' 'odd' %}">
 {% include row_template %}
-{% ifequal checks "on" %}<td><input class="ajaxlist_check" type="checkbox" name="object[{{forloop.counter0}}]" value="{{object.id}}" {% ajaxlist_selected object.id%} /></td>{% endifequal %}
+{% ifequal checks "on" %}<td><input class="ajaxlist_check" type="checkbox" name="object[{{forloop.counter0}}]" value="{{object.id}}" {% ajaxlist_selected object %} /></td>{% endifequal %}
 {% ifequal remove_item "on" %}<td><input type="image" class="ajaxlist_remove_item" src="/static/images/site/close.png" value="{{object.id}}" /></td>{% endifequal %}
 </tr>
 {% endfor %}
