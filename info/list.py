@@ -29,7 +29,7 @@ def get_list_people_context(request, category = None):
 @login_required
 def list_people(request, category):
     list_context = get_list_people_context(request, category)
-    list_context["objects_url"] = urlresolvers.reverse("hkn.info.list.list_people_ajax")	
+    list_context["objects_url"] = urlresolvers.reverse("person-list-ajax")
     return render_to_response("ajaxlist/ajaxview.html", list_context, context_instance=RequestContext(request))
 
 @login_required
@@ -40,22 +40,22 @@ def list_people_ajax(request):
 
 @login_required
 def list_people(request, category):
-	d = get_ajaxinfo(request.POST)
-	if d['sort_by'] == "?":
-		d['sort_by'] = "first_name"
-		
-	try:
-		people = Person.__dict__[category].manager.all()
-		if "query" in request.POST:
-			people = people.ft_query(request.POST['query'])
-		people = people.filter_restricted(request.user)
-	except:
-		raise Http404
-	
-	people = sort_objects(people, d['sort_by'], d['order'])
-	people, d = paginate_objects(people, d, page=d['page'], max_per_page=10)
-	d['people'] = people
+    d = get_ajaxinfo(request.GET)
+    if d['sort_by'] == "?":
+        d['sort_by'] = "first_name"
+        
+    try:
+        people = Person.__dict__[category].manager.all()
+        if "query" in request.GET:
+            people = people.ft_query(request.GET['query'])
+        people = people.filter_restricted(request.user)
+    except:
+        raise Http404
+    
+    people = sort_objects(people, d['sort_by'], d['order'])
+    people = paginate_objects(people, d, page=d['page'], max_per_page=10)
+    d['people'] = add_restricted(request, people)
 
-	return render_ajaxlist_response(request.is_ajax(), "info/list.html", d, context_instance = RequestContext(request))
-	
-	
+    return render_ajaxlist_response(request.is_ajax(), "info/list.html", d, context_instance = RequestContext(request))
+    
+    

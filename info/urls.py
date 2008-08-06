@@ -19,5 +19,6 @@ urlpatterns = patterns('',
         url(r'^elect/$', 'hkn.info.elect.elect'),
         url(r'^revolt/$', 'hkn.info.elect.revolt'),		
 
-        #(r'^?P<committee>\w/$', 'hkn.info.list.list_committee'),
+
+        url(r'^tutor-infobox/(?P<person_id>\d+)/$', 'hkn.info.infobox.tutor', name="person-tutor-infobox"), 
     )					    
