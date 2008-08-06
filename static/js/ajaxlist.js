@@ -2,8 +2,6 @@ IMG_ORDER = { "up" : "/static/images/site/arrow_asc.gif", "down" : "/static/imag
 PLUS_MINUS = { "plus" : "/static/images/site/plus.gif", "minus" : "/static/images/site/minus.gif" };
 
 
-
-
 function register_listeners(){
 	$("#ajaxwrapper .ajaxlist_post").click(function() { send_ajaxinfo("post="+$(this).attr("key")+"="+$(this).attr("val"), "#"); return false; });
 	$("#ajaxwrapper input.ajaxlist_remove_item").click(function () { remove_item($(this).parent().parent(), $(this).attr("value")); return false; });
@@ -18,9 +16,10 @@ function register_listeners(){
 	$("#query_field").keypress( function (e) { if(e.which == 13) { send_ajaxinfo("search", "#"); } });
 }
 
+ajaxlist_checkbox_post_address = "/ajaxlist/"
 function remove_item(row_object, value){
 	var identifier = $("#ajaxwrapper").attr("identifier");
-	$.post("/ajaxlist/remove/", {"identifier" : identifier, "value" : value}, 
+	$.post(ajaxlist_checkbox_post_address, {"action" : "remove", "identifier" : identifier, "value" : value}, 
 		function () { 
 			if ($(row_object).parent().children().size() == 2){
 				window.location.reload( true );
@@ -32,12 +31,6 @@ function remove_item(row_object, value){
 	);
 }
 
-//function suc(data, status) {
-  //  alert("success " + status);
- //   alert("" + data);
-//}
-
-ajaxlist_checkbox_post_address = "/ajaxlist/"
 function checkbox_changed(state, value){
 	var identifier = $("#ajaxwrapper").attr("identifier");
 	
@@ -55,14 +48,13 @@ function checkbox_changed(state, value){
 	    type: "POST",
 	    data: {"action" : action, "identifier" : identifier, "value" : value},
 	    dataType: "script",
-//	    success: suc,
 	    });
 }
 
 function send_ajaxinfo(action, url){
-    if(url == "#") {
-        url = window.location.pathname;
-    }
+	if(url == "#") {
+		url = window.location.pathname;
+	}
     
 	$("img.ajaxspinner").show();
 	var info = {};
@@ -115,7 +107,7 @@ function send_ajaxinfo(action, url){
 	//alert("Action: " + action + ", Page: " + info["page"] +", URL: " + url +", Sort_by: " + sort_by + ", Order: " + order);
 	
 	info = $.param(info);
-    url = url + "?" + info 
+	url = url + "?" + info 
 
 	// Send get request
 	$.get(url, "", function(data){

@@ -55,7 +55,7 @@ def browse_review_tags(request):
     return render_to_response("review/browse_review_tags.html", {'tags' : sorted_tags}, context_instance=RequestContext(request))
     
 def view_tag(request, tag_name = None):
-    d = get_ajaxinfo(request.POST)
+    d = get_ajaxinfo(request.GET)
     if d['sort_by'] == "?":
         d['sort_by'] = "name"
         
@@ -76,7 +76,7 @@ def view_tag(request, tag_name = None):
 def view_problem(request, problem_id = None):
 	problem = get_object_or_404(Problem, pk = problem_id)
 	if request.is_ajax():
-		rating = request.POST.get("rating", None)
+		rating = request.GET.get("rating", None)
 		try:
 			rating = int(rating)
 		except:
@@ -166,11 +166,11 @@ def merge_problems(request, solutions):
     return response
 
 def test(request):
-    d = get_ajaxinfo(request.POST)
+    d = get_ajaxinfo(request.GET)
     if d['sort_by'] == "?":
         d['sort_by'] = "name"
     
-    problems = Problem.objects.filter(name__contains = request.POST.get("query", ""))
+    problems = Problem.objects.filter(name__contains = request.GET.get("query", ""))
     problems = sort_objects(problems, d['sort_by'], d['order'])
     problems = paginate_objects(problems, d, page=d['page'])
     d['list_objects'] = problems
