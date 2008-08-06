@@ -44,27 +44,27 @@ def browse_department(request, department_abbr):
     return render_to_response("exam/browse_department.html", d, context_instance=RequestContext(request))
 
 def list_exams(request, course=None, exam_type=None):
-	d = get_ajaxinfo(request.POST)
-	if d['sort_by'] == "?":
-		d['sort_by'] = "exam_date"
-	d['order'] = 'down'
-	
-	instructor = request.POST.get("instructor", None)
-	
-	exams = Exam.objects.all()
-	if course:
-		exams = exams.query_course(course)
-	if instructor:
-		exams = exams.query_instructor(instructor)
-	if exam_type:
-		exams = exams.filter(exam_type=exam_type)
-	
-	exams = sort_objects(exams, d['sort_by'], d['order'])
-	exams, d = paginate_objects(exams, d, page=(d['page']))
-	d['exams'] = exams
-	
-	return render_ajaxlist_response(request.is_ajax(), "exam/list_exams.html", d, context_instance=RequestContext(request))
-	
+    d = get_ajaxinfo(request.POST)
+    if d['sort_by'] == "?":
+        d['sort_by'] = "exam_date"
+    d['order'] = 'down'
+    
+    instructor = request.POST.get("instructor", None)
+    
+    exams = Exam.objects.all()
+    if course:
+        exams = exams.query_course(course)
+    if instructor:
+        exams = exams.query_instructor(instructor)
+    if exam_type:
+        exams = exams.filter(exam_type=exam_type)
+    
+    exams = sort_objects(exams, d['sort_by'], d['order'])
+    exams = paginate_objects(exams, d, page=(d['page']))
+    d['exams'] = exams
+    
+    return render_ajaxlist_response(request.is_ajax(), "exam/list_exams.html", d, context_instance=RequestContext(request))
+    
 
 if EXAM_LOGIN_REQUIRED:
     browse = login_required(browse)

@@ -38,8 +38,8 @@ def get_category_string(courses = None, exam_types = None, exam_numbers = None):
     return "|".join([st for st in [courses_string, types_string, numbers_string] if len(st) > 0])
            
 
-CATEGORY_FILTERS = {"course" : lambda objects, value: Exam.objects.query_course(value, objects),
-                    "instructor" : lambda objects, value: Exam.objects.query_instructor(value, objects),
+CATEGORY_FILTERS = {"course" : lambda objects, value: objects.query_course(value),
+                    "instructor" : lambda objects, value: objects.query_instructor(value),
                     "type" : lambda objects, value: objects.filter(exam_type__iexact = value),
                     "number" : lambda objects, value: objects.filter(number = value),
                     }
@@ -74,7 +74,7 @@ def get_list_exams_context(request, category = None):
         exams_courses = exams.order_by('id').values('course').distinct()[:5]
 
         course_ids = [c["course"] for c in exams_courses]
-        exams = get_exams_for_categories(list_context["categories"], Exam.objects.filter(course__in = course_ids)).order_by('course_id', 'exam_type', 'number')
+        exams = get_exams_for_categories(list_context["categories"], Exam.objects.filter(course__in = course_ids)).order_by('course', 'exam_type', 'number')
     
         for course_id in course_ids:
             c = Course.objects.get(pk = course_id)
@@ -94,8 +94,8 @@ def get_list_exams_context(request, category = None):
     return list_context
 
 
-def list_exams(request, course = None, exam_type = None):
-    category = get_category_string(courses = [course], exam_types = [exam_type])
+def list_exams(request):
+    category = get_category_string(courses = [request.GET.get('course', None)], exam_types = [request.GET.get('type', None)])
     list_context = get_list_exams_context(request, category)
     list_context["objects_url"] = urlresolvers.reverse("exam.list.list_exams_ajax")
     list_context["parent_template"] = "exam/search.html"

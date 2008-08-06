@@ -13,13 +13,10 @@ from django import db
 
 
 
-class ExamManager(db.models.Manager):
-	def get_query_set(self):
-		return Exam.QuerySet(self.model)
-		
-	def query_course(self, query):                          
-		return self.get_query_set().query_course(query)
-
+class ExamManager(QuerySetManager):
+        def query_course(self, query):                          
+            return self.get_query_set().query_course(query)
+        
         def query_instructor(self, query):   
             return self.get_query_set().query_instructor(query)      
             
@@ -102,19 +99,13 @@ class Exam(db.models.Model):
         return s
         
     class QuerySet(QuerySet):
-	def query_course(self, query):              
-            (dept_abbr, coursenumber) = Course.objects.parse_query(query)
-	     
-	    if dept_abbr and coursenumber:
-		    return self.filter(klass__course__department__abbr__iexact = dept_abbr, klass__course__number__iexact = coursenumber)
-	    if dept_abbr:
-		    return self.filter(klass__course__department__abbr__iexact = dept_abbr)        
-            if coursenumber:
-		    return self.filter(klass__course__number__iexact = coursenumber)    
-            
-	    return self
+        def query_course(self, query):              
+            courses = Course.objects.ft_query(query)
+            return self.filter(course__in = courses)
         
-        def query_instructor(self, query):            
+        def query_instructor(self, query):
+            instrs = Instructor.objects.ft_query(query)
+            return self.filter(klass__instructor__in = instrs)            
             (last, first, dd) = Instructor.objects.parse_query(query)
 
             if first and last:
