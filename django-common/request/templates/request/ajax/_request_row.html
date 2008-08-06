@@ -23,4 +23,8 @@ src="{{STATIC_PREFIX}}images/site/error.png"
 
 <td>{{r.description}}</td>
 <td><input type=text id="{{r.id}}_comment" name="{{r.id}}.comment" value="{{r.comment}}"/></td>
-<td><img class="request_confirm_img" src="{{STATIC_PREFIX}}images/site/valid.png" onClick='confirmRequest(true, {{r.id}});'/><img class="request_confirm_img" src="{{STATIC_PREFIX}}images/site/error.png" onClick='confirmRequest( false, {{r.id}});'/><img class="request_confirm_img" src="{{STATIC_PREFIX}}images/site/inactive.png" onClick='confirmRequest( undefined, {{r.id}});'/></td>
+<td>
+    <img class="request_confirm_img" src="{{STATIC_PREFIX}}images/site/valid.png" onClick='checkbox_changed( true, {{r.id}});'/>
+    <img class="request_confirm_img" src="{{STATIC_PREFIX}}images/site/error.png" onClick='checkbox_changed( undefined, {{r.id}});'/>
+    <img class="request_confirm_img" src="{{STATIC_PREFIX}}images/site/inactive.png" onClick='checkbox_changed( false, {{r.id}});'/>
+</td>

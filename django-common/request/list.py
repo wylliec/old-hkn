@@ -7,6 +7,7 @@ from django.utils import simplejson
 from hkn.settings import STATIC_PREFIX
 
 from ajaxlist import get_list_context, filter_objects
+from ajaxlist.helpers import get_ajaxinfo, sort_objects, paginate_objects, render_ajaxlist_response
 from string import atoi
 
 from request.models import *
@@ -15,58 +16,59 @@ def set_metainfos(requests):
     for request in requests:
         request.set_metainfo()
     return requests
-
-def get_list_requests_context(request, category = None):
-    list_context = get_list_context(request, default_sort = "submitted", default_category = category)
-    query_requests = lambda objects, query: objects
-    filter_permissions = lambda objects: objects.for_user(request.user)
-    requests = filter_objects(Request, list_context, query_objects = query_requests, category_map = {"all" : "objects"}, filter_permissions = filter_permissions, final_filter = set_metainfos)
-    list_context["requests"] = requests
-    list_context["filter_categories"] = {"All Requests" : "all", "Active Requests" : "actives", "Inactive Requests" : "inactives"}
-    list_context["view_template"] = "request/ajax/_list_requests.html"
-
-    return list_context
-
-#@permission_required("all.view.basic")
+    
 def list_requests(request, category):
-    list_context = get_list_requests_context(request, category)
-    list_context["objects_url"] = urlresolvers.reverse("request.list.list_requests_ajax")    
-    list_context["extra_javascript"] = "request/ajax/_list_requests_javascript.html"
-    return render_to_response("ajaxlist/ajaxview.html", list_context, context_instance=RequestContext(request))
+    d = get_ajaxinfo(request.GET)
+    d['category'] = category
+    if d['sort_by'] == "?":
+        d['sort_by'] = "submitted"
+        
+    requests = Request.objects        
+    if category == "actives":
+        requests = Request.actives
+    elif category == "inactives":
+        requests = Request.inactives    
+        
+    requests = requests.for_user(request.user)
+    
+    if d.has_key('query'):
+        requests = requests.ft_query(d['query'])
+    
+    requests = sort_objects(requests, d['sort_by'], None)
+    requests = paginate_objects(requests, d, page=d['page'])
 
-def list_requests_ajax(request):
-    list_context = get_list_requests_context(request)
-    return render_to_response("request/ajax/_list_requests.html", list_context, context_instance = RequestContext(request))
+    d['requests'] = requests
+    
+    return render_ajaxlist_response(request.is_ajax(), "request/list.html", d, context_instance=RequestContext(request))
 
-def list_requests_confirm_ajax(request, request_id):
-    try:
-        r = Request.objects.get(pk = request_id) 
-    except:
-        return HttpResponse("No request object with id " + request_id)
+def list_requests_confirm_ajax(request):
+    r = get_object_or_404(Request, pk=request.POST.get("value", ""))
 
     if request.POST:
-        confirmed = request.POST.get("confirm", None)
-        if confirmed == "true":
+        action = request.POST.get("action", "unknown")
+        confirmed = False
+        if action == "add":
             confirmed = True
-        elif confirmed == "false":
-            confirmed = False
         comment = request.POST.get("comment", "")
         r.set_confirm(confirmed, comment, confirmed_by=request.user)
+        if action == "unknown":
+            r.active = True      
         r.save()
+        
     
     r.set_metainfo()
     confirm_img = None
-    print "hey", r.active, r.confirmed
     if r.active == True:
         confirm_img = STATIC_PREFIX + "images/site/inactive.png"
     elif r.confirmed == False:
         confirm_img = STATIC_PREFIX + "images/site/error.png"
     else:
         confirm_img = STATIC_PREFIX + "images/site/valid.png"
-        
-    json = {"request_id" : r.id, "image" : confirm_img, "comment" : r.comment}
+           
+    js = """$("#%s_image").attr("src", "%s");
+    $("#%s_comment").text("%s");""" % (str(r.id), confirm_img, str(r.id), r.comment)
     
-    return HttpResponse(simplejson.dumps(json), mimetype='application/javascript')
+    return HttpResponse(js, mimetype='application/javascript')
     
     
     

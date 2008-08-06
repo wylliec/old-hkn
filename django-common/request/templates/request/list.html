@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load ajaxtable %}
+
+{% block subtitle %} Requests - {{category|title}}{% endblock %}
+
+{% block js %}
+{{ block.super }}
+{% ajaxlist_js %}
+<script language="javascript">
+ajaxlist_checkbox_post_address = "{% url request-ajax-confirm %}";
+</script>
+{% endblock %}
+
+
+{% block content %}
+    {% ajaxwrapper requests %}
+        {% control search %}
+        {% control pager %}
+        {% control notify %}
+        {% control spinner %}
+        {% ajaxtable requests "request/ajax/_request_header.html" "request/ajax/_request_row.html" %}
+        {% control pager %}
+    {% endajaxwrapper %}
+{% endblock %}
+

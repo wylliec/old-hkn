@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from django.db.models.query import QuerySet
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
@@ -10,7 +11,11 @@ from request.constants import REQUEST_METAINFO_ATTR, REQUEST_OBJECT_CONFIRM_ATTR
 from django.contrib.auth.models import User, Permission
 
 class RequestManager(QuerySetManager):
-    pass
+    def for_user(self, *args, **kwargs):
+        return self.get_query_set().for_user(*args, **kwargs)
+        
+    def ft_query(self, *args, **kwargs):
+        return self.get_query_set().ft_query(*args, **kwargs)        
 
 class ActiveRequestManager(RequestManager):
     def get_query_set(self):
@@ -49,10 +54,16 @@ class Request(models.Model):
         def for_user(self, user):
             if user.is_anonymous():
                 return self.none()
-            return self.filter(permission__in = user.get_all_permissions())
+            permission_ids = set([p[0] for p in self.values_list('permission')])
+            permissions = Permission.objects.in_bulk(list(permission_ids)).values()
+            permissions_codenames = dict((p.full_codename(), p) for p in permissions)
+            codenames_set = set(permissions_codenames.keys()) & user.get_all_permissions()
+            permissions_set = [permissions_codenames[codename] for codename in codenames_set]
+
+            return self.filter(Q(permission__in = permissions_set) | Q(permission_user = user))
 
         def ft_query(self, query):
-            return self
+            return self.filter(description__icontains = query)
 
     def set_metainfo(self):
         self.__dict__.update(getattr(self.confirm_object.__class__, REQUEST_OBJECT_METAINFO_ATTR)(self.confirm_object, self))
@@ -74,7 +85,7 @@ class Request(models.Model):
         self.save()
         
     def __str__(self):
-        return self.get_request_description()
+        return self.description
 
     def save(self):
         self.set_metainfo()

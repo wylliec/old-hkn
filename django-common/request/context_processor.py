@@ -7,7 +7,7 @@ class RequestsWrapper(object):
         self.user = user
 
     def __len__(self):
-        return len(Request.actives.for_user(self.user))
+        return Request.actives.for_user(self.user).count()
 
 def requests(request):
     """
