@@ -24,42 +24,24 @@ from hkn.tutor import output
 
 from re import match, search
 
-
-def schedule(request):
-    context = basicContext(request)
-    context['days'] = TUTORING_DAYS
-    context['timeslots'] = TUTORING_TIMES
-    context['message'] = False
-    context['year'] = CURRENT_YEAR
-    context['season'] = str(currentSeason()).title()
+def get_max_version():
+    return max(tutor.Assignment.objects.values_list('version'))[0]
     
-    assignments = tutor.Assignment.objects.filter(
-           season=currentSeason(),
-           year=CURRENT_YEAR)
-    
-    availCounts = {}
+def get_published_version():
+    try:
+        return int(HKN.objects.get("hkn_tutor_version").value)
+    except:
+        return get_max_version()
+        
+def get_published_assignments(version=None):
+    if not version:
+        version = get_published_version()
+    assignments = tutor.Assignment.objects.filter(version=version)
     if len(assignments) == 0:
-        context['version'] = False
-    else:
-        context['version'] = request.GET.get('version', False)
-        if not context['version']:
-            #NOTE: this method of finding the max version is stupid, don't know how to do it nice in django
-            context['version'] = max([elem.version for elem in assignments])
-    
-    if context['version']:
-        assignments = assignments.filter(version=context['version'])
-        if len(assignments) == 0:
-            context['message'] = "Version " + str(context['version']) + " does not exist."
-            context['version'] = False
-    else:
-        context['message'] = "Tutoring schedule not available."
-        assignments = tutor.Assignment.objects.none() #returns empty result set
-    
-    if not context['version']:
-        return render_to_response('tutor/schedule.html',
-                                  context,
-                                  context_instance = RequestContext(request))
+        return None    
+    return assignments
 
+def get_tutor_info(assignments, tutoring_days=TUTORING_DAYS, tutoring_times=TUTORING_TIMES):
     realAssignments = {} #dictionary from slot to person object
     for assignment in assignments:
         person = assignment.person
@@ -74,17 +56,21 @@ def schedule(request):
     canTutorData = tutor.CanTutor.objects.filter(
            season=currentSeason(),
            year=CURRENT_YEAR)
-    realCanTutorData = None
-
+           
+           
+    realCanTutorData = tutor.CanTutor.objects.none()
     seenTutors = {} #cache the work that we do...
+    """ person -> courses they can tutor"""
+    
     info = [] #list of dictionaries, which contain time and row.  Each row is list of dictionaries
+    
     for office, header in ((CORY, "Cory Office (290 Cory Hall) Schedule"),
                             (SODA, "Soda Office (345 Soda Hall) Schedule")):
         schedule = []
-        for time in context['timeslots']:
+        for time in tutoring_times:
             row = NamedList(name=time)
             scheduleRow = {"timeslot":time, "row":row}
-            for day in context['days']:
+            for day in tutoring_days:
                 slot = Slot(day, time, office)
                 people = realAssignments[slot]
                 curTimeSlot = []
@@ -93,17 +79,70 @@ def schedule(request):
 
                     if person not in seenTutors:
                         data = canTutorData.filter(person=person)
-                        if realCanTutorData is None: realCanTutorData = data #we only want canTutor data for tutors
-                        else: realCanTutorData |= data
+                        realCanTutorData |= data
                         seenTutors[person] = " ".join([x.course.short_name() + (x.current and "cur" or "") for x in data])
                     classes = seenTutors[person]
                     curTimeSlot.append({"name":name, "classes":classes})
                 row.append(curTimeSlot)
             schedule.append(scheduleRow)
-        info.append({"office":office, "header":header, "schedule":schedule})
+        info.append({"office":office, "header":header, "schedule":schedule})    
+        
+    return info, realCanTutorData
+    
+def get_tutor_miniinfo(assignments, day="Monday", tutoring_times=TUTORING_TIMES):
+    realAssignments = {} #dictionary from slot to person object
+    for assignment in assignments:
+        person = assignment.person
+        slot_day = tutor.get_day_from_slot(assignment.slot)
+        if slot_day != day:
+            continue
+        slot = Slot(slot_day,
+                    tutor.get_time_from_slot(assignment.slot),
+                    assignment.office)
+        if slot in realAssignments:
+            realAssignments[slot].append(person)
+        else:
+            realAssignments[slot] = [person]
+        
+    canTutorData = tutor.CanTutor.objects.filter(
+           season=currentSeason(),
+           year=CURRENT_YEAR)
+           
+           
+    realCanTutorData = tutor.CanTutor.objects.none()
+    seenTutors = {} #cache the work that we do...
+    """ person -> courses they can tutor"""
+    
 
+    schedule = []    
+
+    for time in tutoring_times:
+        sodarow = NamedList(name=time)
+        coryrow = NamedList(name=time)
+        scheduleRow = {"timeslot":time, "sodarow":sodarow, "coryrow":coryrow}
+        for row, office in ((sodarow, SODA), (coryrow, CORY)):
+            slot = Slot(day, time, office)
+            people = realAssignments[slot]
+            curTimeSlot = []
+            for person in people:
+                name = person.get_name()
+
+                if person not in seenTutors:
+                    data = canTutorData.filter(person=person)
+                    realCanTutorData |= data
+                    seenTutors[person] = " ".join([x.course.short_name() + (x.current and "cur" or "") for x in data])
+                classes = seenTutors[person]
+                curTimeSlot.append({"name":name, "id":person.id, "classes":classes})
+            row.append(curTimeSlot)
+            
+        schedule.append(scheduleRow)
+        
+    return schedule, realCanTutorData
+
+
+def get_courses_tutored(can_tutor):
     canTutor = {} #dictionary of dept -> list of courses
-    for x in realCanTutorData:
+    for x in can_tutor:
         course = x.course
         if course.department not in canTutor:
             canTutor[course.department] = []
@@ -122,9 +161,30 @@ def schedule(request):
     for x in canTutor:
         canTutor[x].sort(courseSort)
         sortedCanTutor.append({"dept":x, "shortdept": x.my_nice_abbr(), "courses":canTutor[x]})
+    
+    return sortedCanTutor
+
+def schedule(request):
+    context = basicContext(request)
+    context['days'] = TUTORING_DAYS
+    context['timeslots'] = TUTORING_TIMES
+    context['message'] = False
+    context['year'] = CURRENT_YEAR
+    context['season'] = str(currentSeason()).title()
+    
+    assignments = get_published_assignments(request.GET.get('version', None))
+    
+    if not assignments:
+        context['message'] = 'Tutoring schedule not available.'
+        return render_to_response('tutor/schedule.html',
+                                  context,
+                                  context_instance = RequestContext(request))
+                                      
+    info, can_tutor = get_tutor_info(assignments)
+    can_tutor = get_courses_tutored(can_tutor)
 
     context['info'] = info
-    context['canTutor'] = sortedCanTutor
+    context['canTutor'] = can_tutor
 
     return render_to_response('tutor/schedule.html',
                               context,
@@ -140,11 +200,11 @@ def feedback(request):
                               basicContext(request),
                               context_instance = RequestContext(request))
 
-@login_required
+@permission_required('main.hkn_officer')
 def tutor_list(request):
     return HttpResponse(output.output_html(request.POST.get('version', False)))
 
-@login_required
+@permission_required('main.hkn_officer')
 def availabilities_table(request):
     avails = tutor.Availability.objects.filter(season=currentSeason(), year=CURRENT_YEAR).order_by('slot').select_related(depth=1)
     context = basicContext(request)
@@ -165,8 +225,7 @@ def availabilities_table(request):
                               context,
                               context_instance = RequestContext(request))
 
-# Create your views here.
-@login_required
+@permission_required('main.hkn_officer')
 def signup(request, message = False):
     context = basicContext(request)
     context['MAX_COURSES'] = MAX_COURSES
@@ -241,7 +300,7 @@ def signup(request, message = False):
                               context,
                               context_instance = RequestContext(request))
 
-@login_required
+@permission_required('main.hkn_officer')
 def submit_signup(request):
     if request.method != "POST":
         return signup(request, message="Please enter signup information on this form")
@@ -346,7 +405,7 @@ def submit_signup(request):
     #return signup(request, message="Made CanTutor assignments: " + str(newCanTutors))
     #return render_to_response("tutor/signup.html", {},  context_instance = RequestContext(request))
 
-@login_required
+@permission_required('main.hkn_officer')
 def view_signups(request):
     context = basicContext(request, {'showAdminLinks':True})
 #    context['signup_table_width'] = 1200
@@ -586,7 +645,7 @@ def view_signups(request):
                               context,
                               context_instance = RequestContext(request))
 
-@login_required
+@permission_required('main.hkn_officer')
 def submit_assignments(request):
     context = basicContext(request)
     info = QueryDictWrapper(request.POST, defaultValue=False)
@@ -637,7 +696,7 @@ def submit_assignments(request):
     return HttpResponseRedirect("/tutor/view_signups")
 #    return HttpResponse("made " + str(len(new_assignments)) + " assignments at version " + str(version))
 
-@login_required
+@permission_required('info.group_tutor')
 def admin(request, message = False):
     exceptions = []
     for e in HOUR_EXCEPTIONS:
@@ -691,7 +750,7 @@ def admin(request, message = False):
         return render_to_response('tutor/admin.html',
                                   context,
                                   context_instance = RequestContext(request))
-@login_required
+@permission_required('info.group_tutor')
 def params_for_scheduler(request):
     if request.method != 'POST':
         return HttpResponseRedirect("/tutor/admin")
@@ -716,7 +775,7 @@ def params_for_scheduler(request):
     text = text.replace('\n', '#<br />\n') #so it's more readable
     return HttpResponse(text)
 
-@login_required
+@permission_required('info.group_tutor')
 def submit_schedule(request):
     if request.method != 'POST':
         return HttpResponseRedirect("/tutor/admin")

@@ -7,5 +7,5 @@
     <br><br>
     <span style="font-weight: bold">RSVPs:</span>
     {% for rsvp in rsvps %} {{ rsvp.person.first_name }}, {% endfor %}
-    <a href="{% url rsvps-for-event event.id %}">more rsvps...</a>
+    <a href="{% url rsvp-list-for-event event.id %}">more rsvps...</a>
 </div>

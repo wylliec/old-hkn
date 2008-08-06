@@ -1,26 +1,45 @@
 {% extends "event/base.html" %}
+{% load ajaxtable %}
 
-{% block extratitle %} - Event List{% endblock %}
+{% block subtitle %}{{category|title}} Events{% endblock %}
 
-{% block css %}
-{{block.super}}
-<link href="{{STATIC_PREFIX}}css/list.css" rel="stylesheet" />
+{% block js %}
+{{ block.super }}
+{% ajaxlist_js %}
+<script language="javascript" src="{{STATIC_PREFIX}}js/jquery.form.js"></script>
 {% endblock %}
+
 
 {% block content %}
-<table class="list"><tr>
-<th>Name</th>
-<th>Description</th>
-<th>Time</th>
-<th>Event Type</th>
-</tr>
-{% for event in events %}
-<tr>
-<td>{{ event.name }}<br><span style="font-size: 10">(<a href="javascript:void(0)" onclick="show_rsvp_form({{event.id}});">rsvp</a> <a href="/event/edit/{{ event.id}}">edit</a>)</span></td>
-<td>{{ event.description }}<BR><div id="rsvp_{{event.id}}"> </div></td>
-<td>{{ event.start_time|date:"l m/d g:ia" }}-{{ event.end_time|date:"g:ia" }}</td>
-<td><a href="?event_type={{ event.event_type }}">{{ event.get_event_type }}</a></td>
-</tr>
-{% endfor %}
-</table>
+    {% ajaxwrapper events %}
+        {% control search %}
+        {% control pager %}
+        {% control notify %}
+        {% control spinner %}
+        {% ajaxtable events "event/ajax/_list_events_header.html" "event/ajax/_list_events_row.html" %}
+        {% control pager %}
+    {% endajaxwrapper %}
+    
+<script>
+function suc(data, status){
+alert("hi");
+
+$('#edit_ajax_form').ajaxForm( function(data) {
+	$('#edit_ajax_div').text(data);
+});
+}
+
+$('.infobox').cluetip({
+      cluetipClass: 'jtip', 
+      arrows: true, 
+      dropShadow: false,
+      hoverIntent: false,
+      sticky: true,
+      mouseOutClose: false,
+      closePosition: 'title',
+      closeText: '<img src="/static/images/site/close.png" alt="close" />',
+      success: suc
+    });
+</script>    
 {% endblock %}
+

@@ -1,0 +1,19 @@
+{% spaceless %}
+	<td> 
+        <img id="toggle_{{ object.id }}" src="{{STATIC_PREFIX}}images/site/plus.gif" onClick='toggle_options_div("options_{{object.id}}", "toggle_{{object.id}}")' /> 
+		{{ object.event.name }}
+	    <div id="options_{{ object.id }}" style="display: none; font-size:10">
+	    	<span style="font-size: 10">
+		    (<a href="{% url rsvp-view object.id %}">view</a>&nbsp; 
+		    <a href="{% url rsvp-delete object.id %}">del</a>&nbsp;
+		    <a href="{% url rsvp-request-confirmation object.id %}">confirm</a>)
+		    </span></td>
+        </div>
+    </td>
+	<td> {{ object.event.start_time|date:"l m/d g:ia" }}-{{ object.event.end_time|date:"g:ia" }}</td>
+	<td> {{ object.comment }} </td>
+	<td> {% if object.event.rsvp_transportation_necessary %} {{object.transport}} {% else %} - {% endif %} </td>
+	<td> {% if object.is_block %} {{ object.get_block_descriptions }} {% endif %} </td>
+{% endspaceless %}
+
+

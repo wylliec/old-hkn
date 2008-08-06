@@ -17,8 +17,8 @@ def message(request, msg):
 
 def add_events_to_confirm_metainfo(events):
     for e in events:
-        e.confirm = len(RSVP.objects.getConfirmedForEvent(e))
-        e.possible = len(RSVP.objects.getConfirmablesForEvent(e))
+        e.confirm = len(RSVP.objects.get_confirmed_for_event(e))
+        e.possible = len(RSVP.objects.get_confirmables_for_event(e))
     return events
     
 
@@ -74,7 +74,7 @@ def list_events_to_confirm_ajax(request):
 
 def requirements(request):
     person = Person.objects.get(pk = request.user.person_id)
-    confirmed_rsvps = RSVP.objects.getAttendedEvents(person = person)
+    confirmed_rsvps = RSVP.objects.get_attended_events(person = person)
     type_rsvp = {}
     for etype, value in EVENT_TYPE.items():
         type_rsvp[value] = confirmed_rsvps.filter(event__event_type__iexact = etype)

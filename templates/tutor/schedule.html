@@ -2,54 +2,15 @@
 
 {% block title %} {{ block.super }} - Schedule {% endblock %}
 
+{% block js %}
+{{ block.super }}
+<script type="text/javascript" src="{{STATIC_PREFIX}}js/tutoring.js"></script>
+{% endblock %}
+
 {% block subtitle %} Tutoring - {{ season }} {{ year }} Schedule {% endblock %}
 
 {% block tutorcontent %}
-
 {% if not message %}
-<script type="text/javascript">
-<!--
-var color = "#6f6";
-var colorcur = "#fb6";
-
-var locked = false;
-var tutoringcss = document.createElement('style');
-tutoringcss.type = 'text/css';
-tutoringcss.rel = 'stylesheet';
-document.getElementsByTagName("head")[0].appendChild(tutoringcss);
-
-// Highlight using these funky colors.
-function highlight(className) {
-	if(!locked) tutoringcss.innerHTML = '.' + className + 'cur { background: ' + colorcur + ' !important; }' +
-				'.' + className + ' { background: ' + color + ' !important; }';
-}
-
-// Get rid of the css.
-function unhighlight(className){
-	if(!locked) tutoringcss.innerHTML = "";
-}
-
-// Highlight and stay highlighted until we click something else.
-// If you do click a different class, highlight it instead of clearing.
-function locklight(className){
-	if (!locked){
-		highlight(className);
-		locked = className;
-	}
-	else if(locked != className){
-		locked = false;
-		highlight(className);
-		locked = className;
-	}
-	else{
-		locked = false;
-		highlight(className);
-	}
-
-	return false;
-}
-//-->
-</script>
 <div style="float: left; width: 80%; text-align: center">
 	{% for officeinfo in info %}
 	<h3>
@@ -77,6 +38,7 @@ function locklight(className){
 					{{ person.name }}
 				</div>
 				{% endfor %}
+			</td>
 			{% endfor %}
 		</tr>
 		{% endfor %}
@@ -85,16 +47,7 @@ function locklight(className){
 </div>
 
 <div style="float: left; max-width: 20%">
-	{% for data in canTutor|dictsort:"dept" %}
-	<div>
-		<div style="font-weight: bold">
-			{{ data.dept }}
-		</div>
-		{% for course in data.courses %}
-		<a href="#" class="{{ data.shortdept }}{{ course }}" onmouseover="highlight('{{ data.shortdept }}{{ course }}')" onmouseout="unhighlight('{{ data.shortdept }}{{ course }}')" onclick="return locklight('{{ data.shortdept }}{{ course }}')">{{ course }}</a>
-		{% endfor %}
-	</div>
-	{% endfor %}
+    {% include "tutor/_schedule_classes.html" %}
 </div>
 <div style="clear:both">
 </div>

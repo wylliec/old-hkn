@@ -6,24 +6,6 @@
 
 {% block content %}
 
-{# If you do not want this block to appear at all, simply place an empty 'subheader' block in the child template. #}
-{% block subheader %}
-<a href="{% url hkn.tutor.views.schedule %}">Tutoring Schedule</a>
- | <a href="{% url hkn.tutor.views.feedback %}">Tutoring Feedback</a>
- | <a href="{% url hkn.tutor.views.contact %}">Contact Tutoring</a>
-{% if user %}
- | <a href="{% url hkn.tutor.views.signup %}">Signup</a>
-{% endif %}
-{% if not showAdminLinks %}
- | <a href="{% url hkn.tutor.views.admin %}">Administration</a>
-{% else %}
-<hr />
-<a href="{% url hkn.tutor.views.view_signups %}">View Signups</a>
- | <a href="{% url hkn.tutor.views.admin %}">Administration Controls</a>
-{% endif %}
-<hr />
-{% endblock %}
-
 {% if message %}
 <font size=3 color="red">{{ message }}</font>
 <hr />

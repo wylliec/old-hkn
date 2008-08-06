@@ -23,15 +23,11 @@ except:
 
 
 class AllEventsManager(QuerySetManager):
-    def query(self, query, events = None):
-        if events == None:
-            events = self.get_query_set()
-        if query and len(query.strip()) != 0:
-            for q in query.split(" "):
-                if len(q.strip()) == 0:
-                    continue
-                events = events.filter(Q(name__icontains = q) | Q(location__icontains = q) | Q(description__icontains = q))
-        return events
+    def ft_query(self, query):
+        return self.get_query_set().ft_query(query)
+        
+    def filter_permissions(self, user):
+        return self.get_query_set().filter_permissions(user)
 
 class FutureEventsManager(AllEventsManager):
         def get_query_set(self):
@@ -76,10 +72,7 @@ class Event(models.Model):
     
 
     view_permission = models.ForeignKey(Permission, related_name = 'event_view_required')
-    rsvp_permission = models.ForeignKey(Permission, related_name = 'event_rsvp_required')
-
-    
-
+    rsvp_permission = models.ForeignKey(Permission, related_name = 'event_rsvp_required')   
 
     event_type = models.CharField(max_length = 10, choices = EVENT_TYPE.choices())
 
@@ -89,14 +82,17 @@ class Event(models.Model):
         return self.name
 
     class QuerySet(QuerySet):
+        def ft_query(self, query):
+            if query and len(query.strip()) != 0:
+                for q in query.split(" "):
+                    if len(q.strip()) == 0:
+                        continue
+                    self = self.filter(Q(name__icontains = q) | Q(location__icontains = q) | Q(description__icontains = q))
+            return self    
+    
         def filter_permissions(self, user):
             perms = user.get_all_permissions()
-            events = list(self)
-            for event in events:
-                view_perm_code = "%s.%s" % (event.view_permission.content_type.app_label, event.view_permission.codename)
-                if view_perm_code not in perms:
-                    events.remove(event)
-            return events
+            return filter(lambda event: event.view_permission.full_codename() in perms, list(self))
 
     def rsvp_whole(self):
         return self.rsvp_type == RSVP_TYPE.WHOLE
@@ -154,97 +150,34 @@ def getCandidates():
     #return Person.fogies.all()
 
 class RSVPManager(models.Manager):
-    def getConfirmedForEvent(self, e):
+    def get_confirmed_for_event(self, e):
         return self.get_query_set().filter(event = e, vp_confirm = True)
 
-    def getConfirmablesForEvent(self, e):
+    def get_confirmables_for_event(self, e):
         return e.rsvp_set.filter(person__in = getCandidates())
 
-    def getAttendedEvents(self, person):
+    def get_attended_events(self, person):
         if person.member_status == MEMBER_TYPE.CANDIDATE:
             return self.get_query_set().filter(person = person, vp_confirm = True)
         return self.get_query_set().filter(person = person)
 
-    def getConfirmedEvents(self, person):
+    def get_confirmed_events(self, person):
         return self.get_query_set().filter(person = person, vp_confirm = True)
 
-    def get_query_set(self):
-        return super(RSVPManager, self).get_query_set()
+    def query_event(self, query):
+        return self.get_query_set().ft_query_event(query)
     
 
-    def order(self, sort_field, rsvps):
-        # the below should no longder be necessary with queryset-refactor
-        # but let's keep it around for now just in case...
-        return rsvps.order_by(sort_field)
-        if sort_field.find("event__") != -1:
-            sort_field = sort_field.replace("event__", "")
-            return RSVP.objects.order_by_event_field(sort_field, rsvps)
-        if sort_field.find("person__") != -1:
-            sort_field = sort_field.replace("person__", "")
-            return RSVP.objects.order_by_person_field(sort_field, rsvps)
-        return rsvps.order_by(sort_field)
+    def query_person(self, query):
+        return self.get_query_set().ft_query_person(query)
     
-
-    def order_by_event_field(self, event_field, objects):
-        negate = ""
-        if event_field[0] == "-":
-            event_field = event_field[1:]
-            negate = "-"
-        return objects.extra(where=["event_rsvp.event_id = event_event.id"], tables=["event_event"]).order_by(negate + "event_event." + event_field)
-    
-
-    def order_by_person_field(self, person_field, objects):
-        negate = ""
-        if person_field[0] == "-":
-            person_field = person_field[1:]
-            negate = "-"		
-        return objects.extra(where=["event_rsvp.person_id = info_person.id"], tables=["info_person"]).order_by(negate + "info_person." + person_field)
-
-    def query_event(self, query, rsvps = None):
-        if rsvps == None:
-            rsvps = self.get_query_set()
-            
-
-        if query and len(query.strip()) != 0:
-            for q in query.split(" "):
-                if len(q.strip()) == 0:
-                    continue
-                rsvps = rsvps.filter(Q(event__name__icontains = q) | Q(event__location__icontains = q) | Q(event__description__icontains = q))
-        return rsvps
-    
-
-    def query_person(self, query, rsvps = None):
-        if rsvps == None:
-            rsvps = self.get_query_set()
-            
-
-        if query and len(query.strip()) != 0:
-            for q in query.split(" "):
-                if len(q.strip()) == 0:
-                    continue
-                rsvps = rsvps.filter(Q(person__first__icontains = q) | Q(person__last__icontains = q) | Q(person__username__icontains = q))
-        return rsvps
-    
-
     def query(self, query, rsvps = None):
-        if rsvps == None:
-            rsvps = self.get_query_set()
-            
-
-        if query and len(query.strip()) != 0:
-            for q in query.split(" "):
-                if len(q.strip()) == 0:
-                    continue
-                rsvps = rsvps.filter(Q(event__name__icontains = q) | Q(event__location__icontains = q) | Q(event__description__icontains = q)
-                                     | Q(person__first__icontains = q) | Q(person__last__icontains = q) | Q(person__username__icontains = q))
-        return rsvps
-
-        
+        return self.get_query_set().ft_query(query)
 
 class FutureRSVPManager(RSVPManager):
-        def get_query_set(self):
-                start_time = datetime.date.today() - datetime.timedelta(days = 1)
-                return super(FutureRSVPManager, self).get_query_set().filter(event__start_time__gte = start_time)
+    def get_query_set(self):
+        start_time = datetime.date.today() - datetime.timedelta(days = 1)
+        return super(FutureRSVPManager, self).get_query_set().filter(event__start_time__gte = start_time)
 
 
 class RSVP(models.Model):
@@ -281,6 +214,34 @@ class RSVP(models.Model):
 
     def request_confirmation(self):
         return request.utils.request_confirmation(self, self.person, Permission.objects.get(codename="group_vp"))
+    
+    class QuerySet(QuerySet):
+        def ft_query_event(self, query):    
+            if query and len(query.strip()) != 0:
+                for q in query.split(" "):
+                    if len(q.strip()) == 0:
+                        continue
+                    rsvps = rsvps.filter(Q(event__name__icontains = q) | Q(event__location__icontains = q) | Q(event__description__icontains = q))
+            return rsvps
+        
+    
+        def ft_query_person(self, query):
+            if query and len(query.strip()) != 0:
+                for q in query.split(" "):
+                    if len(q.strip()) == 0:
+                        continue
+                    rsvps = rsvps.filter(Q(person__first__icontains = q) | Q(person__last__icontains = q) | Q(person__username__icontains = q))
+            return rsvps
+        
+    
+        def ft_query(self, query):
+            if query and len(query.strip()) != 0:
+                for q in query.split(" "):
+                    if len(q.strip()) == 0:
+                        continue
+                    rsvps = rsvps.filter(Q(event__name__icontains = q) | Q(event__location__icontains = q) | Q(event__description__icontains = q)
+                                         | Q(person__first__icontains = q) | Q(person__last__icontains = q) | Q(person__username__icontains = q))
+            return rsvps
 
     class Meta:
         unique_together = (("event", "person"),)
@@ -290,9 +251,9 @@ def get_rsvp_metainfo(rsvp, request):
 
     metainfo['title'] = "Confirm RSVP"
     metainfo['description'] = "Confirm %s's RSVP for %s" % (rsvp.person.name, rsvp.event.name)
-    metainfo['links'] = (("rsvp", urlresolvers.reverse("hkn.event.rsvp.rsvp.view", kwargs = {"rsvp_id" : rsvp.id})),
-                     ("person", urlresolvers.reverse("hkn.info.person.view", kwargs = {"person_id" : rsvp.person_id})),
-                     ("event", urlresolvers.reverse("hkn.event.event.view", kwargs = {"event_id" : rsvp.event_id})))
+    metainfo['links'] = (("rsvp", urlresolvers.reverse("rsvp-view", kwargs = {"rsvp_id" : rsvp.id})),
+                     ("person", urlresolvers.reverse("person-view", kwargs = {"person_id" : rsvp.person_id})),
+                     ("event", urlresolvers.reverse("event-view", kwargs = {"event_id" : rsvp.event_id})))
     metainfo['confirmed'] = rsvp.vp_confirm 
     return metainfo
 

@@ -18,7 +18,7 @@ def message(request, msg):
     return render_to_response("event/message.html", {"message" : msg},  context_instance = RequestContext(request))
 
 def rsvp_from_form_instance(form, rsvp = RSVP()):
-    cd = form.clean_data
+    cd = form.cleaned_data
     if cd.has_key('comment'):
         rsvp.comment = cd['comment']
     else:
@@ -57,13 +57,12 @@ def delete(request, rsvp_id = "-1"):
     rsvp = get_object_or_404(RSVP, pk = rsvp_id)
     
 
-    if rsvp.person_id != request.user.person_id:
+    if rsvp.person_id != request.user.id:
         return message(request, "Can't delete someone else's RSVP!")
 
     rsvp.delete()
-    
 
-    return message(request, "Your RSVP for event " + str(e.name) + " has been deleted!")
+    return message(request, "Your RSVP for event " + str(rsvp.event.name) + " has been deleted!")
 
 def request_confirmation(request, rsvp_id = "-1"):
     rsvp = get_object_or_404(RSVP, pk = rsvp_id)
@@ -85,7 +84,7 @@ def view(request, rsvp_id = "-1"):
     return render_to_response("event/rsvp/view.html", d, context_instance = RequestContext(request))
     
 
-def edit(request, event_id = "-1"):
+def edit2(request, event_id = "-1"):
     e = get_object_or_404(Event, pk = event_id)
 
     if e.rsvp_type == RSVP_TYPE.NONE:
@@ -119,15 +118,16 @@ def edit(request, event_id = "-1"):
 def new(request, event_id):
     return edit(request, event_id)
 
-def edit_ajax(request):
-    person = request.user.person
+def edit(request, event_id):
+
 
     #if not request.POST or not request.POST.has_key("event_id"):
     #    return HttpResponse("no post or no event_id in post")
 
     #event_id = atoi(request.POST["event_id"])
-    event_id = atoi(request.REQUEST["event_id"])
+    #event_id = atoi(request.REQUEST["event_id"])
     e = get_object_or_404(Event, pk = event_id)
+    person = request.user.person
 
     new_rsvp = False
     try:
@@ -151,5 +151,7 @@ def edit_ajax(request):
 
     d = {"person" : person, "event" : e, "form" : form}
 
-    return render_to_response('event/rsvp/ajax/edit_ajax.html', d, context_instance = RequestContext(request))
-
+    if request.is_ajax():
+        return render_to_response('event/rsvp/edit_ajax.html', d, context_instance = RequestContext(request))
+    else:
+        return render_to_response('event/rsvp/edit.html', d, context_instance = RequestContext(request))

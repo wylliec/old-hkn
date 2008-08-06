@@ -1,28 +1,18 @@
 {% spaceless %}
-
-<tr>
-
-	<td><a href="{% url hkn.event.event.view object.id %}">{{ object.name }}</a><br></td>
-
+	<td><a class="infobox" rel="{% url rsvp-edit object.id %}" href="{% url event-view object.id %}">{{ object.name }}</a><br></td>
     <td>
-        <span style="font-size: 8">
+        <span style="font-size: x-small">
             {% if object.can_rsvp %}
-                <br><a href="{% url hkn.event.rsvp.list.list_for_event object.id %}"> {{ object.num_rsvps }} rsvps </a> 
+                <br><a href="{% url rsvp-list-for-event object.id %}"> {{ object.num_rsvps }} rsvps </a> 
                 <br><a href="javascript:void(0)" onclick="show_rsvp_form({{object.id}});">rsvp </a>  
             {% endif %} 
             {% if can_edit %}
-                <br><a href="{% url hkn.event.event.edit object.id %}">edit</a> 
+                <br><a href="/admin/event/event/{{object.id}}/">edit</a> 
             {% endif %}
         </span>
     </td>
-
 	<td>{{ object.description }}<BR><div id="rsvp_{{object.id}}"> </div></td>
-
 	<td>{{ object.start_time|date:"l m/d g:ia" }}-{{ object.end_time|date:"g:ia" }}</td>
-
-	<td><a href="javascript:void(0)" onclick="filter('{{ sort }}', '1', '{{ max }}', '{{ category }},' + '{{ object.event_type }}', '{{ query }}');"> {{ object.get_event_type }} </a> </td>
-
-</tr>
-
+	<td>{{ object.get_event_type }}</a> </td>
 {% endspaceless %}
 

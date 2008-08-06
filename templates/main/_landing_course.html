@@ -1,0 +1,26 @@
+        <table class="landing_courses">
+            <div>
+                <h1>Course Surveys</h1>
+                <h3>Search EECS course surveys</h3>                
+                <input type=input> <input type=submit value="search!">                                
+                <br/><span style="font-size: x-small">search for courses or instructors</span>
+            </div>
+            <div>
+                <h1>Exam Files</h1>
+                <h3>Search for exam files!</h3>
+                <form action="{% url exam-list %}" method="GET">
+                {{ exam_files_autocomplete|safe }}
+                <input type=submit value="search!">
+                </form>
+                <br/><span style="font-size: x-small">search for courses e.g. CS61C, math 55, E77</span>                
+            </div>        
+            <div>
+                <h1>Review Problems</h1>
+                <h3>Search for review problems!</h3>
+                <form action="{% url review-search %}" method="GET">
+                <input type=input name="query"> <input type=submit value="search!">                                
+                </form>
+                <br/><span style="font-size: x-small">search for courses or topics e.g. CS61C, fourier series</span>                                
+            </div>
+        </table>
+

@@ -1,16 +1,18 @@
 #tutoring models
 from django.db import models
+from django.db.models.query import QuerySet
 from hkn.info.models import Person
 from hkn.tutor.constants import *
 import hkn.tutor.scheduler as scheduler
 
+from nice_types.db import QuerySetManager
+
 from course import models as courses
 import time
 
-# Create your models here.
+
 
 #Models pertaining to tutoring signups
-
 class Availability(models.Model):
     """ Models a person's time and office availability for a given season/year. """
     
@@ -175,9 +177,13 @@ class Availability(models.Model):
     
     parameters_for_scheduler = staticmethod(parameters_for_scheduler)
     
+class AssignmentManager(QuerySetManager):        
+    def latest_version(self, *args, **kwargs):
+        return self.get_query_set().latest_version(*args, **kwargs)
     
 class Assignment(models.Model):
     """ Models when a person will tutor for a given season/year and schedule version. """
+    objects = AssignmentManager()
     
     person = models.ForeignKey(Person)
     slot = models.CharField(max_length = 30)
@@ -195,7 +201,15 @@ class Assignment(models.Model):
         return self.office == "Cory"
     def at_soda(self):
         return self.office == "Soda"
+        
+    class QuerySet(QuerySet):
+        def latest_version(self):
+            return self.filter(version = Assignment.get_max_version())
+            
+    def __unicode__(self):
+        return "<Assignment %s %s %s>" % (self.person.name, self.slot, self.office)
     
+    @staticmethod
     def get_max_version(seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR, season = False):
         """
         NOTE: this is REALLY INEFFICIENT!
@@ -203,11 +217,16 @@ class Assignment(models.Model):
         """
         season = season or courses.Season.objects.get(name__iexact = seasonName)
         assigns = Assignment.objects.filter(season=season, year=year)
-        if len(assigns) == 0:
-            return MIN_VERSION - 1
-        return max([x.version for x in assigns])
-    get_max_version = staticmethod(get_max_version)
-    
+        return max(assigns.values_list('version').distinct())[0]
+        
+    @staticmethod
+    def get_published_version():
+        try:
+            return int(HKN.objects.get("hkn_tutor_version").value)
+        except:
+            return get_max_version()
+            
+    @staticmethod
     def make_assignments_from_state(state, seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR):
         """
         convert a state into assignments.  Expects that each value in state is a string
@@ -231,21 +250,26 @@ class Assignment(models.Model):
         
         #all assignments created successfully, so save them
         for a in assignments:
-            a.save()
-        
+            a.save()        
         return
     
-    make_assignments_from_state = staticmethod(make_assignments_from_state)
-    
+class CanTutorManager(QuerySetManager):
+    def latest(self):
+        return self.get_query_set().latest()
 
 class CanTutor(models.Model):
     """ Models who can tutor what for a particular season/year. """
+    objects = CanTutorManager()
     
     person = models.ForeignKey(Person)
     course = models.ForeignKey(courses.Course)
     season = models.ForeignKey(courses.Season)
     year = models.PositiveIntegerField()
     current = models.BooleanField()
+    
+    class QuerySet(QuerySet):
+        def latest(self):
+            return self.filter(year=CURRENT_YEAR, season=Season.objects.get(name=CURRENT_SEASON_NAME))
     
     def __cmp__(self, other):
         return cmp(self.course,

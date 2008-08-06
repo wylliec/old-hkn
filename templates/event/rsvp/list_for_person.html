@@ -1,0 +1,24 @@
+{% extends "event/base.html" %}
+{% load ajaxtable %}
+
+{% block subtitle %}RSVPs - {{ person.name }}{% endblock %}
+
+{% block js %}
+{{ block.super }}
+{% ajaxlist_js %}
+{% endblock %}
+
+
+{% block content %}
+
+{% if show_confirm_form %}
+    {% ajaxwrapper rsvps %}
+        {% ajaxtable rsvps "event/rsvp/ajax/_person_header.html" "event/rsvp/ajax/_person_row.html" checks=on %}
+    {% endajaxwrapper %}
+{% else %}
+    {% ajaxwrapper rsvps %}
+        {% ajaxtable rsvps "event/rsvp/ajax/_person_header.html" "event/rsvp/ajax/_person_row.html" %}
+    {% endajaxwrapper %}
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,12 @@
+	<td>
+    <img id="toggle_{{ rsvp.id }}" src="{{STATIC_PREFIX}}images/site/plus.gif" onClick='toggle_options_div("options_{{rsvp.id}}", "toggle_{{rsvp.id}}")' /> 
+	{{ rsvp.person.name }}
+	<div id="options_{{ rsvp.id }}" style="display: none; font-size:10">
+		rsvp: <a href="{% url rsvp-view rsvp.id %}">view</a> <a href="{% url rsvp-edit rsvp.event_id %}">edit</a> <a href="{% url rsvp-delete rsvp.id %}">del</a> 
+		<br>event: 
+	</div>	
+	</td>
+	<td>{{ rsvp.person.extendedinfo.get_phone }}</td>
+	<td> {{ rsvp.comment }} </td>
+	{% if event.rsvp_block %} <td> {{ rsvp.get_block_descriptions }} </td> {% endif %}
+	{% if event.rsvp_transportation_necessary %} <td> {{ rsvp.transport }} </td> {% endif %}
