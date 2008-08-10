@@ -6,19 +6,19 @@ def add(request, obj_name, value):
     else:
         request.session[obj_name] = set([value])
     
-    return HttpResponse("alert('success')", mimetype='application/javascript')
+    return HttpResponse("", mimetype='application/javascript')
     
 def remove(request, obj_name, value):
     if obj_name in request.session:
         request.session[obj_name].remove(value)
     
-    return HttpResponse("alert('success')", mimetype='application/javascript')
+    return HttpResponse("", mimetype='application/javascript')
 
 def clear(request, obj_name):
 	if obj_name in request.session:
 		del request.session[obj_name] 
 	
-	return HttpResponse("alert('success')", mimetype='application/javascript')
+	return HttpResponse("", mimetype='application/javascript')
 	
 #Called by ajax post requests
 def post(request):

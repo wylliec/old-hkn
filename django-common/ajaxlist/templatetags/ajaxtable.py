@@ -101,24 +101,40 @@ class AjaxControlNode(template.Node):
 class AjaxWrapperNode(template.Node):
 	def __init__(self, nodelist, options):
 		identifier = "none"
+		filters = None
+		
 		if len(options) >= 1:
 			identifier = options[0]
-		
-		nodelist.insert(0, TextNode('<div id="ajaxwrapper" identifier="'+ identifier +'">'))
-		nodelist.append(TextNode("</div>"))
+		if len(options) >= 2:
+			filters = VariableNode(options[1])
+			
 		self.nodelist = nodelist
 		self.identifier = identifier
+		self.filters = filters
 		
 	def __repr__(self):
 		return "<AjaxWrapperNode: " + self.identifier+ ">"
 	
 	def render(self, context):
+		nodelist = self.nodelist
+		filters = self.filters
+		
 		context['ajaxlist_identifier'] = self.identifier
-		return self.nodelist.render(context)
+		
+		try:
+			context['ajaxlist_filters'] = filters.resolve(context)
+			t = get_template("ajaxlist/_filters.html")
+			nodelist = t.nodelist + nodelist
+		except:
+			pass
+			
+		nodelist.insert(0, TextNode('<div id="ajaxwrapper" identifier="'+ self.identifier +'">'))
+		nodelist.append(TextNode("</div>"))
+		return nodelist.render(context)
 		
 	def render_inside(self, context):
 		context['ajaxlist_identifier'] = self.identifier
-		return NodeList(self.nodelist[1:-1]).render(context)
+		return self.nodelist.render(context)
 
 class SpecialForNode(template.defaulttags.ForNode):
 	"""

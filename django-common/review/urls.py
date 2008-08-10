@@ -2,7 +2,6 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
     url(r'^$', 'review.views.browse_review_tags', name='review-home'),
-    url(r'^test/$', 'review.views.test', name='review-test'),
     url(r'^submit/$', 'review.views.submit', name='review-submit'),
     url(r'^tag/(?P<tag_name>.*)/$', 'review.views.view_tag', name='review-tag'),
     url(r'^problem/(?P<problem_id>.*)/$', 'review.views.view_problem', name='review-problem'),

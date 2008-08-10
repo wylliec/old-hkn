@@ -16,7 +16,9 @@
 {% block reviewcontents %}
 
 {% ajaxwrapper problems %}
+	{% control pager %}
 	{% ajaxtable problems "review/_header.html" "review/_problem.html" checks=on %}
+	{% control pager %}
 {% endajaxwrapper %}
 <br/>
 <a href="{% url review-selected %}">View Selected Problems </a>, <a class="ajaxlist_clear_items" href="#">Clear Selected Problems</a>

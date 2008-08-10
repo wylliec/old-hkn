@@ -1,8 +1,21 @@
 {% extends "base.html" %}
+{% load ajaxtable %}
 
 {% block subtitle %} Review Problems {% endblock %}
 
 {% block content %}
+	{% block search %}
+	<div style="text-align: right;">{% control search %}</div>
+	{% endblock %}
+	{% block browse_link %}
+	<div style="text-align: right;"><a href="{% url review-browse-tags %}">Browse Problems</a></div>
+	<br />
+	{% endblock %}
 {% block reviewcontents %}
 {% endblock %}
+
+{% block submit_link %}
+<h4>Interested in contributing? Submit a review problem <a href="{% url review-submit %}">here</a>.</h4>
+{% endblock %}
+
 {% endblock %}

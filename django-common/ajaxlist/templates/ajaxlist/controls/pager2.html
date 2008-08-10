@@ -1,10 +1,10 @@
-{% load ajaxlist_extras %}
+{% load addparam_tag %}
 
 {% spaceless %}
 <div class="pager"  style="text-align:right">
 <img src="/static/images/site/arrow_desc.gif">
 {% if has_previous_page %}
-<a class="prev_page" href="#" >Previous</a>
+<a class="prev_page" href="{% addurlparameter page prev_page %}" >Previous</a>
 {% else %}
 Previous
 {% endif %}
@@ -20,7 +20,7 @@ Previous
 </select>
 |
 {% if has_next_page %}
-<a class="next_page" href="#" >Next</a>
+<a class="next_page" href="{% addurlparameter page next_page %}" >Next</a>
 {% else %}
 Next
 {% endif %}

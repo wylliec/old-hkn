@@ -14,13 +14,14 @@
 {% block subtitle %}Review Problems - Search {% endblock %}
 
 {% block reviewcontents %}
-<span>Search by tag: {% control search %}</span> 
 
 {% ajaxwrapper problems %}
 	{% if results %}
 	{% control pager %}
 	{% ajaxtable results "review/_header.html" "review/_problem.html"  checks=on%}
 	{% control pager %}
+	{% else %}
+	No search results
 	{% endif %}
 {% endajaxwrapper %}
 <br />

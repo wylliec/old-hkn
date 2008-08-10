@@ -1,0 +1,5 @@
+<div id="ajaxlist_filters" style="display: none">
+{% for key, value, in ajaxlist_filters.item %}
+<input class="ajaxlist_active_filter" type=hidden name={{key}} value={{value}} />
+{% endfor %}
+</div>
