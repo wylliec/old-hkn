@@ -90,11 +90,10 @@ def submit(request):
 	return render_to_response("review/submit.html", {'form' : form}, context_instance=RequestContext(request))
 	
 def view_selected(request):
+	problems = Problem.objects.none()
 	if 'ajaxlist_problems' in request.session:
 		problems = Problem.objects.filter(pk__in=list(request.session['ajaxlist_problems']))
-	else:
-		raise Http404
-		
+
 	tags = get_tag_query(request.GET)
 	if tags != "":
 		problems = problems & TaggedItem.objects.get_by_model(Problem, tags)
