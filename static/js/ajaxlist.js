@@ -67,7 +67,7 @@ function send_ajaxinfo(action, url){
 	// Clear action?
 	if (action_pair[0] == "clear"){
 		var identifier = $("#ajaxwrapper").attr("identifier");
-		$.post(ajaxlist_checkbox_post_address, {"action": "clear", "identifier" : identifier, "value" : undefined});
+		$.get(ajaxlist_checkbox_post_address + "clear/", {"identifier" : identifier});
 	}
 	
 	// Retrieve the page

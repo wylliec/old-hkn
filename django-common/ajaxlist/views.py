@@ -14,14 +14,39 @@ def remove(request, obj_name, value):
     
     return HttpResponse("", mimetype='application/javascript')
 
-def clear(request, obj_name):
+def clear(request):
+	obj_name = request.GET.get("identifier", None)
+	if not obj_name:
+		raise Http404
+	
+	obj_name = 'ajaxlist_' + obj_name
 	if obj_name in request.session:
 		del request.session[obj_name] 
 	
-	return HttpResponse("", mimetype='application/javascript')
-	
-#Called by ajax post requests
+	if request.is_ajax():
+		return HttpResponse("", mimetype='application/javascript')
+	else:
+		url = request.GET.get("redirect_to", "/")
+		return HttpResponseRedirect(url);
+
 def post(request):
+	action = request.POST.get("submit", None)
+	obj_name = request.POST.get("identifier", None)
+	if not action or not obj_name or obj_name == "none":
+		raise Http404
+	
+	for value in request.POST.getlist("object"):
+		if action == "Add":
+			add(request, "ajaxlist_%s" % obj_name, value)
+		if action == "Remove":
+			remove(request, "ajaxlist_%s" % obj_name, value)
+			
+	
+	return HttpResponseRedirect(request.POST.get("redirect_to", "/"))
+	
+
+#Called by ajax post requests
+def post_ajax(request):
 	value = request.POST.get("value", None)
 	action = request.POST.get("action", "unknown").lower()
 	obj_name = request.POST.get("identifier", None)
@@ -31,7 +56,5 @@ def post(request):
 		return add(request, "ajaxlist_%s" % obj_name, value)
 	if action == "remove":
 		return remove(request, "ajaxlist_%s" % obj_name, value)
-	if action == "clear":
-		return clear(request, "ajaxlist_%s" % obj_name)
 		
 	return HttpResponse("alert('failed')")    

@@ -1,6 +1,7 @@
 from django.template.loader import get_template
 from django.template import VariableNode, NodeList, TextNode, Variable
 from django.template.loader_tags import IncludeNode
+from django.core.urlresolvers import reverse
 from django import template
 
 register = template.Library()
@@ -127,8 +128,15 @@ class AjaxWrapperNode(template.Node):
 			nodelist = t.nodelist + nodelist
 		except:
 			pass
-			
+		
+		if self.identifier != "none":
+			nodelist.insert(0, TextNode('<form method="POST" action="%s">' % "/ajaxlist/post" ))
 		nodelist.insert(0, TextNode('<div id="ajaxwrapper" identifier="'+ self.identifier +'">'))
+		if self.identifier != "none":
+			nodelist.append(TextNode('<input type=hidden name="identifier" value=%s />' % self.identifier))
+			url = context['request'].path + "?" + context['request'].GET.urlencode()
+			nodelist.append(TextNode('<input type=hidden name="redirect_to" value="%s" />' % url))
+			nodelist.append(TextNode('</form>'))
 		nodelist.append(TextNode("</div>"))
 		return nodelist.render(context)
 		

@@ -116,7 +116,11 @@ def merge_problems(request, solutions):
 	command += "output tmp.pdf"
 	
 	os.system(command)
-	result = file("tmp.pdf", "rb")
+	try:
+		result = file("tmp.pdf", "rb")
+	except:
+		raise Http404
+		
 	response = HttpResponse(result.read(), mimetype='application/pdf')
 	
 	if not solutions:
