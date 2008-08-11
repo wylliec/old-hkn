@@ -130,7 +130,7 @@ class AjaxWrapperNode(template.Node):
 			pass
 		
 		if self.identifier != "none":
-			nodelist.insert(0, TextNode('<form method="POST" action="%s">' % "/ajaxlist/post" ))
+			nodelist.insert(0, TextNode('<form method="POST" action="%s">' % reverse('ajaxlist-post') ))
 		nodelist.insert(0, TextNode('<div id="ajaxwrapper" identifier="'+ self.identifier +'">'))
 		if self.identifier != "none":
 			nodelist.append(TextNode('<input type=hidden name="identifier" value=%s />' % self.identifier))

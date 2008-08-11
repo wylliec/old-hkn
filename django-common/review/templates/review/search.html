@@ -25,5 +25,5 @@
 	{% endif %}
 {% endajaxwrapper %}
 <br />
-<a href="{% url review-selected %}">View Selected Problems </a>, <a class="ajaxlist_clear_items" href="/ajaxlist/clear?redirect_to='{{request.path}}'&identifier=problems">Clear Selected Problems</a>
+<a href="{% url review-selected %}">View Selected Problems </a>, <a class="ajaxlist_clear_items" href="{% url ajaxlist-clear %}?redirect_to='{{request.path}}'&identifier=problems">Clear Selected Problems</a>
 {% endblock %}

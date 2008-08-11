@@ -59,7 +59,7 @@ function send_ajaxinfo(action, url){
 	
 	var action_pair = action.split("=");
 	
-	// Post action?
+	// Filter action?
 	if (action_pair[0] == "filter"){
 		info[action_pair[1]] = action_pair[2];
 	}
