@@ -2,6 +2,7 @@ from hkn.event.models import *
 from hkn.event.forms import *
 
 from django.shortcuts import render_to_response
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.template import RequestContext
 from django import forms
@@ -9,13 +10,12 @@ from django.shortcuts import get_object_or_404
 
 from ajaxlist import get_list_context, filter_objects
 
+from event.rsvp.list import list_for_person
+
 from hkn.event.constants import RSVP_TYPE, EVENT_TYPE
 
 import datetime
 from string import atoi
-
-def message(request, msg):
-    return render_to_response("event/message.html", {"message" : msg},  context_instance = RequestContext(request))
 
 def rsvp_from_form_instance(form, rsvp = RSVP()):
     cd = form.cleaned_data
@@ -58,23 +58,25 @@ def delete(request, rsvp_id = "-1"):
     
 
     if rsvp.person_id != request.user.id:
-        return message(request, "Can't delete someone else's RSVP!")
+        request.user.message_set.create(message="Can't delete someone else's RSVP!")
+    else:
+        rsvp.delete()
+        request.user.message_set.create(message="Your RSVP for %s has been deleted" % str(rsvp.event.name))
+    
+    return HttpResponseRedirect(reverse("rsvp-list-for-person", kwargs={"person_id" :"me"}))
 
-    rsvp.delete()
-
-    return message(request, "Your RSVP for event " + str(rsvp.event.name) + " has been deleted!")
 
 def request_confirmation(request, rsvp_id = "-1"):
     rsvp = get_object_or_404(RSVP, pk = rsvp_id)
     
 
-    if rsvp.person_id != request.user.person_id:
-        return message(request, "Can't request to confirm for RSVP!")
-    
-    rsvp.request_confirmation()
-    
+    if rsvp.person_id != request.user.id:
+        request.user.message_set.create(message="Can't request to confrim someone else's RSVP!")
+    else:
+        rsvp.request_confirmation()
+        request.user.message_set.create(message="You have requested a confirmation for your RSVP for %s" % str(rsvp.event.name))
 
-    return message(request, "You have requested a confirmation for this RSVP.")
+    return HttpResponseRedirect(reverse("rsvp-list-for-person", kwargs={"person_id" :"me"}))
 
 def view(request, rsvp_id = "-1"):
     rsvp = get_object_or_404(RSVP, pk = rsvp_id)
@@ -119,8 +121,6 @@ def new(request, event_id):
     return edit(request, event_id)
 
 def edit(request, event_id):
-
-
     #if not request.POST or not request.POST.has_key("event_id"):
     #    return HttpResponse("no post or no event_id in post")
 
@@ -142,7 +142,8 @@ def edit(request, event_id):
         if form.is_valid():
             rsvp = rsvp_from_form_instance(form, rsvp)
             rsvp.save()
-            return HttpResponse("<BR/><strong>Successfully RSVPd for " + e.name + "</strong>")
+            request.user.message_set.create(message="Successfully RSVPd for %s" % str(e.name))
+            return HttpResponseRedirect(reverse("rsvp-list-for-person", kwargs={"person_id" :"me"}))
     else:
         if new_rsvp:
             form = rsvp_form_instance(e)
