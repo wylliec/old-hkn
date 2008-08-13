@@ -1,0 +1,24 @@
+    <tr class="head">
+        <td class="day"><div>{{event.start_time|date:"l" }}</div></td>
+        <td class="name"><div><a class="infobox" rel="{% url event-infobox event.id %}" href="{% url event-view event.id %}" style="display: block">{{event.name}}</a></div></td>
+    </tr>
+    <tr>
+        <td class="time"><div>{{event.start_time|date:"f"}}-{{event.end_time|date:"f"}}</div></td>
+        <td class="location"><div>{{event.location}}</div></td>
+    </tr>
+    <tr>
+        <td class="links">
+            <div>
+                <a href="{% url rsvp-new event.id %}">RSVP</a>    
+            </div>
+         </td>            
+         <td colspan="2" class="description"><div>{{event.description}}</div></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="links">
+            <div>
+            <a href="{% url event-view event.id %}">More info</a>
+            </div>
+        </td>
+    </tr>

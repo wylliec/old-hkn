@@ -1,0 +1,104 @@
+body {
+  font-family: "Lucida Grande",Verdana,Arial,sans-serif;
+  line-height: 1.5em;
+}
+
+h1 {
+  color: #003366;
+  font-weight: bold;
+  font-size: large;
+  font-family: arial, helvetica, sans-serif;
+}
+
+h2 {
+  font-size: large;
+  font-family: arial, helvetica, sans-serif;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: medium;
+  font-family: arial, helvetica, sans-serif;
+}
+
+.header {
+  font-weight: bold;
+  font-size: medium;
+  font-family: arial, helvetica, sans-serif;
+}
+
+.subheader {
+  font-size: medium;
+  font-style: italic;
+  font-family: arial, helvetica, sans-serif;
+}
+
+img {
+    border: none;
+}
+
+p {
+    line-height: 1.8;
+    margin: 0 0 1em;
+}
+
+a {
+    color: #3366CC;
+    text-decoration: none;
+}
+a:link {color: #3366CC;}
+a:visited {color: #3366CC;}
+a:hover {text-decoration: underline;}
+
+
+
+input, select, textarea {
+    border: 1px solid #CCCCCC;
+    background: #F1F1F1;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 2px 0;
+    padding: 2px 3px;
+    vertical-align: middle;    
+}    
+    
+input {
+
+}
+
+input[type=submit] {
+    background: #EEEEEE;
+    margin: 4px;
+}
+
+input.short {
+    width: 100px;
+}
+
+select {
+
+}
+
+label {
+    font-weight: bold;
+    padding-right: 3px;
+    color: #444444;
+    text-align: left;
+}
+
+.small {
+    font-size: x-small;
+    line-height: 1.3em;
+}
+
+th, td {
+  padding: 4px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.infodiv {
+    width: 400px;
+    text-align: left;
+    background: #DFEFE2;
+}

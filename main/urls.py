@@ -24,8 +24,8 @@ urlpatterns = patterns('',
     (r'^course/', include('course.urls')),        
 
     # authentication pages
-     (r'^login/$', 'django.contrib.auth.views.login'),
-     (r'^logout/$', 'django.contrib.auth.views.logout'),
+     url(r'^login/$', 'django.contrib.auth.views.login', name="login"),
+     url(r'^logout/$', 'django.contrib.auth.views.logout', name="logout"),
 
      (r'^admin/(.*)', admin_site.root),
 

@@ -1,15 +1,14 @@
+        <h1>HKN Events</h1>
+        <h3>Today's Events</h3>
         <table class="landing_events">
-            <tr> <td colspan=3> <h1>Today's Events</h1> </td> </tr>
             {% for event in today_events %}
-            <tr>
-                <td>{{event.start_time|date:"l" }}<br>{{event.start_time|date:"f"}}-{{event.end_time|date:"f"}}<td><a class="infobox" rel="{% url event-infobox event.id %}" href="{% url event-view event.id %}" style="display: block">{{event.name}}</a></td><td>{{event.location}}</td>
-            </tr>
+                {% include 'main/_landing_event_row.html' %}
             {% endfor %}
-            <tr> <td colspan=3> <h1>This Week's Events</h1> </td> </tr>
+        </table>
+        <h3>This Week's Events</h3>
+        <table class="landing_events">         
             {% for event in week_events %}
-            <tr>
-                <td>{{event.start_time|date:"l" }}<br>{{event.start_time|date:"f"}}-{{event.end_time|date:"f"}}<td><a class="infobox" rel="{% url event-infobox event.id %}" href="{% url event-view event.id %}" style="display: block">{{event.name}}</a></td><td>{{event.location}}</td>
-            </tr>
+                {% include 'main/_landing_event_row.html' %}
             {% endfor %}
         </table>
 

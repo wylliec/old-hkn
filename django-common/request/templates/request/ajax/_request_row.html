@@ -14,14 +14,14 @@ src="{{STATIC_PREFIX}}images/site/error.png"
 </td>
 
 <td>
-<span style="font-size: 10">
+<span class="small">
 {% for link in r.links %}
 <a href="{{link.1}}">{{link.0}}</a> {% if not forloop.last %}<br/>{% endif %}
 {% endfor %}
 </span>
 </td>
 
-<td>{{r.description}}</td>
+<td><p>{{r.description}}</p></td>
 <td><input type=text id="{{r.id}}_comment" name="{{r.id}}.comment" value="{{r.comment}}"/></td>
 <td>
     <img class="request_confirm_img" src="{{STATIC_PREFIX}}images/site/valid.png" onClick='checkbox_changed( true, {{r.id}});'/>

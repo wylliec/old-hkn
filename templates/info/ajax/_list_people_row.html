@@ -1,8 +1,8 @@
 	<td><a href="{% url person-view object.id %}">
         {% if object.officer_picture %}
-            <img height=60 width=80 src="{{ object.get_officer_picture_url }}"></a></td>
+            <img height=60 width=80 src="{{ object.officer_picture.url }}"></a></td>
         {% else %}
-            <img height=60 width=80 src="{{ object.get_profile_picture_url }}"></a></td>
+            <img height=60 width=80 src="{{ object.profile_picture.url }}"></a></td>
         {% endif %}
 	<td><a href="{% url person-view object.id %}">{{ object.name }}</a><br><span style="font-size: 10"><a href="{% url hkn.event.rsvp.list.list_for_person object.id %}">see rsvps</a></span> </td>
 	<td>{{ object.member_status }}</td>

@@ -7,7 +7,8 @@
 <title>{% block title %}Eta Kappa Nu (HKN), Mu Chapter {% endblock %}</title>
 {% block css %}
 {% include "css_common.inc" %}
-<link rel="stylesheet" type="text/css" href="{{STATIC_PREFIX}}css/hkn-green.css">
+<link rel="stylesheet" type="text/css" href="/css/hkn-green.css">
+<link rel="stylesheet" type="text/css" href="{{STATIC_PREFIX}}css/ajaxlist.css">
 {% endblock %}
 <meta NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
 fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
@@ -31,14 +32,29 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 </div>
 {% endblock %}
 
-<div id="content"><div id="userbar">Welcome, {{user.username}} (Settings &middot; Logout)</div>
+<div id="content">
+<div id="userbar">
+    {% if user.is_authenticated %}
+        Welcome, {{user.username}} (<a href="{% url info-profile %}">Settings</a> &middot; <a href="{% url logout %}">Logout</a>)
+    {% else %}
+        <form action="{% url login %}" method="post"> <label> Login </label>  <input class="short" name="username" value="username"> <input class="short" type="password" name="password" value="password"> <input type="hidden" name="next" value="{{ request.path }}"> <input type="submit" value="login"></form>
+    {% endif %}
+</div>
+{% if messages %}
+<div id="messages"> <ul>
+{% for message in messages %}
+    <li>{{ message }}</li>
+{% endfor %}
+</ul> </div>
+{% endif %}
+
 
 {% block container %}
 
 <div id="container">
 <!--content-->
 <!-- start main content block -->
-<h2>{% block subtitle %}{% endblock %}</h2>
+<h1>{% block subtitle %}{% endblock %}</h1>
 {% block content %}
 {% endblock %}
 

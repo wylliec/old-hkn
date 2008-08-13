@@ -16,7 +16,7 @@
 	<h3>
 		{{ officeinfo.header }}
 	</h3>
-	<table style="width: 100%">
+	<table class="tutoring">
 		<tr>
 			<th>
 			</th>
@@ -32,9 +32,9 @@
 				{{ scheduleRow.timeslot }}
 			</td>
 			{% for dayinfo in scheduleRow.row %}
-			<td style="width: 18%; background-color: #dddddd; padding: 3px">
+			<td class="pcell">
 				{% for person in dayinfo %}
-				<div class="person {{ person.classes }}" style="margin-top: 3px; margin-bottom: 3px">
+				<div class="person {{ person.classes }}">
 					{{ person.name }}
 				</div>
 				{% endfor %}
@@ -46,7 +46,7 @@
 	{% endfor %}
 </div>
 
-<div style="float: left; max-width: 20%">
+<div style="float: left; max-width: 18%; padding-left: 2%; padding-top: 70px; line-height: 1.75em;">
     {% include "tutor/_schedule_classes.html" %}
 </div>
 <div style="clear:both">

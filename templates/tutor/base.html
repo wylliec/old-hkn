@@ -4,6 +4,11 @@
 
 {% block title %} {{ block.super }} - Tutoring {% endblock %}
 
+{% block css %}
+{{ block.super }}
+<link href="{{STATIC_PREFIX}}css/tutor.css">
+{% endblock %}
+
 {% block content %}
 
 {% if message %}

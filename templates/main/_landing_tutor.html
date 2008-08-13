@@ -1,16 +1,15 @@
-        
-        <table class="landing_tutoring">
-            <tr> <td colspan=3> <h1>{{day}} Tutoring Schedule</h1></td></tr>
+        <h1>{{day}} Tutoring Schedule</h1>
+        <table class="landing tutoring">
 		        <tr>
 			        <th></th>
-			        <th> 345 Soda </th>			        <th> 290 Cory </th>
+			        <th> 345 Soda </th>			        <th> 290 Cory </th>
 		        </tr>
 		        {% for scheduleRow in schedule %}
 		        <tr>
 			        <td class="time">
 				        {{ scheduleRow.timeslot }}
 			        </td>
-			        <td style="width: 45%; background-color: #dddddd; padding: 3px">
+			        <td class="pcell">
 				        {% for sodapeople in scheduleRow.sodarow %}
 				        {% for person in sodapeople %}
 				        <div class="infobox person {{ person.classes }}" rel="{% url person-tutor-infobox person.id %}" style="margin-top: 3px; margin-bottom: 3px">
@@ -19,7 +18,7 @@
 				        {% endfor %}
 				        {% endfor %}				        
 				    </td>
-			        <td style="width: 45%; background-color: #dddddd; padding: 3px">
+			        <td class="pcell">
 				        {% for corypeople in scheduleRow.coryrow %}
 				        {% for person in corypeople %}
 				        <div class="infobox person {{ person.classes }}" rel="{% url person-tutor-infobox person.id %}" style="margin-top: 3px; margin-bottom: 3px">

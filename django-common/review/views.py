@@ -109,9 +109,9 @@ def merge_problems(request, solutions):
 	
 	for p in problems:
 		if not solutions:
-			command+= p.get_question_url()[1:] + " "
+			command+= p.question.url[1:] + " "
 		else:
-			command+= p.get_answer_url()[1:]+ " "
+			command+= p.answer.url[1:]+ " "
 		
 	command += "output tmp.pdf"
 	

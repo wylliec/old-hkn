@@ -3,18 +3,13 @@ from django.shortcuts import render_to_response
 THEMES = {}
 
 def local_namespace():
-    base = {"primary_color" : "#FFFFFF",
-            "some_other_color" : "#EEEEEE",
-            "links_color" : "#AAAAAA"
+    base = {"landing_background" : "#F3F8F8",
+            "landing_border" : "#5C7C0B",
             }
+            
+    theme_hisham = { "landing_background" : "#dfefe2" }
 
-    theme_blue = {   "primary_color" : "blue",
-                    "links_color" : "#AEAEAE"
-                }
-
-    theme_green = {   "primary_color" : "green",
-                    "links_color" : "#AEAEAE"
-                }
+    
 
     themes_list = [x for x in locals().items() if x[0].startswith("theme_")]
     THEMES['base'] = base
@@ -30,4 +25,6 @@ local_namespace()
 def theme_css(request, css_file):
     theme_name = request.session.get('theme', 'base')
     theme = THEMES[theme_name]
-    return render_to_response("css/hkn-%s.css" % css_file, theme)
+    resp = render_to_response("css/hkn-%s.css" % css_file, theme)
+    resp['Content-Type'] = 'text/css'
+    return resp

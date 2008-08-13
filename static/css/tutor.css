@@ -1,0 +1,24 @@
+/* tutoring stuff */
+table.tutoring {
+    width: 100%;
+    text-align: center;
+}
+
+table.tutoring td.pcell {
+    width: 18%;
+    background-color: #EDF3FE;
+    padding: 3px;
+}
+
+table.landing td.pcell {
+    width: 45% !important;
+}
+
+table.tutoring td.pcell div.person {
+    margin: 0px 3px 0px 3px;
+}
+
+.dept_heading {
+    font-weight: bold;
+}
+

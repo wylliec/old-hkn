@@ -11,9 +11,9 @@ from hkn.tutor.views import get_tutor_miniinfo, get_courses_tutored, get_publish
 def main(request):
     d = {}
 
-    events = Event.objects.order_by('-start_time').filter_permissions(request.user)[:10]
-    d['today_events'] = events[:2]
-    d['week_events'] = events[2:]
+    events = Event.objects.order_by('-start_time').filter_permissions(request.user)[:4]
+    d['today_events'] = events[:1]
+    d['week_events'] = events[1:]
     
     d['day'] = datetime.datetime.now().strftime("%A")
     schedule, can_tutor = get_tutor_miniinfo(get_published_assignments(), day=d['day'])

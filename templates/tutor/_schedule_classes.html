@@ -1,6 +1,6 @@
 	{% for data in canTutor|dictsort:"dept" %}
 	<div>
-		<span style="font-weight: bold">
+		<span class="dept_heading">
 			{{ data.shortdept }}
 		</span>
 		{% for course in data.courses %}

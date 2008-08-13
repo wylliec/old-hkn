@@ -1,11 +1,12 @@
-<div width=400 style="background: #048DB4; text-align: left">
-    <span style="font-weight: bold">{{event.name}}</span><br>
-    <span style="font-style: italic">{{ event.start_time|date:"l m/d f" }}-{{ event.end_time|date:"f" }}</span><br>
-    <span style="font-size: small">{{event.description|truncatewords:"50" }}</span><br>
-    <span style="font-weight: bold">{{ event.location }}</span><br>
-    <a href="{% url event-view event.id %}">view event...</a>
-    <br><br>
-    <span style="font-weight: bold">RSVPs:</span>
-    {% for rsvp in rsvps %} {{ rsvp.person.first_name }}, {% endfor %}
+<div width="400px" class="infodiv">
+    <div class='header'>{{event.name}}</div>
+    <div class="subheader">{{ event.start_time|date:"l m/d f" }}-{{ event.end_time|date:"f" }}</div>
+    <p class="small">{{event.description|truncatewords:"50" }}</p>
+    <div style="font-weight: bold">{{ event.location }}</div>
+    <div><a href="{% url event-view event.id %}">view event...</a></div>
+    <br>
+    <div class='header'>RSVPs</div>
+    <p> {% for rsvp in rsvps %} {{ rsvp.person.first_name }}, {% endfor %}
     <a href="{% url rsvp-list-for-event event.id %}">more rsvps...</a>
+    </p>
 </div>
