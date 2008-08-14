@@ -9,7 +9,7 @@ from utils import normalize_email, normalize_committee_name
 from hkn import semester
 from hkn.info.constants import MEMBER_TYPE
 from hkn.settings import IMAGES_PATH
-import os, datetime
+import os, datetime, types
 
 from nice_types.db import QuerySetManager, PickleField
 
@@ -309,16 +309,26 @@ class Person(User):
             self.groups.add(Group.objects.get(name="everyone"))
 
     class RestrictedPerson(object):
+        class RestrictedImage(object):
+            def __init__(self):
+                self.url = "/static/images/site/lion.gif"
+
         def __init__(self, person, accessor):
             self.person = person
             self.privacy = person.privacy
             self.accessor_type = accessor.member_type
             self.view_all = accessor.has_perm("info.view_restricted")
+
+        def blanktype(self, value):
+            if type(value) == types.StringType:
+                return ""
+            elif type(value) == models.fields.files.ImageFieldFile:
+                return self.RestrictedImage()
     
         def __getattr__(self, attr):
             if (self.accessor_type >= self.privacy.get(attr, -1)) or self.view_all:
                 return getattr(self.person, attr)
-            return ""
+            return self.blanktype(getattr(self.person, attr))
 
     def set_restricted_accessor(self, accessor):
         setattr(self,'restricted', Person.RestrictedPerson(self, accessor))
