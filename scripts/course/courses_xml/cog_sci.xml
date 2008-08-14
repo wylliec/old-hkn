@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<department abbr="COG SCI" name="Cognitive Science">
+    <course name="Introduction to Cognitive Science" number="C1" units="4">
+        This course introduces the interdisciplinary field of cognitive science. Lectures and readings will survey research from artificial intelligence, psychology, linguistics, philosophy, and neuroscience, and will cover topics such as the nature of knowledge, thinking, remembering, vision, imagery, language, and consciousness. Sections will demonstrate some of the major methodologies. Also listed as Education C1.
+    </course>
+    <course name="Sophomore Seminar" number="84" units="1,2">
+        Sophomore seminars are small interactive courses offered by faculty members in departments all across the campus. Sophomore seminars offer opportunity for close, regular intellectual contact between faculty members and students in the crucial second year. The topics vary from department to department and semester to semester. Enrollment limited to 15 sophomores.
+    </course>
+    <course name="Directed Group Study" number="98" units="1-4">
+        Seminar for the group study of selected topics. Topics may be initiated by students subject to the approval of the major advisor.
+    </course>
+    <course name="Basic Issues in Cognition" number="C100" units="3">
+        Theoretical foundations and current controversies in cognitive science will be discussed. Basic issues in cognition--including perception, imagery, memory, categorization, thinking, judgment, and development--will be considered from the perspectives of philosophy, psychology, computer science, and physiology. Particular emphasis will be placed on the nature, implications, and limitations of the computational model of mind. Also listed as Psychology C120.
+    </course>
+    <course name="The Mind and Language" number="C101" units="4">
+        Conceptual systems and language from the perspective of cognitive science. How language gives insight into conceptual structure, reasoning, category-formation, metaphorical understanding, and the framing of experience. Cognitive versus formal linguistics. Implications from and for philosophy, anthropology, literature, artificial intelligence, and politics. Also listed as Linguistics C105.
+    </course>
+    <course name="Scientific Approaches to Consciousness" number="C102" units="3">
+        This course will examine the nature of human consciousness from the interdisciplinary perspective of cognitive science. It will cover topics from the philosophy of mind, cognitive linguistics, neuroscience, psychology, and computational models. Also listed as Psychology C129.
+    </course>
+    <course name="History of Information" number="C103" units="3">
+        This course explores the history of information and associated technologies, uncovering why we think of ours as &quot;the information age.&quot; We will select moments in the evolution of production, recording, and storage from the earliest writing systems to the world of Short Message Service (SMS) and blogs. In every instance, we'll be concerned with both what and when and how and why, and we will keep returning to the question of technological determinism: how do technological developments affect society and vice versa? Also listed as History C192, Mass Communications C103, and Information C103.
+    </course>
+    <course name="The Mind, Language, and Politics" number="C104" units="4">
+        An analysis of contemporary liberal and conservative thought and language, in terms of the basic mechanisms of mind: frames, prototypes, radial categories, contested concepts, conceptual metaphor, metonymy, and blends. The framing of political discourse. The logic of political thought. The purpose of the course is to provide students interested in political and social issues with the tools to analyze the framing of, and logic behind, contemporary political discourse. Also listed as Linguistics C104.
+    </course>
+    <course name="The Mind and Mathematics" number="C107" units="4">
+        The analysis of mathematical ideas from the perspective of cognitive science. How ordinary mechanisms of mind (e.g., conceptual metaphor and blending) characterize laws of arithmetic, sets, logic, trigonometry, exponentials, and imaginary numbers. The Basic Metaphor of Infinity and its application to infinite sets, points at infinity, infinitessimals, transfinite numbers, and limits. The meaning of Euler's equation e(pi) + 1 = 0. Why mathematics is not an objective feature of the universe. Also listed as Linguistics C107.
+    </course>
+    <course name="The Challenge of Cognitive Science to Western Philosophy" number="C108" units="4">
+        Three major results of cognitive science are inconsistent with most of Western philosophy: the embodiment of mind, the cognitive unconscious, and metaphorical thought. The course rethinks philosophy from a cognitive science perspective, including basic philosophical concepts--time events, causation, the mind, the self, and morality--and the cognitive structure of the philosophical theories of the Presocratics, Plato, Aristotle, Descartes, Kant, analytic philosophy (especially Quine), and Chomsky. Also listed as Linguistics C108.
+    </course>
+    <course name="The Neural Basis of Thought and Language" number="C110" units="4">
+        This is a course on the current status of interdisciplinary studies that seeks to answer the following questions: (1) How is it possible for the human brain, which is a highly structured network of neurons, to think and to learn, use, and understand language? (2) How are language and thought related to perception, motor control, and our other neural systems, including social cognition? (3) How do the computational properties of neural systems and the specific neural structures of the human brain shape the nature of thought and language? Much of the course will focus on the Neural Theory of Language (NTL), which seeks to answer these questions in terms of architecture and mechanism, using models and simulations of language and learning phenomena. Also listed as Computer Science C182 and Linguistics C109.
+    </course>
+    <course name="Psycholinguistics" number="C124" units="3">
+        Introduction to psycholinguistics, emphasizing effects of psychological variables on the learning and use of language, influence of language behavior on psychological processes; special attention to psychological applicability of modern linguistic theory and to social psychological aspects of language behavior. Also listed as Psychology C124.
+    </course>
+    <course name="Perception" number="C126" units="3">
+        An introduction to principal theoretical constructs and experimental procedures in visual and auditory perception. Topics will include psychophysics; perception of color, space, shape, and motion; pattern recognition and perceptual attention. Also listed as Psychology C126.
+    </course>
+    <course name="Cognitive Neuroscience" number="C127" units="3">
+        This course will examine research investigating the neurological basis of cognition. Material covered will include the study of brain-injured patients, neurophysiological research in animals, and the study of normal cognitive processes in humans with non-invasive behavioral and physiological techniques such as functional Magnetic Resonance Imaging (fMRI), electroencephalography (EEG), and transcranial magnetic stimulation (TMS). Topics to be covered include perception, attention, memory, language, motor control, executive control, and emotion. Also listed as Psychology C127.
+    </course>
+    <course name="Computational Models of Cognition" number="C131" units="4">
+        This course will provide advanced students in cognitive science and computer science with the skills to develop computational models of human cognition, giving insight into how people solve challenging computational problems, as well as how to bring computers closer to human performance. The course will explore three ways in which researchers have attempted to formalize cognition -- symbolic approaches, neural networks, and probability and statistics -- considering the strengths and weaknesses of each. Also listed as Psychology C123.
+    </course>
+    <course name="Special Study for Honors Candidates" number="H195A" units="1-3">
+        Independent study and preparation of an honors thesis under the supervision of a faculty member.
+    </course>
+    <course name="Special Study for Honors Candidates" number="H195B" units="1-3">
+        Independent study and preparation of an honors thesis under the supervision of a faculty member.
+    </course>
+    <course name="Directed Group Study" number="198" units="1-4">
+        Seminar for the group study of selected topics. Topics may be initated by students subject to the approval of the major advisor.
+    </course>
+    <course name="Supervised Independent Study" number="199" units="1-4">
+        Independent study and research by arrangement with faculty.
+    </course>
+    <course name="Graduate Seminar on the Mind and Language" number="201" units="4">
+        Thought appears to be grounded in the sensorimotor system, and to grow out of the nature of the physical brain and body; human reason also makes extensive and fundamental use of imaginative mechanisms such as metaphor and metonymy. The readings in this course review that evidence, much of which comes from the study of how people categorize and reason using categories. The course will include both discussions and research projects appropriate to students in each of the disciplines.
+    </course>
+    <course name="Cognitive Science Graduate Seminar" number="237A" units="1">
+        Weekly presentations by local and visiting researchers on a range of topics in Cognitive Science, with ensuing discussion.
+    </course>
+    <course name="Cognitive Science Graduate Seminar" number="237B" units="1">
+        Weekly presentations by local and visiting researchers on a range of topics in Cognitive Science, with ensuing discussion.
+    </course>
+    <course name="Teaching Cognitive Science" number="300" units="1-2">
+        This course will provide training in a variety of teaching techniques, will review relevant pedagogical issues, and will assist undergraduate students in mastering their initial teaching experiences.
+    </course>
+</department>

@@ -1,0 +1,2970 @@
+(lp0
+(Vwsandy
+p1
+VFriday 4-5
+p2
+VCory
+p3
+L2L
+tp4
+a(Vwsandy
+p5
+VThursday 4-5
+p6
+VCory
+p7
+L2L
+tp8
+a(Vzhangz
+p9
+VWednesday 4-5
+p10
+VSoda
+p11
+L2L
+tp12
+a(Vzhangz
+p13
+VThursday 2-3
+p14
+VSoda
+p15
+L1L
+tp16
+a(Vzhangz
+p17
+VWednesday 1-2
+p18
+VSoda
+p19
+L2L
+tp20
+a(Vsuhaas
+p21
+VFriday 4-5
+p22
+VSoda
+p23
+L2L
+tp24
+a(Vsuhaas
+p25
+VFriday 3-4
+p26
+VSoda
+p27
+L2L
+tp28
+a(Vsuhaas
+p29
+VWednesday 3-4
+p30
+VSoda
+p31
+L1L
+tp32
+a(Vsuhaas
+p33
+VMonday 3-4
+p34
+VSoda
+p35
+L1L
+tp36
+a(Vmtao
+p37
+VTuesday 12-1
+p38
+VCory
+p39
+L2L
+tp40
+a(Vmtao
+p41
+VThursday 12-1
+p42
+VCory
+p43
+L2L
+tp44
+a(Vsuhaas
+p45
+VFriday 2-3
+p46
+VSoda
+p47
+L2L
+tp48
+a(Vmichelleau
+p49
+VMonday 4-5
+p50
+VSoda
+p51
+L1L
+tp52
+a(Vmichelleau
+p53
+VWednesday 3-4
+p54
+VSoda
+p55
+L1L
+tp56
+a(Vmichelleau
+p57
+VMonday 3-4
+p58
+VSoda
+p59
+L1L
+tp60
+a(Vmichelleau
+p61
+VFriday 2-3
+p62
+VSoda
+p63
+L2L
+tp64
+a(Vmichelleau
+p65
+VThursday 2-3
+p66
+VSoda
+p67
+L2L
+tp68
+a(Vmichelleau
+p69
+VWednesday 2-3
+p70
+VSoda
+p71
+L1L
+tp72
+a(Vmichelleau
+p73
+VMonday 2-3
+p74
+VSoda
+p75
+L1L
+tp76
+a(Vmichelleau
+p77
+VFriday 1-2
+p78
+VSoda
+p79
+L2L
+tp80
+a(Vmichelleau
+p81
+VWednesday 1-2
+p82
+VSoda
+p83
+L1L
+tp84
+a(Vmichelleau
+p85
+VMonday 1-2
+p86
+VSoda
+p87
+L1L
+tp88
+a(Vmichelleau
+p89
+VFriday 12-1
+p90
+VSoda
+p91
+L2L
+tp92
+a(Vmichelleau
+p93
+VWednesday 12-1
+p94
+VSoda
+p95
+L1L
+tp96
+a(Vmichelleau
+p97
+VMonday 12-1
+p98
+VSoda
+p99
+L2L
+tp100
+a(Vmichelleau
+p101
+VFriday 11a-12
+p102
+VSoda
+p103
+L2L
+tp104
+a(Vmichelleau
+p105
+VWednesday 11a-12
+p106
+VSoda
+p107
+L1L
+tp108
+a(Vsgowda
+p109
+VMonday 11a-12
+p110
+VSoda
+p111
+L2L
+tp112
+a(Vdarren
+p113
+VMonday 11a-12
+p114
+VSoda
+p115
+L2L
+tp116
+a(Vdarren
+p117
+VWednesday 11a-12
+p118
+VSoda
+p119
+L2L
+tp120
+a(Vdarren
+p121
+VTuesday 1-2
+p122
+VSoda
+p123
+L1L
+tp124
+a(Vdarren
+p125
+VTuesday 2-3
+p126
+VSoda
+p127
+L1L
+tp128
+a(Vdarren
+p129
+VMonday 3-4
+p130
+VSoda
+p131
+L2L
+tp132
+a(Vdarren
+p133
+VTuesday 3-4
+p134
+VSoda
+p135
+L2L
+tp136
+a(Vdarren
+p137
+VWednesday 3-4
+p138
+VSoda
+p139
+L2L
+tp140
+a(Vdarren
+p141
+VMonday 4-5
+p142
+VSoda
+p143
+L2L
+tp144
+a(Vdarren
+p145
+VTuesday 4-5
+p146
+VSoda
+p147
+L2L
+tp148
+a(Vdarren
+p149
+VWednesday 4-5
+p150
+VSoda
+p151
+L2L
+tp152
+a(Vbrlam
+p153
+VTuesday 11a-12
+p154
+VSoda
+p155
+L2L
+tp156
+a(Vbrlam
+p157
+VTuesday 11a-12
+p158
+VCory
+p159
+L2L
+tp160
+a(Vbrlam
+p161
+VThursday 11a-12
+p162
+VSoda
+p163
+L2L
+tp164
+a(Vbrlam
+p165
+VThursday 11a-12
+p166
+VCory
+p167
+L2L
+tp168
+a(Vbrlam
+p169
+VFriday 12-1
+p170
+VSoda
+p171
+L1L
+tp172
+a(Vbrlam
+p173
+VFriday 12-1
+p174
+VCory
+p175
+L1L
+tp176
+a(Vbrlam
+p177
+VMonday 1-2
+p178
+VSoda
+p179
+L1L
+tp180
+a(Vbrlam
+p181
+VMonday 1-2
+p182
+VCory
+p183
+L1L
+tp184
+a(Vbrlam
+p185
+VWednesday 1-2
+p186
+VSoda
+p187
+L1L
+tp188
+a(Vbrlam
+p189
+VWednesday 1-2
+p190
+VCory
+p191
+L1L
+tp192
+a(Vbrlam
+p193
+VFriday 1-2
+p194
+VSoda
+p195
+L2L
+tp196
+a(Vbrlam
+p197
+VFriday 1-2
+p198
+VCory
+p199
+L2L
+tp200
+a(Vbrlam
+p201
+VMonday 2-3
+p202
+VSoda
+p203
+L2L
+tp204
+a(Vbrlam
+p205
+VMonday 2-3
+p206
+VCory
+p207
+L2L
+tp208
+a(Vbrlam
+p209
+VTuesday 2-3
+p210
+VSoda
+p211
+L2L
+tp212
+a(Vbrlam
+p213
+VTuesday 2-3
+p214
+VCory
+p215
+L2L
+tp216
+a(Vbrlam
+p217
+VWednesday 2-3
+p218
+VSoda
+p219
+L2L
+tp220
+a(Vbrlam
+p221
+VWednesday 2-3
+p222
+VCory
+p223
+L2L
+tp224
+a(Vbrlam
+p225
+VThursday 2-3
+p226
+VSoda
+p227
+L2L
+tp228
+a(Vbrlam
+p229
+VThursday 2-3
+p230
+VCory
+p231
+L2L
+tp232
+a(Vbrlam
+p233
+VFriday 2-3
+p234
+VSoda
+p235
+L2L
+tp236
+a(Vbrlam
+p237
+VFriday 2-3
+p238
+VCory
+p239
+L2L
+tp240
+a(Vbrlam
+p241
+VMonday 3-4
+p242
+VSoda
+p243
+L1L
+tp244
+a(Vbrlam
+p245
+VMonday 3-4
+p246
+VCory
+p247
+L1L
+tp248
+a(Vbrlam
+p249
+VWednesday 3-4
+p250
+VSoda
+p251
+L2L
+tp252
+a(Vbrlam
+p253
+VWednesday 3-4
+p254
+VCory
+p255
+L2L
+tp256
+a(Vbrlam
+p257
+VWednesday 4-5
+p258
+VSoda
+p259
+L1L
+tp260
+a(Vbrlam
+p261
+VWednesday 4-5
+p262
+VCory
+p263
+L1L
+tp264
+a(Vclay
+p265
+VWednesday 4-5
+p266
+VSoda
+p267
+L2L
+tp268
+a(Vclay
+p269
+VTuesday 4-5
+p270
+VSoda
+p271
+L2L
+tp272
+a(Vclay
+p273
+VFriday 3-4
+p274
+VSoda
+p275
+L1L
+tp276
+a(Vclay
+p277
+VFriday 1-2
+p278
+VSoda
+p279
+L1L
+tp280
+a(Vclay
+p281
+VThursday 1-2
+p282
+VSoda
+p283
+L2L
+tp284
+a(Vclay
+p285
+VWednesday 1-2
+p286
+VSoda
+p287
+L1L
+tp288
+a(Vclay
+p289
+VTuesday 1-2
+p290
+VSoda
+p291
+L2L
+tp292
+a(Vclay
+p293
+VMonday 1-2
+p294
+VSoda
+p295
+L1L
+tp296
+a(Vclay
+p297
+VFriday 12-1
+p298
+VSoda
+p299
+L2L
+tp300
+a(Vclay
+p301
+VWednesday 12-1
+p302
+VSoda
+p303
+L2L
+tp304
+a(Vclay
+p305
+VMonday 12-1
+p306
+VSoda
+p307
+L2L
+tp308
+a(Vclay
+p309
+VThursday 4-5
+p310
+VSoda
+p311
+L1L
+tp312
+a(Vclay
+p313
+VFriday 4-5
+p314
+VSoda
+p315
+L1L
+tp316
+a(Vwsandy
+p317
+VWednesday 4-5
+p318
+VCory
+p319
+L2L
+tp320
+a(Vwsandy
+p321
+VMonday 4-5
+p322
+VCory
+p323
+L1L
+tp324
+a(Vwsandy
+p325
+VMonday 3-4
+p326
+VCory
+p327
+L1L
+tp328
+a(Vwsandy
+p329
+VMonday 2-3
+p330
+VCory
+p331
+L1L
+tp332
+a(Vwsandy
+p333
+VMonday 1-2
+p334
+VCory
+p335
+L1L
+tp336
+a(Vwsandy
+p337
+VMonday 12-1
+p338
+VCory
+p339
+L1L
+tp340
+a(Vwsandy
+p341
+VWednesday 11a-12
+p342
+VCory
+p343
+L2L
+tp344
+a(Vwsandy
+p345
+VMonday 11a-12
+p346
+VCory
+p347
+L1L
+tp348
+a(Vmattea
+p349
+VMonday 1-2
+p350
+VCory
+p351
+L2L
+tp352
+a(Vmattea
+p353
+VWednesday 1-2
+p354
+VCory
+p355
+L1L
+tp356
+a(Vmattea
+p357
+VFriday 1-2
+p358
+VCory
+p359
+L2L
+tp360
+a(Vmattea
+p361
+VMonday 2-3
+p362
+VCory
+p363
+L2L
+tp364
+a(Vmattea
+p365
+VWednesday 2-3
+p366
+VCory
+p367
+L1L
+tp368
+a(Vmattea
+p369
+VFriday 2-3
+p370
+VCory
+p371
+L2L
+tp372
+a(Vmattea
+p373
+VWednesday 3-4
+p374
+VCory
+p375
+L1L
+tp376
+a(Vmattea
+p377
+VFriday 12-1
+p378
+VCory
+p379
+L2L
+tp380
+a(Vmattea
+p381
+VWednesday 12-1
+p382
+VCory
+p383
+L1L
+tp384
+a(Vmattea
+p385
+VMonday 12-1
+p386
+VCory
+p387
+L2L
+tp388
+a(Vrzheng
+p389
+VMonday 12-1
+p390
+VSoda
+p391
+L2L
+tp392
+a(Vrzheng
+p393
+VMonday 12-1
+p394
+VCory
+p395
+L2L
+tp396
+a(Vrzheng
+p397
+VFriday 12-1
+p398
+VSoda
+p399
+L2L
+tp400
+a(Vrzheng
+p401
+VFriday 12-1
+p402
+VCory
+p403
+L2L
+tp404
+a(Vrzheng
+p405
+VMonday 1-2
+p406
+VSoda
+p407
+L1L
+tp408
+a(Vrzheng
+p409
+VMonday 1-2
+p410
+VCory
+p411
+L1L
+tp412
+a(Vrzheng
+p413
+VWednesday 1-2
+p414
+VSoda
+p415
+L2L
+tp416
+a(Vrzheng
+p417
+VWednesday 1-2
+p418
+VCory
+p419
+L2L
+tp420
+a(Vrzheng
+p421
+VFriday 1-2
+p422
+VSoda
+p423
+L1L
+tp424
+a(Vrzheng
+p425
+VFriday 1-2
+p426
+VCory
+p427
+L1L
+tp428
+a(Vrzheng
+p429
+VFriday 2-3
+p430
+VSoda
+p431
+L1L
+tp432
+a(Vrzheng
+p433
+VFriday 2-3
+p434
+VCory
+p435
+L1L
+tp436
+a(Vrzheng
+p437
+VFriday 3-4
+p438
+VSoda
+p439
+L1L
+tp440
+a(Vrzheng
+p441
+VFriday 3-4
+p442
+VCory
+p443
+L1L
+tp444
+a(Vrzheng
+p445
+VTuesday 4-5
+p446
+VSoda
+p447
+L2L
+tp448
+a(Vrzheng
+p449
+VTuesday 4-5
+p450
+VCory
+p451
+L2L
+tp452
+a(Vrzheng
+p453
+VWednesday 4-5
+p454
+VSoda
+p455
+L2L
+tp456
+a(Vrzheng
+p457
+VWednesday 4-5
+p458
+VCory
+p459
+L2L
+tp460
+a(Vrzheng
+p461
+VThursday 4-5
+p462
+VSoda
+p463
+L2L
+tp464
+a(Vrzheng
+p465
+VThursday 4-5
+p466
+VCory
+p467
+L2L
+tp468
+a(Vrzheng
+p469
+VFriday 4-5
+p470
+VSoda
+p471
+L1L
+tp472
+a(Vrzheng
+p473
+VFriday 4-5
+p474
+VCory
+p475
+L1L
+tp476
+a(Vjliao
+p477
+VWednesday 11a-12
+p478
+VSoda
+p479
+L1L
+tp480
+a(Vjliao
+p481
+VFriday 11a-12
+p482
+VSoda
+p483
+L1L
+tp484
+a(Vjliao
+p485
+VMonday 12-1
+p486
+VSoda
+p487
+L2L
+tp488
+a(Vjliao
+p489
+VTuesday 12-1
+p490
+VSoda
+p491
+L2L
+tp492
+a(Vjliao
+p493
+VWednesday 12-1
+p494
+VSoda
+p495
+L2L
+tp496
+a(Vjliao
+p497
+VThursday 12-1
+p498
+VSoda
+p499
+L2L
+tp500
+a(Vjliao
+p501
+VMonday 11a-12
+p502
+VSoda
+p503
+L1L
+tp504
+a(Vjhoffman
+p505
+VMonday 12-1
+p506
+VSoda
+p507
+L1L
+tp508
+a(Vjhoffman
+p509
+VMonday 12-1
+p510
+VCory
+p511
+L1L
+tp512
+a(Vjhoffman
+p513
+VThursday 12-1
+p514
+VSoda
+p515
+L1L
+tp516
+a(Vjhoffman
+p517
+VThursday 12-1
+p518
+VCory
+p519
+L1L
+tp520
+a(Vjhoffman
+p521
+VFriday 12-1
+p522
+VSoda
+p523
+L1L
+tp524
+a(Vjhoffman
+p525
+VFriday 12-1
+p526
+VCory
+p527
+L1L
+tp528
+a(Vjhoffman
+p529
+VThursday 1-2
+p530
+VSoda
+p531
+L1L
+tp532
+a(Vjhoffman
+p533
+VThursday 1-2
+p534
+VCory
+p535
+L1L
+tp536
+a(Vjhoffman
+p537
+VMonday 2-3
+p538
+VSoda
+p539
+L2L
+tp540
+a(Vjhoffman
+p541
+VMonday 2-3
+p542
+VCory
+p543
+L2L
+tp544
+a(Vjhoffman
+p545
+VFriday 2-3
+p546
+VSoda
+p547
+L2L
+tp548
+a(Vjhoffman
+p549
+VFriday 2-3
+p550
+VCory
+p551
+L2L
+tp552
+a(Vjhoffman
+p553
+VMonday 4-5
+p554
+VSoda
+p555
+L2L
+tp556
+a(Vjhoffman
+p557
+VMonday 4-5
+p558
+VCory
+p559
+L2L
+tp560
+a(Vjhoffman
+p561
+VTuesday 4-5
+p562
+VSoda
+p563
+L1L
+tp564
+a(Vingrid
+p565
+VWednesday 11a-12
+p566
+VSoda
+p567
+L2L
+tp568
+a(Vingrid
+p569
+VWednesday 11a-12
+p570
+VCory
+p571
+L2L
+tp572
+a(Vingrid
+p573
+VFriday 11a-12
+p574
+VSoda
+p575
+L2L
+tp576
+a(Vingrid
+p577
+VFriday 11a-12
+p578
+VCory
+p579
+L2L
+tp580
+a(Vingrid
+p581
+VMonday 12-1
+p582
+VSoda
+p583
+L1L
+tp584
+a(Vingrid
+p585
+VMonday 12-1
+p586
+VCory
+p587
+L1L
+tp588
+a(Vingrid
+p589
+VWednesday 12-1
+p590
+VSoda
+p591
+L2L
+tp592
+a(Vingrid
+p593
+VWednesday 12-1
+p594
+VCory
+p595
+L2L
+tp596
+a(Vingrid
+p597
+VTuesday 1-2
+p598
+VSoda
+p599
+L1L
+tp600
+a(Vingrid
+p601
+VTuesday 1-2
+p602
+VCory
+p603
+L1L
+tp604
+a(Vingrid
+p605
+VThursday 3-4
+p606
+VSoda
+p607
+L1L
+tp608
+a(Vingrid
+p609
+VThursday 3-4
+p610
+VCory
+p611
+L1L
+tp612
+a(Vingrid
+p613
+VThursday 4-5
+p614
+VSoda
+p615
+L2L
+tp616
+a(Vingrid
+p617
+VThursday 4-5
+p618
+VCory
+p619
+L2L
+tp620
+a(Vingrid
+p621
+VFriday 4-5
+p622
+VSoda
+p623
+L2L
+tp624
+a(Vingrid
+p625
+VFriday 4-5
+p626
+VCory
+p627
+L2L
+tp628
+a(Vbkim
+p629
+VWednesday 1-2
+p630
+VSoda
+p631
+L1L
+tp632
+a(Vbkim
+p633
+VFriday 1-2
+p634
+VSoda
+p635
+L1L
+tp636
+a(Vbkim
+p637
+VTuesday 2-3
+p638
+VSoda
+p639
+L1L
+tp640
+a(Vbkim
+p641
+VThursday 2-3
+p642
+VSoda
+p643
+L1L
+tp644
+a(Vbkim
+p645
+VMonday 3-4
+p646
+VSoda
+p647
+L2L
+tp648
+a(Vbkim
+p649
+VTuesday 3-4
+p650
+VSoda
+p651
+L1L
+tp652
+a(Vbkim
+p653
+VWednesday 3-4
+p654
+VSoda
+p655
+L2L
+tp656
+a(Vbkim
+p657
+VThursday 3-4
+p658
+VSoda
+p659
+L1L
+tp660
+a(Vbkim
+p661
+VFriday 3-4
+p662
+VSoda
+p663
+L2L
+tp664
+a(Vbkim
+p665
+VMonday 4-5
+p666
+VSoda
+p667
+L2L
+tp668
+a(Vbkim
+p669
+VTuesday 4-5
+p670
+VSoda
+p671
+L1L
+tp672
+a(Vbkim
+p673
+VWednesday 4-5
+p674
+VSoda
+p675
+L2L
+tp676
+a(Vbkim
+p677
+VThursday 4-5
+p678
+VSoda
+p679
+L1L
+tp680
+a(Vbkim
+p681
+VMonday 1-2
+p682
+VSoda
+p683
+L1L
+tp684
+a(Vbkim
+p685
+VFriday 12-1
+p686
+VSoda
+p687
+L2L
+tp688
+a(Vbkim
+p689
+VWednesday 12-1
+p690
+VSoda
+p691
+L2L
+tp692
+a(Vbkim
+p693
+VMonday 12-1
+p694
+VSoda
+p695
+L2L
+tp696
+a(Vsjavdani
+p697
+VMonday 4-5
+p698
+VCory
+p699
+L2L
+tp700
+a(Vsjavdani
+p701
+VMonday 4-5
+p702
+VSoda
+p703
+L2L
+tp704
+a(Vsjavdani
+p705
+VThursday 2-3
+p706
+VCory
+p707
+L1L
+tp708
+a(Vsjavdani
+p709
+VThursday 2-3
+p710
+VSoda
+p711
+L1L
+tp712
+a(Vsjavdani
+p713
+VWednesday 2-3
+p714
+VCory
+p715
+L2L
+tp716
+a(Vsjavdani
+p717
+VWednesday 2-3
+p718
+VSoda
+p719
+L2L
+tp720
+a(Vsjavdani
+p721
+VMonday 2-3
+p722
+VCory
+p723
+L1L
+tp724
+a(Vsjavdani
+p725
+VMonday 2-3
+p726
+VSoda
+p727
+L1L
+tp728
+a(Vsjavdani
+p729
+VThursday 1-2
+p730
+VCory
+p731
+L1L
+tp732
+a(Vsjavdani
+p733
+VThursday 1-2
+p734
+VSoda
+p735
+L1L
+tp736
+a(Vsjavdani
+p737
+VTuesday 1-2
+p738
+VCory
+p739
+L2L
+tp740
+a(Vsjavdani
+p741
+VTuesday 1-2
+p742
+VSoda
+p743
+L2L
+tp744
+a(Vsjavdani
+p745
+VMonday 1-2
+p746
+VCory
+p747
+L1L
+tp748
+a(Vsjavdani
+p749
+VMonday 1-2
+p750
+VSoda
+p751
+L1L
+tp752
+a(Vsjavdani
+p753
+VFriday 11a-12
+p754
+VCory
+p755
+L2L
+tp756
+a(Vsjavdani
+p757
+VFriday 11a-12
+p758
+VSoda
+p759
+L2L
+tp760
+a(Vsjavdani
+p761
+VWednesday 11a-12
+p762
+VCory
+p763
+L2L
+tp764
+a(Vsjavdani
+p765
+VWednesday 11a-12
+p766
+VSoda
+p767
+L2L
+tp768
+a(Vsjavdani
+p769
+VMonday 11a-12
+p770
+VCory
+p771
+L2L
+tp772
+a(Vsjavdani
+p773
+VMonday 11a-12
+p774
+VSoda
+p775
+L2L
+tp776
+a(Vsjavdani
+p777
+VWednesday 4-5
+p778
+VSoda
+p779
+L2L
+tp780
+a(Vsjavdani
+p781
+VWednesday 4-5
+p782
+VCory
+p783
+L2L
+tp784
+a(Vsjavdani
+p785
+VFriday 4-5
+p786
+VSoda
+p787
+L2L
+tp788
+a(Vsjavdani
+p789
+VFriday 4-5
+p790
+VCory
+p791
+L2L
+tp792
+a(Vsuhaas
+p793
+VThursday 2-3
+p794
+VSoda
+p795
+L1L
+tp796
+a(Vsuhaas
+p797
+VWednesday 2-3
+p798
+VSoda
+p799
+L1L
+tp800
+a(Vsuhaas
+p801
+VTuesday 2-3
+p802
+VSoda
+p803
+L1L
+tp804
+a(Vsuhaas
+p805
+VMonday 2-3
+p806
+VSoda
+p807
+L1L
+tp808
+a(Vsuhaas
+p809
+VThursday 1-2
+p810
+VSoda
+p811
+L1L
+tp812
+a(Vsuhaas
+p813
+VTuesday 1-2
+p814
+VSoda
+p815
+L1L
+tp816
+a(Vsuhaas
+p817
+VWednesday 11a-12
+p818
+VSoda
+p819
+L2L
+tp820
+a(Vsuhaas
+p821
+VMonday 11a-12
+p822
+VSoda
+p823
+L2L
+tp824
+a(Vjhoffman
+p825
+VThursday 11a-12
+p826
+VCory
+p827
+L2L
+tp828
+a(Vjhoffman
+p829
+VThursday 11a-12
+p830
+VSoda
+p831
+L2L
+tp832
+a(Vjhoffman
+p833
+VTuesday 4-5
+p834
+VCory
+p835
+L1L
+tp836
+a(Vjhoffman
+p837
+VFriday 4-5
+p838
+VSoda
+p839
+L2L
+tp840
+a(Vjhoffman
+p841
+VFriday 4-5
+p842
+VCory
+p843
+L2L
+tp844
+a(Vaalipoury
+p845
+VThursday 11a-12
+p846
+VCory
+p847
+L1L
+tp848
+a(Vaalipoury
+p849
+VFriday 11a-12
+p850
+VCory
+p851
+L1L
+tp852
+a(Vaalipoury
+p853
+VMonday 12-1
+p854
+VCory
+p855
+L1L
+tp856
+a(Vaalipoury
+p857
+VFriday 12-1
+p858
+VCory
+p859
+L1L
+tp860
+a(Vaalipoury
+p861
+VMonday 1-2
+p862
+VCory
+p863
+L2L
+tp864
+a(Vaalipoury
+p865
+VFriday 1-2
+p866
+VCory
+p867
+L1L
+tp868
+a(Vaalipoury
+p869
+VTuesday 11a-12
+p870
+VCory
+p871
+L1L
+tp872
+a(Vaalipoury
+p873
+VMonday 11a-12
+p874
+VCory
+p875
+L1L
+tp876
+a(Vmin
+p877
+VMonday 12-1
+p878
+VSoda
+p879
+L1L
+tp880
+a(Vmin
+p881
+VMonday 1-2
+p882
+VSoda
+p883
+L1L
+tp884
+a(Vmin
+p885
+VTuesday 1-2
+p886
+VSoda
+p887
+L2L
+tp888
+a(Vmin
+p889
+VFriday 2-3
+p890
+VSoda
+p891
+L1L
+tp892
+a(Vmin
+p893
+VFriday 3-4
+p894
+VSoda
+p895
+L1L
+tp896
+a(Vmin
+p897
+VWednesday 4-5
+p898
+VSoda
+p899
+L1L
+tp900
+a(Vmin
+p901
+VFriday 4-5
+p902
+VSoda
+p903
+L1L
+tp904
+a(Vgeorgechen
+p905
+VMonday 12-1
+p906
+VSoda
+p907
+L2L
+tp908
+a(Vgeorgechen
+p909
+VTuesday 3-4
+p910
+VSoda
+p911
+L1L
+tp912
+a(Vgeorgechen
+p913
+VTuesday 4-5
+p914
+VSoda
+p915
+L1L
+tp916
+a(Vaalipoury
+p917
+VMonday 2-3
+p918
+VCory
+p919
+L2L
+tp920
+a(Vaalipoury
+p921
+VFriday 3-4
+p922
+VCory
+p923
+L1L
+tp924
+a(Vvishay
+p925
+VFriday 1-2
+p926
+VCory
+p927
+L1L
+tp928
+a(Vgeorgechen
+p929
+VMonday 11a-12
+p930
+VSoda
+p931
+L2L
+tp932
+a(Vsgowda
+p933
+VWednesday 11a-12
+p934
+VSoda
+p935
+L2L
+tp936
+a(Vsgowda
+p937
+VFriday 11a-12
+p938
+VSoda
+p939
+L2L
+tp940
+a(Vsgowda
+p941
+VMonday 12-1
+p942
+VSoda
+p943
+L1L
+tp944
+a(Vsgowda
+p945
+VWednesday 12-1
+p946
+VSoda
+p947
+L2L
+tp948
+a(Vsgowda
+p949
+VFriday 12-1
+p950
+VSoda
+p951
+L1L
+tp952
+a(Vsgowda
+p953
+VMonday 1-2
+p954
+VSoda
+p955
+L1L
+tp956
+a(Vsgowda
+p957
+VTuesday 1-2
+p958
+VSoda
+p959
+L2L
+tp960
+a(Vsgowda
+p961
+VThursday 1-2
+p962
+VSoda
+p963
+L2L
+tp964
+a(Vsgowda
+p965
+VFriday 1-2
+p966
+VSoda
+p967
+L1L
+tp968
+a(Vsgowda
+p969
+VMonday 2-3
+p970
+VSoda
+p971
+L1L
+tp972
+a(Vsgowda
+p973
+VWednesday 2-3
+p974
+VSoda
+p975
+L2L
+tp976
+a(Vsgowda
+p977
+VWednesday 3-4
+p978
+VSoda
+p979
+L2L
+tp980
+a(Vsgowda
+p981
+VFriday 3-4
+p982
+VSoda
+p983
+L1L
+tp984
+a(Vsgowda
+p985
+VMonday 4-5
+p986
+VSoda
+p987
+L1L
+tp988
+a(Vsgowda
+p989
+VTuesday 4-5
+p990
+VSoda
+p991
+L1L
+tp992
+a(Vsgowda
+p993
+VWednesday 4-5
+p994
+VSoda
+p995
+L2L
+tp996
+a(Vsgowda
+p997
+VThursday 4-5
+p998
+VSoda
+p999
+L1L
+tp1000
+a(Vsgowda
+p1001
+VFriday 4-5
+p1002
+VSoda
+p1003
+L1L
+tp1004
+a(Vmchang
+p1005
+VMonday 1-2
+p1006
+VSoda
+p1007
+L1L
+tp1008
+a(Vmchang
+p1009
+VTuesday 1-2
+p1010
+VSoda
+p1011
+L2L
+tp1012
+a(Vmchang
+p1013
+VWednesday 1-2
+p1014
+VSoda
+p1015
+L1L
+tp1016
+a(Vmchang
+p1017
+VMonday 2-3
+p1018
+VSoda
+p1019
+L1L
+tp1020
+a(Vmchang
+p1021
+VWednesday 2-3
+p1022
+VSoda
+p1023
+L1L
+tp1024
+a(Vmchang
+p1025
+VMonday 3-4
+p1026
+VSoda
+p1027
+L1L
+tp1028
+a(Vmchang
+p1029
+VWednesday 3-4
+p1030
+VSoda
+p1031
+L1L
+tp1032
+a(Vmchang
+p1033
+VTuesday 4-5
+p1034
+VSoda
+p1035
+L2L
+tp1036
+a(Vnjoubert
+p1037
+VWednesday 3-4
+p1038
+VSoda
+p1039
+L1L
+tp1040
+a(Vnjoubert
+p1041
+VWednesday 12-1
+p1042
+VSoda
+p1043
+L1L
+tp1044
+a(Vnjoubert
+p1045
+VTuesday 12-1
+p1046
+VSoda
+p1047
+L1L
+tp1048
+a(Vnjoubert
+p1049
+VWednesday 11a-12
+p1050
+VSoda
+p1051
+L1L
+tp1052
+a(Vvishay
+p1053
+VThursday 1-2
+p1054
+VCory
+p1055
+L2L
+tp1056
+a(Vvishay
+p1057
+VFriday 12-1
+p1058
+VCory
+p1059
+L1L
+tp1060
+a(Vvishay
+p1061
+VThursday 2-3
+p1062
+VCory
+p1063
+L2L
+tp1064
+a(Vvishay
+p1065
+VFriday 2-3
+p1066
+VCory
+p1067
+L1L
+tp1068
+a(Vackner
+p1069
+VMonday 11a-12
+p1070
+VSoda
+p1071
+L2L
+tp1072
+a(Vackner
+p1073
+VFriday 11a-12
+p1074
+VSoda
+p1075
+L2L
+tp1076
+a(Vackner
+p1077
+VMonday 12-1
+p1078
+VSoda
+p1079
+L2L
+tp1080
+a(Vackner
+p1081
+VFriday 12-1
+p1082
+VSoda
+p1083
+L2L
+tp1084
+a(Vackner
+p1085
+VMonday 1-2
+p1086
+VSoda
+p1087
+L2L
+tp1088
+a(Vackner
+p1089
+VTuesday 1-2
+p1090
+VSoda
+p1091
+L1L
+tp1092
+a(Vackner
+p1093
+VThursday 1-2
+p1094
+VSoda
+p1095
+L1L
+tp1096
+a(Vackner
+p1097
+VFriday 1-2
+p1098
+VSoda
+p1099
+L2L
+tp1100
+a(Vackner
+p1101
+VMonday 2-3
+p1102
+VSoda
+p1103
+L2L
+tp1104
+a(Vackner
+p1105
+VThursday 2-3
+p1106
+VSoda
+p1107
+L1L
+tp1108
+a(Vackner
+p1109
+VFriday 2-3
+p1110
+VSoda
+p1111
+L2L
+tp1112
+a(Vackner
+p1113
+VMonday 3-4
+p1114
+VSoda
+p1115
+L2L
+tp1116
+a(Vackner
+p1117
+VFriday 3-4
+p1118
+VSoda
+p1119
+L2L
+tp1120
+a(Vackner
+p1121
+VMonday 4-5
+p1122
+VSoda
+p1123
+L2L
+tp1124
+a(Vackner
+p1125
+VFriday 4-5
+p1126
+VSoda
+p1127
+L2L
+tp1128
+a(Vjared
+p1129
+VWednesday 3-4
+p1130
+VCory
+p1131
+L1L
+tp1132
+a(Vjared
+p1133
+VWednesday 3-4
+p1134
+VSoda
+p1135
+L1L
+tp1136
+a(Vjared
+p1137
+VTuesday 3-4
+p1138
+VCory
+p1139
+L2L
+tp1140
+a(Vjared
+p1141
+VTuesday 3-4
+p1142
+VSoda
+p1143
+L2L
+tp1144
+a(Vjared
+p1145
+VFriday 2-3
+p1146
+VCory
+p1147
+L2L
+tp1148
+a(Vjared
+p1149
+VFriday 2-3
+p1150
+VSoda
+p1151
+L2L
+tp1152
+a(Vjared
+p1153
+VThursday 2-3
+p1154
+VCory
+p1155
+L1L
+tp1156
+a(Vjared
+p1157
+VThursday 2-3
+p1158
+VSoda
+p1159
+L1L
+tp1160
+a(Vjared
+p1161
+VWednesday 2-3
+p1162
+VCory
+p1163
+L1L
+tp1164
+a(Vjared
+p1165
+VWednesday 2-3
+p1166
+VSoda
+p1167
+L1L
+tp1168
+a(Vjared
+p1169
+VTuesday 2-3
+p1170
+VCory
+p1171
+L2L
+tp1172
+a(Vjared
+p1173
+VTuesday 2-3
+p1174
+VSoda
+p1175
+L2L
+tp1176
+a(Vjared
+p1177
+VMonday 2-3
+p1178
+VCory
+p1179
+L2L
+tp1180
+a(Vjared
+p1181
+VMonday 2-3
+p1182
+VSoda
+p1183
+L2L
+tp1184
+a(Vjared
+p1185
+VFriday 12-1
+p1186
+VCory
+p1187
+L2L
+tp1188
+a(Vjared
+p1189
+VFriday 12-1
+p1190
+VSoda
+p1191
+L2L
+tp1192
+a(Vjared
+p1193
+VWednesday 12-1
+p1194
+VCory
+p1195
+L2L
+tp1196
+a(Vjared
+p1197
+VWednesday 12-1
+p1198
+VSoda
+p1199
+L2L
+tp1200
+a(Vjared
+p1201
+VMonday 12-1
+p1202
+VCory
+p1203
+L2L
+tp1204
+a(Vjared
+p1205
+VMonday 12-1
+p1206
+VSoda
+p1207
+L2L
+tp1208
+a(Vjared
+p1209
+VThursday 11a-12
+p1210
+VCory
+p1211
+L2L
+tp1212
+a(Vjared
+p1213
+VThursday 11a-12
+p1214
+VSoda
+p1215
+L2L
+tp1216
+a(Vjared
+p1217
+VTuesday 11a-12
+p1218
+VCory
+p1219
+L2L
+tp1220
+a(Vjared
+p1221
+VTuesday 11a-12
+p1222
+VSoda
+p1223
+L2L
+tp1224
+a(Vzhangz
+p1225
+VTuesday 11a-12
+p1226
+VSoda
+p1227
+L1L
+tp1228
+a(Vzhangz
+p1229
+VThursday 11a-12
+p1230
+VSoda
+p1231
+L1L
+tp1232
+a(Vbtay
+p1233
+VFriday 2-3
+p1234
+VSoda
+p1235
+L2L
+tp1236
+a(Vbtay
+p1237
+VThursday 2-3
+p1238
+VSoda
+p1239
+L2L
+tp1240
+a(Vbtay
+p1241
+VFriday 1-2
+p1242
+VSoda
+p1243
+L2L
+tp1244
+a(Vbtay
+p1245
+VThursday 1-2
+p1246
+VSoda
+p1247
+L2L
+tp1248
+a(Vbtay
+p1249
+VFriday 12-1
+p1250
+VSoda
+p1251
+L2L
+tp1252
+a(Vbtay
+p1253
+VThursday 12-1
+p1254
+VSoda
+p1255
+L2L
+tp1256
+a(Vbtay
+p1257
+VFriday 11a-12
+p1258
+VSoda
+p1259
+L2L
+tp1260
+a(Vbtay
+p1261
+VThursday 11a-12
+p1262
+VSoda
+p1263
+L2L
+tp1264
+a(Vbtay
+p1265
+VFriday 3-4
+p1266
+VSoda
+p1267
+L2L
+tp1268
+a(Vbtay
+p1269
+VMonday 4-5
+p1270
+VSoda
+p1271
+L1L
+tp1272
+a(Vbtay
+p1273
+VWednesday 4-5
+p1274
+VSoda
+p1275
+L1L
+tp1276
+a(Vbtay
+p1277
+VFriday 4-5
+p1278
+VSoda
+p1279
+L2L
+tp1280
+a(Vangela
+p1281
+VFriday 1-2
+p1282
+VCory
+p1283
+L2L
+tp1284
+a(Vangela
+p1285
+VTuesday 3-4
+p1286
+VCory
+p1287
+L1L
+tp1288
+a(Vangela
+p1289
+VThursday 3-4
+p1290
+VCory
+p1291
+L2L
+tp1292
+a(Vangela
+p1293
+VTuesday 4-5
+p1294
+VCory
+p1295
+L1L
+tp1296
+a(Vangela
+p1297
+VThursday 4-5
+p1298
+VCory
+p1299
+L1L
+tp1300
+a(Vkmowery
+p1301
+VMonday 11a-12
+p1302
+VSoda
+p1303
+L2L
+tp1304
+a(Vkmowery
+p1305
+VWednesday 12-1
+p1306
+VSoda
+p1307
+L1L
+tp1308
+a(Vkmowery
+p1309
+VTuesday 1-2
+p1310
+VSoda
+p1311
+L2L
+tp1312
+a(Vkmowery
+p1313
+VWednesday 1-2
+p1314
+VSoda
+p1315
+L1L
+tp1316
+a(Vkmowery
+p1317
+VThursday 1-2
+p1318
+VSoda
+p1319
+L2L
+tp1320
+a(Vjtran
+p1321
+VWednesday 12-1
+p1322
+VSoda
+p1323
+L1L
+tp1324
+a(Vjtran
+p1325
+VThursday 12-1
+p1326
+VSoda
+p1327
+L1L
+tp1328
+a(Vjtran
+p1329
+VTuesday 1-2
+p1330
+VSoda
+p1331
+L2L
+tp1332
+a(Vjtran
+p1333
+VWednesday 1-2
+p1334
+VSoda
+p1335
+L1L
+tp1336
+a(Vjtran
+p1337
+VThursday 1-2
+p1338
+VSoda
+p1339
+L1L
+tp1340
+a(Vjliao
+p1341
+VFriday 12-1
+p1342
+VSoda
+p1343
+L1L
+tp1344
+a(Vwayne
+p1345
+VMonday 4-5
+p1346
+VCory
+p1347
+L2L
+tp1348
+a(Vwayne
+p1349
+VMonday 4-5
+p1350
+VSoda
+p1351
+L2L
+tp1352
+a(Vwayne
+p1353
+VMonday 2-3
+p1354
+VCory
+p1355
+L1L
+tp1356
+a(Vwayne
+p1357
+VMonday 2-3
+p1358
+VSoda
+p1359
+L1L
+tp1360
+a(Vwayne
+p1361
+VFriday 12-1
+p1362
+VCory
+p1363
+L2L
+tp1364
+a(Vwayne
+p1365
+VFriday 12-1
+p1366
+VSoda
+p1367
+L2L
+tp1368
+a(Vwayne
+p1369
+VWednesday 12-1
+p1370
+VCory
+p1371
+L2L
+tp1372
+a(Vwayne
+p1373
+VWednesday 12-1
+p1374
+VSoda
+p1375
+L2L
+tp1376
+a(Vwayne
+p1377
+VMonday 12-1
+p1378
+VCory
+p1379
+L1L
+tp1380
+a(Vwayne
+p1381
+VMonday 12-1
+p1382
+VSoda
+p1383
+L1L
+tp1384
+a(Vwayne
+p1385
+VFriday 11a-12
+p1386
+VCory
+p1387
+L2L
+tp1388
+a(Vwayne
+p1389
+VWednesday 11a-12
+p1390
+VSoda
+p1391
+L2L
+tp1392
+a(Vwayne
+p1393
+VWednesday 11a-12
+p1394
+VCory
+p1395
+L2L
+tp1396
+a(Vwayne
+p1397
+VFriday 11a-12
+p1398
+VSoda
+p1399
+L2L
+tp1400
+a(Vmichelleau
+p1401
+VWednesday 4-5
+p1402
+VSoda
+p1403
+L1L
+tp1404
+a(Vmichelleau
+p1405
+VFriday 4-5
+p1406
+VSoda
+p1407
+L2L
+tp1408
+a(Vjtran
+p1409
+VThursday 11a-12
+p1410
+VSoda
+p1411
+L1L
+tp1412
+a(Vjtran
+p1413
+VWednesday 11a-12
+p1414
+VSoda
+p1415
+L2L
+tp1416
+a(Vjtran
+p1417
+VThursday 2-3
+p1418
+VSoda
+p1419
+L1L
+tp1420
+a(Vjtran
+p1421
+VMonday 4-5
+p1422
+VSoda
+p1423
+L2L
+tp1424
+a(Vjtran
+p1425
+VWednesday 4-5
+p1426
+VSoda
+p1427
+L2L
+tp1428
+a(Vmtao
+p1429
+VMonday 1-2
+p1430
+VCory
+p1431
+L1L
+tp1432
+a(Vmtao
+p1433
+VFriday 1-2
+p1434
+VCory
+p1435
+L1L
+tp1436
+a(Vjared
+p1437
+VThursday 3-4
+p1438
+VSoda
+p1439
+L1L
+tp1440
+a(Vjared
+p1441
+VThursday 3-4
+p1442
+VCory
+p1443
+L1L
+tp1444
+a(Vjared
+p1445
+VThursday 4-5
+p1446
+VSoda
+p1447
+L1L
+tp1448
+a(Vjared
+p1449
+VThursday 4-5
+p1450
+VCory
+p1451
+L1L
+tp1452
+a(Vbkim
+p1453
+VFriday 4-5
+p1454
+VSoda
+p1455
+L2L
+tp1456
+a(Vwayne
+p1457
+VMonday 11a-12
+p1458
+VCory
+p1459
+L1L
+tp1460
+a(Vwayne
+p1461
+VMonday 11a-12
+p1462
+VSoda
+p1463
+L1L
+tp1464
+a(Vaalipoury
+p1465
+VWednesday 4-5
+p1466
+VCory
+p1467
+L2L
+tp1468
+a(Vjliao
+p1469
+VFriday 1-2
+p1470
+VSoda
+p1471
+L1L
+tp1472
+a(Vjliao
+p1473
+VFriday 2-3
+p1474
+VSoda
+p1475
+L2L
+tp1476
+a(Vjliao
+p1477
+VFriday 3-4
+p1478
+VSoda
+p1479
+L2L
+tp1480
+a(Vjliao
+p1481
+VFriday 4-5
+p1482
+VSoda
+p1483
+L2L
+tp1484
+a.

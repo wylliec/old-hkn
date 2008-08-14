@@ -1,0 +1,87 @@
+<?xml version="1.0" ?>
+<department abbr="ARABIC" name="Arabic">
+    <course name="Elementary Arabic" number="1A" units="5">
+        This course emphasizes the functional usage of Arabic in the four language skills: listening, speaking, reading, and writing. Authentic audio, video, and reading materials are presented from the beginning, and students are encouraged to be creative with the language in and out of class.
+    </course>
+    <course name="Elementary Arabic Distance Learning" number="1AW" units="5">
+        Arabic Without Walls covers the same course content as Arabic 1A-1B, delivered in an online format. This course introduces students to Modern Standard Arabic and emphasizes communicative competence in the four language skills: listening, reading, speaking, and writing. The new course format contains both print and Web materials for three course content components: (1) Al-Kitaab Part 1 and Alif Baa (Kristen Brustad, Mahmoud Al-Batal and Abbas Al-Tonsi, 2004), (2) QuickTime movie interviews with Arabic native speakers, and (3) expanded cultural presentations and Web activities not available in Al-Kitaab Part 1. These components are designed to complement each other in support of the distance format. Students work simultaneously with the Arabic 1A-1B textbook and DVDs, the Web materials, and audio chat activities. Students who complete this course will be prepared to enter Intermediate Arabic 20A at UC Berkeley or at another institution.
+    </course>
+    <course name="Elementary Arabic" number="1B" units="5">
+        This course emphasizes the functional usage of Arabic in the four language skills: listening, speaking, reading, and writing. Authentic audio, video, and reading materials are presented from the beginning, and students are encouraged to be creative with the language in and out of class.
+    </course>
+    <course name="Elementary Arabic Distance Learning" number="1BW" units="5">
+        Arabic Without Walls covers the same course content as Arabic 1A-1B, delivered in an online format. This course introduces students to Modern Standard Arabic and emphasizes communicative competence in the four language skills: listening, reading, speaking, and writing. The new course format contains both print and Web materials for three course content components: (1) Al-Kitaab Part 1 and Alif Baa (Kristen Brustad, Mahmoud Al-Batal and Abbas Al-Tonsi, 2004), (2) QuickTime movie interviews with Arabic native speakers, and (3) expanded cultural presentations and Web activities not available in Al-Kitaab Part 1. These components are designed to complement each other in support of the distance format. Students work simultaneously with the Arabic 1A-1B textbook and DVDs, the Web materials, and audio chat activities. Students who complete this course will be prepared to enter Intermediate Arabic 20A at UC Berkeley or at another institution.
+    </course>
+    <course name="Spoken Arabic" number="15A" units="3">
+        Practice in speaking an Arabic dialect.
+    </course>
+    <course name="Spoken Arabic" number="15B" units="3">
+        Practice in speaking an Arabic dialect.
+    </course>
+    <course name="Intermediate Arabic" number="20A" units="5">
+        This course is proficiency oriented. Authentic reading in modern standard and classical Arabic and the understanding and application of grammatical and stylistic rules are emphasized. Students deliver oral presentations and write academic papers in Arabic.
+    </course>
+    <course name="Intermediate Arabic" number="20B" units="5">
+        This course is proficiency oriented. Authentic reading in modern standard and classical Arabic and the understanding and application of grammatical and stylistic rules are emphasized. Students deliver oral presentations and write academic papers in Arabic.
+    </course>
+    <course name="Advanced Arabic" number="100A" units="3">
+        Intensive reading and analysis of texts of different genres. Guest lectures, films, documentaries, oral presentations, research papers. Formal and informal styles of writing and correspondence. Extensive vocabulary building.
+    </course>
+    <course name="Advanced Arabic" number="100B" units="3">
+        Intensive reading and analysis of texts of different genres. Guest lectures, films, documentaries, oral presentations, research papers. Formal and informal styles of writing and correspondence. Extensive vocabulary building.
+    </course>
+    <course name="Classical Arabic Prose" number="104B" units="3">
+        This course is designed for students who wish to concentrate on Arabic of the classical periods of Arab and Islamic civilization. Reading and analysis of literary texts of various genres, including essays, biography, and travel literature.
+    </course>
+    <course name="Classical Arabic Poetry" number="105B" units="3">
+        Readings and analysis of poetry from the pre-Islamic through the classical periods.
+    </course>
+    <course name="Arabic Historical and Geographical Texts" number="107" units="3">
+        Readings from the classical historians and geographers and from contemporary scholarship. Development of historiography.
+    </course>
+    <course name="Islamic Religious and Philosophical Texts in Arabic" number="108" units="3">
+        Readings in the basic texts of Islam (Qur'an, Huran, Hadith, Sira, commentary) and in theological, mystical, and philosophical texts.
+    </course>
+    <course name="Survey of Arabic Literature (in Arabic)" number="111A" units="3">
+        This course is designed primarily for majors and prospective majors in Arabic studies.
+    </course>
+    <course name="Survey of Arabic Literature (in Arabic)" number="111B" units="3">
+        This course is designed primarily for majors and prospective majors in Arabic studies.
+    </course>
+    <course name="Senior Honors" number="H195" units="2-4">
+        Directed study centered upon preparation of an honors thesis.
+    </course>
+    <course name="Directed Group Study for Upper Division Students" number="198" units="1-4">
+        Instruction in areas not covered by regularly scheduled courses.
+    </course>
+    <course name="Supervised Independent Study and Research" number="199" units="1-4">
+        Enrollment restrictions apply; see the Introduction to Courses and Curricula section of this catalog.
+    </course>
+    <course name="Arabic Grammatical Tradition" number="200" units="3">
+        Study of selected grammatical phenomena of Arabic based on readings from the classical Arabic grammarians, on the modern study of linguistics in the Arab world, and on the Western grammatical tradition.
+    </course>
+    <course name="History of Arabic" number="202" units="3">
+        The history of Arabic from its Semitic antecedents through the formation of the modern dialects.
+    </course>
+    <course name="Readings in the Qur'an" number="209A" units="3">
+        Selected readings in Arabic from the Qur'an, traditional Islamic exegesis, and other secondary material.
+    </course>
+    <course name="Topics in Modern Arabic Literature:  Poetry" number="212" units="3">
+        Intensive study of modern poetry in relation to the cultural tradition.
+    </course>
+    <course name="Seminar in Classical Arabic Literature" number="220" units="3">
+        A close reading and careful literary analysis of significant authors and specific topics in Classical Arabic prose or poetry or both.
+    </course>
+    <course name="Seminar: Modernist Arabic Poetics" number="245" units="3">
+        This course examines the origins, status, and function of literary theory in the making of modern Arabic literature. Questions of cultural influence, literary genres, forms, modes, and techniques of representation are all central to the interests of this course.
+    </course>
+    <course name="Seminar" number="298" units="1-4">
+        Special topics in Arabic. Topics vary and are announced at the beginning of each semester.
+    </course>
+    <course name="Teaching Arabic" number="301A" units="3">
+        The methodology of teaching Arabic as a foreign language at the college level. Lectures on contrastive analysis of English and Arabic, classroom strategies, and the development of instructional materials. Required of all new graduate student instructors in Arabic.
+    </course>
+    <course name="Teaching Arabic" number="301B" units="3">
+        The methodology of teaching Arabic as a foreign language at the college level. Lectures on contrastive analysis of English and Arabic, classroom strategies, and the development of instructional materials. Required of all new graduate student instructors in Arabic.
+    </course>
+</department>

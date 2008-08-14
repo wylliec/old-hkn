@@ -1,0 +1,168 @@
+<?xml version="1.0" ?>
+<department abbr="CHM ENG" name="Chemical Engineering">
+    <course name="Freshman Seminars" number="24" units="1">
+        The Berkeley Seminar Program has been designed to provide new students with the opportunity to explore an intellectual topic with a faculty member in a small-seminar setting. Berkeley Seminars are offered in all campus departments, and topics vary from department to department and semester to semester.
+    </course>
+    <course name="Sophomore Seminar" number="84" units="1,2">
+        Sophomore seminars are small interactive courses offered by faculty members in departments all across the campus. Sophomore seminars offer opportunity for close, regular intellectual contact between faculty members and students in the crucial second year. The topics vary from department to department and semester to semester. Enrollment limited to 15 sophomores.
+    </course>
+    <course name="Introduction to Research and Study in the College of Chemistry" number="C96" units="1">
+        Introduces freshmen to research activities and programs of study in the College of Chemistry. Includes lectures by faculty, an introduction to college library and computer facilities, the opportunity to meet alumni and advanced undergraduates in an informal atmosphere, and discussion of college and campus resources. Also listed as Chemistry C96.
+    </course>
+    <course name="Directed Group Studies for Lower Division Undergraduates" number="98" units="1-3">
+        Supervised research on a specific topic.
+    </course>
+    <course name="Introduction to Chemical Process Analysis" number="140" units="4">
+        Material and energy balances applied to chemical process systems. Determination of thermodynamic properties needed for such calculations. Sources of data. Calculation procedures.
+    </course>
+    <course name="Chemical Engineering Thermodynamics" number="141" units="3">
+        Thermodynamic behavior of pure substances and mixtures. Properties of solutions, phase equilibria. Thermodynamic cycles. Chemical equilibria for homogeneous and heterogeneous systems.
+    </course>
+    <course name="Chemical Kinetics and Reaction Engineering" number="142" units="3">
+        Analysis and prediction of rates of chemical conversion in flow and nonflow processes involving homogeneous and heterogeneous systems.
+    </course>
+    <course name="Transport Processes" number="150A" units="4">
+        Principles of fluid mechanics and heat transfer with application to chemical processes. Laminar and turbulent flow in pipes and around submerged objects. Flow measurement. Heat conduction and convection; heat transfer coefficients.
+    </course>
+    <course name="Transport and Separation Processes" number="150B" units="4">
+        Principles of mass transfer with application to chemical processes. Diffusion and convection. Simultaneous heat and mass transfer; mass transfer coefficients. Design of staged and continuous separations processes.
+    </course>
+    <course name="Chemical Engineering Laboratory" number="154" units="3">
+        Experiments in physical measurements, fluid mechanics, heat and mass transfer, kinetics, and separation processes. Emphasis on investigation of basic relationships important in engineering. Experimental design, analysis of results, and preparation of engineering reports are stressed.
+    </course>
+    <course name="Transport Processes Laboratory" number="157" units="3">
+        Physicochemical properties of materials. Fluid mechanics, heat and mass transfer experiments illustrating principles and applications of transport phenomena in chemical engineering practice. Experiments illustrate the application of chemical engineering principles to modern technologies such as microelectronics processing, biotechnology, and materials processing.
+    </course>
+    <course name="Chemical Process Design" number="160" units="4">
+        Design principles of chemical process equipment. Design of integrated chemical processes with emphasis upon economic considerations.
+    </course>
+    <course name="Dynamics and Control of Chemical Processes" number="162" units="4">
+        Analysis of the dynamic behavior of chemical processes and methods and theory of their control. Implementation of computer control systems on laboratory processes and process simulations.
+    </course>
+    <course name="Biochemical Engineering" number="170A" units="3">
+        The first of a two-semester sequence intended to introduce chemical engineers to the basic concepts of biochemical engineering. The course focuses on the use of chemical engineering skills and principles in the analysis and design of biologically-based processes. No previous background in the biological sciences has been assumed, and no subsection of the course has been set aside to cover fundamental topics in biochemistry, molecular biology, or microbiology. Instead, such material will be introduced as necessary throughout the course. The main emphasis of the 170A-170B sequence will be on biochemical kinetics, heat and mass transfer, thermodynamics, and transport phenomena as they apply to enzyme catalysis, protein engineering, microbial growth and metabolism, fermentation and bioreactor design, product recovery and downstream processing.
+    </course>
+    <course name="Biochemical Engineering" number="170B" units="3">
+        The second of a two-semester sequence intended to introduce chemical engineers to the basic concepts of biochemical engineering. The course focuses on the use of chemical engineering skills and principles in the analysis and design of biologically-based processes. The main emphasis of the 170A-170B sequence will be on biochemical kinetics, heat and mass transfer, thermodynamics, and transport phenomena as they apply to enzyme catalysis, protein engineering, microbial growth and metabolism, fermentation and bioreactor design, product recovery, and downstream processing.
+    </course>
+    <course name="Biochemical Engineering Laboratory" number="C170L" units="3">
+        Laboratory techniques for the cultivation of microorganisms in batch and continuous reactions. Enzymatic conversion processes. Recovery of biological products. Also listed as Chemistry C170L.
+    </course>
+    <course name="Transport Phenomena" number="171" units="3">
+        Study of momentum, energy, and mass transfer in laminar and turbulent flow.
+    </course>
+    <course name="Principles of Electrochemical Processes" number="176" units="3">
+        Principles and application of electrochemical equilibria, kinetics, and transport processes. Technical electrolysis and electrochemical energy conversion.
+    </course>
+    <course name="Polymer Science and Technology" number="C178" units="3">
+        Introduction to physical and chemical behavior of organic polymers. Properties of solutions, melts, glasses, elastomers, and crystals. Engineering applications emphasizing processing technology. Experiments in polymerization and characterization. Also listed as Chemistry C178.
+    </course>
+    <course name="Process Technology of Solid-State Materials Devices" number="179" units="3">
+        Chemical processing and properties of solid-state materials. Crystal growth and purification. Thin film technology. Application of chemical processing to the manufacture of semiconductors and solid-state devices.
+    </course>
+    <course name="Technical Communication for Chemical Engineers" number="185" units="3">
+        Development of technical writing and oral presentation skills in formats commonly used by chemical engineers.
+    </course>
+    <course name="Research for Advanced Undergraduates" number="H194" units="2-3">
+        Original research under direction of one of the members of the staff.
+    </course>
+    <course name="Special Topics" number="195" units="2-3">
+        Lectures and/or tutorial instruction on special topics.
+    </course>
+    <course name="Special Laboratory Study" number="196" units="2-3">
+        Special laboratory or computational work under direction of one of the members of the staff.
+    </course>
+    <course name="Field Study in Chemical Engineering" number="197" units="1-4">
+        Supervised experience in off-campus organizations relevant to specific aspects and applications of chemical engineering. Written report required at the end of the term. Course does not satisfy unit or residence requirements for the bachelor's degree.
+    </course>
+    <course name="Directed Group Study for Undergraduates" number="198" units="1-3">
+        Supervised research on a specific topic. Enrollment is restricted; see Introduction to Courses and Curricula section in the General Catalog.
+    </course>
+    <course name="Directed Group Study for Undergraduates" number="198" units="1-3">
+        Supervised research on a specific topic. Enrollment is restricted; see Introduction to Courses and Curricula section in the General Catalog.
+    </course>
+    <course name="Supervised Independent Study and Research" number="199" units="1-4">
+        
+    </course>
+    <course name="Mathematical Methods in Chemical Engineering" number="230" units="3">
+        Mathematical formulation and solution of problems drawn from the fields of heat and mass transfer, fluid mechanics, thermodynamics, and reaction kinetics employing ordinary and partial differential equations, variational calculus, and Fourier methods.
+    </course>
+    <course name="Computational Methods in Chemical Engineering" number="232" units="3">
+        Introduction to modern computational methods for treatment of problems not amenable to analytic solutions. Application of numerical techniques to chemical engineering calculations with emphasis on computer methods.
+    </course>
+    <course name="Thermodynamics for Chemical Product and Process Design" number="240" units="3">
+        Topics covered include classical thermodynamics of pure substances and mixtures, interfacial thermodynamics, statistical mechanics, and computer simulations.
+    </course>
+    <course name="Kinetics and Reaction Engineering" number="244" units="3">
+        Microscopic processes in chemical reactors: kinetics, catalysis. Interaction of mass and heat transfer in chemical processes. Performance of systems with chemical reactors.
+    </course>
+    <course name="Catalysis" number="245" units="3">
+        Adsorption and kinetics of surface reactions; catalyst preparation and characterization; poisoning, selectivity, and empirical activity patterns in catalysis; surface chemistry, catalytic mechanisms and modern experimental techniques in catalytic research; descriptive examples of industrial catalytic systems.
+    </course>
+    <course name="Principles of Electrochemical Engineering" number="246" units="3">
+        Electrode processes in electrolysis and in galvanic cells. Charge and mass transfer in ionic media. Criteria of scale-up.
+    </course>
+    <course name="Applied Surface and Colloid Chemistry" number="248" units="3">
+        Principles of surface and colloid chemistry with current applications; surface thermodynamics, wetting, adsorption from solution, disperse systems, association colloids, interacting electrical double layers and colloid stability, kinetics of coagulation, and electrokinetics.
+    </course>
+    <course name="Biochemical Engineering" number="249" units="3">
+        Application of chemical engineering principles to the processing of biological and biochemical materials. Design of systems for cultivation of microorganisms and for the separation and purification of biological products.
+    </course>
+    <course name="Transport Processes" number="250" units="3">
+        Basic differential relations of mass, heat, and momentum transport for Newtonian and non-Newtonian fluids; exact solutions of Navier-Stokes equations; scaling and singular perturbations; creeping flow; laminar boundary layers; turbulence; hydrodynamic stability.
+    </course>
+    <course name="Physicochemical Hydrodynamics" number="C268" units="3">
+        An introduction to the hydrodyamics of capillarity and wetting. Balance laws and short-range forces. Dimensionless numbers, scaling and lubrication approximation. Rayleigh instability. Marangoni effect. The moving contact line. Wetting and short-range forces. The dynamic contact angle. Dewetting. Coating flows. Effect of surfactants and electric fields. Wetting of rough or porous surfaces. Contact angles for evaporating systems. Also listed as Mechanical Engineering C268.
+    </course>
+    <course name="Electrochemical, Hydrodynamic, and Interfacial Phenomena" number="295B" units="2">
+        
+    </course>
+    <course name="Development of Biopharmaceuticals" number="295D" units="2">
+        This course will present the process of taking a discovered biological activity through steps leading to a pharmaceutical product fit for marketing to the public. Students will gain an understanding of product development in a modern biotechnology company. This course focuses on pharmaceuticals produced by biotechnology and from human blood plasma.
+    </course>
+    <course name="Battery Technologies: Addressing the Growing Demand for Electrical Energy Storage" number="295F" units="3">
+        Incorporating ideas from a variety of disciplines, this course aims to equip students with the concepts and analytical skills necessary to assess the utility and viability of various battery technologies in the context of a growing demand for electrochemical energy storage. The course will focus on the fundamentals of electrochemical energy storage with respect to the physical principles of operation, design, and manufacturing of various battery technologies. Traditional chemical engineering science is integrated with the practical issues of manufacturing, cost and market analysis, and policy considerations to provide a complete picture of the engineering and development of modern battery storage systems.
+    </course>
+    <course name="Current Topics in Metabolic Engineering" number="295K" units="1">
+        This course will survey recent advances in metabolic engineering, including the recent literature in this area. Topics of interest include flux analysis, recombinant gene expression, metabolomics, proteomics, transcriptomics, physiology, and microbial secondary metabolites. Students will be expected to read and interpret the recent literature. A working knowledge of molecular biology is necessary.
+    </course>
+    <course name="Implications and Applications of Synthetic Biology" number="C295L" units="3">
+        Explore strategies for maximizing the economic and societal benefits of synthetic biology and minimizing the risks; create &quot;seedlings&quot; for future research projects in synthetic biology at UC Berkeley; increase multidisciplinary collaborations at UC Berkeley on synthetic biology; and introduce students to a wide perspective of SB projects and innovators as well as policy, legal, and ethical experts. Also listed as Bioengineering C230.
+    </course>
+    <course name="Topics in Fluid Mechanics" number="C295M" units="1,2">
+        Lectures on special topics which will be announced at the beginning of each semester that the course is offered. Topics may include transport and mixing, geophysical fluid dynamics, bio-fluid dynamics, oceanography, free surface flows, non Newtonian fluid mechanics, among other possibilities. Also listed as Environ Sci, Policy, and Management C291, Physics C290I, Mathematics C290C, Nuclear Engineering C290F, Civil and Environmental Engineering C290K, Mechanical Engineering C298A, and Bioengineering C290C.
+    </course>
+    <course name="Polymer Physics" number="295N" units="3">
+        This course, which is based on Gert Strobl's book The Physics of Polymers addresses the origin of some of the important physical properties of polymer liquids and solids. This includes phase transitions, crystallization, morphology of multiphase polymer systems, mechanical properties, response to mechanical and electric fields, and fracture. When possible, we will develop quantitative molecular models that predict macroscopic behavior. The course will address experimental data obtained by microscopy, light and neutron scattering, rheology, and dielectric relaxation.
+    </course>
+    <course name="Chemical Engineering Management" number="295O" units="3">
+        Students will participate in solving open-ended technical and business problems facing management in an industrial organization. Emphasis will be on problem synthesis, creative and strategic thinking, and communication skills. Objectives of the course are to provide an understanding (1) of what is expected of a new engineer in industry, (2) of the viewpoint of management, and (3) of the skills needed for success.
+    </course>
+    <course name="Introduction to New Product Development" number="295P" units="3">
+        This course is part of the product development initative sponsored by the department of chemical engineering. It focuses on real-life practices and challenges of translating scientific discovery into commercial products. Its scope is limited in most circumstances to situations where some knowledge of chemical engineering, chemistry, and related disciplines might prove to be particularly useful. The course primarily uses case studies of real-world new product development situations to simulate the managerial and technical challenges that will confront students in the field. We will cover a wide range of topics including basic financial, strategic and intellectual property concepts for products, managing risk and uncertainity, the effective new product development team, the evolving role of corporate R&amp;D;, the new venture product company and the ethics of post-launch product management.
+    </course>
+    <course name="Advanced Topics in New Product Development" number="295Q" units="3">
+        This course is a part of the product development initiative sponsored by the department of chemical engineering. The course builds on the coverage in 295P of real-life practices of translating scientific discovery into commercial products. We will cover a wide range of advanced product development concepts including technology road maps, decision analysis, six sigma, product portfolio optimization, and best practices for field project management.
+    </course>
+    <course name="Applied Spectroscopy" number="C295R" units="3">
+        After a brief review of quantum mechanics and semi-classical theories for the interaction of radiation with matter, this course will survey the various spectroscopies associated with the electromagnetic spectrum, from gamma rays to radio waves. Special emphasis is placed on application to research problems in applied and engineering sciences. Graduate researchers interested in systematic in situ process characterization, analysis, or discovery are best served by this course. Also listed as Applied Science and Technology C295R.
+    </course>
+    <course name="Introduction to Experimental Surface Chemistry" number="295S" units="3">
+        This course is intended to introduce chemical engineering students to the concepts and techniques involved in the study of chemical processes at surfaces. Special emphasis will be placed on the chemistry of semiconductor surfaces. Topics to be covered include thermodynamics and kinetics of surfaces; crystal and electronic structures of clean surfaces (metals and semiconductors); adsorption and desorption; surface kinetics and dynamics including diffusion; dynamics of growth and etching; surface reaction models; a survey of modern surface analytical techniques including electron diffraction, auger electron spectroscopy, photoelectron spectroscopy, vibrational spectroscopy, scanning tunneling microscopy, and mass spectrometry.
+    </course>
+    <course name="Special Study for Graduate Students in Chemical Engineering" number="296" units="1-6">
+        Special laboratory and theoretical studies.
+    </course>
+    <course name="Seminar in Chemical Engineering" number="298" units="1">
+        Lectures, reports, and discussions on current research in chemical engineering. Sections are operated independently and directed toward different topics.
+    </course>
+    <course name="Research in Chemical Engineering" number="299" units="1-12">
+        Research.
+    </course>
+    <course name="Professional Preparation: Supervised Teaching of Chemical Engineering" number="300" units="2">
+        Discussion, problem review and development, guidance of large scale laboratory experiments, course development, supervised practice teaching.
+    </course>
+    <course name="Individual Studies for Graduate Students" number="602" units="1-8">
+        Individual study in consultation with the major field adviser for qualified students to prepare themselves for the various examinations required of candidates for the Ph.D.
+    </course>
+</department>

@@ -1,0 +1,393 @@
+<?xml version="1.0" ?>
+<department abbr="MEC ENG" name="Mechanical Engineering">
+    <course name="Freshman Seminars" number="24" units="1">
+        The Berkeley Seminar Program has been designed to provide new students with the opportunity to explore an intellectual topic with a faculty member in a small-seminar setting. Berkeley Seminars are offered in all campus departments, and topics vary from department to department and semester to semester.
+    </course>
+    <course name="Thermodynamics" number="40" units="3">
+        This course introduces the fundamentals of energy storage, thermophysical properties of liquids and gases, and the basic principles of thermodynamics which are then applied to various areas of engineering related to energy conversion and air conditioning.
+    </course>
+    <course name="Sophomore Seminar" number="84" units="1,2">
+        Sophomore seminars are small interactive courses offered by faculty members in departments all across the campus. Sophomore seminars offer opportunity for close, regular intellectual contact between faculty members and students in the crucial second year. The topics vary from department to department and semester to semester. Enrollment limited to 15 sophomores.
+    </course>
+    <course name="Introduction to Solid Mechanics" number="85" units="3">
+        A review of equilbrium for particles and rigid bodies. Application to truss structures. The concepts of deformation, strain, and stress. Equilibrium equations for a continuum. Elements of the theory of linear elasticity. The states of plane stress and plane strain. Solution of elementary elasticity problems (beam bending, torsion of circular bars). Euler buckling in elastic beams.
+    </course>
+    <course name="Introduction to Solid Mechanics" number="C85" units="3">
+        A review of equilbrium for particles and rigid bodies. Application to truss structures. The concepts of deformation, strain, and stress. Equilibrium equations for a continuum. Elements of the theory of linear elasticity. The states of plane stress and plane strain. Solution of elementary elasticity problems (beam bending, torsion of circular bars). Euler buckling in elastic beams. Also listed as Civil and Environmental Engineering C30.
+    </course>
+    <course name="Introduction to Mechanical Engineering" number="92" units="1">
+        An outline of the field of mechanical engineering designed to acquaint the entering student with the profession and the activities of the Department.
+    </course>
+    <course name="Supervised Independent Group Studies" number="98" units="1-4">
+        Organized group study on various topics under the sponsorship and direction of a member of the Mechanical Engineering faculty.
+    </course>
+    <course name="High Mix/Low Volume Manufacturing" number="101" units="3">
+        Fundamentals of high mix/low volume (HMLV) manufacturing systems including manufacturing fundamentals, unit operations and manufacturing line considerations for work in process (WIP), manufacturing lead time (MLT), economics, quality monitoring; HMLV systems fundamentals including just in time (JIT), kanban, buffers and line balancing; class project/case studies for design of competitive manufacturing systems.
+    </course>
+    <course name="Mechanical Engineering Design" number="102" units="3">
+        Application of principles of mechanics, materials science, and manufacturing processes to the design of components and complete machines that must meet prescribed functional requirements. Synthesis and analysis of a major machine design project.
+    </course>
+    <course name="Engineering Mechanics II" number="104" units="3">
+        This course is an introduction to the dynamics of particles and rigid bodies. The material, based on a Newtonian formulation of the governing equations, is illustrated with numerous examples ranging from one-dimensional motion of a single particle to planar motions of rigid bodies and systems of rigid bodies.
+    </course>
+    <course name="Thermodynamics" number="105" units="3">
+        This course introduces the basic principles of thermodynamics which are then aplied to various areas of engineering related to energy conversion and air conditioning.
+    </course>
+    <course name="Thermodynamics and Biothermodynamics" number="C105B" units="3">
+        This course introduces the basic principles of thermodynamics and their application to a variety of biological processes and systems. Some coverage of conventional engineering applications is also included. Also listed as Bioengineering C105B.
+    </course>
+    <course name="Fluid Mechanics" number="106" units="3">
+        This course introduces the fundamentals and techniques of fluid mechanics with the aim of describing and controlling engineering flows.
+    </course>
+    <course name="Experimentation and Measurement" number="107A" units="3">
+        Methods and procedures for experimental investigation of mechanical engineering phenomena and systems. Experimental design, measurement systems, data acquisition, and data analysis. Modeling of measurement and experimental systems.
+    </course>
+    <course name="Mechanical Engineering Laboratory" number="107B" units="3">
+        Experimental investigation of engineering systems and of phenomena of interest to mechanical engineers. Design and planning of experiments. Analysis of data and reporting of experimental results.
+    </course>
+    <course name="Mechanical Behavior of Engineering Materials" number="108" units="4">
+        This course covers elastic and plastic deformation under static and dynamic loads. Failure by yielding, fracture, fatigue, wear, and environmental factors are also examined. Topics include engineering materials, structure-property relationships, elastic deformation and multiaxial loading, plastic deformation and yield criteria, dislocation plasticity and strengthening mechanisms, creep, stress concentration effects, fracture, fatigue, and contract stresses.
+    </course>
+    <course name="Heat Transfer" number="109" units="3">
+        This course covers transport processes of mass, momentum, and energy from a macroscopic view with emphasis both on understanding why matter behaves as it does and on developing practical problem solving skills. The course is divided into four parts: introduction, conduction, convection, and radiation.
+    </course>
+    <course name="Introduction to Product Development" number="110" units="3">
+        The course provides an experience in preliminary project planning of complex and realistic mechanical engineering systems. Design concepts and techniques are introduced, and the student's design ability is developed in a design or feasibility study chosen to emphasize ingenuity and provide wide coverage of engineering topics. Innovative systems are preferred. Design optimization and social, economic, and political implications are included. Both individual and group oral presentations are made, and participation in conferences is required.
+    </course>
+    <course name="Structural Aspects of Biomaterials" number="C117" units="4">
+        This course covers the structure and mechanical functions of load bearing tissues and their replacements. Natural and synthetic load-bearing biomaterials for clinical applications are reviewed. Biocompatibility of biomaterials and host response to structural implants are examined. Quantitative treatment of biomechanical issues and constitutive relationships of tissues are covered in order to design biomaterial replacements for structural function. Material selection for load bearing applications including reconstructive surgery, orthopedics, dentistry, and cardiology are addressed. Mechanical design for longevity including topics of fatigue, wear, and fracture are reviewed. Case studies that examine failures of devices are presented. This course includes a teaching/design laboratory component that involves design analysis of medical devices and outreach teaching to the public community. Several problem-based projects are utilized throughout the semester for design analysis. In addition to technical content, this course involves rigorous technical writing assignments, oral communication skill development and teamwork. Also listed as Bioengineering C117.
+    </course>
+    <course name="Introduction to Nanotechnology and Nanoscience" number="118" units="3">
+        This course introduces Engineering students (Juniors and Seniors) to the field of nanotechnology and nanoscience. The course has two components: (1) Formal lectures. Students receive a set of formal lectures introducing them to the field of nanotechnology and nanoscience. The material covered includes nanofabrication technology (how one achieves the nanometer length scale, from &quot;bottom up&quot; to &quot;top down&quot; technologies), the interdisciplinary nature of nanotechnology and nanoscience (including areas of chemistry, material science, physics, and molecular biology), examples of nanoscience phenomena (the crossover from bulk to quantum mechanical properties), and applications (from integrated circuits, quantum computing, MEMS, and bioengineering). (2) Projects. Students are asked to read and present a variety of current journal papers to the class and lead a discussion on the various works.
+    </course>
+    <course name="Introduction to MEMS (Microelectromechanical Systems)" number="119" units="3">
+        Fundamentals of microelectromechanical systems including design, fabrication of microstructures; surface-micromachining, bulk-micromachining, LIGA, and other micro machining processes; fabrication principles of integrated circuit device and their applications for making MEMS devices; high-aspect-ratio microstructures; scaling issues in the micro scale (heat transfer, fluid mechanics and solid mechanics); device design, analysis, and mask layout.
+    </course>
+    <course name="Processing of Materials in Manufacturing" number="122" units="3">
+        Fundamentals of manufacturing processes (metal forming, metal cutting, welding, joining, and casting); selection of metals, plastics and other materials relative to the design and choice of manufacturing processes.
+    </course>
+    <course name="Mechanical Behavior of Engineering Materials" number="C124" units="3">
+        This course covers elastic and plastic deformation under static and dynamic loads. Prediction and prevention of failure by yielding, fracture, fatigue, wear, and environmental factors are addressed. Design issues pertaining to materials selection for load-bearing applications are discussed. Case studies of engineering failures are presented. Topics include engineering materials, structure-property relationships, materials selection for design, mechanical behavior of polymers and design of plastic components, complex states of stress and strain, elastic deformation and multiaxial loading, plastic deformation and yield criteria, dislocation plasticity and strengthening mechanisms, creep, effects of stress concentrations, fracture, fatigue, and contact stresses. Also listed as Materials Science and Engineering C113.
+    </course>
+    <course name="Composite Materials--Analysis, Design, Manufacture" number="127" units="3">
+        Properties and microstructure of high-strength fiber materials (glass, carbon, polymer, ceramic fibers) and matrix materials (polymer, metal, ceramic, and carbon matrices). Specific strength and stiffness of high-performance composites. Stress, strain and stiffness transformations. Elastic properties of a single orthotropic ply. Laminated plate theory. Failure criteria. Short fiber composites. Manufacturing processes. Sandwich panels. Joints. Design of composite structures and components. Sustainability and recycling. Laboratory sessions on manufacturing processes and testing. Assigned class design projects on design and manufacturing of composites.
+    </course>
+    <course name="Computer-Aided Mechanical Design" number="128" units="3">
+        Introduction to design (not drafting) via computers. Using MATLAB software on X-windows workstations, the student will be introduced to a variety of mechanical design techniques and apply those techniques to the design of beams, automobile engine components, planar machine elements, linkages, and flexure hinges. These techniques include ad-hoc methods, exhaustive numeration, grid studies, and informal optimizations.
+    </course>
+    <course name="Design of Planar Machinery" number="130" units="3">
+        Synthesis, analysis, and design of planar machines. Kinematic structure, graphical, analytical, and numerical analysis and synthesis. Linkages, cams, reciprocating engines, gear trains, and flywheels.
+    </course>
+    <course name="Dynamic Systems and Feedback" number="132" units="3">
+        Physical understanding of dynamics and feedback. Linear feedback control of dynamic systems. Mathematical tools for analysis and design. Stability. Modeling systems with differential equations. Linearization. Solution to linear, time-invariant differential equations.
+    </course>
+    <course name="Mechanical Vibrations" number="133" units="3">
+        An introduction to the theory of mechanical vibrations including topics of harmonic motion, resonance, transient and random excitation, applications of Fourier analysis and convolution methods. Multidegree of freedom discrete systems including principal mode, principal coordinates and Rayleigh's principle.
+    </course>
+    <course name="Automatic Control Systems" number="134" units="4">
+        Linear control systems analysis and design in transform domain and time domain. Transfer functions and state equations. Frequency response and Nyquist stability. Loop shaping. State feedback controller and observer design. Applications to mechanical and mechatronics systems. Computer control.
+    </course>
+    <course name="Design of Microprocessor-Based Mechanical Systems" number="135" units="4">
+        This course provides preparation for the conceptual design and prototyping of mechanical systems that use microprocessors to control machine activities, acquire and analyze data, and interact with operators. The architecture of microprocessors is related to problems in mechanical systems through study of systems, including electro-mechanical components, thermal components and a variety of instruments. Laboratory exercises lead through studies of different levels of software.
+    </course>
+    <course name="Combustion Processes" number="140" units="3">
+        Fundamentals of combustion, flame structure, flame speed, flammability, ignition, stirred reaction, kinetics and nonequilibrium processes, pollutant formation. Application to engines, energy production and fire safety.
+    </course>
+    <course name="Energy Conversion Principles" number="146" units="3">
+        This course covers the fundamental principles of energy conversion processes, followed by development of theoretical and computational tools that can be used to analyze energy conversion processes. The course also introduces the use of modern computational methods to model energy conversion performance characteristics of devices and systems. Performance features, sources of inefficiencies, and optimal design strategies are explored for a variety of applications, which may include conventional combustion based and Rankine power systems, energy systems for space applications, solar, wind, wave, thermoelectric, and geothermal energy systems.
+    </course>
+    <course name="Advanced Heat Transfer" number="151" units="3">
+        Basic principles of heat transfer and their application. Subject areas include steady-state and transient system analyses for conduction, free and forced convection, boiling, condensation and thermal radiation.
+    </course>
+    <course name="Engineering Aerodynamics" number="163" units="3">
+        Introduction to the lift, drag, and moment of two-dimensional airfoils, three-dimensional wings, and the complete airplane. Calculations of the performance and stability of airplanes in subsonic flight.
+    </course>
+    <course name="Marine Statics and Structures" number="164" units="3">
+        Terminology and definition of hull forms, conditions of static equilibrium and stability of floating submerged bodies. Effects of damage on stability. Structural loads and response. Box girder theory. Isotropic and orthotropic plate bending and bucking.
+    </course>
+    <course name="Ocean-Environment Mechanics" number="165" units="3">
+        Ocean environment. Physical properties and characteristics of the oceans. Global conservation laws. Surface-waves generation. Gravity-wave mechanics, kinematics, and dynamics. Design consideration of ocean vehicles and systems. Model-testing techniques. Prediction of resistance and response in waves--physical modeling and computer models.
+    </course>
+    <course name="Fluid Mechanics of Biological Systems" number="166" units="3">
+        This is a general introduction to biological fluid mechanics. The course will primarily examine the biological and mechanical aspect of mammalian flow. If time allows, we will cover animal, bugs, fish, and environmental fluid mechanics but the majority of the course will be on the blood flow in the human body. This class does not presume previous knowledge of anatomy.
+    </course>
+    <course name="Microscale Fluid Mechanics" number="167" units="3">
+        Phenomena of physical, technological, and biological significance in flows of gases and liquids at the microscale. The course begins with familiar equations of Newtonian fluid mechanics, then proceeds to the study of essentially 1-D flows in confined geometries with the lubrication equations. Next is a study of the flow of thin films spreading under gravity or surface tension gradients. Lubrication theory of compressible gases leads to consideration of air bearings. Two- and 3-D flows are treated with Stokes' equations. Less familiar physical phenomena of significance and utility at the microscale are then considered: intermolecular forces in liquids, slip, diffusion and bubbles as active agents. A review of relevant aspects of electricity and magnetism precedes a study of electrowetting and electrokinetically driven liquid flows.
+    </course>
+    <course name="Engineering Mechanics III" number="170" units="3">
+        This course builds upon material learned in 104, examining the dynamics of particles and rigid bodies moving in three dimensions. Topics include non-fixed axis rotations of rigid bodies, Euler angles and parameters, kinematics of rigid bodies, and the Newton-Euler equations of motion for rigid bodies. The course material will be illustrated with real-world examples such as gyroscopes, spinning tops, vehicles, and satellites. Applications of the material range from vehicle navigation to celestial mechanics, numerical simulations, and animations.
+    </course>
+    <course name="Fundamentals of Acoustics" number="173" units="3">
+        Plane and spherical sound waves. Sound intensity. Propagation in tubes and horns. Resonators. Standing waves. Radiation from oscillating surface. Reciprocity. Reverberation and diffusion. Electro-acoustic loud speaker and microphone problems. Environmental and architectural acoustics. Noise measurement and control. Effects on man.
+    </course>
+    <course name="Intermediate Dynamics" number="175" units="3">
+        This course introduces and investigates Lagrange's equations of motion for particles and rigid bodies. The subject matter is particularly relevant to applications comprised of interconnected and constrained discrete mechanical components. The material is illustrated with numerous examples. These range from one-dimensional motion of a single particle to three-dimensional motions of rigid bodies and systems of rigid bodies.
+    </course>
+    <course name="Orthopedic Biomechanics" number="C176" units="4">
+        Students will learn the application of engineering concepts including statics, dynamics, optimization theory, composite beam theory, beam-on-elastic foundation theory, Hertz contact theory and materials behavior. Topics will include forces and moments acting on human joints; composition and mechanical behavior of orthopedic biomaterials; design/analysis of artificial joint, spine, and fracture fixation prostheses; musculoskeletal tissues including bone, cartilage, tendon, ligament, and muscle; osteoporosis and fracture-risk predication of bones; and bone adaptation. Students will be challenged in a MATLAB-based project to integrate the course material in an attempt to gain insight into contemporary design/analysis/problems. Also listed as Bioengineering C119.
+    </course>
+    <course name="Engineering Analysis Using the Finite Element Method" number="C180" units="3">
+        This is an introductory course on the finite element method and is intended for seniors in engineering and applied science disciplines. The course covers the basic topics of finite element technology, including domain discretization, polynomial interpolation, application of boundary conditions, assembly of global arrays, and solution of the resulting algebraic systems. Finite element formulations for several important field equations are introduced using both direct and integral approaches. Particular emphasis is placed on computer simulation and analysis of realistic engineering problems from solid and fluid mechanics, heat transfer, and electromagnetism. The course uses FEMLAB, a multiphysics MATLAB-based finite element program that possesses a wide array of modeling capabilities and is ideally suited for instruction. Assignments will involve both paper- and computer-based exercises. Computer-based assignments will emphasize the practical aspects of finite element model construction and analysis. Also listed as Civil and Environmental Engineering C133.
+    </course>
+    <course name="Introduction to Continuum Mechanics" number="185" units="3">
+        Kinematics of deformation, the concept of stress, conservation of mass and balance of linear momentum, angular momentum and energy. Mechanical constitutive equations for ideal fluid, linear elastic solid.
+    </course>
+    <course name="Practical Control System Design: A Systematic Loopshaping Approach" number="190L" units="1">
+        After a review of basic loopshaping, we introduce the loopshaping design methodology of McFarlane and Glover, and learn how to use it effectively. The remainder of the course studies the mathematics underlying the new method (one of the most prevalent advanced techniques used in industry) justifying its validity.
+    </course>
+    <course name="Practical Control System Design: A Systematic Optimization Approach" number="190Y" units="1">
+        The Youla-parametrization of all stabilizing controllers allows certain time-domain and frequency-domain closed-loop design objectives to be cast as convex optimizations, and solved reliably using off-the-shelf numerical optimization codes. This course covers the Youla parametrization, basic elements of convex optimizaation, and finally control design using these techniques.
+    </course>
+    <course name="Honors Undergraduate Research" number="H194" units="2-4">
+        Final report required. Students who have completed a satisfactory number of advanced courses may pursue original research under the direction of one of the members of the staff. A maximum of 3 units of H194 may be used to fulfill technical elective requirements in the Mechanical Engineering program (unlike 198 or 199, which do not satisfy technical elective requirements).
+    </course>
+    <course name="Directed Group Studies for Advanced Undergraduates" number="198" units="1-4">
+        Group study of a selected topic or topics in Mechanical Engineering. Credit for 198 or 199 courses combined may not exceed 4 units in any single term. See College for other restrictions.
+    </course>
+    <course name="Supervised Independent Study" number="199" units="1-4">
+        Supervised independent study. Enrollment restrictions apply; see the introduction to Courses and Curricula section of this catalog.
+    </course>
+    <course name="Heat and Mass Transport in Biomedical Engineering" number="C212" units="3">
+        Fundamental processes of heat and mass transport in biological systems; organic molecules, cells, biological organs, whole animals. Derivation of mathematical models and discussion of experimental procedures. Applications to biomedical engineering. Also listed as Bioengineering C212.
+    </course>
+    <course name="Fluid Mechanics of Biological Systems" number="C213" units="3">
+        Fluid mechanical aspects of various physiological systems, the circulatory, respiratory, and renal systems. Motion in large and small blood vessels. Pulsatile and peristaltic flows. Other biofluidmechanical flows: the ear, eye, etc. Instrumentation for fluid measurements in biological systems and for medical diagnosis and applications. Artifical devices for replacement of organs and/or functions, e.g. blood oxygenators, kidney dialysis machines, artifical hearts/circulatory assist devices. Also listed as Bioengineering C213.
+    </course>
+    <course name="Advanced Tissue Mechanics" number="C214" units="3">
+        The goal of this course is to provide a foundation for characterizing and understanding the mechanical behavior of load-bearing tissues. A variety of mechanics topics will be introduced, including anisotropic elasticity and failure, cellular solid theory, biphasic theory, and quasi-linear viscoelasticity (QLV) theory. Building from this theoretical basis, we will explore the constitutive behavior of a wide variety of biological tissues. After taking this course, students should have sufficient background to independently study the mechanical behavior of most biological tissues. Formal discussion section will include a seminar series with external speakers. Also listed as Bioengineering C214.
+    </course>
+    <course name="Biomimetic Engineering -- Engineering from Biology" number="C217" units="3">
+        Study of nature's solutions to specific problems with the aim of determining appropriate engineering analogs. Morphology, scaling, and design in organisms applied to engineering structures. Mechanical principles in nature and their application to engineering devices. Mechanical behavior of biological materials as governed by underlying microstructure, with the potential for synthesis into engineered materials. Trade-offs between redundancy and efficiency. Students will work in teams on projects where they will take examples of designs, concepts, and models from biology and determine their potential in specific engineering applications. Also listed as Integrative Biology C217 and Bioengineering C217.
+    </course>
+    <course name="Introduction to MEMS Design" number="C218" units="4">
+        Physics, fabrication, and design of micro-electromechanical systems (MEMS). Micro- and nano-fabrication processes, including silicon surface and bulk micromachining and non-silicon micromachining. Integration strategies and assembly processes. Microsensor and microactuator devices: electrostatic, piezoresistive, piezoelectric, thermal, magnetic transduction. Electronic position-sensing circuits and electrical and mechanical noise. CAD for MEMS. Design project is required. Also listed as Electrical Engineering C245.
+    </course>
+    <course name="Microelectromechanical Systems (MEMS)" number="C219" units="3">
+        This course is aimed to provide basic understanding of integrated circuit (IC) processes and microelectromechanical system (MEMS). Technologies including analyses, design, and manufacturing processes of MEMS will be introduced. The first part of the course emphasizes IC processes including thin film deposition, lithography, and etching. The second part of the course deals with micromachining processes including surface-, bulk-micromachining, LIGA and other processes. Also listed as Electrical Engineering C246.
+    </course>
+    <course name="Precision Manufacturing" number="220" units="3">
+        Introduction to precision engineering for manufacturing. Emphasis on design and performance of precision machinery for manufacturing. Topics include machine tool elements and structure, sources of error (thermal, static, dynamic, process related), precision machining processes and process models (diamond turning and abrasive (fixed and free) processes), sensors for process monitoring and control, metrology, actuators, machine design case studies and examples of precision component manufacture.
+    </course>
+    <course name="High-Tech Product Design and Rapid Manufacturing" number="221" units="3">
+        This is a &quot;manufacturing survey course&quot; that deals with Internet-based design, rapid prototyping, and a review of manufacturing processes relevant to today's production of consumer electronics or electro-mechanical devices. It also aims to provide a balanced view for the &quot;Management of Technology&quot;.
+    </course>
+    <course name="Advanced Manufacturing Processes" number="222" units="3">
+        This course presents an overview of the theory of manufacturing processes, machine tool design, and process issues in quality, production rate, and flexibility of manufacturing. Nontraditional manufacturing processes will be introduced. Topics covered include overview of models of conventional manufacturing (material removal, joining, forming, and deforming), elements of machine tool error and machine tool component design, nontraditional manufacturing processes (laser, water jet, electrical discharge machining, electo-chemical machining), rapid prototyping, and process selection, optimization, and planning issues. This course incorporates a laboratory term project in the application of nontraditional manufacturing processes.
+    </course>
+    <course name="Metal Cutting" number="222B" units="3">
+        Metal cutting and metal removal processes; theoretical underpinnings of deformation behavior and material properties; analysis and description of cutting tool materials; forces, temperatures, and surface finishes generated during chip formation. Analytical procedures, including upper-bound technique, slip-line field solutions, finite-element methods and general computational tools. Machinability of materials; modern trends in high-speed machining and tooling.
+    </course>
+    <course name="Polymer Engineering" number="C223" units="3">
+        A survey of the structure and mechanical properties of advanced engineering polymers. Topics include rubber elasticity, viscoelasticity, mechanical properties, yielding, deformation, and fracture mechanisms of various classes of polymers. The course will discuss degradation schemes of polymers and long-term performance issues. The class will include polymer applications in bioengineering and medicine. Also listed as Bioengineering C223.
+    </course>
+    <course name="Mechanical Behavior of Engineering Materials" number="224" units="3">
+        This course covers elastic and plastic deformation under static and dynamic loads. Prediction and prevention of failure by yielding, fracture, fatigue, creep, corrosion, and wear. Basic elasticty and plasticity theories are discussed.
+    </course>
+    <course name="Deformation and Fracture  of Engineering Materials" number="C225" units="4">
+        This course covers deformation and fracture behavior of engineering materials for both monotonic and cyclic loading conditions. Also listed as Materials Science and Engineering C212.
+    </course>
+    <course name="Tribology" number="226" units="3">
+        Surface interactions. Fundamentals of contact mechanics. Friction theories. Types of measurement of wear. Response of materials to surface tractions. Plastic deformation, void/crack nucleation and crack propagation. Delamination wear. Microstructural effects in wear processes. Mechanics of layered media. Solid film and boundary liquid film lubrication. Friction and wear of polymers and fiber-reinforced polymeric composites. Brief introduction to metal cutting and tool wear mechanisms.
+    </course>
+    <course name="Mechanical Behavior of Composite Materials" number="227" units="3">
+        Response of composite materials (fiber and particulate-reinforced materials) to static, cyclic, creep and thermomechanical loading. Manufacturing process-induced variability, and residual stresses. Fatigue behavior,fracture mechanics and damage development. Role of the reinforcement-matrix interface in mechanical behavior. Environmental effects. Dimensional stability and thermal fatigue. Application to polymer, metal, ceramic, and carbon matrix composites.
+    </course>
+    <course name="Computer-Aided, Optimal Mechanical Design" number="228" units="3">
+        This course will cover the optimal mechanical design of mechanical systems and components. A variety of optimization techniques will be developed, applied to mechanical design, and implemented on the computer.
+    </course>
+    <course name="Design of Basic Electro-Mechanical Devices" number="229" units="3">
+        Fundamental principles of magnetics, electro-magnetics, and magnetic materials as applied to design and operation of electro-mechanical devices. Type of device to be used in a particular application and dimensions of parts for the overall design will be discussed. Typical applications covered will be linear and rotary actuators, stepper motors, AC motors, and DC brush and brushless motors. A design project is required.
+    </course>
+    <course name="Real-Time Applications of Mini and Micro Computers" number="230" units="4">
+        Mini and micro computers, operating in real time, have become ubiquitous components in engineering systems. The purpose of this course is to build competence in the engineering use of such systems through lectures stressing small computer structure, programming, and output/input operation, and through laboratory work with mini and micro computer systems.
+    </course>
+    <course name="Advanced Control Systems I" number="232" units="3">
+        Input-output and state space representation of linear continuous and discrete time dynamic systems. Controllability, observability, and stability. Modelling and identification. Design and analysis of single and multi-variable feedback control systems in transform and time domain. State observer. Feedforward/preview control. Application to engineering systems.
+    </course>
+    <course name="Advanced Control Systems II" number="233" units="3">
+        Linear Quadratic Optimal Control, Stochastic State Estimation, Linear Quadratic Gaussian Problem, Loop Transfer Recovery, Adaptive Control and Model Reference Adaptive Systems, Self Tuning Regulators, Repetitive Control, Application to engineering systems.
+    </course>
+    <course name="Multivariable Control System Design" number="234" units="3">
+        Analysis and synthesis techniques for multi-input (MIMO) control systems. Emphasis is on the effect that model uncertainty has on the design process.
+    </course>
+    <course name="Control and Optimization of Distributed Parameters Systems" number="C236" units="3">
+        Distributed systems and PDE models of physical phenomena (propagation of waves, network traffic, water distribution, fluid mechanics, electromagnetism, blood vessels, beams, road pavement, structures, etc.). Fundamental solution methods for PDEs: separation of variables, self-similar solutions, characteristics, numerical methods, spectral methods. Stability analysis. Adjoint-based optimization. Lyapunov stabilization. Differential flatness. Viability control. Hamilton-Jacobi-based control. Also listed as Electrical Engineering C291 and Civil and Environmental Engineering C291F.
+    </course>
+    <course name="Control of Nonlinear Dynamic Systems" number="237" units="3">
+        Fundamental properties of nonlinear systems. Stability of nonlinear systems. Controller Design via Lyapunov methods. Equivalent Linearization methods including limit cycle prediction.
+    </course>
+    <course name="Advanced Design and Automation" number="239" units="4">
+        This course will provide students with a solid understanding of smart products and the use of embedded microcomputers in products and machines. The course has two components: 1.) Formal lectures. Students receive a set of formal lectures on the design of smart machines and products that use embedded microcomputers. the materials cover machine components, actuators, sensors, basic electronic devices, embedded microprocessor systems and control, power transfer components, and mechanism design. 2.) Projects. Students will design and construct prototype products that use embedded microcomputers.
+    </course>
+    <course name="Advanced Marine Structures I" number="240A" units="3">
+        This course introduces a probabilistic description of ocean waves and wave loads acting on marine structures. These topics are followed with discussion of structural strength and reliability analysis.
+    </course>
+    <course name="Advanced Marine Structures II" number="240B" units="3">
+        This course is concerned with the structural response of marine structures to environmental loads. Overall response of the structure as well as the behavior of its members under lateral and compressive loads are discussed.
+    </course>
+    <course name="Marine Hydrodynamics I" number="241A" units="3">
+        Navier-Stokes Equations. Boundary-layer theory, laminar, and turbulent. Frictional resistance. Boundary layer over water surface. Separated flow modeling. Steady and unsteady flow. Momentum theorems. Three-dimensional water-wave theory. Formulation of wave resistance of ships. Michell's solution. Wave patterns. Applications.
+    </course>
+    <course name="Marine Hydrodynamics II" number="241B" units="3">
+        Momentum analysis for bodies moving in a fluid. Added-mass theory. Matched asymptotic slender-body theory. Small bodies in a current. Theory of motion of floating bodies with and without forward speed. Radiation and diffraction potentials. Wave forces. Hydro-elasticity formulation. Memory effects in time domain. Second-order effects. Impact hydrodynamics.
+    </course>
+    <course name="Advanced Methods in Free-Surface Flows" number="243" units="3">
+        Analytical and numerical methods in free-surface problems. Elements of inviscid external lifting and nonlifting flows. Analytical solutions in special coordinates systems. Integral-equation methods: formulations and implementations. Multiple-bodies interaction problems. Free-surface Green functions in two and three dimensions. Hybrid integral-equation methods. Finite-element formulations. Variational forms in time-harmonic flows. Finite-difference forms, stability, and accuracy. Boundary-fitted coordinates methods. Unsteady linearized wave-body interaction in time domain. Nonlinear breaking waves calculations. Particle dynamics. Extensive hands-on experience of microcomputers and/or workstations in developing solution.
+    </course>
+    <course name="Heat Conduction" number="251" units="3">
+        Analytical and numerical methods for the determination of the conduction of heat in solids.
+    </course>
+    <course name="Heat Convection" number="252" units="3">
+        The transport of heat in fluids in motion; free and forced convection in laminar and turbulent flow over surfaces and within ducts.
+    </course>
+    <course name="Thermal Radiation" number="253" units="3">
+        Thermal radiation properties of gases, liquids, and solids; the calculation of radiant energy transfer.
+    </course>
+    <course name="Thermodynamics I" number="254" units="3">
+        Axiomatic formulation of macroscopic equilibrium thermodynamics. Quantum mechanical description of atomic and molecular structure. Statistical-mechanical evaluation of thermodynamic properties of gases, liquids, and solids. Elementary kinetic theory of gases and evaluation of transport properties.
+    </course>
+    <course name="Energy Transfer in Gaseous and Condensed Phases" number="255" units="3">
+        Course introduces statistical thermodynamics, kinetic theory, and reaction theories, all at the level of microscopic energy transfer processes, used for modeling of gaseous and gas-surface reactive systems.
+    </course>
+    <course name="Combustion" number="256" units="3">
+        Combustion modelling. Multicomponent conservation equations with reactions. Laminar and turbulent deflagrations. Rankine-Hugoniot relations. Diffusion flames. Boundary layer combustion, ignition, and stability.
+    </course>
+    <course name="Advanced Combustion" number="257" units="3">
+        Critical analyses of combustion phenomenon. Conservation relations applied to reacting systems. Reactions are treated by both asymptotic and numerical methods. Real hydrocarbon kinetics are used; where available reduced kinetic mechanics are introduced. Flame propagation theory and experiments are discussed in detail for both laminar and turbulent flows.
+    </course>
+    <course name="Heat Transfer with Phase Change" number="258" units="3">
+        Heat transfer associated with phase change processes. Topics include thermodynamics of phase change, evaporation, condensation, nucleation and bubble growth, two phase flow, convective boiling and condensation, melting and solidification.
+    </course>
+    <course name="Microscale Thermophysics and Heat Transfer" number="259" units="3">
+        This course introduces advanced statistical thermodynamics, nonequilibrium thermodynamics, and kinetic theory concepts used to analyze thermophysics of microscale systems and explores applications in which microscale transport plays an inportant role.
+    </course>
+    <course name="Advanced Fluid Mechanics I" number="260A" units="3">
+        Introduces the foundations of fluid mechanics. Exact flow solutions are used to develop a physical insight of the fluid flow phenomena. Rigorous derivation of the equations of motion. Incompressible and compressible potential flows. Canonical viscous flows.
+    </course>
+    <course name="Advanced Fluid Mechanics II" number="260B" units="3">
+        Develops a working knowledge of fluid mechanics by identifying the essential physical mechanism in complex canonical flow problems which leads to simplified yet accurate formulation. Boundary layers, creeping flows, rotational flows, rotating flows. Stability and transition, introduction to turbulence.
+    </course>
+    <course name="Advanced Fluid Mechanics IV" number="260D" units="3">
+        Expanded coverage of compressible flow and boundary layers beyond material in 260A-260B. Time-harmonic elements of free-surface flows.
+    </course>
+    <course name="Theory of Fluid Sheets and Fluid Jets" number="262" units="3">
+        Conservation laws in three dimensions for inviscid and viscous fluids. Direct formulation of non-linear theories for sheets and jets for these fluids with surface tension and gravity. Application to water waves, hydraulic jump, flow in waterfall, planing of a boat. Capillary instability in a viscous jet.
+    </course>
+    <course name="Turbulence" number="263" units="3">
+        Physics of turbulence: Summary of stability and transition. Description of turbulence phenomena. Tools for studying turbulence. Homogeneous turbulence, shear turbulence, rotating turbulence. Summary of engineering models. Discussion of recent advances.
+    </course>
+    <course name="Dynamics and Stability of Engineering and Geophysical Flows with Rotation, Convection, or Waves" number="266" units="3">
+        A presentation of four related topics in high Reynolds number flow: stability theory, waves, rotating flows, and geophysical/astrophysical fluid dynamics. Linear stability of classical, shear, convecting, and rotating flows are reviewed. Weakly non-linear stability is examined with amplitude equations and numerical studies of sub-critical instabilities of pipe and channel flows are discussed. Rapidly rotating flows are analyzed by asymptotically deriving the quasi-geotrophic and shallow water equations. Examples of geophysical flows include vortex dynamics in the atmosphere and ocean, jet streams and waves (Rossby, Poincare, inertial, internal gravity and Kelvin). The mathematical formulation of hyperbolic waves in stratified, free surface, and compressible flows is discussed and applied to flows with shocks and breaking waves.
+    </course>
+    <course name="Geophysical Fluid Mechanics" number="267" units="3">
+        An introduction to the fluid mechanics and atmospheric motions of the Earth's interior (mantle and core). Buoyant creeping flow. Rotation inside a sphere. Modes of wave propagation in rotation and stratified flows.
+    </course>
+    <course name="Physicochemical Hydrodynamics" number="C268" units="3">
+        An introduction to the hydrodyamics of capillarity and wetting. Balance laws and short-range forces. Dimensionless numbers, scaling and lubrication approximation. Rayleigh instability. Marangoni effect. The moving contact line. Wetting and short-range forces. The dynamic contact angle. Dewetting. Coating flows. Effect of surfactants and electric fields. Wetting of rough or porous surfaces. Contact angles for evaporating systems. Also listed as Chemical Engineering C268.
+    </course>
+    <course name="Oscillations in Linear Systems" number="273" units="3">
+        Response of discrete and continuous dynamical systems, damped and undamped, to harmonic and general time-dependent loading. Convolution integrals and Fourier and Laplace Transform methods. Lagrange's equations; Eigensolutions; Orthogonality; generalized coordinates; nonreciprocal and degenerate systems; Rayleigh quotient.
+    </course>
+    <course name="Random Oscillations of Mechanical Systems" number="274" units="3">
+        Random variables and random processes. Stationary, nonstationary, and ergodic proceses. Analysis of linear and nonlinear, discrete and continuous, mechanical systems under stationary and nonstationary excitations. Vehicle dynamics. Applications to failure analysis. Stochastic estimation and control and their applications to vibratory systems.
+    </course>
+    <course name="Advanced Dynamics" number="275" units="3">
+        Review of Lagrangian dynamics. Legendre transform and Hamilton's equations, Cyclic coordinates, Canonical transformations, Hamilton-Jacobi theory, integrability. Dynamics of asymmetric systems. Approximation theory. Current topics in analytical dynamics.
+    </course>
+    <course name="Oscillations in Nonlinear Systems" number="277" units="3">
+        Oscillations in nonlinear systems having one or two degrees of freedom. Qualitative and quantitative methods: graphical, iteration, perturbation, and asymptotic methods. Self-excited oscillations, limit cycles, and domains of attraction.
+    </course>
+    <course name="Introduction to the Finite Element Method" number="280A" units="3">
+        Weighted-residual and variational methods of approximation. Canonical construction of finite element spaces. Formulation of element and global state equations. Applications to linear partial differential equations of interest in engineering and applied science.
+    </course>
+    <course name="Finite Element Methods in Nonlinear Continua" number="280B" units="3">
+        A brief review of continuum mechanics. Consistent linearization of kinematical variables and balance laws. Incremental formulations of the equations of motion. Solution of the nonlinear field equations by Newton's method and its variants. General treatment of constraints. Applications to nonlinear material and kinematical modeling on continua.
+    </course>
+    <course name="Methods of Tensor Calculus and Differential Geometry" number="281" units="3">
+        Methods of tensor calculus and classical differential geometry. The tensor concept and the calculus of tensors, the Riemann-Christoffel tensor and its properties, Riemannian and Euclidean spaces. Geometry of a surface, formulas of Weingarten, and equations of Gauss and Codazzi.
+    </course>
+    <course name="Theory of Elasticity" number="282" units="3">
+        Fundamentals and general theorems of the linear theory of elasticity (in three dimensions) and the formulation of static and dynamic boundary value problems. Application to torsion, flexure, and two-dimensional problems of plane strain, generalized plane stress, and bending of plates. Representation of basic field equations in terms of displacement potentials and stress functions. Some basic three-dimensional solutions.
+    </course>
+    <course name="Wave Propagation in Elastic Media" number="283" units="3">
+        Propagation of mechanical disturbances in unbounded and bounded media. Surface waves, wave reflection and transmission at interfaces and boundaries. Stress waves due to periodic and transient sources. Some additional topics may vary with instructor.
+    </course>
+    <course name="Nonlinear Theory of Elasticity" number="284" units="3">
+        Fundamentals of nonlinear theory of elasticity. Exact solutions in elastostatics by inverse and semi-inverse methods. The method of successive approximations. Small deformations superposed on finite deformations. Nonlinear oscillations, shocks and acceleration waves, progressive waves and standing waves of finite amplitude, waves in pre-stressed solids.
+    </course>
+    <course name="Foundations of the Theory of Continuous Media" number="285A" units="3">
+        A general development of thermodynamics of deformable media, entropy production, and related entropy inequalities. Thermomechanical response of dissipative media, including those for viscous fluids and nonlinear elastic solids. A discussion of invariance, internal constraints, material symmetry, and other special topics.
+    </course>
+    <course name="Electrodynamics of Continuous Media" number="285C" units="3">
+        This course presents the fundamentals of electromagnetic interactions in deformable continuous media. It develops the background necessary to understand various modern technologies involving MEMS devices, sensors and actuators, plasmas, and a wide range of additional phenomena. The emphasis of this course is on fundamentals, beginning with Maxwell's equations in vacuum, the aether relations and their extension to electromagnetic interactions in materials. The treatment is general within the limits of nonrelativistic physics and accommodates coupling with mechanical and thermal effects. The topics discussed are all developed at a general level including the effects of finite deformations. Various linear models, which are especially useful in applications, are developed through specialization of general theory. This course will be of interest to students in engineering, physics, and applied mathematics.
+    </course>
+    <course name="Theory of Plasticity" number="286" units="3">
+        Formulation of the theory of plasticity relative to loading surfaces in both strain space and stress space and associated loading criteria. Nonlinear constitutive equations for finitely deformed elastic-plastic materials. Discussion of strain-hardening and special cases. Applications.
+    </course>
+    <course name="Multiscale Modeling and Design of New Materials" number="287" units="3">
+        This course focuses on methods for the modeling, analysis, numerical simulation, and design of microheterogeneous materials, with a central theme being the determination of relationships between the microstructure and the acroscopic response or &quot;macroscale property.&quot; The course is self-contained and is designed in an interdisciplinary manner for graduate students in engineering, applied mathematics, materials science, and physics who are interested in methods to accelerate the laboratory analysis and design of new materials. Examples draw primarily from various mechanical, diffusive, and thermal applications, although the techniques developed apply to any partial differential system possessing oscillatory coefficients.
+    </course>
+    <course name="Theory of Shells" number="289" units="3">
+        A direct formulation of a general theory of shells and plates based on the concept of Cosserat (or Directed) surfaces. Nonlinear constitutive equations for finitely deformed elastic shells. Linear theory and a special nonlinear theory with small strain accompanied by large or moderately large rotation. Applications.
+    </course>
+    <course name="Nonlinear Dynamics of Continuous Systems" number="290A" units="3">
+        This course uses methods from dynamical systems theory for the analysis of the nonlinear dynamics of elastic bodies. Various methods for modeling these bodies will be used, and the dynamics predicted by these models of the body will be explored. Of particular interest will be the dynamics of nonlinearly elastic rods and strings.
+    </course>
+    <course name="Topics in Continuum Mechanics" number="290B" units="3">
+        The objective of the course is to present a coherent and integrated account of generalized continua with extensive illustrative applications to diverse areas in fluid and solid mechanics. The illustrative applications will be drawn from such topics as liquid crystals, microcracking of brittle materials, aspects of cell biology, fluid flow problems (both inviscid and viscous flow) for free surface flow in channels past an obstacle of any shape, motion of jets of arbitrary cross-section, nonlinear deformation of elastic rods and shells and flow in pipes, among others.
+    </course>
+    <course name="Topics in Fluid Mechanics" number="290C" units="3">
+        Lectures on special topics which will be announced at the beginning of each semester that the course is offered. Topics may include transport and mixing, geophysical fluid dynamics, biofluid dynamics, oceanography, free surface flows, non-Newtonian fluid mechanics, among other possibilities.
+    </course>
+    <course name="Solid Modeling" number="290D" units="3">
+        Graduate survey of solid modeling research. Representations and algorithms for 3D solid geometry. Applications in design, analysis, planning, and manufacturing of mechanical parts, including CAD/CAM, reverse engineering, meshing, feature recognition, mold-making, and rapid prototyping.
+    </course>
+    <course name="Laser Processing and Diagnostics" number="290G" units="3">
+        Fundamentals of optical energy coupling with materials. Lasers and beam delivery systems. Thermal transport in irradiated targets: conductive heat transfer, stress field, melting and solidification, surface vaporization, explosive phase-change, plasma formation. Ultra-fast (picosecond and femtosecond) laser processing. Laser processing of thin films: continuous wave laser annealing, pulsed laser annealing. Laser-induced surface modification: mass transfer in shallow doping, flow redistribution and topography generation, miniature modification of glass surfaces. Desorption at low-energy densities: time-of-flight spectrometry. Dynamics of laser-ablated plumes: computational modeling, probe beam deflection, emission and laser-induced fluorescence spectroscopy. Processing of polymers. Laser interaction with liquids. Laser cleaning. Laser interactions with nanoparticles and clusters. Advanced microfabrication applications. Laser-assisted nano-structuring of surface properties. Optical measurement of thermal properties. Laser-based sensors and non-contact diagnostics.
+    </course>
+    <course name="Green Product Development: Design for Sustainability" number="290H" units="3">
+        The focus of the course is management of innovation processes for sustainable products, from product definition to sustainable manufacturing and financial models. Using a project in which students will be asked to design and develop a product or service focused on sustainability, we will teach processes for collecting customer and user needs data, prioritizing that data, developing a product specification, sketching and building product prototypes, and interacting with the customer/community during product development. The course is intended as a very hands-on experience in the &quot;green&quot; product development process. The course will be a Management of Technology course offered jointly with the College of Engineering and the Haas School of Business. In addition, it will also receive credit towards the new Certificate on Engineering Sustainability and Environmental Management program. We aim to have half MBA students and half Engineering students (with a few other students, such as from the School of Information) in the class. The instructors will facilitate students to form mixed disciplinary reams for the development of their &quot;green&quot; products.
+    </course>
+    <course name="Introduction to Nano-Biology" number="290L" units="3">
+        This course introduces graduate students in Mechanical Engineering to the nascent field of Nano-Biology. The course is comprised of both formal lectures and projects. Lectures will include an introduction to both molecular biology (components of cells, protein structure and function, DNA, gene regulation, etc.) and nanotechnology (&quot;bottom up&quot; and &quot;top down&quot; nanotechnologies), an overview of current instrumentation in biology, an in-depth description of the recent integration of molecular biology with nanotechnology (for sensing or labeling purposes, elucidating information on cells, etc.), and an introduction to Systems Biology (design principles of biological circuits). Students will read and present a variety of current journal papers to the class and lead a discussion on the various works.
+    </course>
+    <course name="Expert Systems in Mechanical Engineering" number="290M" units="3">
+        Introduction to artificial intelligence and decision analysis in mechanical engineering. Fundamentals of analytic design, probability theory, failure analysis, risk assessment, and Bayesian and logical inference. Applications to expert systems in probabilistic mechanical engineering design and failure diagnostics. Use of automated influence diagrams to codify expert knowledge and to evaluate optimal design decisions.
+    </course>
+    <course name="System Identification" number="290N" units="3">
+        This course is intended to provide a comprehensive treatment of both classical system identification and recent work in control-oriented system identification. Numerical, practical, and theoretical aspects will be covered. Topics treated include time and frequency domain methods, generalized parameter estimation, identification of structured non-linear systems, modeling uncertainty bounding, and state-space methods.
+    </course>
+    <course name="New Product Development: Design Theory and Methods" number="290P" units="3">
+        This course is aimed at developing the interdisciplinary skills required for successful product development in today's competitive marketplace. We expect students to be disciplinary experts in their own field (e.g., engineering, business). By bringing together multiple perspectives, we will learn how product development teams can focus their efforts to quickly create cost-effective products that exceed customers' expectations.
+    </course>
+    <course name="Dynamic Control of Robotic Manipulators" number="290Q" units="3">
+        Dynamic and kinematic analysis of robotic manipulators. Sensors (position, velocity, force and vision). Actuators and power transmission lines. Direct drive and indirect drive. Point to point control. Straight and curved path following. Industrial practice in servo control. Applications of optimal linear quadratic control, preview control, nonlinear control, and direct/indirect adaptive controls. Force control and compliance control. Collision avoidance. Utilization of dynamic controls
+    </course>
+    <course name="Topics in Manufacturing" number="290R" units="3">
+        Advanced topics in manufacturing research. Topics vary from year to year.
+    </course>
+    <course name="Hybrid Systems and Intelligent Control" number="C290S" units="3">
+        Analysis of hybrid systems formed by the interaction of continuous time dynamics and discrete-event controllers. Discrete-event systems models and language descriptions. Finite-state machines and automata. Model verification and control of hybrid systems. Signal-to-symbol conversion and logic controllers. Adaptive, neural, and fuzzy-control systems. Applications to robotics and Intelligent Vehicle and Highway Systems (IVHS). Also listed as Electrical Engineering C291E.
+    </course>
+    <course name="Plasmonic Materials" number="290T" units="3">
+        This course deals with fundamental aspects of plasmonic materials. The electromagnetic responses of those artifically constructed materials will be discussed. Physics of surface plasmons and dispersion engineering will be introduced. Resonant phenomena associated with the negative permittivity and permeability and the left-handed propagation will be presented. Methods of design, fabrication, and characterization of plasmonic materials will be discussed.
+    </course>
+    <course name="Topics in Control, Modeling and Optimization" number="290Z" units="3">
+        Advanced topics in control, modeling and optimization research with extensive illustrative applications to diverse areas in mechanical engineering systems and mechatronics. Topics will vary from year to year and will be announced at the beginning of each semester that the course is offered. Theoretical issues covered in the course include topics such as iterative learning control, control over networks, and modeling for controls. The illustrative applications will be drawn from such topics as mechatronics for improving the quality of life among others.
+    </course>
+    <course name="Group Studies, Seminars, or Group Research" number="298" units="1-8">
+        Advanced studies in various subjects through special seminars on topics to be selected each year. Informal group studies of special problems, group participation in comprehensive design problems, or group research on complete problems for analysis and experimentation.
+    </course>
+    <course name="Topics in Fluid Mechanics" number="C298A" units="1,2">
+        Lectures on special topics which will be announced at the beginning of each semester that the course is offered. Topics may include transport and mixing, geophysical fluid dynamics, bio-fluid dynamics, oceanography, free surface flows, non Newtonian fluid mechanics, among other possibilities. Also listed as Environ Sci, Policy, and Management C291, Physics C290I, Mathematics C290C, Chemical Engineering C295M, Nuclear Engineering C290F, Civil and Environmental Engineering C290K, and Bioengineering C290C.
+    </course>
+    <course name="Individual Study or Research" number="299" units="1-12">
+        Investigations of advanced problems in mechanical engineering.
+    </course>
+    <course name="Teaching of Mechanical Engineering at the University Level" number="301" units="1-6">
+        Weekly seminars and discussions on effective teaching methods. Educational objectives. Theories of learning. The lecture and alternative approaches. Use of media resources. Student evaluation. Laboratory instruction. Curricula in mechanical engineering. Practice teaching. This course is open to Teaching Assistants of Mechanical Engineering.
+    </course>
+    <course name="Individual Study for Doctoral Students" number="602" units="1-8">
+        Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required of candidates for the Ph.D. (and other doctoral degrees).
+    </course>
+</department>

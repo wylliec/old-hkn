@@ -1,0 +1,321 @@
+<?xml version="1.0" ?>
+<department abbr="CHEM" name="Chemistry (Department Of)">
+    <course name="General Chemistry" number="1A" units="4">
+        Stoichiometry of chemical reactions, quantum mechanical description of atoms, the elements and periodic table, chemical bonding, real and ideal gases, thermochemistry, introduction to thermodynamics and equilibrium, acid-base and solubility equilibria, introduction to oxidation-reduction reactions.
+    </course>
+    <course name="General Chemistry" number="1B" units="4">
+        Introduction to chemical kinetics, electrochemistry, properties of the states of matter, binary mixtures, thermodynamic efficiency and the direction of chemical change, quantum mechanical description of bonding introduction to spectroscopy. Special topics: Research topics in modern chemistry and biochemistry, chemical engineering.
+    </course>
+    <course name="Chemical Structure and Reactivity" number="3A" units="3">
+        Introduction to organic chemical structures, bonding, and chemical reactivity. The organic chemistry of alkanes, alkyl halides, alcohols, alkenes, alkynes, and organometallics.
+    </course>
+    <course name="Organic Chemistry Laboratory" number="3AL" units="2">
+        Introduction to the theory and practice of methods used in the organic chemistry laboratory. An emphasis is placed on the separation and purification of organic compounds. Techniques covered will include extraction, distillation, sublimation, recrystalization, and chromatography. Detailed discussions and applications of infrared and nuclear magnetic resonance spectroscopy will be included.
+    </course>
+    <course name="Chemical Structure and Reactivity" number="3B" units="3">
+        Conjugation, aromatic chemistry, carbonyl compounds, carbohydrates, amines, carboxylic acids, amino acids, peptides, proteins, and nucleic acid chemistry. Ultraviolet spectroscopy and mass spectrometry will be introduced.
+    </course>
+    <course name="Organic Chemistry Laboratory" number="3BL" units="2">
+        The synthesis and purification of organic compounds will be explored. Natural product chemistry will be introduced. Advanced spectroscopic methods including infrared, ultraviolet, and nuclear magnetic resonance spectroscopy and mass spectrometry will be used to analyze products prepared and/or isolated. Qualitative analysis of organic compounds will be covered.
+    </course>
+    <course name="General Chemistry and Quantitative Analysis" number="4A" units="4">
+        4A-4B is intended for majors in the chemical sciences. This series presents the foundation principles of chemistry, including stoichiometry, ideal and real gases, acid-base and solubility equilibria, oxidation-reduction reactions, thermochemistry, entropy, nuclear chemistry and radioactivity, the atoms and elements, the periodic table, quantum theory, chemical bonding, molecular structure, chemical kinetics, and descriptive chemistry. Examples and applications will be drawn from diverse areas of special interest such as atmospheric, environmental, materials, polymer and computational chemistry, and biochemistry. Laboratory emphasizes quantitative work. Equivalent to 1A-1B plus 5 as prerequisite for further courses in chemistry.
+    </course>
+    <course name="General Chemistry and Quantitative Analysis" number="4B" units="4">
+        4A-4B is intended for majors in the chemical sciences. This series presents the foundation principles of chemistry, including stoichiometry, ideal and real gases, acid-base and solubility equilibria, oxidation-reduction reactions, thermochemistry, entropy, nuclear chemistry and radioactivity, the atoms and elements, the periodic table, quantum theory, chemical bonding, molecular structure, chemical kinetics, and descriptive chemistry. Examples and applications will be drawn from diverse areas of special interest such as atmospheric, environmental, materials, polymer and computational chemistry, and biochemistry. Laboratory emphasizes quantitative work. Equivalent to 1A-1B plus 5 as prerequisite for further courses in chemistry.
+    </course>
+    <course name="Quantitative Analysis" number="5" units="3">
+        Acid-base, redox, complex formation equilibria and their applications to volumetric analytical methods. Principles and applications of spectrophotometry, potentiometry, coulometry, polarography, and ion exchange chromatography. Selected additional topics in instrumental analysis.
+    </course>
+    <course name="Analytical and Bioanalytical Chemistry" number="15" units="3">
+        An introduction to analytical and bioanalytical chemistry including background in statistical analysis of data, acid-base equilibria, electroanalytical potentiometry, spectrometric, and chromatographic methods of analysis and some advanced topics in bioanalytical chemistry such as micro-fluids, bioassay techniques, and enzymatic biosensors.
+    </course>
+    <course name="Freshman Seminar" number="24" units="1">
+        The Freshman Seminar Program has been designed to provide new students with the opportunity to explore an intellectual topic with a faculty member in a small seminar setting. Freshman seminars are offered in all campus departments, and topics may vary from department to department and semester to semester. Enrollment limited to 15 freshmen.
+    </course>
+    <course name="Supplementary Work in Lower Division Chemistry" number="49" units="1-4">
+        Students with partial credit in lower division chemistry courses may, with consent of instructor, complete the credit under this heading.
+    </course>
+    <course name="Sophomore Seminar" number="84" units="1,2">
+        Sophomore seminars are small interactive courses offered by faculty members in departments all across the campus. Sophomore seminars offer opportunity for close, regular intellectual contact between faculty members and students in the crucial second year. The topics vary from department to department and semester to semester. Enrollment limited to 15 sophomores.
+    </course>
+    <course name="Introduction to Research and Study in the College of Chemistry" number="C96" units="1">
+        Introduces freshmen to research activities and programs of study in the College of Chemistry. Includes lectures by faculty, an introduction to college library and computer facilities, the opportunity to meet alumni and advanced undergraduates in an informal atmosphere, and discussion of college and campus resources. Also listed as Chemical Engineering C96.
+    </course>
+    <course name="Supervised Group Study" number="98" units="1-4">
+        Group study of selected topics.
+    </course>
+    <course name="Issues in Chemistry" number="98B" units="1">
+        This seminar will focus on one or several related issues in society that have a significant bearing on chemistry. Particular topics will differ from course section to course section and from year to year. Representative examples: atmospheric ozone, nuclear waste, solar energy, water, agrichemicals. Students will search information sources, invite expert specialists to speak, prepare oral and written reports.
+    </course>
+    <course name="Directed Group Study" number="98W" units="1">
+        Topics vary with instructor. Enrollment restrictions apply.
+    </course>
+    <course name="Communicating Chemistry" number="100" units="2">
+        For undergraduate and graduate students interested in improving their ability to communicate their scientific knowledge by teaching chemistry in elementary schools. The course will combine instruction in inquiry-based chemistry teaching methods and learning pedagogy with 10 weeks of supervised teaching experience in a local school classroom. Thus, students will practice communicating scientific knowledge and receive mentoring on how to improve their presentations. Approximately three hours per week, including time spent in school classrooms.
+    </course>
+    <course name="Inorganic Chemistry in Living Systems" number="103" units="3">
+        The basic principles of metal ions and coordination chemistry applied to the study of biological systems.
+    </course>
+    <course name="Advanced Inorganic Chemistry" number="104A" units="3">
+        The chemistry of metals and nonmetals including the application of physical chemical principles.
+    </course>
+    <course name="Advanced Inorganic Chemistry" number="104B" units="3">
+        The chemistry of metals and nonmetals including the application of physical chemical principles.
+    </course>
+    <course name="Instrumental Methods in Analytical Chemistry" number="105" units="4">
+        Principles, instrumentation and analytical applications of atomic spectroscopies, mass spectrometry, separations, electrochemistry and micro-characterization. Discussion of instrument design and capabilities as well as real-world problem solving with an emphasis on bioanalytical, environmental, and forensic applications. Hands-on laboratory work using modern instrumentation, emphasizing independent projects involving real-life samples and problem solving.
+    </course>
+    <course name="Inorganic Synthesis and Reactions" number="108" units="4">
+        The preparation of inorganic compounds using vacuum line, air-and moisture-exclusion, electrochemical, high-pressure, and other synthetic techniques. Kinetic and mechanistic studies of inorganic compounds.
+    </course>
+    <course name="Organic Chemistry" number="112A" units="5">
+        A study of all aspects of fundamental organic chemistry, including nomenclature, chemical and physical properties, reactions and syntheses of the major classes of organic compounds. The study includes theoretical aspects, reaction mechanisms, multistep syntheses, and the chemistry of polycyclic and heterocyclic compounds. This course is more extensive and intensive than 3A-3B and includes a greater emphasis on reaction mechanisms and multistep syntheses. 112A (F); 112B (SP)
+    </course>
+    <course name="Organic Chemistry" number="112B" units="5">
+        A study of all aspects of fundamental organic chemistry, including nomenclature, chemical and physical properties, reactions and syntheses of the major classes of organic compounds. The study includes theoretical aspects, reaction mechanisms, multistep syntheses, and the chemistry of polycyclic and heterocyclic compounds. This course is more extensive and intensive than 3A-3B and includes a greater emphasis on reaction mechanisms and multistep syntheses. 112A (F); 112B (SP)
+    </course>
+    <course name="Advanced Mechanistic Organic Chemistry" number="113" units="3">
+        Advanced topics in mechanistic and physical organic chemistry typically including kinetics, reactive intermediates, substitution reactions, linear free energy relationships, orbital interactions and orbital symmetry control of reactions, isotope effects, and photochemistry.
+    </course>
+    <course name="Advanced Synthetic Organic Chemistry" number="114" units="3">
+        Advanced topics in synthetic organic chemistry with a focus on selectivity. Topics include reductions, oxidations, enolate chemistry and the aldol reaction, reactions of non-stablized anions, olefination reactions, pericyclic reactions and application to the synthesis of complex structures.
+    </course>
+    <course name="Organic Chemistry--Advanced Laboratory Methods" number="115" units="4">
+        Advanced synthetic methods, chemical and spectroscopic structural methods, designed as a preparation for experimental research.
+    </course>
+    <course name="Physical Chemistry" number="120A" units="3">
+        Kinetic, potential, and total energy of particles and forces between them; principles of quantum theory, including one-electron and many-electron atoms. The course will be divided (fall semester) into a section for chemistry majors and one for chemical biology majors, both meeting at the same time, covering topics of interest to each group relating to molecules and chemical bonding, electrical properties, intermolecular interactions and elementary spectroscopy.
+    </course>
+    <course name="Physical Chemistry" number="120B" units="3">
+        Statistical mechanics, thermodynamics, and equilibrium. The course will be divided (spring semester) into a section for chemistry majors and one for chemical biology majors, both meeting at the same time, covering topics of interest to each group relating to states of matter, solutions and solvation, (bio)chemical kinetics, molecular dynamics, physical characterization, and transport of molecules.
+    </course>
+    <course name="Quantum Mechanics and Spectroscopy" number="122" units="3">
+        Postulates and methods of quantum mechanics and group theory applied to molecular structure and spectra.
+    </course>
+    <course name="Physical Chemistry Laboratory" number="125" units="3">
+        Experiments in thermodynamics, kinetics, molecular structure, and general physical chemistry.
+    </course>
+    <course name="Biophysical Chemistry: Physical Principles and the Molecules of Life" number="C130" units="4">
+        Thermodynamic and kinetic concepts applied to understanding the chemistry and structure of biomolecules (proteins, DNA, and RNA). Molecular distributions, reaction kinetics, enzyme kinetics. Bioenergetics, energy transduction, and motor proteins. Electrochemical potential, membranes, and ion channels. Also listed as Molecular and Cell Biology C100A.
+    </course>
+    <course name="Biophysical Chemistry" number="130B" units="3">
+        The weekly one-hour discussion is for problem solving and the application of calculus in physical chemistry. Molecular structure, intermolecular forces and interactions, biomolecular spectroscopy, high-resolution structure determinations.
+    </course>
+    <course name="Chemical Biology" number="135" units="3">
+        One-semester introduction to biochemistry, aimed toward chemistry majors.
+    </course>
+    <course name="Nuclear Chemistry" number="143" units="2">
+        Radioactivity, fission, nuclear models and reactions, nuclear processes in nature. Computer methods will be introduced.
+    </course>
+    <course name="Chemical Methods in Nuclear Technology" number="146" units="3">
+        Experimental illustrations of the interrelation between chemical and nuclear science and technology; fission process, chemistry of fission fragments, chemical effects of nuclear transformation; application of radioactivity to study of chemical problems; neutron activation analysis.
+    </course>
+    <course name="Introduction to Materials Chemistry" number="C150" units="3">
+        The application of basic chemical principles to problems in materials discovery, design, and characterization will be discussed. Topics covered will include inorganic solids, nanoscale materials, polymers, and biological materials, with specific focus on the ways in which atomic-level interactions dictate the bulk properties of matter. Also listed as Materials Science and Engineering C150.
+    </course>
+    <course name="Biochemical Engineering Laboratory" number="C170L" units="3">
+        Laboratory techniques for the cultivation of microorganisms in batch and continuous reactions. Enzymatic conversion processes. Recovery of biological products. Also listed as Chemical Engineering C170L.
+    </course>
+    <course name="Polymer Science and Technology" number="C178" units="3">
+        Introduction to physical and chemical behavior of organic polymers. Properties of solutions, melts, glasses, elastomers, and crystals. Engineering applications emphasizing processing technology. Experiments in polymerization and characterization. Also listed as Chemical Engineering C178.
+    </course>
+    <course name="Atmospheric Chemistry and Physics Laboratory" number="C182" units="3">
+        Fluid dynamics, radiative transfer, and the kinetics, spectroscopy, and measurement of atmospherically relevant species are explored through laboratory experiments, numerical simulations, and field observations. The course is intended for Earth and Planetary Science majors and minors, and for chemistry, physics, astronomy, biology, and engineering majors whose interests may lie in science applied to the atmosphere of Earth and other planets. Also listed as Earth and Planetary Science C182.
+    </course>
+    <course name="Quantum Information Science and Technology" number="C191" units="3">
+        This multidisciplinary course provides an introduction to fundamental conceptual aspects of quantum mechanics from a computational and informational theoretic perspective, as well as physical implementations and technological applications of quantum information science. Basic sections of quantum algorithms, complexity, and cryptography, will be touched upon, as well as pertinent physical realizations from nanoscale science and engineering. Also listed as Physics C191 and Computer Science C191.
+    </course>
+    <course name="Individual Study for Advanced Undergraduates" number="192" units="1-3">
+        All properly qualified students who wish to pursue a problem of their own choice, through reading or nonlaboratory study, may do so if their proposed project is acceptable to the member of the staff with whom they wish to work.
+    </course>
+    <course name="Research for Advanced Undergraduates" number="H194" units="2-4">
+        Students may pursue original research under the direction of one of the members of the staff.
+    </course>
+    <course name="Special Topics" number="195" units="3">
+        Special topics will be offered from time to time. Examples are: photochemical air pollution, computers in chemistry.
+    </course>
+    <course name="Special Laboratory Study" number="196" units="2-4">
+        Special laboratory work for advanced undergraduates.
+    </course>
+    <course name="Directed Group Study" number="198" units="1-4">
+        Group study of selected topics.
+    </course>
+    <course name="Supervised Independent Study and Research" number="199" units="1-4">
+        Enrollment is restricted by regulations listed in the General Catalog.
+    </course>
+    <course name="Chemistry Fundamentals" number="200" units="1">
+        Review of bonding, structure, stereochemistry, conformation, thermodynamics and kinetics, and arrow-pushing formalisms.
+    </course>
+    <course name="Fundamentals of Inorganic Chemistry" number="201" units="1">
+        Review of bonding, structure, MO theory, thermodynamics, and kinetics.
+    </course>
+    <course name="Structure Analysis by X-Ray Diffraction" number="208" units="4">
+        The theory and practice of modern, single-crystal X-ray diffraction. Groups of four students determine the crystal and molecular structure of newly synthesized materials from the College of Chemistry. The laboratory work involves the mounting of crystals and initial evaluation by X-ray diffraction film techniques, the collection of intensity data by automated diffractometer procedures, and structure analysis and refinement.
+    </course>
+    <course name="Thermodynamics and Statistical Mechanics" number="220A" units="3">
+        A rigorous presentation of classical thermodynamics followed by an introduction to statistical mechanics with the application to real systems.
+    </course>
+    <course name="Statistical Mechanics" number="220B" units="3">
+        Principles of statistical mechanics and applications to complex systems.
+    </course>
+    <course name="Advanced Quantum Mechanics" number="221A" units="3">
+        Introduction, one dimensional problems, matrix mechanics, approximation methods.
+    </course>
+    <course name="Advanced Quantum Mechanics" number="221B" units="3">
+        Time dependence, interaction of matter with radiation, scattering theory. Molecular and many-body quantum mechanics.
+    </course>
+    <course name="Spectroscopy" number="222" units="3">
+        This course presents a survey of experimental and theoretical methods of spectroscopy, and group theory as used in modern chemical research. The course topics include experimental methods, classical and quantum descriptions of the interaction of radiation and matter. Qualitative and quantitative aspects of the subject are illustrated with examples including application of linear and nonlinear spectroscopies to the study of molecular structure and dynamics and to quantitative analysis. This course is offered jointly with 122.
+    </course>
+    <course name="Chemical Kinetics" number="223A" units="3">
+        Deduction of mechanisms of complex reactions. Collision and transition state theory. Potential energy surfaces. Unimolecular reaction rate theory. Molecular beam scattering studies.
+    </course>
+    <course name="Chemical Dynamics" number="223B" units="3">
+        Quantum mechanical scattering theory of elastic, inelastic, and reactive collisions. Electronically non-adiabatic processes. Collision complexes and scattering resonances. Semiclassical scattering theory for molecular collision. Generalized statistical models for chemical reactions.
+    </course>
+    <course name="Protein Chemistry, Enzymology, and Bio-organic Chemistry" number="C230" units="2">
+        The topics covered will be chosen from the following: protein structure; protein-protein interactions; enzyme kinetics and mechanism; enzyme design. Intended for graduate students in chemistry, biochemistry, and molecular and cell biology. Also listed as Molecular and Cell Biology C214.
+    </course>
+    <course name="Advanced Nuclear Structure and Reactions" number="243" units="3">
+        Selected topics on nuclear structure and nuclear reactions.
+    </course>
+    <course name="Introduction to Bonding Theory" number="250A" units="1">
+        An introduction to group theory, symmetry, and representations as applied to chemical bonding.
+    </course>
+    <course name="Inorganic Spectroscopy" number="250B" units="1">
+        The theory of vibrational analysis and spectroscopy as applied to inorganic compounds.
+    </course>
+    <course name="Coordination Chemistry I" number="251A" units="1">
+        Structure and bonding, synthesis, and reactions of the d-transition metals and their compounds.
+    </course>
+    <course name="Coordination Chemistry II" number="251B" units="1">
+        Synthesis, structure analysis, and reactivity patterns in terms of symmetry orbitals.
+    </course>
+    <course name="Organometallic Chemistry I" number="252A" units="1">
+        An introduction to organometallics, focusing on structure, bonding, and reactivity.
+    </course>
+    <course name="Organometallic Chemistry II" number="252B" units="1">
+        Applications of organometallic compounds in synthesis with an emphasis on catalysis.
+    </course>
+    <course name="Materials Chemistry I" number="253A" units="1">
+        Introduction to the descriptive crystal chemistry and electronic band structures of extended solids.
+    </course>
+    <course name="Materials Chemistry II" number="253B" units="1">
+        General solid state synthesis and characterization techniques as well as a survey of important physical phenomena including optical, electrical, and magnetic properties.
+    </course>
+    <course name="Materials Chemistry III" number="253C" units="1">
+        Introduction to surface catalysis, organic solids, and nanoscience. Thermodynamics and kinetics of solid state diffusion and reaction will be covered.
+    </course>
+    <course name="Bioinorganic Chemistry" number="254" units="1">
+        A survey of the roles of metals in biology, taught as a tutorial involving class presentations.
+    </course>
+    <course name="Electrochemical Methods" number="256" units="1">
+        The effect of structure and kinetics on the appearance of cyclic voltammograms and the use of cyclic voltammetry to probe the thermodynamics, kinetics, and mechanisms of electrochemical reactions.
+    </course>
+    <course name="Reaction Mechanisms" number="260" units="2">
+        Advanced methods for studying organic reaction mechanisms. Topics include kinetic isotope effects, behavior of reactive intermediates, chain reactions, concerted reactions, molecular orbital theory and aromaticity, solvent and substituent effects, linear free energy relationships, photochemistry.
+    </course>
+    <course name="Organic Reactions I" number="261A" units="1">
+        Features of the reactions that comprise the vocabulary of synthetic organic chemistry.
+    </course>
+    <course name="Organic Reaction II" number="261B" units="1">
+        More reactions that are useful to the practice of synthetic organic chemistry.
+    </course>
+    <course name="Organic Reactions III" number="261C" units="1">
+        This course will consider further reactions with an emphasis on pericyclic reactions such as cycloadditions, electrocyclizations, and sigmatropic rearrangements.
+    </course>
+    <course name="Metals in Organic Synthesis" number="262" units="1">
+        Transition metal-mediated reactions occupy a central role in asymmetric catalysis and the synthesis of complex molecules. This course will describe the general principles of transition metal reactivity, coordination chemistry, and stereoselection. This module will also emphasize useful methods for the analysis of these reactions.
+    </course>
+    <course name="Synthetic Design I" number="263A" units="1">
+        This course will describe the application of modern reactions to the total synthesis of complex target molecules. Natural products, such as alkaloids, terpenes, or polypropionates, as well as theoretically interesting &quot;non-natural&quot; molecules will be covered.
+    </course>
+    <course name="Synthetic Design II" number="263B" units="1">
+        The principles of retrosynthetic analysis will be laid down and the chemistry of protecting groups will be discussed. Special attention will be given to the automated synthesis of biopolymers such as carbohydrates, peptides, and proteins, as well as nucleic acids.
+    </course>
+    <course name="Synthesis of Macromolecules" number="264A" units="1">
+        The concepts of chain-growth and step-growth polymerizations. Radical, ionic, and metal catalyzed polymerizations. Living polymerization. Controlling macromolecular architecture: dendrimers, hyperbranced polymers, and crosslinked networks.
+    </course>
+    <course name="Properties and Applications of Macromolecules" number="264B" units="1">
+        Characterization of macromolecules. Structure-property relationships. Specialty polymers and their applications: polymers in therapeutics, biomedical polymers and implants, conducting polymers, polymers in microelectronics and photonics, polymers in separation and molecular recognition, supramolecular chemistry, and self-assembly.
+    </course>
+    <course name="Nuclear Magnetic Resonance Theory and Application" number="265" units="1">
+        The theory behind practical nuclear magnetic resonance spectroscopy and a survey of its applications to chemical research.
+    </course>
+    <course name="Mass Spectrometry" number="266" units="1">
+        Basic mass spectrometric ionization techniques and analyzers as well as simple fragmentation mechanisms for organic molecules; methods for analyzing organic and inorganic samples, along with an opportunity to be trained and checked out on several open-access mass spectrometers; in-depth instruction on the use of mass spectrometry for the analysis of biomolecules such as proteins, peptides, carbohydrates, and nucleic acids.
+    </course>
+    <course name="Organic Specialties" number="267" units="1">
+        A survey course focusing on an area of organic chemistry of importance, such as pharmaceutical chemistry, combinatorial chemistry, natural products chemistry, etc.
+    </course>
+    <course name="Mass Spectrometry" number="268" units="2">
+        Principles, instrumentation, and application in mass spectrometry, including ionization methods, mass analyzers, spectral interpretation, multidimensional methods (GC/MS, HPLC/MS, MS/MS), with emphasis on small organic molcules and bioanalytical applications (proteins, peptides, nucleic acids, carbohydrates, noncovalent complexes); this will include the opportunity to be trained and checked out on several open-access mass spectrometers.
+    </course>
+    <course name="Advanced Biophysical Chemistry I" number="270A" units="1">
+        Underlying principles and applications of methods for biophysical analysis of biological macromolecules.
+    </course>
+    <course name="Advanced Biophysical Chemistry II" number="270B" units="1">
+        More applications of methods for biophysical analysis of biological macromolecules.
+    </course>
+    <course name="Chemical Biology I - Structure, Synthesis, and Function of Biomolecules" number="271A" units="1">
+        This course will present the structure of proteins, nucleic acids, and oligosaccharides from the perspective of organic chemistry. Modern methods for the synthesis and purification of these molecules will also be presented.
+    </course>
+    <course name="Chemical Biology I - Structure, Synthesis and Function of Biomolecules" number="C271A" units="1">
+        This course will present the structure of proteins, nucleic acids, and oligosaccharides from the perspective of organic chemistry. Modern methods for the synthesis and purification of these molecules will also be presented. Also listed as Molecular and Cell Biology C212A.
+    </course>
+    <course name="Chemical Biology II: Enzyme Reaction Mechanisms" number="271B" units="1">
+        The course will focus on the principles of enzyme catalysis. The course will begin with an introduction to the general concepts of enzyme catalysis which will be followed by detailed examples that will examine the chemistry behind the reactions and the three-dimensional structures that carry out the transformations.
+    </course>
+    <course name="Chemical Biology II - Enzyme Reaction Mechanisms" number="C271B" units="1">
+        This course will focus on the principles of enzyme catalysis. The course will begin with an introduction of the general concepts of enzyme catalysis which will be followed by detailed examples that will examine the chemistry behind the reactions and the three-dimensional structures that carry out the transformations. Also listed as Molecular and Cell Biology C212B.
+    </course>
+    <course name="Chemical Biology III: Contemporary Topics in Chemical Biology" number="271C" units="1">
+        This course will build on the principles discussed in Chemical Biology I and II. The focus will consist of case studies where rigorous chemical approaches have been brought to bear on biological questions. Potential subject areas will include signal transduction, photosynthesis, immunology, virology, and cancer. For each topic, the appropriate bioanalytical techniques will be emphasized.
+    </course>
+    <course name="Chemical Biology III - Contemporary Topics in Chemical Biology" number="C271C" units="1">
+        This course will build on the principles discussed in Chemical Biology I and II. The focus will consist of case studies where rigorous chemical approaches have been brought to bear on biological questions. Potential subject areas will include signal transduction, photosynthesis, immunology, virology, and cancer. For each topic, the appropriate bioanalytical techniques will be emphasized. Also listed as Molecular and Cell Biology C212C.
+    </course>
+    <course name="Bio X-Ray I" number="272A" units="1">
+        Theory and application of X-ray crystallography to biomacromolecules.
+    </course>
+    <course name="Bio X-Ray II" number="272B" units="1">
+        More sophisticated aspects of the application of X-ray crystallography to biomacromolecules.
+    </course>
+    <course name="Bio NMR I" number="273A" units="1">
+        Fundamentals of multidimensional NMR spectroscopy (including use of the density matrix for analysis of spin response to pulse sequences) and applications of multidimensional NMR in probing structure, interactions, and dynamics of biological molecules will be described.
+    </course>
+    <course name="Bio NMR II" number="273B" units="1">
+        Triple resonance methods for determination of protein and nucleic acid resonance assignments, and for generation of structural restraints (distances, angles, H-bonds, etc.). Methods for calculating biomolecular structures from NMR data and the quality of such structures will be discussed.
+    </course>
+    <course name="Special Topics" number="295" units="1-3">
+        Lecture series on topics of current interest. Recently offered topics: Natural products synthesis, molecular dynamics, statistical mechanics, molecular spectroscopy, structural biophysics, organic polymers, electronic structure of molecules and bio-organic chemistry.
+    </course>
+    <course name="Seminars for Graduate Students" number="298" units="1-3">
+        In addition to the weekly Graduate Research Conference and weekly seminars on topics of interest in biophysical, organic, physical, nuclear, and inorganic chemistry, there are group seminars on specific fields of research. Seminars will be announced at the beginning of each semester.
+    </course>
+    <course name="Research for Graduate Students" number="299" units="1-9">
+        The facilities of the laboratory are available at all times to graduate students pursuing original investigations toward an advanced degree at this University. Such work is ordinarily in collaboration with a member of the staff.
+    </course>
+    <course name="Professional Preparation: Supervised Teaching of Chemistry" number="300" units="2">
+        Discussion, curriculum development, class observation, and practice teaching in chemistry.
+    </course>
+    <course name="Undergraduate Lab Instruction" number="301A" units="2">
+        Tutoring of students in 1A-1B laboratories. Students attend one hour of the regular GSI preparatory meeting and hold one office hour per week to answer questions about laboratory assignments.
+    </course>
+    <course name="Undergraduate Chemistry Instruction" number="301B" units="2">
+        Tutoring of students in 1A-1B. Students attend a weekly meeting on tutoring methods at the Student Learning Center and attend 1A-1B lectures.
+    </course>
+    <course name="Chemistry 3 Lab Assistant" number="301C" units="2">
+        Undergraduate organic lab assistants help in the teaching of the 3A-3B laboratories. Each week students attend a laboratory preparation meeting for one hour, assist in the laboratory section for four hours, and help in the development of experiments for one hour.
+    </course>
+    <course name="Undergraduate Preparation for Teaching or Instruction in Teaching" number="301T" units="2">
+        
+    </course>
+    <course name="Supervised Instruction of Chemistry Scholars" number="301W" units="2">
+        Tutoring of students in the College of Chemistry Scholars Program who are enrolled in 1A-1B or 112A-112B. Students attend a weekly meeting with instructors.
+    </course>
+    <course name="Individual Study for Doctoral Students" number="602" units="1-8">
+        Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required of candidates for the Ph.D. degree. May not be used for unit or residence requirements for the doctoral degree.
+    </course>
+</department>

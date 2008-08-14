@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<department abbr="chm eng">
+    <instructor first="Nitash" last="Balsara" middle="P."/>
+    <instructor first="Alexis" last="Bell" middle="T."/>
+    <instructor first="Harvey" last="Blanch" middle="W."/>
+    <instructor first="Douglas" last="Clark" middle="S."/>
+    <instructor first="Jean" last="Fr&amp;#233;chet" middle="M.J."/>
+    <instructor first="David" last="Graves" middle="B."/>
+    <instructor first="Enrique" last="Iglesia" middle=""/>
+    <instructor first="Jay" last="Keasling" middle="D."/>
+    <instructor first="Roya" last="Maboudian" middle=""/>
+    <instructor first="Susan" last="Muller" middle="J."/>
+    <instructor first="John" last="Newman" middle="S."/>
+    <instructor distinguished="true" first="Clayton" last="Radke" middle="J."/>
+    <instructor distinguished="true" first="Jeffrey" last="Reimer" middle="A."/>
+    <instructor first="David" last="Schaffer" middle="V."/>
+    <instructor first="Berend" last="Smit" middle=""/>
+    <instructor first="Elton" last="Cairns" middle="J."/>
+    <instructor first="Morton" last="Denn" middle="M."/>
+    <instructor first="Simon" last="Goren" middle="L."/>
+    <instructor first="Edward" last="Grens" middle="A."/>
+    <instructor first="Judson" last="King" middle="C."/>
+    <instructor first="Scott" last="Lynn" middle=""/>
+    <instructor distinguished="true" first="David" last="Lyon" middle="N."/>
+    <instructor first="John" last="Prausnitz" middle="M."/>
+    <instructor distinguished="true" first="Michael" last="Williams" middle="C."/>
+    <instructor first="Alexander" last="Katz" middle=""/>
+    <instructor first="Jhih-Wei" last="Chu" middle=""/>
+    <instructor first="Rachel" last="Segalman" middle=""/>
+    <instructor first="Brian" last="Maiorella" middle="L."/>
+    <instructor first="David" last="Soane" middle="S."/>
+    <instructor first="Carlo" last="Alesandrini" middle=""/>
+    <instructor first="Keith" last="Alexander" middle=""/>
+    <instructor first="Paul" last="Plouffe" middle="B."/>
+    <instructor first="Henrik" last="Wallman" middle="W."/>
+    <instructor first="Xiao-Yan" last="Wang" middle=""/>
+</department>

@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<department abbr="mec eng">
+    <instructor first="Alice" last="Agogino" middle="M."/>
+    <instructor distinguished="true" first="Stanley" last="Berger" middle="A."/>
+    <instructor first="David" last="Bogy" middle="B."/>
+    <instructor first="Van" last="Carey" middle="P."/>
+    <instructor first="James" last="Casey" middle=""/>
+    <instructor first="Juh-Yuan" last="Chen" middle=""/>
+    <instructor first="Hari" last="Dharan" middle=""/>
+    <instructor first="Robert" last="Dibble" middle="W."/>
+    <instructor first="David" last="Dornfeld" middle="A."/>
+    <instructor first="Carlos" last="Fernandez-Pello" middle=""/>
+    <instructor first="Michael" last="Frenklach" middle="Y."/>
+    <instructor first="Ralph" last="Greif" middle=""/>
+    <instructor first="Costas" last="Grigoropoulos" middle=""/>
+    <instructor first="Karl" last="Hedrick" middle="J."/>
+    <instructor first="Roberto" last="Horowitz" middle=""/>
+    <instructor first="George" last="Johnson" middle="C."/>
+    <instructor first="Homayoon" last="Kazerooni" middle=""/>
+    <instructor first="Tony" last="Keaveny" middle=""/>
+    <instructor first="Kyriakos" last="Komvopoulos" middle=""/>
+    <instructor first="George" grad_prof="true" last="Leitmann" middle=""/>
+    <instructor first="Dorian" last="Liepmann" middle=""/>
+    <instructor distinguished="true" first="Dennis" last="Lieu" middle="K."/>
+    <instructor first="Liwei" last="Lin" middle=""/>
+    <instructor first="Fai" last="Ma" middle=""/>
+    <instructor first="Arun" last="Majumdar" middle=""/>
+    <instructor first="Alaa" last="Mansour" middle=""/>
+    <instructor first="Philip" last="Marcus" middle=""/>
+    <instructor distinguished="true" first="Oliver" last="O'Reilly" middle="M."/>
+    <instructor first="Andrew" last="Packard" middle=""/>
+    <instructor first="Panayiotis" last="Papadopoulos" middle=""/>
+    <instructor first="Albert" last="Pisano" middle="P."/>
+    <instructor distinguished="true" first="Kameshwar" last="Poolla" middle=""/>
+    <instructor first="Lisa" last="Pruitt" middle="A."/>
+    <instructor first="Boris" last="Rubinsky" middle=""/>
+    <instructor first="Omer" last="Savas" middle=""/>
+    <instructor first="David" last="Steigmann" middle="J."/>
+    <instructor first="Andrew" last="Szeri" middle="J."/>
+    <instructor first="Masayoshi" last="Tomizuka" middle=""/>
+    <instructor first="Benson" last="Tongue" middle=""/>
+    <instructor first="Paul" last="Wright" middle="K."/>
+    <instructor first="Ronald" last="Yeung" middle="W."/>
+    <instructor first="Xiang" last="Zhang" middle=""/>
+    <instructor first="Cyril" last="Atkinson" middle="P."/>
+    <instructor first="David" grad_prof="true" last="Auslander" middle="M."/>
+    <instructor first="Gilles" last="Corcos" middle="M."/>
+    <instructor first="Iain" last="Finnie" middle=""/>
+    <instructor first="Joseph" last="Frisch" middle=""/>
+    <instructor first="Frank" last="Hauser" middle="E."/>
+    <instructor first="Maurice" last="Holt" middle=""/>
+    <instructor first="Chieh" last="Hsu" middle="S."/>
+    <instructor first="Franklin" last="Hurlbut" middle="C."/>
+    <instructor distinguished="true" first="Clayton" last="Mote" middle="D."/>
+    <instructor first="Antoni" last="Oppenheim" middle="K."/>
+    <instructor first="Patrick" last="Pagni" middle="J."/>
+    <instructor first="Charles" last="Radcliffe" middle="W."/>
+    <instructor first="Robert" last="Sawyer" middle="F."/>
+    <instructor first="Samuel" last="Schaaf" middle="A."/>
+    <instructor first="Frederick" last="Sherman" middle="S."/>
+    <instructor first="Erich" last="Thomsen" middle="G."/>
+    <instructor first="George" last="Trezek" middle="J."/>
+    <instructor first="Kent" last="Udell" middle=""/>
+    <instructor first="Stephen" last="Morris" middle=""/>
+    <instructor first="Lydia" last="Sohn" middle="L."/>
+    <instructor first="Tarek" last="Zohdi" middle="I."/>
+    <instructor first="Samuel" last="Mao" middle=""/>
+    <instructor first="Klaus" last="Weinmann" middle=""/>
+</department>

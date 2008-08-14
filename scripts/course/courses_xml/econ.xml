@@ -1,0 +1,396 @@
+<?xml version="1.0" ?>
+<department abbr="ECON" name="Economics">
+    <course name="Introduction to Economics" number="1" units="4">
+        A survey of economics designed to give an overview of the field.
+    </course>
+    <course name="Introduction to Economics--Lecture Format" number="2" units="4">
+        The course provides a survey of economics principles and methods. It covers both microeconomics, the study of consumer choice, firm behavior, and market interaction, and macroeconomics, the study of economic growth, unemployment, and inflation. Special emphasis is placed on the application of economic tools to contemporary economic problems and policies. Economics 2 differs from Economics 1 in that it has an additional hour of lecture per week and can thus cover topics in greater depth. It is particularly appropriate for intended economics majors.
+    </course>
+    <course name="Introduction to Environmental Economics and Policy" number="C3" units="4">
+        Introduction to microeconomics with emphasis on resource, agricultural, and environmental issues. Also listed as Environmental Economics and Policy C1.
+    </course>
+    <course name="Freshman Seminar" number="24" units="1">
+        The Freshman Seminar Program has been designed to provide new students with the opportunity to explore an intellectual topic with a faculty member in a small seminar setting. Freshman seminars are offered in all campus departments. Topics vary from department to department and semester to semester. Enrollment limited to 15 freshman.
+    </course>
+    <course name="Sophomore Seminar" number="84" units="1,2">
+        Sophomore seminars are small interactive courses offered by faculty members in departments all across the campus. Sophomore seminars offer opportunity for close, regular intellectual contact between faculty members and students in the crucial second year. The topics vary from department to department and semester to semester. Enrollment limited to 15 sophomores.
+    </course>
+    <course name="Directed Group Study" number="98" units="1-4">
+        Written proposal must be approved by Department Chair. Seminars for the group study of selected topics, which will vary from year to year. Topics may be initiated by students.
+    </course>
+    <course name="Economic Analysis--Micro" number="100A" units="4">
+        Resource allocation and price determination.
+    </course>
+    <course name="Economic Analysis--Macro" number="100B" units="4">
+        A study of the factors which determine national income, employment, and price levels, with attention to the effects of monetary and fiscal policy.
+    </course>
+    <course name="Economic Theory--Micro" number="101A" units="4">
+        Theory of resource allocation and price determination with an emphasis on microeconomic principles.
+    </course>
+    <course name="Economic Theory--Macro" number="101B" units="4">
+        A study of theories of the determination of national income, employment, and price levels, with attention to the effects of monetary and fiscal policy.
+    </course>
+    <course name="Natural Resource Economics" number="C102" units="4">
+        Introduction to the economics of natural resources. Land and the concept of economic rent. Models of optimal depletion of nonrenewable resources and optimal use of renewable resources. Application to energy, forests, fisheries, water, and climate change. Resources, growth, and sustainability. Also listed as Environmental Economics and Policy C102.
+    </course>
+    <course name="Introduction to Mathematical Economics" number="C103" units="3">
+        Selected topics illustrating the application of mathematics to economic theory. This course is intended for upper-division students in Mathematics, Statistics, the Physical Sciences, and Engineering, and for economics majors with adequate mathematical preparation. No economic background is required. Also listed as Mathematics C103.
+    </course>
+    <course name="Advanced Microeconomic Theory" number="104" units="4">
+        This course explores some issues in advanced microeconomic theory, with special emphasis on game-theoretic models and the theory of choice under uncertainty. Specific applications will vary from year to year, but will generally include topics from information economics and models of strategic interaction.
+    </course>
+    <course name="History of Economic Thought" number="105" units="3">
+        A survey of the theories of major economists from Adam Smith to Keynes.
+    </course>
+    <course name="Game Theory in the Social Sciences" number="C110" units="4">
+        A non-technical introduction to game theory. Basic principle, and models of interaction among players, with a strong emphasis on applications to political science, economics, and other social sciences. Also listed as Political Science C135.
+    </course>
+    <course name="The Industrial Revolution and the Origin of the Modern Economic System" number="111B" units="3">
+        The rise of the European economy to world dominance in the period from 1750-1914.
+    </course>
+    <course name="American Economic History" number="113" units="4">
+        A survey of trends in the American economy; emphasis on factors explaining economic growth and on the changing distribution of the gains and losses associated with growth.
+    </course>
+    <course name="The World Economy in the Twentieth Century" number="115" units="4">
+        Development of the world economic system with particular reference to world-wide trading relationships. This course is equivalent to History 160; students will not receive credit for both courses.
+    </course>
+    <course name="Psychology and Economics" number="119" units="4">
+        This course presents psychological and experimental economics research demonstrating departures from perfect rationality, self-interest, and other classical assumptions of economics and explores ways that these departures can be mathematically modeled and incorporated into mainstream positive and normative economics. The course will focus on the behavioral evidence itself, especially on specific formal assumptions that capture the findings in a way that can be incorporated into economics. The implications of these new assumptions for theoretical and empirical economics will be explored.
+    </course>
+    <course name="Industrial Organization and Public Policy" number="121" units="4">
+        The organization and structure of production in the U.S. economy. Determinants of market structure, business behavior, and economic performance. Implications for antitrust policy.
+    </course>
+    <course name="Industrial Organization Seminar" number="122" units="4">
+        Seminar on problems in the field of industrial organization. Seminar paper is required.
+    </course>
+    <course name="Government Regulation of Industry" number="123" units="3">
+        Problems of public policy in the field of industrial organization. Analysis of regulatory consequences with particular attention to economic performance.
+    </course>
+    <course name="Special Topics in Industrial Organization" number="124" units="3">
+        Analysis of market structure, conduct and performance in selected industries. See course announcement for current topics.
+    </course>
+    <course name="Environmental Economics" number="C125" units="4">
+        Theories of externalities and public goods applied to pollution and environmental policy. Trade-off between production and environmental amenities. Assessing nonmarket value of environmental amenities. Remediation and clean-up policies. Environment and development. Biodiversity management. Also listed as Environmental Economics and Policy C101.
+    </course>
+    <course name="Industrial Organization: Theory and Evidence" number="126" units="3">
+        Structure, conduct, and performance of industrial markets in the U.S.; monopoly, digopoly, and competition. Emphasis is on use of microeconomic theory and game theory to explain workings of markets, with use of mathematics as appropriate. Covers material similar to 121, but with more use of economic theory.
+    </course>
+    <course name="Public Economics" number="131" units="4">
+        This course focuses on the role of the government in the economy from a theoretical and empirical perspective. The aim of the course is to provide an understanding of the reasons for government intervention in the economy, analyzing the merits of possible government policies, and the response of economic agents to the government's actions. The course covers the analysis of tax policy, social insurance programs, public goods, environmental protection, and the interaction between different levels of government. Special emphasis is set on current government policy issues such as social security reform, income tax reform, and budget deficits.
+    </course>
+    <course name="Seminar in Public Sector Economics" number="132" units="4">
+        Enrollment will be limited. A seminar paper is required.
+    </course>
+    <course name="Financial Economics" number="136" units="4">
+        Analysis of financial assets and institutions. The course emphasizes modern asset valuation theory and the role of financial intermediaries, and their regulation, in the financial system.
+    </course>
+    <course name="Financial Economics" number="136" units="4">
+        Analysis of financial assets and institutions. The course emphasizes modern asset valuation theory and the role of financial intermediaries, and their regulation, in the financial system.
+    </course>
+    <course name="Aggregate Economics Seminar" number="137" units="4">
+        Enrollment will be limited. A seminar paper is required.
+    </course>
+    <course name="Financial and Behavioral Economics" number="138" units="4">
+        This course is an advanced class in Financial Economics. Topics include moral hazard (principal-agent problems, free cash flow), asymmetric Information (security issurance, dividends), mergers and acquisitions (theory, managerial incentives), corporate governance (separation of ownership and control, internal capital markets, superstar CEOs), corporate fraud (earnings manipulations). This class emphasizes the economic underpinning of financial decision-making and is mathematically and technically demanding. You will be required to do some empirical homework using STATA.
+    </course>
+    <course name="Economic Statistics and Econonmetrics" number="140" units="4">
+        Introduction to problems of observation, estimation, and hypothesis testing in economics. This course covers the linear regression model and its application to empirical problems in economics.
+    </course>
+    <course name="Econometric Analysis" number="141" units="4">
+        Introduction to problems of observation, estimation, and hypothesis testing in economics. This course covers the statistical theory for the linear regression model and its variants, with examples from empirical economics.
+    </course>
+    <course name="Applied Econometrics and Public Policy" number="C142" units="4">
+        This course focuses on the sensible application of econometric methods to empirical problems in economics and public policy analysis. It provides background on issues that arise when analyzing non-experimental social science data and a guide for tools that are useful for empirical research. By the end of the course, students will have an understanding of the types of research designs that can lead to convincing analysis and be comfortable working with large scale data sets. Also listed as Public Policy C142 and Political Science C131A.
+    </course>
+    <course name="Labor Economics" number="151" units="3">
+        This course will analyze the economic forces that shape labor markets, institutions, and performance in the U.S., Japan, and at least one European country (usually Germany). Institutions examined include trade unions, legal regulations, and social conventions.
+    </course>
+    <course name="Wage Theory and Policy" number="152" units="4">
+        This course focuses on theoretical and empirical analysis of wage and employment determination in the labor market. In addition, the role of public policy in affecting wage and employment outcomes in the U.S. labor market is examined. Topics include labor supply, labor demand, minimum wages, the economics of education and training, discrimination and the impact of antidiscrimination programs, changes in wage inequality over time, immigration, unions, unemployment, and poverty.
+    </course>
+    <course name="Labor Economics Seminar" number="153" units="4">
+        Topics in labor economics. Seminar paper required.
+    </course>
+    <course name="Economics of Discrimination" number="154" units="3">
+        Starting from Becker's classic book on the economics of discrimination, this course will focus on issues of difference and discrimination accociated with race, gender, or nation of birth, focusing particularly on credit and housing markets, education, and health care. The course looks carefully at the ways in which econometrics is used to address questions of discrimination.
+    </course>
+    <course name="Health Economics" number="157" units="3">
+        An economic analysis of policies and institutions in the U.S. health care sector. Topics covered include the supply and demand for health services, conceptual and policy issues relating to the provision of health insurance, and economic analysis of efficient regulatory policies toward the health care sector.
+    </course>
+    <course name="Economics of Transition: Eastern Europe" number="161" units="3">
+        Economic behavior under socialism; socialism vs. capitalism. Transition challenges. Stylized facts of transition. Political economy of reform strategies. Liberalization and the macroeconomic environment. Privatization policies and enterprise restructuring. Legal reform, institutional change, and variation in economic performance across countries. Foreign trade and enlargement of the European Union to transition countries. The Washington consensus, transition, and the institutions of capitalism.
+    </course>
+    <course name="The Chinese Economy" number="162" units="3">
+        The Chinese economy, its institutions, reform and transition to the market, and development.
+    </course>
+    <course name="Special Topics in Economic Systems" number="163" units="1.5">
+        As announced in the department course descriptions.
+    </course>
+    <course name="Economic Development" number="C171" units="4">
+        Problems of underdevelopment and poverty, policy issues, and development strategy. Also listed as Environmental Economics and Policy C151.
+    </course>
+    <course name="Case Studies in Economic Development" number="172" units="4">
+        A detailed study of the problems of development in a selected geographical area in Asia or Africa or Latin America.
+    </course>
+    <course name="Economic Development Seminar" number="173" units="4">
+        A seminar paper will be required.
+    </course>
+    <course name="Economic Demography" number="C175" units="3">
+        A general introduction to economic demography, addressing the following kinds of questions: What are the economic consequences of immigration to the U.S.? Will industrial nations be able to afford the health and pension costs of the aging populations? How has the size of the baby boom affected its economic well being? Why has fertility been high in Third World countries? In industrial countries, why is marriage postponed, divorce high, fertility so low, and extramarital fertility rising? What are the economic and environmental consequences of rapid population growth? Also listed as Demography C175.
+    </course>
+    <course name="International Trade" number="181" units="4">
+        The theory of international trade and its applications to tariff protection.
+    </course>
+    <course name="International Trade" number="C181" units="4">
+        The theory of international trade and its applications to tariff protection. Also listed as Environmental Economics and Policy C181.
+    </course>
+    <course name="International Monetary Economics" number="182" units="4">
+        The balance of payments, the determination of the trade balance and income under fixed and floating exchange rates, money and prices in open economies, the internationalization of financial markets and its implications, international macroeconomic interdependence, capital flows, and the determination of the exchange rate.
+    </course>
+    <course name="International Economic Seminar" number="183" units="4">
+        A seminar paper is required.
+    </course>
+    <course name="Seminar on Topics in Economics" number="190" units="4">
+        A seminar focusing on current research in the field of the instructor. The topic and prerequisites will be announced before registration. Enrollment will be limited. A seminar paper is required.
+    </course>
+    <course name="Senior Honors Thesis" number="H195A" units="1-3">
+        Preparation for writing a thesis, finding and organizing a topic, gathering data and getting started. H195A is not prerequisite to H195B.
+    </course>
+    <course name="Senior Honors Thesis" number="H195B" units="1-3">
+        Writing a thesis under the supervision of a faculty member. Applications and details through the departmental undergraduate office. H195A is not prerequisite to H195B.
+    </course>
+    <course name="Field Studies" number="197" units="1-4">
+        Written proposal must be approved by Department Chair. Supervised field studies in economics. Projects may be initiated by the students.
+    </course>
+    <course name="Directed Group Study" number="198" units="1-4">
+        Written proposal must be approved by Department Chair. Seminars for the group study of selected topics, which will vary from year to year. Topics may be initiated by students.
+    </course>
+    <course name="Supervised Independent Study and Research" number="199" units="1-4">
+        Written proposal must be approved by Department Chair. Enrollment is restricted.
+    </course>
+    <course name="Economic Theory" number="201A" units="4">
+        Basic preparation for the Ph.D. program including theory of the firm and the consumer, game theory.
+    </course>
+    <course name="Economic Theory" number="201B" units="4">
+        Basic preparation for the Ph.D. program including agency theory and mechanism design, general equilibrium theory.
+    </course>
+    <course name="Macroeconomic Theory" number="202A" units="4">
+        Basic preparation for the Ph.D. program including aggregation theory, national accounting and index problems, survey of major short-term models, implications of various expectations hypotheses, wage price determination, the role of money and financial assets, theories of consumption and investment, disequilibrium theory, dynamic systems, and international considerations.
+    </course>
+    <course name="Macroeconomic Theory" number="202B" units="4">
+        Basic preparation for the Ph.D. program including aggregation theory, national accounting and index problems, survey of major short-term models, implications of various expectations hypotheses, wage price determination, the role of money and financial assets, theories of consumption and investment, disequilibrium theory, dynamic systems, and international considerations.
+    </course>
+    <course name="Advanced Topics in Economic Theory" number="203" units="3">
+        See department course description each semester.
+    </course>
+    <course name="Mathematical Tools for Economics" number="204" units="3">
+        The course provides a rigorous abstract treatment of the elements of real analysis and linear algebra central to current research in economics. The course develops in the students the ability to read mathematical proofs and to compose simple proofs on their own.
+    </course>
+    <course name="Mechanism Design and Agency Theory" number="206" units="3">
+        This course will study the optimal design of mechanisms in the presence of incomplete information and imperfect observability. The course will begin with the &quot;classic&quot; principal-agent problem and will then develop its applications to the &quot;implicit contracts&quot; theory of agency and to the choice of government policies for regulated industries. The second half of the course will treat the design of auctions, regulation with costly or imperfect monitoring, mechanism design with limited contracts.
+    </course>
+    <course name="Mathematical Economics" number="207A" units="3">
+        Mathematical analysis of economic theory. The problems treated involve as wide a range of mathematical techniques and of economic topics as possible, including theories of preference, utility, demand, personal probability, games and general equilibrium. Also listed as IDS 213A-213B and Math 213A-213B.
+    </course>
+    <course name="Mathematical Economics" number="207B" units="3">
+        Mathematical analysis of economic theory. The problems treated involve as wide a range of mathematical techniques and of economic topics as possible, including theories of preference, utility, demand, personal probability, games and general equilibrium. Also listed as IDS 213A-213B and Math 213A-213B.
+    </course>
+    <course name="Microeconomic Theory Seminar" number="208" units="3">
+        
+    </course>
+    <course name="Theory and Application of Non-Cooperative Games" number="209A" units="3">
+        This course will study both pure game theory and its application to such problems as oligopoly pricing, non-cooperative bargaining, predatory pricing, and optimal auctions. The focus will be on game theory as a modelling process as opposed to a body of known results.
+    </course>
+    <course name="Theory and Application of Non-Cooperative Games: II" number="209B" units="3">
+        The course will cover basic topics not covered in 209A; will provide a more thorough treatment of topics covered in 209A; will cover a selection of advanced topics.
+    </course>
+    <course name="Introduction to Economic History" number="210A" units="3">
+        Survey of some central themes in world economic history. Required of all Ph.D. candidates in economics.
+    </course>
+    <course name="Topics in European Economic History" number="210B" units="3">
+        A survey of some central themes in European economic history.
+    </course>
+    <course name="Topics in American Economic History" number="210C" units="3">
+        A survey of some central themes in American economic history.
+    </course>
+    <course name="Seminar in Economic History" number="211" units="3">
+        
+    </course>
+    <course name="Political Economics" number="215A" units="3">
+        Tools of political economics: preferences and institutions, electoral competition, agency, partisan politics. Redistributive politics: general interest politics, special interest politics. Comparative politics: electoral rules, separation of powers, political regimes. Dynamic politics: fiscal policy, growth.
+    </course>
+    <course name="Political Economics" number="215B" units="3">
+        Tools of political economics: preferences and institutions, electoral competition, agency, partisan politics. Redistributive politics: general interest politics, special interest politics. Comparative politics: electoral rules, separation of powers, political regimes. Dynamic politics: fiscal policy, growth.
+    </course>
+    <course name="Seminar in Psychology and Economics" number="218" units="3">
+        A graduate seminar in the field of behavioral economics.
+    </course>
+    <course name="Foundations of Psychology and Economics" number="219A" units="3">
+        This course presents psychological and experimental economics research demonstrating departures from perfect rationality, self-interest, and other classical assumptions of economics and explores ways that these departures can be mathematically modeled and incorporated into mainstream positive and normative economics. The course will focus on the behavioral evidence itself, especially on specific formal assumptions that capture the findings in a way that can be used by economists. Economic applications will be used for illustrative purposes, but the course will emphasize formal theory.
+    </course>
+    <course name="Applications of Psychology and Economics" number="219B" units="3">
+        This course will build off of the material presented in 219A. It will expand on the psychological and experimental economic research presented there, but will emphasize a range of economic applications and especially empirical research.
+    </course>
+    <course name="Topics in Psychology and Economics" number="219C" units="3">
+        This course will cover special topics that extend the material from 219A and 219B, with an emphasis on further empirical applications.
+    </course>
+    <course name="Experimental Economics" number="219D" units="3">
+        This course will introduce students to the methods and findings of experimental economics.
+    </course>
+    <course name="Industrial Organization" number="220A" units="3">
+        Market structure, conduct and performance in the unregulated sector of the American economy. Public policies related to the promotion or restriction of competition.
+    </course>
+    <course name="Industrial Organization" number="220B" units="3">
+        Continuation of 220A. The characteristics of regulated industries and the consequences of regulation for economic performance.
+    </course>
+    <course name="Special Topics in Industrial Organization" number="220C" units="3">
+        See course announcement for current topics.
+    </course>
+    <course name="Seminar in Industrial Organization:  Regulation and Public Enterprise" number="221" units="3">
+        
+    </course>
+    <course name="Economics of Innovation" number="222" units="3">
+        Study of innovation, technical change, and intellectual property, including the industrial organization and performance of high-technology industries and firms; the use of economic, patent, and other bibliometric data for the analysis of technical change; legal and economic issues of intellectual property rights; science and technology policy; and the contributions of innovation and diffusion to economic growth. Methods of analysis are both theoretical and empirical, econometric and case study.
+    </course>
+    <course name="Economics of Innovation" number="C222" units="3">
+        Study of innovation, technical change, and intellectual property, including the industrial organization and performance of high-technology industries and firms; the use of economic, patent, and other bibliometric data for the analysis of technical change; legal and economic issues of intellectual property rights; science and technology policy; and the contributions of innovation and diffusion to economic growth. Methods of analysis are both theoretical and empirical, econometric and case study. Also listed as Ph.D. in Business Administration C279I.
+    </course>
+    <course name="Economics of Institutions" number="224" units="3">
+        This course develops the proposition that institutions have pervasive ramifications for understanding economic organization. A comparative institutional approach is employed whereby the transaction is made the basic unit of analysis and alternative modes of organization are assessed with respect to their comparative contracting properties.
+    </course>
+    <course name="Workshop in Institutional Analysis" number="C225" units="2">
+        This seminar features current research of faculty, from UC Berkeley and elsewhere, and of advanced doctoral students who are investigating the efficacy of economic and non-economic forms of organization. An interdisciplinary perspective--combining aspects of law, economics, and organization--is maintained. Markets, hierarchies, hybrids, bureaus, and the supporting institutions of law and politics all come under scrutiny. The aspiration is to progressively build toward a new science of organization. Also listed as Ph.D. in Business Administration C270.
+    </course>
+    <course name="Public Economics" number="230A" units="3">
+        The economic and policy analysis of government expenditures, taxes, and intergovernmental fiscal relations. 230A is not a prerequisite for 230B.
+    </course>
+    <course name="Public Economics" number="230B" units="3">
+        Government intervention changes opportunities and incentives for firms, families, individuals, service providers, and state and local government. This course considers the incentive effects of government expenditure programs. The primary emphasis will be in the examination of the effect of social expenditure programs on individuals and families. Most of the papers will be empirical. The course will not contain an explicit section on methodology and econometric techniques; instead, relevant econometric techniques (e.g., discrete choice, duration analysis) will be discussed in the context of the empirical literature.
+    </course>
+    <course name="Seminar in Public Sector Economics" number="231" units="3">
+        
+    </course>
+    <course name="Macroeconomic Finance" number="234A" units="3">
+        Introduction to macroeconomic finance. Course covers static portfolio choice, capital asset pricing model (CAPM), consumption based models, dynamic equilibrium asset pricing theories, and current issues in behavioral finance. Strong emphasis on household finance and risk-sharing. Course is both theoretical and empirical.
+    </course>
+    <course name="Financial Decision-Making in Firms" number="234C" units="3">
+        This course provides a theoretical and empirical treatment of the core topics in corporate finance including internal corporate investment; external corporate investment (mergers and acquisitions); capital structure and financial contracting; bankruptcy; corporate governance.
+    </course>
+    <course name="Financial Economics Seminar" number="235" units="1">
+        This course presents speakers who work on the boundary of economics and finance, on topics including asset pricing, behavioral finance, and corporate finance.
+    </course>
+    <course name="Aggregate Economics" number="236A" units="3">
+        Macroeconomic models; theory and practice of aggregate economics; rational expectations models; finance theory integrated with macro.
+    </course>
+    <course name="Aggregate Economics" number="236B" units="3">
+        Macroeconomic models; theory and practice of aggregate economics; rational expectations models; finance theory integrated with macro.
+    </course>
+    <course name="Capital and Economic Growth" number="236C" units="3">
+        An examination of the roles of time and capital in the processes of individual choice and the theories of production and distribution. The course will discuss the nature of capital and consider the role of capital accumulation in modern theories of economic growth and planning.
+    </course>
+    <course name="Seminar in Advanced Macroeconomics and Money" number="237" units="3">
+        
+    </course>
+    <course name="Econometrics" number="240A" units="5">
+        Basic preparation for the Ph.D. program including probability and statistical theory and the classical linear regression model.
+    </course>
+    <course name="Econometrics" number="240B" units="4">
+        Basic preparation for the Ph.D. program including generalized least squares; instrumental variables estimation; generalized method of moments; time series analysis; and nonlinear models.
+    </course>
+    <course name="Econometrics" number="241A" units="4">
+        Intended for students specializing in econometrics and others with strong mathematical backgrounds. Linear and nonlinear statistical models and their applications in economics. Special problems in analyzing data from non-controlled experiments.
+    </course>
+    <course name="Econometrics" number="241B" units="4">
+        Simultaneous equations and time-series models.
+    </course>
+    <course name="Seminar in Econometrics" number="242" units="3">
+        
+    </course>
+    <course name="Special Topics in Econometrics" number="243" units="2">
+        See department course description each semester.
+    </course>
+    <course name="Applied Econometrics" number="244" units="3">
+        Methods of applied econometrics, with emphasis on alternative modelling strategies and problems met in practice. Intended for doctoral students conducting empirical research.
+    </course>
+    <course name="Labor Economics" number="250A" units="3">
+        Analysis of labor market behavior.
+    </course>
+    <course name="Labor Economics" number="250B" units="3">
+        Analysis of labor market behavior.
+    </course>
+    <course name="Labor Economics" number="250C" units="3">
+        Analysis of labor market behavior.
+    </course>
+    <course name="Seminar in Labor Economics" number="251" units="3">
+        Seminar for students at the doctoral dissertation level.
+    </course>
+    <course name="Comparative Economics" number="260A" units="3">
+        New issues raised by transition for economics. Political economy of reform: speed, sequencing, reform design, political economy of privatization. Allocative changes: speed of sectoral reallocation, price liberalization, output fall and macroeconomic dynamics, law enforcement, dynamics of institutional change.
+    </course>
+    <course name="Comparative Economics" number="260B" units="3">
+        New issues raised by transition for economics. Political economy of reform: speed, sequencing, reform design, political economy of privatization. Allocative changes: speed of sectoral reallocation, price liberalization, output fall and macroeconomic dynamics, law enforcement, dynamics of institutional change.
+    </course>
+    <course name="Seminar in Comparative Economics" number="261" units="3">
+        
+    </course>
+    <course name="Development Economics" number="270A" units="3">
+        Problems of underdevelopment and poverty, policy issues and development strategies.
+    </course>
+    <course name="Microeconomics of Development" number="C270A" units="3">
+        Theoretical and empirical analyses of poverty and inequality, household and community behavior, and contract and institutions in the context of developing countries. Also listed as Agricultural and Resource Economics C251.
+    </course>
+    <course name="Development Economics" number="270B" units="3">
+        Problems of underdevelopment and poverty, policy issues and development strategies.
+    </course>
+    <course name="Development Economics" number="270C" units="3">
+        Basic macro-policy planning with investment project analysis.
+    </course>
+    <course name="Special Topics in Development" number="270D" units="3">
+        See course announcement for current topics and prerequisites.
+    </course>
+    <course name="Seminar in Economic Development and Planning" number="271" units="3">
+        
+    </course>
+    <course name="Economic Demography" number="C275A" units="3">
+        Economic consequences of demographic change in developing and developed countries including capital formation, labor markets, and intergenerational transfers. Economic determinants of fertility, mortality and migration. Also listed as Demography C275A.
+    </course>
+    <course name="Selected Topics in Economic Demography" number="275B" units="3">
+        A review of recent literature in selected areas of economic demography; content will range from year to year.
+    </course>
+    <course name="Aging: Economic and Demographic Aspects" number="C275B" units="2">
+        Course considers demographic and economic aspects of population aging. Also listed as Demography C236.
+    </course>
+    <course name="International Economics" number="280A" units="3">
+        The world economy as a general equilibrium system. The theory of international economics, trade policy.
+    </course>
+    <course name="International Economics" number="280B" units="3">
+        This course develops basic theoretical models for studying issues in open-economy macroeconomics. The current account and the trade balance, international capital market integration, developing country debt problems, the real exchange rate, fiscal policy in the open economy, and international policy coordination.
+    </course>
+    <course name="International Economics" number="280C" units="3">
+        This course is an empirical treatment of open-economy macroeconomics and finance. Topics include trade elasticities, the determination of the trade balance and income under fixed and floating exchange rates, purchasing power parity, devaluation in small open economies, quantifying the degree of international capital mobility, implications for the effectiveness of monetary and fiscal policy, international interdependence and coordination, models of exchange rate determination.
+    </course>
+    <course name="Seminar in International Trade and Finance" number="281" units="3">
+        
+    </course>
+    <course name="Departmental Seminar" number="291" units="1">
+        A general interest seminar featuring speakers and topics of broad interest whose work will be important for all areas of economics.
+    </course>
+    <course name="Survey of Research in Economics" number="295" units="1">
+        Presentations by departmental faculty of new research directions in different subfields of economics.
+    </course>
+    <course name="Special Topics in Economics" number="296" units="3">
+        Topics of different sections to be announced annually.
+    </course>
+    <course name="Directed Group Study for Graduates" number="298" units="1-4">
+        Seminars for the group of selected topics, which will vary from year to year.
+    </course>
+    <course name="Supervised Independent Study and Research" number="299" units="1-12">
+        Open to candidates for the Ph.D. degree who have passed the qualifying examination and who are engaged in research for the thesis, and in special cases, with consent of the instructor in charge, to graduate students who desire to do special work in a particular field.
+    </course>
+    <course name="GSI Practicum" number="301" units="6">
+        Course credit for experience gained in academic teaching through employment as a graduate student instructor.
+    </course>
+    <course name="Individual Study for Doctoral Students" number="602" units="1-8">
+        Individual study in consultation with the major field advisor, intended to provide an opportunity for qualified graduate students to prepare themselves for the various examinations required of candidates for the Ph.D. A student will be permitted to accumulate a maximum of 16 units of 602.
+    </course>
+</department>
