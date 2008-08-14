@@ -1,26 +1,20 @@
 {% extends "info/hkn.html" %}
 
 {% block content %}
-<h1 align="center"><big><b>{{ person.first_name }} {{ person.last_name }}</b></big></h1>
-<br>
-<body>
-<img src="{{ person.get_profile_picture_url }}">
-<table>
-<tr>
-<td><b>Contact Information</b></td>
-</tr>
-<tr>
-<td>{{ person.first_name }} {{ person.last_name }}</td>
-</tr>
-<tr>
-<td>{{ info.phone }}</td>
-</tr>
-<tr>
-<td>{{ info.local_addr }}</td>
-</tr>
-<tr>
-<td>{{ person.email }} </td>
-</tr>
-</table>
-<a href="{% url person-list-all %}">List All</a>
+<div id="details">
+	<h2>{{ person.first_name }} {{ person.last_name }}</h2>
+	<div id="photo">
+		<img src="{{ person.profile_picture.url }}">
+	</div>
+	<div id="contact">
+		<div class="name">{{ person.name }}</div>
+		<div class="email">{{ person.restricted.email }} </div>
+		<div class="phone">{{ person.restricted.phone }}</div>
+	</div>
+	<div id="status">
+		<div class="status">{{ person.member_status }}</div>
+	</div>
+	<div style="clear: both"></div>
+</div>	
+<a href="javascript:history.back(1)">Back</a>
 {% endblock %}

@@ -9,7 +9,9 @@
     <tr>
         <td class="links">
             <div>
+            {% if event.can_rsvp %}
                 <a href="{% url rsvp-new event.id %}">RSVP</a>    
+            {% endif %}
             </div>
          </td>            
          <td colspan="2" class="description"><div>{{event.description}}</div></td>

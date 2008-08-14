@@ -90,8 +90,6 @@ def get_tutor_info(assignments, tutoring_days=TUTORING_DAYS, tutoring_times=TUTO
     return info, realCanTutorData
     
 def get_tutor_miniinfo(assignments, day="Monday", tutoring_times=TUTORING_TIMES):
-    if day == "Saturday" or day == "Sunday":
-        day = "Monday"
     realAssignments = {} #dictionary from slot to person object
     for assignment in assignments:
         person = assignment.person

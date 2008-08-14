@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.contenttypes.models import ContentType
 
 
-from utils import normalizeEmail, normalizeCommitteeName
+from utils import normalize_email, normalize_committee_name
 from hkn import semester
 from hkn.info.constants import MEMBER_TYPE
 from hkn.settings import IMAGES_PATH
@@ -14,9 +14,17 @@ import os, datetime
 from nice_types.db import QuerySetManager, PickleField
 
 class PeopleManager(QuerySetManager):
-        def from_email(self, email):
-            email = normalizeEmail(email)
-            return self.get(Q(school_email__iexact = email) | Q(email__iexact = email))
+        def from_email(self, *args, **kwargs):
+            return self.get_query_set().from_email(*args, **kwargs)
+            
+        def email_contains(self, *args, **kwargs):
+            return self.get_query_set().email_contains(*args, **kwargs)
+    
+        def filter_restricted(self, *args, **kwargs):
+            return self.get_query_set().filter_restricted(*args, **kwargs)
+
+        def ft_query(self, *args, **kwargs):
+            return self.get_query_set().ft_query(*args, **kwargs)
         
         def create_person(self, first_name, last_name, username, email, member_type, password=None):
             now = datetime.datetime.now()
@@ -48,7 +56,7 @@ class MemberManager(PeopleManager):
 
 class PositionManager(models.Manager):
     def get_position(self, com_name):
-        com_name = normalizeCommitteeName(com_name)
+        com_name = normalize_committee_name(com_name)
         return super(PositionManager, self).get_query_set().get(short_name = com_name)
 
 class Position(Group):
@@ -316,10 +324,13 @@ class Person(User):
         setattr(self,'restricted', Person.RestrictedPerson(self, accessor))
 
     class QuerySet(QuerySet):
-    
+        def from_email(self, email):
+            email = normalize_email(email)
+            return self.get(Q(school_email__iexact = email) | Q(email__iexact = email))
+            
         def email_contains(self, email):
-            email = normalizeEmail(email)
-            return self.filter(Q(school_email__icontains = email) | Q(preferred_email__icontains = email))
+            email = normalize_email(email)
+            return self.filter(Q(school_email__iexact = email) | Q(email__iexact = email))
     
         def filter_restricted(self, accessing_user):
             person_ctype = ContentType.objects.get_for_model(Person)

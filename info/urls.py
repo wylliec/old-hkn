@@ -7,7 +7,7 @@ urlpatterns = patterns('',
 
     # View URL patterns go here:
         #(r'^$', 'hkn.info.list.list_all'),
-        url(r'^view/(?P<person_id>\d+)/$', 'hkn.info.person.view', name="person-view"),
+        url(r'^view/(?P<person_id>\w+)/$', 'hkn.info.person.view', name="person-view"),
         url(r'^profile/', 'hkn.info.views.profile', name='info-profile'),
         url(r'^thumbnail/(?P<person_id>\d+)/$', 'hkn.info.person.pictures', name="person-thumbnail"),
 

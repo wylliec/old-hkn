@@ -4,7 +4,10 @@
         {% else %}
             <img height=60 width=80 src="{{ object.profile_picture.url }}"></a></td>
         {% endif %}
-	<td><a href="{% url person-view object.id %}">{{ object.name }}</a><br><span style="font-size: 10"><a href="{% url hkn.event.rsvp.list.list_for_person object.id %}">see rsvps</a></span> </td>
+	<td>
+		<a href="{% url person-view object.id %}">{{ object.name }}</a>
+		<div class="small"><a href="{% url hkn.event.rsvp.list.list_for_person object.id %}">see rsvps</a></div> 
+	</td>
 	<td>{{ object.member_status }}</td>
 	<td>{{ object.restricted.email }}</td>
     <td>{{ object.get_committee }}</td>

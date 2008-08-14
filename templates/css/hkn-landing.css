@@ -47,6 +47,7 @@
 
 .landing_events .name div {
     text-align: right;
+    font-weight: bold;
 }
 
 .landing_events .location div {

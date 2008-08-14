@@ -91,6 +91,12 @@ label {
     line-height: 1.3em;
 }
 
+.aside {
+    font-size: x-small;
+    line-height: 1.3em;
+    color: #444444;
+}
+
 th, td {
   padding: 4px;
   vertical-align: top;
