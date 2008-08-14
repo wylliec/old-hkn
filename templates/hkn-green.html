@@ -35,7 +35,7 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 <div id="content">
 <div id="userbar">
     {% if user.is_authenticated %}
-        Welcome, {{user.username}} (<a href="{% url info-profile %}">Settings</a> &middot; <a href="{% url logout %}">Logout</a>)
+        Welcome, {{user.username}} (<a href="{% url info-person-profile %}">Settings</a> &middot; <a href="{% url logout %}">Logout</a>)
     {% else %}
         <form action="{% url login %}" method="post"> <label> Login </label>  <input class="short" name="username" value="username"> <input class="short" type="password" name="password" value="password"> <input type="hidden" name="next" value="{{ request.path }}"> <input type="submit" value="login"></form>
     {% endif %}

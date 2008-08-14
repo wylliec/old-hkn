@@ -1,0 +1,12 @@
+{% extends "info/hkn.html" %}
+
+{% block content %}
+<form action="" method="post">
+	<table>
+	<tr><th> </th><td> <img src="{{ person.profile_picture.url }}"/> <div class="small"><a href="{% url info-person-change-picture %}">change picture</a></div> </td></tr>	
+	<tr><th><label>Name:</label></th><td><label>{{person.name}}</input></td></tr>
+	{{ form }}
+	</table>
+	<input type=submit value="Update Profile" />
+</form>
+{% endblock %}
