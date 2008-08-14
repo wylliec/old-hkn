@@ -1,8 +1,8 @@
 	<td><a href="{% url person-view object.id %}">
         {% if object.officer_picture %}
-            <img height=60 width=80 src="{{ object.officer_picture.url }}"></a></td>
+            <img height=60 width=80 src="{{ object.restricted.officer_picture.url }}"></a></td>
         {% else %}
-            <img height=60 width=80 src="{{ object.profile_picture.url }}"></a></td>
+            <img height=60 width=80 src="{{ object.restricted.profile_picture.url }}"></a></td>
         {% endif %}
 	<td>
 		<a href="{% url person-view object.id %}">{{ object.name }}</a>
