@@ -1,10 +1,99 @@
 {% extends "event/base.html" %}
 
-{% block extratitle %} - Calendar{% endblock %}
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="/static/css/hkn-calvis.css">
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script type="text/javascript" src="{{STATIC_PREFIX}}js/hkn-calvis.js"></script>
+{% endblock %}
+
+{% block title %}{{ block.super }} - Calendar {% endblock %}
+{% block subtitle %} HKN Events Calendar {% endblock %}
 
 {% block content %}
-<center>
-<iframe src="http://www.google.com/calendar/hosted/mu.etakappanu.net/embed?title=HKN%20Events&amp;mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF{{ gcal.query_string }}" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
-</center>
-{%endblock %}
+
+  <table style="width: 800px;">
+<!--    <tr>
+      <td colspan="2" valign="top">
+        <div style="float: left;" id="loginControlDiv"></div>
+        <div style="float: right;" id="statusControlDiv"></div>
+      </td>
+    </tr>      
+-->
+    <tr>
+      <td valign="top">
+        <div id="navControlDiv"></div>
+      </td>
+      <td valign="top" align="left">
+	      <div id="statusControlDiv"></div>
+	  </td>
+      <td valign="top">
+        <div id="viewControlDiv" align="right" style="padding-right: 4px"></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" valign="top">
+        <div id="calendarBodyDiv"></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" valign="top">
+        <div id="eventDisplayDiv"></div>
+      </td>
+    </tr>
+  </table>
+
+
+
+<script type="text/javascript">
+$(document).ready( function() {
+	calvis.ready( function() {
+		var calendar = new calvis.Calendar();
+		
+		calendar.setCalendarBody('calendarBodyDiv');
+		calendar.setStatusControl('statusControlDiv');
+		calendar.setNavControl('navControlDiv');
+		calendar.setViewControl('viewControlDiv');
+		
+		function displayEvent(event) {    
+		  var title = event["title"]
+		  var content = "@" + event["location"] + "<br>" + event["description"]
+		  var date = event["start_time"]
+		  
+		  var eventHtml = [];
+		  eventHtml.push(date.toString());
+		  eventHtml.push('<br><br>');
+		  eventHtml.push('<b>Event title:</b> ');
+		  eventHtml.push(title);
+		  eventHtml.push('<br>');
+		  eventHtml.push('<br>');
+		  eventHtml.push('<b>Description:</b>');
+		  eventHtml.push('<p style="font-size: 11px;">');
+		  eventHtml.push(content); 
+		  eventHtml.push('</p>');
+		  eventHtml.push('<br>');
+		
+		  document.getElementById('eventDisplayDiv').innerHTML = eventHtml.join('');
+		}
+		
+		calendar.setEventCallback('click', displayEvent);
+
+		// set the default view to be "month"
+		calendar.setDefaultView('month');
+
+		calendar.currentPivotDate = new Date(2008, 03, 01);
+
+		// display the calendar
+		calendar.render(); 		
+	
+//		calendar.updateMonthView();		
+		
+	});
+});
+</script>
+
+{% endblock %}
 

@@ -6,7 +6,6 @@ from django.core import urlresolvers
 from hkn.info.models import *
 from hkn import semester
 from hkn.info.constants import MEMBER_TYPE
-from hkn.gcal import gcalInterface
 import os, pickle
 from constants import RSVP_TYPE, EVENT_TYPE
 from string import atoi
@@ -15,12 +14,6 @@ from nice_types.db import PickleField, QuerySetManager
 
 import request
 import request.utils
-
-try:
-    from hkn.hknsettings import GCAL_ENABLED
-except:
-    GCAL_ENABLED = False
-
 
 class AllEventsManager(QuerySetManager):
     def ft_query(self, query):
@@ -130,31 +123,16 @@ class Event(models.Model):
         tr = self.get_time_range_for_block(block_num)
         return "%s - %s" % (tr[0].strftime(format), tr[1].strftime(format))
 
-    def save(self, gcal = True):
-        if gcal and GCAL_ENABLED:
-            gcalInterface.eventSaved(self)
-        models.Model.save(self)
-
-    def delete(self, gcal = True):
-        if gcal and GCAL_ENABLED:
-            gcalInterface.eventDeleted(self)
-        models.Model.delete(self)
-
     class Meta:
         verbose_name = "Event"
         verbose_name_plural = "Events"
-
-
-def getCandidates():
-    return Person.candidates.all()
-    #return Person.fogies.all()
 
 class RSVPManager(models.Manager):
     def get_confirmed_for_event(self, e):
         return self.get_query_set().filter(event = e, vp_confirm = True)
 
     def get_confirmables_for_event(self, e):
-        return e.rsvp_set.filter(person__in = getCandidates())
+        return e.rsvp_set.filter(person__in = Person.candidates.all())
 
     def get_attended_events(self, person):
         if person.member_status == MEMBER_TYPE.CANDIDATE:
@@ -258,7 +236,6 @@ def get_rsvp_metainfo(rsvp, request):
     return metainfo
 
 request.register(RSVP, get_rsvp_metainfo, confirmation_attr='vp_confirm')
-
 
 class RSVPData:
     def __init__(self, blocks=()):

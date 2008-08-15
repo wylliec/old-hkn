@@ -2,7 +2,9 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
         url(r'^list/(?P<category>.*)/$', 'hkn.event.list.list_events', name="event-list-category"),
-        url(r'^list/$', 'hkn.event.list.list_events', {"category" : "future"}, name="event-list"),        
+        url(r'^list/$', 'hkn.event.list.list_events', {"category" : "future"}, name="event-list"),
+        
+        url(r'^feed/$', 'hkn.event.feed.feed', name="event-feed"),        
 
         url(r'^calendar/$', 'hkn.event.event.calendar', name="event-calendar"),
         url(r'^view/(?P<event_id>.*)/$', 'hkn.event.event.view', name="event-view"),
