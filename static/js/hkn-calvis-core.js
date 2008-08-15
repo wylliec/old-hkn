@@ -1015,11 +1015,11 @@ calvis.Calendar.prototype.overlayHKN = function(startDate, endDate) {
 
   data = {}
   data['start_year'] = startDate.getFullYear()
-  data['start_month'] = startDate.getMonth()  
+  data['start_month'] = startDate.getMonth()+1
   data['start_day'] = startDate.getDate()    
 
   data['end_year'] = endDate.getFullYear()
-  data['end_month'] = endDate.getMonth()  
+  data['end_month'] = endDate.getMonth()+1
   data['end_day'] = endDate.getDate()
   
   data['max_results'] = 500
@@ -1028,9 +1028,9 @@ calvis.Calendar.prototype.overlayHKN = function(startDate, endDate) {
       for (var i = 0; i < eventEntries.length; i++) {
         var event = eventEntries[i];
         var date = event["end_time"];
-        event["end_time"] = new Date(date["year"], date["month"], date["day"], date["hour"], date["minute"]);
+        event["end_time"] = new Date(date["year"], date["month"]-1, date["day"], date["hour"], date["minute"]);
         date = event["start_time"];        
-        event["start_time"] = new Date(date["year"], date["month"], date["day"], date["hour"], date["minute"]);        
+        event["start_time"] = new Date(date["year"], date["month"]-1, date["day"], date["hour"], date["minute"]);        
         date = event["start_time"];
 
          
