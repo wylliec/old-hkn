@@ -17,9 +17,9 @@ def generate_review():
     p.difficulty = random.randint(1,5)
     rn = random.randint(1, 10000)
     question_file = SimpleUploadedFile('q%d.pdf' % rn, 'a question')
-    p.save_question_file('q%d.pdf' % rn, question_file)
+    p.question.save('q%d.pdf' % rn, question_file)
     answer_file = SimpleUploadedFile('a%d.pdf' % rn, 'an answer')
-    p.save_answer_file('a%d.pdf' % rn,answer_file)
+    p.answer.save('a%d.pdf' % rn,answer_file)
     p.save()
 
 

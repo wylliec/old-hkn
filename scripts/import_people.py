@@ -41,7 +41,7 @@ def addLine(line, member_status):
     last = last.strip()
     realfirst = realfirst.strip()
 
-    email = normalizeEmail(email)
+    email = normalize_email(email)
     try:
         p = Person.objects.from_email(email)
         print "Found duplicate person with email %s!" % email
@@ -61,7 +61,7 @@ def addLine(line, member_status):
         c.school_email = email
     
     lion_file = SimpleUploadedFile(uname + ".gif", lion_file_content)
-    c.save_profile_picture_file(lion_file.name, lion_file)
+    c.profile_picture.save(lion_file.name, lion_file)
 
     c.save()
 
@@ -77,14 +77,14 @@ def addLine(line, member_status):
     candidateinfo.person = c
     candidateinfo.candidate_semester = candsem.strip()
 
-    com = normalizeCommitteeName(cand_com)
+    com = normalize_committee_name(cand_com)
     if com == "":
         print "Could not match committee: " + cand_com
     candidateinfo.candidate_committee = Position.objects.get(short_name = com)
     candidateinfo.comment = ""
     candidateinfo.initiated = False
     lion_file = SimpleUploadedFile(uname + ".gif", lion_file_content)
-    candidateinfo.save_candidate_picture_file(lion_file.name, lion_file)
+    candidateinfo.candidate_picture.save(lion_file.name, lion_file)
     candidateinfo.save()
 
 everyoneGroup = Group.objects.get(name = "everyone")

@@ -57,7 +57,7 @@ def import_officers(filename):
 
 def matchPerson(name, username, email):
     try:
-        p = Person.objects.from_email(normalizeEmail(email))
+        p = Person.objects.from_email(normalize_email(email))
         return p
     except ObjectDoesNotExist:
         pass

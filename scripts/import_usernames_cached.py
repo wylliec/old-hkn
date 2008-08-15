@@ -16,7 +16,7 @@ pklFile = file(pklFilename, 'r')
 
 def matchPerson(email):
     try:
-        p = Person.objects.from_email(normalizeEmail(email))
+        p = Person.objects.from_email(normalize_email(email))
         return p
     except Person.DoesNotExist:
         print "Error: email " + email + " not found! Pkl file invalid"
@@ -33,7 +33,7 @@ def main():
             path = os.path.join(os.path.join(IMAGES_PATH, 'officerpics/'), name)
             if os.path.exists(path):
                 picfile = SimpleUploadedFile(name, file(path).read())
-                person.save_officer_picture_file(picfile.name, picfile)
+                person.officer_picture.save(picfile.name, picfile)
         person.save()
 
 if __name__ == "__main__":
