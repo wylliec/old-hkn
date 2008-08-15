@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404
 
 from ajaxlist import get_list_context, filter_objects
 
-from event.rsvp.list import list_for_person
+from hkn.event.rsvp.list import list_for_person
 
 from hkn.event.constants import RSVP_TYPE, EVENT_TYPE
 
