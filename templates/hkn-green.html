@@ -6,20 +6,20 @@
 {% block head %}
 <title>{% block title %}Eta Kappa Nu (HKN), Mu Chapter {% endblock %}</title>
 {% block css %}
-{% include "css_common.inc" %}
-<link rel="stylesheet" type="text/css" href="/css/hkn-green.css">
-<link rel="stylesheet" type="text/css" href="{{STATIC_PREFIX}}css/ajaxlist.css">
-{% endblock %}
-<meta NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
+    {% include "css_common.inc" %}
+    <link rel="stylesheet" type="text/css" href="/css/hkn-green.css">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_PREFIX}}css/ajaxlist.css">
+    {% endblock %}
+    <meta NAME="Keywords" CONTENT="HKN,Eta Kappa Nu,eta,kappa,nu,mu chapter,mu,berkeley,ucb,career 
 fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
-{% block js %}
-{% include "js_common.inc" %}
-<script type="text/javascript" src="{{STATIC_PREFIX}}js/navigation.js"></script>
-{% endblock %}
+    {% block js %}
+    {% include "js_common.inc" %}
+    <script type="text/javascript" src="{{STATIC_PREFIX}}js/navigation.js"></script>
+    {% endblock %}
 {% endblock %}
 </head>
 
-<body {% block body_extra %} {% endblock %}>
+<body>
 {% block header %}
 <div id="header">
 	<div id="logo">
@@ -27,7 +27,6 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 			<img src ="{{STATIC_PREFIX}}images/site/LogoDraftPlain.png" style="border:none">
 		</a>
 	</div>
-
 {% include "hkn-menu.html" %}
 </div>
 {% endblock %}
@@ -71,5 +70,3 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 
 </body>
 </html>
-
-
