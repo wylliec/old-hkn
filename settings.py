@@ -18,15 +18,15 @@
 import os
 SERVER_ROOT = os.path.join(os.getcwd(), os.path.dirname(__file__))
 
+if SERVER_ROOT.endswith('hkn'):
+    SERVER_ROOT = SERVER_ROOT + '/'
+
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
 DATABASE_NAME = SERVER_ROOT + "hkn.db"            # Or path to database file if using sqlite3.
 
 
 # hknsettings settings will override the above
 from hknsettings import *
-
-if SERVER_ROOT.endswith('hkn'):
-    SERVER_ROOT = SERVER_ROOT + '/'
 
 # make sure SERVER_ROOT ends with hkn/
 if not SERVER_ROOT.endswith("hkn/"):
