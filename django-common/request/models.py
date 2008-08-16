@@ -40,7 +40,7 @@ class Request(models.Model):
     object_id = models.PositiveIntegerField()
     confirm_object = generic.GenericForeignKey()
 
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=150)
     description = models.TextField()
     links = PickleField(null = True)
     
