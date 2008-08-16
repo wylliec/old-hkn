@@ -24,8 +24,14 @@ from hkn.tutor import output
 
 from re import match, search
 
+class NoTutorSchedulesException(Exception):
+    pass
+
 def get_max_version():
-    return max(tutor.Assignment.objects.values_list('version'))[0]
+    try:
+        return max(tutor.Assignment.objects.values_list('version'))[0]
+    except ValueError:
+        raise NoTutorSchedulesException("There are no tutoring schedules available")
     
 def get_published_version():
     try:
