@@ -1,11 +1,13 @@
 from django.db.models import signals
 from hkn.event.models import Event
-from hkn.gcal import utils
 
 try:
     from hkn.settings import GCAL_ENABLED
 except:
     GCAL_ENABLED = False
+
+if GCAL_ENABLED:
+    from hkn.gcal import utils
 
 def if_enabled(fn):
     def check_enabled(*args, **kwargs):
