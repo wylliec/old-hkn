@@ -7,6 +7,8 @@ from django.core.management import call_command
 
 import clear_db; clear_db.main()
 
+call_command('loaddata', '../fixtures/flatpages.json')
+
 import create_positions; create_positions.main()
 import create_permissions; create_permissions.main()
 
