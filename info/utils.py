@@ -17,7 +17,7 @@ committee_names =  {
 "vp" : make_set("vicepresident", "vpres"),
 "rsec" : make_set("recordingsecretary", "recsec"),
 "csec" : make_set("correspondingsecretary", "corsec"),
-"tres" : make_set("treasurer", "treas"),
+"treas" : make_set("treasurer", "tres"),
 "deprel" : make_set("departmentrelations", "departmentalrelations", "drel"),
 "studrel" : make_set("studentrelations", "srel"),
 "alumrel" : make_set("alumnirelations", "arel"),
