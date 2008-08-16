@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 
-from hkn.main import admin_site
+from hkn.main.admin import admin_site
 from hkn.main.models import HKN
 from hkn.event.models import Event
 

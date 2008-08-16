@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from hkn.main import admin_site
+from hkn.main.admin import admin_site
 from models import Course, Department, Klass
 
 
