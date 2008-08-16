@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 from hkn.settings import SERVER_ROOT, IMAGES_PATH, MEDIA_ROOT, MEDIA_URL
-from hkn.main import admin
+from hkn.main.admin import admin_site
 
 urlpatterns = patterns('',
     # Example:
@@ -27,7 +27,7 @@ urlpatterns = patterns('',
      url(r'^login/$', 'django.contrib.auth.views.login', name="login"),
      url(r'^logout/$', 'django.contrib.auth.views.logout', name="logout"),
 
-     (r'^admin/(.*)', admin.site.root),
+     (r'^admin/(.*)', admin_site.root),
 
 
     # default static
