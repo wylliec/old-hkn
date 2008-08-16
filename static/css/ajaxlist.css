@@ -1,8 +1,8 @@
 table.ajaxtable {
-  margin: 1em 2% 1em 2%;
+  margin: 0 auto;
   border-collapse: collapse;
   font-size: small;
-  width: 96%;
+  width: 100%;
 }
 
 table.ajaxtable .odd {
