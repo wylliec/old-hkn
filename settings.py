@@ -15,11 +15,12 @@
 # HKN-Specific Settings #
 #########################
 
+import os
+SERVER_ROOT = os.path.join(os.getcwd(), os.path.dirname(__file__))
+
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
 DATABASE_NAME = SERVER_ROOT + "hkn.db"            # Or path to database file if using sqlite3.
 
-import os
-SERVER_ROOT = os.path.join(os.getcwd(), os.path.dirname(__file__))
 
 # hknsettings settings will override the above
 from hknsettings import *
