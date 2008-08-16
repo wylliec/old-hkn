@@ -267,16 +267,28 @@ class Person(User):
                 return "%s Candidate" % (committee_name)
             return ""
         elif self.member_type == MEMBER_TYPE.OFFICER:
-            return self.get_current_position().name
+            return "%s Officer" % self.get_current_position().name
         return ""
+    
+    def get_current_status(self):
+        status = self.get_committee()
+        if len(status) == 0:
+            status = self.member_status
+        return status
 
     def get_name(self):
         """
         Returns the person's full name (first + last).
         """
         return "%s %s" % (self.first_name, self.last_name)
-
     name = property(get_name)
+    
+    def get_abbr_name(self, dot=True):
+        if dot:
+            return "%s %s." % (self.first_name, self.last_name[0])
+        else:
+            return "%s %s" % (self.first_name, self.last_name[0])
+    abbr_name = property(get_abbr_name)
 
     def is_initiated(self):
         """

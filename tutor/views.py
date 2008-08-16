@@ -75,7 +75,7 @@ def get_tutor_info(assignments, tutoring_days=TUTORING_DAYS, tutoring_times=TUTO
                 people = realAssignments[slot]
                 curTimeSlot = []
                 for person in people:
-                    name = person.get_name()
+                    name = person.get_abbr_name()
 
                     if person not in seenTutors:
                         data = canTutorData.filter(person=person)
@@ -125,7 +125,7 @@ def get_tutor_miniinfo(assignments, day="Monday", tutoring_times=TUTORING_TIMES)
             people = realAssignments[slot]
             curTimeSlot = []
             for person in people:
-                name = person.get_name()
+                name = person.get_abbr_name()
 
                 if person not in seenTutors:
                     data = canTutorData.filter(person=person)
