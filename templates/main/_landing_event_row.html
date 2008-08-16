@@ -11,10 +11,12 @@
 		</td>		    
     	<td class="links small">
     		<div>
-	    		<a href="javascript:rsvpForm({{event.id}});">&#187;</a>
-	    		<a href="javascript:showRSVP({{event.id}});">&#187;</a>	    		
-	    		<a href="javascript:showInfo({{event.id}});">&#187;</a>
-	    		<a href="javascript:hide({{event.id}});">&#187;</a>	    		
+	    		{% if event.can_rsvp %}<a href="javascript:rsvpForm({{event.id}});" title="click to RSVP!">&#187;</a>{% endif %}
+	    		{% with event.rsvp_set.count as num_rsvps %}
+		    		<a href="javascript:showRSVP({{event.id}});" title="{{num_rsvps}} RSVP{{num_rsvps|pluralize}} (click to view)">&#187;</a>	    		
+		    	{% endwith %}
+	    		<a href="javascript:showInfo({{event.id}});" title="more information about this event">&#187;</a>
+	    		<a href="javascript:hide({{event.id}});" title="hide">&#187;</a>	    		
 			</div>	    		
 		</td> 
 	</tr>	

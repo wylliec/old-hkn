@@ -10,51 +10,8 @@
 <script type="text/javascript" src="{{STATIC_PREFIX}}js/tutoring.js"></script>
 <script type="text/javascript" src="{{STATIC_PREFIX}}js/landing.js"></script>
 <script type="text/javascript" src="{{STATIC_PREFIX}}js/jquery.form.js"></script>
-{% endblock %}
-
-{% block searchbar %}
-{% include "main/_landing_course.html" %}	
-{% endblock %}
-
-{% block container %}
-{% comment %}
-<div class="landing_wrapper" id="landing_left_wrapper">
-	<div class="landing_content" id="landing_left_content">
-        {% include "main/_landing_event.html" %}
-	</div>
-</div>
-<div class="landing_wrapper" id="landing_middle_wrapper">
-	<div class="landing_content" id="landing_middle_content">
-        {% include "main/_landing_tutor.html" %}
-	</div>
-</div>
-{% endcomment %}
-<div id="landing_wrapper">
-	<div id="landing_right_info">
-		<div class="tutoring">
-	        {% include "main/_landing_tutor.html" %}		
-		</div>
-		<div class="events">
-			{% include "main/_landing_event.html" %}	
-		</div>
-		<div class="spacer" style="clear: both;">&nbsp;</div>				
-		<div class="tutoring">
-	        <a class="small" href="{% url tutor-view-schedule %}">view full schedule</a>	        
-		</div>
-		<div class="events">
-	        <a class="small" href="{% url event-list %}">view all upcoming</a>			
-		</div>		
-		<div style="clear: both"></div>		
-	</div>
-</div>	
-<div style="float: left">
-<h1>About HKN</h1>
-<p>Lorem ipsum</p>
-</div>
-<div style="clear: both"></div>
-
-
-<script>
+<script type="text/javascript">
+$(document).ready( function() {
 $('.infobox').cluetip({
       width: 410,
       cluetipClass: 'jtip',  
@@ -67,7 +24,45 @@ $('.infobox').cluetip({
       closePosition: 'bottom',  
       closeText: '<img src="/static/images/site/close.png" alt="close" />'
     });
+});
 </script>
+{% endblock %}
 
+{% block searchbar %}
+{% include "main/_landing_course.html" %}	
+{% endblock %}
+
+{% block container %}
+<div id="container">
+	<div id="landing_wrapper">
+		<div id="landing_right_info">
+			<div class="tutoring">
+		        {% include "main/_landing_tutor.html" %}		
+			</div>
+			<div class="events">
+				{% include "main/_landing_event.html" %}	
+			</div>
+			<div class="spacer" style="clear: both;">&nbsp;</div>				
+			<div class="tutoring">
+		        <a class="small" href="{% url tutor-view-schedule %}">view full schedule</a>	        
+			</div>
+			<div class="events">
+				<div style="float: left">
+			        <a class="small" href="{% url event-list %}">view all upcoming</a>
+			    </div>
+			    <div style="float: right">
+			        <a class="small" href="{% url event-calendar %}">events calendar</a>
+				</div>			        
+				<div style="clear: both"></div>				
+			</div>		
+			<div style="clear: both"></div>
+		</div>
+	</div>	
+	<div style="float: left; width: 38%">
+		<h1>About HKN</h1>
+		{{ lorem|truncatewords:"100"|linebreaks }}
+	</div>
+<div style="clear: both"></div>
+</div>
 {%endblock %}
 
