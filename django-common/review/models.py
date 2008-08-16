@@ -7,7 +7,7 @@ FILE_UPLOAD_DIR =  'review'
 
 class Problem(models.Model):
     
-    name = models.CharField(max_length = 30)
+    name = models.CharField(max_length = 150)
     description = models.TextField(blank = True)
     tags = fields.TagField(blank = True)
     difficulty = models.FloatField(null = True, blank = True)

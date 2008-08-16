@@ -242,13 +242,13 @@ class Instructor(models.Model):
     department = models.ForeignKey(Department)
     """ Department to which this instructor belongs """
     
-    first = models.CharField(max_length = 30)
+    first = models.CharField(max_length = 50)
     """ Instructor's first name """
     
     middle = models.CharField(max_length = 30)
     """ Instructor's middle name """
     
-    last = models.CharField(max_length = 30)
+    last = models.CharField(max_length = 75)
     """ Instructor's last name """
     
     email = models.EmailField()
