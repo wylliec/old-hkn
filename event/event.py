@@ -14,8 +14,14 @@ from constants import RSVP_TYPE, EVENT_TYPE
 import datetime
 from string import atoi
 
+def get_event(event_identifier):
+    try:
+        return Event.objects.get(pk=event_identifier)
+    except (Event.DoesNotExist, ValueError):
+        return get_object_or_404(Event, slug=event_identifier)
+
 def view(request, event_id):
-    e = get_object_or_404(Event, pk = event_id)
+    e = get_event(event_id)
     d = {}
     d["event"] = e
         
@@ -34,7 +40,7 @@ def view(request, event_id):
     return render_to_response("event/view.html", d, context_instance=RequestContext(request))
 
 def infobox(request, event_id):
-    e = get_object_or_404(Event, pk = event_id)
+    e = get_event(event_id)
     if e.view_permission.full_codename() not in request.user.get_all_permissions():
         return HttpResponse("Access denied")
     d = {}

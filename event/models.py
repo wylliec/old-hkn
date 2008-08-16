@@ -2,6 +2,8 @@ from django.db import models
 from django.db.models.query import QuerySet
 from django.contrib.auth.models import *
 from django.core import urlresolvers
+from django.template.defaultfilters import slugify
+
 
 from hkn.info.models import *
 from hkn import semester
@@ -52,6 +54,7 @@ class Event(models.Model):
 
     id = models.AutoField(primary_key = True)
     name = models.CharField(max_length=100)
+    slug = models.SlugField(null=True)
     location = models.CharField(max_length=100)
     description = models.TextField()
     start_time = models.DateTimeField()
@@ -73,6 +76,18 @@ class Event(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def generate_unique_slug(self):
+        base = slugify("%s-%s" % (self.start_time.strftime("%m-%d-%y"), self.name))
+        for i in range(100):
+            slug = base
+            if i>0:
+                slug = "%s-%d" % (base, i)
+            query = Event.objects.filter(slug=slug).exclude(pk=self.id)
+            if query.count() == 0:
+                return slug
+        raise Exception("Exhausted 100 slug values!")
+            
 
     class QuerySet(QuerySet):
         def ft_query(self, query):
@@ -122,6 +137,11 @@ class Event(models.Model):
             return None
         tr = self.get_time_range_for_block(block_num)
         return "%s - %s" % (tr[0].strftime(format), tr[1].strftime(format))
+
+    def save(self, force_update_slug=False, *args, **kwargs):
+        if not self.slug or self.slug == "slug" or force_update_slug:
+            self.slug = self.generate_unique_slug()
+        super(Event, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Event"
