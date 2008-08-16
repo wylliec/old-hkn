@@ -1,0 +1,4 @@
+{% extends "flatpages/default.html" %}
+{% load markup %}
+
+{% block flatpage %}{{ flatpage.content|markdown }}{% endblock %}

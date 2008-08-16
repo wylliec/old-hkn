@@ -3,7 +3,7 @@
 ##
 ##
 ##
-# Please edit hknsettings.py to set SERVER_ROOT, not this file
+# Please edit hknsettings.py to set local settings, not this file
 ##
 ##
 ##
@@ -15,8 +15,14 @@
 # HKN-Specific Settings #
 #########################
 
+DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
+DATABASE_NAME = SERVER_ROOT + "hkn.db"            # Or path to database file if using sqlite3.
+
 import os
 SERVER_ROOT = os.path.join(os.getcwd(), os.path.dirname(__file__))
+
+# hknsettings settings will override the above
+from hknsettings import *
 
 if SERVER_ROOT.endswith('hkn'):
     SERVER_ROOT = SERVER_ROOT + '/'
@@ -30,6 +36,7 @@ DJANGO_COMMON = SERVER_ROOT + "django-common/"
 EXAMS_USER_MODULE = 'django.contrib.auth.models.User'
 EXAM_LOGIN_REQUIRED = False
 LOGIN_URL = "/login/"
+
 
 SESSION_SAVE_EVERY_REQUEST = True
 
@@ -61,8 +68,6 @@ MANAGERS = ADMINS
 #DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 #DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-DATABASE_NAME = SERVER_ROOT + "hkn.db"            # Or path to database file if using sqlite3.
 
 
 # Local time zone for this installation. Choices can be found here:
@@ -70,7 +75,7 @@ DATABASE_NAME = SERVER_ROOT + "hkn.db"            # Or path to database file if 
 # although not all variations may be possible on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Los_Angeles'
 
 # Language code for this installation. All choices can be found here:
 # http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
@@ -117,6 +122,7 @@ MIDDLEWARE_CLASSES = (
     'hkn.main.middleware.HknAuthMiddleware',
     'hkn.main.middleware.LayoutMiddleware',
     'django.middleware.doc.XViewMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'hkn.urls'
@@ -131,7 +137,7 @@ TEMPLATE_DIRS = (
 TEMPLATE_CONTEXT_PROCESSORS = (
 "hkn.main.context_processor.hkn_vars",
 "request.context_processor.requests",
-"hkn.gcal.context_processor.gcal",
+#"hkn.gcal.context_processor.gcal",
 "django.core.context_processors.auth",
 "django.core.context_processors.debug",
 "django.core.context_processors.i18n",
@@ -140,11 +146,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 INSTALLED_APPS = (
     'django.contrib.auth',
-#    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'django.contrib.markup',
+    'django.contrib.flatpages',
     'ajaxlist',
     'request',
     'hkn.info',
@@ -160,3 +167,4 @@ INSTALLED_APPS = (
     'tagging',
     'review',
 )
+
