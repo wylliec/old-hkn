@@ -167,7 +167,7 @@ a(S'mawkillio_chang@berkeley.edu'
 p92
 S'mchang'
 p93
-S'tres'
+S'treas'
 p94
 S'fa07'
 p95
@@ -313,7 +313,7 @@ a(S'mawkillio_chang@berkeley.edu'
 p173
 S'mchang'
 p174
-S'tres'
+S'treas'
 p175
 S'sp08'
 p176
