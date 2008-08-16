@@ -1,0 +1,6 @@
+{% spaceless %}
+	<td><a href="{% url event-view object.event.id %}">{{ object.event.name }}</a></td>
+	<td> {{ object.event.start_time|date:"l m/d g:ia" }}-{{ object.event.end_time|date:"g:ia" }}</td>
+{% endspaceless %}
+
+

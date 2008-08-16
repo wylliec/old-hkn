@@ -9,10 +9,16 @@
 <script language="javascript" src="{{STATIC_PREFIX}}js/jquery.form.js"></script>
 {% endblock %}
 
+    	{% block searchbar %}
+	    	<div class="searchcontrol">
+    			<label>Search Events</label>
+		        {% control search %}
+			</div>		        
+		{% endblock %}
+
 
 {% block content %}
     {% ajaxwrapper events %}
-        {% control search %}
         {% control pager %}
         {% control notify %}
         {% control spinner %}

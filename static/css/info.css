@@ -14,14 +14,19 @@ div#details {
     padding: 0px 4px 20px 4px;
 }
 
-div#photo {
+div#details > div#photo {
     float: left;
     padding-right: 20px;
 }
 
-div#contact {
+div#details > div#contact {
     float: left;
     font-weight: bold;
+}
+
+div#details > div#rsvps {
+    float: right;
+    width: 50%;
 }
 
 

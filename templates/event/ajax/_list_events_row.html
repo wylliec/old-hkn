@@ -11,7 +11,7 @@
             {% endif %}
         </span>
     </td>
-	<td style="width: 70%"><p>{{ object.description }}</p><BR><div id="rsvp_{{object.id}}"> </div></td>
+	<td style="width: 70%"><p>{{ object.description|linebreaksbr }}</p><BR><div id="rsvp_{{object.id}}"> </div></td>
 	<td style="width: 8%">{{ object.start_time|date:"l m/d g:ia" }}-{{ object.end_time|date:"g:ia" }}</td>
 	<td style="width: 7%">{{ object.get_event_type }}</a> </td>
 {% endspaceless %}

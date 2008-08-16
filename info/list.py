@@ -55,6 +55,7 @@ def list_people(request, category):
     people = sort_objects(people, d['sort_by'], d['order'])
     people = paginate_objects(people, d, page=d['page'], max_per_page=10)
     d['people'] = add_restricted(request, people)
+    d['category'] = category
 
     return render_ajaxlist_response(request.is_ajax(), "info/list.html", d, context_instance = RequestContext(request))
     

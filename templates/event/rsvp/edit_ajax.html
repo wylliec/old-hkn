@@ -1,3 +1,12 @@
-<div id="edit_ajax_div">
-{% include "event/rsvp/_edit_form.html" %}
+<div>
+<form id='rsvp_form_{{event.id}}' action="{{ request.path }}" method="post">
+	<table>
+	{{ form }}
+	</table>
+	<input type=submit value="RSVP!" />
+</form>
 </div>
+<script type="text/javascript">
+var options =  {target : "#event_{{event.id}}"};
+$("#rsvp_form_{{event.id}}").ajaxForm(options);
+</script>

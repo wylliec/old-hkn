@@ -1,24 +1,30 @@
-        <div class="landing_courses">
-            <h1>Course Surveys, Exams, and Review</h1>        
-            <div>
-                <h3>Search EECS course surveys</h3>                
-                <input type=input> <input type=submit value="search!">                                
-                <div class="small">search for courses or instructors</div>
+            <div id="coursesurvey" class="searchcontrol">
+                <label>Search EECS course surveys</label>   
+                <div>
+	                <input type=input> <input type=submit value="search!">                                
+	                <div class="small">search for courses or instructors</div> 
+				</div>	                
             </div>
-            <div>
-                <h3>Search for exam files!</h3>
-                <form action="{% url exam-list %}" method="GET">
-                {{ exam_files_autocomplete|safe }}
-                <input type=submit value="search!">
-                </form>
-                <div class="small">search for courses e.g. CS61C, math 55, E77</div>                
-            </div>        
+            <div id="examfiles" class="searchcontrol">
+                <label>Search for Exams</label>
+                <div>                    
+	                <form action="{% url exam-list %}" method="GET">
+	                {{ exam_files_autocomplete|safe }}
+	                <input type=submit value="search!">
+	                </form>
+	                <div class="small">search for courses e.g. math 54</div>                
+				</div>	                
+            </div>     
+            <div style="clear: both">&nbsp;</div>
+            {% comment %}   
             <div>
                 <h3>Search for review problems!</h3>
-                <form action="{% url review-search %}" method="GET">
-                <input type=input name="query"> <input type=submit value="search!">                                
-                </form>
-                <div class="small">search for courses or topics e.g. CS61C, fourier series</div>                                
+                <div class="flushheader">                 
+	                <form action="{% url review-search %}" method="GET">
+	                <input type=input name="query"> <input type=submit value="search!">                                
+	                </form>
+	                <div class="small">search for courses or topics e.g. CS61C, fourier series</div>
+	            </div>
             </div>
-        </table>
+            {% endcomment %}
 

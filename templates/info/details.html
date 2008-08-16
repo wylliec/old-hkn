@@ -1,19 +1,43 @@
 {% extends "info/hkn.html" %}
 
+{% load ajaxtable %}
+
+{% block js %}
+{{ block.super }}
+{% ajaxlist_js %}
+<script type="text/javascript">
+ajaxlist_get_url = "{% url rsvp-list-for-person-small person.id %}"
+</script>
+{% endblock %}
+
 {% block content %}
 <div id="details">
-	<h2>{{ person.first_name }} {{ person.last_name }}</h2>
 	<div id="photo">
+		<h1>{{ person.name }}</h1>	
 		<img src="{{ person.restricted.profile_picture.url }}">
 	</div>
 	<div id="contact">
-		<div class="name">{{ person.name }}</div>
+		<h1>&nbsp;</h1>
 		<div class="email">{{ person.restricted.email }} </div>
 		<div class="phone">{{ person.restricted.phone }}</div>
+		<div id="hkn">
+			<div class="member_status">{{ person.get_current_status }}</div>
+		</div>		
 	</div>
-	<div id="status">
-		<div class="status">{{ person.member_status }}</div>
+	{% if rsvps %}	
+	<div id="rsvps">
+		<h1>RSVPs</h1>
+		<table>
+		<tr><th>Event</th><th>Time</th></tr>
+		{% for rsvp in rsvps %}
+			<tr>
+				<td><a href="{% url event-view rsvp.event.id %}">{{ rsvp.event.name }}</a></td>
+				<td> {{ rsvp.event.start_time|date:"l m/d g:ia" }}-{{ rsvp.event.end_time|date:"g:ia" }}</td>
+			</tr>
+		{% endfor %}
+		</table>
 	</div>
+	{% endif %}
 	<div style="clear: both"></div>
 </div>	
 <a href="javascript:history.back(1)">Back</a>

@@ -1,12 +1,13 @@
 # file template.py
 
-import new
 from django.shortcuts import render_to_response
 from django.template.loader_tags import BlockNode, ExtendsNode
 from django.template import loader, Context, RequestContext, TextNode
 from django.templatetags.ajaxtable import AjaxWrapperNode
 from django.core.paginator import Paginator
 from django.http import HttpResponse
+
+import types
 
 class NodeNotFound(Exception):
 	pass
@@ -90,16 +91,18 @@ def sort_objects(objects, field_name, order):
 		
 	return objects.order_by(prefix + field_name)
 
-def paginate_objects(objects, list_context, page=1, max_per_page=20):
+def paginate_objects(objects, list_context, page=1, max_per_page=None):
 	"""
 	Breaks objects into pages and adds page info to the context
 	
 	Returns the objects on the page specified and the context
 	"""
-	
+	if type(max_per_page) != types.IntType:
+		max_per_page = 20	
 	paginator = Paginator(objects, max_per_page)
 	if page > paginator.page_range[-1]:
 		page = 1
+		
 		
 	p = paginator.page(page) 
 

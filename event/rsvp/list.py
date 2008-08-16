@@ -7,7 +7,7 @@ from django.template import RequestContext
 from django import forms
 from django.core import urlresolvers
 from ajaxlist import get_list_context, filter_objects
-from ajaxlist.helpers import get_ajaxinfo, sort_objects, paginate_objects, render_ajaxlist_response
+from ajaxlist.helpers import get_ajaxinfo, sort_objects, paginate_objects, render_ajaxlist_response, render_ajaxwrapper_response
 
 from hkn.event.constants import RSVP_TYPE, EVENT_TYPE
 import datetime
@@ -34,58 +34,69 @@ def get_rsvps_for_event(clazz, categories, category_map):
     category = categories[0]
     return clazz.objects.filter(event = category)
 
-def list_for_person(request, person_id):
-    if len(person_id) == 0 or person_id == "me":
-        person_id = str(request.user.person.id)
+def list_for_person_common(request, person, all=False, max_per_page=None):
     d = get_ajaxinfo(request.POST)
     if d['sort_by'] == "?":
         d['sort_by'] = "-event__start_time"
-		
-    person = get_object_or_404(Person, pk=person_id)
-    rsvps = person.rsvp_set.all()
-	
+    
+    if all:
+        rsvps = person.rsvp_set.filter(event__start_time__gte = (datetime.date.today()-datetime.timedelta(days = 1)))
+    else:
+        rsvps = person.rsvp_set.all()
+    
     rsvps = sort_objects(rsvps, d['sort_by'], None)
-    rsvps = paginate_objects(rsvps, d, page=d['page'])
+    rsvps = paginate_objects(rsvps, d, page=d['page'], max_per_page=max_per_page)
 
-    d['rsvps'] = rsvps
+    d['rsvps'] = rsvps    
+    return d
+
+def list_for_person_small_ajax(request, person_id):
+    person = get_object_or_404(Person, pk=person_id)
+    d = list_for_person_common(request, person, max_per_page=5)    
+    return render_ajaxwrapper_response("event/rsvp/ajax/_list_for_person_small.html", d, context_instance=RequestContext(request))
+
+def list_for_person(request, person_id):
+    if len(person_id) == 0 or person_id == "me":
+        person = request.user.person
+    else:
+        person = get_object_or_404(Person, pk=person_id)
+    
+    d = list_for_person_common(request, person)
     d['person'] = person	
     d['show_confirm_form'] = show_confirm_form(request)
 	
     return render_ajaxlist_response(request.is_ajax(), "event/rsvp/list_for_person.html", d, context_instance=RequestContext(request))
     
-def list_for_event(request,  event_id):
+def list_for_event_common(request, event):    
     d = get_ajaxinfo(request.POST)
     if d['sort_by'] == "?":
         d['sort_by'] = "person__first_name"
-		
-    event = get_object_or_404(Event, pk=event_id)
+        
     rsvps = event.rsvp_set.all()
-	
+    
     rsvps = sort_objects(rsvps, d['sort_by'], None)
     rsvps = paginate_objects(rsvps, d, page=d['page'])
 
     d['rsvps'] = rsvps
-    d['event'] = event
+    return d
+    
+def list_for_event(request,  event_id):
+    event = get_object_or_404(Event, pk=event_id)    
+    d = list_for_event_common(request, event)
+    d['event'] = event    
     d['show_confirm_form'] = show_confirm_form(request)
 	
     return render_ajaxlist_response(request.is_ajax(), "event/rsvp/list_for_event.html", d, context_instance=RequestContext(request))
 
-def list_for_event_small_ajax(request):    
-    list_context = get_list_context(request, default_sort = "person__first")
-    (rsvps, pages) = filter_objects(RSVP, list_context, get_objects_for_categories = get_rsvps_for_event, sort_objects = sort_rsvps, query_objects = query_rsvps_by_person)
+def list_for_event_small_ajax(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+    d = list_for_event_common(request, event)    
+    return render_ajaxwrapper_response("event/rsvp/_list_for_event_small.html", d, context_instance=RequestContext(request))
 
-    categories = list_context["categories"]
-    category = categories[0]
-    try:
-        event = Event.objects.get(pk = category)
-    except:
-        event = None    
-    
-    list_context["event"] = event    
-    list_context["rsvps"] = rsvps
-    
-    
-    return render_to_response("event/rsvp/ajax/list_for_event_small.html", list_context, context_instance = RequestContext(request))
+def list_for_event_paragraph(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+    rsvp_text = ", ".join([r.person.get_abbr_name(dot=False) for r in event.rsvp_set.select_related('person').order_by("person__first_name")])
+    return HttpResponse(rsvp_text, mimetype="text/plain")    
     
 def confirm_ajax(request, add_or_remove):
     value = request.POST.get("value", None)

@@ -48,9 +48,10 @@ function checkbox_changed(state, value){
 	    });
 }
 
+ajaxlist_get_url = window.location.pathname
 function send_ajaxinfo(action, url){
 	if(url == "#") {
-		url = window.location.pathname;
+		url = ajaxlist_get_url
 	}
     
 	$("img.ajaxspinner").show();

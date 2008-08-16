@@ -1,14 +1,12 @@
-        <h1>HKN Events</h1>
         <h3>Today's Events</h3>
-        <table class="landing_events">
+        <table class="landing_events flushheader">
             {% for event in today_events %}
                 {% include 'main/_landing_event_row.html' %}
             {% endfor %}
         </table>
         <h3>This Week's Events</h3>
-        <table class="landing_events">         
+        <table class="landing_events flushheader">
             {% for event in week_events %}
                 {% include 'main/_landing_event_row.html' %}
             {% endfor %}
         </table>
-

@@ -121,11 +121,6 @@ def new(request, event_id):
     return edit(request, event_id)
 
 def edit(request, event_id):
-    #if not request.POST or not request.POST.has_key("event_id"):
-    #    return HttpResponse("no post or no event_id in post")
-
-    #event_id = atoi(request.POST["event_id"])
-    #event_id = atoi(request.REQUEST["event_id"])
     e = get_object_or_404(Event, pk = event_id)
     person = request.user.person
 
@@ -156,3 +151,32 @@ def edit(request, event_id):
         return render_to_response('event/rsvp/edit_ajax.html', d, context_instance = RequestContext(request))
     else:
         return render_to_response('event/rsvp/edit.html', d, context_instance = RequestContext(request))
+
+def edit_ajax(request, event_id):
+    e = get_object_or_404(Event, pk = event_id)
+    person = request.user.person
+
+    new_rsvp = False
+    try:
+        rsvp = RSVP.objects.get(event = e, person = person)
+    except RSVP.DoesNotExist:
+        rsvp = RSVP(event = e, person = person)
+        new_rsvp = True
+        
+
+    if request.POST.has_key("comment"):
+        form = rsvp_form_instance(e, request.POST)
+        if form.is_valid():
+            rsvp = rsvp_from_form_instance(form, rsvp)
+            rsvp.save()
+            return HttpResponse("<script type='text/javascript'>rsvpCallback(%d)</script>" % e.id)
+    else:
+        if new_rsvp:
+            form = rsvp_form_instance(e)
+        else:
+            form = rsvp_form_instance(e, rsvp.__dict__)
+
+    d = {"person" : person, "event" : e, "form" : form }
+    
+
+    return render_to_response('event/rsvp/edit_ajax.html', d, context_instance = RequestContext(request))

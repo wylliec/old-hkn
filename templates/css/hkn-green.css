@@ -127,14 +127,27 @@ body {
 
 
 #content {
-	margin: 10px;
+	margin: 6px 10px;
 	width: auto;
 	
 }
 
 #userbar {
-	padding: 5px 8px;
+    float: left;
+	padding: 5px 8px 5px 8px;
 }
+
+.searchcontrol {
+    text-align: left;
+    float: right;
+    padding-left: 15px;
+/*    width: 210px;*/
+}
+
+#searchbar_wrapper {
+    padding-bottom: 7px;
+}
+
 
 #container{
 	background: #F3F8F8;

@@ -6,8 +6,14 @@
 {% ajaxlist_js %}
 {% endblock %}
 
+{% block searchbar %}
+	    	<div class="searchcontrol">
+    			<label>Search {{category|title}}</label>
+		        {% control search %}
+			</div>		        
+{% endblock %}
+
 {% block content %}
-{% control search %}
 {% ajaxwrapper people %}
 {% if people %}
 	{% control pager %}

@@ -1,60 +1,46 @@
 {% extends "event/base.html" %}
+{% load ajaxtable %}
 
-{% block head %}
-{{block.super}}
-
+{% block js %}
+{{ block.super }}
+{% ajaxlist_js %}
 <script language="javascript">
-function filter(sort, page, max, category, query) {
-	objects_url = "{{ objects_url }}"
-
-	parameters = {"sort" : sort, "page" : page, "max" : max, "category" : category, "query" : query};
-	$("objects_div").load("{{ objects_url }}", 	parameters, function() {
-		alert("loaded");
-	});
-	return false;
-}
-
-function queryOnEnter(e, sort, page, max, category) {
-	var keycode;
-	if (window.event) keycode = window.event.keyCode;
-	else if (e) keycode = e.which;
-	else return true;
-	if (keycode == 13) {
-		element = e.srcElement || e.target
-		filter(sort, page, max, category, element.value);
-		return false;
-	}
-	return true;
-}
+ajaxlist_get_url = "{% url rsvp-list-for-event-small event.id %}";
 </script>
 {% endblock %}
 
-{% block css %}
-{{block.super}}
-<link href="{{STATIC_PREFIX}}css/list.css" rel="stylesheet" />
-{% endblock %}
-
-{% block body_extra %} onLoad='filter("{{ sort }}", "{{ page }}", "{{ max }}", "{{ event.id }}", "{{ query|escape }}");' {% endblock %}
-
-
 {% block content %}
-<table width="100%">
-<tr>
-<td valign="top">
-Event Info:
-<br/>
-<br/>Name: {{event.name}}
-<br/>Date: {{ event.start_time|date:"l m/d g:ia" }}-{{ event.end_time|date:"g:ia" }}
-<br/>Location: {{event.location}}
-<br/>Event Type: {{ event.get_event_type }}
-<br/>Description: {{event.description}}
-<br/>
-</td>
-<td>
-<div id="rsvps_div">
+<div id="details" class="two_column">
+	<h1>{{event.name}}</h1>
+	<div class="subheader">{{ event.get_event_type }}</div>
+	<div class="spacer">&nbsp;</div>	
+	<table>
+		<tr>
+			<div id="date">
+				<td><label>Date</label></td>
+				<td><span>{{ event.start_time|date:"l m/d g:ia" }}-{{ event.end_time|date:"g:ia" }}</span></td>
+			</div>
+		</tr><tr>		
+			<div id="location">
+				<td><label>Location</label></td>
+				<td><span>{{event.location}}</span></td>
+			</div>	
+		</tr><tr>
+			<td colspan="2">{{event.description|linebreaks}}</td>
+		</tr>
+	</table>
 </div>
-</td>
-</tr>
-</table>
-
+<div id="rsvps" class="two_column right_column">
+	<h1>RSVPs</h1>
+	{% if can_rsvp %}<div class="subheader"><a href="{% url rsvp-new event.id %}">rsvp</a></div>{% endif %}
+	<div class="spacer">&nbsp;</div>
+	<div>
+		<ul class="plain">
+			{% for rsvp in rsvps %}
+				<li><a href="{% url person-view rsvp.person.username %}">{{rsvp.person.name}}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+<div style="clear: both"></div>
 {% endblock %}

@@ -1,69 +1,74 @@
-.landing_wrapper {
+#landing_wrapper {
 	background-color: #FFFFFF;
 	position:relative;
-	float:left;
-	width: 33%;
+	float:right;
+	width: 60%;
 }
 
-#landing_left_wrapper{ }
-#landing_middle_wrapper{ }
-#landing_right_wrapper{ }
 
-.landing_content {
+#landing_right_info {
 	background: {{ landing_background }};
 	padding: 0 8px;
-	margin: 10px;
 	border: 1px {{ landing_border }} solid;
-	width: 90%;
 	text-align:left;
 }
 
-#landing_left_content{ }
-#landing_middle_content{ }
-#landing_right_content{ }
-
-.landing_courses div {
-    padding-bottom: 15px;
+.tutoring {
+    float: left;
+    width: 47%;
 }
 
-.landing_events td, .landing_events th {
+.events {
+    float: right;
+    width: 47%;
+}
+
+table.landing_events {
+    width: 98%;
+    font-size: small;
+}
+
+.landing_events td, .landing_events th, .landing_events tr {
     padding: 0px;
     margin: 0px;
-    line-height: 15px;
 }
 
-.landing_events tr.head td {
-    padding-top: 15px;
+.landing_events tr.tail div {
+    font-size: x-small;
+    line-height: 7px;  
+    height: 7px;  
 }
 
-.landing_events .day div {
+.landing_events .time_location div {
+    width: 100%;
+    text-align: left;
 }
 
 .landing_events .links div {
-    vertical-align: middle;
-    font-size: x-small;
-    line-height: 1.2em;
+    text-align: right;
 }
 
 .landing_events .name div {
-    text-align: right;
+    text-align: left;
     font-weight: bold;
-}
-
-.landing_events .location div {
     font-size: x-small;
-    font-style: italic;
-
-}
-
-.landing_events .time div {
-    font-size: x-small;
-    font-style: italic;
-}
-
-.landing_events .description div {
-    line-height: 1.1em;
-    font-size: x-small;    
-    height: 23px;
+    height: 21px;
     overflow: hidden;
+}
+
+.landing_events .day {
+    width: 70px;
+}
+
+.landing_events .day div {
+    font-size: x-small;
+    text-align: right;
+}
+
+.landing_events div.spacer {
+    height: 3px;
+}
+
+#coursesurvey {
+    width: 240px;
 }

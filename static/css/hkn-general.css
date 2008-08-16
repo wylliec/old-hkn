@@ -8,17 +8,20 @@ h1 {
   font-weight: bold;
   font-size: large;
   font-family: arial, helvetica, sans-serif;
+  margin: 12px 0 12px 0;
 }
 
 h2 {
   font-size: large;
   font-family: arial, helvetica, sans-serif;
+  margin: 12px 0 12px 0;
 }
 
 h3 {
   font-weight: bold;
   font-size: medium;
   font-family: arial, helvetica, sans-serif;
+  margin: 12px 0 12px 0;  
 }
 
 .header {
@@ -28,9 +31,18 @@ h3 {
 }
 
 .subheader {
-  font-size: medium;
+  font-size: small;
   font-style: italic;
   font-family: arial, helvetica, sans-serif;
+  margin-top: -12px;
+}
+
+.flushheader {
+  margin-top: -12px;
+}
+
+.spacer {
+    height: 10px;
 }
 
 img {
@@ -111,4 +123,22 @@ th, td {
     width: 400px;
     text-align: left;
     background: #DFEFE2;
+}
+
+.two_column {
+    width: 45%;
+    float: left;
+}
+
+.right_column {
+    float: right;
+}
+
+ul.plain {
+    list-style: none;
+    margin-top: 0;
+	margin-left: 0;
+	padding-left: 1em;
+	text-indent: -1em;
+
 }

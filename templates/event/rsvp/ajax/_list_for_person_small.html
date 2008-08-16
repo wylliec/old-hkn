@@ -1,0 +1,10 @@
+{% load ajaxtable %}
+
+
+{% ajaxwrapper rsvps %}
+	{% control search %}
+	{% control pager %}
+    {% ajaxwrapper rsvps %}
+        {% ajaxtable rsvps "event/rsvp/ajax/_person_header_small.html" "event/rsvp/ajax/_person_row_small.html" %}
+    {% endajaxwrapper %}
+{% endajaxwrapper %}

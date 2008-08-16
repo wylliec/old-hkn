@@ -62,7 +62,7 @@ class RSVPDataField(forms.Field):
 
 
 class RSVPForm(forms.Form):
-    comment = forms.CharField(label = "Comment", required = False, widget=forms.Textarea())
+    comment = forms.CharField(label = "Comment", required = False)
     #transport = forms.IntegerField(label = "Transport (0 for none)", required = False, widget = forms.HiddenInput())
     #rsvp_data = RSVPDataField(label = "Block RSVPs", required = False, widget = forms.MultipleHiddenInput())
 

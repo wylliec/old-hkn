@@ -39,6 +39,14 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
         <form action="{% url login %}" method="post"> <label> Login </label>  <input class="short" name="username" value="username"> <input class="short" type="password" name="password" value="password"> <input type="hidden" name="next" value="{{ request.path }}"> <input type="submit" value="login"></form>
     {% endif %}
 </div>
+<div id="searchbar_wrapper">
+{% block searchbar %}
+{% endblock %}
+<div style="clear: both"></div>
+</div>
+
+<div style="clear: both"></div>
+
 {% if messages %}
 <div id="messages"> <ul>
 {% for message in messages %}
@@ -46,7 +54,6 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% endfor %}
 </ul> </div>
 {% endif %}
-
 
 {% block container %}
 
