@@ -1,5 +1,5 @@
     <tr class="head">
-        <td class="name"><div><a rel="{% url event-infobox event.id %}" href="{% url event-view event.id %}" style="display: block">{{event.name}}</a></div></td>    
+        <td class="name"><div><a rel="{% url event-infobox event.id %}" href="{% url event-view event.slug %}" style="display: block">{{event.name}}</a></div></td>    
         <td class="day"><div>{{event.start_time|date:"l" }}</div></td>
     </tr>
     <tr class="tail">
@@ -27,7 +27,7 @@
     {% comment %}    
     <tr class="head">
         <td class="day"><div>{{event.start_time|date:"l" }}</div></td>
-        <td class="name"><div><a class="infobox" rel="{% url event-infobox event.id %}" href="{% url event-view event.id %}" style="display: block">{{event.name}}</a></div></td>
+        <td class="name"><div><a class="infobox" rel="{% url event-infobox event.id %}" href="{% url event-view event.slug %}" style="display: block">{{event.name}}</a></div></td>
     </tr>
     <tr>
         <td class="time"><div>{{event.start_time|date:"f"}}-{{event.end_time|date:"f"}}</div></td>
@@ -47,7 +47,7 @@
         <td></td>
         <td class="links">
             <div>
-            <a href="{% url event-view event.id %}">More info</a>
+            <a href="{% url event-view event.slug %}">More info</a>
             </div>
         </td>
     </tr>

@@ -3,7 +3,7 @@
     <div class="subheader">{{ event.start_time|date:"l m/d f" }}-{{ event.end_time|date:"f" }}</div>
     <p class="small">{{event.description|truncatewords:"50" }}</p>
     <div style="font-weight: bold">{{ event.location }}</div>
-    <div><a href="{% url event-view event.id %}">view event...</a></div>
+    <div><a href="{% url event-view event.slug %}">view event...</a></div>
     <br>
     <div class='header'>RSVPs</div>
     <p> {% for rsvp in rsvps %} {{ rsvp.person.first_name }}, {% endfor %}

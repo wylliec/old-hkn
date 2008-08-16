@@ -88,6 +88,11 @@ class Position(Group):
 
     def _get_permission_codename(self):
         return "group_%s" % self.short_name
+    
+    def get_officer_title(self):
+        if self.short_name in ("pres", "vp", "csec", "rsec", "treas"):
+            return self.name
+        return "%s Officer" % self.name
 
     def save(self):
         if not self.id:
@@ -265,9 +270,8 @@ class Person(User):
             committee_name = self.candidateinfo.candidate_committee.name
             if committee_name and len(committee_name) > 0:
                 return "%s Candidate" % (committee_name)
-            return ""
-        elif self.member_type == MEMBER_TYPE.OFFICER:
-            return "%s Officer" % self.get_current_position().name
+        elif self.member_type == MEMBER_TYPE.OFFICER and self.get_current_position():
+                return self.get_current_position().get_officer_title()
         return ""
     
     def get_current_status(self):

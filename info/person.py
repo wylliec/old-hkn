@@ -12,7 +12,7 @@ def view(request, person_id):
         person = get_object_or_404(Person, username=person_id)
     person.set_restricted_accessor(request.user.person)
     d = {}
-    d["rsvps"] = person.rsvp_set.order_by("event__start_time")[:7]
+    d["rsvps"] = person.rsvp_set.order_by("-event__start_time")[:7]
     d["person"] = person    
     return render_to_response("info/details.html", d, context_instance=RequestContext(request))
 

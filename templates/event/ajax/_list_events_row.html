@@ -1,5 +1,5 @@
 {% spaceless %}
-	<td style="width: 10%"><a style="font-weight: bold" href="{% url event-view object.id %}">{{ object.name }}</a><br></td>
+	<td style="width: 10%"><a style="font-weight: bold" href="{% url event-view object.slug %}">{{ object.name }}</a><br></td>
     <td style="width: 5%">
         <span class="small">
             {% if object.can_rsvp %}

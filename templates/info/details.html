@@ -12,16 +12,14 @@ ajaxlist_get_url = "{% url rsvp-list-for-person-small person.id %}"
 
 {% block content %}
 <div id="details">
-	<div id="photo">
+	<div id="contact">
 		<h1>{{ person.name }}</h1>	
 		<img src="{{ person.restricted.profile_picture.url }}">
-	</div>
-	<div id="contact">
-		<h1>&nbsp;</h1>
-		<div class="email">{{ person.restricted.email }} </div>
-		<div class="phone">{{ person.restricted.phone }}</div>
-		<div id="hkn">
-			<div class="member_status">{{ person.get_current_status }}</div>
+		<div class="member_status">{{ person.get_current_status }}</div>		
+		<div class="spacer"></div>
+		<div id="contact">
+			<div class="email">{{ person.restricted.email }} </div>
+			<div class="phone">{{ person.restricted.phone }}</div>
 		</div>		
 	</div>
 	{% if rsvps %}	
@@ -31,8 +29,8 @@ ajaxlist_get_url = "{% url rsvp-list-for-person-small person.id %}"
 		<tr><th>Event</th><th>Time</th></tr>
 		{% for rsvp in rsvps %}
 			<tr>
-				<td><a href="{% url event-view rsvp.event.id %}">{{ rsvp.event.name }}</a></td>
-				<td> {{ rsvp.event.start_time|date:"l m/d g:ia" }}-{{ rsvp.event.end_time|date:"g:ia" }}</td>
+				<td><a href="{% url event-view rsvp.event.slug %}">{{ rsvp.event.name }}</a><div class="small">&#187; {{rsvp.event.location}}</div></td>
+				<td> {{ rsvp.event.start_time|date:"l, M d" }}<div class="small">{{ rsvp.event.start_time|date:"g:ia" }}-{{ rsvp.event.end_time|date:"g:ia" }}</div></td>
 			</tr>
 		{% endfor %}
 		</table>
