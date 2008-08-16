@@ -54,7 +54,7 @@ class Event(models.Model):
 
     id = models.AutoField(primary_key = True)
     name = models.CharField(max_length=100)
-    slug = models.SlugField(null=True)
+    slug = models.SlugField(null=True, max_length=125)
     location = models.CharField(max_length=100)
     description = models.TextField()
     start_time = models.DateTimeField()
