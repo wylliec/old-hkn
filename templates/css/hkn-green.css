@@ -127,9 +127,8 @@ body {
 
 
 #content {
-	margin: 6px 10px;
+	margin: 10px;
 	width: auto;
-	
 }
 
 #userbar {
@@ -180,9 +179,8 @@ div #rightshadow{
 	clear:both;
 	background: #048DB4;
 	color: #ACD7EE;
-	font-size: 95%;
-	line-height: 130%;
-	padding: 8px 10px;
+	font-size: 12px;
+	padding: 5px 10px;
 	text-align: left;
 }
 
