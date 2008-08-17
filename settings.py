@@ -167,5 +167,6 @@ INSTALLED_APPS = (
     'course',
     'tagging',
     'review',
+    'photologue',
 )
 
