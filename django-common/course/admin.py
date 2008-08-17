@@ -1,7 +1,5 @@
 from django.contrib import admin
-
-from hkn.main.admin import admin_site
-from models import Course, Department, Klass
+from course.models import Course, Department, Klass
 
 
 class CourseAdmin(admin.ModelAdmin):
@@ -14,6 +12,6 @@ class DepartmentAdmin(admin.ModelAdmin):
 class KlassAdmin(admin.ModelAdmin):
     list_display = ('course', 'season', 'year')
 
-admin_site.register(Course, CourseAdmin)
-admin_site.register(Klass, KlassAdmin)
-admin_site.register(Department, DepartmentAdmin)
+admin.site.register(Course, CourseAdmin)
+admin.site.register(Klass, KlassAdmin)
+admin.site.register(Department, DepartmentAdmin)
