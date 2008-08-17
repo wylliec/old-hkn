@@ -1,5 +1,4 @@
 from django.contrib import admin
-from hkn.main.admin import admin_site
 from hkn.info.models import Person, Officership
 
 
@@ -18,5 +17,5 @@ class PersonAdmin(admin.ModelAdmin):
 class OfficershipAdmin(admin.ModelAdmin):
     pass
 
-admin_site.register(Person, PersonAdmin)
-admin_site.register(Officership, OfficershipAdmin)
+admin.site.register(Person, PersonAdmin)
+admin.site.register(Officership, OfficershipAdmin)
