@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 
-from hkn.main.admin import admin_site
 from hkn.main.models import HKN
 from hkn.event.models import Event
 
@@ -15,9 +14,9 @@ class EventAdmin(admin.ModelAdmin):
         )
 
     def formfield_for_dbfield(self, db_field, **kwargs):
-        field = super(EventAdmin, self).formfield_for_dbfield(db_field, **kwargs) # Get the default field
-        if db_field.name.endswith('_permission'): # Check if it's the one you want
+        field = super(EventAdmin, self).formfield_for_dbfield(db_field, **kwargs) 
+        if db_field.name.endswith('_permission'): 
             field.queryset = Permission.objects.filter(content_type = ContentType.objects.get_for_model(HKN), codename__startswith = "hkn_")
         return field
 
-admin_site.register(Event, EventAdmin)
+admin.site.register(Event, EventAdmin)

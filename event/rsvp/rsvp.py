@@ -12,7 +12,8 @@ from ajaxlist import get_list_context, filter_objects
 
 from hkn.event.rsvp.list import list_for_person
 
-from hkn.event.constants import RSVP_TYPE, EVENT_TYPE
+from hkn.event.constants import EVENT_TYPE
+from hkn.event.rsvp.constants import RSVP_TYPE
 
 import datetime
 from string import atoi

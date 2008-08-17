@@ -2,7 +2,8 @@ from django.db import models
 from django.db.models import Q
 from django.contrib.auth.models import *
 from hkn.event.models import *
-from hkn.event.constants import EVENT_TYPE, RSVP_TYPE
+from hkn.event.constants import EVENT_TYPE
+from hkn.event.rsvp.constants import RSVP_TYPE
 from hkn.main.models import HKN
 from hkn.info.models import *
 

@@ -9,7 +9,8 @@ from django.core import urlresolvers
 from ajaxlist import get_list_context, filter_objects
 from ajaxlist.helpers import get_ajaxinfo, sort_objects, paginate_objects, render_ajaxlist_response, render_ajaxwrapper_response
 
-from hkn.event.constants import RSVP_TYPE, EVENT_TYPE
+from hkn.event.constants import EVENT_TYPE
+from hkn.event.rsvp.constants import RSVP_TYPE
 import datetime
 from string import atoi
 

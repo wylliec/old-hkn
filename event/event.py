@@ -1,6 +1,8 @@
 from hkn.event.models import *
 from hkn.event.forms import *
 from hkn.event.rsvp.list import list_for_event_common
+from hkn.event.constants import EVENT_TYPE
+from hkn.event.rsvp.constants import RSVP_TYPE
 
 from ajaxlist import get_list_context
 from django.shortcuts import render_to_response, get_object_or_404
@@ -9,10 +11,10 @@ from django.template import RequestContext
 from django.core import urlresolvers
 from django import forms
 
-from constants import RSVP_TYPE, EVENT_TYPE
 
 import datetime
 from string import atoi
+
 
 def get_event(event_identifier):
     try:

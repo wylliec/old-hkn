@@ -1,20 +1,20 @@
 from django.db import models
 from django.db.models.query import QuerySet
-from django.contrib.auth.models import *
+from django.contrib.auth.models import Permission
 from django.core import urlresolvers
 from django.template.defaultfilters import slugify
 
-
-from hkn.info.models import *
-from hkn import semester
+from hkn.event.constants import EVENT_TYPE
+from hkn.event.rsvp.constants import RSVP_TYPE
 from hkn.info.constants import MEMBER_TYPE
-import os, pickle
-from constants import RSVP_TYPE, EVENT_TYPE
+
+from hkn.info.models import Person
+from hkn import semester
+
 from string import atoi
+import os, pickle
 
 from nice_types.db import PickleField, QuerySetManager
-
-import request
 import request.utils
 
 class AllEventsManager(QuerySetManager):
@@ -197,7 +197,7 @@ class RSVP(models.Model):
     rsvp_data = PickleField()
 
     def is_block(self):
-        return self.event.rsvp_type == RSVP_TYPE.BLOCK
+        return self.event.rsvp_block()
 
     def get_block_descriptions(self):
         desc = []
@@ -244,19 +244,6 @@ class RSVP(models.Model):
     class Meta:
         unique_together = (("event", "person"),)
 
-def get_rsvp_metainfo(rsvp, request):
-    metainfo = {}
-
-    metainfo['title'] = "Confirm RSVP"
-    metainfo['description'] = "Confirm %s's RSVP for %s" % (rsvp.person.name, rsvp.event.name)
-    metainfo['links'] = (("rsvp", urlresolvers.reverse("rsvp-view", kwargs = {"rsvp_id" : rsvp.id})),
-                     ("person", urlresolvers.reverse("person-view", kwargs = {"person_id" : rsvp.person_id})),
-                     ("event", urlresolvers.reverse("event-view", kwargs = {"event_id" : rsvp.event_id})))
-    metainfo['confirmed'] = rsvp.vp_confirm 
-    return metainfo
-
-request.register(RSVP, get_rsvp_metainfo, confirmation_attr='vp_confirm')
-
 class RSVPData:
     def __init__(self, blocks=()):
         self.blocks = tuple(blocks)
@@ -265,3 +252,4 @@ class RSVPData:
         return "Blocks: " + str(self.blocks)
 
 from hkn.event import admin
+from hkn.event import requests
