@@ -6,7 +6,6 @@ from django.template import RequestContext
 from django.core import urlresolvers
 from django import forms
 
-from hkn.event.constants import RSVP_TYPE, EVENT_TYPE
 from ajaxlist import get_list_context, filter_objects
 from hkn import semester
 
