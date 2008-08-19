@@ -18,7 +18,10 @@ table_defaults = 	{
 					"checks" : "off",
 					"remove_item" : "off",
 				}
-			
+
+grid_defaults = 	{
+					"checks" : "off",
+				}
 
 class AjaxTableNode(template.Node):
 	def __init__(self, objects, header_template, row_template, options):
@@ -53,7 +56,41 @@ class AjaxTableNode(template.Node):
 		context['row_template'] = row_template
 		t = get_template("ajaxlist/_objects_list.html")
 		return  t.render(context)
+
+class AjaxGridNode(template.Node):
+	def __init__(self, objects, cell_template, width, options):
+		self.objects = Variable(objects)
+		self.cell_template = cell_template
+		self.width = width
+		
+		for k in grid_defaults:
+			if not options.get(k, None):
+				options[k] = grid_defaults[k]
+		self.options = options
 	
+	def __repr__(self):
+		return "<AjaxGridNode>"
+	
+	def render(self, context):
+		context.update(self.options)
+		try:
+			objects = self.objects.resolve(context)
+			context["list_objects"] = []
+			while(objects):
+				context["list_objects"].append(objects[:self.width])
+				objects = objects[self.width:]
+		except:
+			pass
+		
+		if self.cell_template[0] == '"':
+			cell_template = self.cell_template[1:-1]
+		else:
+			cell_template = context.get(self.cell_template, None)
+		
+		context['cell_template'] = cell_template
+		t = get_template("ajaxlist/_objects_grid.html")
+		return  t.render(context)
+		
 class AjaxSelectedNode(template.Node):
 	def __init__(self, value):
 		self.value = Variable(value)
@@ -220,6 +257,30 @@ def do_ajaxtable(parser, token):
 		raise TemplateSyntaxError("AjaxTable options have the format [key]=[value]")
 		
 	return AjaxTableNode(objects, header, row, options)
+	
+@register.tag(name="ajaxgrid")
+def do_ajaxgrid(parser, token):
+	bits = token.split_contents()
+	if len(bits) < 4:
+		raise TemplateSyntaxError("'ajaxgrid' should have at least 3 arguments")
+	
+	objects = bits[1] 
+	cell = bits[2] 
+	width = bits[3]
+	try:
+		width = int(width)
+	except:
+		raise TemplateSyntaxError("The width (3rd argument) must be a number")
+
+	options = {}
+	try:
+		for o in bits[4:]:
+			k, v = o.split('=')
+			options[k] = v
+	except:
+		raise TemplateSyntaxError("AjaxGrid options have the format [key]=[value]")
+		
+	return AjaxGridNode(objects, cell, width, options)
 	
 @register.tag(name="special_for")
 def do_special_for(parser, token):
