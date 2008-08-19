@@ -68,7 +68,6 @@ function unhighlight (className) {
 	if (!locked) {
 		deleteCssRule(tutoringcss, '.' + highlighted + 'cur');
 		deleteCssRule(tutoringcss, '.' + highlighted);
-		clearTutoringRules();
 		highlighted = false;
 	}
 }
