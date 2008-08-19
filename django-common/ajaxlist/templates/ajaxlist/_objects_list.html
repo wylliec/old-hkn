@@ -10,7 +10,7 @@
 <tr class="{% cycle 'even' 'odd' %}">
 {% include row_template %}
 {% ifequal checks "on" %}<td><input class="ajaxlist_check" type="checkbox" name="object" value="{{object.id}}" {% ajaxlist_selected object %} /></td>{% endifequal %}
-{% ifequal remove_item "on" %}<td><input type="image" class="ajaxlist_remove_item" src="/static/images/site/close.png" value="{{object.id}}" /></td>{% endifequal %}
+{% ifequal remove_item "on" %}<td><input type="image" class="ajaxlist_remove_item" src="/static/images/site/close.png" name="submit" value="Remove_item={{object.id}}" /></td>{% endifequal %}
 </tr>
 {% endfor %}
 </table>

@@ -26,8 +26,8 @@
 
 {% if problems %}
 <div>
-<a href={% url review-merge-problems %}>Merge Problems</a>
-<a href={% url review-merge-solutions %}>Merge Solutions</a>
+<a href={% url review-merge-problems %}>Merge Problems</a>, 
+<a href={% url review-merge-solutions %}>Merge Solutions</a>, 
 <a class="ajaxlist_clear_items" href="{% url ajaxlist-clear %}?redirect_to={{request.path}}&identifier=problems">Clear Selected Problems</a>
 </div>
 {% endif %}

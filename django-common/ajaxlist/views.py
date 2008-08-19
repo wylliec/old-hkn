@@ -35,10 +35,15 @@ def post(request):
 	if not action or not obj_name or obj_name == "none":
 		raise Http404
 	
+	action = action.split('=')
+	if action[0] == "Remove_item":
+		remove(request, "ajaxlist_%s" % obj_name, action[1])
+		return HttpResponseRedirect(request.POST.get("redirect_to", "/"))
+	
 	for value in request.POST.getlist("object"):
-		if action == "Add":
+		if action[0] == "Add":
 			add(request, "ajaxlist_%s" % obj_name, value)
-		if action == "Remove":
+		if action[0] == "Remove":
 			remove(request, "ajaxlist_%s" % obj_name, value)
 			
 	

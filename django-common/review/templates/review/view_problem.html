@@ -9,6 +9,12 @@
 {{block.super}}
 <script type="text/javascript">
 $(document).ready(function () {
+	$("#tag_field").hide();
+	$("#tag_submit").click( function () {
+		$("#tag_field").show();
+		$("#tag_submit").unbind('click');
+		return false;
+	});
 	$("span#rater select").change(function() {
 		$.post(location.href, { "rating" : this.options[this.selectedIndex].value}, 
 			function (data) {
@@ -34,6 +40,13 @@ $(document).ready(function () {
 			{% for t in problem.tag_list %}
 				<a href={% url review-tag tag_name=t %}>{{t}}</a>{% if not forloop.last %}, {% endif %}
 			{% endfor %}
+		
+			<form id="add_tag" method="POST">
+			<input id="tag_field" name="tag" />
+			<input id="tag_submit" type="image" src="/static/images/site/plus.png" />
+			<label for="tag_submit">Add Tag</label>
+			</form>
+			
 		</td>
 	</tr>
 	<tr><th>Difficulty:</th><td>{% with problem.difficulty as val %} {% include "review/_bar.html" %} {% endwith %}   </td></tr>
@@ -41,8 +54,9 @@ $(document).ready(function () {
 	<tr><th>Answer:</th><td><a href={{problem.get_answer_url}}>[link]</a></td></tr>
 </table>
 <br />
+<form method="POST">
 <span id="rater">Rate Difficulty: 
-<select>
+<select name="rating">
 	<option value="N/A" selected="yes">N/A</option>
 	<option value="1">1</option>
 	<option value="2"> 2</option>
@@ -55,7 +69,9 @@ $(document).ready(function () {
 	<option value="9"> 9</option>
 	<option value="10">10</option>
 </select>
+<noscript><input type="submit" value="Go" /></noscript>
 </span>
+</form>
 
 
 {% endblock %}

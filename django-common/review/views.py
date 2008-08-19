@@ -64,19 +64,30 @@ def view_tag(request, tag_name = None):
 	
 def view_problem(request, problem_id = None):
 	problem = get_object_or_404(Problem, pk = problem_id)
-	if request.is_ajax():
+	if "rating" in request.POST:
 		rating = request.POST.get("rating", None)
 		try:
 			rating = int(rating)
 		except:
-			raise Http404
+			rating = None
 		
 		if rating and rating >= 0 and rating <= 10:
 			problem.rate(rating)
 			problem.save()
+	
+	if "tag" in request.POST:
+		tag = request.POST.get("tag", None)
+		tag = tag.lower()
+		if tag.find('"') == -1 and tag.find(",") == -1 and tag != "":
+			tag = r'"' + tag + r'"'
+			Tag.objects.add_tag(problem, tag)
+			problem.tags = tagging.utils.edit_string_for_tags(Tag.objects.get_for_object(problem))
+			problem.save()
+			
+	if request.is_ajax():
 		return render_to_response("review/_bar.html", {'val':problem.difficulty}, context_instance=RequestContext(request))
-		
-	return render_to_response("review/view_problem.html", {'problem':problem}, context_instance=RequestContext(request))
+	else:
+		return render_to_response("review/view_problem.html", {'problem':problem}, context_instance=RequestContext(request))
 	
 def submit(request):
 	if request.method == 'POST':
