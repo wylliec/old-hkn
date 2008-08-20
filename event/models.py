@@ -13,6 +13,7 @@ from hkn import semester
 
 from string import atoi
 import os, pickle
+import datetime
 
 from nice_types.db import PickleField, QuerySetManager
 import request.utils
