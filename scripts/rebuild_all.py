@@ -30,6 +30,8 @@ import generate_privacy_settings; generate_privacy_settings.main()
 #echo 'Importing events from webcal'
 #./import_events_from_webcal.py
 call_command('loaddata', '../fixtures/events.json')
+print "Generating new event dates"
+import generate_new_event_dates; generate_new_event_dates.main()
 print 'Creating random RSVPs'
 import generate_random_rsvps; generate_random_rsvps.main()
 import generate_event_permissions; generate_event_permissions.main()
