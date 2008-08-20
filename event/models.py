@@ -25,6 +25,10 @@ class AllEventsManager(QuerySetManager):
     def filter_permissions(self, user):
         return self.get_query_set().filter_permissions(user)
 
+class PublicEventsManager(AllEventsManager):
+        def get_query_set(self):
+                return super(PublicEventsManager, self).get_query_set().filter(view_permission__codename = "hkn_everyone")
+
 class FutureEventsManager(AllEventsManager):
         def get_query_set(self):
                 start_time = datetime.date.today() - datetime.timedelta(days = 1)
@@ -48,6 +52,7 @@ class SemesterEventsManager(AllEventsManager):
 
 class Event(models.Model):
     objects = AllEventsManager()
+    public = PublicEventsManager()
     future = FutureEventsManager()
     past = PastEventsManager()
     semester = SemesterEventsManager()
