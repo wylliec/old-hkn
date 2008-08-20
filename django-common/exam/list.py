@@ -5,10 +5,11 @@ from django.core import urlresolvers
 from django.contrib.auth.decorators import login_required
 
 from ajaxlist import get_list_context, filter_objects
+from ajaxlist.helpers import get_ajaxinfo, render_ajaxlist_response
 from course.models import *
 from string import atoi
 
-from models import *
+from exam.models import *
 
 
 try:
@@ -17,52 +18,28 @@ except:
     EXAM_LOGIN_REQUIRED = True
 
 
-def get_category_string(courses = None, exam_types = None, exam_numbers = None):
-    courses_string = types_string = numbers_string = ""
-    
-    if courses:
-        courses = [c for c in courses if c is not None]
-        if len(courses) > 0:
-            courses_string = "course:" + "|course:".join(courses)
 
-    if exam_types:
-        exam_types = [c for c in exam_types if c is not None]    
-        if len(exam_types) > 0:
-            types_string = "type:" + "|type:".join(exam_types)
-            
-    if exam_numbers:
-        exam_numbers = [c for c in exam_numbers if c is not None]    
-        if len(exam_numbers) > 0:
-            numbers_string = "number:" + "|number:".join(exam_numbers)
-
-    return "|".join([st for st in [courses_string, types_string, numbers_string] if len(st) > 0])           
-
-CATEGORY_FILTERS = {"course" : lambda objects, value: objects.query_course(value),
-                    "instructor" : lambda objects, value: objects.query_instructor(value),
-                    "type" : lambda objects, value: objects.filter(exam_type__iexact = value),
-                    "number" : lambda objects, value: objects.filter(number = value),
-                    "after": lambda objects, value: objects.after(value),
+_EXAM_FILTER_FUNCTIONS = {
+                    "exam_course" : lambda objects, value: objects.query_course(value),
+                    "exam_instructor" : lambda objects, value: objects.query_instructor(value),
+                    "exam_type" : lambda objects, value: objects.filter(exam_type__iexact = value),
+                    "exam_number" : lambda objects, value: objects.filter(number = value),
+                    "exam_after": lambda objects, value: objects.after(value),
                     }
 
-def get_exams_for_categories(categories, objects = None):
-    def filter_exams_with_function(objects, values, object_filter):
-        return_objects = Exam.objects.none()
-        for value in values:
-            return_objects = return_objects | object_filter(objects, value)
-        return return_objects
-
-    if len(categories) == 0:
-        return Exam.objects.none()
+def filter_exams(objects, filters):
+    if len(filters) == 0:
+        return Exam.published.none()
     
-    if objects == None:
-        objects = Exam.objects.all()
-        
-    
-    for category_type in CATEGORY_FILTERS.keys():
-        values = [c[len(category_type)+1:] for c in categories if c.startswith(category_type)]
-        if len(values) == 0:
+    for filter_type in _EXAM_FILTER_FUNCTIONS.keys():
+        if not filters.has_key(filter_type):
             continue
-        objects = filter_exams_with_function(objects, values, CATEGORY_FILTERS[category_type])    
+        values = [filters[filter_type]]
+        filter_function = _EXAM_FILTER_FUNCTIONS[filter_type]
+        filtered_objects = Exam.published.none()
+        for value in values:
+            filtered_objects = filtered_objects | filter_function(objects, value)
+        objects = filtered_objects
     return objects
     
 EXAM_TYPE_NUM = {EXAM_TYPE.FINAL: 20, EXAM_TYPE.MIDTERM: 15, EXAM_TYPE.REVIEW: 10, EXAM_TYPE.QUIZ: 5}
@@ -84,45 +61,40 @@ def regroup_exams(course_id, exams):
     keys.sort()
     return [(describe_key(k), regroup_dict[k]) for k in keys]
 
-def get_list_exams_context(request, category = None):
-    list_context = get_list_context(request, default_sort = "-exam_date", default_max = "100", default_category=category)
-    exams = get_exams_for_categories(list_context["categories"])
+def get_exams_dict(filters, view_unpublished=False):
+    all_exams = Exam.published.all()
+    if view_unpublished:
+        all_exams = Exam.all.all()
+    
+    exams = filter_exams(all_exams, filters)
     exams_dict = {}
 
     if len(exams) > 0:
         exams_courses = exams.select_related('course', 'klass').order_by('id').values('course').distinct()[:5]
 
         course_ids = [c["course"] for c in exams_courses]
-        exams = get_exams_for_categories(list_context["categories"], Exam.objects.filter(course__in = course_ids)).order_by('-exam_date')
+        exams = filter_exams(all_exams.filter(course__in = course_ids), filters).order_by('-exam_date')
     
         for course_id in course_ids:
             c = Course.objects.get(pk=course_id)
             exams_dict[c] = regroup_exams(course_id, exams)
     
-    list_context["exams"] = exams
-    list_context["exams_dict"] = exams_dict
-    
-    for category_type in CATEGORY_FILTERS.keys():
-        values = [c[len(category_type)+1:] for c in list_context["categories"] if c.startswith(category_type)]
-        if len(values) == 0:
-            continue
-        list_context[category_type + "_filter"] = values[0]    
-
-
-    return list_context
-
+    return exams_dict
 
 def list_exams(request):
-    category = get_category_string(courses = [request.GET.get('course', None)], exam_types = [request.GET.get('type', None)])
-    list_context = get_list_exams_context(request, category)
-    list_context["objects_url"] = urlresolvers.reverse("exam.list.list_exams_ajax")
-    list_context["parent_template"] = "exam/search.html"
-    list_context["view_template"] = "exam/ajax/_list_exams.html"
-    return render_to_response("ajaxlist/ajaxview.html", list_context, context_instance=RequestContext(request))
+    d = get_ajaxinfo(request.GET)
+    
+    view_unpublished = False
+    if request.user.has_perm('exam.add_exam'):
+        view_unpublished = True
+    d['view_unpublished'] = view_unpublished
+    
+    exam_filters = dict((k, v) for k, v in request.GET.items() if k.startswith("exam_") and len(v) > 0)    
+    d['exams_dict'] = get_exams_dict(exam_filters, view_unpublished=view_unpublished)
+    d.update(exam_filters)
 
-def list_exams_ajax(request):
-    list_context = get_list_exams_context(request)
-    return render_to_response("exam/ajax/_list_exams.html", list_context, context_instance = RequestContext(request))
+    return render_ajaxlist_response(request.is_ajax(), "exam/list_exams.html", d, context_instance=RequestContext(request))
+
 
 if EXAM_LOGIN_REQUIRED:
     list_exams_ajax = login_required(list_exams_ajax)

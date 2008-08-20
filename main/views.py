@@ -27,7 +27,7 @@ def main(request):
     d['canTutor'] = can_tutor
     
     xfa = JQueryAutoComplete(source=reverse('course-course-autocomplete'))
-    d['exam_files_autocomplete']= xfa.render(name="course")
+    d['exam_files_autocomplete']= xfa.render(name="exam_course")
     
     d["lorem"] = """Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam vel enim at lacus placerat fringilla. Integer lectus. Sed ultricies venenatis eros. Curabitur id sem. Maecenas augue est, imperdiet a, interdum at, tempus a, neque. Vivamus condimentum euismod nibh. Sed ornare malesuada enim. Nulla ligula est, adipiscing posuere, tempor eget, posuere sed, nunc. Nulla condimentum. Integer rutrum iaculis ante. Nam placerat. Ut convallis justo quis elit. Praesent orci tellus, porta id, aliquam sit amet, luctus nec, nisi.
 

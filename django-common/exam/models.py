@@ -58,7 +58,7 @@ def get_semester_start(sem):
 class Exam(db.models.Model):
     """ Models an exam. """
     all = ExamManager()    
-    objects = published = PublishedExamManager()
+    published = PublishedExamManager()
     unpublished = UnpublishedExamManager()
     
     id = db.models.AutoField(primary_key = True)
@@ -123,6 +123,7 @@ class Exam(db.models.Model):
     class QuerySet(QuerySet):
         def query_course(self, query):              
             courses = Course.objects.ft_query(query)
+            print courses
             return self.filter(course__in = courses)
         
         def query_instructor(self, query):

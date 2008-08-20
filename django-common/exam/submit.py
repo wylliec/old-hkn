@@ -12,9 +12,6 @@ try:
     from settings import EXAM_LOGIN_REQUIRED
 except:
     EXAM_LOGIN_REQUIRED = True
-    
-def view(request, exam_id):
-    pass
 
 def exam_from_form_instance(form, request):
     cd = form.cleaned_data    
@@ -38,7 +35,6 @@ def exam_from_form_instance(form, request):
     return e
 
 def submit(request):
-    #return render_to_response("exam/submit.html", context_instance=RequestContext(request))
     examForm = ExamForm()  
     if request.POST:
         form = ExamForm(request.POST, request.FILES)

@@ -1,21 +1,57 @@
 {% extends "exam/exam.html" %}
 {% load ajaxtable %}
 
-{% block js %}
-{{block.super}}
-{% ajaxlist_js %}
+{% block css %}
+{{ block.super }}
+<link href="{{STATIC_PREFIX}}exam/exam.css" rel="stylesheet"/>
 {% endblock %}
 
-{% block subtitle %}Exam Files - List Exams{% endblock %}
+{% block js %}
+{{ block.super }}
+{% ajaxlist_js %}
+<script type="text/javascript" src="{{STATIC_PREFIX}}exam/exam.js"></script>
+{% endblock %}
 
-{% block examcontent %}
+{% block subtitle %} Exam Files - Search{% endblock %}
 
+{% block content %}
+{% include "exam/_exam_filters.html" %}
+{% if view_unpublished %}
+	<h1 class="warning">Viewing unpublished exams</h1>
+{% endif %}
 {% ajaxwrapper exams %}
-	{% if exams %}
-	{% control pager %}
-	{% ajaxtable exams "exam/_header.html" "exam/_row.html" %}
-	{% control pager %}
-	{% endif %}
+        {% for course_item in exams_dict.items %}
+            <h1 class="clickhide"> {{ course_item.0.short_name }}</h1>
+            <div class="exam_course" style="margin-left: 7px">
+            {% for regrouped_item in course_item.1 %}
+                <h3 class="clickhide" style="margin-bottom: 0">{{ regrouped_item.0 }}</h3>
+                <table class="ajaxtable">
+{% comment %}                
+                {% if forloop.first %}
+                    <tr>
+                        <th>Semester</th>
+                        <th>Instructor</th>
+                        <th>Exam</th>
+                        <th></th>
+                    </tr>
+                {% endif %}
+{% endcomment %}                
+                {% for exam in regrouped_item.1 %}
+                    <tr class="exam {% cycle 'even' 'odd' %}">
+                        <td class="semester">{{ exam.klass.pretty_semester }}</td>
+                        <td class="instructor"><a href="javascript:void(0)" onclick="setInstructor('{{ exam.klass.instructor_names }}');"> {{ exam.klass.instructor_names|title }}</a></td>
+                        <td class="examfile"><a href="{ exam.file.url }">{{ exam.get_exam_description }}</a></td>
+                        <td class="extension">{{ exam.get_exam_format }}</td> 
+                    </tr>
+                {% endfor %}
+                </table>
+            {% endfor %}
+            <br/>
+            </div>
+        {% endfor %}
+<script type="text/javascript">
+    $(document).ready( register_exam_listeners );
+</script>        
 {% endajaxwrapper %}
 
-{% endblock %}
+{% endblock %}	
