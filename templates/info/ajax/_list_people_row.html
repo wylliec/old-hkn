@@ -6,8 +6,7 @@
         {% endif %}
 	<td>
 		<a href="{% url person-view object.id %}">{{ object.name }}</a>
-		<div class="small"><a href="{% url hkn.event.rsvp.list.list_for_person object.id %}">see rsvps</a></div> 
+	    <div class="small">{{ object.get_current_status }}</div>
 	</td>
-	<td>{{ object.get_current_status }}</td>
 	<td>{{ object.restricted.email }}</td>
 	<td>{{ object.restricted.phone }}</td>

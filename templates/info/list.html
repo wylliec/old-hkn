@@ -16,6 +16,7 @@
 {% block content %}
 {% ajaxwrapper people %}
 {% if people %}
+    {% control spinner %}
 	{% control pager %}
 	{% ajaxtable people "info/ajax/_list_people_header.html" "info/ajax/_list_people_row.html" %}
 	{% control pager %}
