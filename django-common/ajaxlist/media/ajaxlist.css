@@ -1,0 +1,51 @@
+table.ajaxtable {
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-size: small;
+  width: 100%;
+}
+
+table.ajaxtable .odd {
+    background: #EDF3FE;
+}
+
+table.ajaxtable .even {
+    background: #dce2ed;
+}
+
+table.ajaxtable th, table.ajaxtable td {
+  padding: 4px;
+  vertical-align: top;
+}
+
+table.ajaxtable td {
+  border: 1px silver solid;
+}
+
+table.ajaxtable th {
+  font-size: medium;
+  white-space: nowrap;
+}
+
+/*
+table.ajaxtable {
+  margin: 1em 2% 1em 2%;
+  background: whitesmoke;
+  border-collapse: collapse;
+  font-size: small;
+  width: 96%;
+}
+table.ajaxtable th, table.ajaxtable td {
+  border: 1px silver solid;
+  padding: 0.2em;
+}
+table.ajaxtable th {
+  background: gainsboro;
+  font-size: medium;
+  text-align: left;
+}
+table.ajaxtable caption {
+  margin-left: inherit;
+  margin-right: inherit;
+}
+*/

@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from hkn.settings import SERVER_ROOT, IMAGES_PATH, MEDIA_ROOT, MEDIA_URL
+from hkn.settings import SERVER_ROOT, IMAGES_PATH, MEDIA_ROOT, MEDIA_URL, DJANGO_COMMON
 from hkn.main.admin import admin_site
 
 urlpatterns = patterns('',
@@ -29,12 +29,11 @@ urlpatterns = patterns('',
 
      (r'^admin/(.*)', admin_site.root),
 
-
     # default static
+    (r'^static/ajaxlist/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + '/ajaxlist/media'}),
+    (r'^static/exam/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + '/exam/media'}),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + '/static'}),
 
     # media
     (r'^files/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
-
 )
-    

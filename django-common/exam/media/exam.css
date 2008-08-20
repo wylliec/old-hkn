@@ -1,0 +1,50 @@
+div.filters {
+    float: left;
+    padding: 5px;
+    width: 100%;
+}
+
+
+div.column {
+    float: left;
+    width: 150px;
+    padding: 7px 30px 15px 0px;
+}
+
+div.column div {
+    padding-bottom: 0px;
+}
+
+
+div.column div label {
+    display: block;
+    padding-bottom: 2px;
+    padding-top: 4px;
+}
+
+hr.clear {
+    display: block;
+    clear: left;
+    margin: -0.5em 0;
+    visibility: hidden;
+}
+
+tr.exam .semester {
+    width: 20%;
+}
+
+tr.exam .instructor{
+    width: 40%;
+}
+
+tr.exam .examfile {
+    width: 35%;
+}
+
+tr.exam .extension {
+    width: 5%;
+}
+
+div.small {
+    font-size: x-small;
+}

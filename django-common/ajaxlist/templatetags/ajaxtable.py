@@ -4,6 +4,8 @@ from django.template.loader_tags import IncludeNode
 from django.core.urlresolvers import reverse
 from django import template
 
+import ajaxlist.settings
+
 register = template.Library()
 
 control_templates = { 	
@@ -117,7 +119,7 @@ class AjaxSelectedNode(template.Node):
 		
 class AjaxJSNode(template.Node):
 	def __init__(self):
-		self.js_path = "/static/js/ajaxlist.js"
+		self.js_path = "%s/js/ajaxlist.js" % ajaxlist.settings.AJAXLIST_MEDIA_URL
 		
 	def __repr__(self):
 		return "<AjaxJSNode: %s>" % self.js_path
