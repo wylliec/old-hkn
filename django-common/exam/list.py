@@ -97,5 +97,4 @@ def list_exams(request):
 
 
 if EXAM_LOGIN_REQUIRED:
-    list_exams_ajax = login_required(list_exams_ajax)
     list_exams = login_required(list_exams)
