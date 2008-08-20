@@ -166,7 +166,7 @@ def get_courses_tutored(can_tutor):
     sortedCanTutor = [] #list of {"dept":?, "courses":?}
     for x in canTutor:
         canTutor[x].sort(courseSort)
-        sortedCanTutor.append({"dept":x, "shortdept": x.my_nice_abbr(), "courses":canTutor[x]})
+        sortedCanTutor.append({"dept":x, "shortdept": x.nice_abbr, "courses":canTutor[x]})
     
     return sortedCanTutor
 
