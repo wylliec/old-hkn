@@ -8,11 +8,11 @@
 <link href="{{STATIC_PREFIX}}css/request.css" type="text/css" rel="stylesheet"/>
 {% endblock %}
 
-
 {% block js %}
 {{ block.super }}
 {% ajaxlist_js %}
-<script language="javascript">
+<script type="text/javascript" src="{{STATIC_PREFIX}}js/request.js"></script>
+<script type="text/javascript">
 ajaxlist_checkbox_post_address = "{% url request-ajax-confirm %}";
 </script>
 {% endblock %}

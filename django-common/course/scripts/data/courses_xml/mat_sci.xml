@@ -1,0 +1,165 @@
+<?xml version="1.0" ?>
+<department abbr="MAT SCI" name="Materials Science">
+    <course name="Freshman Seminar" number="24" units="1">
+        The Freshman Seminar Program has been designed to provide new students with the opportunity to explore an intellectual topic with a faculty member in a small seminar setting. Freshman seminars are offered in all campus departments, and topics vary from department to department and semester to semester. Enrollment limited to 20 freshmen.
+    </course>
+    <course name="Sophomore Seminar" number="84" units="1,2">
+        Sophomore seminars are small interactive courses offered by faculty members in departments all across the campus. Sophomore seminars offer opportunity for close, regular intellectual contact between faculty members and students in the crucial second year. The topics vary from department to department and semester to semester. Enrollment limited to 15 sophomores.
+    </course>
+    <course name="Bonding, Crystallography, and Crystal Defects" number="102" units="3">
+        Bonding in solids; classification of metals, semiconductors, and insulators; crystal systems; point, line, and planar defects in crystals; examples of crystallographic and defect analysis in engineering materials; relationship to physical and mechanical properties.
+    </course>
+    <course name="Phase Transformations and Kinetics" number="103" units="3">
+        The nature, mechanisms, and kinetics of phase transformations and microstructural changes in the solid state. Atom diffusion in solids. Phase transformations through the nucleation and growth of new matrix or precipitate phases. Martensitic transformations, spinodal decomposition. The use of phase transformations to control microstructure.
+    </course>
+    <course name="Materials Characterization" number="104" units="4">
+        Physical and chemical characterization of materials: Diffraction, imaging, and spectroscopy using optical, electron, and X-ray methods for bulk and surface analysis. Measurement of mechanical and physical properties. Project laboratory focusing on mechanical, chemical, electrical, and magnetic properties of materials, and materials characterization. Field trips.
+    </course>
+    <course name="Properties of Electronic Materials" number="111" units="4">
+        Introduction to the physical principles underlying the electric properties of modern solids with emphasis on semiconductors; control of defects and impurities through physical purification, bulk and thin film crystal growth and doping processes, materials basis of electronic and optoelectronic devices (diodes, transistors, semiconductor lasers) and optical fibers; properties of metal and oxide superconductors and their applications.
+    </course>
+    <course name="Corrosion (Chemical Properties)" number="112" units="3">
+        Electrochemical theory of corrosion. Mechanisms and rates in relation to physiochemical and metallurgical factors. Stress corrosion and mechanical influences on corrosion. Corrosion protection by design, inhibition, cathodic protection, and coatings.
+    </course>
+    <course name="Mechanical Behavior of Engineering Materials" number="C113" units="3">
+        This course covers elastic and plastic deformation under static and dynamic loads. Prediction and prevention of failure by yielding, fracture, fatigue, wear, and environmental factors are addressed. Design issues pertaining to materials selection for load-bearing applications are discussed. Case studies of engineering failures are presented. Topics include engineering materials, structure-property relationships, materials selection for design, mechanical behavior of polymers and design of plastic components, complex states of stress and strain, elastic deformation and multiaxial loading, plastic deformation and yield criteria, dislocation plasticity and strengthening mechanisms, creep, effects of stress concentrations, fracture, fatigue, and contact stresses. Also listed as Mechanical Engineering C124.
+    </course>
+    <course name="Properties of Dielectric and Magnetic Materials" number="117" units="3">
+        Introduction to the physical principles underlying the dielectric and magnetic properties of solids. Processing-microstructure-property relationships of dielectric materials, including piezoelectric, pryoelectric, and ferroelectric oxides, and of magnetic materials, including hard- and soft ferromagnets, ferrites and magneto-optic and -resistive materials. The course also covers the properties of grain boundary devices (including varistors) as well as ion-conducting and mixed conducting materials for applications in various devices such as sensors, fuel cells, and electric batteries.
+    </course>
+    <course name="Biological Performance of Materials" number="C118" units="4">
+        This course is intended to give students the opportunity to expand their knowledge of topics related to biomedical materials selection and design. Structure-property relationships of biomedical materials and their interaction with biological systems will be addressed. Applications of the concepts developed include blood-materials compatibility, biomimetic materials, hard and soft tissue-materials interactions, drug delivery, tissue engineering, and biotechnology. Also listed as Bioengineering C118.
+    </course>
+    <course name="Materials Production" number="120" units="3">
+        Significance of materials. Occurrence of raw materials. Scientific and engineering principles relevant to materials production and processing. Methods for production of major materials.
+    </course>
+    <course name="Metals Processing" number="121" units="3">
+        The principles of metals processing with emphasis on the use of processing to establish microstructures which impart desirable engineering properties. The techniques discussed include solidification, thermal and mechanical processing, powder processing, welding and joining, and surface treatments.
+    </course>
+    <course name="Ceramic Processing" number="122" units="3">
+        Powder fabrication by grinding and chemical methods, rheological behavior of powder-fluid suspensions, forming methods, drying, sintering, and grain growth. Relation of processing steps to microstructure development.
+    </course>
+    <course name="Semiconductor Processing" number="123" units="3">
+        Semiconductor purification and crystal growth techniques; impurity doping by diffusion, ion implantation and alloy regrowth; contact formation, mechanical and chemical processing; semiconductor analysis.
+    </course>
+    <course name="Thin-Film Materials Science" number="125" units="3">
+        Deposition, processing, and characterization of thin films and their technological applications. Physical and chemical vapor deposition methods. Thin-film nucleation and growth. Thermal and ion processing. Microstructural development in epitaxial, polycrystalline, and amorphous films. Thin-film characterization techniques. Applications in information storage, integrated circuits, and optoelectronic devices. Laboratory demonstrations.
+    </course>
+    <course name="Materials in Energy Technologies" number="126" units="4">
+        In many, if not all, technologies, it is materials that play a crucial, enabling role. This course examines potentially sustainable technologies, and the materials properties that enable them. The science at the basis of selected energy technologies are examined and considered in case studies.
+    </course>
+    <course name="Experimental Materials Science and Design" number="130" units="3">
+        This course provides a culminating experience for students approaching completion of the materials science and engineering curriculum. Laboratory experiments are undertaken in a variety of areas from the investigations on semiconductor materials to corrosion science and elucidate the relationships among structure, processing, properties, and performance. The principles of materials selection in engineering design are reviewed.
+    </course>
+    <course name="Introduction to Materials Chemistry" number="C150" units="3">
+        The application of basic chemical principles to problems in materials discovery, design, and characterization will be discussed. Topics covered will include inorganic solids, nanoscale materials, polymers, and biological materials, with specific focus on the ways in which atomic-level interactions dictate the bulk properties of matter. Also listed as Chemistry C150.
+    </course>
+    <course name="Polymeric Materials" number="151" units="3">
+        This course is designed for upper division undergraduate and graduate students to gain a fundamental understanding of the science of polymeric materials. Beginning with a treatment of ideal polymeric chain conformations, it develops the thermodynamics of polmyer blends and solutions, the modeling of polymer networks and gelations, the dynamics of polymer chains, and the morphologies of thin films and other dimensionally-restricted structures relevant to nanotechnology.
+    </course>
+    <course name="Honors Undergraduate Research" number="H194" units="1-4">
+        Students who have completed a satisfactory number of advanced courses with a grade-point average of 3.3 or higher may pursue original research under the direction of one of the members of the staff. A maximum of 3 units of H194 may be used to fulfill technical elective requirements in the Materials Science and Engineering program or double majors (unlike 198 or 199, which do not satisfy technical elective requirements). Final report required.
+    </course>
+    <course name="Special Topics for Advanced Undergraduates" number="195" units="1">
+        Group study of special topics in materials science and engineering. Selection of topics for further study of underlying concepts and relevent literature, in consultion with appropriate faculty members.
+    </course>
+    <course name="Directed Group Studies for Advanced Undergraduates" number="198" units="1-4">
+        Group studies of selected topics.
+    </course>
+    <course name="Supervised Independent Study" number="199" units="1-4">
+        Supervised independent study. Enrollment restrictions apply; see the Introduction to Courses and Curricula section of this catalog.
+    </course>
+    <course name="Survey of Materials Science" number="200A" units="4">
+        A survey of Materials Science at the beginning graduate level, intended for those who did not major in the field as undergraduates. Focus on the nature of microstructure and its manipulation and control to determine engineering properties. Reviews bonding, structure and microstructure, the chemical, electromagnetic and mechanical properties of materials, and introduces the student to microstructural engineering.
+    </course>
+    <course name="Thermodynamics and Phase Transformations in Solids" number="201A" units="4">
+        The laws of thermodynamics, fundamental equations for multicomponent elastic solids and electromagnetic media, equilibrium criteria. Application to solution thermodynamics, point defects in solids, phase diagrams. Phase transitions, Landau rule, symmetry rules. Interfaces, nucleation theory, elastic effects. Kinetics: diffusion of heat, mass and charge; coupled flows.
+    </course>
+    <course name="Thermodynamics and Phase Transformations in Solids" number="201B" units="4">
+        The laws of thermodynamics, fundamental equations for multicomponent elastic solids and electromagnetic media, equilibrium criteria. Application to solution thermodynamics, point defects in solids, phase diagrams. Phase transitions, Landau rule, symmetry rules. Interfaces, nucleation theory, elastic effects. Kinetics: diffusion of heat, mass and charge; coupled flows.
+    </course>
+    <course name="Crystal Structure and Bonding" number="202" units="3">
+        Regular, irregular arrays of points, spheres; lattices, direct, reciprocal; crystallographic point and space groups; atomic structure; bonding in molecules; bonding in solids; ionic (Pauling rules), covalent, metallic bonding; structure of elements, compounds, minerals, polymers.
+    </course>
+    <course name="Theory of Electron Microscopy and X-Ray Diffraction" number="204" units="3">
+        Basic principles of techniques used in the characterization of engineering materials by electron microscopy, diffraction, and spectroscopy; emphasis on detailed analysis of defects responsible for materials properties. Modern electrical, optical and particle beam techniques for characterization of bulk single crystals and their crystalline and amorphous layers. Examples Hall effect, Deep Level Transient Spectroscopy, IR-Spectroscopy.
+    </course>
+    <course name="Defects in Solids" number="205" units="3">
+        Many properties of solid state materials are determined by lattice defects. This course treats in detail the structure of crystal defects, defect formation and annihilation processes, and the influence of lattice defects on the physical and optical properties of crystalline materials.
+    </course>
+    <course name="Mechanics of Solids" number="C211" units="3">
+        Mechanical response of materials: Simple tension in elastic, plastic and viscoelastic members. Continuum mechanics: The stress and strain tensors, equilibrium, compatibility. Three-dimensional elastic, plastic and viscoelastic problems. Thermal, transformation, and dealloying stresses. Applications: Plane problems, stress concentrations at defects, metal forming problems. Also listed as Civil and Environmental Engineering C231.
+    </course>
+    <course name="Deformation and Fracture  of Engineering Materials" number="C212" units="4">
+        This course covers deformation and fracture behavior of engineering materials for both monotonic and cyclic loading conditions. Also listed as Mechanical Engineering C225.
+    </course>
+    <course name="Environmental Effects on Materials Properties and Behavior" number="213" units="3">
+        Review of electrochemical aspects of corrosion; pitting and crevice corrosion; active/passive transition; fracture mechanics approach to corrosion; stress corrosion cracking; hydrogen embrittlement; liquid metal embrittlement; corrosion fatigue; testing methods.
+    </course>
+    <course name="Micromechanics" number="C214" units="3">
+        Basic theories, analytical techniques, and mathematical foundations of micromechanics. It includes 1. physical micromechanics, such as mathematical theory of dislocation, and cohesive fracture models; 2. micro-elasticity that includes Eshelby's eigenstrain theory, comparison variational principles, and micro-crack/micro-cavity based damage theory; 3. theoretical composite material that includes the main methodologies in evaluating overall material properties; 4. meso-plasticity that includes meso-damage theory, and the crystal plasticity; 5. homogenization theory for materials with periodic structures. Also listed as Civil and Environmental Engineering C236.
+    </course>
+    <course name="Computational Materials Science" number="215" units="3">
+        Introduction to computational materials science. Development of atomic scale simulations for materials science applications. Application of kinetic Monte Carlo, molecular dynamics, and total energy techniques to the modeling of surface diffusion processes, elastic constants, ideal shear strengths, and defect properties. Introduction to simple numerical methods for solving coupled differential equations and for studying correlations.
+    </course>
+    <course name="Macromolecular Science in Biotechnology and Medicine" number="C216" units="4">
+        Overview of the problems associated with the selection and function of polymers used in biotechnology and medicine. Principles of polymer science, polymer synthesis, and structure-property-performance relationships of polymers. Particular emphasis is placed on the performance of polymers in biological environments. Interactions between macromolecular and biological systems for therapy and diagnosis. Specific applications will include drug delivery, gene therapy, tissue engineering, and surface engineering. Also listed as Bioengineering C216.
+    </course>
+    <course name="Rate Phenomena in the Synthesis and Processing of Materials" number="220" units="3">
+        Fluid mechanics, heat and mass transport, and chemical reaction kinetics relevant to the synthesis and processing of metals, ceramics, electronic materials and composites.
+    </course>
+    <course name="Fuel Cells, Batteries, and Chemical Sensors: Principles, Processes, Materials, and Technology" number="221" units="3">
+        We first consider the principles and electrode processes of electrochemical devices, chiefly fuel cells, but also batteries and chemical sensors. Then we discuss various transport processes in liquid, polymeric, and solid electroyles. AC and DC analytical methods are described. We discuss various fuel cell types, the effects of fuel type on efficiency, and the choices of materials. Finally, we discuss issues of fabrication systems. Time permitting, we may include some laboratory experiments.
+    </course>
+    <course name="Semiconductor Materials" number="223" units="3">
+        Semiconductor purification and crystal growth techniques. Doping, radiation damage, and annealing. Metal-semiconductor interfaces and reactions. Interaction between defects and impurities during processing of devices. Major electronic and optical methods for the analysis of semiconductors.
+    </course>
+    <course name="Magnetism and Magnetic Materials" number="224" units="3">
+        This course covers the fundamentals of magnetism and magnetic materials in the first two-thirds of the class. Topics include magnetic moments in classical versus quantum mechanical pictures, diamagnetism, paramagnetism, crystal field environments, dipolar and exchange interactions, ferromagnetism, antiferromagnetism, magnetic domains, magnetic anisotropy, and magnetostriction. Magnetic materials covered include transition metals, their alloys and oxides, rare earths and their oxides, organic and molecular magnets. Throughout the course, experimental techniques in magnetic characterization will be discussed. The second part of the course will focus on particular magnetic materials and devices that are of technological interest (e.g., magnetoresistive and magneto-optical materials and devices). Additional topics include biomagnetism and spin glasses.
+    </course>
+    <course name="Thin-Film Science and Technology" number="C225" units="3">
+        Thin-film nucleation and growth, microstructural evolution and reactions. Comparison of thin-film deposition techniques. Characterization techniques. Processing of thin films by ion implantation and rapid annealing. Processing-microstructure-property-performance relationships in the context of applications in information storage, ICs, micro-electromechanical systems and optoelectronics. Also listed as Applied Science and Technology C225.
+    </course>
+    <course name="Photovoltaic Materials; Modern Technologies in the Context of a Growing Renewable Energy Market" number="C226" units="3">
+        This technical course focuses on the fundamentals of photovoltaic energy conversion with respect to the physical principals of operation and design of efficient semiconductor solar cell devices. This course aims to equip students with the concepts and analytical skills necessary to assess the utility and viability of various modern photovoltaic technologies in the context of a growing global renewable energy market. Also listed as Energy and Resources Group C226.
+    </course>
+    <course name="Solution Processing of Materials, Devices, and Nanostructures" number="227" units="3">
+        Applications-oriented treatment of the thermodynamic and kinetic principles underpinning the processing and behavior of advanced materials, devices, and nanostructures in solutions. Principles will be exemplified with model systems, with discussion of other applications. Case studies will examine how overall processes invoke combinations of these principles and consider alternative novel strategies.
+    </course>
+    <course name="Electron Microscopy Laboratory" number="241" units="2">
+        Basic techniques and operations of transmission, and scanning, electron microscopy; x-ray microanalysis, energy loss spectroscopy; specimen preparation, interpretation of data; individual projects in materials science.
+    </course>
+    <course name="Advanced Characterization Techniques" number="242" units="3">
+        Advanced electrical, optical, magnetic and ion beam characterization techniques including deep level transient spectroscopy. Photo-luminescence, electron paramagnetic resonance, and Rutherford backscattering, are used to characterize crystalline materials (with emphasis on semi-conductors).
+    </course>
+    <course name="Polymer Surfaces and Interfaces" number="251" units="3">
+        The course is designed for graduate students to gain a fundamental understanding of the surface and interfacial science of polymeric materials. Beginning with a brief introduction of the principles governing polymer phase behavior in bulk, it develops the thermodynamics of polymers in thin films and at interfaces, the characterization techniques to assess polymer behavior in thin films and at interfaces, and the morphologies of polymer thin films and other dimensionally-restricted structures relevant to nanotechnology and biotechnology. Field trips to national user facilities, laboratory demonstrations and hands-on experiments, and guest lectures will augment the courses lectures.
+    </course>
+    <course name="Surface Properties of Materials" number="260" units="3">
+        Thermodynamics of surfaces and phase boundaries, surface tension of solids and liquids, surface activity, adsorption, phase equilibria, and contact angles, electrochemical double layers at interfaces, theory, and applications.
+    </course>
+    <course name="Introduction to Nano-Science and Engineering" number="C261" units="3">
+        A three-module introduction to the fundamental topics of Nano-Science and Engineering (NSE) theory and research within chemistry, physics, biology, and engineering. This course includes quantum and solid-state physics; chemical synthesis, growth fabrication, and characterization techniques; structures and properties of semiconductors, polymer, and biomedical materials on nanoscales; and devices based on nanostructures. Students must take this course to satisfy the NSE Designated Emphasis core requirement. Also listed as Nanoscale Science and Engineering C201 and Physics C201.
+    </course>
+    <course name="Special Topics in Materials Science" number="290A" units="3">
+        Lectures and appropriate assignments on fundatmental or applied topics of current interest in materials science and engineering.
+    </course>
+    <course name="Special Problems in Materials Science" number="290M" units="3">
+        Selected topics in the thermodynamic, kinetic or phase transformation behavior of solid materials. Topics will generally be selected based on student interest in Mat Sci 201A-201B. The course provides an opportunity to explore subjects of particular interest in greater depth.
+    </course>
+    <course name="Group Studies, Seminars, or Group Research" number="298" units="1-8">
+        Advanced study in various subjects through special seminars on topics to be selected each year, informal group studies of special problems, group participation in comprehensive design problems or group research on complete problems for analysis and experimentation.
+    </course>
+    <course name="Individual Study or Research" number="299" units="1-12">
+        Individual investigation of advanced materials science problems.
+    </course>
+    <course name="Supervised Teaching of Materials Science and Engineering" number="300" units="1,2">
+        Disucssion and research of pedagogical issues. Supervised practice teaching in Materials and Science and Engineering.
+    </course>
+    <course name="Individual Study for Master's Students" number="601" units="1-8">
+        Individual study for the comprehensive or language requirements in consultation with the field adviser.
+    </course>
+    <course name="Individual Study for Doctoral Students" number="602" units="1-8">
+        Individual study in consultation with the major field adviser, intended to provide an opportunity for qualified students to prepare themselves for the various examinations required of candidates for the Ph.D. (and other doctoral degrees).
+    </course>
+</department>

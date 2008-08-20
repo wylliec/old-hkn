@@ -49,7 +49,7 @@ class ExamForm(forms.Form):
     
     def clean_exam_file(self):
         uf = self.cleaned_data["exam_file"]
-        ext = os.path.splitext(uf.filename)[1]
+        ext = os.path.splitext(uf.name)[1]
         if ext not in VALID_EXTENSIONS:
             raise forms.ValidationError("Filetype must be one of: " + ", ".join(VALID_EXTENSIONS))
         self.cleaned_data["exam_file_extension"] = ext
@@ -87,7 +87,7 @@ class ExamForm(forms.Form):
             if len(klasses) == 0:
                 raise forms.ValidationError("No klasses for that course and semester")
             elif len(klasses) >= 2:
-                potential_instructors = ", ".join([k.instructors() for k in klasses])
+                potential_instructors = ", ".join([k.instructor_names() for k in klasses])
                 klasses = self.filter_klasses_by_instructor(klasses)
                 if len(klasses) == 0:
                     raise forms.ValidationError("More than 1 klass for that course and semester, but the provided instructor didn't teach any sections; try specifying an instructor from: %s" % (potential_instructors,))

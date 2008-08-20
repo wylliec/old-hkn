@@ -3,7 +3,7 @@ from course.models import Course, Department, Klass
 
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('department_abbr', 'number', 'name')
+    list_display = ('department_abbr', 'coursenumber', 'name')
 
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('name', 'abbr')

@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 from django.core.management import setup_environ
 from django.core.exceptions import ObjectDoesNotExist
-import re, django, sys, pickle, glob, pdb
+import re, django, sys, pickle, glob, pdb, os
 from xml.dom import minidom
 
-import hkn_settings
+import setup_settings; setup_settings.setup(); os.chdir(setup_settings.get_cd())
 
 from course.models import *
 from course.constants import EXAMS_PREFERENCE, SEMESTER

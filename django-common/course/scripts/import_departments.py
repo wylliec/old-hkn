@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 from django.core.management import setup_environ
 from django.core.exceptions import ObjectDoesNotExist
-import re, django, sys, pickle, glob
+import re, django, sys, pickle, glob, os
 from xml.dom import minidom
 
-import hkn_settings
+import setup_settings; setup_settings.setup(); os.chdir(setup_settings.get_cd())
 
 from course.models import *
 
@@ -23,7 +23,7 @@ def importFromXmlFile(departmentFile):
 		importDepartment(department)
 
 def main():
-    departmentFile = "klass/departments-sanitized.xml"
+    departmentFile = "data/klass/departments-sanitized.xml"
     print "Importing departments from " + departmentFile
     importFromXmlFile(departmentFile)
 

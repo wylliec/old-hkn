@@ -1,16 +1,10 @@
 <td>
-<img id="{{r.id}}_image"
-{% if r.active  %}
-src="{{STATIC_PREFIX}}images/site/inactive.png"
-{% else %}
-{% if r.confirm %}
-src="{{STATIC_PREFIX}}images/site/valid.png"
-{% else %}
-src="{{STATIC_PREFIX}}images/site/error.png"
-{% endif %}
-{% endif %}
-/>
-{{ r.title }}
+<div>{{ r.title }}</div>
+<div>
+    <img id="request_{{r.id}}_unknown" class="request_{{r.id}} request_unknown {% if r.active %}request_selected{% endif %}" src="{{STATIC_PREFIX}}images/site/inactive.png" />
+    <img id="request_{{r.id}}_accepted" class="request_{{r.id}} request_accepted {% if not r.active and r.confirmed %}request_selected{% endif %}" src="{{STATIC_PREFIX}}images/site/valid.png" />
+    <img id="request_{{r.id}}_rejected" class="request_{{r.id}} request_rejected {% if not r.active and not r.confirmed %}request_selected{% endif %}" src="{{STATIC_PREFIX}}images/site/error.png" />
+
 </td>
 
 <td>
@@ -21,10 +15,5 @@ src="{{STATIC_PREFIX}}images/site/error.png"
 </span>
 </td>
 
-<td><p>{{r.description}}</p></td>
-<td><input type=text id="{{r.id}}_comment" name="{{r.id}}.comment" value="{{r.comment}}"/></td>
-<td>
-    <img class="request_confirm_img" src="{{STATIC_PREFIX}}images/site/valid.png" onClick='checkbox_changed( true, {{r.id}});'/>
-    <img class="request_confirm_img" src="{{STATIC_PREFIX}}images/site/error.png" onClick='checkbox_changed( undefined, {{r.id}});'/>
-    <img class="request_confirm_img" src="{{STATIC_PREFIX}}images/site/inactive.png" onClick='checkbox_changed( false, {{r.id}});'/>
-</td>
+<td>{{r.description}}</td>
+<td><input type=text id="request_{{r.id}}_comment" name="{{r.id}}.comment" value="{{r.comment}}"/></td>

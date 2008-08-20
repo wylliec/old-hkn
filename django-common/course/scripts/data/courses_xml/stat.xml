@@ -1,0 +1,207 @@
+<?xml version="1.0" ?>
+<department abbr="STAT" name="Statistics">
+    <course name="Introduction to Statistics" number="2" units="4">
+        Population and variables. Standard measures of location, spread and association. Normal approximation. Regression. Probability and sampling. Binomial distribution. Interval estimation. Some standard significance tests.
+    </course>
+    <course name="Introduction to Probability and Statistics" number="20" units="4">
+        For students with mathematical background who wish to acquire basic concepts. Relative frequencies, discrete probability, random variables, expectation. Testing hypotheses. Estimation. Illustrations from various fields.
+    </course>
+    <course name="Introductory Probability and Statistics for Business" number="21" units="4">
+        Descriptive statistics, probability models and related concepts, sample surveys, estimates, confidence intervals, tests of significance, controlled experiments vs. observational studies, correlation and regression.
+    </course>
+    <course name="Freshman Seminars" number="24" units="1">
+        The Berkeley Seminar Program has been designed to provide new students with the opportunity to explore an intellectual topic with a faculty member in a small-seminar setting. Berkeley seminars are offered in all campus departments, and topics vary from department to department and semester to semester. Enrollment limited to 15 freshmen.
+    </course>
+    <course name="Introduction to Probability and Statistics for Engineers" number="25" units="3">
+        Emphasis on concepts and applications. Conditional probability. Independence. Expectation. Standard discrete and continuous distributions. Regression and correlation. Point and interval estimation. Illustrations from engineering.
+    </course>
+    <course name="" number="39D" units="2-4">
+        
+    </course>
+    <course name="Sophomore Seminar" number="84" units="1,2">
+        Sophomore seminars are small interactive courses offered by faculty members in departments all across the campus. Sophomore seminars offer opportunity for close, regular intellectual contact between faculty members and students in the crucial second year. The topics vary from department to department and semester to semester. Enrollment limited to 15 sophomores.
+    </course>
+    <course name="Directed Group Study" number="98" units="2">
+        Must be taken at the same time as either Statistics 2 or 21. This course assists lower division statistics students with structured problem solving, interpretation and making conclusions.
+    </course>
+    <course name="Statistical Inferences for Social and Life Scientists" number="131A" units="4">
+        Ideas for estimation and hypothesis testing basic to applications. Linear estimation and normal regression theory.
+    </course>
+    <course name="Concepts in Computing with Data" number="133" units="3">
+        An introduction to computationally intensive applied statistics. Topics will include organization and use of databases, visualization and graphics, statistical learning and data mining, model validation procedures, and the presentation of results.
+    </course>
+    <course name="Concepts of Probability" number="134" units="3">
+        An introduction to probability, emphasizing concepts and applications. Conditional expectation, independence, laws of large numbers. Discrete and continuous random variables. Central limit theorem. Selected topics such as the Poisson process, Markov chains, characteristic functions.
+    </course>
+    <course name="Concepts of Statistics" number="135" units="4">
+        A comprehensive survey course in statistical theory and methodology. Topics include descriptive statistics, maximum likelihood estimation, goodness-of-fit tests, analysis of variance, and least squares estimation. The laboratory includes computer-based data-analytic applications to science and engineering.
+    </course>
+    <course name="Statistics for Bioinformatics" number="C141" units="4">
+        Study of bioinformatics problems such as DNA pattern finding, gene expression data analysis, molecular evolution models, and biomolecular sequence database searching. Introduction of the necessary probability and statistics: events, (conditional) probability, random variables, estimation, testing, and linear regression. Also listed as Bioengineering C141.
+    </course>
+    <course name="Introduction to Statistical Methods in Computational and Genomic Biology" number="C143" units="4">
+        This course provides an introduction to statistical and computational methods for the analysis of biomedical and genomic data. Statistical topics, introduced in a biological context, include numerical and graphical summaries of data; basic notions in probability; loss-based estimation (e.g., least-squares regression, maximum likelihood estimation); model selection; multiple hypothesis testing; Markov chains; hidden Markov models, resampling; simulation studies. Biological questions considered include, but are not limited to, modeling meiosis; genetic mapping; nucleotide and protein-sequence analysis; molecular evolution; computational gene finding; and DNA microarray experiments. The course also introduces statistical computing resources for the analysis of biological data, with emphasis on the R language and environment (www.r-project.org) and bioconductor packages (www.bioconductor.org). In addition, the course introduces basic notions in genetics and molecular biology and involves the critical reading of articles related to statistical analyses in the biological and medical sciences. Also listed as Public Health C143.
+    </course>
+    <course name="Stochastic Processes" number="150" units="3">
+        Random walks, discrete time Markov chains, Poisson processes. Further topics such as: continuous time Markov chains, queueing theory, point processes, branching processes, renewal theory, stationary processes, Gaussian processes.
+    </course>
+    <course name="Linear Modelling: Theory and Applications" number="151A" units="4">
+        A coordinated treatment of linear and generalized linear models and their application. Linear regression, analysis of variance and covariance, random effects, design and analysis of experiments, quality improvement, log-linear models for discrete multivariate data, model selection, robustness, graphical techniques, productive use of computers, in-depth case studies.
+    </course>
+    <course name="Linear Modelling: Theory and Applications" number="151B" units="4">
+        A coordinated treatment of linear and generalized linear models and their application. Linear regression, analysis of variance and covariance, random effects, design and analysis of experiments, quality improvement, log-linear models for discrete multivariate data, model selection, robustness, graphical techniques, productive use of computers, in-depth case studies.
+    </course>
+    <course name="Sampling Surveys" number="152" units="4">
+        Theory and practice of sampling from finite populations. Simple random, stratified, cluster, and double sampling. Sampling with unequal probabilities. Properties of various estimators including ratio, regression, and difference estimators. Error estimation for complex samples.
+    </course>
+    <course name="Introduction to Time Series" number="153" units="4">
+        An introduction to time series analysis in the time domain and spectral domain. Topics will include: estimation of trends and seasonal effects, autoregressive moving average models, forecasting, indicators, harmonic analysis, spectra.
+    </course>
+    <course name="Game Theory" number="155" units="3">
+        General theory of zero-sum, two-person games, including games in extensive form and continuous games, and illustrated by detailed study of examples.
+    </course>
+    <course name="Seminar on Topics in Probability and Statistics" number="157" units="3">
+        Substantial student participation required. The topics to be covered each semester that the course may be offered will be announced by the middle of the preceding semester, see departmental bulletins.
+    </course>
+    <course name="Special Study for Honors Candidates" number="H195" units="1-4">
+        
+    </course>
+    <course name="Field Study in Statistics" number="197" units="1-3">
+        Supervised experience relevant to specific aspects of statistics in off-campus settings. Individual and/or group meetings with faculty.
+    </course>
+    <course name="Directed Study for Undergraduates" number="198" units="1-3">
+        Special tutorial or seminar on selected topics.
+    </course>
+    <course name="Supervised Independent Study and Research" number="199" units="1-3">
+        
+    </course>
+    <course name="Introduction to Probability and Statistics at an Advanced Level" number="200A" units="4">
+        Probability spaces, random variables, distributions in probability and statistics, central limit theorem, Poisson processes, transformations involving random variables, estimation, confidence intervals, hypothesis testing, linear models, large sample theory, categorical models, decision theory.
+    </course>
+    <course name="Introduction to Probability and Statistics at an Advanced Level" number="200B" units="4">
+        Probability spaces, random variables, distributions in probability and statistics, central limit theorem, Poisson processes, transformations involving random variables, estimation, confidence intervals, hypothesis testing, linear models, large sample theory, categorical models, decision theory.
+    </course>
+    <course name="Probability for Applications" number="204" units="4">
+        A treatment of ideas and techniques most commonly found in the applications of probability: Gaussian and Poisson processes, limit theorems, large deviation principles, information, Markov chains and Markov chain Monte Carlo, martingales, Brownian motion and diffusion.
+    </course>
+    <course name="Probability Theory" number="205A" units="4">
+        Measure theory concepts needed for probability. Expectation, distributions. Laws of large numbers and central limit theorems for independent random variables. Characteristic function methods. Conditional expectations; martingales and theory convergence. Markov chains. Stationary processes.
+    </course>
+    <course name="Probability Theory" number="C205A" units="4">
+        Some knowledge of real analysis and metric spaces, including compactness, Riemann integral. Knowledge of Lebesgue integral and/or elementary probability is helpful, but not essential, given otherwise strong mathematical background. Measure theory concepts needed for probability. Expectation, distributions. Laws of large numbers and central limit theorems for independent random variables. Characteristic function methods. Conditional expectations; martingales and theory convergence. Markov chains. Stationary processes. Also listed as Mathematics C218A.
+    </course>
+    <course name="Probability Theory" number="205B" units="4">
+        Measure theory concepts needed for probability. Expectation, distributions. Laws of large numbers and central limit theorems for independent random variables. Characteristic function methods. Conditional expectations; martingales and theory convergence. Markov chains. Stationary processes.
+    </course>
+    <course name="Probability Theory" number="C205B" units="4">
+        Some knowledge of real analysis and metric spaces, including compactness, Riemann integral. Knowledge of Lebesgue integral and/or elementary probability is helpful, but not essential, given otherwise strong mathematical background. Measuretheory concepts needed for probability. Expectation, distributions. Laws of lar ge numbers and central limit theorems for independent random variables. Characteristic function methods. Conditional expectations; martingales and theory convergence. Markov chains. Stationary processes. Also listed as Mathematics C218B.
+    </course>
+    <course name="Stochastic Processes" number="206A" units="3">
+        The content of this course changes from year to year. Course topics will be selected from: the general theory of processes, sample function properties, weak convergence, Brownian motion, diffusions, Levy processes, Markov processes, martingales, Gaussian processes and further topics.
+    </course>
+    <course name="Stochastic Processes" number="C206A" units="3">
+        The content of this course changes from year to year. Course topics will be selectd from the general theory of processes, sample function properties, weak convergence, Brownian motion, diffusions, Levy processes, Markov processes, martingales, Gaussian processes, and further topics. Also listed as Mathematics C223A.
+    </course>
+    <course name="Stochastic Processes" number="206B" units="3">
+        The content of this course changes from year to year. Course topics will be selected from: the general theory of processes, sample function properties, weak convergence, Brownian motion, diffusions, Levy processes, Markov processes, martingales, Gaussian processes and further topics.
+    </course>
+    <course name="Stochastic Processes" number="C206B" units="3">
+        The content of this course changes from year to year. Course topics will be selectd from the general theory of processes, sample function properties, weak convergence, Brownian motion, diffusions, Levy processes, Markov processes, martingales, Gaussian processes, and further topics. Also listed as Mathematics C223B.
+    </course>
+    <course name="Theoretical Statistics" number="210A" units="4">
+        A survey of mathematical statistics: in particular both small and large sample theorems of hypothesis testing, point estimation, and confidence intervals with applications to topics such as exponential families, univariate and multivariate linear models and nonparametric inference.
+    </course>
+    <course name="Theoretical Statistics" number="210B" units="4">
+        A survey of mathematical statistics: in particular both small and large sample theorems of hypothesis testing, point estimation, and confidence intervals with applications to topics such as exponential families, univariate and multivariate linear models and nonparametric inference.
+    </course>
+    <course name="Topics in Theoretical Statistics" number="212A" units="3">
+        This course introduces the student to topics of current research interest in theoretical statistics. Typical topics, which change from year to year, include the following: parametric, semiparametric and nonparametric modeling; time series and survival analysis; model selection; empirical and point processes; asympotic behavior of bootstrap, stochastic search and Monte Carlo integration; convergence of experiments; minimum distance methods.
+    </course>
+    <course name="Statistical Models: Theory and Application" number="215A" units="4">
+        The techniques of applied statistics. Data types and structures. Model formulation, fitting and validation. The principal models. Planning and design. Difficulties that arise. Usage of statistical computer packages. Presentation of conclusions.
+    </course>
+    <course name="Statistical Models: Theory and Application" number="215B" units="4">
+        The techniques of applied statistics. Data types and structures. Model formulation, fitting and validation. The principal models. Planning and design. Difficulties that arise. Usage of statistical computer packages. Presentation of conclusions.
+    </course>
+    <course name="Linear Models" number="230A" units="4">
+        Theory of least squares estimation, interval estimation, and tests under the general linear fixed effects model with normally distributed errors. Large sample theory for non-normal linear models. Two and higher way layouts, residual analysis. Effects of departures from the underlying assumptions. Robust alternatives to least squares.
+    </course>
+    <course name="Experimental Design" number="232" units="4">
+        Randomization, blocking, factorial design, confounding, fractional replication, response surface methodology, optimal design. Applications.
+    </course>
+    <course name="Nonparametric and Robust Methods" number="240" units="4">
+        Standard nonparametric tests and confidence intervals for continuous and categorical data; nonparametric estimation of quantiles; robust estimation of location and scale parameters. Efficiency comparison with the classical procedures.
+    </course>
+    <course name="Statistical Learning Theory" number="C241A" units="3">
+        Classification regression, clustering, dimensionality, reduction, and density estimation. Mixture models, hierarchical models, factorial models, hidden Markov, and state space models, Markov properties, and recursive algorithms for general probabilistic inference nonparametric methods including decision trees, kernal methods, neural networks, and wavelets. Ensemble methods. Also listed as Computer Science C281A.
+    </course>
+    <course name="Advanced Topics in Learning and Decision Making" number="C241B" units="3">
+        Recent topics include: Graphical models and approximate inference algorithms. Markov chain Monte Carlo, mean field and probability propagation methods. Model selection and stochastic realization. Bayesian information theoretic and structural risk minimization approaches. Markov decision processes and partially observable Markov decision processes. Reinforcement learning. Also listed as Computer Science C281B.
+    </course>
+    <course name="Introduction to Statistical Computing" number="243" units="4">
+        The structure and use of statistical languages and packages. Use of graphical displays in data analysis. Statistical data base management.
+    </course>
+    <course name="Statistical Computing" number="244" units="4">
+        Algorithms in statistical computing: random number generation, generating other distributions, random sampling and permutations. Matrix computations in linear models. Non-linear optimization with applications to statistical procedures. Other topics of current interest, such as issues of efficiency, and use of graphics.
+    </course>
+    <course name="Biostatistical Methods: Advanced Categorical Data Analysis" number="C245A" units="4">
+        This course focuses on statistical methods for discrete data collected in public health, clinical and biological studies. Lectures topics include proportions and counts, contingency tables, logistic regression models, Poisson regression and log-linear models, models for polytomous data and generalized linear models. Computing techniques, numerical methods, simulation and general implementation of biostatistical analysis techniques with emphasis on data applications. Also listed as Public Health C240A.
+    </course>
+    <course name="Biostatistical Methods: Survival Analysis and Causality" number="C245B" units="4">
+        Analysis of survival time data using parametric and non-parametric models, hypothesis testing, and methods for analyzing censored (partially observed) data with covariates. Topics include marginal estimation of a survival function, estimation of a generalized multivariate linear regression model (allowing missing covariates and/or outcomes), estimation of a multiplicative intensity model (such as Cox proportional hazards model) and estimation of causal parameters assuming marginal structural models. General theory for developing locally efficient estimators of the parameters of interest in censored data models. Computing techniques, numerical methods, simulation and general implementation of biostatistical analysis techniques with emphasis on data applications. Also listed as Public Health C240B.
+    </course>
+    <course name="Biostatistical Methods: Computational Techniques with Applications to Observational Survival Data" number="C245C" units="4">
+        An introduction to computational techniques commonly used in a variety of biostatistical applications: Newton, scoring, and EM algorithms for maximization; smoothing methods; bootstrapping; trees and neural networks; clustering; isotonic regression; Markov chain Monte Carlo methods. Lecture topics illustrated on simple data structures that arise in observational survival analysis and genomics, and other biostatistical applications. Also listed as Public Health C240C.
+    </course>
+    <course name="Biostatistical Methods: Applications of Statistics to Genetics and Molecular Biology" number="C245D" units="4">
+        This course surveys applications of probability and statistics to genetics and molecular biology. Biological questions of interest include modeling meiosis, genetic mapping, nucleotide and protein sequence analysis, DNA microarray experiments, and biological metadata analysis. Related statistical topics include numerical and graphical summaries of data, stochastic processes, experimental design, loss-based estimation, multiple hypothesis testing, resampling, and simulation studies. The course discusses statistical computing resources for the analysis of biological data, with emphasis on the R language and environment (www.r-project.org) and Bioconductor software packages (www.bioconductor.org). It also provides an introduction to basic notions in genetics and molecular biology and involves the critical reading of articles related to statistical analyses in the biological and medical sciences. Also listed as Public Health C240D.
+    </course>
+    <course name="Statistical Genetics" number="246" units="4">
+        Modelling meiosis, linkage mapping, pedigree analysis, genetic epidemiology. Clone libraries, physical mapping of chromosomes. Radiation hybrid mapping. DNA and protein sequence analysis, molecular evolution, sequence alignment, database searching. Analysis of microarray expression data.
+    </course>
+    <course name="Longitudinal Data Analysis" number="C247C" units="4">
+        The course covers the statistical issues surrounding estimation of effects using data on subjects followed through time. The course emphasizes a regression model approach and discusses disease incidence modeling and both continuous outcome data/linear models and longitudinal extensions to nonlinear models (e.g., logistic and Poisson). The primary focus is from the analysis side, but mathematical intuition behind the procedures will also be discussed. The statistical/mathematical material includes some survival analysis, linear models, logistic and Poisson regression, and matrix algebra for statistics. The course will conclude with an introduction to recently developed causal regression techniques (e.g., marginal structural models). Time permitting, serially correlated data on ecological units will also be discussed. Also listed as Public Health C242C.
+    </course>
+    <course name="Analysis of Time Series" number="248" units="4">
+        Frequency-based techniques of time series analysis, spectral theory, linear filters, estimation of spectra, estimation of transfer functions, design, system identification, vector-valued stationary processes, model building.
+    </course>
+    <course name="Censored Longitudinal Data and Causality" number="C249A" units="4">
+        This course examines optimal robust methods for statistical inference regarding causal and non-causal parameters based on longitudinal data in the presence of informative censoring and informative confounding of treatment. Models presented include multivariate regression models, multiplicative intensity models for counting processes, and causal models such as marginal structural models and structural nested models. Methods will be illustrated with data sets of practical interest and analyzed in the laboratory section. This course, appropriate for advanced masters and Ph.D. students, provides exposure to a number of ongoing research topics. Also listed as Public Health C246A.
+    </course>
+    <course name="Multiple Testing and Loss Function Based Estimation: Applications in Biological Sciences" number="C249C" units="3">
+        Statistical computer-intensive methods have become an integral part of the analysis of cross-sectional and longitudinal studies involving the collection of genomic data such as gene expression, single nucleotide polymorphism, and comparative genomic hybridization measurements across the whole genome. These data structures are extremely high dimensional and the characteristics (parameters of interest) of the population are complex (high dimensional), and outcomes such as survival are often subject to censoring. In addition, one often aims to learn and test many univariate characteristics simultaneously (e.g., regression coefficient for each gene). This course will present (1) a unified loss-function-based approach to learning from the data such characteristics which relies on general cross-validation methodology to select among candidate estimators, (2) resampling-based multiple testing methods controlling type I errors, and (3) clustering methods embedded into a statistical framework. Also listed as Public Health C246C.
+    </course>
+    <course name="Stochastic Analysis with Applications to Mathematical Finance" number="251" units="3">
+        The essentials of stochastic analysis, particularly those most relevant to financial engineering, will be surveyed: Brownian motion, stochastic integrals, Ito's formula, representation of martingales, Girsanov's theorem, stochastic differential equations, and diffusion processes. Examples will be taken from the Black-Scholes-Merton theory of pricing and hedging contingent claims such as options, foreign market derivatives, and interest rate related contracts.
+    </course>
+    <course name="Topics in Probability and Statistics" number="260" units="3">
+        Special topics in probability and statistics offered according to student demand and faculty availability.
+    </course>
+    <course name="Quantitative/Statistical Research Methods in Social Sciences" number="C261" units="3">
+        Selected topics in quantitative/statistical methods of research in the social sciences and particularly in sociology. Possible topics include: analysis of qualitative/categorical data; loglinear models and latent-structure analysis; the analysis of cross-classified data having ordered and unordered categories; measure, models, and graphical displays in the analysis of cross-classified data; correspondence analysis, association analysis, and related methods of data analysis. Also listed as Sociology C271D.
+    </course>
+    <course name="Statistical Consulting" number="272" units="3">
+        To be taken concurrently with service as a consultant in the department's drop-in consulting service. Participants will work on problems arising in the service and will discuss general ways of handling such problems. There will be working sessions with researchers in substantive fields and occasional lectures on consulting.
+    </course>
+    <course name="Statistics Research Seminar" number="278B" units="1-4">
+        Special topics, by means of lectures and informational conferences.
+    </course>
+    <course name="Resources for Statistical Computing" number="296" units="1">
+        Statistical computing plays a central role in research and in instruction at all levels of the department's curriculum. This course provides first year graduate students with an introduction to the Statistical Computing Facility, including the basis of the UNIX system and commonly used packages, thus enabling them to use it effectively in their own courses and research and as teaching assistants in undergraduate courses.
+    </course>
+    <course name="Directed Study for Graduate Students" number="298" units="1-12">
+        Special tutorial or seminar on selected topics.
+    </course>
+    <course name="Individual Study Leading to Higher Degrees" number="299" units="2-12">
+        
+    </course>
+    <course name="Professional Preparation: Teaching of Probability and Statistics" number="300" units="2-4">
+        Discussion, problem review and development, guidance of laboratory classes, course development, supervised practice teaching.
+    </course>
+    <course name="Individual Study for Master's Candidates" number="601" units="1-8">
+        Individual study in consultation with the graduate adviser, intended to provide an opportunity for qualified students to prepare themselves for the master's comprehensive examinations. Units may not be used to meet either unit or residence requirements for a master's degree.
+    </course>
+    <course name="Individual Study for Doctoral Candidates" number="602" units="1-8">
+        Individual study in consultation with the graduate adviser, intended to provide an opportunity for qualified students to prepare themselves for certain examinations required of candidates for the Ph.D. degree.
+    </course>
+</department>

@@ -41,7 +41,7 @@ def main():
         DEPT_ABBRS_SET.add(k)
         DEPT_ABBRS_SET.update(v)
 
-    departmentFile = os.path.join(os.getcwd(), os.path.dirname(__file__), "data/departments-sanitized.xml")
+    departmentFile = os.path.join(os.getcwd(), os.path.dirname(__file__), "scripts", "data", "klass", "departments-sanitized.xml")
     dom = minidom.parse(file(departmentFile, "r"))
     for department in dom.getElementsByTagName("department"):   
         abbr = department.getAttribute('abbr').strip().upper()

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<department abbr="BIOLOGY" name="Biology">
+    <course name="General Biology Lecture" number="1A" units="3">
+        General introduction to cell structure and function, molecular and organismal genetics, animal development, form and function. Intended for biological sciences majors, but open to all qualified students.
+    </course>
+    <course name="General Biology Laboratory" number="1AL" units="2">
+        Laboratory that accompanies 1A lecture course. Intended for biological science majors, but open to all qualified students.
+    </course>
+    <course name="General Biology" number="1B" units="4">
+        General introduction to plant development, form, and function; population genetics, ecology, and evolution. Intended for students majoring in the biological sciences, but open to all qualified students. Students must take both Biology 1A and 1B to complete the sequence. Sponsored by Integrative Biology.
+    </course>
+    <course name="Introduction to the Science of Living Organisms" number="11" units="3">
+        Principles of biological organization and function using examples from plant and animal kingdoms. Similar in scope to Biology 1 except that knowledge of physical sciences is neither required nor assumed. Sponsored by Plant and Microbial Biology.
+    </course>
+    <course name="Laboratory for Biology 11" number="11L" units="2">
+        Laboratory designed to accompany Biology 11, Introduction to the Science of Living Organisms. Weekly laboratory exercises and one field trip to the UC Berkeley Botanical Garden.
+    </course>
+</department>

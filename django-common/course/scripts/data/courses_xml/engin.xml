@@ -1,0 +1,168 @@
+<?xml version="1.0" ?>
+<department abbr="ENGIN" name="Engineering">
+    <course name="Solid-State Science for Engineers" number="5" units="4">
+        This course introduces the fundamental principles of solid-state chemistry associated with the behavior of real materials used in engineering practice. It formulates the critical inter-relationships among scientific concepts needed by engineers to understand the internal structure of crystalline and amorphous solids exhibiting metallic, ceramic, semiconducting, and/or polymeric properties.
+    </course>
+    <course name="Introduction to Computer Programming for Scientists and Engineers" number="7" units="4">
+        Elements of procedural and object-oriented programming. Induction, iteration, and recursion. Real functions and floating-point computations for engineering analysis. Introduction to data structures. Representative examples are drawn from mathematics, science, and engineering. The course uses the MATLAB programming language. Sponsoring departments: Civil and Environmental Engineering and Mechanical Engineering.
+    </course>
+    <course name="Engineering Design and Analysis" number="10" units="3">
+        This is an introduction to the profession of engineering and the different fields of study in the College of Engineering, through a variety of modular design and analysis projects. The emphasis is on hands-on creative components, teamwork, and effective communication. Common lecture sessions during the first three weeks of the semester will address ethics and societal context for engineering projects, introduction to engineering design process, and introduction to engineering analysis. Following this introduction, students will take two six-week modules involving both lectures and laboratories in which they will learn design and analysis skills, and will apply these skills to illustrative problems drawn from various engineering majors.
+    </course>
+    <course name="Freshman Seminar" number="24" units="1">
+        The Berkeley Seminar Program is designed to provide students with the opportunity to explore an intellectual topic with a faculty member in a small seminar setting. Berkeley Seminars are offered in all college departments, and topics vary from department to department and semester to semester.
+    </course>
+    <course name="Basic Engineering Design Graphics" number="28" units="3">
+        Introduction to the engineering design process and graphical communications tools used by engineers. Conceptual design of products. Tolerance analysis for fabrication. Documentation of design through engineering drawing. Development of spatial reasoning skills. Basic descriptive geometry. Parametric solid modeling and feature based design. Use of Computer-Assisted Design as a design tool.
+    </course>
+    <course name="Engineering Mechanics I" number="36" units="2">
+        A vectorial treatment of the principles of statics of particles and rigid bodies. Application to problems of equilibrium of two-dimensional and three-dimensional systems. Work and potential energy, the principle of virtual work, stability of equilibrium. Sponsoring Department: Civil and Environmental Engineering.
+    </course>
+    <course name="" number="39A" units="1.5-4">
+        
+    </course>
+    <course name="" number="39B" units="1.5-4">
+        
+    </course>
+    <course name="" number="39D" units="1.5-4">
+        
+    </course>
+    <course name="" number="39E" units="1.5-4">
+        
+    </course>
+    <course name="Properties of Materials" number="45" units="3">
+        Application of basic principles of physics and chemistry to the engineering properties of materials. Special emphasis devoted to relation between microstructure and the mechanical properties of metals, concrete, polymers, and ceramics, and the electrical properties of semiconducting materials. Sponsoring Department: Materials Science and Engineering
+    </course>
+    <course name="Supplementary Work in Lower Division Engineering" number="47" units="1-3">
+        May be taken only with permission of the Dean of the College of Engineering. Students with partial credit in a lower division engineering course may complete the work under this heading.
+    </course>
+    <course name="Perspectives in Engineering" number="92" units="1">
+        This series of lectures provides students, especially undeclared Engineering students, with information on the various engineering disciplines to guide them toward choice of major. Lecturers describe research activities, how they made their own career choices, and indicate future opportunites. Recommended for all Engineering Science students and required for Engineering Science undeclared students.
+    </course>
+    <course name="Directed Group Studies for Lower Division Undergraduates" number="98" units="1-4">
+        Seminars for group study of selected topics, which will vary from year to year. Intended for students in the lower division.
+    </course>
+    <course name="Fractals, Chaos, and Complexity Around Us" number="101" units="3">
+        Concepts and applications of fractal geometry, nonlinear chaotic dynamics, and emerging complex systems. Emphasis on intuitive understanding of the concepts rather than rigorous formalism. Applications to various areas of science, engineering, and everyday life. Topics include percolation and flow through fractures, aggregation, self-scaling coastlines, fractal landscapes, chaotic chemical reactions, and pattern formation. Sponsoring department: Civil and Environmental Engineering.
+    </course>
+    <course name="Introduction to Computers-Interdepartmental Studies" number="110" units="4">
+        An introduction to computers and digital technology and culture. The conceptual foundations and functions of computer hardware and software. Structure and use of the Internet. Elements of programming for the World Wide Web. Students will complete a substantial programming project related to their academic interests. Students who have completed other &quot;computer science service courses,&quot; at Berkeley, will receive at most one unit of credit for 110, and may receive none. For more information, see the note on &quot;Computer Science Service Courses&quot; in the departmental listing for Electrical Engineering and Computer Sciences, and/or consult with the instructor.
+    </course>
+    <course name="Introduction to Networked Applications and Computing" number="C111" units="3">
+        Introduction to applications of networked computers, especially social, educational, and information management. Understanding of the networking, computing, and software infrastructure enabling and constraining these networked applications, with the goal of empowering the student to use these technologies effectively in their personal and professional life. Related policy, legal, economic, and industry issues will be covered.
+    </course>
+    <course name="Engineering Thermodynamics" number="115" units="4">
+        Fundamental laws of thermodynamics for simple substances; application to flow processes and to nonreacting mixtures; statistical thermodynamics of ideal gases and crystalline solids; chemical and materials thermodynamics; multiphase and multicomponent equilibria in reacting systems; electrochemistry. Sponsoring Departments: Materials Science and Engineering and Nuclear Engineering.
+    </course>
+    <course name="Methods of Engineering Analysis" number="117" units="3">
+        Methods of theoretical engineering analysis; techniques for analyzing partial differential equations and the use of special functions related to engineering systems. Sponsoring Department: Mechanical Engineering.
+    </course>
+    <course name="Principles of Engineering Economics" number="120" units="3">
+        Economic analysis for engineering decision making: Capital flows, effect of time and interest rate. Different methods of evaluation of alternatives. Minimum-cost life and replacement analysis. Depreciation and taxes. Uncertainty; preference under risk; decision analysis. Capital sources and their effects. Economic studies.
+    </course>
+    <course name="Ethics and the Impact of Technology on Society" number="124" units="3">
+        This course focuses on the changing nature of technology and the complex ethical issues that are emerging as a result. These new issues are arising in such areas as biotechnology, information technology, nanotechnology, and nuclear technology. The nature of these issues, their ethical, legal, and social ramifications, and what our society values in relation to these issues are discussed. Philosophy, religion, and the natural and social sciences will be explored in relation to these issues.
+    </course>
+    <course name="Advanced Engineering Design Graphics" number="128" units="3">
+        Advanced graphics tools for engineering design. Parametric solid modeling. Assembly modeling. Presentation using computer animation and multimedia techniques.
+    </course>
+    <course name="Cases and Conflicts in Engineering Ethics" number="130AC" units="3">
+        Engineering is challenged by issues of security, poverty and under-development, and environmental sustainability. These issues intersect with those of race, class, and culture in U.S. society. This course focuses on engineering ethics case studies as they apply to issues of workplace diversity, sustainable practices, economic impacts on neighborhoods and nations, and issues of security and identity. The goal of this course is to broaden the understanding of engineering ethics from individual and business-based practices to those affecting communities and nations.
+    </course>
+    <course name="Technical Communication for Non-Native Speakers of English" number="140" units="3">
+        Emphasis on improving language skills and use of the rhetorical conventions of technical presentations. This course is designed to prepare non-native speakers for the more advanced work in Engineering 190. Sponsoring departments: College Writing and the College of Engineering.
+    </course>
+    <course name="Supplementary Work in Upper Division Engineering" number="147" units="1-3">
+        May be taken only with permission of the Dean of the College of Engineering. Students with partial credit in an upper division engineering course may complete the work under this heading.
+    </course>
+    <course name="Introduction to Modeling and Simulation" number="170" units="4">
+        Introduces concepts of computational modeling and simulation, using multidisciplinary projects drawn from biology, chemistry, applied mathematics, and physics, and all areas of engineering. Models progress sequentially through problem statement, mathematical model, approximations and analytic solution, discrete model, object-oriented model, implementation and simulation, visualization, comparison to analysis, experiment and observation. Includes a broad survey of simulation techniques.
+    </course>
+    <course name="Advanced Programming with MATLAB" number="177" units="3">
+        The course builds an understanding, demonstrates engineering uses, and provides hand-on experience for object-oriented programming as well as exposes a practical knowledge of advanced features available in MATLAB. The course will begin with a brief review of basic MATLAB features and quickly move to class organization and functionality. The introduced concepts are reinforced by examining the advanced graphical features of MATLAB. The material will also include the effective use of programs written in C and FORTRAN, and will cover SIMULINK, a MATLAB toolbox providing for an effective ways of model simulations. Throughout the course, the emphasis will be placed on examples and homework assignments from engineering disciplines.
+    </course>
+    <course name="Computational Engineering Science Modeling and Simulation I/II" number="180A" units="4">
+        This course sequence focuses on the concepts of computational modeling and simulation. Concepts are illustrated with projects drawn from the multidisciplinary areas of computational engineering science. Areas covered span biology, chemistry, applied mathematics, and physics, as well as all areas of engineering. Models will progress sequentially through problem statement, mathematical model, approximations and analytic solution, discrete model, object-oriented model, implementation and simulation, visualization, and comparison to analysis, experimentation and observation.
+    </course>
+    <course name="Technical Communication" number="190" units="3">
+        Principles of technical communication: analyzing one's audience; organizing material; developing a clear, economical style; using proper formats and rhetorical strategies for formal technical reports, feasibility studies, abstracts, descriptions and instructions, proposals, letters, and memos. Practice in oral presentations to technical and nontechnical audiences. Sponsoring Department: Engineering Interdisciplinary Studies.
+    </course>
+    <course name="Engineering Ethics" number="191" units="3">
+        Historical, regional, and cultural perspectives on ethics. The ethics of issues associated with modern technology and the effect of technology on social, cultural, and economic systems. Environmental impact of engineering activities. The role of the engineer in controlling technology uses. Ethical and legal responsibilities of the engineering professional. Engineering codes of ethical conduct. Avoiding ethical conflicts in the workplace.
+    </course>
+    <course name="California Engineer" number="193" units="1">
+        Work on the California Engineer Magazine, in one or more of the following capacities: read candidate articles, edit articles, enter articles into UNIX computer system for typesetting, draw technical illustrations, photography, issue layout, issue paste-up, write articles on assignment, accounting, advertising sales, public relations. Sponsoring Department: Electrical Engineering and Computer Science.
+    </course>
+    <course name="Science, Technology, and Culture" number="195" units="3">
+        This course is designed (1) to encourage students to see science and technology in a broad cultural context and from a variety of perspectives (historical, philosophical, ethical, etc,) and (2) to help them develop their writing skills. Science and its ways of knowing; science, technology, and community; science, technology and the conscience; technology and the environment; the two cultures. Sponsoring department: Engineering Interdisciplinary Studies.
+    </course>
+    <course name="Directed Group Studies for Advanced Undergraduates" number="198" units="1-4">
+        Group study of selected topics.
+    </course>
+    <course name="Ocean Engineering Seminar" number="201" units="2,3">
+        Lectures on new developments in ocean, arctic engineering. The optional third unit covers the analysis and design of arctic structures for ice structure interaction. The additional unit will require that students meet with the instructor one extra hour per week to work on an individual project. Topics covered: ice mechanics, determination of global and local forces, and other ice actions on structures. Term paper required. Sponsoring department: Engineering Interdisciplinary Studies.
+    </course>
+    <course name="Methods of Applied Mathematics" number="230" units="3">
+        Topics include complex variable methods, contour integration, solution of Laplace's equation via analytic function theory; asymptotic methods for evaluating integrals and solving differential equations; introduction to calculus of variations with applications; introductory integral equations. The course is intended to expose students in engineering and physical sciences to a range of methods for solving equations associated with mathematical models of physical processes.
+    </course>
+    <course name="Mathematical Methods in Engineering" number="231" units="3">
+        This course offers an integrated treatment of three topics essential to modern engineering: linear algebra, random processes, and optimization. These topics will be covered more rapidly than in separate undergraduate courses covering the same material, and will draw on engineering examples for motivation. The stress will be on proofs and computational aspects will also be highlighted. It is intended for engineering students whose research focus has a significant mathematical component, but who have not previously had a thorough exposure to these topics.
+    </course>
+    <course name="Applications of Parallel Computers" number="C233" units="3">
+        Models for parallel programming. Fundamental algorithms for linear algebra, sorting, FFT, etc. Survey of parallel machines and machine structures. Exiting parallel programming languages, vectorizing compilers, environments, libraries and toolboxes. Data partitioning techniques. Techniques for synchronization and load balancing. Detailed study and algorithm/program development of medium sized applications. Also listed as Computer Science C267.
+    </course>
+    <course name="Fundamentals of Multiphase Flow in Earth Systems" number="240" units="3">
+        Fundamental physics and mathematics of multiphase, nonisothermal flow of immiscible fluids in porous media. Pore level characterization of porous media; pore networks; invasion percolation in drainage and imbibition; description of capillary pressures and relative permeabilities in two and three phase flow; upscaling; method of coherence in three phase flow; nonisothermal flow with phase change. MATLAB used as the computing environment for all course work. Sponsoring Department: Civil and Environmental Engineering.
+    </course>
+    <course name="Physics of Medical Imaging" number="253A" units="3">
+        
+    </course>
+    <course name="Physics of Medical Imaging" number="253B" units="3">
+        
+    </course>
+    <course name="Finite Difference Methods for Fluid Dynamics" number="266A" units="4">
+        Application of finite difference methods to current problems of fluid dynamics, including compressible and incompressible flow. Sponsoring department: Mechanical Engineering.
+    </course>
+    <course name="Charged Particle Sources and Beam Technology" number="C282" units="3">
+        Topics in this course will include the latest technology of various types of ion and electron sources, extraction and formation of charge particle beams, computer simulation of beam propagation, diagnostics of ion sources and beams, and the applications of beams in fusion, synchrotron light source, neutron generation, microelectronics, lithography, and medical therapy. This is a general accelerator technology and engineering course that will be of interest to graduate students in physics, electrical engineering, and nuclear engineering. Also listed as Nuclear Engineering C282.
+    </course>
+    <course name="Charged Particle Beam Instrumentation Laboratory" number="C282L" units="1">
+        Optional laboratory designed to accompany Nuclear Engineering C282 and Engineering C282. Ion and electron source operation and beam formation will be demonstrated experimentally. Laboratory sessions will be held at Lawrence Berkeley National Laboratory. Also listed as Nuclear Engineering C282L.
+    </course>
+    <course name="Special Topics in Management of Technology" number="290" units="2,3">
+        Specific topics, hours and units of credit will vary from section to section, year to year. Courses are related classes in the Management of Technology certificate program.
+    </course>
+    <course name="Introduction to Management of Technology" number="290A" units="3">
+        This course is designed to give students a broad overview of the main topics encompassed by management of technology. It includes the full chain of innovative activities beginning with research and development and extending through production and marketing. Why do many existing firms fail to incorporate new technology in a timely manner? At each stage of innovation, we examine key factors determining successful management of technology. What constitutes a successful technology strategy? The integrating course focus will be on the emergence of the knowledge economy and technology as a key knowledge asset and will involve both general readings and cases. The course also introduces students to Haas and COE faculty working in the relevant areas.
+    </course>
+    <course name="Sustainable Manufacturing" number="290C" units="3">
+        Sustainable manufacturing is a poorly understood idea and one that is not intuitively connected to business value or engineering practice. This is specially true for the manufacturing aspects of most enterprises (tools, processes, and systems). This course will provide the basis for understanding (1) what comprises sustainable practices in for-profit enterprises, (2) how to practice and measure continuous improvement using sustainability thinking, techniques, and tools for product and manufacturing process design, and (3) the techniques for and value of effective communication of sustainability performance to internal and external audiences. Material in the course will be supplemented by speakers with diverse backgrounds in corporate sustainability, environmental consulting, non-governmental organizations, and academia. Discussions of papers in the reader including case studies will be used to illustrate topics. A series of small projects is used throughout the semester and a final class project will be required, with students working individually or in small groups. Cross functional groups including students from different disciplines or backgrounds are encouraged.
+    </course>
+    <course name="Managing Innovation and Change" number="290I" units="3">
+        Most innovations fail, yet companies that don't innovate die. Managing innovation thus constitutes one of the most difficult and critical tasks facing a manager. Nor is this solely the concern of high tech companies--companies in traditionally &quot;low tech&quot; businesses such as consumer packaged goods (like Procter &amp; Gamble) find that innovation translates directly into growth in new businesses, and better profits in existing ones. This course adopts a capabilities-based view of the firm, drawing from economic, organizational, and engineering perspectives. The goal of the course is to identify the sources of innovative success and failure inside corporations, and how companies can develop and sustain a capability to innovate.
+    </course>
+    <course name="Entrepreneurship in Biotechnology" number="290J" units="2">
+        This course will provide students an introduction to the complexities and unique problems of starting a life sciences company. It is designed for both entrepreneurs and students who may someday work in a biotechnology or medical device startup. Students will be exposed to the topics most critical for successfully founding, financing, and operating a life science company, and will be expected to perform many of the same tasks that founders would normally undertake. Discussions with life-science entrepreneurs, case studies of recent companies, and hands-on work developing entrepreneurial endeavors will all be utilized.
+    </course>
+    <course name="Opportunity Recognition: Technology and Entrepreneurship in Silicon Valley" number="290O" units="3">
+        This course is intended to provide the core skills needed for the identification of opportunities that can lead to successful, entrepreneurial high technology ventures, regardless of the individual's &quot;home&quot; skill set, whether technical or managerial. We examine in depth the approaches most likely to succeed for entrepreneurial companies as a function of markets and technologies. Emphasis is placed on the special requirements for creating and executing strategy in a setting of rapid technological change and limited resources. This course is open to both MBA and Engineering students (who enroll through the College of Engineering), and is particularly suited for those who anticipate founding or operating technology companies.
+    </course>
+    <course name="Project Management" number="290P" units="2">
+        This course will provide you with a comprehensive view of the elements of modern project management, guidelines for success, and related tools. In organizations today, successful operations keep the organization alive and successful projects move it towards strategic objectives. A project is a one-time or infrequently occurring operation with a unique goal, limited lifespan, and limited resources. The fundamental concepts come from the field of operations management, but projects present special types of operations because of their intended focus, limited lives, constraints, and uncertainties. In organizations today, projects are many, diverse, and frequently overlapping.
+    </course>
+    <course name="Decisions, Games and Strategies" number="290S" units="3">
+        The first half of the course considers decision analysis, which helps a manager to make a decision (launching a new product, choosing a new technology, locating a new facility) when he/she will not know how good the decision is until after it's made. The technique helps the decision maker to be consistent with his/her own beliefs about events that have not yet occurred and with his/her own attitudes toward risk. The second half of the course pursues the same theme, but now the success of the decision depends on the behavior of one or more opponents. This time, simple game models will be appropriate. The questions to be addressed include How should I bid in an auction? What strategy should I use in a bargaining situation? Is it useful to acquire a reputation for toughness in repeated confrontations with the same competitors?
+    </course>
+    <course name="Wireless Communications" number="290W" units="3">
+        In this course, students will analyze the role of regulatory, technological, economic, and market forces in shaping wireless industry structure, value chain, business and operating models, competitive dynamics, and barriers to entry. Special emphasis is placed on identifying new opportunities and understanding the challenges for startups and other new entrants. In the context of this course, wireless communications encompass voice, data, and video services offered over terrestrial and satellite networks. Given its size and relative impact, well over half of the course will be devoted to cellular markets and technologies.
+    </course>
+    <course name="Group Studies or Seminars" number="298A" units="1-6">
+        Advanced group studies or seminars in subjects which are interdisciplinary in the various fields of engineering or other sciences associated with engineering problems. Topics which form the basis of seminars will be announced at the beginning of each semester.
+    </course>
+    <course name="Group Studies or Seminars" number="298B" units="1-6">
+        Advanced group studies or seminars in subjects which are interdisciplinary in the various fields or engineering or other sciences associated with engineering problems. Topics which form the basis of seminars will be announced at the beginning of each semester.
+    </course>
+    <course name="The Teaching of Engineering" number="300" units="2">
+        Introduction to the theory and practice of teaching and learning in higher education in general and engineering in particular. The course will enable GSIs to select teaching methods that are appropriate to specific engineering courses and contexts. Topics in classroom and time management, effective assignment development, assessment, academic integrity, instructional technology, course design, and other topics of relevance are presented.
+    </course>
+</department>

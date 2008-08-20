@@ -1,0 +1,468 @@
+<?xml version="1.0" ?>
+<department abbr="INTEGBI" name="Integrative Biology">
+    <course name="Freshman Seminars" number="24" units="1">
+        The Berkeley Seminar Program has been designed to provide new students with the opportunity to explore an intellectual topic with a faculty member in a small-seminar setting. Berkeley Seminars are offered in all campus departments, and topics vary from department to department and semester to semester.
+    </course>
+    <course name="Animal Behavior Biology: An Evolutionary Perspective Behavioral View" number="31" units="3">
+        Principles of evolution biology as they relate to animal behavior and behavioral ecology with broad coverage of animal groups. Special attention will be paid to the emerging discipline of behavioral ecology.
+    </course>
+    <course name="Biomotion" number="32" units="3">
+        The goal of the course, Biomotion, is to involve students in a multidisciplinary vision of biology, engineering design, and computer science by learning the principles of how animals move in their environment.
+    </course>
+    <course name="Human Biological Variation" number="35AC" units="3">
+        This course addresses modern human biological variation from historical, comparative, evolutionary, biomedical, and cultural perspectives. It is designed to introduce students to the fundamentals of comparative biology, evolutionary theory, and genetics.
+    </course>
+    <course name="Topics in Integrative Biology" number="39" units="2">
+        Reading and discussion of the literature on particular topics in the field of integrative biology. Term paper and oral presentation. Section topics will vary from semester to semester. Students should check with department secretary for each semester's offerings.
+    </course>
+    <course name="" number="39C" units="2">
+        
+    </course>
+    <course name="Marine Mammals" number="41" units="2">
+        A survey of marine mammal evolution, biology, behavior, ecology, and politics with a concentration on those species found in the North Pacific. Coverage would include: origin and evolution of cetaceans, pinnipeds, sirenians, and sea otters; basic biology and anatomy of marine mammal groups, and North Pacific species in particular; ecological interactions and role in nearshore and pelagic marine communities; and interactions between humans and marine mammals.
+    </course>
+    <course name="Introduction to Oceans" number="C82" units="2">
+        The geology, physics, chemistry, and biology of the world oceans. The application of oceanographic sciences to human problems will be explored through special topics such as energy from the sea, marine pollution, food from the sea, and climate change. Also listed as Geography C82 and Earth and Planetary Science C82.
+    </course>
+    <course name="Sophomore Seminar" number="84" units="1,2">
+        Sophomore seminars are small interactive courses offered by faculty members in departments all across the campus. Sophomore seminars offer opportunity for close, regular intellectual contact between faculty members and students in the crucial second year. The topics vary from department to department and semester to semester. Enrollment limited to 15 sophomores.
+    </course>
+    <course name="Leadership Communications for Biology Scholars" number="88" units="1">
+        Leadership skills and abilities such as communication, collaboration, critical thinking, and resourcefulness are critical to academic, professional, and personal success. The need for enlightened leaders is evident in every aspect of health and science such as designing innovative health programs, obtaining funding, conducting cutting-edge research, developing and gaining support to implement policy solutions. This course provides an understanding of the principles of leadership and communications for students in the Biology Scholars Program. Students wil nurture those traits in themselves and apply those principles in situations specifically related to the health and science sectors. The course is taught in weekly lecture and discussion sessions with case studies and exercises. The specific objectives of this course are to identify leadership principles; understand one's own leadership style and goals; know what resourcefulness means and the strategies that can enhance it; develop skills in written and verbal communication, and develop skills in collaboration and effective team management.
+    </course>
+    <course name="Special Research Project in Biology 1B" number="95" units="1">
+        Students enrolled in Biology 1B can participate in special field research in addition to attending regular laboratory sections. Students work independently with minimal supervision. Students will learn how to develop a project, collect and record data, conduct and analyze experiments, write a report, and make an oral presentation. Project may require traveling to off-campus sites. Students are required to attend at least three department seminars and write a short critique of each.
+    </course>
+    <course name="Studying the Biological Sciences" number="C96" units="1">
+        Freshmen will be introduced to the &quot;culture&quot; of the biological sciences, along with an in-depth orientation to the academic life and the culture of the university as they relate to majoring in biology. Students will learn concepts, skills, and information that they can use in their major course, and as future science professionals. Restricted to freshmen in the biology scholars program. Also listed as Plant and Microbial Biology C96 and Molecular and Cell Biology C96.
+    </course>
+    <course name="Directed Group Study" number="98" units="1-4">
+        Lectures and small group discussions focusing on topics of interest, varying from semester to semester.
+    </course>
+    <course name="Supervised Independent Study and Research" number="99" units="1-3">
+        Lower division independent study and research intended for the academically superior student. Enrollment only with prior approval of faculty adviser directing the research.
+    </course>
+    <course name="Communicating Ocean Science" number="C100" units="4">
+        For undergraduates interested in improving their ability to communicate their scientific knowledge by teaching ocean science in elementary schools or science centers/aquariums. The course will combine instruction in inquiry-based teaching methods and learning pedagogy with six weeks of supervised teaching experience in a local school classroom or the Lawrence Hall of Science with a partner. Thus, students will practice communicating scientific knowledge and receive mentoring on how to improve their presentations. Also listed as Earth and Planetary Science C100.
+    </course>
+    <course name="Diversity of Plants and Fungi" number="C101" units="2">
+        An integrated treatment of the biology and evolution of the major groups in the plant, algal, and fungal kingdoms. Also listed as Plant and Microbial Biology C102.
+    </course>
+    <course name="Laboratory in the Diversity of Plants and Fungi" number="C101L" units="2">
+        Laboratory for C102. Also listed as Plant and Microbial Biology C102L.
+    </course>
+    <course name="Introduction to California Plant Life" number="102" units="2">
+        The relationship of the main plant groups and the plant communities of California to climate, soils, vegetation, geological and recent history, evolutionary biology, and conservation.
+    </course>
+    <course name="Laboratory in California Plant Life" number="102L" units="2">
+        A survey of California Floristics focusing on identification and taxonomy of the main plant genera and major plant families, as well as the use of keys to identify native and introduced ferns, conifers, and flowering plants of the state.
+    </course>
+    <course name="Invertebrate Zoology" number="103" units="3">
+        Formerly Zoology 108 An introductory survey of the biology of invertebrates, stressing comparative functional morphology, phylogeny, natural history, and aspects of physiology and development.
+    </course>
+    <course name="Invertebrate Zoology Laboratory" number="103L" units="2">
+        Formerly Zoology 188 Laboratory study of invertebrate diversity and functional morphology, and field study of the natural history of local marine invertebrates.
+    </course>
+    <course name="Natural History of the Vertebrates" number="104" units="3">
+        Formerly Zoology 107 Biology of the vertebrates, exclusive of fish.
+    </course>
+    <course name="Vertebrate Natural History Laboratory" number="104L" units="2">
+        Formerly Zoology 187 Laboratory and field study of local vertebrates exclusive of fish.
+    </course>
+    <course name="Biological Oceanography" number="106" units="3">
+        This course explores the interactions of organisms with physical, chemical, and geological processes in the ocean. Overviews of basic physical, chemical, and geological principles and the major functional groups of marine organisms are followed by interdisciplinary discussions of open-ocean pelagic systems, the deep sea, coastal oceans, estuaries, and intertidal environments. Grade is based on short written assignments.
+    </course>
+    <course name="Physical and Chemical Environment of the Ocean" number="106A" units="4">
+        The biological implications of marine physics and chemistry. History and properties of seawater. Geophysical fluids. Currents and circulations. Deep sea. Waves, tides, and bottom boundary layers. The coastal ocean; estuaries. Air/sea interaction. Mixing. Formation of water masses. Modeling biological and geochemical processes. Ocean and climate change.
+    </course>
+    <course name="Laboratory in Biological Oceanography" number="106L" units="2">
+        The laboratory will allow students to see and work with important functional groups of marine organisms and to learn and use standard oceanographic methods in experiments. Enrollment limit is 16 per laboratory section.
+    </course>
+    <course name="Principles of Plant Morphology" number="C107" units="2">
+        An analysis of the structural diversity of multicellular plants, especially the higher forms, with emphasis on the developmental mechanisms responsible for this variation in form and the significance of this diversity in relation to the environments in which plants grow. Also listed as Plant and Microbial Biology C107.
+    </course>
+    <course name="Laboratory for Principles of Plant Morphology" number="C107L" units="2">
+        Laboratory designed to accompany C107, Principles of Plant Morphology. Also listed as Plant and Microbial Biology C107L.
+    </course>
+    <course name="Principles of Paleontology" number="108" units="4">
+        An introduction to concepts and analytical procedures in paleontology. This interdisciplinary course provides an overview of the information content of the fossil record. We will examine the nature of fossil species, populations, and communities; functional morphology, paleoecology, systematics, and macroevolution. Laboratories emphasize original problem solving and interpretation of paleontological materials and data as well as development of critical thinking and writing skills.
+    </course>
+    <course name="Horticultural Methods in the Botanical Garden" number="112L" units="1">
+        An introduction to horticultural techniques utilizing the diverse collections of the University Botanical Garden.
+    </course>
+    <course name="Introduction to Systems in Biology and Medicine" number="115" units="3">
+        This course is aimed at students wishing to understand the general principles of how biological systems operate. Topics include feedback regulation; competition and cooperation; genetic switches and circuits; random processes; chaos; mechanisms for error correction; and the properties of networks. Examples are selected from many fields including medicine, physiology, ecology, biochemistry, cell biology, and genetics. Students will learn to conceptualize and quantify interactions within biological systems using simple mathematical models and computer programs. No previous experience in programming is required.
+    </course>
+    <course name="Medical Ethnobotany" number="117" units="2">
+        Biological diversity and ethno-linguistic diversity sustain traditional botanical medicine systems of the world. Major topics covered in this course include cultural origins of medicinal plant knowledge on plant-derived pharmaceuticals and phytomedicines; field research methods in ethnobotany and ethnopharmacology; examples of how traditional botanical medicines provide safe, effective, affordable, and sustainable primary health care to tropical countries; human physiology, human diseases, and mechanisms of action of plant-derived drugs.
+    </course>
+    <course name="Medical Ethnobotany Laboratory" number="117L" units="2">
+        Laboratory will focus on studying medicinal plants from the major ecosystems and geographical regions of the world. Students will learn common names, scientific names, plant families, field identification, habitats, and ethnomedical uses of medicinal plants. How the medicinal plant is prepared, administered, and used as a phytomedicine will also be discussed. There will be reference to the phylogenetic relationships between the plant families and genera represented by the medicinal plants.
+    </course>
+    <course name="Host-Pathogen Interactions: A Trans-Discipline Outlook" number="118" units="3">
+        The second half of the 20th century has been marked by great strides in the battle against infectious diseases. However, the forces that drive bacterial evolution are not dormant and continue to pose new challenges for science and medicine. In this course we will cover various aspects relating to host-pathogen interactions in animals and in plants, learning about viral pathogens, fungi, parasitic nematodes, and focusing on bacterial pathogens. We will examine the ecological context in which such interactions take place and how these interactions are shaped by evolution. We will further focus on prominent molecular mechanisms that participate in both pathogen and host in this warfare and learn how ancient mechanisms are used and reused in diverse organisms spanning hundreds of millions of years of evolution and how they integrate with more recently evolved mechanisms. The course will examine how such mechanisms contribute to disease, but also how the understanding of these mechanisms could suggest new strategies for fighting infectious diseases.
+    </course>
+    <course name="Evaluating Scientific Evidence in Medicine" number="119" units="3">
+        A course in critical analysis of medical reports and studies using recent controversial topics in medicine. Course will focus on information gathering, hypothesis testing, evaluating study design, methodological problems, mechanisms of bias, interpretation of results, statistics, and attribution of causation. Students participate in a mock trial as a way to demonstrate their abilities to gather, critically analyze, and present scientific and medical evidence.
+    </course>
+    <course name="Exercise Physiology" number="123A" units="3">
+        123A should be taken concurrently with 123AL. Discussions of how chemical energy is captured within cells and how potential chemical energy is converted to muscular work. Energetics, direct and indirect calorimetry, pathways of carbon flow in exercise, ventilation, circulation, skeletal muscle fiber types.
+    </course>
+    <course name="Laboratory Exercises and Demonstrations Exercise Phyisology and Metabolism" number="123AL" units="2">
+        Obtain practical experience in the measurement of physiological parameters and to be able to compile, compare, contrast, and interpret physiological data. Laboratory demonstrations and exercises will explain by example, the lecture content.
+    </course>
+    <course name="Exercise Physiology" number="123B" units="3">
+        123B should be taken concurrently with 123BL. Discussions of the effect of exercise on skeletal muscle; exercise and cardiovascular and chronic disease risks; exercise in the heat, cold, under water, and at altitude; nutrition and performance; effects of drugs on performance; blood doping; sex differences; aging and exercise performance.
+    </course>
+    <course name="Laboratory Exercises and Demonstrations in Environmental and Exercise Physiology" number="123BL" units="1">
+        Obtain practical experience in the measurement of physiological parameters and be able to compile, compare, contrast, and interpret physiological data related to exercise and environmental stresses. Laboratory demonstrations and exercises will explain by example, the lecture content.
+    </course>
+    <course name="Introduction to the Biomechanical Analysis of Human Movement" number="C125" units="4">
+        Basic biomechanical and anatomical concepts of human movement and their application to fundamental movement patterns, exercise, and sport skills. Also listed as Physical Education C165.
+    </course>
+    <course name="Motor Control" number="127" units="2">
+        Control of human posture, locomotion, and voluntary movements. We start with control at the spinal level: how muscle mechanics, properties of muscle and skin mechanoreceptors and simple spinal connections permit control of a wide variety of movements. We then study the anatomy and physiology of motor systems of the brain. Finally, we use principles of control and information theories to synthesize knowledge of these elements to understand the control systems that regulate posture, locomotion, and voluntary movements.
+    </course>
+    <course name="Motor Control Laboratory" number="127L" units="1">
+        The laboratory component of 127 leads the lectures in the development of concepts and questions regarding control of human movements. Students are both investigators and subjects in hands-on experiments investigating the application of information theory to fast, accurate movements, recruitment and rate coding of muscle force, electromyography, spinal reflexes, kinesthesia, and sensori-motor response times. Other laboratories teach elementary control theory, spinal level control, and neuroanatomy of motor systems using computer simulations. The laboratory culminates with an independent investigation, in which students identify their own questions, develop hypotheses, design and perform experiments, and present their studies in a symposium.
+    </course>
+    <course name="Sports Medicine" number="128" units="3">
+        Survey course of sports medicine including topics of athletic injury (cause, evaluation, and treatment options), exercise physiology, exercise and health, fitness testing, issues specific to female athletes, drug abuse in sports, environmental issues (heat, altitude, sun exposure), nutrition, careers in sports medicine, introduction to clinical research.
+    </course>
+    <course name="Human Physiological Assessment" number="C129" units="3">
+        Principles and theories of human physiological assessment in relation to physical activity and conditioning. Performance of laboratory procedures in the measurement and interpretation of physiological fitness (cardiorespiratory endurance, body composition, musculoskeletal fitness). Also listed as Physical Education C129.
+    </course>
+    <course name="General Human Anatomy" number="131" units="3">
+        The functional anatomy of the human body as revealed by gross and microscopic examination. Designed to be taken concurrently with 131L.
+    </course>
+    <course name="Applied Anatomy" number="131A" units="1">
+        A series of 15 lectures by former students of 131 who have become successful physicians and surgeons. The purpose is to provide the practical applications of anatomy, e.g., plastic surgeons, neurosurgeons, vascular surgeons, pathologists, etc.
+    </course>
+    <course name="General Human Anatomy Laboratory" number="131L" units="2">
+        Prepared human dissections, models, and microscopic slides.
+    </course>
+    <course name="Survey of Human Physiology" number="132" units="3">
+        Mechanisms by which key physiological priorities are maintained in healthy humans. From a basis in elementary theories of information and control, we develop an understanding of homeostasis of cellular composition, structure, and energy metabolism. We then study neural and endocrine signaling in humans, and develop the key concepts of control and homeostasis in all the major organ and multi-organ systems, including cardiovascular, respiratory, renal, metabolic, reproductive, and immune systems, growth and development, and sensory and motor systems.
+    </course>
+    <course name="Mammalian Physiology Laboratory" number="132L" units="2">
+        In the laboratory component of Integrative Biology 132, students gain hands-on experience measuring physiological parameters, interpreting physiological data, designing experiments, and communicating ideas in writing and orally. Guided investigations include measurements of membrane potentials, responses of skeletal muscle to electrical stimulation, electromyography, pulmonary and cardiovascular measurements in humans, contractility and regulation of the frog heart, human electrocardiography, and renal control of body fluids. In two independent investigations, students identify their own questions, develop hypotheses, design and perform experiments, and present their studies in symposia. Background in elementary statistics, data analysis and oral presentation are also provided.
+    </course>
+    <course name="Anatomy Enrichment Program" number="133" units="2">
+        The purpose of the course is for University students to teach human anatomy to grades K-7 in the public schools. The UCB students work in groups of 2-3 to plan their presentations of the systems of the body and then enter the school rooms to teach what they have learned in 131.
+    </course>
+    <course name="Principles of Integrative Morphology" number="134" units="4">
+        Concepts, issues, and practical approaches to analysis of design in living and fossil organisms. This course examines the fundamental questions and techniques of eight approaches to the study of structural diversity: descriptive morphology, comparative morphology, developmental morphology, functional morphology, constructional morphology theoretical morphology, ecological morphology, and evolutionary morphology. Examples from model systems and strong emphasis on the need for a pluralistic science of form integrating the disparate sub-disciplines.
+    </course>
+    <course name="The Mechanics of Organisms" number="135" units="4">
+        Organism design in terms of mechanical principles; basics of fluid and solid mechanics with examples of their biological implications, stressing the dependence of mechanical behavior and locomotion on the structure of molecules, tissues, structural elements, whole organisms, and habitats.
+    </course>
+    <course name="Laboratory in the Mechanics of Organisms" number="135L" units="3">
+        Introduction to laboratory and field study of the biomechanics of animals and plants using fundamental biomechanical techniques and equipment. Course has a series of rotations involving students in experiments demonstrating how solid and fluid mechanics can be used to discover the way in which diverse organisms move and interact with their physical environment. The laboratories emphasize sampling methodology, experimental design, and statistical interpretation of results. Latter third of course devoted to independent research projects. Written reports and class presentation of project results are required.
+    </course>
+    <course name="General Endocrinology" number="137" units="4">
+        Course will address the role of hormones in physiology with a focus on humans. Regulation of hormone secretion and mechanisms of hormone action will be discussed. Physiological processes to be addressed include reproduction, metabolism, water balance, growth, fetal development. Experimental and clinical aspects will be addressed.
+    </course>
+    <course name="Comparative Endocrinology" number="138" units="4">
+        The primary goal of this course is to provide students with a broad understanding of the evolution of hormonal systems. A comparative approach allows us to envisage how the complex mammalian endocrine system presumably evolved from that of more primitive vertebrates. Students will learn about endocrine pathways and endocrine-based behaviors of jawless fishes, fishes, amphibia, reptiles, birds, and mammals. In addition, students will gain an understanding of the experimental methods used in endocrine research. The class teaches students how to read and interpret the primary scientific literature; thus it encourages the critical thinking that is a fundamental skill for any scientist.
+    </course>
+    <course name="Biology and Sociobiology of Human Reproduction" number="140" units="4">
+        Evaluation of human reproduction, social problems and demographics, anatomy and physiology of reproductive organs, endocrinology of the menstrual cycle; puberty, psycho-physiology of copulation and orgasm; fertilization and implantation infertility and sexual dysfunction; conception and contraception; pregnancy and abortion; birth and lactation; sexual differentiation of brain and reproductive organs; homosexuality and transexualism.
+    </course>
+    <course name="Introduction to Human Osteology" number="C142" units="6">
+        An intensive study of the human skeleton, reconstruction of individual and population characteristics, emphasizing methodology and analysis of human populations from archaeological and paleontological contexts, taphonomy, and paleopathology. Also listed as Anthropology C103.
+    </course>
+    <course name="Biological Clocks: Physiology and Behavior" number="C143A" units="3">
+        A consideration of the biological clocks that generate daily, lunar, seasonal and annual rhythms in various animals including people. Emphasis on neuroendocrine substrates, development and adaptive significance of estrous cycles, feeding rhythms, sleep-wakefulness cycles, reproductive and hibernation cycles, body weight and migratory cycles. Also listed as Psychology C113.
+    </course>
+    <course name="Hormones and Behavior" number="C143B" units="3">
+        This course provides a comprehensive overview of behavorial endocrinology beginning with hormone production and actions on target issues and continuing with an exploration of a variety of behaviors and their hormonal regulation/consequences. The course uses a comparative approach to examine the reciprocal interactions between the neuroendocrine system and behavior, considering the effects of hormone on development and adult behavior in addition to how behavior regulates endocrine physiology. While much of the course focuses on non-human vertebrate species, the relevance to humans is explored where appropriate. Topics include sexual differentiation and sex differences in behavior, reproductive, parental, and aggressive behaviors, and hormonal and behavioral homeostatic regulation. Also listed as Psychology C116.
+    </course>
+    <course name="Animal Behavior" number="C144" units="4">
+        An introduction to the study of animal behavior in an evolutionary context. Topics covered include the genetic, physiological, ecological, and cognitive bases for animal behavior. This course, which emphasizes conceptual understanding of basic behavioral principles, serves as the foundation for advanced courses in behavior offered through Integrative Biology and Psychology. Three midterms and a cumulative final exam. Also listed as Psychology C115B.
+    </course>
+    <course name="Behavioral Ecology" number="146" units="3">
+        An in-depth examination of the ecological and evolutionary bases for behavioral diversity. Topics covered include behavior as an adaptive response, sexual selection, animal mating system, group living, and cooperative and competitive interactions. Current conceptual approaches to these topics are explored, with an emphasis upon rigorous testing of hypotheses drawn from the primary literature. Discussion sections are used to explore selected topics in greater detail and to stimulate critical review of recent research in behavioral ecology. Two midterms plus several discussion-based written assignments.
+    </course>
+    <course name="Behavioral Ecology Laboratory" number="146L" units="2">
+        Hands-on training in the methods of experimental design, data collection, and data analysis currently used in behavioral research. In additional to structured laboratory activities, students design and execute multi-week studies on topics such as resource competition, mate choice, and alloparental care. Laboratory reports plus short written assignments.
+    </course>
+    <course name="Comparative Animal Physiology" number="148" units="3">
+        Comparative study of physiological systems among animal phyla. General physiological principles will be illustrated by examining variation in neural, muscular, endocrine, cardiovascular, respiratory, digestive, and osmoregulatory systems. Students will read original literature and give a group presentation in a symposium.
+    </course>
+    <course name="Molecular Ecology" number="C149" units="4">
+        This course focuses on the use of molecular genetic information in ecology. Applications and techniques covered range from analysis of parentage and relatedness (DNA fingerprinting and multilocus genetic analysis) through gene flow, biogeographic history and community composition (comparative DNA sequencing) to analysis of diet and trophic interactions (biological isotopes). Grades are based on one final exam, problem sheets, and a critique of a recent research paper. Also listed as Environ Sci, Policy, and Management C149.
+    </course>
+    <course name="Molecular Ecology Laboratory" number="C149L" units="2">
+        This laboratory course is intended to provide hand-on-training in techniques commonly used in molecular ecology and systematics. Techniques to be covered include DNA extraction, agarose gel electrophoresis, PCR amplification, RFLP and AFLP analysis, DNA sequencing, and microsatellite screening. The genetic basis of each technique will be discussed. Students also will gain experience in the analysis and interpretation of these types of genetic data. During the latter part of the course, students will work in small groups to complete an independent research project and present the results to the class. Grades will be based on laboratory notebooks, homework assignments, and independent projects. Also listed as Environ Sci, Policy, and Management C149L.
+    </course>
+    <course name="Plant Physiological Ecology" number="151" units="3">
+        This course is a detailed survey of the physiological approaches used in understanding the relationships between plants and their environment from the functional perspective. Lectures explore physiological adaptation; limiting factors; resources acquisition and allocation; photosynthesis, carbon, and energy balance; water use and water relations; nutrient relations; linking physiology; stable isotope applications in ecophysiology; stress physiology; life history and physiology; the evolution of physiological performance; and physiology at the population, community, and ecosystem levels.
+    </course>
+    <course name="Plant Physiological Ecology Laboratory" number="151L" units="2">
+        The purpose of the laboratory is to allow you to become familiar with the approaches and methodology used in plant physiology ecology. The course will introduce students to a number of techniques and make measurements on different plant species growing in the field or greenhouse.
+    </course>
+    <course name="Environmental Toxicology" number="152" units="4">
+        The environmental fate and effect of toxic substances from human activities, with emphasis on aquatic systems, including their biological effects from the molecular to the community level. Course will review pollutant types, principal sources, impacts on aquatic organisms, monitoring approaches, and regulatory issues.
+    </course>
+    <course name="Population and Community Ecology" number="153" units="3">
+        Principles of microbial, animal, and plant population ecology, illustrated with examples from marine, freshwater, and terrestrial habitats. Consideration of the roles of physical and biological processes in structuring natural communities. Observational, experimental, and theoretical approaches to population and community ecology will be discussed. Topics will include quantitative approaches relying on algebra, graph analysis, and elementary calculus. Discussion section will review recent literature in ecology.
+    </course>
+    <course name="Laboratory in Population and Community Ecology" number="153L" units="3">
+        Introduction to field and laboratory study of ecological patterns and processes in nature. Course begins with a series of group field exercises conducted in local terrestrial, aquatic, and marine habitats. These exercises emphasize sampling methodology, experimental design, and statistical interpretation of results. Latter half of course devoted to independent research projects. A written report and class presentation of project results are required.
+    </course>
+    <course name="Plant Population and Community Ecology" number="154" units="3">
+        An introduction to ecology of plants, covering individuals, populations, communities and global processes. Topics include: form and function, population dynamics, life histories, community structure and dynamics, disturbance and succession, diversity and global change.
+    </course>
+    <course name="Plant Ecology" number="154" units="3">
+        An introduction to ecology of plants, covering individuals, populations, communities, and global processes. Topics include: form and function, population ecology, life histories, community structure and dynamics, disturbance and succession, diversity and global change.
+    </course>
+    <course name="Plant Ecology" number="154L" units="2">
+        Field and laboratory class in plant ecology. Laboratory exercises covering plant functional morphology, dispersal ecology, spatial dispersion in plant populations, environmental gradients and plant distributions, population dynamics simulations, and restoration ecology. Small-group independents projects, with write-ups and presentations.
+    </course>
+    <course name="Principles of Conservation Biology" number="C156" units="4">
+        A survey of the principles and practices of conservation biology. Factors that affect the creation, destruction, and distribution of biological diversity at the level of the gene, species, and ecosystem are examined. Tools and management options derived from ecology and evolutionary biology that can recover or prevent the loss of biological diversity are explored. Also listed as Environ Sci, Policy, and Management C103.
+    </course>
+    <course name="Ecosystems of California" number="157L" units="4">
+        In this field-oriented course, we will visit sites representative of diverse grassland, chaparral, scrub land, forest, desert, river, marsh, and intertidal ecosystems of California. We will spend up to three weeks studying one or two habitat types that occur at a given field site. Our first site will introduce students to the natural history and ecological patterns at sites. During a second meeting on campus, we will give a 1.5 hour lecture and lead a 2 hour discussion on ecological issues relevant to processes and patterns exemplified at a given site. Methods for field investigations will also be discussed and demonstrated. During our third meeting, we will revisit the site, and students will collect quantitative data that test hypotheses about processes influencing species distributions and abundances. Course requirements will include a research proposal in National Science Foundation format, that presents field results as seed data, develops a program for subsequent investigation of problems uncovered by preliminary results, and justifies the importance of the proposed research with discussions from the literature. A final oral presentation in a class symposium is required.
+    </course>
+    <course name="Biology and Geomorphology of Tropical Islands" number="C158" units="13">
+        Natural history and evolutionary biology of island terrestrial and freshwater organisms, and of marine organisms in the coral reef and lagoon systems will be studied, and the geomorphology of volcanic islands, coral reefs, and reef islands will be discussed. Features of island biogeography will be illustrated with topics linked to subsequent field studies on the island of Moorea (French Polynesia). Also listed as Environ Sci, Policy, and Management C107.
+    </course>
+    <course name="Evolution" number="160" units="4">
+        An analysis of the patterns and processes of organic evolution. History and philosophy of evolutionary thought; the different lines of evidence and fields of inquiry that bear on the understanding of evolution. The major features and processes of evolution through geologic times; the generation of new forms and new lineages; extinction; population processes of selection, adaptation, and other forces; genetics, genomics, and the molecular basis of evolution; evolutionary developmental biology; sexual selection; behavorial evolution; applications of evolutionary biology to medical, agricultural, conservational, and anthropological research.
+    </course>
+    <course name="Ecological Genetics" number="162" units="4">
+        This course integrates ecology, genetics, and evolutionary biology. It presents contemporary approaches to studying evolution in natural populations, including analyzing heritability of ecologically important traits, using molecular techniques to decompose genotypes, documenting and measuring the magnitude of selection in natural systems, and using models to predict evolution in natural populations. Case studies are used to examine evolutionary effects of ecological interactions among organisms, the importance of population size and structure, and interactions among populations through migration and dispersal.
+    </course>
+    <course name="Survey of General Genetics" number="C163" units="4">
+        A survey of genetics with primary emphasis upon mechanisms of heredity and molecular genetics. Includes some treatment of evolutionary genetics. Also listed as Molecular and Cell Biology C142.
+    </course>
+    <course name="Introduction to Quantitative Genetics" number="165" units="4">
+        Is IQ inherited in humans? Do their genes make boys better at math? Can species evolve fast enough to keep up with global climate change? Why do flowers have so many different colors and shapes? Quantitative genetics helps us answer these questions and more. Quantitative genetic theory extends the consequences of Mendelian inheritance to characters that are affected by many genes. This course introduces basic concepts in quantitative genetics including heritability, genetic correlations, quantitative trait locus analysis, and selection. We also consider quantitative genetic models for the evolution of ecologically interesting characters.
+    </course>
+    <course name="Evolutionary Biogeography" number="166" units="4">
+        The goals of the course are to (a) examine how geographically-linked characteristics of species influence their potential for evolution and extinction; and (b) provide an overview of the analytical techniques and applications for studying the interplay between geographic ranges, environment, evolution, and extinction. Accordingly, the course begins by examining what geographic ranges of species are and what controls them. We then will explore how geographic-range characteristics influence and interact with speciation and extinction processes. With that foundation, we will examine how species assemble into communities and how ecological processes govern distributions at the community and landscape levels, touching on such topics as community energetics, scaling issues, and the influences of humans on &quot;natural&quot; ecosystems. The last third of the course will be devoted to an overview of quantitative analytical techniques that commonly are used to study interactions between biogeogeographic ranges, evolutionary processes, extinction, and environmental change.
+    </course>
+    <course name="Astrobiology" number="167" units="3">
+        The course covers scientific search for life in the universe, including science philosophy and process; the public's view of science and the paranormal; support of the search; planetary formation; history of the solar system and the planets and satellites; earth history and the history of life on earth as revealed in molecular and paleontological data; the processes of biological evolution; planning for a Martian and European landing; a critical evaluation of supposed indications of extraterrestrial life; and the ethical and theological conservation/protection issues of planetary exploration.
+    </course>
+    <course name="Systematics of Vascular Plants" number="168" units="2">
+        A discussion of the philosophy, principles, techniques, and history of botanical systemics. An outline of the major group of vascular plants and their evolution.
+    </course>
+    <course name="Systematics of Vascular Plants Laboratory" number="168L" units="2">
+        A laboratory course devoted to a survey on a world-wide basis of the diversity of vascular plant families.
+    </course>
+    <course name="Mammalogy" number="173" units="2">
+        An advanced course in the biology of mammals. Topics covered include elements of modern mammalian biology such as morphology, physiology, ecology, and behavior. For all topics, the traits that define mammals are emphasized, as is the variation on these themes evident within modern mammalian lineages. Two midterms and several short assignments.
+    </course>
+    <course name="Mammalogy Laboratory" number="173L" units="3">
+        Formerly Zoology 183 Must be taken concurrently with 173. An advanced laboratory and field course that explores the biology of modern mammals. Labs make use of the extensive collections of the Museum of Vertebrate Zoology to introduce students to mammalian diversity in a phylogenetic context. Field trips provide experience with the methods used to study mammalian biology in natural environments. Two lab practicals plus multiple short quizzes.
+    </course>
+    <course name="Ornithology" number="174" units="2">
+        An advanced course in the biology of birds.
+    </course>
+    <course name="Ornithology Laboratory" number="174L" units="2">
+        An introduction to the diversity, morphology, and general ecology of birds of the world.
+    </course>
+    <course name="Herpetology" number="175" units="2">
+        Lectures and assigned readings will introduce students to the diversity of amphibians and reptiles on a world-wide basis, with emphasis on systematics, ecology, morphology, and life history. Grade is based on joint work in 175 and 175L and includes three lecture exams, two laboratory exams (midterm, final), lab quizzes, and an independent research paper.
+    </course>
+    <course name="Herpetology Laboratory" number="175L" units="2">
+        Formerly Zoology 185 Laboratories will teach students the diagnostic characteristics and some functional attributes of amphibians and reptiles on a world-wide basis. Field trips will acquaint students with techniques for collecting, preserving, identifying, and studying amphibians and reptiles.
+    </course>
+    <course name="Evolution of the Vertebrates" number="183" units="3">
+        Formerly lecture portion of Paleontology 125. An introduction to vertebrate paleontology, focusing on the history and phylogeny of vertebrates ranging from fishes to humans. Emphasis on evolution, taxonomy, functional morphology, faunas through time, and problems in vertebrate history, including diversity through time and extinction.
+    </course>
+    <course name="Laboratory in Vertebrate  Evolution" number="183L" units="1">
+        Formerly laboratory portion of Paleontology 125. An introduction to vertebrate fossils, focusing on demonstration and study of problems related to taxonomy, evolution, functional morphology, structure, and preservation of fossil vertebrates and their faunas through time.
+    </course>
+    <course name="Morphology of the Vertebrate Skeleton" number="184" units="2">
+        Lectures on comparative osteology of vertebrates, with emphasis on selected groups of terrestrial vertebrates considered in paleoecological, paleoclimatological and biostratigraphic analyses.
+    </course>
+    <course name="Laboratory on the Vertebrate Skeleton" number="184L" units="2">
+        Formerly Paleontology 126. Laboratory on comparative osteology of vertebrates, with emphasis on selected groups of vertebrates. Structure, anatomy, morphology, function, and development of the vertebrate skeleton.
+    </course>
+    <course name="Human Paleontology" number="C185" units="5">
+        Origin and relationships of the extinct forms of mankind. Also listed as Anthropology C100.
+    </course>
+    <course name="Evolution of Hominid Behavior" number="186" units="4">
+        Evidence from evolutionary theory, comparative primatology, comparative anatomy, taphonomy, lithic technology, faunal analysis, sedimentology, and paleoenvironmental studies. Discussion section in Hearst 18 laboratory for hands-on evaluation of technological and anatomical evidence.
+    </course>
+    <course name="Human Biogeography of the Pacific" number="187" units="3">
+        Modern Homo sapiens began crossing the water barrier of Wallacea into Australia and Near Oceania during the Pleistocene, at least 40,000 years ago. Ultimately, populations of H. sapiens spread all the way across the Pacific to colonize virtually every habitable island. This course examines this remarkable history of dispersal and expansion from the perspectives of biogeography and evolutionary ecology. H. sapiens, like any other species, faced problems of dispersal, colonization, and potential extinction, and adapted in a variety of ways to the diversity of insular ecosystems encountered. For humans, it is necessary to use a dual evolutionary model that takes into account cultural evolution and transmission, as well as biological evolution of human populations. This course also explores the impacts of human populations on the isolated and often fragile natural ecosystems of oceanic islands, and the reciprocal effects of anthropogenic change on human cultures.
+    </course>
+    <course name="Undergraduate Student Instructor for Integrative Biology Courses" number="194" units="1-3">
+        UGSI will work under supervision of instructor and/or GSI. The UGSI will attend any mandatory preparatory and review meetings, be available in the classroom (discussion or laboratory) to respond to student questions, facilitate lesson plans, perform other tasks as assigned. UGSIs do not evaluate students' work or assign grades.
+    </course>
+    <course name="Thesis Course" number="H196A" units="3">
+        Formerly Zoology 196A, Botany 195 Individual study and research for at least one academic year on a special problem to be chosen in consultation with a member of the staff; preparation of the thesis on broader aspects of this work.
+    </course>
+    <course name="Thesis Course" number="H196B" units="3">
+        Formerly Zoology 196A, Botany 195 Individual study and research for at least one academic year on a special problem to be chosen in consultation with a member of the staff; preparation of the thesis on broader aspects of this work.
+    </course>
+    <course name="Supervised Field Studies By Upper Division Students" number="197" units="1-4">
+        Formerly Paleontology 197, Zoology 197 Supervised experience in off-campus field work. Regular meetings with instructor and written report.
+    </course>
+    <course name="Supervised Group Study and Research By Upper Division Students" number="198" units="1-4">
+        Formerly Physiology 198, Anatomy 198, Paleontology 198 Undergraduate research by small groups.
+    </course>
+    <course name="Supervised Independent Study and Research" number="199" units="1-4">
+        Formerly Paleontology 199, Zoology 199, Botany 199, Physiology 199, Anatomy 199, Genetics 199 Enrollment restrictions apply; see department.
+    </course>
+    <course name="Principles of Phylogenetics: Systematics" number="200A" units="4">
+        The core theory and methodology for phylogenetic systematics with emphasis on both morphology and molecules, and both living and fossil organisms. Topics include homology, character analysis, competing optimality criteria, classification, and a brief introduction to comparative methods. Laboratories are closely integrated with lectures and cover the major algorithms and software. Requirements include a practical term project. Note: this course and 200B may be taken in either order or alone.
+    </course>
+    <course name="Principles of Phylogenetics: Ecology and Evolution" number="200B" units="4">
+        The uses of phylogenetic trees in comparative biology. Covers the many applications of phylogenetics to biogeography, speciation, conservation, population genetics, ecology, behavior, development, functional morphology, and macroevolution that are revolutionizing those fields. Laboratories are closely integrated with lectures and cover algorithms and software. Requirements include a practical term project. Note: this course and 200A may be taken in either order or alone.
+    </course>
+    <course name="Research Reviews in Animal Behavior: Behavior Review" number="C204" units="1">
+        This course will discuss current publications in animal behavior. A student will summarize a paper and lead the discussion that follows. Occasionally, the group reviews a manuscript in preparation, or a thesis proposal. Not all participants need report, but all are expected to attend and enter into the discussions. Guest lecturers are invited each semester. Also listed as Psychology C204 and Environ Sci, Policy, and Management C204.
+    </course>
+    <course name="Quantitative Methods for Ecological and Environmental Modeling" number="C205" units="3">
+        This course will review the background mathematical and statistical tools necessary for students interested in pursuing ecological and environmental modeling. Topics include linear algebra; difference equation, ordinary differential equation, and partial differential equation models; stochastic processes; parameter estimation; and a number of statistical techniques. This course will be recommended as a prerequisite for advanced modeling courses in Integrative Biology, Energy and Resources Group, and Environmental Science, Policy, and Management. Also listed as Environ Sci, Policy, and Management C205 and Energy and Resources Group C205.
+    </course>
+    <course name="Statistical Phylogenetics" number="206" units="3">
+        This course is aimed at students who wish to understand the evolutionary models and methods for estimating phylogenies (which are trees representing how organisms are related to one another). Topics include continuous-time Markov chains as applied in phylogenetics; maximum likelihood estimation; Bayesian estimation; the combinatorics of evolutionary trees; Markov chain Monte Carlo; distance and parsimony methods for estimating trees; optimization strategies for finding best trees. Students will learn to write computer programs that implement many of the methods discussed in class, and apply their knowledge in a research project.
+    </course>
+    <course name="Communicating Ocean Science" number="C215" units="4">
+        For graduate students interested in improving their ability to communicate their scientific knowledge by teaching ocean science in elementary schools or science centers/aquariums. The course will combine instruction in inquiry-based teaching methods and learning pedagogy with six weeks of supervised teaching experience in a local school classroom or the Lawrence Hall of Science with a partner. Thus, students will practice communicating scientific knowledge and receive mentoring on how to improve their presentations. Also listed as Earth and Planetary Science C301.
+    </course>
+    <course name="Biomimetic Engineering -- Engineering from Biology" number="C217" units="3">
+        Study of nature's solutions to specific problems with the aim of determining appropriate engineering analogs. Morphology, scaling, and design in organisms applied to engineering structures. Mechanical principles in nature and their application to engineering devices. Mechanical behavior of biological materials as governed by underlying microstructure, with the potential for synthesis into engineered materials. Trade-offs between redundancy and efficiency. Students will work in teams on projects where they will take examples of designs, concepts, and models from biology and determine their potential in specific engineering applications. Also listed as Mechanical Engineering C217 and Bioengineering C217.
+    </course>
+    <course name="Seminar in Locomotion Energetics and Biomechanics" number="222" units="2">
+        Discussion and critique of scientific literature and current topics in the biomechanics and energetic cost of locomotion. Emphasis on terrestrial-legged locomotion. Topics include efficiency, musculoskeletal design, energy-saving mechanisms, muscle mechanics, gaits, effects of scaling, and comparative aspects.
+    </course>
+    <course name="Seminar in Physiological Bases of Physical Activity" number="223" units="2">
+        Immediate and long-range adaptations of the body to exercise. Physiological limits and work capacities in relation to age, sex, diet, environmental factors, and nature of activity.
+    </course>
+    <course name="Seminar in Motor Control" number="225" units="2">
+        The control of normal human movements, with emphasis on physiological mechanisms: structure and mechanical properties of muscle, anatomy and function of proprioceptors, spinal pattern generation and reflexes, motor systems of the brain. Synthesis of these mechanisms in control of posture, locomotion, and simple voluntary movements. Critical review of current literature in motor control.
+    </course>
+    <course name="Isotopics" number="C226" units="2">
+        This seminar will explore current topics that employ the use of stable isotopes. Discussion topics include the areas of biology, paleontology, biogeochemistry, soil science, and atmospheric science. Students will be required to lead at least one discussion of relevant literature in the topic area. Also listed as Environ Sci, Policy, and Management C225.
+    </course>
+    <course name="Isotope Biogeochemistry" number="C227" units="5">
+        Use of isotopes in present and past terrestrial and aquatic research. Lectures cover the principles of isotope distribution on Earth (first 10 weeks). The second part of the course focuses on student presentations of case studies and research proposals. In the laboratory, students prepare samples of choice for isotopic analyses. Also listed as Earth and Planetary Science C241 and Environ Sci, Policy, and Management C220.
+    </course>
+    <course name="Seminar in Biomechanics" number="232" units="2">
+        Presentation, discussion, and critique of current literature in scientific research and current topics in comparative biomechanics which include solid and fluid mechanics, locomotion, and energetics.
+    </course>
+    <course name="Seminar on Biology of Amphibians and Reptiles" number="234" units="1">
+        Formerly Zoology 265 Review of current research activity and literature concerning the biology of amphibians and reptiles.
+    </course>
+    <course name="Stress Effects on Brain and Behavior" number="C240" units="3">
+        This course will describe the impact of stress, hormones, and experience on the brain and or behavior. We will adopt both a multidisciplinary and interdisciplinary approach to the concept of stress. What is stress? What is social stress? What are the effects of acute and chronic stress exposure on the body physiology? What are the effects of stress on the brain? On cognition? On gene expression? On adult neurogenesis? Also listed as Psychology C213.
+    </course>
+    <course name="Endocrine Disruptors" number="241" units="3">
+        This course will examine intentional endocrine disruption, such as the use of pharmaceuticals to regulate hormones in humans, livestock, and wildlife. We will also evaluate endocrine disrupting pollutants and their impacts on wildlife and humans, including their potential role in cancer.
+    </course>
+    <course name="Functional Neuroanatomy" number="245" units="2">
+        Formerly Anatomy 203 Development, structural (gross and microscopic) and functional relationships of the mammalian central nervous system.
+    </course>
+    <course name="Functional Neuroanatomy Laboratory" number="245L" units="2">
+        Formerly 245 and Anatomy 203. Histological examination of the human nervous system; gross dissection of the human brain.
+    </course>
+    <course name="Seminars in Systems Biology" number="246" units="1">
+        This course discusses seminal papers in the field of systems biology with particular emphasis on gene regulation and cell biology. The course covers the critical analysis of primary research data, computational modeling, and important theoretical concepts in systems biology. Topics vary from year to year.
+    </course>
+    <course name="Comparative Physiology and Endocrinology Seminar" number="248" units="1">
+        Formerly Biology 221 Reviews and reports of current research in vertebrate endocrinology and physiology.
+    </course>
+    <course name="Seminar on Evolutionary Genetics" number="249" units="1">
+        Formerly Zoology 249. Recent developments in evolutionary genetics will be discussed in a seminar format.
+    </course>
+    <course name="Seminar in Ecology" number="250" units="2">
+        Readings and discussion of current topics.
+    </course>
+    <course name="Ecological Research Reviews" number="251" units="1">
+        Reports and discussions of original research.
+    </course>
+    <course name="Advanced Topics in Theoretical Ecology" number="253" units="3">
+        Discussion of recent theoretical topics in population and community ecology. Emphasis will be placed on quantitative techniques for developing and analyzing ecological models and on experimental approaches to testing the predictions of theory.
+    </course>
+    <course name="Methods in Ecology and Environmental Biology" number="256" units="3">
+        This course will introduce students to the diversity of methods and techniques used in ecology and environmental biology. It will focus on major areas of research such as environmental science, population and community ecology, environmental physiology, and ecosystem ecology. In particular, we will discuss the processes that influence the relationships between the biosphere and the atmosphere and the effects of anthropogenic changes, the components and functions of biodiversity, the interactions among organisms and between organisms and their environments, and the major biogeochemical cycles. Each topic will be analyzed from a theoretical and an empirical - practical perspective during the weekly sessions.
+    </course>
+    <course name="Current Topics in Behavioral Physiology" number="257" units="2">
+        Topics to vary. Report and discussion of current literature.
+    </course>
+    <course name="Symposium in Behavioral Ecology" number="257A" units="1">
+        Students will each select a related topic in the field of behavioral ecology and explore in detail the current issues of interest and point of view for further study. Oral presentation focusing on chosen topics will be presented during a weekend symposium at Hastings Reservation. Discussions include consideration of techniques, statistical analysis, theoretical basis, implications, and further directions related to the selected problem.
+    </course>
+    <course name="Advanced Paleoecology" number="259" units="2">
+        Formerly Paleontology 243 Topics vary from year to year but will include paleoecology of major groups of organisms or major environments from population, community evolutionary, or taxonomic persepectives.
+    </course>
+    <course name="Seminar in Plant Nomenclature" number="261" units="1">
+        Formerly Botany 224 Principles, articles, recommendations of current International Code of Botanical Nomenclature; analysis of Code through application to examples, nomenclatural resources; comparison with Zoological Code.
+    </course>
+    <course name="Seminar in Computational Biology" number="262" units="1">
+        Students will discuss original papers in the general area of computational biology and will discuss new research presented by instructors in the course and by invited speakers from other departments at UC Berkeley and from other universities and research groups.
+    </course>
+    <course name="Genetics and the Evolution of the Skeleton" number="263" units="2">
+        In this seminar, we will explore the genetic underpinnings of vertebrate skeletal variation and review how such information is being incorporated into evolutionary and paleontological studies. Topics include quantitative genetic analyses of cranial variation and developmental genetics of the limb and dentition. This course will be tailored each semester to cover new research; therefore, students may enroll in this course multiple semesters.
+    </course>
+    <course name="Seminar in Evolutionary Biology of the Vertebrates" number="264" units="1">
+        Formerly Zoology 260 Presentation of results of original research by students, faculty, and visitors.
+    </course>
+    <course name="Human Evolution" number="C265" units="4">
+        Topic to vary each semester. Also listed as Anthropology C200.
+    </course>
+    <course name="Mechanisms of Developmental Evolution" number="C266" units="3">
+        Synthesis of modern research on the molecular genetics of developmental evolution. Topics include the origin of animals, the evolution of body plan, the role of transcriptional regulation in morphological evolution, and genome evolution. Also listed as Molecular and Cell Biology C245.
+    </course>
+    <course name="Seminar in Evolution above the Species Level" number="268" units="2">
+        Formerly Paleontology 246. Current issues in macroevolution and paleobiology, using both neontological and paleontological data.
+    </course>
+    <course name="Seminar in Paleontological Research" number="280" units="1">
+        Presentation of results of original research by students, faculty, and visitors.
+    </course>
+    <course name="Seminar in Evolution" number="281" units="2">
+        Advanced study and current literature in various fields of evolution. Topics vary from year to year.
+    </course>
+    <course name="Seminar in Vertebrate Evolution and Paleontology" number="283" units="1">
+        Presentations and discussions of original research and new literature in vertebrate evolution and paleontology. Syllabus and reading list will vary as topics change from semester to semester. Open to Undergraduate students with permission. Enrollment limit: 25
+    </course>
+    <course name="Seminars in Paleontology" number="286" units="2">
+        Formerly Paleontology 250 Advanced study and current literature in various fields of paleontology. Topics vary from year to year.
+    </course>
+    <course name="Research Seminar" number="290" units="1">
+        Formerly Botany 290 and Zoology 290 Advanced study in various fields of Integrative Biology. Topics will be announced in advance of each semester. Enrollment in more than one section permitted.
+    </course>
+    <course name="Research Seminar" number="291" units="1">
+        Formerly Zoology 240 Review and discussion of topics of current interest. Topics to vary.
+    </course>
+    <course name="Special Study for Graduate Students" number="296" units="1-4">
+        Reading or other advanced study by arrangement with a staff member.
+    </course>
+    <course name="Directed Field Studies" number="297" units="1-8">
+        Formerly Paleontology 297 Open to qualified students directly engaged in field studies.
+    </course>
+    <course name="Special Study in Integrative Biology" number="298" units="1-12">
+        Formerly Physiology 298 and Anatomy 298 Graduate research by small groups.
+    </course>
+    <course name="Graduate Research" number="299" units="1-12">
+        Formerly Botany 299, Paleontology 299, Physiology 299, Anatomy 299, Zoology 299. Credit awarded according to work planned and accomplished.
+    </course>
+    <course name="Teaching Colloquium: Graduate Student Instructor Training" number="303" units="2">
+        Series of workshops and seminars involving graduate students and faculty participation. The main objectives of this course are to train graduate students to become effective instructors and to discuss important issues that graduate students face when teaching undergraduate classes.
+    </course>
+    <course name="Dissemination of Research: Your Interface with the Public" number="304" units="2">
+        This course will consist of lectures and class discussions about mechanisms of communicating about science to the public. We will consider how to convey the issues, process, and findings of scientific research to a variety of audiences using different media (e.g., posters, web pages, newsletters, newspaper and magazine articles, books, television). Projects conducted by teams of students under the direct supervision of the instructors will include preparation of outreach materials (e.g., posters, newsletters, web pages).
+    </course>
+    <course name="Academic Survivorship" number="305" units="2">
+        Series of lectures and workshops to prepare graduate students for many aspects of academic careers, including grant proposal writing, giving talks at meetings or to academic departments, preparing job applications and having job interviews, advising graduate students and postdocs, reviewing manuscripts and grant proposals, service activities and time management, working at teaching college vs. research universities, alternative careers, etc.
+    </course>
+    <course name="Training in Stable Isotope Methods and Mass Spectrometery" number="400" units="1">
+        An intensive lecture and laboratory training course on the fundamental principles and practical applications of stable isotope methods in biogeochemistry, ecology, physiology, and environmental science. Topics covered are sample preparation, operating of an isotope ratio mass spectrometer, and analysis of stable isotope data. This course is required for all students interested in using the facilities housed in the Center for Stable Isotope Biogeochemistry for their research.
+    </course>
+    <course name="Introduction to Scientific Diving" number="C407" units="3">
+        Diving physics, physiology, medicine, rescue, decompression, theory, navigation, environment, marine life, research methods, equipment, and University regulations. Course leads to University certification to use underwater life support apparatus for study or research under University auspices. Also listed as Physical Education C407.
+    </course>
+    <course name="Individual Study for Master's Students" number="601" units="1-8">
+        Formerly Paleontology 601, Zoology 601 Individual study for the comprehensive requirements in consultation with the major adviser. Units may not be used to meet either unit or residence requirements for a master's degree.
+    </course>
+    <course name="Individual Study for Doctoral Students" number="602" units="1-8">
+        Formerly Paleontology 602, Zoology 602, Botany 602, Physiology 602, Anatomy 602 Individual study in consultation with the major adviser. Intended to provide an opportunity for qualified students to prepare themselves for the various examinations required for candidates for the Ph.D.
+    </course>
+</department>

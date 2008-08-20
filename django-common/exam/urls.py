@@ -5,6 +5,7 @@ urlpatterns = patterns('',
 
     # main page
     (r'^$', 'exam.views.browse'),
+    url(r'^view/(?P<exam_id>\d+)/$', 'exam.exam.view', name="exam-view"),    
     url(r'^submit/$', 'exam.exam.submit', name="exam-submit"),
     url(r'^browse/(?P<department_abbr>.*)/$', 'exam.views.browse_department', name="exam-browse-department"),
     url(r'^browse/$', 'exam.views.browse', name="exam-browse"),

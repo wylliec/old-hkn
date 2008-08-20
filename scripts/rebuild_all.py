@@ -2,8 +2,11 @@
 import os
 
 import hkn_settings
+from hkn import settings
 from hkn.info.constants import MEMBER_TYPE
 from django.core.management import call_command
+
+CWD = os.getcwd()
 
 import clear_db; clear_db.main()
 
@@ -31,14 +34,9 @@ print 'Creating random RSVPs'
 import generate_random_rsvps; generate_random_rsvps.main()
 import generate_event_permissions; generate_event_permissions.main()
 
+import course.scripts; course.scripts.import_all(settings.SERVER_ROOT)
+import exam.scripts; exam.scripts.import_all(settings.SERVER_ROOT)
 
-import import_seasons; import_seasons.main()
-import import_departments; import_departments.main()
-import import_courses; import_courses.main()
-import import_instructors; import_instructors.main()
-os.system('cd klass/xml && tar xvfj schedules.tbz && cd ../..')
-import import_klasses; import_klasses.main()
-
-import generate_exams; generate_exams.main()
+os.chdir(CWD)
 import generate_review_problems; generate_review_problems.main()
 import import_tutor_data; import_tutor_data.main()

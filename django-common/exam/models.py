@@ -1,10 +1,10 @@
 import datetime, re, os, string
 
-#from django.contrib.auth.models import User
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 
 from course.models import *
 from constants import FILE_UPLOAD_DIR, EXAM_TYPE
+import request.utils
 
 from django.db.models.query import QuerySet
 from nice_types.db import QuerySetManager
@@ -18,7 +18,20 @@ class ExamManager(QuerySetManager):
             return self.get_query_set().query_course(query)
         
         def query_instructor(self, query):   
-            return self.get_query_set().query_instructor(query)      
+            return self.get_query_set().query_instructor(query)    
+            
+        def after(self, value):
+            return self.get_query_set().after(value)  
+            
+            
+class PublishedExamManager(ExamManager):
+        def get_query_set(self):
+            return super(PublishedExamManager, self).get_query_set().filter(publishable=True)            
+
+class UnpublishedExamManager(ExamManager):
+        def get_query_set(self):
+            return super(UnpublishedExamManager, self).get_query_set().filter(publishable=False) 
+
             
 def get_semester_start(sem):
     """
@@ -32,19 +45,21 @@ def get_semester_start(sem):
     @return: a datetime representing the beginning of the semester
     """
     s = sem[0:2]
-    y = "20" + sem[2:4]
+    y = int(sem[2:4])
+    y += (y < 50) and 2000 or 1900
     if s == "fa":
-        return datetime.datetime(string.atoi(y), 8, 1)
+        return datetime.datetime(y, 8, 1)
     elif s == "su":
-        return datetime.datetime(string.atoi(y), 6, 1)
+        return datetime.datetime(y, 6, 1)
     else:
-        return datetime.datetime(string.atoi(y), 1, 1)
+        return datetime.datetime(y, 1, 1)
 
 
 class Exam(db.models.Model):
     """ Models an exam. """
-    
-    objects = ExamManager()
+    all = ExamManager()    
+    objects = published = PublishedExamManager()
+    unpublished = UnpublishedExamManager()
     
     id = db.models.AutoField(primary_key = True)
     
@@ -98,6 +113,13 @@ class Exam(db.models.Model):
             s += " (publishable)"
         return s
         
+    def request_confirmation(self):
+        return request.utils.request_confirmation(self, self.submitter, Permission.objects.get(codename="add_exam"))
+    
+    @property
+    def integer_number(self):
+        return int(self.number)
+        
     class QuerySet(QuerySet):
         def query_course(self, query):              
             courses = Course.objects.ft_query(query)
@@ -105,35 +127,64 @@ class Exam(db.models.Model):
         
         def query_instructor(self, query):
             instrs = Instructor.objects.ft_query(query)
-            return self.filter(klass__instructor__in = instrs)            
+            return self.filter(klass__instructors__in = instrs)            
             (last, first, dd) = Instructor.objects.parse_query(query)
 
             if first and last:
-                return self.filter(klass__instructor__first__icontains = first, klass__instructor__last__icontains = last)
+                return self.filter(klass__instructors__first__icontains = first, klass__instructors__last__icontains = last)
             elif last:
-                return self.filter(klass__instructor__last__icontains = last)            
+                return self.filter(klass__instructors__last__icontains = last)            
             return self
+            
+        def after(self, value):
+            if len(value) != 4:
+                return self
+            try:
+                semester_start = get_semester_start(value)
+            except ValueError:
+                return self
+            return self.filter(exam_date__gte = semester_start)
     
-    def get_exam_description(self):
-        solutions = ""
-        if self.is_solution:
-            solutions = "[Solutions]"
-        if self.number and self.number >= 1:
-            return "%s %d %s" % (EXAM_TYPE[self.exam_type], self.number, solutions)
+    
+    def get_semester(self):
+        return self.klass.semester()
+    
+    def describe_exam_type(self):
+        if self.exam_type == EXAM_TYPE.FINAL:
+            return EXAM_TYPE[EXAM_TYPE.FINAL]
         else:
-            return "%s %s" % (EXAM_TYPE[self.exam_type], solutions)
+            return "%s %d" % (EXAM_TYPE[self.exam_type], self.number)
+                
+    def get_exam_description(self, course=False, semester=False, instructors=False):
+        description = []
+        if course:
+            description.append(str(self.course))
+            
+        if semester:
+            description.append(self.get_semester())
+            
+        description.append(self.describe_exam_type())
+        
+        if instructors:
+            description.append("[%s]" % self.klass.instructor_names())
+        
+        return " ".join(description)
+            
         
     def get_exam_format(self):
-        return os.path.splitext(self.get_file_filename())[1]
+        return os.path.splitext(self.file.name)[1].strip(". ")
     
     def get_exam_filename(self):
         return ("%s_%s_%s_%s%d" % (self.klass.course.short_name(), self.klass.semester(), self.klass.section, self.exam_type, self.number or 0)).replace(" ", "-")
+        
+    def get_semester_sort(self):
+        return get_semester_start(self.klass.semester())
     
     def auto_exam_date(self):
         semester_start_date = get_semester_start(self.klass.semester())
         weights = {EXAM_TYPE.MIDTERM : 7, EXAM_TYPE.QUIZ : 1, EXAM_TYPE.FINAL : 30, EXAM_TYPE.REVIEW : 29}
         if self.number:
-            days_delta = (1 + self.number) * weights[self.exam_type]
+            days_delta = (1 + self.integer_number) * weights[self.exam_type]
         else:
             days_delta = weights[self.exam_type]
         return semester_start_date + datetime.timedelta(days = days_delta)
@@ -148,6 +199,6 @@ class Exam(db.models.Model):
         if not self.submitted:
             self.submitted = datetime.datetime.now()
         super(Exam, self).save()
-
-    class Admin:
-        list_filter = ['exam_type']
+        
+from admin import *
+from requests import *

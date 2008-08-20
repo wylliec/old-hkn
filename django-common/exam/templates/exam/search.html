@@ -1,3 +1,13 @@
 {% extends "exam/exam.html" %}
 
+{% block css %}
+{{ block.super }}
+<link href="{{STATIC_PREFIX}}css/exam.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script type="text/javascript" src="{{STATIC_PREFIX}}js/exam.js"></script>
+{% endblock %}
+
 {% block subtitle %} Exam Files - Search{% endblock %}

@@ -40,11 +40,11 @@ class Request(models.Model):
     object_id = models.PositiveIntegerField()
     confirm_object = generic.GenericForeignKey()
 
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=50)
     description = models.TextField()
     links = PickleField(null = True)
     
-    requestor = models.ForeignKey(User, related_name='requests_requested')
+    requestor = models.ForeignKey(User, null=True, related_name='requests_requested')
     confirmed_by = models.ForeignKey(User, null=True, related_name='requests_confirmed')
     comment = models.CharField(max_length=100)
 
@@ -75,14 +75,15 @@ class Request(models.Model):
     def set_confirm_object_confirmed(self, confirm):
         setattr(self.confirm_object, getattr(self.confirm_object.__class__, REQUEST_OBJECT_CONFIRM_ATTR), confirm)
 
-    def set_confirm(self, confirm, comment, confirmed_by = None):
+    def set_confirm(self, confirm, comment, confirmed_by = None, save_self=True):
         self.set_confirm_object_confirmed(confirm)
         self.confirm_object.save()
 
         self.active = False
         self.comment = comment
         self.confirmed_by = confirmed_by
-        self.save()
+        if save_self:
+            self.save()
         
     def __str__(self):
         return self.description
@@ -91,3 +92,4 @@ class Request(models.Model):
         self.set_metainfo()
         super(Request, self).save()
 
+setattr(Permission, 'full_codename', lambda perm: "%s.%s" % (perm.content_type.app_label, perm.codename))

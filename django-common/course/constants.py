@@ -1,6 +1,8 @@
 from nice_types import EnumType, NiceDict
 from departments_constants import DEPT_ABBRS, DEPT_ABBRS_INV, DEPT_ABBRS_SET
 
+__all__ = ["SEMESTER", "EXAMS_PREFERENCE", "PREFIX", "SUFFIX"]
+
 SEMESTER_SPRING = "spring"
 SEMESTER_SUMMER = "summer"
 SEMESTER_FALL = "fall"
@@ -15,3 +17,15 @@ EXAMS_PREFERENCE_ALWAYS_OK = 15
 
 EXAMS_PREFERENCE = EnumType(UNKNOWN = EXAMS_PREFERENCE_UNKNOWN, NEVER_OK = EXAMS_PREFERENCE_NEVER_OK, ALWAYS_ASK = EXAMS_PREFERENCE_ALWAYS_ASK, ALWAYS_OK = EXAMS_PREFERENCE_ALWAYS_OK)
 EXAMS_PREFERENCE.add_descriptions(((EXAMS_PREFERENCE.UNKNOWN, "Unknown"), (EXAMS_PREFERENCE.NEVER_OK, "Never post exams"), (EXAMS_PREFERENCE.ALWAYS_ASK, "Always ask before posting exams"), (EXAMS_PREFERENCE.ALWAYS_OK, "Always OK to post exams")))
+
+PREFIX_C = "C"
+PREFIX_H = "H"
+PREFIX_R = "R"
+PREFIX_N = "N"
+
+PREFIX = EnumType(C = PREFIX_C, H=PREFIX_H, R=PREFIX_R, N=PREFIX_N)
+PREFIX.add_descriptions( ((PREFIX.C, "Cross-listed"), (PREFIX.H, "Honors"), (PREFIX.R, "R") ) )
+
+SUFFIX_AC = "AC"
+SUFFIX = EnumType(AC=SUFFIX_AC)
+SUFFIX.add_descriptions( ((SUFFIX.AC, "American Cultures"), ))

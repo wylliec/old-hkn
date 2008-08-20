@@ -6,98 +6,47 @@
 {% endblock %}
 
 {% block filter_categories_top %}
-<style type="text/css">
-
-div.filters {
-    float: left;
-    padding: 5px;
-
-    width: 100%;
-}
-
-div.column {
-    float: left;
-    width: 150px;
-    padding: 7px 0px 15px;
-}
-
-div.column div {
-    padding-bottom: 0px;
-    padding-right: 30px;
-}
-
-div.column div label {
-    display: block;
-    padding-bottom: 2px;
-    padding-top: 4px;
-}
-
-hr.clear {
-    display: block;
-    clear: left;
-    margin: -0.5em 0;
-    visibility: hidden;
-}
-
-</style>
 
 <div class="filters">
-<div class="column">
-<div id="field_course">
-<label for="id_course_query">Course</label>
-<input type="text" class="list_filter" autocomplete="off" name="course" id="id_course_query" value="{{ course_filter }}"/>
-</div>
-<div id="field_instructor">
-<label for="id_instructor_query">Instructor</label>
-<input type="text" class="list_filter" autocomplete="off" name="instructor" id="id_instructor_query" value="{{ instructor_filter }}"/>
-</div>
-</div>
-<div class="column">
-<div id="field_after">
-<label for="id_select_after">After</label>
-<select name="after" class="list_filter" id="id_select_after" value="{{ after_filter }}"><option value="sp00">Spring 2000</option><option value="sp01">Spring 2001</option><option value="sp02">Spring 2002</option><option value="sp03">Spring 2003</option></select>
-</div>
-<div id="field_type">
-<label for="id_select_type">Type</label>
-<select name="type" class="list_filter" id="id_select_type" value="{{ type_filter }}"><option value="">All</option><option value="mt">Midterm</option><option value="f">Final</option><option value="q">Quiz</option><option value="r">Review</option></select>
-</div>
-</div>
-<div class="column">
-<div id="field_number">
-<label for="id_select_number">Number</label>
-<select name="number" class="list_filter" id="id_select_number" value="{{ number_filter }}"><option value="">All</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
-</div>
-<div id="field_submit">
-<label for="id_filter_link">&nbsp;</label>
-<a id="id_filter_link" href="javascript:void(0)">Search</a>
-</div>
-</div>
+    <div class="column">
+        <div class="small">&nbsp;</div>    
+        <div id="field_course">
+            <label for="id_course_query">Course</label>
+            <input type="text" class="list_filter" autocomplete="off" name="course" id="id_course_query" value="{{ course_filter }}"/>
+        </div>
+        <div id="field_instructor">
+            <label for="id_instructor_query">Instructor</label>
+            <input type="text" class="list_filter" autocomplete="off" name="instructor" id="id_instructor_query" value="{{ instructor_filter }}"/>
+        </div>
+    </div>
+    <div id="advanced_toggle" class="column" style="display: none">
+        <div class="small"><a href="javascript:toggleAdvanced(true);">show advanced &#187;</a></div>
+    </div>
+    <div class="column advanced_control">
+        <div class="small"><a href="javascript:toggleAdvanced(false);">&#171; hide advanced</a></div>    
+        <div id="field_after">
+            <label for="id_select_after">After</label>
+            <select name="after" class="list_filter" id="id_select_after" value="{{ after_filter }}"><option value="sp00">Spring 2000</option><option value="sp01">Spring 2001</option><option value="sp02">Spring 2002</option><option value="sp03">Spring 2003</option><option value="any">Any date</option></select>
+        </div>
+        <div id="field_type">
+            <label for="id_select_type">Type</label>
+            <select name="type" class="list_filter" id="id_select_type" value="{{ type_filter }}"><option value="">All</option><option value="mt">Midterm</option><option value="f">Final</option><option value="q">Quiz</option><option value="r">Review</option></select>
+        </div>
+    </div>
+    <div class="column">
+        <div class="small">&nbsp;</div>       
+        <div id="field_number" class="advanced_control">
+            <label for="id_select_number">Number</label>
+            <select name="number" class="list_filter" id="id_select_number" value="{{ number_filter }}"><option value="">All</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+        </div>
 
-<div style="clear: both"> </div>
+        <div id="field_submit">
+            <label for="id_filter_link">&nbsp;</label>
+            <a id="id_filter_link" href="javascript:void(0)">Search</a>
+        </div>
+    </div>   
+    <div style="clear: both"> </div>
 </div>
-
-<script type="text/javascript">
-	$('#id_course_query').autocomplete('/course/course_autocomplete', {extraParams : {"instructor" : $('#id_instructor_query').attr("value") } });
-	$('#id_instructor_query').autocomplete('/course/instructor_autocomplete', { extraParams : {course_query : function () { return $('#id_course_query').attr("value") } }  });	
-	$('#id_select_after').attr('value', '{{ after_filter }}');
-	$('#id_select_type').attr('value', '{{ type_filter }}');
-	$('#id_select_number').attr('value', '{{ number_filter }}');	
-	$('#id_filter_link').bind("click", function (e) {
-		category = "";
-		$('.list_filter').each( function (index, e) {
-			ee = $(e);
-			if(ee.attr("value") != undefined) {
-				category += ee.attr("name") + ":" + ee.attr("value") + "|";
-			}
-		});
-		filter('{{ sort }}', '1', '{{ max }}', category, '');
-	});
-	
-	setInstructor = function(instr) {
-		$('#id_instructor_query').attr("value", instr);	
-		$('#id_filter_link').click();
-	}
-	</script>
 {% endblock %}
 
 {% block objects_nav_top %}
@@ -107,35 +56,44 @@ hr.clear {
 {% endblock %}
 
 {% block objects_content %}
-{% if exams_dict.items|length_is:"0" %}
-{% if categories|length_is:"0" %}
-<span style="font-size: large">Please search using the controls above!</span>
-{% else %}
-<span style="font-size: large">Sorry, your query produced no results!</span>
-{% endif %}
-{% else %}
-{% for course_item in exams_dict.items %}
-<h1> {{ course_item.0.short_name }}</h1>
-<table class="ajaxtable"><tr>
-<th>Semester</th>
-<th>Instructor</th>
-<th>Exam</th>
-<th>Formats</th>
-</tr>
-
-{% for exam in course_item.1 %}
-<tr>
-	<td>{{ exam.klass.pretty_semester }}</td>
-	<td><a href="javascript:void(0)" onclick="setInstructor('{{ exam.klass.instructors }}');"> {{ exam.klass.instructors|title }}</a></td>
-	<td><a href="{{ exam.get_file_url }}">{{ exam.get_exam_description }}</a></td>
-	<td>{{ exam.get_exam_format }}</td> 
-</tr>
-
-{% endfor %}
-</table>
-<br/>
-{% endfor %}
-{% endif %}
+    {% if exams_dict.items|length_is:"0" %}
+        {% if categories|length_is:"0" %}
+            <span style="font-size: large">Please search using the controls above!</span>
+        {% else %}
+            <span style="font-size: large">Sorry, your query produced no results!</span>
+        {% endif %}
+    {% else %}
+        {% for course_item in exams_dict.items %}
+            <h1 class="clickhide"> {{ course_item.0.short_name }}</h1>
+            <div style="margin-left: 7px">
+            {% for regrouped_item in course_item.1 %}
+                <h3 class="clickhide" style="margin-bottom: 0">{{ regrouped_item.0 }}</h3>
+                <table class="ajaxlist_list">
+                {% if forloop.first %}
+                    <tr>
+                        <th>Semester</th>
+                        <th>Instructor</th>
+                        <th>Exam</th>
+                        <th></th>
+                    </tr>
+                {% endif %}
+                {% for exam in regrouped_item.1 %}
+                    <tr class="exam">
+                        <td class="semester">{{ exam.klass.pretty_semester }}</td>
+                        <td class="instructor"><a href="javascript:void(0)" onclick="setInstructor('{{ exam.klass.instructor_names }}');"> {{ exam.klass.instructor_names|title }}</a></td>
+                        <td class="examfile"><a href="{{ exam.file.url }}">{{ exam.get_exam_description }}</a></td>
+                        <td class="extension">{{ exam.get_exam_format }}</td> 
+                    </tr>
+                {% endfor %}
+                </table>
+            {% endfor %}
+            <br/>
+            </div>
+        {% endfor %}
+    {% endif %}
+<script type="text/javascript">
+    $(document).ready( register_listeners );
+</script>
 {% endblock %}
 
 {% block objects_query_bottom %}
