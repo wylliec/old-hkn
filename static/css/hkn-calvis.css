@@ -29,7 +29,7 @@
 #eventDisplayDiv {
 	padding: 0px;
 	color: black;
-	background: white;
+/*	background: white;*/
 	font-size: 12px;
 	text-align: left;
 }
@@ -77,13 +77,15 @@
 	color: white;	
 	background: black;
 	font-family: arial;
+	height: 21px;
+	overflow: hidden;	
 }
 
 .eventMouseOut {
 	padding: 0px;
 	font-size: 10px;
 	color: blue;
-	background: white;
+/*	background: white;*/
 	font-family: arial;
 	height: 21px;
 	overflow: hidden;

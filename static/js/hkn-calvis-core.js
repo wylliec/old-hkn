@@ -865,10 +865,27 @@ calvis.Calendar.prototype.appendEvent = function(id, event) {
   }
 };
 
+function format_time(datetime) {
+  var ampm = "a"
+  var time = datetime.getHours();
+  if(time >= 12) {
+  	time = time - 12;
+  	ampm = "p"
+  }
+  if(time == 0) {
+  	time = "12";
+  }
+  var minutes = datetime.getMinutes();
+  if(minutes != 0) {
+  	time = time + ":" + minutes
+  }
+  return time + ampm;
+}
+
 calvis.Calendar.prototype.appendEventHKN = function(id, event) {
   var calendar = this;
 
-  var title = event["title"]
+  var title = format_time(event["start_time"]) + " " + event["title"]
   var eventId = event["id"]
 
   var cell = jQuery('#' + id);
@@ -929,9 +946,13 @@ calvis.Calendar.prototype.appendEventHKN = function(id, event) {
     var eventHtml = [];
     eventHtml.push('<div id="');
     eventHtml.push(eventId);
-    eventHtml.push('" class="');
+    eventHtml.push('" title="');
+    eventHtml.push(event["title"]);
+    eventHtml.push('" class="eventDiv ');
     eventHtml.push(calvis.eventMouseOutClass);
-    eventHtml.push('">');
+    eventHtml.push('" rel="#eventDisplayDiv">');
+/*    eventHtml.push(calvis.eventDisplayId); 
+    eventHtml.push('">');*/
     eventHtml.push(calendar.fitText('&nbsp;' + title, cellWidth));
     eventHtml.push('</div>');
 
@@ -1041,9 +1062,8 @@ calvis.Calendar.prototype.overlayHKN = function(startDate, endDate) {
         id.push(calvis.padZero(date.getDate()));
         id = id.join('');
         
-        if(calvis.debug && !confirm("entering append for " + id)) {
-            return;
-        }
+        event["time_string"] = format_time(event["start_time"]) + " - " + format_time(event["end_time"])
+		
         calendar.appendEventHKN(id, event);
       }
       jQuery('#' + calendar.statusControlId).html('');

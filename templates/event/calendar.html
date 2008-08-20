@@ -3,11 +3,14 @@
 {% block css %}
 {{ block.super }}
 <link rel="stylesheet" type="text/css" href="/static/css/hkn-calvis.css">
+<link rel="stylesheet" type="text/css" href="/static/css/jquery.cluetip.css">
 {% endblock %}
 
 {% block js %}
 {{ block.super }}
 <script type="text/javascript" src="{{STATIC_PREFIX}}js/hkn-calvis.js"></script>
+<script type="text/javascript" src="{{STATIC_PREFIX}}js/jquery.cluetip.js"></script>
+<script type="text/javascript" src="{{STATIC_PREFIX}}js/jquery.livequery.js"></script>
 {% endblock %}
 
 {% block title %}{{ block.super }} - Calendar {% endblock %}
@@ -16,13 +19,6 @@
 {% block content %}
 
   <table style="width: 800px;">
-<!--    <tr>
-      <td colspan="2" valign="top">
-        <div style="float: left;" id="loginControlDiv"></div>
-        <div style="float: right;" id="statusControlDiv"></div>
-      </td>
-    </tr>      
--->
     <tr>
       <td valign="top">
         <div id="navControlDiv"></div>
@@ -39,12 +35,8 @@
         <div id="calendarBodyDiv"></div>
       </td>
     </tr>
-    <tr>
-      <td colspan="3" valign="top">
-        <div id="eventDisplayDiv"></div>
-      </td>
-    </tr>
   </table>
+  <div id="eventDisplayDiv"></div>
 
 
 
@@ -57,20 +49,25 @@ $(document).ready( function() {
 		calendar.setStatusControl('statusControlDiv');
 		calendar.setNavControl('navControlDiv');
 		calendar.setViewControl('viewControlDiv');
+		calendar.eventDisplayId = 'eventDisplayDiv';
+		
+		$('.eventDiv').livequery( function () {
+			$(this).cluetip({local: true, hideLocal: true});
+		});
 		
 		function displayEvent(event) {    
 		  var title = event["title"]
-		  var content = "@" + event["location"] + "<br>" + event["description"]
+		  var content = "@ " + event["location"] + "<br>" + event["description"]
 		  var date = event["start_time"]
 		  
 		  var eventHtml = [];
-		  eventHtml.push(date.toString());
-		  eventHtml.push('<br><br>');
+		  eventHtml.push(event["time_string"]);
+/*		  eventHtml.push('<br><br>');
 		  eventHtml.push('<b>Event title:</b> ');
 		  eventHtml.push(title);
 		  eventHtml.push('<br>');
 		  eventHtml.push('<br>');
-		  eventHtml.push('<b>Description:</b>');
+		  eventHtml.push('<b>Description:</b>');*/
 		  eventHtml.push('<p style="font-size: 11px;">');
 		  eventHtml.push(content); 
 		  eventHtml.push('</p>');
@@ -79,7 +76,7 @@ $(document).ready( function() {
 		  document.getElementById('eventDisplayDiv').innerHTML = eventHtml.join('');
 		}
 		
-		calendar.setEventCallback('click', displayEvent);
+		calendar.setEventCallback('mouseover', displayEvent);
 
 		// set the default view to be "month"
 		calendar.setDefaultView('month');
