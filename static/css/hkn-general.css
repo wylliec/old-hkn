@@ -114,6 +114,11 @@ label {
     color: #444444;
 }
 
+.warning {
+	color: red;
+}
+
+
 th, td {
   padding: 4px;
   vertical-align: top;
