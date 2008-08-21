@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.query import QuerySet
-from nice_types.db import QuerySetManager
-from constants import SEMESTER, EXAMS_PREFERENCE, PREFIX, SUFFIX, DEPT_ABBRS, DEPT_ABBRS_INV, DEPT_ABBRS_SET
+from nice_types.db import QuerySetManager, CachingManager
+from constants import EXAMS_PREFERENCE, PREFIX, SUFFIX, DEPT_ABBRS, DEPT_ABBRS_INV, DEPT_ABBRS_SET
 import re, datetime
 
 class CourseManager(QuerySetManager):
@@ -158,7 +158,7 @@ class Course(models.Model):
         
         def query_exact(self, dept_abbr, coursenumber):
             dept_abbr = Department.get_proper_abbr(dept_abbr)
-            return self.filter(department_abbr__iexact = dept_abbr, coursenumber__exact = coursenumber)
+            return self.filter(department_abbr__iexact = dept_abbr, coursenumber__iexact = coursenumber)
 
     def save(self):
         if not self.department_abbr:
@@ -171,9 +171,21 @@ class Course(models.Model):
     class Meta:
         unique_together = (("department", "coursenumber"),)
         
+
+class SeasonManager(QuerySetManager, CachingManager):
+    ABBRS = {"sp" : "spring", "fa" : "fall", "su" : "summer"}
+    @staticmethod
+    def get_cache_key(**kwargs):
+        # probably a bad idea
+        name = [val for key, val in kwargs.items() if key.startswith("name")][0]
+        return SeasonManager.ABBRS.get(name, name)
+        
+        
     
 class Season(models.Model):
     """ Models a season, i.e. fall, spring, or summer """
+    
+    seasons = objects = SeasonManager()
     
     id = models.AutoField(primary_key = True)
     
@@ -182,6 +194,9 @@ class Season(models.Model):
     
     order = models.IntegerField()
     """ The order of the season. Spring comes before summer which comes before fall """
+    
+    class QuerySet(QuerySet):
+        pass
     
     def __str__(self):
         return self.name
