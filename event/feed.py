@@ -26,7 +26,7 @@ def feed(request):
         max_results = int(request.GET['max_results'])
     except:
         max_results = 500
-    events = Event.objects.filter(start_time__gte = start_date, end_time__lte = end_date).order_by("-start_time").filter_permissions(request.user)[:max_results]
+    events = Event.objects.filter(start_time__gte = start_date, end_time__lte = end_date).order_by("start_time").filter_permissions(request.user)[:max_results]
         
     js_events = [{"id" : e.id,
                   "title" : e.name,
