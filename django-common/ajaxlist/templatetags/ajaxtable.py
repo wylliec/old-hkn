@@ -119,7 +119,7 @@ class AjaxSelectedNode(template.Node):
 		
 class AjaxJSNode(template.Node):
 	def __init__(self):
-		self.js_path = "%s/js/ajaxlist.js" % ajaxlist.settings.AJAXLIST_MEDIA_URL
+		self.js_path = "%s/ajaxlist.js" % ajaxlist.settings.AJAXLIST_MEDIA_URL
 		
 	def __repr__(self):
 		return "<AjaxJSNode: %s>" % self.js_path
