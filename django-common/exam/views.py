@@ -42,6 +42,14 @@ def browse_department(request, department_abbr):
     courses = list(department.course_set.order_by("id"))
     courses = filter(lambda c: c.exam_set.count() > 0, courses)
     empty = len(courses) == 0
+
+    if not request.user.has_perm("exam.add_exam"):
+        for c in courses:
+            c.exam_count = c.exam_set.filter(publishable=True).count()
+    else:
+        for c in courses:
+            c.exam_count = "%d, %d" % (c.exam_set.filter(publishable=True).count(), c.exam_set.filter(publishable=False).count())
+
     courses_lists = split_list(courses, 2)
     d = {"courses_lists" : courses_lists, "department" : department, "empty" : empty}
     return render_to_response("exam/browse_department.html", d, context_instance=RequestContext(request))    
