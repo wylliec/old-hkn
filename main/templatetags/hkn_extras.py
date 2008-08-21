@@ -1,12 +1,31 @@
 from django import template
 from django.template import Node, NodeList, Template, Context, resolve_variable
 from django.template import TemplateSyntaxError, VariableDoesNotExist, BLOCK_TAG_START, BLOCK_TAG_END, VARIABLE_TAG_START, VARIABLE_TAG_END, SINGLE_BRACE_START, SINGLE_BRACE_END, COMMENT_TAG_START, COMMENT_TAG_END
+from django.template import Template
+from django.conf import settings
 
 
 register = template.Library()
 
 def last(value):
     return value[-1]
+
+def render_in_context(parser, token):
+    bits = list(token.split_contents())
+    if len(bits) != 2:
+        raise TemplateSyntaxError, "%r takes 1 argument" % bits[0]
+    return RenderInContextNode(bits[1])
+render_in_context = register.tag(render_in_context)
+
+class RenderInContextNode(Node):
+    def __init__(self, to_render):
+        self.to_render = to_render
+
+    def render(self, context):
+        to_render_text = resolve_variable(self.to_render, context)
+        rendered = Template(to_render_text).render(context)
+        context[self.to_render] = rendered
+        return ''
 
 def do_ifin(parser, token, negate):
     bits = list(token.split_contents())
@@ -44,6 +63,7 @@ class IfInNode(Node):
         if (self.negate and val1 not in val2) or (not self.negate and val1 in val2):
             return self.nodelist_true.render(context)
         return self.nodelist_false.render(context)
+
 
 def ifin(parser, token):
     """
