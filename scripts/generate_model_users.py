@@ -16,7 +16,7 @@ def main():
     for name in MEMBER_TYPE.names():
         person = Person.objects.create_person(name.title(), "Example", name.lower(), "tcquest+%s@gmail.com" % name.lower(), getattr(MEMBER_TYPE, name))
         lion_gif = SimpleUploadedFile(person.username + ".gif", lion_gif_content)
-        person.profile_picture.save(lion_gif.name, lion_gif)
+        person.profile_picture.save(person.generate_filename(lion_gif.name), lion_gif)
         created[name.lower()] = person
 
 if __name__=="__main__":

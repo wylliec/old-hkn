@@ -5,11 +5,11 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.contenttypes.models import ContentType
 
 
-from utils import normalize_email, normalize_committee_name
+from hkn.info.utils import normalize_email, normalize_committee_name, int_to_base36
 from hkn import semester
 from hkn.info.constants import MEMBER_TYPE
 from hkn.settings import IMAGES_PATH
-import os, datetime, types
+import os, datetime, types, random
 
 from nice_types.db import QuerySetManager, PickleField
 
@@ -237,6 +237,14 @@ class Person(User):
 
     profile_picture = models.ImageField(upload_to = "profile_pictures")
     """ The person's profile picture"""
+
+    def generate_filename(self, original_filename):
+        digits = "0123456789abcdefghijklmnopqrstuvwxyz"
+        new = "%s-%s" % (''.join([random.choice(digits) for i in xrange(15)]),
+                         original_filename)
+        return new
+        
+    
 
     officer_picture = models.ImageField(null=True, upload_to = "officer_pictures")
     """ The person's officer picture"""

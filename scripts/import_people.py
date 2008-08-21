@@ -61,7 +61,7 @@ def addLine(line, member_status):
         c.school_email = email
     
     lion_file = SimpleUploadedFile(uname + ".gif", lion_file_content)
-    c.profile_picture.save(lion_file.name, lion_file)
+    c.profile_picture.save(c.generate_filename(lion_file.name), lion_file)
 
     c.save()
 
