@@ -9,7 +9,8 @@ from ajaxlist.helpers import get_ajaxinfo, render_ajaxlist_response
 from course.models import *
 from string import atoi
 
-from exam.models import *
+from constants import FILE_UPLOAD_DIR, EXAM_TYPE
+from models import Exam
 
 
 try:
