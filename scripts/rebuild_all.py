@@ -6,6 +6,8 @@ from hkn import settings
 from hkn.info.constants import MEMBER_TYPE
 from django.core.management import call_command
 
+os.system("python clean_pyc.py")
+
 import clear_db; clear_db.main()
 
 import create_sites; create_sites.main()
