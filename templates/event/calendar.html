@@ -8,9 +8,9 @@
 
 {% block js %}
 {{ block.super }}
-<script type="text/javascript" src="{{STATIC_PREFIX}}js/hkn-calvis.js"></script>
 <script type="text/javascript" src="{{STATIC_PREFIX}}js/jquery.cluetip.js"></script>
 <script type="text/javascript" src="{{STATIC_PREFIX}}js/jquery.livequery.js"></script>
+<script id="calvis_script" type="text/javascript" src="{{STATIC_PREFIX}}js/hkn-calvis-core.js"></script>
 {% endblock %}
 
 {% block title %}{{ block.super }} - Calendar {% endblock %}
@@ -41,8 +41,7 @@
 
 
 <script type="text/javascript">
-$(document).ready( function() {
-	calvis.ready( function() {
+$('#calvis_script').ready( function() {
 		var calendar = new calvis.Calendar();
 		
 		calendar.setCalendarBody('calendarBodyDiv');
@@ -81,14 +80,8 @@ $(document).ready( function() {
 		// set the default view to be "month"
 		calendar.setDefaultView('month');
 
-//		calendar.currentPivotDate = new Date(2008, 03, 01);
-
 		// display the calendar
 		calendar.render(); 		
-	
-//		calendar.updateMonthView();		
-		
-	});
 });
 </script>
 
