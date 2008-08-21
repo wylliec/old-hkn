@@ -40,12 +40,15 @@ def get_published_version():
         return get_max_version()
         
 def get_published_assignments(version=None):
-    if not version:
-        version = get_published_version()
-    assignments = tutor.Assignment.objects.filter(version=version)
-    if len(assignments) == 0:
-        return None    
-    return assignments
+    try:
+        if not version:
+            version = get_published_version()
+        assignments = tutor.Assignment.objects.filter(version=version)
+        if len(assignments) == 0:
+            return None    
+        return assignments
+    except NoTutorSchedulesException:
+        return None
 
 def get_tutor_info(assignments, tutoring_days=TUTORING_DAYS, tutoring_times=TUTORING_TIMES):
     realAssignments = {} #dictionary from slot to person object
