@@ -37,7 +37,7 @@ No exams available for this department.
 <div class="browse_wrapper">
 <ol class="browse_ol">
   {% for course in courses_list %}
-  <li><a href="{% url exam-list %}?course={{course.short_name_space|urlencode}}">{{course.short_name_space}}</a> ({{course.exam_set.count}}) </li>
+  <li><a href="{% url exam-list %}?exam_course={{course.short_name_space|urlencode}}">{{course.short_name_space}}</a> ({{course.exam_set.count}}) </li>
   {% endfor %}
 </ol>
 </div>
