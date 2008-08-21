@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import pickle, os
-import setup_settings; setup_settings.setup(); os.chdir(setup_settings.get_cd())
+import setup_settings
 
 from course.models import *
 from course.constants import EXAMS_PREFERENCE
@@ -105,6 +105,7 @@ def prompt_candidate(p, s):
     p_depts_ = set([d.abbr for d in p.departments.all()] + [p.home_department.abbr])
     s_depts_ = set([d.abbr for d in s.departments.all()] + [s.home_department.abbr])
     exc = exceptions(p, s)
+    choice = "y"
     if len(p_depts_ & s_depts_) > 0:
         choice = "y"
     elif exc == True:
@@ -112,19 +113,16 @@ def prompt_candidate(p, s):
     elif exc == False:
         choice = "n"
     else:
-        for rdset in rdsets:
-            p_depts = (p_depts_ & rdset)
-            s_depts = (s_depts_ & rdset)
-            if len(p_depts)>0 and len(s_depts)>0:
-                #print "Auto merge: %s & %s" % (str(p_depts), str(s_depts))
-                choice = "y"
-            if p.home_department.abbr == s.home_department.abbr and choice != "y":
-                import pdb; pdb.set_trace()            
+#        for rdset in rdsets:
+#            p_depts = (p_depts_ & rdset)
+#            s_depts = (s_depts_ & rdset)
+#            if len(p_depts)>0 and len(s_depts)>0:
+#                #print "Auto merge: %s & %s" % (str(p_depts), str(s_depts))
+#                choice = "y"
         for rdset in nrdsets:
             p_depts = (p_depts_ & rdset)
             s_depts = (s_depts_ & rdset)
             if len(p_depts)>0 and len(s_depts)>0:
-                #print "Auto merge: %s & %s" % (str(p_depts), str(s_depts))
                 choice = "n"
     while len(choice.strip()) == 0:
         choice = raw_input("%s merge -> %s? " % (s.short_name(True, True), p.short_name(True, True)))

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import setup_settings; setup_settings.setup()
+import setup_settings
 
 from course.models import *
 from exam.models import *

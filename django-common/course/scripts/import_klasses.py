@@ -4,11 +4,12 @@ from django.core.exceptions import ObjectDoesNotExist
 import re, django, sys, pickle, glob, datetime, pdb
 from string import atoi
 from xml.dom import minidom
-import os, sys
+import os, sys, os.path
 
 from constants import DEFAULT_DEPARTMENTS
 
-import setup_settings; setup_settings.setup(); os.chdir(setup_settings.get_cd())
+import setup_settings
+cd = setup_settings.get_scripts_directory()
 
 from course.models import *
 from course.constants import EXAMS_PREFERENCE
@@ -132,10 +133,10 @@ def importKlass(dpt, klass, year, season):
         course = Course(department=dpt, coursenumber=number, name=name, description="")
         course.save()
     except Exception, e:
-        tpls = "%s-%s-%s-%s-%s" % (dpt.abbr, number, instructor, season, year)
+        #tpls = "%s-%s-%s-%s-%s" % (dpt.abbr, number, instructor, season, year)
         #print "Couldn't match: " + tpls
         #if tpls not in bad_klasses:
-        #    raise e
+        raise e
         #else:
         return
 
@@ -189,9 +190,9 @@ def importFromXmlFile(klassFile):
         importSemester(semester)
         
 def main():
-    klassFiles = glob.glob("data/klass/xml/*2007*.xml")
-    klassFiles += glob.glob("data/klass/xml/*2008*.xml")
-    klassFiles = glob.glob("data/klass/xml/*.xml")
+    klassFiles = glob.glob(os.path.join(cd, "data/klass/xml/*2007*.xml"))
+    klassFiles += glob.glob(os.path.join(cd, "data/klass/xml/*2008*.xml"))
+    #klassFiles = glob.glob(os.path.join(cd, "data/klass/xml/*.xml"))
     for klassFile in klassFiles:
         print "Importing klasses from " + klassFile
         importFromXmlFile(klassFile)

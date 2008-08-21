@@ -1,20 +1,18 @@
 #!/usr/bin/env python
-import os
+import os, os.path
 
 def import_all(path):
     import setup_settings
-    setup_settings.PATH = path
-    setup_settings.setup()
+    cd = setup_settings.get_scripts_directory()
 
-    import import_seasons; import_seasons.main()
-    import import_departments; import_departments.main()
-    import import_courses; import_courses.main()
-    import import_instructors; import_instructors.main()
+    os.chdir(cd)
 
-    os.system('cd data/klass/xml && tar xvfj schedules.tbz && cd ../..')
-
-    import import_klasses; import_klasses.main()
-
-    import merge_instructors; merge_instructors.main()
-    import manual_merge; manual_merge.main()
+    os.system('python import_seasons.py')
+    os.system('python import_departments.py')
+    os.system('python import_courses.py')
+    os.system('python import_instructors.py')
+    os.system('cd data/klass/xml && tar xfj schedules.tbz && cd ../..')
+    os.system('python import_klasses.py')
+    os.system('python merge_instructors.py')
+    os.system('python manual_merge.py')
 

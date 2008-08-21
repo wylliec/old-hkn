@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os
-import setup_settings; setup_settings.setup(); os.chdir(setup_settings.get_cd())
+import setup_settings
 
 from course.models import *
 import merge_instructors

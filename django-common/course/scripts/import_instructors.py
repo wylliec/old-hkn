@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 from django.core.management import setup_environ
 from django.core.exceptions import ObjectDoesNotExist
-import re, django, sys, pickle, glob, pdb, os
+import re, django, sys, pickle, glob, pdb, os, os.path
 from xml.dom import minidom
 
-import setup_settings; setup_settings.setup(); os.chdir(setup_settings.get_cd())
+import setup_settings
+cd = setup_settings.get_scripts_directory()
 
 from course.models import *
 from course.constants import EXAMS_PREFERENCE
@@ -64,7 +65,7 @@ def importFromXmlFile(instructorFile):
         import_department(department)
 
 def main():
-    instructorFiles = glob.glob("data/instructors_xml/*.xml")
+    instructorFiles = glob.glob(os.path.join(cd, "data/instructors_xml/*.xml"))
 
     for instructorFile in instructorFiles:
         print "Importing instructors from " + instructorFile

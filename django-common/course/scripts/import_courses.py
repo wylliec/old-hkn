@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 import re, django, sys, pickle, glob, os
 from xml.dom import minidom
 
-import setup_settings; setup_settings.setup(); os.chdir(setup_settings.get_cd())
+import setup_settings
 
 from course.models import *
 
