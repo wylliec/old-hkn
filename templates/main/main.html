@@ -1,4 +1,5 @@
 {% extends "main/base.html" %}
+{% load webdesign %}
 
 {% block css %}
 {{ block.super }}
@@ -60,7 +61,11 @@ $('.infobox').cluetip({
 	</div>	
 	<div style="float: left; width: 38%">
 		<h1>About HKN</h1>
-		{{ lorem|truncatewords:"100"|linebreaks }}
+        <p>{% lorem %}</p>
+	</div>
+	<div style="float: left; width: 38%">
+		<h1>About HKN2</h1>
+        <p>{% lorem %}</p>
 	</div>
 <div style="clear: both"></div>
 </div>

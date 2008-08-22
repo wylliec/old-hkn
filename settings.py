@@ -153,6 +153,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.markup',
     'django.contrib.flatpages',
+    'django.contrib.webdesign',
     'ajaxlist',
     'request',
     'hkn.info',
