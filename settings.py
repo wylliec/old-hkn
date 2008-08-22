@@ -37,7 +37,7 @@ DJANGO_COMMON = SERVER_ROOT + "django-common/"
 EXAMS_USER_MODULE = 'django.contrib.auth.models.User'
 EXAM_LOGIN_REQUIRED = False
 LOGIN_URL = "/login/"
-
+ACCOUNT_ACTIVATION_DAYS = 7
 
 SESSION_SAVE_EVERY_REQUEST = True
 
@@ -57,7 +57,12 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
      ('HKN Computing Services', 'compserv@hkn.eecs.berkeley.edu'),
 )
-
+DEFAULT_FROM_EMAIL = "hkn@hkn.eecs.berkeley.edu"
+EMAIL_HOST = "hkn.eecs.berkeley.edu"
+EMAIL_PORT= 465
+EMAIL_HOST_USER = "gafyd"
+EMAIL_HOST_PASSWORD = ""
+EMAIL_USE_TLS = True
 
 
 MANAGERS = ADMINS
@@ -169,5 +174,6 @@ INSTALLED_APPS = (
     'tagging',
     'review',
     'photologue',
+    'registration',
 )
 
