@@ -28,7 +28,10 @@ class PeopleManager(QuerySetManager):
         
         def create_person(self, first_name, last_name, username, email, member_type, password=None):
             now = datetime.datetime.now()
+            email = normalize_email(email)
             person = self.model(first_name=first_name, last_name=last_name, email=email, username=username, password="placeholder", last_login=now, date_joined=now, member_type=member_type, privacy={})
+            if email.endswith("@berkeley.edu"):
+                person.school_email = email
             if password:
                 person.set_password(password)
             else:

@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     (r'^yearbook/', include('photologue.urls')),
     (r'^request/', include('request.urls')),    
     (r'^course/', include('course.urls')),        
+    (r'^account/', include('registration.urls')),        
 
     # authentication pages
      url(r'^login/$', 'django.contrib.auth.views.login', name="login"),
@@ -32,6 +33,7 @@ urlpatterns = patterns('',
     # default static
     (r'^static/ajaxlist/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + '/ajaxlist/media'}),
     (r'^static/exam/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + '/exam/media'}),
+    (r'^static/request/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + '/request/media'}),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + '/static'}),
 
     # media
