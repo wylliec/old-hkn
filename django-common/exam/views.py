@@ -12,48 +12,49 @@ from ajaxlist.helpers import render_ajaxlist_response, get_ajaxinfo, sort_object
 
 
 try:
-    from settings import EXAM_LOGIN_REQUIRED
+	from settings import EXAM_LOGIN_REQUIRED
 except: 
-    EXAM_LOGIN_REQUIRED = True
+	EXAM_LOGIN_REQUIRED = True
 
 
 def view(request, exam_id):
-    pass
+	pass
 
 def split_list(li, splits):
-    last_index = 0
-    li_lists = []
-    for i in range(splits):
-        ind = int(math.ceil(((i+1.0)*len(li))/splits))
-        li_lists.append(li[last_index:ind])
-        last_index = ind
-    return li_lists
+	last_index = 0
+	li_lists = []
+	for i in range(splits):
+		ind = int(math.ceil(((i+1.0)*len(li))/splits))
+		li_lists.append(li[last_index:ind])
+		last_index = ind
+	return li_lists
 
 def browse(request):
-    departments = list(Department.objects.order_by("name"))
-    departments = [d for d in departments if d.course_set.count() > 20 and d.exam_set.count() > 0]
-    dept_lists = split_list(departments, 2)
+	departments = list(Department.objects.order_by("name"))
+	departments = [d for d in departments if d.course_set.count() > 20 and d.exam_set.count() > 0]
+	dept_lists = split_list(departments, 2)
 
-    d = {"dept_lists" : dept_lists}
-    return render_to_response("exam/browse.html", d, context_instance=RequestContext(request))
+	d = {"dept_lists" : dept_lists}
+	return render_to_response("exam/browse.html", d, context_instance=RequestContext(request))
 
 def browse_department(request, department_abbr):
-    department = get_object_or_404(Department, abbr__iexact = department_abbr)
-    courses = list(department.course_set.order_by("id"))
-    courses = filter(lambda c: c.exam_set.count() > 0, courses)
-    empty = len(courses) == 0
+	department = get_object_or_404(Department, abbr__iexact = department_abbr)
+	courses = list(department.course_set.order_by("id"))
 
-    if not request.user.has_perm("exam.add_exam"):
-        for c in courses:
-            c.exam_count = c.exam_set.filter(publishable=True).count()
-    else:
-        for c in courses:
-            c.exam_count = "%d, %d" % (c.exam_set.filter(publishable=True).count(), c.exam_set.filter(publishable=False).count())
+	if not request.user.has_perm("exam.add_exam"):
+		courses = filter(lambda c: c.exam_set.filter(publishable=True).count() > 0, courses)
+		for c in courses:
+			c.exam_count = c.exam_set.filter(publishable=True).count()
+	else:
+		courses = filter(lambda c: c.exam_set.count() > 0, courses)
+		for c in courses:
+			c.exam_count = "%d, %d" % (c.exam_set.filter(publishable=True).count(), c.exam_set.filter(publishable=False).count())
 
-    courses_lists = split_list(courses, 2)
-    d = {"courses_lists" : courses_lists, "department" : department, "empty" : empty}
-    return render_to_response("exam/browse_department.html", d, context_instance=RequestContext(request))    
+	empty = len(courses) == 0
+	courses_lists = split_list(courses, 2)
+	d = {"courses_lists" : courses_lists, "department" : department, "empty" : empty}
+	return render_to_response("exam/browse_department.html", d, context_instance=RequestContext(request))    
 
 if EXAM_LOGIN_REQUIRED:
-    browse = login_required(browse)
-    browse_department = login_required(browse_department)
+	browse = login_required(browse)
+	browse_department = login_required(browse_department)
