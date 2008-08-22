@@ -158,7 +158,7 @@ INSTALLED_APPS = (
     'hkn.info',
     'hkn.gcal',
     'hkn.event',
-    'hkn.cand',
+#    'hkn.cand',
 #    'hkn.yearbook',
     'exam',
     'hkn.tutor',
