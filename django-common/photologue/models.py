@@ -15,6 +15,8 @@ from django.template.defaultfilters import slugify
 from django.utils.functional import curry
 from django.utils.translation import ugettext_lazy as _
 
+from nice_types.semester import Semester, SemesterField
+
 # Required PIL classes may or may not be available from the root namespace
 # depending on the installation method used.
 try:
@@ -119,6 +121,7 @@ IMAGE_FILTERS_HELP_TEXT = _('Chain multiple filters using the following pattern 
 
 class Gallery(models.Model):
     date_added = models.DateTimeField(_('date published'), default=datetime.now)
+    semester = models.SemesterField()
     title = models.CharField(_('title'), max_length=100, unique=True)
     title_slug = models.SlugField(_('title slug'), unique=True,
                                   help_text=_('A "slug" is a unique URL-friendly title for an object.'))
@@ -176,6 +179,7 @@ class GalleryUpload(models.Model):
     zip_file = models.FileField(_('images file (.zip)'), upload_to=PHOTOLOGUE_DIR+"/temp",
                                 help_text=_('Select a .zip file of images to upload into a new Gallery.'))
     title = models.CharField(_('title'), max_length=75, help_text=_('All photos in the gallery will be given a title made up of the gallery title + a sequential number.'))
+    semester = models.SemesterField()
     caption = models.TextField(_('caption'), blank=True, help_text=_('Caption will be added to all photos.'))
     description = models.TextField(_('description'), blank=True, help_text=_('A description of this Gallery.'))
     is_public = models.BooleanField(_('is public'), default=True, help_text=_('Uncheck this to make the uploaded gallery and included photographs private.'))
@@ -199,7 +203,8 @@ class GalleryUpload(models.Model):
                 raise Exception('"%s" in the .zip archive is corrupt.' % bad_file)
             count = 1
             gallery = Gallery.objects.create(title=self.title,
-                                             title_slug=slugify(self.title),
+                                             title_slug=slugify(' '.join([self.title, self.semester])),
+                                             semester=self.semester,
                                              description=self.description,
                                              is_public=self.is_public,
                                              tags=self.tags)
@@ -222,7 +227,7 @@ class GalleryUpload(models.Model):
                     except Exception:
                         # if a "bad" file is found we just skip it.
                         continue
-                    title = ' '.join([self.title, str(count)])
+                    title = ' '.join([self.title, self.semester, str(count)])
                     slug = slugify(title)
                     photo = Photo(title=title, title_slug=slug,
                                   caption=self.caption,
