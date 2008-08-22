@@ -122,7 +122,7 @@ IMAGE_FILTERS_HELP_TEXT = _('Chain multiple filters using the following pattern 
 class Gallery(models.Model):
     date_added = models.DateTimeField(_('date published'), default=datetime.now)
     semester = SemesterField()
-    title = models.CharField(_('title'), max_length=100, unique=True)
+    title = models.CharField(_('title'), max_length=100)
     title_slug = models.SlugField(_('title slug'), unique=True,
                                   help_text=_('A "slug" is a unique URL-friendly title for an object.'))
     description = models.TextField(_('description'), blank=True)
@@ -203,7 +203,7 @@ class GalleryUpload(models.Model):
                 raise Exception('"%s" in the .zip archive is corrupt.' % bad_file)
             count = 1
             gallery = Gallery.objects.create(title=self.title,
-                                             title_slug=slugify(' '.join([self.title, self.semester])),
+                                             title_slug=slugify(' '.join([self.title, self.semester.__str__()])),
                                              semester=self.semester,
                                              description=self.description,
                                              is_public=self.is_public,
@@ -227,7 +227,7 @@ class GalleryUpload(models.Model):
                     except Exception:
                         # if a "bad" file is found we just skip it.
                         continue
-                    title = ' '.join([self.title, self.semester, str(count)])
+                    title = ' '.join([self.title, self.semester.__str__(), str(count)])
                     slug = slugify(title)
                     photo = Photo(title=title, title_slug=slug,
                                   caption=self.caption,
