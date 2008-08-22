@@ -35,33 +35,23 @@ $('.infobox').cluetip({
 
 {% block container %}
 <div id="container">
-	<div id="landing_wrapper">
-		<div id="landing_right_info">
-			<div class="tutoring">
-		        {% include "main/_landing_tutor.html" %}		
-			</div>
-			<div class="events">
-				{% include "main/_landing_event.html" %}	
-			</div>
-			<div class="spacer" style="clear: both;">&nbsp;</div>				
-			<div class="tutoring">
-		        <a class="small" href="{% url tutor-view-schedule %}">view full schedule</a>	        
-			</div>
-			<div class="events">
-				<div style="float: left">
-			        <a class="small" href="{% url event-list %}">view all upcoming</a>
-			    </div>
-			    <div style="float: right">
-			        <a class="small" href="{% url event-calendar %}">events calendar</a>
-				</div>			        
-				<div style="clear: both"></div>				
-			</div>		
-			<div style="clear: both"></div>
+	<div id="infobar">
+		<h2>Quick Facts</h2>
+		
+		<div class="section">
+			{% include "main/_landing_event.html" %}
+			<span class="small">View <a href="{% url event-list %}">view all upcoming</a> | <a href="{% url event-calendar %}">events calendar</a></span>
 		</div>
-	</div>	
-	<div style="float: left; width: 38%">
+		<div class="section">
+			{% include "main/_landing_tutor.html" %}
+			<span class="small"><a href="{% url tutor-view-schedule %}">view full schedule</a></span>
+		</div>
+	</div>
+	<div style="contentbox">
 		<h1>About HKN</h1>
         <p>{% lorem %}</p>
+		<h2>More Stuff about HKN</h2>
+		<p>Sitemap or other info for visitors so they know where to find what</p>
 	</div>
 	<div style="float: left; width: 38%">
 		<h1>About HKN2</h1>

@@ -150,7 +150,7 @@ body {
 
 #container{
 	background: #F3F8F8;
-	padding: 0 8px 20px 8px;
+	padding: 12px 8px 20px 8px;
 	border: 1px {{ landing_border }} solid;
 	width: auto;
 }
@@ -162,6 +162,16 @@ body {
 	width: 1%;
 	background: url("/images/site/leftshadow.png") repeat-y;
 	height:110%;
+}
+
+#contentbox {
+	margin-right: 258px;
+}
+#infobar {
+	float:right;
+	width:250px;
+	border-left:1px solid #5C7C0B;
+	padding-left: 8px
 }
 
 div #rightshadow{

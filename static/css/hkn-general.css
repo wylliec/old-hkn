@@ -8,20 +8,20 @@ h1 {
   font-weight: bold;
   font-size: large;
   font-family: arial, helvetica, sans-serif;
-  margin: 12px 0 12px 0;
+  margin: 0 0 12px 0;
 }
 
 h2 {
   font-size: large;
   font-family: arial, helvetica, sans-serif;
-  margin: 12px 0 12px 0;
+  margin: 0 0 12px 0;
 }
 
 h3 {
   font-weight: bold;
   font-size: medium;
   font-family: arial, helvetica, sans-serif;
-  margin: 12px 0 12px 0;  
+  margin: 0 0 12px 0;  
 }
 
 .header {
@@ -34,7 +34,6 @@ h3 {
   font-size: small;
   font-style: italic;
   font-family: arial, helvetica, sans-serif;
-  margin-top: -12px;
 }
 
 .flushheader {
@@ -51,8 +50,11 @@ img {
 
 p {
     line-height: 1.8;
-    margin: 0 0 1em;
     font-size: small;
+}
+
+p, .section {
+    margin-bottom: 12px;
 }
 
 a {

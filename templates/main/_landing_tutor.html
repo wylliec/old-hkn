@@ -1,8 +1,9 @@
-        <h1>{{ tutoring_title }}</h1>
+        <h3>{{ tutoring_title }}</h3>
         <table class="landing tutoring small">
 		        <tr>
 			        <th></th>
-			        <th> 345 Soda </th>			        <th> 290 Cory </th>
+			        <th>345 Soda</th>
+				<th>290 Cory</th>
 		        </tr>
 		        {% for scheduleRow in schedule %}
 		        <tr>
@@ -30,6 +31,7 @@
 		        </tr>
 		        {% endfor %}                        
         </table>
-        <div style="margin-top: 20px">
+	<br />
+        <div>
         {% include "tutor/_schedule_classes.html" %} 
         </div>
