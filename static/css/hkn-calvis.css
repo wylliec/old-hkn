@@ -81,6 +81,11 @@
 	overflow: hidden;	
 }
 
+.eventMouseOver a {
+	color: white;
+	text-decoration: none;
+}
+
 .eventMouseOut {
 	padding: 0px;
 	font-size: 10px;

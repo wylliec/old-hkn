@@ -951,10 +951,11 @@ calvis.Calendar.prototype.appendEventHKN = function(id, event) {
     eventHtml.push('" class="eventDiv ');
     eventHtml.push(calvis.eventMouseOutClass);
     eventHtml.push('" rel="#eventDisplayDiv">');
-/*    eventHtml.push(calvis.eventDisplayId); 
-    eventHtml.push('">');*/
+	eventHtml.push('<a href="/event/view/');
+	eventHtml.push(event["id"]);
+	eventHtml.push('">');
     eventHtml.push(calendar.fitText('&nbsp;' + title, cellWidth));
-    eventHtml.push('</div>');
+    eventHtml.push('</a></div>');
 
     var eventDiv = jQuery(eventHtml.join(''));
 

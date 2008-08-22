@@ -2,7 +2,8 @@
                 <label>Search EECS course surveys</label>   
                 <div>
 	                <input type=input> <input type=submit value="search!">                                
-	                <div class="small">search for courses or instructors</div> 
+	                <div class="small infobox_help" rel="#survey_search_help">search for courses or instructors</div> 
+	                <div style="display: none" id="survey_search_help">Try searching for courses or instructors!</div>
 				</div>	                
             </div>
             <div id="examfiles" class="searchcontrol">
@@ -12,7 +13,8 @@
 	                {{ exam_files_autocomplete|safe }}
 	                <input type=submit value="search!">
 	                </form>
-	                <div class="small">search for courses e.g. math 54</div>                
+	                <div class="small infobox_help" rel="#exams_search_help">search for courses e.g. math 54</div>                
+	                <div style="display: none" id="exams_search_help">Try searching for courses like: PHYS7B, MATH 54, CS 61A, or EE20N</div>
 				</div>	                
             </div>     
             <div style="clear: both">&nbsp;</div>
