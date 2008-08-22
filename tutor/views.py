@@ -143,7 +143,7 @@ def get_tutor_miniinfo(assignments, day="Monday", tutoring_times=TUTORING_TIMES)
             
         schedule.append(scheduleRow)
         
-    return schedule, realCanTutorData
+    return schedule, realCanTutorData, seenTutors.keys()
 
 
 def get_courses_tutored(can_tutor):
