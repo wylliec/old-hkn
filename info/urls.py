@@ -18,8 +18,8 @@ urlpatterns = patterns('',
         url(r'^quiz/(?P<category>.*)/$', 'hkn.info.quiz.quiz', "person-quiz-category"),
 
         url(r'^find_person/$', 'hkn.info.find.find_person'),
-        url(r'^elect/$', 'hkn.info.elect.elect'),
-        url(r'^revolt/$', 'hkn.info.elect.revolt'),		
+        #url(r'^elect/$', 'hkn.info.elect.elect'),
+        #url(r'^revolt/$', 'hkn.info.elect.revolt'),		
 
 
         url(r'^tutor-infobox/(?P<person_id>\d+)/$', 'hkn.info.infobox.tutor', name="person-tutor-infobox"), 
