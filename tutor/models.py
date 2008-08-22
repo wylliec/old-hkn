@@ -4,23 +4,33 @@ from django.db.models.query import QuerySet
 from hkn.info.models import Person
 from hkn.tutor.constants import *
 import hkn.tutor.scheduler as scheduler
+import nice_types.semester
 
 from nice_types.db import QuerySetManager
+from nice_types.semester import Semester, SemesterField
 
 from course import models as courses
 import time
 
 
 
+class AvailabilityManager(QuerySetManager):
+    def for_semester(self, *args, **kwargs):
+        return self.get_query_set().for_semester(*args, **kwargs)
+        
+    def for_current_semester(self):
+        return self.get_query_set().for_current_semester(*args, **kwargs)
+
 #Models pertaining to tutoring signups
 class Availability(models.Model):
     """ Models a person's time and office availability for a given season/year. """
     
+    objects = AvailabilityManager()
+    
     person = models.ForeignKey(Person)
     slot = models.CharField(max_length = 30)
     office = models.CharField(max_length = 5, choices = (OFFICE_CHOICES)) #Soda or Cory
-    season = models.ForeignKey(courses.Season)
-    year = models.PositiveIntegerField()
+    semester = SemesterField()
     preference = models.IntegerField()
 
     def at_cory(self):
@@ -28,7 +38,7 @@ class Availability(models.Model):
     def at_soda(self):
         return self.office == "Soda"
     
-    def availabilities_by_slot(seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR,
+    def availabilities_by_slot(semester = None,
                                person_converter = lambda person:'%d%s%s' %
                                            (person.id, person.first_name.split(' ')[0], person.last_name[0])):
         """
@@ -43,11 +53,10 @@ class Availability(models.Model):
         in the returned dictionary.  By default it stores a person as a string with parts:
           [id][first word of first name][first letter of last name]
         """
-        season = courses.Season.objects.get(name__iexact=seasonName)
-        
-        availabilities = Availability.objects.select_related(depth=1).filter(
-           season=season,
-           year=year)
+        if not semester:
+            semester = nice_types.semester.current_semester()
+            
+        availabilities = Availability.objects.select_related(depth=1).filter(semester=semester)
         
         availabilitiesBySlot = NiceDict([])
         
@@ -85,9 +94,7 @@ class Availability(models.Model):
     
     availabilities_by_slot = staticmethod(availabilities_by_slot)
     
-    def parameters_for_scheduler(seasonName = CURRENT_SEASON_NAME,
-                                 year = CURRENT_YEAR,
-                                 randomSeed = False,
+    def parameters_for_scheduler(randomSeed = False,
                                  maximumCost = False,
                                  machineNum = False,
                                  patience = False):
@@ -96,12 +103,10 @@ class Availability(models.Model):
         May provide a randomSeed and an upper bound guess for the maximumCost.
         """
         
-        availabilitiesBySlot = Availability.availabilities_by_slot(seasonName=seasonName,
-                                                                   year=year)
+        availabilitiesBySlot = Availability.availabilities_by_slot()
         
         ret = "#HKN Mu Chapter parameters for tutoring schedule generator\n"
-        ret +='#Generated for %s %s at %s\n' % (seasonName,
-                                                year,
+        ret +='#Generated for %s at %s\n' % (nice_types.semester.current_semester().semester,
                                                 time.strftime('%c'))
         ret +="#To use this data, put it into a file parameters.py in the same\n"
         ret +="#location as hkn.tutor.scheduler.  Run scheduler.generate_from_file()\n"
@@ -175,9 +180,17 @@ class Availability(models.Model):
         
         return ret
     
+    class QuerySet(QuerySet):
+        def for_current_semester(self):
+            return self.filter(semester=nice_types.semester.current_semester())        
+    
     parameters_for_scheduler = staticmethod(parameters_for_scheduler)
     
 class AssignmentManager(QuerySetManager):        
+    def for_semester(self, *args, **kwargs):
+        return self.get_query_set().for_semester(*args, **kwargs)    
+    def for_current_semester(self, *args, **kwargs):
+        return self.get_query_set().for_current_semester(*args, **kwargs)
     def latest_version(self, *args, **kwargs):
         return self.get_query_set().latest_version(*args, **kwargs)
     
@@ -188,8 +201,7 @@ class Assignment(models.Model):
     person = models.ForeignKey(Person)
     slot = models.CharField(max_length = 30)
     office = models.CharField(max_length = 5, choices = (OFFICE_CHOICES)) #Soda or Cory
-    season = models.ForeignKey(courses.Season)
-    year = models.PositiveIntegerField()
+    semester = SemesterField()
     
     version = models.PositiveIntegerField()
     """
@@ -203,6 +215,9 @@ class Assignment(models.Model):
         return self.office == "Soda"
         
     class QuerySet(QuerySet):
+        def for_current_semester(self):
+            return self.filter(semester=nice_types.semester.current_semester())        
+        
         def latest_version(self):
             return self.filter(version = Assignment.get_max_version())
             
@@ -210,42 +225,42 @@ class Assignment(models.Model):
         return "<Assignment %s %s %s>" % (self.person.name, self.slot, self.office)
     
     @staticmethod
-    def get_max_version(seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR, season = False):
+    def get_max_version(semester=None):
         """
         NOTE: this is REALLY INEFFICIENT!
         gets the max version of all assignments for given year and season name
         """
-        season = season or courses.Season.objects.get(name__iexact = seasonName)
-        assigns = Assignment.objects.filter(season=season, year=year)
+        if not semester:
+            semester = nice_types.semester.current_semester()
+        assigns = Assignment.objects.filter(semester=semester)
         return max(assigns.values_list('version').distinct())[0]
         
     @staticmethod
     def get_published_version():
         try:
-            return int(HKN.objects.get("hkn_tutor_version").value)
+            return int(PROPERTIES.hkn_tutor_version)
         except:
             return get_max_version()
             
     @staticmethod
-    def make_assignments_from_state(state, seasonName = CURRENT_SEASON_NAME, year = CURRENT_YEAR):
+    def make_assignments_from_state(state, semester = None):
         """
         convert a state into assignments.  Expects that each value in state is a string
         prefixed with a valid person id.
         """
+        if not semester:
+            semester = nice_types.semester.current_semester()
         
         assignments = []
         
-        season = courses.Season.objects.get(name__iexact = seasonName)
-        
-        version = Assignment.get_max_version(year=year, season=season) + 1
+        version = Assignment.get_max_version(semester) + 1
         
         for slot in state:
             person_id = get_integer_prefix(state[slot])
             assignments.append(Assignment(person_id=person_id,
                                           slot=make_slot(slot.day, slot.time),
                                           office=slot.office,
-                                          season=season,
-                                          year=year,
+                                          semester=semester,
                                           version=version))
         
         #all assignments created successfully, so save them
@@ -254,8 +269,10 @@ class Assignment(models.Model):
         return
     
 class CanTutorManager(QuerySetManager):
-    def latest(self):
-        return self.get_query_set().latest()
+    def for_semester(self, *args, **kwargs):
+        return self.get_query_set().for_semester(*args, **kwargs)    
+    def for_current_semester(self, *args, **kwargs):
+        return self.get_query_set().for_current_semester(*args, **kwargs)
 
 class CanTutor(models.Model):
     """ Models who can tutor what for a particular season/year. """
@@ -263,21 +280,18 @@ class CanTutor(models.Model):
     
     person = models.ForeignKey(Person)
     course = models.ForeignKey(courses.Course)
-    season = models.ForeignKey(courses.Season)
-    year = models.PositiveIntegerField()
+    semester = SemesterField()
     current = models.BooleanField()
     
     class QuerySet(QuerySet):
-        def latest(self):
-            return self.filter(year=CURRENT_YEAR, season=Season.objects.get(name=CURRENT_SEASON_NAME))
+        def for_current_semester(self):
+            return self.filter(semester=nice_types.semester.current_semester())
     
     def __cmp__(self, other):
         return cmp(self.course,
                    other.course) or \
-               cmp(self.year,
-                   other.year) or \
-               cmp(self.season.order,
-                   other.season.order) or \
+               cmp(self.semester.start_date,
+                   other.semester.start_date) or \
                cmp(other.current, #this is on purpose, we want current first
                    self.current) or \
                cmp(self.person_id,

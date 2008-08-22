@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.query import QuerySet
 from nice_types.db import QuerySetManager, CachingManager
+from nice_types.semester import SemesterField, Semester
 from constants import EXAMS_PREFERENCE, PREFIX, SUFFIX, DEPT_ABBRS, DEPT_ABBRS_INV, DEPT_ABBRS_SET
 import re, datetime
 
@@ -171,42 +172,6 @@ class Course(models.Model):
     class Meta:
         unique_together = (("department", "coursenumber"),)
         
-
-class SeasonManager(QuerySetManager, CachingManager):
-    ABBRS = {"sp" : "spring", "fa" : "fall", "su" : "summer"}
-    @staticmethod
-    def get_cache_key(**kwargs):
-        # probably a bad idea
-        name = [val for key, val in kwargs.items() if key.startswith("name")][0]
-        return SeasonManager.ABBRS.get(name, name)
-        
-        
-    
-class Season(models.Model):
-    """ Models a season, i.e. fall, spring, or summer """
-    
-    seasons = objects = SeasonManager()
-    
-    id = models.AutoField(primary_key = True)
-    
-    name = models.CharField(max_length = 10)
-    """ The name of the season: fall, spring, or summer"""
-    
-    order = models.IntegerField()
-    """ The order of the season. Spring comes before summer which comes before fall """
-    
-    class QuerySet(QuerySet):
-        pass
-    
-    def __str__(self):
-        return self.name
-    
-    def abbr(self):
-        return self.name[:2]
-    
-    class Admin:
-        pass
-    
 class KlassManager(QuerySetManager):
     def ft_query(self, *args, **kwargs):
         return self.get_query_set().ft_query(*args, **kwargs)
@@ -219,11 +184,8 @@ class Klass(models.Model):
     course = models.ForeignKey(Course)
     """ The course that this klass is a particular instance of """
     
-    season = models.ForeignKey(Season)
-    """ The season this klass was taught """
-    
-    year = models.DateField()
-    """ The year this klass was taught """
+    semester = SemesterField()
+    """ The semester this klass was taught """
     
     section = models.CharField(max_length = 10)
     """ 
@@ -250,11 +212,8 @@ class Klass(models.Model):
     newsgroup = models.CharField(max_length = 100)
     """ The klass newsgroup """
     
-    def semester(self):
-        return (self.season.abbr() + str(self.year.year)[2:4])
-
     def pretty_semester(self):
-        return "%s %d" % (self.season.name.title(), self.year.year)
+        return self.semester.verbose_description()
     
     def instructor_names(self):
         last_names = [inst.last for inst in self.instructors.all()]
@@ -272,8 +231,7 @@ class Klass(models.Model):
             else:
                 year += 1900
             year = datetime.date(year=year, month=1, day=1)
-            season = Season.objects.get(name__istartswith=season)
-            return self.filter(course__in = Course.objects.ft_query(course), season=season, year=year)
+            return self.filter(course__in = Course.objects.ft_query(course), semester=semester)
             
     
 class InstructorManager(QuerySetManager):

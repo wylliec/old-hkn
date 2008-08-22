@@ -13,8 +13,7 @@ from constants import EXAM_TYPE, VALID_EXTENSIONS
 class ExamForm(forms.Form):
     course = forms.CharField(widget = ModelAutocomplete("/course/course_autocomplete"))
     instructor = forms.CharField(widget = ModelAutocomplete("/course/instructor_autocomplete"))
-    season = forms.ChoiceField(choices = SEMESTER.choices())
-    year = forms.IntegerField(min_value = 1990, max_value = 2100)
+    semester = forms.CharField(help_text="The semester e.g. fa05, sp08", max_length=4)
     
     exam_type = forms.ChoiceField(choices = EXAM_TYPE.choices())
     
@@ -46,6 +45,12 @@ class ExamForm(forms.Form):
         self.cleaned_data["course_object"] = c
         return c 
 
+    def clean_semester(self):
+        try:
+            self.cleaned_data["semester_object"] = Semester(self.cleaned_data["semester"])
+        except:
+            raise forms.ValidationError("Semester is invalid; ensure the format is similar to 'fa05'")
+        return self.cleaned_data["semester_object"]
     
     def clean_exam_file(self):
         uf = self.cleaned_data["exam_file"]
@@ -55,21 +60,6 @@ class ExamForm(forms.Form):
         self.cleaned_data["exam_file_extension"] = ext
         return uf
         
-    
-    def clean_season(self):
-        season_name = self.cleaned_data["season"]
-        try:
-            s = Season.objects.get(name = season_name)
-        except Season.DoesNotExist:
-            raise forms.ValidationError("Season is not valid!")
-        self.cleaned_data["season_object"] = s
-        return s
-        
-    def clean_year(self):
-        yr = self.cleaned_data["year"]
-        self.cleaned_data["year_object"] = datetime.datetime(yr, 1, 1)
-        return yr
-                                    
     def filter_klasses_by_instructor(self, klasses):
         instructor_name, instructor_id = self.cleaned_data["instructor"].split("|")
         try: 
@@ -78,12 +68,12 @@ class ExamForm(forms.Form):
         except Instructor.DoesNotExist:
             instructors = Instructor.objects.query(instructor_name)
             return klasses.filter(instructor__in = instructors)
-        
+
 
     def clean(self):
         d = self.cleaned_data
-        if d.has_key("course_object") and d.has_key("season_object") and d.has_key("year_object"):
-            klasses = Klass.objects.filter(course = d["course_object"], season = d["season_object"], year = d["year_object"])
+        if d.has_key("course_object") and d.has_key("semester_object"):
+            klasses = Klass.objects.filter(course = d["course_object"], semester=d["semester_object"])
             if len(klasses) == 0:
                 raise forms.ValidationError("No klasses for that course and semester")
             elif len(klasses) >= 2:
@@ -96,8 +86,3 @@ class ExamForm(forms.Form):
             self.cleaned_data["klass"] = klasses[0]
         return self.cleaned_data
             
-            
-            
-            
-        
-

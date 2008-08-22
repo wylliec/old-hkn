@@ -1,12 +1,30 @@
 from django.db import models
+from django.db.models.query import QuerySet
 from django.db.models import Q
 from django.contrib.auth.models import Permission, AnonymousUser
+from django.core.cache import cache
 
-# Create your models here.
+from nice_types.db import QuerySetManager, CachingManager
+
+class HKNManager(QuerySetManager, CachingManager):
+    @staticmethod
+    def get_cache_key(**kwargs):
+        return kwargs['name']
+    
+    @staticmethod
+    def get_cache_value(instance):
+        return instance.value
+        
+
 class HKN(models.Model):
-    name = models.CharField(max_length=30)
+    properties = objects = HKNManager()
+    
+    name = models.CharField(unique=True, max_length=30)
     value = models.CharField(max_length=50)
-
+    
+    class QuerySet(QuerySet):
+        pass
+    
     class Meta:
         permissions = (
             ("hkn_everyone", "Everyone!"),
@@ -18,14 +36,4 @@ class HKN(models.Model):
             ("hkn_member", "Members only!"),
         )
 
-class PermissionManager(models.Manager):
-    def get_for_name(self, permission_name):
-        """
-        Takes a name like info.hkn_officer and returns the permission
-        """
-        app_label, codename = permission_name.split(".")
-        return self.get_query_set().get(Q(content_type__app_label = app_label) & Q(codename = codename))
-
-PermissionManager().contribute_to_class(Permission, "objects")
-setattr(AnonymousUser, 'get_all_permissions', lambda anonuser: [Permission.objects.get(codename="hkn_everyone").full_codename()])
-setattr(Permission, 'full_codename', lambda perm: "%s.%s" % (perm.content_type.app_label, perm.codename))
+from hkn.main.auth_extend import *

@@ -10,7 +10,7 @@ class DepartmentAdmin(admin.ModelAdmin):
     search_fields = ('name', 'abbr')
 
 class KlassAdmin(admin.ModelAdmin):
-    list_display = ('course', 'season', 'year')
+    list_display = ('course', 'semester')
 
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Klass, KlassAdmin)

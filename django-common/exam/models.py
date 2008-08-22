@@ -8,6 +8,7 @@ import request.utils
 
 from django.db.models.query import QuerySet
 from nice_types.db import QuerySetManager
+from nice_types.semester import Semester
 
 from django import db
 
@@ -31,28 +32,6 @@ class PublishedExamManager(ExamManager):
 class UnpublishedExamManager(ExamManager):
         def get_query_set(self):
             return super(UnpublishedExamManager, self).get_query_set().filter(publishable=False) 
-
-            
-def get_semester_start(sem):
-    """
-    Gets the start time of the semester, assumed to be in ssyy format.
-    Defaults to current semester.
-
-
-    @type sem:  string
-    @param sem: the semester, or current semester if not specified
-    @rtype: datetime
-    @return: a datetime representing the beginning of the semester
-    """
-    s = sem[0:2]
-    y = int(sem[2:4])
-    y += (y < 50) and 2000 or 1900
-    if s == "fa":
-        return datetime.datetime(y, 8, 1)
-    elif s == "su":
-        return datetime.datetime(y, 6, 1)
-    else:
-        return datetime.datetime(y, 1, 1)
 
 
 class Exam(db.models.Model):
@@ -140,15 +119,8 @@ class Exam(db.models.Model):
         def after(self, value):
             if len(value) != 4:
                 return self
-            try:
-                semester_start = get_semester_start(value)
-            except ValueError:
-                return self
-            return self.filter(exam_date__gte = semester_start)
+            return self.filter(exam_date__gte = Semester(value).start_date)
     
-    
-    def get_semester(self):
-        return self.klass.semester()
     
     def describe_exam_type(self):
         if self.exam_type == EXAM_TYPE.FINAL:
@@ -162,7 +134,7 @@ class Exam(db.models.Model):
             description.append(str(self.course))
             
         if semester:
-            description.append(self.get_semester())
+            description.append(str(self.semester))
             
         description.append(self.describe_exam_type())
         
@@ -176,13 +148,13 @@ class Exam(db.models.Model):
         return os.path.splitext(self.file.name)[1].strip(". ")
     
     def get_exam_filename(self):
-        return ("%s_%s_%s_%s%d" % (self.klass.course.short_name(), self.klass.semester(), self.klass.section, self.exam_type, self.number or 0)).replace(" ", "-")
+        return ("%s_%s_%s_%s%d" % (self.klass.course.short_name(), self.klass.semester, self.klass.section, self.exam_type, self.number or 0)).replace(" ", "-")
         
     def get_semester_sort(self):
-        return get_semester_start(self.klass.semester())
+        return self.klass.semester.start_date
     
     def auto_exam_date(self):
-        semester_start_date = get_semester_start(self.klass.semester())
+        semester_start_date = self.klass.semester.start_date
         weights = {EXAM_TYPE.MIDTERM : 7, EXAM_TYPE.QUIZ : 1, EXAM_TYPE.FINAL : 30, EXAM_TYPE.REVIEW : 29}
         if self.number:
             days_delta = (1 + self.integer_number) * weights[self.exam_type]

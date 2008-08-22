@@ -20,7 +20,7 @@ def get_instructor(course, instructor_name):
 
 def get_klass(dept, course, instructor, season, year):
     """ all args should be strings """
-    season = Season.objects.get_cached(name=season)
+    semester = Semester(season_name=season, year=year)
     year = datetime.date(int(year), 1, 1)
     course = Course.objects.query_exact(dept, course)
     if len(course) != 1:
@@ -28,10 +28,10 @@ def get_klass(dept, course, instructor, season, year):
     course = course[0]
     
     instructor = get_instructor(course, instructor)
-    debug("Working on klass %s %s %s %s" % (course, instructor.short_name(True, True), season, year))
-    klasses = Klass.objects.filter(year=year, season=season, course=course)
+    debug("Working on klass %s %s %s" % (course, instructor.short_name(True, True), semester))
+    klasses = Klass.objects.filter(course=course, semester=semester)
     if len(klasses) == 0:
-        klass = Klass(course=course, season=season, year=year, section_type="LEC", section="", section_note="")
+        klass = Klass(course=course, semester=semester, section_type="LEC", section="", section_note="")
         klass.save()
         klass.instructors.add(instructor)
         return klass

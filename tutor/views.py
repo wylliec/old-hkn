@@ -21,6 +21,7 @@ from nice_types import QueryDictWrapper
 from hkn.tutor.constants import *
 from hkn.tutor.scheduler import State, Slot
 from hkn.tutor import output
+import nice_types.semester
 
 from re import match, search
 
@@ -62,9 +63,7 @@ def get_tutor_info(assignments, tutoring_days=TUTORING_DAYS, tutoring_times=TUTO
         else:
             realAssignments[slot] = [person]
         
-    canTutorData = tutor.CanTutor.objects.filter(
-           season=currentSeason(),
-           year=CURRENT_YEAR)
+    canTutorData = tutor.CanTutor.objects.for_current_semester()
            
            
     realCanTutorData = tutor.CanTutor.objects.none()
@@ -113,9 +112,7 @@ def get_tutor_miniinfo(assignments, day="Monday", tutoring_times=TUTORING_TIMES)
         else:
             realAssignments[slot] = [person]
         
-    canTutorData = tutor.CanTutor.objects.filter(
-           season=currentSeason(),
-           year=CURRENT_YEAR)
+    canTutorData = tutor.CanTutor.objects.for_current_semester()
            
            
     realCanTutorData = tutor.CanTutor.objects.none()
@@ -178,8 +175,8 @@ def schedule(request):
     context['days'] = TUTORING_DAYS
     context['timeslots'] = TUTORING_TIMES
     context['message'] = False
-    context['year'] = CURRENT_YEAR
-    context['season'] = str(currentSeason()).title()
+    context['year'] = nice_types.semester.current_year()
+    context['season'] = nice_types.semester.current_semester().season_name.title()
     
     assignments = get_published_assignments(request.GET.get('version', None))
     
@@ -215,7 +212,7 @@ def tutor_list(request):
 
 @permission_required('main.hkn_officer')
 def availabilities_table(request):
-    avails = tutor.Availability.objects.filter(season=currentSeason(), year=CURRENT_YEAR).order_by('slot').select_related(depth=1)
+    avails = tutor.Availability.objects.for_current_semester().order_by('slot').select_related(depth=1)
     context = basicContext(request)
     context['avails'] = avails
 
@@ -251,18 +248,14 @@ def signup(request, message = False):
     context['prefer_soda'] = False
     context['prefer_cory'] = False
     prevCanTutor = [ct for ct in tutor.CanTutor.objects.filter(
-           person=request.user.person,
-           season=currentSeason(),
-           year=CURRENT_YEAR).select_related(depth=1)]
+           person=request.user.person).for_current_semester().select_related(depth=1)]
     prevCanTutor.sort()#CanTutor has __cmp__()
     context['prevCanTutor'] = prevCanTutor
     
     #initialize using previous time / day availability data
     prev = [] #list of rows.  Each row is list of Strings
     prevAvailabilitiesList = tutor.Availability.objects.filter(
-           person=request.user.person,
-           season=currentSeason(),
-           year=CURRENT_YEAR)
+           person=request.user.person).for_current_semester()
     
     #whether or not we've seen a preference for soda or cory
     seen_soda = False
@@ -342,11 +335,10 @@ def submit_signup(request):
             request,
             message="Error with form, please re-enter your information")
     
+    semester = nice_types.semester.current_semester()
     #grab any old availabilities for this semester/year
     oldAvailabilities = tutor.Availability.objects.filter(
-           person=person,
-           season=currentSeason(),
-           year=CURRENT_YEAR)
+           person=person, semester=semester)
     
     newAvailabilities = []
     #make the new availabilities for this semester/year
@@ -370,8 +362,7 @@ def submit_signup(request):
                             person=person,
                             slot=slot,
                             office=office,
-                            season=currentSeason(),
-                            year=CURRENT_YEAR,
+                            semester=nice_types.semester.current_semester(),
                             preference=preference))
     
     #make CanTutor data
@@ -394,8 +385,7 @@ def submit_signup(request):
         newCanTutors[course_id] = (
             tutor.CanTutor(person=person,
                            course_id=course_id,
-                           season=currentSeason(),
-                           year=CURRENT_YEAR,
+                           semester=nice_types.semester.current_semester(),
                            current=current))
     
     #data is validated, so safe to update database
@@ -404,9 +394,7 @@ def submit_signup(request):
         availability.save()
     
     #delete old CanTutor entries
-    tutor.CanTutor.objects.filter(person=person,
-                                  season=currentSeason(),
-                                  year=CURRENT_YEAR).delete()
+    tutor.CanTutor.objects.filter(person=person).for_current_semester().delete()
     for key in newCanTutors:
         newCanTutors[key].save()
     
@@ -431,9 +419,7 @@ def view_signups(request):
     context['score_adjacent_same_office'] = SCORE_ADJACENT_SAME_OFFICE
     context['score_adjacent'] = SCORE_ADJACENT
     
-    assignments = tutor.Assignment.objects.filter(
-           season=currentSeason(),
-           year=CURRENT_YEAR)
+    assignments = tutor.Assignment.objects.for_current_semester()
     
     availCounts = {}
     if len(assignments) == 0:
@@ -659,9 +645,7 @@ def submit_assignments(request):
     context = basicContext(request)
     info = QueryDictWrapper(request.POST, defaultValue=False)
     
-    old_assignments = tutor.Assignment.objects.filter(
-           season=currentSeason(),
-           year=CURRENT_YEAR)
+    old_assignments = tutor.Assignment.objects.for_current_semester()
     
     if len(old_assignments) == 0:
         version = MIN_VERSION
@@ -693,8 +677,7 @@ def submit_assignments(request):
                         tutor.Assignment(person=selected_people[person_id],
                                          slot=slot,
                                          office=office,
-                                         season=currentSeason(),
-                                         year=CURRENT_YEAR,
+                                         semester=nice_types.semester.current_semester(),
                                          version=version)
                         )
     
@@ -716,8 +699,8 @@ def admin(request, message = False):
     
     context = basicContext(request, {'showAdminLinks':True,
                                      'DEFAULT_HOURS':DEFAULT_HOURS,
-                                     'CURRENT_SEASON_NAME':CURRENT_SEASON_NAME,
-                                     'CURRENT_YEAR':CURRENT_YEAR,
+                                     'CURRENT_SEASON_NAME':nice_types.semester.current_semester().season_name.title(),
+                                     'CURRENT_YEAR':str(nice_types.semester.current_year()),
                                      'exceptions':exceptions,
                                      'message':message})
     
@@ -743,11 +726,11 @@ def admin(request, message = False):
             for id in info['removeExceptions'].replace(' ', '').split(','):
                 removeExceptions.append(int(id))
         
-        if info['CURRENT_SEASON_NAME'] and info['CURRENT_SEASON_NAME'] != '':
-            changes['CURRENT_SEASON_NAME'] = info['CURRENT_SEASON_NAME']
+        #if info['CURRENT_SEASON_NAME'] and info['CURRENT_SEASON_NAME'] != '':
+        #    changes['CURRENT_SEASON_NAME'] = info['CURRENT_SEASON_NAME']
         
-        if info['CURRENT_YEAR'] and info['CURRENT_YEAR'] != '':
-            changes['CURRENT_YEAR'] = int(info['CURRENT_YEAR'])
+        #if info['CURRENT_YEAR'] and info['CURRENT_YEAR'] != '':
+        #    changes['CURRENT_YEAR'] = int(info['CURRENT_YEAR'])
         
         if info['DEFAULT_HOURS'] and info['DEFAULT_HOURS'] != '':
             changes['DEFAULT_HOURS'] = int(info['DEFAULT_HOURS'])
@@ -811,19 +794,6 @@ def basicContext(request, info = {}):
     if request.user.is_authenticated:
         ret['user'] = request.user
     return ret
-
-#returns [semester_name, year] of previous semester of tutoring
-def prevSemesterInfo():
-    if CURRENT_SEASON_NAME == "Spring":
-        return ["Fall", CURRENT_YEAR - 1]
-    return ["Spring", CURRENT_YEAR]
-
-#WARNING: currentSeason is cached, may cause problems when updating seasons
-CURRENT_SEASON_HOLDER = []
-def currentSeason():
-    if len(CURRENT_SEASON_HOLDER) == 0:
-        CURRENT_SEASON_HOLDER.append(courses.Season.objects.get(name__iexact =CURRENT_SEASON_NAME))
-    return CURRENT_SEASON_HOLDER[0]
 
 def update_constants(argDict):
     """

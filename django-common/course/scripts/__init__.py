@@ -7,7 +7,6 @@ def import_all(path):
 
     os.chdir(cd)
 
-    os.system('python import_seasons.py')
     os.system('python import_departments.py')
     os.system('python import_courses.py')
     os.system('python import_instructors.py')

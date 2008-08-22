@@ -13,6 +13,7 @@ import clear_db; clear_db.main()
 import create_sites; create_sites.main()
 call_command('loaddata', '../fixtures/flatpages.json')
 
+import create_properties; create_properties.main()
 import create_positions; create_positions.main()
 import create_permissions; create_permissions.main()
 
@@ -31,12 +32,12 @@ call_command('loaddata', '../fixtures/events.json')
 #./import_events_from_webcal.py
 
 print 'Importing courses'
-call_command('loaddata', '../fixtures/course.json')
-#os.system("python run_course_scripts.py")
+#call_command('loaddata', '../fixtures/course.json')
+os.system("python run_course_scripts.py")
 
 print "Importing tutor data"
-call_command('loaddata', '../fixtures/tutor.json')
-#import import_tutor_data; import_tutor_data.main()
+#call_command('loaddata', '../fixtures/tutor.json')
+import import_tutor_data; import_tutor_data.main()
 
 os.system("python run_exam_scripts.py")
 os.system("python run_generate_scripts.py")

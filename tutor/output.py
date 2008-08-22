@@ -1,10 +1,9 @@
-from hkn import semester
-
 from nice_types import NiceDict
 from hkn.tutor.constants import *
 from hkn.tutor import models as tutormodel
 from course import models as coursemodel
 from hkn.info import models as infomodel
+import nice_types.semester
 
 
 def output_html(version=False):
@@ -32,7 +31,7 @@ def output_html(version=False):
     HTML_STRING = ""
     
 #    Output semester and office hours information
-    HTML_STRING += "SEMESTER " + CURRENT_SEASON_NAME + " " + str(CURRENT_YEAR) + "\n"
+    HTML_STRING += "SEMESTER " + nice_types.semester.current_semester().verbose_description() + "\n"
     HTML_STRING += "CORYSTART " + startTime + "\n"
     HTML_STRING += "CORYEND " + endTime + "\n"
     HTML_STRING += "SODASTART " + startTime + "\n"
@@ -40,14 +39,13 @@ def output_html(version=False):
     HTML_STRING += "INTERVAL 60"
     
 #    Obtain the list of current tutors and output their tutoring assignments to the file
-    seasonID = coursemodel.Season.objects.get(name = CURRENT_SEASON_NAME.lower()).id
     people = infomodel.Person.objects.all()
     for person in people:
         personID = person.id
-        assignments = tutormodel.Assignment.objects.filter(person = personID, season = seasonID, year = CURRENT_YEAR, version = version)
+        assignments = tutormodel.Assignment.objects.filter(person = personID, version = version).for_current_semester()
         if len(assignments) == 0:
             continue
-        canTutor = tutormodel.CanTutor.objects.filter(person = personID, season = seasonID, year = CURRENT_YEAR)
+        canTutor = tutormodel.CanTutor.objects.filter(person = personID).for_current_semester()
 
         HTML_STRING += "\n\nBEGINTUTOR\n"
         
@@ -74,7 +72,7 @@ def output_html(version=False):
         for entry in canTutor:
             course = entry.course
             true_dept_abbr = course.department_abbr
-            preferred_dept_abbr = coursemodel.Department.nice_abbr(true_dept_abbr)
+            preferred_dept_abbr = coursemodel.Department.get_nice_abbr(true_dept_abbr)
             number = course.number
             #get rid of trailing L or N, like CS61BL and EE20N
             if number[-1].lower() in ('l', 'n'):

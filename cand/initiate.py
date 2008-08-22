@@ -7,7 +7,6 @@ from django.core import urlresolvers
 from django import forms
 
 from ajaxlist import get_list_context, filter_objects
-from hkn import semester
 
 import datetime
 from string import atoi

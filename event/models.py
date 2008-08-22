@@ -9,13 +9,13 @@ from hkn.event.rsvp.constants import RSVP_TYPE
 from hkn.info.constants import MEMBER_TYPE
 
 from hkn.info.models import Person
-from hkn import semester
 
 from string import atoi
 import os, pickle
 import datetime
 
 from nice_types.db import PickleField, QuerySetManager
+from nice_types import semester
 import request.utils
 
 class AllEventsManager(QuerySetManager):
@@ -46,7 +46,7 @@ class TodayEventsManager(AllEventsManager):
 
 class SemesterEventsManager(AllEventsManager):
     def get_query_set(self):
-        start_time = semester.getSemesterStart()
+        start_time = semester.current_semester().start_date
         return super(SemesterEventsManager, self).get_query_set().filter(start_time__gte = start_time)
 
 

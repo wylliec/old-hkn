@@ -25,8 +25,9 @@ SCORE_ADJACENT_SAME_OFFICE = 2
 #In the future, the below contents will be managed by scripts and should NOT be managed manually.
 #They can be edited using hkn.tutor.view.update_constants
 #BEGIN AUTOMANAGED
-CURRENT_SEASON_NAME = 'Spring' #DO NOT EDIT THIS
-CURRENT_YEAR = 2008 #DO NOT EDIT THIS
+#Current season and year now managed by semester.py
+#CURRENT_SEASON_NAME = 'Spring' #DO NOT EDIT THIS
+#CURRENT_YEAR = 2008 #DO NOT EDIT THIS
 #number of hours each person normally tutors
 DEFAULT_HOURS = 2 #DO NOT EDIT THIS
 #exceptions for people who do not tutor the default hours.  Maps from person id to hours

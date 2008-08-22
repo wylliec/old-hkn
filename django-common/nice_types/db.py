@@ -10,8 +10,9 @@ class PickleField(models.TextField):
         except:
             return value
 
-    def get_db_prep_save(self, value):
+    def get_db_prep_value(self, value):
         return pickle.dumps(value)
+
 
 class QuerySetManager(models.Manager):
     def get_query_set(self):

@@ -3,15 +3,16 @@ import hkn_settings, pickle
 from hkn.tutor.models import *
 from hkn.info.models import *
 from course.models import *
+from nice_types.semester import Semester
 
 def main():
-    season = Season.objects.get(name="spring")
+    sp08 = Semester("sp08")
     existed = 0
     avail = pickle.load(file('data/tutor_data_avail_sp08.pkl'))
     for av in avail:
         username, slot, office, preference = av
         person = Person.objects.get(username=username)
-        ava, created = Availability.objects.get_or_create(person=person, slot=slot, office=office, season=season, year=2008, preference=preference)
+        ava, created = Availability.objects.get_or_create(person=person, slot=slot, office=office, semester=sp08, preference=preference)
         if not created:
             existed += 1
 
@@ -23,7 +24,7 @@ def main():
     for a in assign:
         username, slot, office, version = a
         person = Person.objects.get(username=username)
-        ass, created = Assignment.objects.get_or_create(person=person, slot=slot, office=office, season=season, year=2008, version=version)
+        ass, created = Assignment.objects.get_or_create(person=person, slot=slot, office=office, semester=sp08, version=version)
         if not created:
             existed += 1
 
@@ -36,7 +37,7 @@ def main():
         username, cname, current = a
         person = Person.objects.get(username=username)
         course = Course.objects.ft_query(cname)[0]
-        cantut, created = CanTutor.objects.get_or_create(person=person, course=course, season=season, year=2008, current=current)
+        cantut, created = CanTutor.objects.get_or_create(person=person, course=course, semester=sp08, current=current)
         if not created:
             existed += 1
 

@@ -7,7 +7,7 @@ import hkn_settings
 
 from hkn.info.models import *
 from hkn.info.utils import *
-import hkn.semester
+import nice_types.semester
 
 from hkn.info.constants import MEMBER_TYPE
 

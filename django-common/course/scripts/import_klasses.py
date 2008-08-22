@@ -13,6 +13,7 @@ cd = setup_settings.get_scripts_directory()
 
 from course.models import *
 from course.constants import EXAMS_PREFERENCE
+from nice_types.semester import Semester
 
 #bad_klasses = ( "MEC ENG-297--Summer-2008", "INTEGBI-116-SAKANARI, J A-Summer-2008", "INTEGBI-141-NIERMANN, G L-Summer-2008", "MCELLBI-63-REYES, J A-Summer-2008" )
 
@@ -96,9 +97,6 @@ def get_course(dpt, number, endswith = False):
         return Course.objects.get(department = dpt, coursenumber__iendswith =number)
 
 
-def get_season(season):
-    return Season.objects.get(name__iexact = season)    
-
 def importKlass(dpt, klass, year, season):
     name = klass.getAttribute("name")
     number = klass.getAttribute("course_number")[1:].strip()
@@ -117,10 +115,9 @@ def importKlass(dpt, klass, year, season):
         instructors += filter(lambda x: x is not None, match.groups())
 
     try:
-        ssn = get_season(season)
-        yr = datetime.date(month=1, day=1, year=atoi(year))
+        semester = Semester("%s%s" % (season[:2], str(year)))
 
-        if ssn.name == "summer" and number[0] == "N":
+        if semester.season_name == "Summer" and number[0] == "N":
             number = number[1:]
             try:
                 course = get_course(dpt, number)
@@ -142,9 +139,9 @@ def importKlass(dpt, klass, year, season):
 
 
     try:
-        kls = Klass.objects.get(course = course, season = ssn, year = yr, section = section)
+        kls = Klass.objects.get(course = course, semester=semester, section = section)
     except Klass.DoesNotExist:
-        kls = Klass(course = course, season = ssn, year = yr, section = section, section_type = section_type)
+        kls = Klass(course = course, semester=semester, section = section, section_type = section_type)
     kls.section_note = section_note
     kls.save()
     

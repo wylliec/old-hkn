@@ -5,7 +5,7 @@ from constants import EXAM_TYPE
 
 
 class ExamAdmin(admin.ModelAdmin):
-    list_display = ('course', Exam.get_semester, Exam.describe_exam_type, 'is_solution', "publishable")
+    list_display = ('course', lambda exam: exam.klass.semester, Exam.describe_exam_type, 'is_solution', "publishable")
     raw_id_fields = ('klass',)
     
     def queryset(self, request):
