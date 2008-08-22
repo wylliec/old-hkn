@@ -36,7 +36,7 @@ class Semester(object):
         else:
             raise InvalidSemester("Need to specify either semester or season_name and year")
 
-        self.semester = "%s%d" % (self.season, self.year%100)
+        self.semester = "%s%s" % (self.season, str(self.year%100).rjust(2, "0"))
         try:
             self.season_name = _SEASON_NAMES[self.season]
         except KeyError:
@@ -95,6 +95,7 @@ def current_year():
     return current_semester().year
 
 from django.db import models
+import types
 
 class SemesterField(models.DateField):
     __metaclass__ = models.SubfieldBase
@@ -108,7 +109,6 @@ class SemesterField(models.DateField):
             return value
 
     def get_db_prep_value(self, value):
-        if type(value) == type(""):
+        if type(value) in types.StringTypes:
             value = Semester(value)
         return super(models.DateField, self).get_db_prep_value(value.start_date)
-        

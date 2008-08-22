@@ -1,17 +1,22 @@
 from django.db import models
-import pickle
+import pickle, types
 
 class PickleField(models.TextField):
     __metaclass__ = models.SubfieldBase
+    PICKLE_PREFIX = "PICKLED::"
 
     def to_python(self, value):
         try:
-            return pickle.loads(str(value))
+            if value.startswith(PickleField.PICKLE_PREFIX):
+                return pickle.loads(str( value[len(PickleField.PICKLE_PREFIX):] ))
         except:
-            return value
+            pass
+        return value
 
     def get_db_prep_value(self, value):
-        return pickle.dumps(value)
+        if type(value) in types.StringTypes and value.startswith(PickleField.PICKLE_PREFIX):
+            return value
+        return PickleField.PICKLE_PREFIX + pickle.dumps(value)
 
 
 class QuerySetManager(models.Manager):
