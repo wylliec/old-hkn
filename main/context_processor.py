@@ -1,4 +1,5 @@
 from hkn.settings import ROOT_URL, STATIC_PREFIX, MEDIA_URL
+from hkn.main.property import PROPERTIES
 
 def hkn_vars(request):
     layout = request.session.get("layout", "-green")
@@ -7,7 +8,9 @@ def hkn_vars(request):
         "STATIC_PREFIX" : STATIC_PREFIX,
         "MEDIA_URL" : MEDIA_URL,
     	"LAYOUT"  : layout,
-	    "LAYOUT_HTML" : "hkn" + layout + ".html"
+	    "LAYOUT_HTML" : "hkn" + layout + ".html",
+        "DEFAULT_PICTURE" : "/static/images/site/lion.gif",
+        "PROPERTIES" : PROPERTIES
 	}
 
 
