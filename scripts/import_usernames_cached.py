@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from django.core.management import setup_environ
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.files.uploadedfile import SimpleUploadedFile
+from django.core.files.base import ContentFile
 import re, django, sys, pickle, os
 
 import hkn_settings
@@ -32,8 +32,8 @@ def main():
             name = "%s.%s" % (offs[1], ext)
             path = os.path.join(os.path.join(IMAGES_PATH, 'officerpics/'), name)
             if os.path.exists(path):
-                picfile = SimpleUploadedFile(name, file(path).read())
-                person.officer_picture.save(person.generate_filename(picfile.name), picfile)
+                picfile = ContentFile(file(path).read())
+                person.officer_picture.save(person.generate_filename(name), picfile)
         person.save()
 
 if __name__ == "__main__":

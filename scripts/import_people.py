@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from django.core.management import setup_environ
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.files.uploadedfile import SimpleUploadedFile
+from django.core.files.base import ContentFile
 import re, django, sys
 import hkn_settings
 from hkn.info.constants import MEMBER_TYPE
@@ -19,7 +19,7 @@ def import_people(filename, member_status):
     for line in f:
         addLine(line, member_status)
 
-lion_file_content = file('lion.gif', 'rb').read()
+lion_file_content = ContentFile(file('lion.gif', 'rb').read())
 
 def make_username(first, last):
     uname = (str(first[0] + last)).lower()
@@ -60,9 +60,7 @@ def addLine(line, member_status):
     if email.find("berkeley.edu") == -1:
         c.school_email = email
     
-    lion_file = SimpleUploadedFile(uname + ".gif", lion_file_content)
-    c.profile_picture.save(c.generate_filename(lion_file.name), lion_file)
-
+    c.profile_picture.save(c.generate_filename(uname + "gif"), lion_file_content)
     c.save()
 
     ci = ExtendedInfo()
@@ -83,8 +81,8 @@ def addLine(line, member_status):
     candidateinfo.candidate_committee = Position.objects.get(short_name = com)
     candidateinfo.comment = ""
     candidateinfo.initiated = False
-    lion_file = SimpleUploadedFile(uname + ".gif", lion_file_content)
-    candidateinfo.candidate_picture.save(lion_file.name, lion_file)
+
+    candidateinfo.candidate_picture.save(uname + ".gif", lion_file_content)
     candidateinfo.save()
 
 everyoneGroup = Group.objects.get(name = "everyone")
