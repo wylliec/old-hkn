@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if account %}
+Thank you for activating your account, {{account.person.name}}.
+{% else %}
+There was an error with your activation
+{% endif %}
+{% endblock %}
