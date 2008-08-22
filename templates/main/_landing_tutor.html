@@ -1,35 +1,35 @@
         <h3>{{ tutoring_title }}</h3>
         <table class="landing tutoring small">
-		        <tr>
-			        <th></th>
-			        <th>345 Soda</th>
-				<th>290 Cory</th>
-		        </tr>
-		        {% for scheduleRow in schedule %}
-		        <tr>
-			        <td class="time">
-				        {{ scheduleRow.timeslot }}
-			        </td>
-			        <td class="pcell">
-				        {% for sodapeople in scheduleRow.sodarow %}
-				        {% for person in sodapeople %}
-				        <div class="infobox person {{ person.classes }}" title="{{person.name}}" rel="{% url person-tutor-infobox person.id %}" style="margin-top: 3px; margin-bottom: 3px">
-                            {{ person.name }}
-				        </div>
-				        {% endfor %}
-				        {% endfor %}				        
-				    </td>
-			        <td class="pcell">
-				        {% for corypeople in scheduleRow.coryrow %}
-				        {% for person in corypeople %}
-				        <div class="infobox person {{ person.classes }}" title="{{person.name}}" rel="{% url person-tutor-infobox person.id %}" style="margin-top: 3px; margin-bottom: 3px">
-                            {{ person.name }}
-				        </div>
-				        {% endfor %}
-				        {% endfor %}				        
-				    </td>
-		        </tr>
-		        {% endfor %}                        
+	        <tr>
+		        <th></th>
+		        <th>345 Soda</th>
+			<th>290 Cory</th>
+	        </tr>
+	        {% for scheduleRow in schedule %}
+	        <tr>
+		        <td class="time">
+			        {{ scheduleRow.timeslot }}
+		        </td>
+		        <td class="pcell">
+			        {% for sodapeople in scheduleRow.sodarow %}
+			        {% for person in sodapeople %}
+			        <div class="infobox person {{ person.classes }}" title="{{person.name}}" rel="{% url person-tutor-infobox person.id %}" style="margin-top: 3px; margin-bottom: 3px">
+                    {{ person.name }}
+			        </div>
+			        {% endfor %}
+			        {% endfor %}				        
+			    </td>
+		        <td class="pcell">
+			        {% for corypeople in scheduleRow.coryrow %}
+			        {% for person in corypeople %}
+			        <div class="infobox person {{ person.classes }}" title="{{person.name}}" rel="{% url person-tutor-infobox person.id %}" style="margin-top: 3px; margin-bottom: 3px">
+                    {{ person.name }}
+			        </div>
+			        {% endfor %}
+			        {% endfor %}				        
+			    </td>
+	        </tr>
+	        {% endfor %}                        
         </table>
 	<br />
         <div>

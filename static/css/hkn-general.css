@@ -48,7 +48,7 @@ img {
     border: none;
 }
 
-p {
+p, li {
     line-height: 1.8;
     font-size: small;
 }
