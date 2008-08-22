@@ -6,9 +6,9 @@ from django.contrib.contenttypes.models import ContentType
 
 
 from hkn.info.utils import normalize_email, normalize_committee_name, int_to_base36
-from hkn import semester
 from hkn.info.constants import MEMBER_TYPE
 from hkn.settings import IMAGES_PATH
+import nice_types.semester
 import os, datetime, types, random
 
 from nice_types.db import QuerySetManager, PickleField
@@ -40,7 +40,7 @@ class PeopleManager(QuerySetManager):
 
 class CandidateManager(PeopleManager):
     def get_query_set(self):
-        return super(CandidateManager, self).get_query_set().filter(candidateinfo__candidate_semester = semester.getCurrentSemester())
+        return super(CandidateManager, self).get_query_set().filter(candidateinfo__candidate_semester = nice_types.semester.current_semester().abbr())
 
 class OfficerManager(PeopleManager):
     def get_query_set(self):
@@ -212,7 +212,7 @@ class Person(User):
 
     def reconcile_status(self):
         officer_semesters = Officership.objects.filter(person=self).values_list('semester', flat=True)
-        if unicode(semester.getCurrentSemester()) in officer_semesters:
+        if unicode(nice_types.semester.current_semester().abbr()) in officer_semesters:
             self.member_type = MEMBER_TYPE.OFFICER
         else:
             self.member_type = MEMBER_TYPE.FOGIE
@@ -268,7 +268,7 @@ class Person(User):
         return "%s %s %s (%s)" % (str(self.id), self.first_name, self.last_name, self.email )
 
     def get_current_position(self):
-        officerships = self.officership_set.filter(semester = semester.getCurrentSemester())
+        officerships = self.officership_set.filter(semester = nice_types.semester.current_semester().abbr())
         if len(officerships) == 0:
             return None
         return officerships[0].position

@@ -1,9 +1,13 @@
 <div width=400 class="infodiv">
-    <div><img width=60 height=80 src="{{ person.profile_picture.url }}"></img></div>
-    <span style="font-weight: bold">{{person.name}}</span><br>
-    {% for assign in assignments %}
-    <span style="font-style: italic">
-        {{ assign.slot }} @ {{assign.office}}
-    </span><br/>
-    {% endfor %}
+    <div style="float: left; padding-right: 20px"><img width=60 height=80 src="{{ person.profile_picture.url }}"></img></div>
+	<div style="float: left; vertical-align: middle">
+		<label>Tutoring Office Hours:</label><br/>
+	    {% for assign in assignments %}
+	    <span style="font-style: italic">
+	        {{ assign.slot }} @ {{assign.office}}
+	    </span><br/>
+	    {% endfor %}
+	</div>	    
+	<div style="clear: both"></div>
+    <div class="small">{{ courses }}</div>
 </div>
