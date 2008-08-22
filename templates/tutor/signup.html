@@ -9,7 +9,7 @@
 <script language="javascript">
 function update_courses() {
 	var inp = document.getElementById("course_query").value;
-	query_url = "{% url course.course.find_course %}?query=" + escape(inp);
+	query_url = "{% url course-find-course %}?query=" + escape(inp);
 	$("#results").load(query_url);
 	return false;
 }
