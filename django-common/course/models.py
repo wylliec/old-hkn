@@ -220,7 +220,7 @@ class Klass(models.Model):
         return ", ".join(last_names)
     
     def __str__(self):
-        return "%s %s" % (str(self.course.short_name()), self.semester())
+        return "%s %s" % (str(self.course.short_name()), self.semester)
 
     class QuerySet(QuerySet):
         def ft_query(self, course, semester):

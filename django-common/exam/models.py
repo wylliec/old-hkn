@@ -1,4 +1,4 @@
-import datetime, re, os, string
+import datetime, re, os, string, os.path
 
 from django.contrib.auth.models import User, Permission
 
@@ -91,7 +91,7 @@ class Exam(db.models.Model):
         if self.publishable:
             s += " (publishable)"
         return s
-        
+
     def request_confirmation(self):
         return request.utils.request_confirmation(self, self.submitter, Permission.objects.get(codename="add_exam"))
     
