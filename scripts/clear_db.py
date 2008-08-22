@@ -6,8 +6,9 @@ from django.core.management import call_command
 
 def main():
     for app in loading.get_apps():
-    	if app.__name__.endswith("markup.models"):
-		continue
+    	for ends in ("markup.models", "webdesign.models"):
+    		if app.__name__.endswith(ends):
+			continue
         call_command('reset', app.__name__.split('.')[-2], noinput=True)
     
     call_command('flush')
