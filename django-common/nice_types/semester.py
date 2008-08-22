@@ -97,18 +97,42 @@ def current_year():
 from django.db import models
 import types
 
-class SemesterField(models.DateField):
+class SemesterField(models.CharField):
+    """ 
+    handles serializing a semester to the database in the following format:
+    <sort_prefix><separator><semester> e.g.
+    
+    sort_prefix will be a date, separator is unique, semester is e.g. fa2007
+    """
     __metaclass__ = models.SubfieldBase
+    SEPARATOR = "__SEMESTER__"
+    PREFIX_DATE_FORMAT = "%Y%m%d"
+    """ a format like 20080822 """
+
+    def __init__(self, *args, **kwargs):
+        kwargs['max_length'] = 30
+        super(SemesterField, self).__init__(*args, **kwargs)
 
     def to_python(self, value):
-        value = super(models.DateField, self).to_python(value)
+        if not type(value) in types.StringTypes:
+            return value
         try:
-            season = _SEASON_MONTHS_REVERSE[value.month]
-            return Semester("%s%s" % (season, value.year))
+            semester = value.split(SemesterField.SEPARATOR)
+            assert len(semester) == 2
+            return Semester(semester[1])
         except:
             return value
 
     def get_db_prep_value(self, value):
+        if value is None:
+            return None
         if type(value) in types.StringTypes:
-            value = Semester(value)
-        return super(models.DateField, self).get_db_prep_value(value.start_date)
+            if len(value.split(SemesterField.SEPARATOR)) == 2:
+                return value
+            else:
+                value = Semester(value)
+        if type(value) == Semester:
+            return "%s%s%s" % (value.start_date.strftime(SemesterField.PREFIX_DATE_FORMAT),
+                               SemesterField.SEPARATOR,
+                               value.abbr())
+        return value
