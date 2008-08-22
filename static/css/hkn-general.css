@@ -126,9 +126,9 @@ th, td {
 }
 
 .infodiv {
-    width: 400px;
+    width: 300px;
     text-align: left;
-    background: #DFEFE2;
+/*    background: #DFEFE2;*/
 }
 
 .two_column {
