@@ -1,5 +1,6 @@
 from django.utils import simplejson
 from django.http import HttpResponse, HttpResponseServerError, Http404
+from django.template.defaultfilters import linebreaks
 
 from hkn.event.models import Event
 
@@ -31,7 +32,7 @@ def feed(request):
     js_events = [{"id" : e.id,
                   "title" : e.name,
                   "location" : e.location,
-                  "description" : e.description,
+                  "description" : linebreaks(e.description),
                   "start_time" : json_time(e.start_time),
                   "end_time" : json_time(e.end_time)
                   } for e in events]
