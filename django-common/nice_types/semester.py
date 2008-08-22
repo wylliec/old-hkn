@@ -26,6 +26,23 @@ class InvalidSemester(Exception):
     pass
 
 class Semester(object):
+    @staticmethod
+    def for_semester(semester):
+        season = semester.lower()[:2]
+        year = int(semester[2:])
+        return Semester(season_name=season, year=year)
+
+    @staticmethod
+    def for_date(date):
+        def get_season():
+            months = _SEASON_END_MONTHS.items()
+            months.sort(key=lambda x: x[1])
+            for month in months:
+                if date.month <= month[1]:
+                    return _SEASON_NAMES[month[0]]
+            return None
+        return Semester(season_name=get_season(), year=date.year)
+
     def __init__(self, semester=None, season_name=None, year=None):
         if semester is not None:
             self.season = semester.lower()[:2]
