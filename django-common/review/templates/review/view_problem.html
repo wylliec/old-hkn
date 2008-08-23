@@ -50,8 +50,8 @@ $(document).ready(function () {
 		</td>
 	</tr>
 	<tr><th>Difficulty:</th><td>{% with problem.difficulty as val %} {% include "review/_bar.html" %} {% endwith %}   </td></tr>
-	<tr><th>Question:</th><td><a href={{problem.get_question_url}}>[link]</a></td></tr>
-	<tr><th>Answer:</th><td><a href={{problem.get_answer_url}}>[link]</a></td></tr>
+	<tr><th>Question:</th><td><a href={{problem.question.url}}>[link]</a></td></tr>
+	<tr><th>Answer:</th><td><a href={{problem.answer.url}}>[link]</a></td></tr>
 </table>
 <br />
 <form method="POST">
