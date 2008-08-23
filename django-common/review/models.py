@@ -9,7 +9,7 @@ class Problem(models.Model):
     
     name = models.CharField(max_length = 150)
     description = models.TextField(blank = True)
-    tags = fields.TagField(blank = True)
+    tags = fields.TagField()
     difficulty = models.FloatField(null = True, blank = True)
     question = models.FileField(null = True, upload_to = FILE_UPLOAD_DIR)
     answer = models.FileField(null = True, upload_to = FILE_UPLOAD_DIR)
