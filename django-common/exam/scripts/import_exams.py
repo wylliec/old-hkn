@@ -8,10 +8,13 @@ from find_klass import get_klass
 
 import random, datetime
 
+from django.core.files.base import File
 from django.core import serializers
 from os import listdir
-from os.path import isdir, join
+from os.path import isdir, join, split
 import re
+import shutil
+from settings import MEDIA_ROOT
 
 VALID_EXTENSIONS = ["html", "pdf", "ps", "txt"]
 
@@ -72,6 +75,19 @@ def parse_instructor_file(path):
 	f.close()
 	return d
 
+def make_filename(klass, type, number, solution, extension):
+	if type != EXAM_TYPE_FINAL:
+		type_string = type + str(number)
+	else:
+		type_string = type
+	
+	if solution:
+		sol_string = "_sol"
+	else:
+		sol_string = ""
+		
+	return "%s_%s_%s%s.%s" % (klass.course.short_name(), klass.semester.abbr(), type_string, sol_string, extension)
+
 def load_exams():
 	"""   
 	from exam.scripts.import_exams import load_exams
@@ -93,10 +109,8 @@ def load_exams():
 					try:
 						instructor = instructor_map[season + " " + year]
 						klass = get_klass(dept, c, instructor, season.lower(), year)
-						f = open(join(root, c, year, filename) , "r")
 						e = Exam()
 						e.klass = klass
-						e.file = f
 						e.number = number
 						e.is_solution = solution
 						e.version = 0
@@ -105,6 +119,8 @@ def load_exams():
 						e.exam_type = type
 						e.topics = ""
 						e.submitter = None
+						f = open(join(root, c, year, filename) , "r")
+						e.file.save(make_filename(klass, type, number, solution, filename.split('.')[-1]), File(f))
 						e.save()
 						f.close()
 					except:
