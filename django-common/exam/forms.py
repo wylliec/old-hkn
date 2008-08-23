@@ -34,7 +34,7 @@ class ExamForm(forms.Form):
             c = Course.objects.get(pk=course_id)
             if not c.number == course_number:
                 raise forms.ValidationError("Please re-enter course; received conflicting values")
-        except Course.DoesNotExist:
+        except Course.DoesNotExist, ValueError:
             c = Course.objects.query_exact(dept_abbr, course_number)
             if len(c) == 0:
                 raise forms.ValidationError("Course is not valid!")
