@@ -102,17 +102,21 @@ def load_exams():
 		for c in classes:
 			try:
 				instructor_filename = join(root, c, filter(is_instructor_file, list_files(join(root, c)))[0])
+				instructor_map = parse_instructor_file(instructor_filename)
 			except:
 				print "NO INSTRUCTOR FILE FOUND"
 				missing_instructor_file.append(dept + " " + c)
-				continue
+				instructor_map = {}
 				
-			instructor_map = parse_instructor_file(instructor_filename)
 			for year in list_folders(join(root, c)):
 				for filename in filter(is_valid_file, list_files(join(root, c, year))):
 					season, number, type, solution = parse_filename(filename)
 					try:
-						instructor = instructor_map[season + " " + year]
+						if season + " " + year in instructor_map:
+							instructor = instructor_map[season + " " + year]
+						else:
+							instructor = None
+							
 						klass = get_klass(dept, c, instructor, season.lower(), year)
 						e = Exam()
 						e.klass = klass
