@@ -6,10 +6,7 @@ from exam.constants import *
 
 from find_klass import get_klass
 
-import random, datetime
-
 from django.core.files.base import File
-from django.core import serializers
 from os import listdir
 from os.path import isdir, join, split
 import re
@@ -93,6 +90,8 @@ def load_exams():
 	from exam.scripts.import_exams import load_exams
 	load_exams()
 	"""
+	missing_instructor_file = []
+	failed_imports = []
 	for dept, root in course_map.items():
 		classes = filter(lambda x: course_pattern.match(x), list_folders(root))
 		for c in classes:
@@ -100,6 +99,7 @@ def load_exams():
 				instructor_filename = join(root, c, filter(is_instructor_file, list_files(join(root, c)))[0])
 			except:
 				print "NO INSTRUCTOR FILE FOUND"
+				missing_instructor_file.append(c)
 				continue
 				
 			instructor_map = parse_instructor_file(instructor_filename)
@@ -125,6 +125,14 @@ def load_exams():
 						f.close()
 					except:
 						print "Failed on %s %s %s" % (season, year, instructor )
+						failed_imports.append("%s %s %s %s" % (c, season, year, instructor) )
+	
+	print "Import completed!"
+	print "Courses with missing instructor files: " + ",".join(missing_instructor_file)
+	print "Failed imports (%d): " % len(failed_imports)
+	for msg in failed_imports:
+		print msg
+	
 	
 def main():
 	load_exams()
