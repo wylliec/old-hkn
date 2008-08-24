@@ -46,7 +46,7 @@ def addLine(line, member_status):
     try:
         p = Person.objects.from_email(email)
         print "Found duplicate person with email %s!" % email
-	p.delete()
+        p.delete()
     except Person.DoesNotExist:
         pass
 

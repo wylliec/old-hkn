@@ -244,12 +244,12 @@ class Person(User):
     profile_picture = models.ForeignKey(Photo, null=True, related_name="persons")
     """ The person's profile picture"""
 
-    def save_profile_picture(self, content, ext=".gif"):
+    def save_profile_picture(self, content, ext=".gif", save=True):
         uname = self.username
-        if self.profile_picture:
-            self.profile_picture.delete()
-        self.profile_picture = Photo.objects.create(title="%s Profile Picture" % uname, is_public=False)
+        self.profile_picture, created = Photo.objects.get_or_create(title="%s Profile Picture" % uname, is_public=False)
         self.profile_picture.image.save(self.generate_filename(uname + ext), content)
+        if save:
+            self.save()
 
 
     def generate_filename(self, original_filename):
@@ -263,12 +263,12 @@ class Person(User):
     officer_picture = models.ForeignKey(Photo, null=True, related_name="officers")
     """ The person's officer picture"""
 
-    def save_officer_picture(self, content, ext=".gif"):
+    def save_officer_picture(self, content, ext=".gif", save=True):
         uname = self.username
-        if self.officer_picture:
-            self.officer_picture.delete()
-        self.officer_picture = Photo.objects.create(title="%s Officer Picture" % uname, is_public=False)
+        self.officer_picture, created = Photo.objects.get_or_create(title="%s Officer Picture" % uname, is_public=False)
         self.officer_picture.image.save(self.generate_filename(uname + ext), content)
+        if save:
+            self.save()
 
     def format_phone(self):
         """ Helper function for the above. """
@@ -479,12 +479,12 @@ class CandidateInfo(models.Model):
     candidate_picture = models.ForeignKey(Photo, null=True)
     """ candidate picture """
 
-    def save_candidate_picture(self, content, ext=".gif"):
+    def save_candidate_picture(self, content, ext=".gif", save=True):
         uname = self.person.username
-        if self.candidate_picture:
-            self.candidate_picture.delete()
-        self.candidate_picture = Photo.objects.create(title="%s Candidate Picture" % uname, is_public=False)
+        self.candidate_picture, created = Photo.objects.get_or_create(title="%s Candidate Picture" % uname, is_public=False)
         self.candidate_picture.image.save(uname + ext, content)
+        if save:
+            self.save()
 
     def __unicode__(self):
         return "%s %s %s" % (self.person.name, self.candidate_committee, self.candidate_semester)
