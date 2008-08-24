@@ -33,7 +33,7 @@ def main():
             path = os.path.join(os.path.join(IMAGES_PATH, 'officerpics/'), name)
             if os.path.exists(path):
                 picfile = ContentFile(file(path).read())
-                person.officer_picture.save(person.generate_filename(name), picfile)
+                person.save_officer_picture(picfile)
         person.save()
 
 if __name__ == "__main__":
