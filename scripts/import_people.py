@@ -9,6 +9,7 @@ from hkn.info.constants import MEMBER_TYPE
 from hkn.info.models import *
 from django.contrib.auth.models import *
 from hkn.info.utils import *
+from photologue.models import *
 
 DEFAULT_PASSWORD = "password"
 
@@ -60,7 +61,7 @@ def addLine(line, member_status):
     if email.find("berkeley.edu") == -1:
         c.school_email = email
     
-    c.profile_picture.save(c.generate_filename(uname + "gif"), lion_file_content)
+    c.save_profile_picture(lion_file_content)
     c.save()
 
     ci = ExtendedInfo()
@@ -82,7 +83,7 @@ def addLine(line, member_status):
     candidateinfo.comment = ""
     candidateinfo.initiated = False
 
-    candidateinfo.candidate_picture.save(uname + ".gif", lion_file_content)
+    candidateinfo.save_candidate_picture(lion_file_content)
     candidateinfo.save()
 
 everyoneGroup = Group.objects.get(name = "everyone")

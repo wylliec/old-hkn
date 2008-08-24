@@ -8,6 +8,9 @@ from django.contrib.contenttypes.models import ContentType
 from hkn.info.utils import normalize_email, normalize_committee_name, int_to_base36
 from hkn.info.constants import MEMBER_TYPE
 from hkn.settings import IMAGES_PATH
+
+from photologue.models import Photo
+
 import nice_types.semester
 import os, datetime, types, random
 
@@ -238,8 +241,16 @@ class Person(User):
         if self.member_type >= MEMBER_TYPE.OFFICER:
             self.groups.add(groups_dict["current_officers"])
 
-    profile_picture = models.ImageField(upload_to = "profile_pictures")
+    profile_picture = models.ForeignKey(Photo, null=True, related_name="persons")
     """ The person's profile picture"""
+
+    def save_profile_picture(self, content, ext=".gif"):
+        uname = self.username
+        if self.profile_picture:
+            self.profile_picture.delete()
+        self.profile_picture = Photo.objects.create(title="%s Profile Picture" % uname, is_public=False)
+        self.profile_picture.image.save(self.generate_filename(uname + ext), content)
+
 
     def generate_filename(self, original_filename):
         digits = "0123456789abcdefghijklmnopqrstuvwxyz"
@@ -249,9 +260,15 @@ class Person(User):
         
     
 
-    officer_picture = models.ImageField(null=True, upload_to = "officer_pictures")
+    officer_picture = models.ForeignKey(Photo, null=True, related_name="officers")
     """ The person's officer picture"""
 
+    def save_officer_picture(self, content, ext=".gif"):
+        uname = self.username
+        if self.officer_picture:
+            self.officer_picture.delete()
+        self.officer_picture = Photo.objects.create(title="%s Officer Picture" % uname, is_public=False)
+        self.officer_picture.image.save(self.generate_filename(uname + ext), content)
 
     def format_phone(self):
         """ Helper function for the above. """
@@ -338,7 +355,7 @@ class Person(User):
     class RestrictedPerson(object):
         class RestrictedImage(object):
             def __init__(self):
-                self.url = "/static/images/site/lion.gif"
+                self.url = "/static/images/site/lion..gif"
 
         def __init__(self, person, accessor):
             self.person = person
@@ -459,8 +476,15 @@ class CandidateInfo(models.Model):
     initiation_comment = models.TextField()
     """ a comment that can be set at initiation time by the VP """
 
-    candidate_picture = models.ImageField(upload_to="candidate_pictures")
+    candidate_picture = models.ForeignKey(Photo, null=True)
     """ candidate picture """
+
+    def save_candidate_picture(self, content, ext=".gif"):
+        uname = self.person.username
+        if self.candidate_picture:
+            self.candidate_picture.delete()
+        self.candidate_picture = Photo.objects.create(title="%s Candidate Picture" % uname, is_public=False)
+        self.candidate_picture.image.save(uname + ext, content)
 
     def __unicode__(self):
         return "%s %s %s" % (self.person.name, self.candidate_committee, self.candidate_semester)

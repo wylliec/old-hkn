@@ -480,7 +480,7 @@ class Photo(ImageModel):
         return self.__unicode__()
 
     def save(self, update=False):
-        if self.title_slug is None:
+        if self.title_slug is None or len(self.title_slug) == 0:
             self.title_slug = slugify(self.title)
         super(Photo, self).save(update)
 
