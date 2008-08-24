@@ -64,6 +64,9 @@ EMAIL_HOST_USER = "gafyd"
 EMAIL_HOST_PASSWORD = ""
 EMAIL_USE_TLS = True
 
+LOGGING_INTERCEPT_REDIRECTS = True
+LOGGING_LOG_SQL = True
+LOGGING_SHOW_METRICS = True
 
 MANAGERS = ADMINS
 
@@ -129,6 +132,7 @@ MIDDLEWARE_CLASSES = (
     'hkn.main.middleware.LayoutMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'djangologging.middleware.LoggingMiddleware',
 )
 
 ROOT_URLCONF = 'hkn.urls'
