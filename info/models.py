@@ -355,7 +355,7 @@ class Person(User):
     class RestrictedPerson(object):
         class RestrictedImage(object):
             def __init__(self):
-                self.url = "/static/images/site/lion..gif"
+                self.url = "/static/images/site/lion.gif"
 
         def __init__(self, person, accessor):
             self.person = person
