@@ -157,9 +157,12 @@ class Course(models.Model):
                     self = self.filter(suffix=suffix.upper())                    
             return self
         
-        def query_exact(self, dept_abbr, coursenumber):
+        def query_exact(self, dept_abbr, coursenumber, number=False):
             dept_abbr = Department.get_proper_abbr(dept_abbr)
-            return self.filter(department_abbr__iexact = dept_abbr, coursenumber__iexact = coursenumber)
+            if not number:
+                return self.filter(department_abbr__iexact = dept_abbr, coursenumber__iexact = coursenumber)
+            else:
+                return self.filter(department_abbr__iexact = dept_abbr, number__iexact = coursenumber)
 
     def save(self):
         if not self.department_abbr:

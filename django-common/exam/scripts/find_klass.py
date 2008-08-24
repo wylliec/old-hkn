@@ -24,7 +24,9 @@ def get_klass(dept, course, instructor, season, year):
     year = datetime.date(int(year), 1, 1)
     course = Course.objects.query_exact(dept, course)
     if len(course) != 1:
-        raise Exception("bad number of courses! %s" % course)
+        course = Course.objects.query_exact(dept, course, number=True)
+        if len(course != 1):
+            raise Exception("bad number of courses! %s" % course)
     course = course[0]
     
     instructor = get_instructor(course, instructor)
