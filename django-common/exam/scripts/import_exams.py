@@ -113,11 +113,11 @@ def load_exams():
 					season, number, type, solution = parse_filename(filename)
 					try:
 						if season + " " + year in instructor_map:
-							instructor = instructor_map[season + " " + year]
+							instructors = instructor_map[season + " " + year].replace("_", " ").split("/")
 						else:
-							instructor = None
+							instructors = None
 							
-						klass = get_klass(dept, c, instructor, season.lower(), year)
+						klass = get_klass(dept, c, instructors, season.lower(), year)
 						e = Exam()
 						e.klass = klass
 						e.number = number
@@ -136,14 +136,14 @@ def load_exams():
 						print "Semester not found in instructor file"
 						missing_semesters.add("%s %s %s %s" % (dept, c, season, year) )
 					except MissingInstructorException:
-						print "Instructor not found: %s" % instructor
-						missing_instructors.add(instructor)
+						print "Instructors not found: %s" % instructors
+						missing_instructors.add(instructors)
 					except MissingCourseException:
 						print "Course not found: %s %s:" % (dept, c)
 						missing_courses.add("%s %s" % (dept, c))
 					except Exception, e:
-						print "Failed on %s %s %s" % (season, year, instructor )
-						failed_imports.append("%s: %s %s %s %s" % (e, c, season, year, instructor) )
+						print "Failed on %s %s %s" % (season, year, instructors )
+						failed_imports.append("%s: %s %s %s %s" % (e, c, season, year, instructors) )
 						
 	
 	print "Import completed!"
