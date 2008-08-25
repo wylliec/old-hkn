@@ -57,7 +57,7 @@ class Exam(db.models.Model):
     exam_type = db.models.CharField(choices = EXAM_TYPE.choices(), max_length = 10)
     """ The type of exam (e.g., Midterm, Final). """
     
-    number = db.models.IntegerField(blank = True)
+    number = db.models.CharField(max_length=10, blank = True)
     """ The exam number. If unique (i.e., only one final), leave this field blank. """ 
     
     version = db.models.CharField(max_length = 1, blank = True)
@@ -95,9 +95,13 @@ class Exam(db.models.Model):
     def request_confirmation(self):
         return request.utils.request_confirmation(self, self.submitter, Permission.objects.get(codename="add_exam"))
     
+    DIGITS_PATTERN = re.compile("(?P<digits>\d+)")
     @property
     def integer_number(self):
-        return int(self.number)
+        m = Exam.DIGITS_PATTERN.search(self.number)
+        if m:
+            return int(m.group('digits'))
+        return 0
         
     class QuerySet(QuerySet):
         def query_course(self, query):              
@@ -148,7 +152,7 @@ class Exam(db.models.Model):
         return os.path.splitext(self.file.name)[1].strip(". ")
     
     def get_exam_filename(self):
-        return ("%s_%s_%s_%s%d" % (self.klass.course.short_name(), self.klass.semester, self.klass.section, self.exam_type, self.number or 0)).replace(" ", "-")
+        return ("%s_%s_%s_%s%s" % (self.klass.course.short_name(), self.klass.semester, self.klass.section, self.exam_type, self.number or "0")).replace(" ", "-")
         
     def get_semester_sort(self):
         return self.klass.semester.start_date

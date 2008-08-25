@@ -17,7 +17,7 @@ class ExamForm(forms.Form):
     
     exam_type = forms.ChoiceField(choices = EXAM_TYPE.choices())
     
-    number = forms.IntegerField(required = False)
+    number = forms.CharField(required = False)
     version = forms.CharField(required = False)
     is_solutions = forms.BooleanField()
     
