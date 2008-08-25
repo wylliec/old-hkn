@@ -3,8 +3,8 @@
 from photologue.models import *
 
 PHOTOSIZES = (
-	('thumbnail', 200, 200)
-	('display', 800, 600)
+	('thumbnail', 200, 200),
+	('display', 800, 600),
 )
 
 def add_photosizes():
