@@ -1,16 +1,14 @@
 {% load ajaxtable %}
 
-<table class="ajaxgrid">
+<div class="ajaxgrid">
 {% for row in list_objects %}
-	<tr>
 	{% special_for row %}
+		<div class="grid_cell">
 		{% ifequal checks "on" %}
-			<td><input class="ajaxlist_check" type="checkbox" name="object" value="{{object.id}}" {% ajaxlist_selected object %} /></td>
+			<span><input class="ajaxlist_check" type="checkbox" name="object" value="{{object.id}}" {% ajaxlist_selected object %} /></span>
 		{% endifequal %}
-		<td>
 		{% include cell_template %}
-		</td>
+		</div>
 	{% endfor %}
-	</tr>
 {% endfor %}
-</table>
+</div>

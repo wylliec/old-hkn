@@ -27,7 +27,7 @@ grid_defaults = 	{
 
 class AjaxTableNode(template.Node):
 	def __init__(self, objects, header_template, row_template, options):
-		self.objects = Variable(objects)
+		self.objects = objects
 		self.header_template = header_template
 		self.row_template = row_template
 		for k in table_defaults:
@@ -61,7 +61,7 @@ class AjaxTableNode(template.Node):
 
 class AjaxGridNode(template.Node):
 	def __init__(self, objects, cell_template, width, options):
-		self.objects = Variable(objects)
+		self.objects = objects
 		self.cell_template = cell_template
 		self.width = width
 		
@@ -246,7 +246,7 @@ def do_ajaxtable(parser, token):
 	if len(bits) < 4:
 		raise TemplateSyntaxError("'ajaxtable' should have at least 3 arguments")
 	
-	objects = bits[1] 
+	objects = parser.compile_filter(bits[1] )
 	header = bits[2] 
 	row = bits[3]
 
@@ -266,7 +266,7 @@ def do_ajaxgrid(parser, token):
 	if len(bits) < 4:
 		raise TemplateSyntaxError("'ajaxgrid' should have at least 3 arguments")
 	
-	objects = bits[1] 
+	objects = parser.compile_filter(bits[1])
 	cell = bits[2] 
 	width = bits[3]
 	try:
