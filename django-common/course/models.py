@@ -22,6 +22,9 @@ class DepartmentManager(QuerySetManager):
     def ft_query(self, *args, **kwargs):
         return self.get_query_set().ft_query(*args, **kwargs)
     
+    def ft_query_name(self, *args, **kwargs):
+        return self.get_query_set().ft_query_name(*args, **kwargs)
+    
 
 class Department(models.Model):
     """ Models one of the academic departments. """
@@ -61,6 +64,9 @@ class Department(models.Model):
     class QuerySet(QuerySet):
         def ft_query(self, abbr):
             return self.filter(abbr = Department.get_proper_abbr(abbr))
+        
+        def ft_query_name(self, name):
+            return self.filter(name__iexact = name)
 
     
 class Course(models.Model):
@@ -127,7 +133,7 @@ class Course(models.Model):
 
     class QuerySet(QuerySet):
         course_patterns = (
-                         re.compile(r'(?P<dept>[A-Za-z_ ]+)[\s_]+(?P<course>\w?\d+\w*)'),  # matches "CS 61A"
+                         re.compile(r'(?P<dept>[A-Za-z_\.& ]+)[\s_]+(?P<course>\w?\d+\w*)'),  # matches "CS 61A"
                          re.compile(r'(?P<dept>[A-Za-z_]+)(?P<course>\d\w*)'),  # matches "CS61A"
                          re.compile(r'(?P<dept>\w+)'),  # matches "CS"
                          )    
@@ -135,8 +141,8 @@ class Course(models.Model):
             for course_pattern in Course.QuerySet.course_patterns:
                 m = course_pattern.match(query)
                 if m:
-                    dept = m.groupdict().get("dept").upper()
-                    coursenumber = m.groupdict().get("course")
+                    dept = m.groupdict().get("dept").upper().replace(".", "").replace("&", "and")
+                    coursenumber = m.groupdict().get("course").lstrip("0")
                     if coursenumber:
                         coursenumber = coursenumber.upper()
                     if not (dept in DEPT_ABBRS_SET) and dept[:-1] in DEPT_ABBRS_SET:
@@ -245,7 +251,7 @@ class InstructorManager(QuerySetManager):
         return self.get_query_set().ft_query(*args, **kwargs)
 
     def ft_query_inexact(self, *args, **kwargs):
-        return self.get_query_set().ft_query(*args, **kwargs)
+        return self.get_query_set().ft_query_inexact(*args, **kwargs)
 
     def hinted_query(self, *args, **kwargs):
         return self.get_query_set().hinted_query(*args, **kwargs)
@@ -323,10 +329,10 @@ class Instructor(models.Model):
 
     class QuerySet(QuerySet):
         instructor_patterns = (
-                         re.compile(r'(?P<last>\w*),\s*(?P<first>\w*)\s*\[(?P<dept>\w*)\]'),  # matches "Harvey, Brian [CS]"
-                         re.compile(r'(?P<last>\w*),\s*(?P<first>\w*)'),                      # matches "Harvey, Brian"
-                         re.compile(r'(?P<first>\w*)\s+(?P<last>\w*)'),                      # matches "Brian Harvey"
-                         re.compile(r'(?P<last>\w*)'),                      # matches "Harvey"
+                         re.compile(r'(?P<last>[\w-]*),\s*(?P<first>[\w-]*)\s*\[(?P<dept>\w*)\]'),  # matches "Harvey, Brian [CS]"
+                         re.compile(r'(?P<last>[\w-]*),\s*(?P<first>[\w-]*)'),                      # matches "Harvey, Brian"
+                         re.compile(r'(?P<first>[\w-]*)\s+(?P<last>[\w-]*)'),                      # matches "Brian Harvey"
+                         re.compile(r'(?P<last>[\w-]*)'),                      # matches "Harvey"
                          )
         def parse_query(self, query):        
             for instructor_pattern in Instructor.QuerySet.instructor_patterns:

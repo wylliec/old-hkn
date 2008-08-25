@@ -14,4 +14,5 @@ def import_all(path):
     os.system('python import_klasses.py')
     os.system('python merge_instructors.py')
     os.system('python manual_merge.py')
+    os.system('python create_null_instructor.py')
 

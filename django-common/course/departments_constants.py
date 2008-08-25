@@ -11,7 +11,7 @@ DEPT_ABBRS = {
     "BIO ENG": ("BIOE",),
     "UGBA": ("BA",),
     "CHM ENG": ("CHEME",),
-    "CIV ENG": ("CIVE", "CEE", "CE",),
+    "CIV ENG": ("CIVE", "CEE", "CE", "CIVIL ENGINEERING",),
     "COG SCI": ("COGSCI",),
     "COMPSCI": ("CS",),
     "EL ENG": ("EE",),
@@ -27,6 +27,9 @@ DEPT_ABBRS = {
     "POL SCI": ("POLISCI",), #not actually used
     "STAT": ("STAT", "STATS",),
     "ECON": ("ECONOMICS",),
+    "UGIS": ("IDS",),
+    "ENV SCI" : ("ENV SCI", "ENVIR SCI"),
+    "ENVECON" : ("ENVECON", "ENVIR ECON & POLICY"),
     }
 DEPT_ABBRS_INV = {}
 DEPT_ABBRS_SET = set()

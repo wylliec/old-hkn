@@ -22,14 +22,15 @@ def normalize_dept(abbr):
     return dept_replace.get(abbr, abbr)
 
 instructor_patterns = (
-                         re.compile(r"(?P<last>[-A-Z']+( [-A-Z]+){0,4}), (?P<first>[-A-Z])"),                      # matches "Harvey, B"
-                         re.compile(r"(?P<last>[-A-Z']+( [-A-Z]+){0,4}), (?P<first>[-A-Z]) (?P<middle>[-A-Z])"),                      # matches "Harvey, B H"
-                         re.compile(r"(?P<last>[A-Z]+-[A-Z]+)"),                      # matches "PESTANA-NASCIMENTO"                         
-                         )
+     re.compile(r"(?P<last>[-A-Z']+( [-A-Z]+){0,4}), (?P<first>[A-Z])"),                      # matches "Harvey, B"
+     re.compile(r"(?P<last>[-A-Z']+( [-A-Z]+){0,4}), (?P<first>[A-Z]) (?P<middle>[A-Z])"),                      # matches "Harvey, B H"
+     re.compile(r"(?P<last>[A-Z]+(-[A-Z]+)?( [A-Z]+){0,4})"),                      # matches "PESTANA-NASCIMENTO"                         
+)
                          
 also_pattern = re.compile(r'Also: (?P<instr_1>[-A-Z]*, [A-Z](?: [A-Z])?)(?:; (?P<instr_2>[-A-Z]*, [A-Z](?: [A-Z])?))?(?:; (?P<instr_3>[-A-Z]*, [A-Z](?: [A-Z])?))?(?:; (?P<instr_4>[-A-Z]*, [A-Z](?: [A-Z])?))?(?:; (?P<instr_5>[-A-Z]*, [A-Z](?: [A-Z])?))?')
 
-
+#cross_listed = re.compile(r"Cross-listed with( [A-Za-z ']+ C\d+[A-Z]* section \d+(?: and|[,.]))+")
+cross_listed = re.compile(r"(?:with)? ([A-Za-z ']+? C\d+[A-Z]* section \d+)(?: and|[,.])")
 
 def safe_title(fun):
     def st(e):
@@ -53,7 +54,10 @@ def create_instructor(dpt, name):
     if name == "THE STAFF":
         return None
     first, middle, last = parse_name(name)
-    
+
+    if len(last.strip()) == 0:
+        raise Exception("Instructor %s last name could not be parsed" % name)
+
     inst = Instructor(home_department = dpt, first = first, middle = middle, last = last, email = "", distinguished_teacher = False, exams_preference = EXAMS_PREFERENCE.UNKNOWN)
     inst.save()
     return inst
@@ -187,9 +191,9 @@ def importFromXmlFile(klassFile):
         importSemester(semester)
         
 def main():
-    klassFiles = glob.glob(os.path.join(cd, "data/klass/xml/*2007*.xml"))
-    klassFiles += glob.glob(os.path.join(cd, "data/klass/xml/*2008*.xml"))
-    #klassFiles = glob.glob(os.path.join(cd, "data/klass/xml/*.xml"))
+#    klassFiles = glob.glob(os.path.join(cd, "data/klass/xml/*2007*.xml"))
+#    klassFiles += glob.glob(os.path.join(cd, "data/klass/xml/*2008*.xml"))
+    klassFiles = glob.glob(os.path.join(cd, "data/klass/xml/*.xml"))
     for klassFile in klassFiles:
         print "Importing klasses from " + klassFile
         importFromXmlFile(klassFile)

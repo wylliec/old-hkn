@@ -12,12 +12,13 @@ to_merge = (
 ("Ibbs, W", "Ibbs, C"),
 ("Whaley, Birgitta [CHEM]", "Whaley, K [CHEM]"),
 ("Vollhardt, K [CHEM]", "Vollhardt, Peter [CHEM]"),
+("Astaneh, H [E]", "Astaneh-Asl, Abolhassan [CIVE]"),
 )
 
 def merge_cached():
     for p_q, s_q in to_merge:
-        p = Instructor.objects.ft_query(p_q, exact=True)
-        s = Instructor.objects.ft_query(s_q, exact=True)
+        p = Instructor.objects.ft_query(p_q)
+        s = Instructor.objects.ft_query(s_q)
         if len(p) != 1:
             print "Query for %s yielded %d: %s" % (p_q, len(p), [i.short_name(True, True) for i in p])
             continue
