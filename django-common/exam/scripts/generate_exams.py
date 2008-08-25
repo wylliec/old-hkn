@@ -12,11 +12,11 @@ def createExamForKlass(k, tp, num):
     e.klass = k
     e.file = None
     e.exam_type = tp
-    e.number = num
+    e.number = str(num)
     e.version = 0
-    e.is_solution = random.random() < 0.5
-    e.paper_only = random.random() < 0.05
-    e.publishable = random.random() < 0.90
+    e.is_solution = random.random() > 0.5
+    e.paper_only = random.random() > 0.05
+    e.publishable = random.random() > 0.90
     e.topics = ""
     e.submitter = None
     e.save()

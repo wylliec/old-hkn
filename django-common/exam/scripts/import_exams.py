@@ -102,22 +102,18 @@ def load_exams():
 		for c in classes:
 			try:
 				instructor_filename = join(root, c, filter(is_instructor_file, list_files(join(root, c)))[0])
-				instructor_map = parse_instructor_file(instructor_filename)
 			except:
 				print "NO INSTRUCTOR FILE FOUND"
 				missing_instructor_file.append(dept + " " + c)
-				instructor_map = {}
+				continue
 				
+			instructor_map = parse_instructor_file(instructor_filename)
 			for year in list_folders(join(root, c)):
 				for filename in filter(is_valid_file, list_files(join(root, c, year))):
 					season, number, type, solution = parse_filename(filename)
 					try:
-						if season + " " + year in instructor_map:
-							instructors = instructor_map[season + " " + year].replace("_", " ").split("/")
-						else:
-							instructors = None
-							
-						klass = get_klass(dept, c, instructors, season.lower(), year)
+						instructor = instructor_map[season + " " + year]
+						klass = get_klass(dept, c, instructor, season.lower(), year)
 						e = Exam()
 						e.klass = klass
 						e.number = number
@@ -136,14 +132,14 @@ def load_exams():
 						print "Semester not found in instructor file"
 						missing_semesters.add("%s %s %s %s" % (dept, c, season, year) )
 					except MissingInstructorException:
-						print "Instructors not found: %s" % instructors
-						missing_instructors.add(instructors)
+						print "Instructor not found: %s" % instructor
+						missing_instructors.add(instructor)
 					except MissingCourseException:
 						print "Course not found: %s %s:" % (dept, c)
 						missing_courses.add("%s %s" % (dept, c))
 					except Exception, e:
-						print "Failed on %s %s %s" % (season, year, instructors )
-						failed_imports.append("%s: %s %s %s %s" % (e, c, season, year, instructors) )
+						print "Failed on %s %s %s" % (season, year, instructor )
+						failed_imports.append("%s: %s %s %s %s" % (e, c, season, year, instructor) )
 						
 	
 	print "Import completed!"
