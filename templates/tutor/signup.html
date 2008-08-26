@@ -72,7 +72,7 @@ function removeCourse(courseNum, nameNum){
 
 </script>
 
-<form action="{% url hkn.tutor.views.submit_signup %}" method="POST">
+<form action="{% url tutor-submit-signup %}" method="POST">
     <label FOR="office">Office Preference: </label> <br />
     <select name="office">
         <option value="Both"{% if prefer_both %} selected="yes"{% endif %}>Doesn't Matter</option>

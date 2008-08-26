@@ -1,10 +1,10 @@
-	{% for data in canTutor|dictsort:"dept" %}
+	{% for can_tutor_item in can_tutor %}
 	<div class="small">
 		<span class="dept_heading">
-			{{ data.shortdept }}
+			{{ can_tutor_item.0 }}
 		</span>
-		{% for course in data.courses %}
-		<a href="#" class="{{ data.shortdept }}{{ course }}" onmouseover="highlight('{{ data.shortdept }}{{ course }}')" onmouseout="unhighlight('{{ data.shortdept }}{{ course }}')" onclick="return locklight('{{ data.shortdept }}{{ course }}')">{{ course }}</a>
+		{% for course in can_tutor_item.1 %}
+			<a href="#" class="{{ can_tutor_item.0 }}{{ course }}" onmouseover="highlight('{{ can_tutor_item.0 }}{{ course }}')" onmouseout="unhighlight('{{ can_tutor_item.0 }}{{ course }}')" onclick="return locklight('{{ can_tutor_item.0 }}{{ course }}')">{{ course }}</a>
 		{% endfor %}
 	</div>
 	{% endfor %}
