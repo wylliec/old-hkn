@@ -30,7 +30,7 @@ def main(request):
     d["infoboxes"] = infobox.tutors(request, tutors)
     
     xfa = JQueryAutoComplete(source=reverse('course-course-autocomplete'))
-    d['exam_files_autocomplete']= xfa.render(name="exam_course")
+    d['exam_files_autocomplete']= xfa.render(name="exam_course", value="Search exams")
 
     d['content'] = mark_safe(FlatPage.objects.get(url="landing-page").content)
 

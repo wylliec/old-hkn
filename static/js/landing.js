@@ -57,3 +57,11 @@ function hide(event_id) {
     $(event_div).html('');
     $(event_div).hide();
 }    
+
+$(document).ready( function() {
+    $('.autoclear, #id_exam_course').each( function() {
+        $(this).focus( function () {
+            $(this).attr('value', '');
+        })
+    })
+});
