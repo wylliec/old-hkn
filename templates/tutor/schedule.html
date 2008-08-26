@@ -15,22 +15,26 @@ $(document).ready( function() {
 </script>
 {% endblock %}
 
-{% block subtitle %} Tutoring - {{ season }} {{ year }} Schedule {% endblock %}
+{% block subtitle %} {{ season }} {{ year }} Tutoring Schedule {% endblock %}
   
 {% block tutorcontent %}
 {% if not message %}
-We offer <b>FREE DROP-IN</b> tutoring, from <b>11am to 5pm</b> in 290 Cory Hall and 345 Soda Hall throughout the school year. <br />
-CS tutoring is generally held at 345 Soda while EE tutoring is in 290 Cory. <br /><br />
+<p>
+	We offer <b>FREE DROP-IN</b> tutoring, from <b>11am to 5pm</b> in 290 Cory Hall and 345 Soda Hall throughout the school year. 
+	CS tutoring is generally held at 345 Soda while EE tutoring is in 290 Cory. 
+	If the scheduled tutor is unavailable, feel free to ask any officer at either of these two locations for help. 
+	If you have special needs or accomodations such as after-hours or weekend tutoring, we will try our best to accomodate you.
+</p>
 
-If the scheduled tutor is unavailable, feel free to ask any officer at either of these two locations for help.<br /><br />
+<p>
+	<blockquote style="border: solid 3px #003366; padding: 10px; background: #336699; color: white">
+	If you have any questions or requests, please email us at: <b>tutoring@hkn.eecs.berkeley.edu</b>
+	</blockquote>
+</p>
+<br>
 
-We also offer a number of other servics, including peer advising, and our online exam archive. <br />
-If you have special needs or accomodations such as after-hours or weekend tutoring, we will try our best to accomodate you.<br /><br />
-
-If you have any questions or requests, please email us at:<br />
-tutoring@hkn.eecs.berkeley.edu
 <div style="float: left; width: 80%; text-align: center">
-	<h3>{{ header.cory }}</h3>
+	<h1>{{ header.cory }}</h1>
 		<table class="tutoring">
 			<tr>
 				<th>
@@ -58,8 +62,8 @@ tutoring@hkn.eecs.berkeley.edu
 			</tr>
 		{% endfor %}
 		</table>
-		
-	<h3>{{ header.soda }}</h3>
+	<br />
+	<h1>{{ header.soda }}</h1>
 		<table class="tutoring">
 			<tr>
 				<th>
