@@ -2,8 +2,9 @@
 	<td style="width: 10%"><a style="font-weight: bold" href="{% url event-view object.slug %}">{{ object.name }}</a><br></td>
     <td style="width: 5%">
         <span class="small">
-            {% if object.can_rsvp %}
-                <a href="{% url rsvp-list-for-event object.id %}"> {{ object.num_rsvps }} rsvps </a> 
+            {% if object.rsvp_none %}
+            {% else %}
+                <a href="{% url rsvp-list-for-event object.id %}"> {{ object.rsvp_set.count }} rsvps </a> 
                 <br><a href="{% url rsvp-edit object.id %}">rsvp </a>  
             {% endif %} 
             {% if can_edit %}
