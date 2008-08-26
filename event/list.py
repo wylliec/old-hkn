@@ -25,10 +25,9 @@ def list_events(request, category):
     if d.has_key('query'):
         events = events.ft_query(d['query'])
     
+    events = events.filter_permissions(request.user)
     events = sort_objects(events, d['sort_by'], None)
     events = paginate_objects(events, d, page=d['page'])
-    
-    events = add_events_metainfo(request.user, events)
     
     d['events'] = events
     d['can_edit'] = request.user.has_perm('event.change_event')

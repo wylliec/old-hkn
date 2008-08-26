@@ -1,4 +1,5 @@
 from django.db import models
+from django.db import connection
 from django.db.models.query import QuerySet
 from django.contrib.auth.models import Permission
 from django.core import urlresolvers
@@ -104,9 +105,24 @@ class Event(models.Model):
                     self = self.filter(Q(name__icontains = q) | Q(location__icontains = q) | Q(description__icontains = q))
             return self    
     
+        def _filter_permissions(self, permissions):
+            sql = """
+                SELECT e.id
+                FROM auth_permission p INNER JOIN event_event e ON (e.view_permission_id = p.id)
+                WHERE p.codename IN ('%s')
+            """ % "','".join(permissions)
+
+            cursor = connection.cursor()
+            cursor.execute(sql)
+            f = cursor.fetchall()
+            ids = set([a[0] for a in f])
+            return ids
+    
         def filter_permissions(self, user):
             perms = user.get_all_permissions()
-            return filter(lambda event: event.view_permission.full_codename() in perms, list(self))
+            perms = map(lambda p: str(p.split(".")[1]), perms)
+            ids = self._filter_permissions(perms)
+            return self.filter(id__in=ids)
 
     def rsvp_whole(self):
         return self.rsvp_type == RSVP_TYPE.WHOLE
