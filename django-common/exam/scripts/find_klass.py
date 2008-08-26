@@ -56,7 +56,7 @@ def get_instructor_safe(*args, **kwargs):
     try:
         return get_instructor(*args, **kwargs)
     except MissingInstructorException:
-        return Instructor.objects.get(first="Null", last="Instructor")
+        return Instructor.objects.get(first="Instructor", last="Unknown")
 
 def get_klass(dept, course, instructors, season=None, year=None, semester=None):
     """ all args should be strings """
