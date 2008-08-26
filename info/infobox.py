@@ -7,7 +7,7 @@ def tutors(request, people):
     tutors = []
     for person in people:
         assignments = person.assignment_set.all().latest_version()
-        courses_tutored = ", ".join([ct.course.short_name() for ct in person.cantutor_set.for_current_semester().select_related("course").order_by('course__department_abbr', 'course__number')])
+        courses_tutored = ", ".join([ct.course.short_name() for ct in person.cantutor_set.for_current_semester().select_related("course").order_by('course__department_abbr', 'course__integer_number')])
         
         d = {}
         d["person"] = person
