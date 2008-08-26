@@ -146,7 +146,7 @@ def schedule(request):
 
     context['schedule'] = schedule
     context['can_tutor'] = can_tutor
-    context['header'] = {"cory" : "Cory Office (290 Cory Hall) Schedule", "soda" : "Soda Office (345 Soda Hall) Schedule"}
+    context['header'] = {"cory" : "290 Cory Hall", "soda" : "345 Soda Hall"}
     context['infoboxes'] = infobox.tutors(request, tutors)
 
     return render_to_response('tutor/schedule.html',
