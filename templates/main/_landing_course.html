@@ -1,5 +1,4 @@
             <div id="coursesurvey" class="searchcontrol">
-                <label>Search EECS course surveys</label>   
                 <div>
 	                <input type=input> <input type=submit value="search!">                                
 	                <div class="small infobox_help" rel="#survey_search_help">search for courses or instructors</div> 
@@ -7,7 +6,6 @@
 				</div>	                
             </div>
             <div id="examfiles" class="searchcontrol">
-                <label>Search for Exams</label>
                 <div>                    
 	                <form action="{% url exam-list %}" method="GET">
 	                {{ exam_files_autocomplete|safe }}
@@ -18,6 +16,7 @@
 				</div>	                
             </div>     
             <div style="clear: both">&nbsp;</div>
+			
             {% comment %}
             <div>
                 <h3>Search for review problems!</h3>
