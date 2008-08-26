@@ -190,14 +190,21 @@ def importFromXmlFile(klassFile):
     for semester in dom.getElementsByTagName("semester"):
         importSemester(semester)
         
-def main():
+def main(klassfile=None):
 #    klassFiles = glob.glob(os.path.join(cd, "data/klass/xml/*2007*.xml"))
 #    klassFiles += glob.glob(os.path.join(cd, "data/klass/xml/*2008*.xml"))
-    klassFiles = glob.glob(os.path.join(cd, "data/klass/xml/*.xml"))
+    if klassfile:
+        klassFiles = [klassfile]
+    else:
+        klassFiles = glob.glob(os.path.join(cd, "data/klass/xml/*.xml"))
+        
     for klassFile in klassFiles:
         print "Importing klasses from " + klassFile
         importFromXmlFile(klassFile)
 
 if __name__ == "__main__":
-    main()
-
+    import sys
+    if len(sys.argv) > 1:
+        main(sys.argv[1])
+    else:
+        main()

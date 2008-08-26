@@ -88,6 +88,9 @@ class Course(models.Model):
     number = models.CharField(max_length = 10)
     """ The course number without prefixes or suffixes. Note that this isn't really a number, can contain letters e.g. 61A"""
     
+    integer_number = models.IntegerField()
+    """ the course number as an integer. used for sorting """
+    
     suffix = models.CharField(max_length=4)
     """ course suffix e.g. AC; does not include suffixes like "BL" in CS61BL """
     
@@ -170,12 +173,17 @@ class Course(models.Model):
             else:
                 return self.filter(department_abbr__iexact = dept_abbr, number__iexact = coursenumber)
 
+    INTEGER_PATTERN = re.compile("(?P<integer>\d+)")
     def save(self):
         if not self.department_abbr:
             self.department_abbr = self.department.abbr
         self.coursenumber = self.coursenumber.upper()
         if self.coursenumber:
             self.prefix, self.number, self.suffix = Course.split_coursenumber(self.coursenumber)
+            m = Course.INTEGER_PATTERN.search(self.coursenumber)
+            self.integer_number = 0
+            if m:
+                self.integer_number = int(m.group("integer"))                
         super(Course, self).save()
     
     class Meta:
