@@ -1,0 +1,7 @@
+{% for tutor in tutors %}
+	{% with tutor.person as person %}
+	{% with tutor.assignments as assignments %}
+	{% with tutor.courses as courses %}
+		{% include "info/infobox/tutor.html" %}
+	{% endwith %}{% endwith %}{% endwith %}
+{% endfor %}
