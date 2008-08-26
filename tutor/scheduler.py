@@ -675,7 +675,7 @@ class State(dict):
                     #drop the line describing the office / days
                     stateStringLines = stateStringLines[1:]
                     for time in TUTORING_TIMES:
-                        timeAssignments = stateStringLines[0].split('\t')
+                        timeAssignments = re.split('\s+', stateStringLines[0])
                         timeAssignments = timeAssignments[1:] #drop the time from the front
                         for day in TUTORING_DAYS:
                             if timeAssignments[0] != '':
