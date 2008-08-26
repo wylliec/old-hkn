@@ -29,28 +29,32 @@
 #cluetip-extra {
   display: none;
 }
-/***************************************
+/***************************************#d9d9c2
    =cluetipClass: 'default' 
 -------------------------------------- */
 
 .cluetip-default {
-  background-color: #d9d9c2;
+  background-color: #336699;
+  color: white;
+}
+.cluetip-default label{
+  color: white;
 }
 .cluetip-default #cluetip-outer {
   position: relative;
   margin: 0;
-  background-color: #d9d9c2;
+  background-color: #336699;
 }
 .cluetip-default h3#cluetip-title {
   margin: 0 0 5px;
   padding: 8px 10px 4px;
   font-size: 1.1em;
-  font-weight: normal;
-  background-color: #87876a;
+  font-weight: bold;
+  background-color: #003366;
   color: #fff;
 }
 .cluetip-default #cluetip-title a {
-  color: #d9d9c2;
+  color: #336699;
   font-size: 0.95em;
 }  
 .cluetip-default #cluetip-inner {
