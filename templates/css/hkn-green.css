@@ -50,6 +50,8 @@ body {
 }
 
 #toplevel li a {
+	position: relative;
+	top: 4px;
 	text-align:center;
 	height: 20px;
 	text-decoration: none;
@@ -161,6 +163,7 @@ body {
 	border-left:1px solid #003366;
 	padding-left: 8px;
 	margin-left: 12px;
+	height: 100%;
 }
 
 div #rightshadow{
@@ -176,8 +179,8 @@ div #rightshadow{
 /* footer area */
 #footer {
 	clear:both;
-	background: #048DB4;
-	color: #ACD7EE;
+	background: #003366;
+	color: #FFFFFF;
 	font-size: 12px;
 	padding: 5px 10px;
 	text-align: left;
