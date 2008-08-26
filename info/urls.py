@@ -22,5 +22,5 @@ urlpatterns = patterns('',
         #url(r'^revolt/$', 'hkn.info.elect.revolt'),		
 
 
-        url(r'^tutor-infobox/(?P<person_id>\d+)/$', 'hkn.info.infobox.tutor', name="person-tutor-infobox"), 
+#        url(r'^tutor-infobox/(?P<person_id>\d+)/$', 'hkn.info.infobox.tutor', name="person-tutor-infobox"), 
     )					    
