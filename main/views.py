@@ -22,7 +22,7 @@ def main(request):
     d['day'] = datetime.datetime.now().strftime("%A")
     if d['day'] in ("Saturday", "Sunday"):
         d['day'] = "Monday"
-    d["tutoring_title"] = "%s Tutoring Schedule" % d['day']
+    d["tutoring_title"] = "%s's Tutors" % d['day']
     schedule, can_tutor, tutors = get_tutor_info(tutoring_days=[d['day']])
     can_tutor = get_courses_tutored(can_tutor)
     d['schedule'] = schedule
