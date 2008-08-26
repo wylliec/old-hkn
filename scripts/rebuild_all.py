@@ -44,5 +44,6 @@ os.system("python run_generate_scripts.py")
 import generate_review_problems; generate_review_problems.main()
 
 print 'Adding photo sizes'
-import photologue.scripts.create_sizes; create_sizes.main()
+import photologue.scripts.create_sizes; photologue.scripts.create_sizes.main()
+
 
