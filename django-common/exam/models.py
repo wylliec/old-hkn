@@ -130,7 +130,7 @@ class Exam(db.models.Model):
         if self.exam_type == EXAM_TYPE.FINAL:
             return EXAM_TYPE[EXAM_TYPE.FINAL]
         else:
-            return "%s %d" % (EXAM_TYPE[self.exam_type], self.number)
+            return "%s %s" % (EXAM_TYPE[self.exam_type], self.number)
                 
     def get_exam_description(self, course=False, semester=False, instructors=False):
         description = []
