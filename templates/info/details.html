@@ -15,7 +15,7 @@ ajaxlist_get_url = "{% url rsvp-list-for-person-small person.id %}"
 	<div id="contact">
 		<h1>{{ person.name }}</h1>	
 		{% if person.profile_picture %}
-		<img src="{{ person.restricted.profile_picture.url }}">
+		<img src="{{ person.restricted.profile_picture.get_profilepic_url }}">
 		{% else %}
 		<img src="{{ DEFAULT_PICTURE }}">
 		{% endif %}		

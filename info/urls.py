@@ -10,7 +10,6 @@ urlpatterns = patterns('',
         url(r'^view/(?P<person_id>\w+)/$', 'hkn.info.person.view', name="person-view"),
         url(r'^change-profile/', 'hkn.info.views.profile', name='info-person-profile'),
         url(r'^change-photo/', 'hkn.info.views.change_picture', name='info-person-change-picture'),        
-        url(r'^thumbnail/(?P<person_id>\d+)/$', 'hkn.info.person.pictures', name="person-thumbnail"),
 
         url(r'^list/(?P<category>.*)/$', 'hkn.info.list.list_people', name="person-list-category"),
         url(r'^list/$', 'hkn.info.list.list_people', {"category" : "all"}, name="person-list-all"),
