@@ -665,6 +665,8 @@ class State(dict):
                 stateStringLines = stateString.split('\n')
                 state = State(extraCalculations = False)
                 
+                if stateStringLines[0] == '':
+                    break
                 #read cost and heuristic info
                 state.meta['cost'] = int(stateStringLines[0].split(',')[0][5:])
                 state.meta['heuristic'] = int(stateStringLines[0].split(',')[1][11:])
