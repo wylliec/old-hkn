@@ -24,6 +24,9 @@ if SERVER_ROOT.endswith('hkn'):
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
 DATABASE_NAME = SERVER_ROOT + "hkn.db"            # Or path to database file if using sqlite3.
 
+CACHE_BACKEND = 'locmem:///'
+CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+
 
 # hknsettings settings will override the above
 from hknsettings import *
@@ -128,6 +131,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'hkn.main.middleware.HknAuthMiddleware',
     'hkn.main.middleware.LayoutMiddleware',
     'django.middleware.doc.XViewMiddleware',
