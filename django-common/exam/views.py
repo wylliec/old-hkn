@@ -30,8 +30,9 @@ def split_list(li, splits):
 	return li_lists
 
 def browse(request):
-	departments = list(Department.objects.order_by("name"))
-	departments = [d for d in departments if d.course_set.count() > 20 and d.exam_set.count() > 0]
+	departments = Department.objects.filter(exam__isnull=False).distinct().order_by("name")
+	#departments = list(Department.objects.order_by("name"))
+	#departments = [d for d in departments if d.course_set.count() > 20 and d.exam_set.count() > 0]
 	dept_lists = split_list(departments, 2)
 
 	d = {"dept_lists" : dept_lists}
@@ -39,18 +40,21 @@ def browse(request):
 
 def browse_department(request, department_abbr):
 	department = get_object_or_404(Department, abbr__iexact = department_abbr)
-	courses = list(department.course_set.order_by("id"))
+	#courses = list(department.course_set.order_by("id"))
+	courses = department.course_set
 
 	if not request.user.has_perm("exam.add_exam"):
-		courses = filter(lambda c: c.exam_set.filter(publishable=True).count() > 0, courses)
-		for c in courses:
-			c.exam_count = c.exam_set.filter(publishable=True).count()
+		#courses = filter(lambda c: c.exam_set.filter(publishable=True).count() > 0, courses)
+		courses = courses.filter(exam__publishable=True).distinct()
+		#for c in courses.iterator():
+		#	c.exam_count = c.exam_set.filter(publishable=True).count()
 	else:
-		courses = filter(lambda c: c.exam_set.count() > 0, courses)
-		for c in courses:
-			c.exam_count = "%d, %d" % (c.exam_set.filter(publishable=True).count(), c.exam_set.filter(publishable=False).count())
+		#courses = filter(lambda c: c.exam_set.count() > 0, courses)
+		courses = courses.filter(exam__isnull=False).distinct()
+		#for c in courses.iterator():
+		#	c.exam_count = "%d, %d" % (c.exam_set.filter(publishable=True).count(), c.exam_set.filter(publishable=False).count())
 
-	empty = len(courses) == 0
+	empty = courses.count() == 0
 	courses_lists = split_list(courses, 2)
 	d = {"courses_lists" : courses_lists, "department" : department, "empty" : empty}
 	return render_to_response("exam/browse_department.html", d, context_instance=RequestContext(request))    
