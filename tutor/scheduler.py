@@ -2497,14 +2497,16 @@ if __name__=="__main__":
             if len(results) > 0:
                 if results[0].meta['cost'] > state.meta['cost']:
                     results = [state]
-                elif results[0].meta['cost'] == state.meta['cost']:
+                elif results[0].meta['cost'] == state.meta['cost'] and state not in results:
                     results.append(state)
             else:
                 results.append(state)
 
         print "FINAL RESULTS:"
+        dump = open(filename, 'w+') #truncates file if it exists
         for x in results:
             print x.pretty_print()
+            dump.write(x.pretty_print())
     elif lpr:
         create_schedule_from_lp_output(lprfile, beamLength, True)
     elif lp:
