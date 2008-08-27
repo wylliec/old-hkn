@@ -103,14 +103,14 @@ def get_tutor_info(tutoring_days=TUTORING_DAYS, tutoring_times=TUTORING_TIMES):
     return schedule, canTutorData.filter(person__in = tutors), tutors
 
 def get_courses_tutored(can_tutor):
-    can_tutor = can_tutor.order_by("course__integer_number")
+    can_tutor = can_tutor.order_by("course__integer_number", "course__number", "course__coursenumber")
     canTutor = {} #dictionary of dept -> list of courses
     for x in can_tutor:
         course = x.course
         abbr = Department.get_nice_abbr(course.department_abbr)
         if abbr not in canTutor:
             canTutor[abbr] = []
-        if course.number not in canTutor[abbr]:
+        if course.coursenumber not in canTutor[abbr]:
             canTutor[abbr].append(course.coursenumber)
 
     return canTutor.items()
