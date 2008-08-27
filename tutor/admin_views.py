@@ -579,8 +579,7 @@ def params_for_scheduler(request):
              maximumCost=maximumCost and int(maximumCost),
              machineNum=machineNum and int(machineNum),
              patience=patience and int(patience))
-    text = text.replace('\n', '#<br />\n') #so it's more readable
-    return HttpResponse(text)
+    return HttpResponse(text, mimetype="text/plain")
 
 @permission_required('info.group_tutor')
 def submit_schedule(request):
