@@ -51,7 +51,7 @@ def list_people(request, category):
         people = people.filter_restricted(request.user)
     except:
         raise Http404
-    
+    people = people.select_related('user', 'photo', 'officership')
     people = sort_objects(people, d['sort_by'], d['order'])
     people = paginate_objects(people, d, page=d['page'], max_per_page=10)
     d['people'] = add_restricted(request, people)

@@ -2,6 +2,8 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
+from django.core.cache import cache
+
 from django import forms
 from string import atoi
 
@@ -57,9 +59,15 @@ def get_published_assignments(version=None):
         return None
 
 
-
 def get_tutor_info(tutoring_days=TUTORING_DAYS, tutoring_times=TUTORING_TIMES):
-    assignments = get_published_assignments().select_related("person__user")
+    canTutorData = tutor.CanTutor.objects.for_current_semester().select_related('course')    
+    
+    tutor_info_cache_key= 'tutor_info_%d' % hash(tuple(tutoring_days))
+    if cache.has_key(tutor_info_cache_key):
+        schedule, tutors = cache.get(tutor_info_cache_key)
+        return schedule, canTutorData.filter(person__in = tutors), tutors
+    
+    assignments = get_published_assignments().select_related("person")
     
     realAssignments = {} #dictionary from slot to person object
     for assignment in assignments:
@@ -70,8 +78,6 @@ def get_tutor_info(tutoring_days=TUTORING_DAYS, tutoring_times=TUTORING_TIMES):
             realAssignments[slot].append(assignment.person)
         else:
             realAssignments[slot] = [assignment.person]
-
-    canTutorData = tutor.CanTutor.objects.for_current_semester().select_related('course')
            
     tutors = {}
     """ person -> courses """
@@ -95,11 +101,15 @@ def get_tutor_info(tutoring_days=TUTORING_DAYS, tutoring_times=TUTORING_TIMES):
                 people = realAssignments[slot]
                 for person in people:
                     if person not in tutors.keys():
-                        cantutors = person.cantutor_set.select_related('course')
-                        tutors[person] = " ".join([x.course.short_name() + (x.current and "cur" or "") for x in cantutors])
+                        cache_key = "tutor_courses_classes_%d" % person.id
+                        tutors[person] = cache.get(cache_key)
+                        if not tutors[person]:
+                            cantutors = person.cantutor_set.select_related('course')
+                            tutors[person] = " ".join([x.course.short_name() + (x.current and "cur" or "") for x in cantutors])
+                            cache.set(cache_key, tutors[person], 6000)
                     slot_schedule["people"].append((person, tutors[person]))
     
-    tutors = tutors.keys()
+    cache.set(tutor_info_cache_key, (schedule, tutors), 60000)    
     return schedule, canTutorData.filter(person__in = tutors), tutors
 
 def get_courses_tutored(can_tutor):

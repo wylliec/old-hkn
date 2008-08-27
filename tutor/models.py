@@ -1,6 +1,7 @@
 #tutoring models
 from django.db import models
 from django.db.models.query import QuerySet
+from django.core.cache import cache
 from hkn.info.models import Person
 from hkn.tutor.constants import *
 import hkn.tutor.scheduler as scheduler
@@ -225,22 +226,23 @@ class Assignment(models.Model):
         return "<Assignment %s %s %s>" % (self.person.name, self.slot, self.office)
     
     @staticmethod
-    def get_max_version(semester=None):
+    def get_max_version():
         """
         NOTE: this is REALLY INEFFICIENT!
         gets the max version of all assignments for given year and season name
         """
-        if not semester:
-            semester = nice_types.semester.current_semester()
-        assigns = Assignment.objects.filter(semester=semester)
-        return max(assigns.values_list('version').distinct())[0]
+        max_version = cache.get('tutor_max_version')
+        if not max_version:
+            max_version = max(Assignment.objects.filter(semester=nice_types.semester.current_semester()).values_list('version', flat=True).distinct())
+            cache.set('tutor_max_version', max_version, 600)
+        return max_version
         
     @staticmethod
     def get_published_version():
         try:
             return int(PROPERTIES.hkn_tutor_version)
         except:
-            return get_max_version()
+            return Assignment.get_max_version()
             
     @staticmethod
     def make_assignments_from_state(state, semester = None):
