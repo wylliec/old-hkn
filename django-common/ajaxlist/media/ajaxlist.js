@@ -122,7 +122,6 @@ function send_ajaxinfo(action, url){
 		if (sort_by == undefined){
 			sort_by = $("#ajaxwrapper th.sortable[default='on']").attr("name");
 		}
-
 		$("#ajaxwrapper .sortable[name='"+sort_by+"']").attr("selected", "yes");
 		$("#ajaxwrapper .sortable[name='"+sort_by+"'] img").attr("order", order);
 		$("#ajaxwrapper .sortable[name='"+sort_by+"'] img").attr("src", IMG_ORDER[order]);

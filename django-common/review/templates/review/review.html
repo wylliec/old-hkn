@@ -5,7 +5,12 @@
 
 {% block content %}
 	{% block search %}
-	<div style="text-align: right;">{% control search %}</div>
+	<div style="text-align: right">
+	<form method="GET" action="{% url review-search %}">
+	<input name="query" class="ajaxinfo" value="{{ query }}"  />
+	<input type="submit" value="Search" />
+	</form>
+	</div>
 	{% endblock %}
 	{% block browse_link %}
 	<div style="text-align: right;"><a href="{% url review-browse-tags %}">Browse Problems</a></div>

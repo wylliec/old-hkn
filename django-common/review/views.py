@@ -50,12 +50,12 @@ def view_tag(request, tag_name = None):
 	if d['sort_by'] == "?":
 		d['sort_by'] = "name"
 		
-	tags = tag_name + ", " + get_tag_query(request.GET)
 	tag = get_object_or_404(Tag, name = tag_name)
 	rel_tags = Tag.objects.related_for_model(r'"' + tag_name + r'"' , Problem)
-	problems = TaggedItem.objects.get_by_model(Problem, tags) 
+	problems = TaggedItem.objects.get_by_model(Problem, r'"' + tag_name + r'"') 
 	problems = sort_objects(problems, d['sort_by'], d['order'])
 	problems = paginate_objects(problems, d, page=d['page'])
+	d['query'] = tag_name
 	d['tag'] = tag_name
 	d['rel_tags'] = rel_tags
 	d['problems'] = problems
@@ -104,10 +104,6 @@ def view_selected(request):
 	problems = Problem.objects.none()
 	if 'ajaxlist_problems' in request.session:
 		problems = Problem.objects.filter(pk__in=list(request.session['ajaxlist_problems']))
-
-	tags = get_tag_query(request.GET)
-	if tags != "":
-		problems = problems & TaggedItem.objects.get_by_model(Problem, tags)
 		
 	return render_ajaxlist_response(request.is_ajax(), "review/selected.html", {'problems' : problems}, context_instance=RequestContext(request))
 
