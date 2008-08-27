@@ -29,6 +29,10 @@ hr.clear {
     visibility: hidden;
 }
 
+tr.unpublished {
+    background: yellow !important;
+}
+
 tr.exam .semester {
     width: 20%;
 }
