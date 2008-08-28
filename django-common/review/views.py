@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.db.models.query import QuerySet
+from django.core.urlresolvers import reverse
 
 import datetime
 import sets
@@ -103,16 +104,19 @@ def submit(request):
 def view_selected(request):
 	problems = Problem.objects.none()
 	if 'ajaxlist_problems' in request.session:
-		problems = Problem.objects.filter(pk__in=list(request.session['ajaxlist_problems']))
+		problems = Problem.objects.filter(pk__in=request.session['ajaxlist_problems'])
 		
 	return render_ajaxlist_response(request.is_ajax(), "review/selected.html", {'problems' : problems}, context_instance=RequestContext(request))
 
 def merge_problems(request, solutions):
 	command = "pdftk "
-	problems = []
-	if 'ajaxlist_problems' in request.session:
-		for id in request.session['ajaxlist_problems']:
-			problems.append(get_object_or_404(Problem, pk=id))
+
+	if 'ajaxlist_problems' in request.session and len(request.session['ajaxlist_problems']) > 0:
+		problems = Problem.objects.filter(pk__in=request.session['ajaxlist_problems'])
+	else:
+		return HttpResponseRedirect(reverse("review-selected"))
+	
+	
 	
 	for p in problems:
 		if not solutions:

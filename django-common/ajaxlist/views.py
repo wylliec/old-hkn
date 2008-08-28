@@ -55,6 +55,9 @@ def post_ajax(request):
 	value = request.POST.get("value", None)
 	action = request.POST.get("action", "unknown").lower()
 	obj_name = request.POST.get("identifier", None)
+	print action
+	print value
+	print obj_name
 	if obj_name == "none" or not value:
 		return HttpResponse("");
 	if action == "add":

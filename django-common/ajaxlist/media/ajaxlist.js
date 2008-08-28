@@ -4,7 +4,7 @@ PLUS_MINUS = { "plus" : "/static/images/site/plus.gif", "minus" : "/static/image
 
 function register_listeners(){
 	$("#ajaxwrapper .ajaxlist_filter").click(function() { send_ajaxinfo("filter="+$(this).attr("key")+"="+$(this).attr("val"), "#"); return false; });
-	$("#ajaxwrapper .ajaxlist_remove_item").click(function () { remove_item($(this).parent().parent(), $(this).attr("value")); return false; });
+	$("#ajaxwrapper .ajaxlist_remove_item").click(function () { remove_item($(this).parent().parent(), $(this).attr("value").split('=')[1]); return false; });
 	$("#ajaxwrapper .ajaxlist_check").change(function () { checkbox_changed($(this).attr("checked"), $(this).attr("value")); return false; });
 	$("#ajaxwrapper .sortable").click(function() { send_ajaxinfo("sort_by="+$(this).attr("name"), "#"); return false; });
 	$("#ajaxwrapper .sortable").append("<img />");
