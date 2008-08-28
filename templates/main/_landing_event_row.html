@@ -13,9 +13,7 @@
     		<div>
 	    		{% if not event.rsvp_none %}
 	    			<a href="javascript:rsvpForm({{event.id}});" title="click to RSVP!">&#187;</a>
-		    		{% with event.rsvp_set.count as num_rsvps %}
-			    		<a href="javascript:showRSVP({{event.id}});" title="{{num_rsvps}} RSVP{{num_rsvps|pluralize}} (click to view)">&#187;</a>	    		
-			    	{% endwith %}
+			        <a href="javascript:showRSVP({{event.id}});" title="{{event.rsvp_count}} RSVP{{event.rsvp_count|pluralize}} (click to view)">&#187;</a>	    		
 			    {% endif %}
 	    		<a href="javascript:showInfo({{event.id}});" title="more information about this event">&#187;</a>
 	    		<a href="javascript:hide({{event.id}});" title="hide">&#187;</a>	    		

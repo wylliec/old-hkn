@@ -25,6 +25,9 @@ class AllEventsManager(QuerySetManager):
         
     def filter_permissions(self, user):
         return self.get_query_set().filter_permissions(user)
+    
+    def annotate_rsvp_count(self, *args, **kwargs):
+        return self.get_query_set().annotate_rsvp_count(*args, **kwargs)
 
 class PublicEventsManager(AllEventsManager):
         def get_query_set(self):
@@ -123,6 +126,13 @@ class Event(models.Model):
             perms = map(lambda p: str(p.split(".")[1]), perms)
             ids = self._filter_permissions(perms)
             return self.filter(id__in=ids)
+        
+        def annotate_rsvp_count(self):
+            return self.extra(
+                              select = {
+                                        'rsvp_count': 'SELECT COUNT(*) FROM event_rsvp WHERE event_rsvp.event_id = event_event.id'
+                                        }
+                              )
 
     def rsvp_whole(self):
         return self.rsvp_type == RSVP_TYPE.WHOLE

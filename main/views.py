@@ -15,7 +15,7 @@ from hkn.info import infobox
 def main(request):
     d = {}
 
-    events = list(Event.objects.order_by('-start_time').filter_permissions(request.user)[:4])
+    events = list(Event.objects.order_by('-start_time').filter_permissions(request.user).annotate_rsvp_count()[:4])
     d['today_events'] = events[:1]
     d['week_events'] = events[1:]
     
