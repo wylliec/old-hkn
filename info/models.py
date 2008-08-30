@@ -530,7 +530,7 @@ class Officership(models.Model):
         self.person.groups.add(self.position)
         self.person.save()
 
-    class Admin:
-        pass
+    class Meta:
+        unique_together = ("person", "position", "semester")
 
 from hkn.info import admin
