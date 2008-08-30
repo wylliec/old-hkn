@@ -6,6 +6,7 @@ html #toplevel { height: 30px; margin: 0 auto; width: 100%; text-align: center; 
 html #toplevel ul { padding: 0; margin: 0; list-style: none; height: 30px; text-align: center; background: #336699; line-height: 30px; }
 html #toplevel li { display: inline; position: relative; top: 2px; padding: 5px 13px 6px 13px; margin: 0px 5px; height: 28px; line-height: 28px; text-align: center; }
 html #toplevel li a { text-align: center; text-decoration: none; color: #ffffff; }
+html #toplevel li a:visited { text-align: center; text-decoration: none; color: #ffffff; }
 html #toplevel li.selected { background: #003366; }
 html #toplevel li:hover { background: #225588; }
 html #toplevel #toplevel li.selected:hover { background: #003366; }
@@ -13,6 +14,7 @@ html .submenu { font-size: 13px; height: 24px; display: none; clear: both; }
 html .submenu ul { padding: 0; margin: 0; list-style: none; height: 24px; text-align: center; background: #003366; line-height: 24px; }
 html .submenu li { display: inline; padding: 0; margin: 0; height: 24px; text-align: center; }
 html .submenu li a { text-align: center; height: 18px; text-decoration: none; color: #ffffff; padding: 3px 7px 3px 10px; display: inline; }
+html .submenu li a:visited { text-align: center; height: 18px; text-decoration: none; color: #ffffff; padding: 3px 7px 3px 10px; display: inline; }
 html .submenu li a:hover { background: #336699; }
 html #header { text-align: center; }
 html #content { margin: 10px; width: auto; }
