@@ -1,4 +1,5 @@
 {% extends "photologue/root.html" %}
+{% load ajaxtable %}
 
 {% block title %}Galleries for {{ day|date }}{% endblock %}
 
@@ -9,12 +10,9 @@
 {% if object_list %}
     {% for gallery in object_list %}
     <div class="photo-gallery">
-        <h2>{{ gallery.title }}</h2>
-        {% for photo in gallery.sample|slice:sample_size %}
-        <div class="gallery-photo">
-            <a href="{{ photo.get_absolute_url }}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
-        </div>
-        {% endfor %}
+         <div class="photo-gallery">
+        <h2><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></h2>
+		{% ajaxgrid gallery.sample|slice:sample_size "photologue/_simple_cell.html" 4 %}
     </div>
     {% endfor %}
 {% else %}

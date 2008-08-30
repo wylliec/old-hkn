@@ -1,5 +1,5 @@
 {% extends "photologue/root.html" %}
-
+{% load ajaxtable %}
 {% block title %}Latest Photos{% endblock %}
 
 {% block content %}
@@ -7,11 +7,7 @@
 <h1>Latest Photos</h1>
 
 {% if latest %}
-    {% for photo in latest %}
-    <div class="gallery-photo">
-        <a href="{{ photo.get_absolute_url }}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
-    </div>
-    {% endfor %}
+	{% ajaxgrid latest "photologue/cell.html"  4 %}
 {% else %}
 <p>No photos were found.</p>
 {% endif %}

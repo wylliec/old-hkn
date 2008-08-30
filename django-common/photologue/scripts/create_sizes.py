@@ -3,7 +3,7 @@
 from photologue.models import *
 
 PHOTOSIZES = (
-	('thumbnail', 200, 200),
+	('thumbnail', 100, 100),
 	('display', 800, 600),
 	('profilepic', 100, 100),
 	('tutorpic', 60, 80),
