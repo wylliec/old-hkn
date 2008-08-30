@@ -6,7 +6,7 @@ urlpatterns = patterns('',
     # Example:
 
     # main page
-     (r'^$', 'hkn.main.views.main'),
+     url(r'^$', 'hkn.main.views.main', name='hkn-landing-page'),
      (r'^css/hkn-(?P<css_file>\w*).css$', 'hkn.main.themes.theme_css'),
 
     # other inclusions
@@ -26,7 +26,7 @@ urlpatterns = patterns('',
 
     # authentication pages
      url(r'^login/$', 'django.contrib.auth.views.login', name="login"),
-     url(r'^logout/$', 'django.contrib.auth.views.logout', name="logout"),
+     url(r'^logout/$', 'hkn.main.views.logout', name="logout"),
 
      (r'^admin/(.*)', admin_site.root),
 

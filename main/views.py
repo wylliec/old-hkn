@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.flatpages.models import FlatPage
 from ajaxwidgets.widgets import JQueryAutoComplete
 from django.utils.safestring import mark_safe
+from django.contrib import auth
 import datetime
 
 from hkn.event.models import *
@@ -35,3 +36,7 @@ def main(request):
     d['content'] = mark_safe(FlatPage.objects.get(url="landing-page").content)
 
     return render_to_response("main/main.html", d, context_instance=RequestContext(request))
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('hkn-landing-page'))
