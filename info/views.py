@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -5,6 +6,7 @@ from django.core.urlresolvers import reverse
 from hkn.info.models import *
 from hkn.info.forms import ChangePictureForm, profile_form_for_person
 
+@login_required
 def profile(request):
     if request.POST:
         form = profile_form_for_person(request.user.person, request.POST)
@@ -24,6 +26,7 @@ def profile(request):
     return render_to_response("info/profile.html", {'form' : form, 'person' : request.user.person}, context_instance=RequestContext(request))
 
 
+@login_required
 def change_picture(request):
     if request.method == "POST":
         form = ChangePictureForm(request.POST, request.FILES)

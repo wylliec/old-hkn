@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
@@ -5,6 +6,7 @@ from hkn.info.models import *
 from hkn.event.rsvp.list import list_for_person_common
 import datetime
 
+@login_required
 def view(request, person_id):
     try:
         person = Person.objects.get(pk=person_id)
@@ -16,8 +18,3 @@ def view(request, person_id):
     d["person"] = person    
     return render_to_response("info/details.html", d, context_instance=RequestContext(request))
 
-def pictures(request, person_id):
-    person = get_object_or_404(Person, pk = person_id)
-    person.set_restricted_accessor(request.user.person)    
-    d = { "person" : person }
-    return render_to_response("info/picture.html", d, context_instance=RequestContext(request))

@@ -85,7 +85,5 @@ class ChangePictureForm(forms.Form):
     
     def save_for_person(self, person):
         uploaded_file = self.cleaned_data['profile_picture']
-        person.profile_picture.save(person.generate_filename("%s%s" % (person.username, os.path.splitext(uploaded_file.name)[1])), ContentFile(uploaded_file.read()))
-        person.save()
-        
+        person.save_profile_picture(ContentFile(uploaded_file.read()), ext=os.path.splitext(uploaded_file.name)[1], save=True)
         
