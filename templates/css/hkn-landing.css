@@ -8,7 +8,7 @@
 
 #landing_right_info {
 	background: {{ landing_background }};
-	padding: 0 8px;
+	padding: 0px 8px;
 	border: 1px {{ landing_border }} solid;
 	text-align:left;
 }
