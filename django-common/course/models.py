@@ -180,6 +180,8 @@ class Course(models.Model):
             return self.extra( select = {
                                          key : """ SELECT COUNT(*) FROM exam_exam WHERE (exam_exam.course_id = course_course.id and exam_exam.publishable = %s)""" % ("1" if publishable else "0")
                                          })
+        def get_top_courses_by_published_exams(self,n = 10):
+            return self.annotate_exam_count(True).order_by("-published_exam_count")[:n]
 
     INTEGER_PATTERN = re.compile("(?P<integer>\d+)")
     def save(self):

@@ -4,41 +4,48 @@
 
 {% block examcontent %}
 <style type="text/css">
-div.browse_wrapper {
+div.courses_wrapper {
     float: left;
     width: 20em;
     padding-left: 1em;
 }
 
 div.browse_clear {
-    clear: left;
+    clear: both;
 }
 
-ul.browse_l {
+ul.courses {
     margin: 0;
     padding: 0;
     list-style: none;
     list-style-position: outside;
 }
 
-ul.browse_l li {
+ul.courses li {
+	padding: 5px 0 0 0;
+	border-top: solid 1px #000000;
     margin: 0;
-    padding: 0;
     line-height: 1.3em;
     font-size: small;
-    text-indent: -1em;
+    text-indent: 1em;
+}
+
+ul.courses li.last {
+	padding-bottom: 5px;
+	border-bottom: solid 1px #000000;
 }
 
 </style>
-{% for dept_list in dept_lists %}
-<div class="browse_wrapper">
-<ul class="browse_l">
-  {% for dept in dept_list %}
-  <li><a class="department" href="/exam/browse/{{dept.abbr}}/">{{dept.name}}</a></li>
+{% for dept in departments %}
+<h1><a class="department" href="/exam/browse/{{dept.abbr}}/">{{dept.name}}</a></h1>
+<div class="courses_wrapper">
+<ul class="courses">
+  {% for course in dept.course_set.all.annotate_exam_count.get_top_courses_by_published_exams|slice:":10" %}
+  <li {% if forloop.last %}class="last"{% endif %}><a href="{% url exam-list %}?exam_course={{course.short_name_space|urlencode}}">{{course.short_name_space}}</a> - {{course.published_exam_count}} exams</li>
   {% endfor %}
-</ol>
+</ul>
 </div>
-{% endfor %}
 <div class="browse_clear" > &nbsp; </div>
 <br />
+{% endfor %}
 {% endblock %}

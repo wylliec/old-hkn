@@ -30,12 +30,12 @@ def split_list(li, splits):
 	return li_lists
 
 def browse(request):
+	courses = Course.objects.filter(exam__publishable=True).select_related('department').annotate_exam_count(True).order_by("published_exam_count")
 	departments = Department.objects.filter(exam__isnull=False).distinct().order_by("name")
 	#departments = list(Department.objects.order_by("name"))
 	#departments = [d for d in departments if d.course_set.count() > 20 and d.exam_set.count() > 0]
-	dept_lists = split_list(departments, 2)
 
-	d = {"dept_lists" : dept_lists}
+	d = {"departments" : departments}
 	return render_to_response("exam/browse.html", d, context_instance=RequestContext(request))
 
 def browse_department(request, department_abbr):
