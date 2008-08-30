@@ -218,7 +218,8 @@ class Person(User):
 
     def reconcile_status(self):
         officer_semesters = Officership.objects.filter(person=self).values_list('semester', flat=True)
-        if unicode(nice_types.semester.current_semester().abbr()) in officer_semesters:
+        db_semester = nice_types.semester.SemesterField().get_db_prep_value(nice_types.semester.current_semester())
+        if unicode(db_semester) in officer_semesters:
             self.member_type = MEMBER_TYPE.OFFICER
         else:
             self.member_type = MEMBER_TYPE.FOGIE
@@ -462,13 +463,12 @@ class CandidateInfo(models.Model):
     """A reference to a L{Person} object. To get a handle of the associated Person, do::
         >>>> candidateinfo.person"""
 
-    candidate_semester = models.CharField(max_length=5)
+    candidate_semester = nice_types.semester.SemesterField()
     """ The person's candidate semester. """
     
 
     candidate_committee = models.ForeignKey(Position)
-    """ The person's candidate committee. """
-    
+    """ The person's candidate committee. """    
 
     initiated = models.BooleanField()
     """ whether this person initiated in the semester indicated by candidate_semester """
@@ -506,7 +506,7 @@ class Officership(models.Model):
     officership_id = models.AutoField(primary_key = True)
 
 
-    semester = models.CharField(max_length=5)
+    semester = nice_types.semester.SemesterField()
     """The L{semester} of this officership."""
 
     position = models.ForeignKey(Position)
