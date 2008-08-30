@@ -86,10 +86,10 @@ class Semester(object):
     def next_semester(self):
         s = self.semester[:2]
         if s == "fa":
-            y = self.year_int+1
+            y = self.year+1
             return Semester("%s%s" % ("sp", y))
         else:
-            y = self.year_int
+            y = self.year
             return Semester("%s%s" % ("fa", y))
         
     @property
