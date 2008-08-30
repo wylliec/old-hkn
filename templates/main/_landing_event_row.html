@@ -1,25 +1,29 @@
-    <tr class="head">
-        <td class="name"><div><a rel="{% url event-infobox event.id %}" href="{% url event-view event.slug %}" style="display: block">{{event.name}}</a></div></td>    
-        <td class="day"><div>{{event.start_time|date:"l" }}</div></td>
-    </tr>
-    <tr class="tail">
-		<td class="time_location">
-			<div>
-				{{event.start_time|date:"f"}}-{{event.end_time|date:"f"}} @ {{event.location}}
-			</div>
-			<div class="spacer"> &nbsp; </div>				
-		</td>		    
-    	<td class="links small">
-    		<div>
-	    		{% if not event.rsvp_none %}
-	    			<a href="javascript:rsvpForm({{event.id}});" title="click to RSVP!">&#187;</a>
-			        <a href="javascript:showRSVP({{event.id}});" title="{{event.rsvp_count}} RSVP{{event.rsvp_count|pluralize}} (click to view)">&#187;</a>	    		
-			    {% endif %}
-	    		<a href="javascript:showInfo({{event.id}});" title="more information about this event">&#187;</a>
-	    		<a href="javascript:hide({{event.id}});" title="hide">&#187;</a>	    		
-			</div>	    		
-		</td> 
-	</tr>	
-    <tr>
-    	<td colspan="2"><div id="event_{{event.id}}" style="display: none"></div></td>
-    </tr>
+<tr class="headrow"><td>
+	<div class="name">
+		<a rel="{% url event-infobox event.id %}" href="{% url event-view event.slug %}" style="display: block">{{event.name}}</a>
+	</div>
+	<div class="day">
+		{{event.start_time|date:"l" }}
+	</div>
+</td></tr>
+
+<tr class="linksrow"><td>
+	<div class="time_location">
+		{{event.start_time|date:"f"}}-{{event.end_time|date:"f"}} @ {{event.location}}
+	</div>
+    <div class="links small">
+		[
+		{% if not event.rsvp_none %}
+			&nbsp;<a href="javascript:rsvpForm({{event.id}});" title="click to RSVP!">rsvp</a>&nbsp;|
+	        &nbsp;<a href="javascript:showRSVP({{event.id}});" title="{{event.rsvp_count}} RSVP{{event.rsvp_count|pluralize}} (click to view)">see rsvps</a>&nbsp;|
+	    {% endif %}
+		&nbsp;<a href="javascript:showInfo({{event.id}});" title="more information about this event">info</a>&nbsp;
+		<!--<a href="javascript:hide({{event.id}});" title="hide">&#187;</a> -->
+		]
+	</div>	    		
+	<div style="clear: both"></div>	
+</td></tr>
+
+<tr><td>
+	<div id="event_{{event.id}}" style="display: none"></div>
+</td></tr>

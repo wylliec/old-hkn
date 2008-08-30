@@ -953,7 +953,7 @@ calvis.Calendar.prototype.appendEventHKN = function(id, event) {
     eventHtml.push('" rel="#eventDisplayDiv">');
 	eventHtml.push('<a href="/event/view/');
 	eventHtml.push(event["id"]);
-	eventHtml.push('">');
+	eventHtml.push('/">');
     eventHtml.push(calendar.fitText('&nbsp;' + title, cellWidth));
     eventHtml.push('</a></div>');
 

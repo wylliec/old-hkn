@@ -1,8 +1,8 @@
 <div>
 <form id='rsvp_form_{{event.id}}' action="{{ request.path }}" method="post">
-	<table>
-	{{ form }}
-	</table>
+	<ul class="rsvp_ul_form">
+	{{ form.as_ul }}
+	</ul>
 	<input type=submit value="RSVP!" />
 </form>
 </div>
