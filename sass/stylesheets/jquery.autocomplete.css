@@ -1,0 +1,7 @@
+html .ac_results { padding: 0px; border: 1px solid black; background-color: Window; overflow: hidden; z-index: 99999; }
+html .ac_results ul { width: 100%; list-style-position: outside; list-style: none; padding: 0; margin: 0; }
+html .ac_results li { margin: 0px; padding: 2px 5px; cursor: default; display: block; font: menu; font-size: 12px; line-height: 16px; overflow: hidden; }
+html .ac_loading { background: Window url('indicator.gif') right center no-repeat; }
+html .ac_odd { background-color: #eee; }
+html .ac_over { background-color: #0A246A; color: HighlightText; }
+html .ac_moreItems { text-align: center; background-color: InactiveCaption; color: InactiveCaptionText; margin: 0px; padding: 0px 5px; cursor: default; display: block; width: 100%; font: bold menu 12px; overflow: hidden; -moz-user-select: none; -khtml-user-select: none; }

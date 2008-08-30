@@ -1,0 +1,5 @@
+html table.tutoring { width: 100%; text-align: center; }
+html table.tutoring td.pcell { width: 18%; background-color: #EDF3FE; padding: 3px; }
+html table.tutoring td.pcell div.person { margin: 0px 3px 0px 3px; }
+html table.landing td.pcell { width: 45% !important; }
+html .dept_heading { font-weight: bold; }
