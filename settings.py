@@ -184,5 +184,6 @@ INSTALLED_APPS = (
     'review',
     'photologue',
     'registration',
+    'nice_types',
 )
 
