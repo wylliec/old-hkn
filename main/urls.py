@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     (r'^yearbook/', include('photologue.urls')),
     (r'^request/', include('request.urls')),    
     (r'^course/', include('course.urls')),        
+    (r'^indrel/', include('hkn.indrel.urls')),        
     (r'^account/', include('registration.urls')),        
 
     # authentication pages

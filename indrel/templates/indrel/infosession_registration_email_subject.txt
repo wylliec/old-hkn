@@ -1,0 +1,1 @@
+[Infosession] {{ reg.name }} has registered for an infosession

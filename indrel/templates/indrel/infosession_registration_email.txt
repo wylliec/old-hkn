@@ -1,0 +1,4 @@
+Got infosession registration from:
+{{ reg.name }}
+{{ reg.primaryname }}
+{{ reg.primaryemail }}

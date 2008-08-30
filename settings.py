@@ -64,7 +64,7 @@ DEFAULT_FROM_EMAIL = "hkn@hkn.eecs.berkeley.edu"
 EMAIL_HOST = "hkn.eecs.berkeley.edu"
 EMAIL_PORT= 465
 EMAIL_HOST_USER = "gafyd"
-EMAIL_HOST_PASSWORD = ""
+EMAIL_HOST_PASSWORD = "shasha!!md5"
 EMAIL_USE_TLS = True
 
 LOGGING_INTERCEPT_REDIRECTS = True
@@ -179,6 +179,7 @@ INSTALLED_APPS = (
     'hkn.tutor',
 #   'hkn.resume',
     'hkn.main',
+    'hkn.indrel',
     'course',
     'tagging',
     'review',
