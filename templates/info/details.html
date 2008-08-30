@@ -2,6 +2,11 @@
 
 {% load ajaxtable %}
 
+{% block css %}
+{{ block.super }}
+<link href="{{STATIC_PREFIX}}css/info.css" type="text/css" rel="stylesheet"/>
+{% endblock %}
+
 {% block js %}
 {{ block.super }}
 {% ajaxlist_js %}
@@ -12,29 +17,50 @@ ajaxlist_get_url = "{% url rsvp-list-for-person-small person.id %}"
 
 {% block content %}
 <div id="details">
-	<div id="contact">
-		<h1>{{ person.name }}</h1>	
-		{% if person.profile_picture %}
-		<img src="{{ person.restricted.profile_picture.get_profilepic_url }}">
-		{% else %}
-			{% if person.officer_picture %}
-			<img src="{{ person.restricted.officer_picture.get_profilepic_url }}">
-			{% else %}
-			<img src="{{ DEFAULT_PICTURE }}">
-			{% endif %}
-		{% endif %}
-		<div class="member_status">{{ person.get_current_status }}</div>		
-		<div class="spacer"></div>
+	<div id="person">
+		<h1>{{ person.first_name }}'s Profile</h1>	
+        <div id="picture">
+		    {% if person.profile_picture %}
+    		<img src="{{ person.restricted.profile_picture.get_display_url }}">
+    		{% else %}
+    			{% if person.officer_picture %}
+    			<img src="{{ person.restricted.officer_picture.get_display_url }}">
+    			{% else %}
+    			<img src="{{ DEFAULT_PICTURE }}">
+    			{% endif %}
+    		{% endif %}
+            <div><h3>{{person.name}}</h3></div>
+        </div>
 		<div id="contact">
-			<div class="email">{{ person.restricted.email }} </div>
-			<div class="phone">{{ person.restricted.phone }}</div>
+			<table>
+				<tr>
+					<td><strong>Email</strong></td>
+					<td>{{ person.restricted.email }}</td>
+				</tr>
+				<tr>
+					<td><strong>Phone</strong></td>
+					<td>{{person.restricted.phone}}</td>
+				</tr>
+				<tr>
+					<td><strong>Status</strong></td>
+					<td>{{person.get_current_status}}</td>				
+				</tr>
+			</table>
 		</div>		
+        <div style="clear: both;"></div>
+        <div id="membership_info">
+         <h2>Additional Membership Information</h2>
+         <ul class="membership_info">
+            {{ membership_info }}
+        </ul>
+        </div>
 	</div>
 	{% if rsvps %}	
 	<div id="rsvps">
-		<h1>RSVPs</h1>
+		<h1>{{person.first_name}}'s RSVPs</h1>
 		<table>
-		<tr><th>Event</th><th>Time</th></tr>
+		<tr><th><strong>Event</strong></th><th><strong>Time</strong></th></tr>
+        </strong>
 		{% for rsvp in rsvps %}
 			<tr>
 				<td><a href="{% url event-view rsvp.event.slug %}">{{ rsvp.event.name }}</a><div class="small">&#187; {{rsvp.event.location}}</div></td>

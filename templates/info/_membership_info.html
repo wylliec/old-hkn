@@ -1,0 +1,9 @@
+{% for officership in officerships %}
+<li>{{person.first_name}} had position of {{officership.position.get_officer_title}} in {{officership.semester.verbose_description}}</li>
+{% endfor %}
+{% if candidate_info.initited %}
+<li>{{person.first_name}} initiated as a candidate of {{candidate_info.candidate_committee.name}} in {{candidate_info.candidate_semester.verbose_description}}</li>
+{% endif %}
+{% if no_info %}
+<li>{{person.first_name}} has no additional membership information</li>
+{% endif %}
