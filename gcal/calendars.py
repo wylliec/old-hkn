@@ -5,7 +5,6 @@ import atom, atom.service
 
 from hkn.event.constants import EVENT_TYPE
 from hkn.constants import _const
-from hkn.gcal.gcal_interface import get_calendar_service
 
 __all__ = ["calendars", "NoCalendarFound", "CalendarAlreadyExists"]
 
@@ -84,6 +83,16 @@ class Calendar(object):
         self._calendar_entry = calendar_service.InsertCalendar(new_calendar = calendar)
         self._set_readonly()
         return self._calendar_entry
+    
+    def get_calendar_id(self):
+        calendar_entry = self.get_calendar_entry()
+        return calendar_entry.id.text.split("/")[-1]
+        
+    def get_ical_link(self):
+        return """http://www.google.com/calendar/ical/%s/public/basic.ics""" % self.get_calendar_id()
+    
+    def get_xml_link(self):
+        return """http://www.google.com/calendar/feeds/%s/public/basic""" % self.get_calendar_id()
 
 
 def is_public(event):
@@ -104,3 +113,5 @@ Calendar("HKN Departmental Service Events", "#994499", event_type_predicate(EVEN
 Calendar("HKN Professional Development Events", "#22AA99", event_type_predicate(EVENT_TYPE.JOB)),
 Calendar("HKN Miscellaneous Events", "#109618", event_type_predicate(EVENT_TYPE.MISC)),
 ]
+
+from hkn.gcal.gcal_interface import get_calendar_service
