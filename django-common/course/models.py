@@ -174,11 +174,11 @@ class Course(models.Model):
                 return self.filter(department_abbr__iexact = dept_abbr, number__iexact = coursenumber)      
             
         def annotate_exam_count(self, publishable = True):
-            key = "exam_count"
+            key = "published_exam_count"
             if not publishable:
                 key = "unpublished_exam_count"
             return self.extra( select = {
-                                         key : """ SELECT COUNT(*) FROM exam_exam WHERE (exam_exam.course_id = course_course.id and exam_exam.publishable = %s)""" % (publishable and "1" or "0")
+                                         key : """ SELECT COUNT(*) FROM exam_exam WHERE (exam_exam.course_id = course_course.id and exam_exam.publishable = %s)""" % ("1" if publishable else "0")
                                          })
 
     INTEGER_PATTERN = re.compile("(?P<integer>\d+)")
