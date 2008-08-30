@@ -6,7 +6,6 @@
 {% block js %}
 {{ block.super }}
 {% ajaxlist_js %}
-<script language="javascript" src="{{STATIC_PREFIX}}js/jquery.form.js"></script>
 {% endblock %}
 
     	{% block searchbar %}
@@ -25,27 +24,5 @@
         {% ajaxtable events "event/ajax/_list_events_header.html" "event/ajax/_list_events_row.html" %}
         {% control pager %}
     {% endajaxwrapper %}
-    
-<script>
-function suc(data, status){
-alert("hi");
-
-$('#edit_ajax_form').ajaxForm( function(data) {
-	$('#edit_ajax_div').text(data);
-});
-}
-
-$('.infobox').cluetip({
-      cluetipClass: 'jtip', 
-      arrows: true, 
-      dropShadow: false,
-      hoverIntent: false,
-      sticky: true,
-      mouseOutClose: false,
-      closePosition: 'title',
-      closeText: '<img src="/static/images/site/close.png" alt="close" />',
-      success: suc
-    });
-</script>    
 {% endblock %}
 
