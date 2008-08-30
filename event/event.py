@@ -4,6 +4,8 @@ from hkn.event.rsvp.list import list_for_event_common
 from hkn.event.constants import EVENT_TYPE
 from hkn.event.rsvp.constants import RSVP_TYPE
 
+from hkn.gcal import calendars
+
 from ajaxlist import get_list_context
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect, Http404, HttpResponse
@@ -51,4 +53,5 @@ def infobox(request, event_id):
     return render_to_response("event/infobox.html", d, context_instance=RequestContext(request))
 
 def calendar(request):
-    return render_to_response('event/calendar.html', context_instance = RequestContext(request))
+    d = {'ical' : calendars.calendars[0].get_ical_link()}
+    return render_to_response('event/calendar.html', d, context_instance = RequestContext(request))
