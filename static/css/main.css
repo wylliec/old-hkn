@@ -25,7 +25,7 @@ html #container { overflow: auto; display: inline-block; padding: 12px 8px 20px 
 html #container { display: block; }
 html #container li { margin-bottom: 5px; }
 html #container #leftshadow { position: relative; top: -5%; left: -7%; width: 1%; background: url("/images/site/leftshadow.png") repeat-y; height: 110%; }
-html #infobar { float: right; width: 300px; border-left: 1px solid #003366; padding-left: 8px; padding-bottom: 15px; margin-left: 12px; height: 100%; overflow: auto; }
+html #infobar { float: right; width: 300px; border-left: 1px solid #003366; padding-left: 8px; margin-left: 12px; height: 100%; overflow: auto; }
 html div #rightshadow { position: absolute; top: 0%; right: 101%; width: 10px; background: url("/images/site/leftshadow.png") repeat-y; height: 100%; }
 html #footer { clear: both; background: #003366; color: #FFFFFF; font-size: 12px; padding: 5px 10px; text-align: left; }
 html #footer a { color: #ffffff; }
