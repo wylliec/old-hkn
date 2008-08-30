@@ -233,8 +233,11 @@ class Assignment(models.Model):
         """
         max_version = cache.get('tutor_max_version')
         if not max_version:
-            max_version = max(Assignment.objects.filter(semester=nice_types.semester.current_semester()).values_list('version', flat=True).distinct())
-            cache.set('tutor_max_version', max_version, 600)
+	    try:
+            	max_version = max(Assignment.objects.filter(semester=nice_types.semester.current_semester()).values_list('version', flat=True).distinct())
+            	cache.set('tutor_max_version', max_version, 600)
+	    except ValueError:
+	    	max_version = 0
         return max_version
         
     @staticmethod
