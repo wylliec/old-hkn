@@ -1,31 +1,13 @@
-.info {
-	background:#EAF6FF url(/images/site/information.png) no-repeat scroll 10px;
-	border:1px solid #003399;
-	color:#000000;
-}
+.info { background: #EAF6FF url(/images/site/information.png) no-repeat scroll 10px; border: 1px solid #003399; color: #000000; }
 
-.errors {
-	background:#FFEEEE url(/images/site/error.png) no-repeat scroll 10px;
-	border:1px solid #CC6666;
-	color:#990000;
-}
+.errors { background: #FFEEEE url(/images/site/error.png) no-repeat scroll 10px; border: 1px solid #CC6666; color: #990000; }
 
-div#details {
-    padding: 0px 4px 20px 4px;
-}
+div#details { padding: 0px 4px 20px 4px; }
+div#details td { padding-right: 10px; }
+div#person { font-weight: bold; padding-right: 20px; }
+div#picture { float: left; padding-right: 20px; padding-bottom: 20px; }
+div#contact { float: left; }
+div#rsvps { padding-right: 40px; font-size: small; width: 30%; }
+div#membership_info ul.membership_info li { list-style: none; font-weight: normal; }
 
-div#details > div#contact {
-    float: left;
-    font-weight: bold;
-    padding-right: 20px;
-}
-
-div#details > div#rsvps {
-    float: right;
-    padding-right: 40px;
-}
-
-
-    
-
-
+ul.membership_info { margin: 0; }

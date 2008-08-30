@@ -1,18 +1,10 @@
 {% extends "event/base.html" %}
-{% load ajaxtable %}
-
-{% block js %}
-{{ block.super }}
-{% ajaxlist_js %}
-<script language="javascript">
-ajaxlist_get_url = "{% url rsvp-list-for-event-small event.id %}";
-</script>
-{% endblock %}
+{% load nice_types %}
 
 {% block content %}
 <div id="details" class="two_column">
 	<h1>{{event.name}}</h1>
-	<div class="subheader">{{ event.get_event_type }}</div>
+	<div class="subheader flushheader">{{ event.get_event_type }}</div>
 	<div class="spacer">&nbsp;</div>	
 	<table>
 		<tr>
@@ -29,17 +21,22 @@ ajaxlist_get_url = "{% url rsvp-list-for-event-small event.id %}";
 			<td colspan="2">{{event.description|linebreaks}}</td>
 		</tr>
 	</table>
+	
 </div>
 <div id="rsvps" class="two_column right_column">
-	<h1>RSVPs</h1>
-	{% if can_rsvp %}<div class="subheader"><a href="{% url rsvp-new event.id %}">rsvp</a></div>{% endif %}
+	<h1>Who's Coming?</h1>
+	{% if can_rsvp %}<div class="subheader flushheader"><a href="{% url rsvp-new event.id %}">rsvp</a></div>{% endif %}
 	<div class="spacer">&nbsp;</div>
 	<div>
-		<ul class="plain">
-			{% for rsvp in rsvps %}
-				<li><a href="{% url person-view rsvp.person.username %}">{{rsvp.person.name}}</a></li>
-			{% endfor %}
-		</ul>
+		{% list_to_columns rsvps as rsvp_columns 2 %}
+		{% for rsvp_column in rsvp_columns %}
+			<ul class="plain two_column {% if forloop.last %}last_column{% endif %}">
+				{% for rsvp in rsvp_column %}
+					<li><a href="{% url person-view rsvp.person.username %}">{{rsvp.person.name}}</a></li>
+				{% endfor %}
+			</ul>
+		{% endfor %}			
+		<div style="clear: both"></div>
 	</div>
 </div>
 <div style="clear: both"></div>

@@ -17,7 +17,7 @@ ajaxlist_get_url = "{% url rsvp-list-for-person-small person.id %}"
 
 {% block content %}
 <div id="details">
-	<div id="person">
+	<div id="person" class="two_column">
 		<h1>{{ person.first_name }}'s Profile</h1>	
         <div id="picture">
 		    {% if person.profile_picture %}
@@ -56,7 +56,7 @@ ajaxlist_get_url = "{% url rsvp-list-for-person-small person.id %}"
         </div>
 	</div>
 	{% if rsvps %}	
-	<div id="rsvps">
+	<div id="rsvps" class="two_column right_column">
 		<h1>{{person.first_name}}'s RSVPs</h1>
 		<table>
 		<tr><th><strong>Event</strong></th><th><strong>Time</strong></th></tr>
