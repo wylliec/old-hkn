@@ -14,7 +14,9 @@
     <div class="links small">
 		[
 		{% if not event.rsvp_none %}
-			&nbsp;<a href="javascript:rsvpForm({{event.id}});" title="click to RSVP!">rsvp</a>&nbsp;|
+			{% if user.is_authenticated %}
+				&nbsp;<a href="javascript:rsvpForm({{event.id}});" title="click to RSVP!">rsvp</a>&nbsp;|
+			{% endif %}
 	        &nbsp;<a href="javascript:showRSVP({{event.id}});" title="{{event.rsvp_count}} RSVP{{event.rsvp_count|pluralize}} (click to view)">see rsvps</a>&nbsp;|
 	    {% endif %}
 		&nbsp;<a href="javascript:showInfo({{event.id}});" title="more information about this event">info</a>&nbsp;
