@@ -13,7 +13,7 @@ from ajaxlist import get_list_context, filter_objects
 from hkn.event.rsvp.list import list_for_person
 
 from hkn.event.constants import EVENT_TYPE
-from hkn.event.rsvp.constants import RSVP_TYPE
+from hkn.event.rsvp.constants import RSVP_TYPE, TRANSPORT
 
 import datetime
 from string import atoi
@@ -43,9 +43,11 @@ def rsvp_form_instance(event, data = {}):
         form = RSVPForm()
 
     if event.rsvp_transportation_necessary:
-        form.fields['transport'] = forms.IntegerField(label = "Transport (0 for none)")
+        form.fields['transport'] = forms.IntegerField(label = "Transportation")
         form.fields['transport'].required = True
-        form.fields['transport'].widget = forms.TextInput()
+        form.fields['transport'].widget = forms.Select(choices = TRANSPORT.choices())
+        form.fields['transport'].initial = -1
+        form.fields.keyOrder = ['transport', 'comment']
     if event.rsvp_type == RSVP_TYPE.BLOCK:
         form.fields['rsvp_data'] = RSVPDataField(label = "Block RSVPs")
         form.fields['rsvp_data'].required = True
