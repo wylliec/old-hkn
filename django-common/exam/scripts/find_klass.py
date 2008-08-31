@@ -83,8 +83,10 @@ def get_klass_helper(course, instructors, semester):
 		klass = klasses[0]
 		if klass.instructors.count() == 0 or len(instructors_set & set(klass.instructors.all())) != 0:
 			return klass
+		if len(instructors_set) == 0 and klass.instructors.count() == 1:
+			return klass
 		new_klass = Klass(course=course, semester=semester, section_type="LEC", section="", section_note="CREATED")
-		raise InstructorMismatch("Found 1 klass but instructor mismatch!", klass, instructors, new_klass)
+		raise InstructorMismatch("Found 1 klass but instructor mismatch!", klass.instructors.all(), instructors, new_klass)
 	elif len(klasses) == 0:
 		klass = Klass(course=course, semester=semester, section_type="LEC", section="", section_note="CREATED")
 		raise NoKlasses("No matching klasses!", klass, instructors)

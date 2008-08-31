@@ -4,7 +4,7 @@ from course.models import *
 from exam.models import *
 from exam.constants import *
 
-from find_klass import get_klass, MissingCourseException, MissingInstructorException
+from find_klass import *
 
 from django.core.files.base import File
 from os import listdir
@@ -32,12 +32,12 @@ season_map = {
 
 def parse_filename(filename):
 	info = filename.split('.')[0].split('-')
-	try:
-		num = int(info[1])
-		type = EXAM_TYPE_MIDTERM
-	except:
-		num = 1
+	if info[1] == "f":
+		num = "1"
 		type = EXAM_TYPE_FINAL
+	else:
+		num = info[1]
+		type = EXAM_TYPE_MIDTERM
 	
 	return (season_map[info[0]], num, type, len(info) > 2)
 
@@ -61,7 +61,11 @@ def list_files(path):
 	return filter(lambda x: not isdir(join(path, x)), listdir(path))
 
 def parse_instructor_file(path):
-	f = open(path, "r")
+	try:
+		f = open(path, "r")
+	except:
+		return {}
+		
 	d = {}
 	for line in f:
 		try:
@@ -88,32 +92,46 @@ def make_filename(klass, type, number, solution, extension):
 
 def load_exams():
 	"""   
-	from exam.scripts.import_exams import load_exams
-	load_exams()
+	import exam.scripts.import_exams2 as exam_loader
+	exam_loader.load_exams()
 	"""
 	missing_instructor_file = []
 	missing_instructors = set()
 	missing_courses = set()
 	missing_semesters = set()
+	missing_klasses = set()
+	instructor_mismatches = set()
 	failed_imports = []
 	
 	for dept, root in course_map.items():
+		try:
+			os.mkdir(join(root, "completed"))
+		except:
+			pass
+			
 		classes = filter(lambda x: course_pattern.match(x), list_folders(root))
 		for c in classes:
 			try:
 				instructor_filename = join(root, c, filter(is_instructor_file, list_files(join(root, c)))[0])
+				instructor_map = parse_instructor_file(instructor_filename)
 			except:
 				print "NO INSTRUCTOR FILE FOUND"
 				missing_instructor_file.append(dept + " " + c)
-				continue
-				
-			instructor_map = parse_instructor_file(instructor_filename)
+				instructor_map = {}
+		
 			for year in list_folders(join(root, c)):
 				for filename in filter(is_valid_file, list_files(join(root, c, year))):
 					season, number, type, solution = parse_filename(filename)
 					try:
 						instructor = instructor_map[season + " " + year]
-						klass = get_klass(dept, c, instructor, season.lower(), year)
+						instructors = instructor.replace("_", " ").split("/")
+					except:
+						print "semester not found in instructor file or instructor file doesn't exist"
+						instructors = []
+					
+					try:
+						klass = get_klass(dept, c, instructors, season=season.lower(), year=year)
+						klass = klass[0]
 						e = Exam()
 						e.klass = klass
 						e.number = number
@@ -125,18 +143,24 @@ def load_exams():
 						e.topics = ""
 						e.submitter = None
 						f = open(join(root, c, year, filename) , "r")
-						e.file.save(make_filename(klass, type, number, solution, filename.split('.')[-1]), File(f))
+						new_filename = make_filename(klass, type, number, solution, filename.split('.')[-1])
+						e.file.save(new_filename, File(f))
 						e.save()
 						f.close()
-					except KeyError:
-						print "Semester not found in instructor file"
-						missing_semesters.add("%s %s %s %s" % (dept, c, season, year) )
+						shutil.move(join(root, c, year, filename), join(root, "completed", new_filename))
 					except MissingInstructorException:
 						print "Instructor not found: %s" % instructor
 						missing_instructors.add(instructor)
 					except MissingCourseException:
 						print "Course not found: %s %s:" % (dept, c)
 						missing_courses.add("%s %s" % (dept, c))
+					except InstructorMismatch, e:
+						print e
+						instructor_mismatches.add("%s" % (e))
+					except NoKlasses, e:
+						print "No Klasses found for %s %s - %s %s" % (dept, c, season, year)
+						missing_klasses.add("%s %s - %s %s" % (dept, c, season, year))
+						e[1].save()
 					except Exception, e:
 						print "Failed on %s %s %s" % (season, year, instructor )
 						failed_imports.append("%s: %s %s %s %s" % (e, c, season, year, instructor) )
@@ -146,6 +170,10 @@ def load_exams():
 	print "Unexpected errors (%d): " % len(failed_imports)
 	for msg in failed_imports:
 		print msg
+	print ""
+	
+	print "No Klass for the following: "
+	print "\n".join(sorted(missing_klasses))
 	print ""
 	
 	print "Semester not in instructor file: "
@@ -158,6 +186,10 @@ def load_exams():
 	
 	print "Instructors that are missing: " 
 	print "\n".join(sorted(missing_instructors))
+	print ""
+	
+	print "Instructor mismatch: "
+	print "\n".join(sorted(instructor_mismatches))
 	print ""
 	
 	print "Courses that are missing: " + ", ".join(sorted(missing_courses))
