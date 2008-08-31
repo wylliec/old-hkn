@@ -92,7 +92,7 @@ def make_filename(klass, type, number, solution, extension):
 
 def load_exams():
 	"""   
-	import exam.scripts.import_exams2 as exam_loader
+	import exam.scripts.import_exams as exam_loader
 	exam_loader.load_exams()
 	"""
 	missing_instructor_file = []

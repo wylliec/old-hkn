@@ -40,7 +40,7 @@
                     <tr class="exam {% cycle 'even' 'odd' %} {% if not exam.publishable %}unpublished{% endif %}">
                         <td class="semester">{{ exam.klass.pretty_semester }}</td>
                         <td class="instructor"><a href="javascript:void(0)" onclick="setInstructor('{{ exam.klass.instructor_names }}');"> {{ exam.klass.instructor_names|title }}</a></td>
-                        <td class="examfile"><a href="{{ exam.get_file_url }}">{{ exam.get_exam_description }}</a></td>
+                        <td class="examfile"><a href="{{ exam.file.url }}">{{ exam.get_exam_description }}</a></td>
                         <td class="extension">{{ exam.get_exam_format }}</td> 
                     </tr>
                 {% endfor %}

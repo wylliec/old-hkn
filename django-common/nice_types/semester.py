@@ -72,7 +72,7 @@ class Semester(object):
         return self.semester
     
     def verbose_description(self):
-        return "%s %d" % (self.season_name, self.year)
+        return "%s %d" % (self.season_name.capitalize(), self.year)
 
     @property
     def start_date(self):
