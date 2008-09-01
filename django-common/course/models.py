@@ -437,5 +437,4 @@ class Instructor(models.Model):
 
                 
            
-
-import admin
+from course.admin import *

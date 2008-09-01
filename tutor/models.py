@@ -10,7 +10,7 @@ import nice_types.semester
 from nice_types.db import QuerySetManager
 from nice_types.semester import Semester, SemesterField
 
-from course import models as courses
+from course.models import *
 import time
 
 
@@ -282,7 +282,7 @@ class CanTutor(models.Model):
     objects = CanTutorManager()
     
     person = models.ForeignKey(Person)
-    course = models.ForeignKey(courses.Course)
+    course = models.ForeignKey(Course)
     semester = SemesterField()
     current = models.BooleanField()
     
@@ -330,7 +330,7 @@ class Attendance(models.Model):
 class CourseTutored(models.Model):
     """ Models a course tutored to a tutee during a particular attendance """
     attendance = models.ForeignKey(Attendance)
-    course = models.ForeignKey(courses.Course)
+    course = models.ForeignKey(Course)
     topics = models.CharField(max_length = 150)
     """ Description of topics tutored """
 
