@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import setup_settings
 
 from course.models import *
 from exam.models import *
@@ -108,7 +109,10 @@ def main():
 	try:
 		add_exams(sys.argv[1])
 	except:
-		"add_exams: Missing first argument (path to the folder of exams you want to add)" 
+		print "add_exams: Missing first argument (path to the folder of exams you want to add)" 
+
+if __name__ == "__main__":
+	main()
 
 """
 import exam.scripts.add_exams as adder

@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import setup_settings
+
 from course.models import *
 from exam.models import *
 from exam.constants import *
@@ -16,8 +18,11 @@ from settings import MEDIA_ROOT, SERVER_ROOT
 
 VALID_EXTENSIONS = ["html", "pdf", "ps", "txt"]
 
-EE_DIR = join(SERVER_ROOT, "old_exams/ee")
-CS_DIR = join(SERVER_ROOT, "old_exams/cs")
+#EE_DIR = join(SERVER_ROOT, "old_exams/ee")
+#CS_DIR = join(SERVER_ROOT, "old_exams/cs")
+EE_DIR = "/web/student/online/exams_import/ee"
+CS_DIR = "/web/student/online/exams_import/cs"
+
 course_pattern = re.compile('^\d+[A-Z]*$')
 course_map = {
 	"COMPSCI" : CS_DIR,
@@ -197,3 +202,6 @@ def load_exams():
 
 def main():
 	load_exams()
+
+if __name__ == "__main__":
+	main()
