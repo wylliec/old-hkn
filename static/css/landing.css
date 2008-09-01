@@ -14,3 +14,4 @@ html .landing_events th, html .landing_events tr { padding: 0px; margin: 0px; }
 html #coursesurvey { width: 240px; }
 html ul.rsvp_ul_form { margin: 0; padding: 0; }
 html ul.rsvp_ul_form li { list-style-type: none; }
+html ul.rsvp_ul_form textarea { width: 95%; }
