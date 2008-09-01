@@ -4,7 +4,9 @@ import hkn_settings
 from hkn.info.models import Person, Position, Officership
 
 def import_officerships(officership_file):
-    semester = officership_file.split("/")[-1].replace("officers-", "").replace(".txt", "")
+    import os
+    import os.path
+    semester = os.path.basename(officership_file).replace("officers-", "").replace(".txt", "")
     for record in file(officership_file):
         record = record.strip()
         if len(record) == 0:
