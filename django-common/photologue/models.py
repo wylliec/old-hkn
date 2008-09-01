@@ -191,8 +191,8 @@ class GalleryUpload(models.Model):
         verbose_name = _('gallery upload')
         verbose_name_plural = _('gallery uploads')
 
-    def save(self):
-        super(GalleryUpload, self).save()
+    def save(self, *args, **kwargs):
+        super(GalleryUpload, self).save(*args, **kwargs)
         self.process_zipfile()
         super(GalleryUpload, self).delete()
 
@@ -433,9 +433,9 @@ class ImageModel(models.Model):
         except:
             pass
 
-    def save(self, update=False):
+    def save(self, update=False, *args, **kwargs):
         if update:
-            models.Model.save(self)
+            models.Model.save(self, *args, **kwargs)
             return
         if self.date_taken is None:
             try:
@@ -452,7 +452,7 @@ class ImageModel(models.Model):
             self.date_taken = datetime.now()
         if self._get_pk_val():
             self.clear_cache()
-        super(ImageModel, self).save()
+        super(ImageModel, self).save(*args, **kwargs)
         self.pre_cache()
 
     def delete(self):
@@ -482,10 +482,10 @@ class Photo(ImageModel):
     def __str__(self):
         return self.__unicode__()
 
-    def save(self, update=False):
+    def save(self, update=False, *args, **kwargs):
         if self.title_slug is None or len(self.title_slug) == 0:
             self.title_slug = slugify(self.title)
-        super(Photo, self).save(update)
+        super(Photo, self).save(update, *args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('pl-photo', args=[self.title_slug])
@@ -543,12 +543,12 @@ class BaseEffect(models.Model):
     def __str__(self):
         return self.__unicode__()
 
-    def save(self):
+    def save(self, *args, **kwargs):
         try:
             os.remove(self.sample_filename())
         except:
             pass
-        models.Model.save(self)
+        models.Model.save(self, *args, **kwargs)
         self.create_sample()
         for size in self.photo_sizes.all():
             size.clear_cache()
@@ -652,10 +652,10 @@ class PhotoSize(models.Model):
                     obj.create_size(self)
         PhotoSizeCache().reset()
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if self.width + self.height <= 0:
             raise ValueError(_('A PhotoSize must have a positive height or width.'))
-        super(PhotoSize, self).save()
+        super(PhotoSize, self).save(*args, **kwargs)
         PhotoSizeCache().reset()
         self.clear_cache()
 
