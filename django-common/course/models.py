@@ -243,14 +243,21 @@ class Klass(models.Model):
     
     newsgroup = models.CharField(max_length = 100)
     """ The klass newsgroup """
+
+    cached_instructor_names = models.CharField(max_length = 200, null=True)
+    """ cached instructor names """
     
     def pretty_semester(self):
         return self.semester.verbose_description()
     
-    def instructor_names(self):
-        last_names = [inst.last for inst in self.instructors.all()]
-        return ", ".join(last_names)
-    
+    def _instructor_names(self):
+        if not self.cached_instructor_names:
+            self.cached_instructor_names = "; ".join([inst.last for inst in self.instructors.all()])
+            # maybe we shouldn't auto save...
+            self.save()
+        return self.cached_instructor_names
+    instructor_names = property(_instructor_names)
+
     def __str__(self):
         return "%s %s" % (str(self.course.short_name()), self.semester)
 
