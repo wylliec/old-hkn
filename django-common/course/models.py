@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.query import QuerySet
+from django.conf import settings
 from nice_types.db import QuerySetManager, CachingManager
 from nice_types.semester import SemesterField, Semester
 from constants import EXAMS_PREFERENCE, PREFIX, SUFFIX, DEPT_ABBRS, DEPT_ABBRS_INV, DEPT_ABBRS_SET
@@ -145,9 +146,9 @@ class Course(models.Model):
                 m = course_pattern.match(query)
                 if m:
                     dept = m.groupdict().get("dept").upper().replace(".", "").replace("&", "and")
-                    coursenumber = m.groupdict().get("course").lstrip("0")
+                    coursenumber = m.groupdict().get("course")
                     if coursenumber:
-                        coursenumber = coursenumber.upper()
+                        coursenumber = coursenumber.upper().lstrip("0")
                     if not (dept in DEPT_ABBRS_SET) and dept[:-1] in DEPT_ABBRS_SET:
                         return (Department.get_proper_abbr(dept[:-1]), "%s%s" % (dept[-1], coursenumber))
                     return (Department.get_proper_abbr(dept), coursenumber)
@@ -177,8 +178,12 @@ class Course(models.Model):
             key = "published_exam_count"
             if not publishable:
                 key = "unpublished_exam_count"
+            if getattr(settings, "DATABASE_ENGINE", '') == "postgresql_psycopg2":
+        	    publishable_value = "True" if publishable else "False"
+            else:
+        	    publishable_value = "0" if publishable else "0"
             return self.extra( select = {
-                                         key : """ SELECT COUNT(*) FROM exam_exam WHERE (exam_exam.course_id = course_course.id and exam_exam.publishable = %s)""" % ("1" if publishable else "0")
+                                         key : """ SELECT COUNT(*) FROM exam_exam WHERE (exam_exam.course_id = course_course.id and exam_exam.publishable = %s)""" % publishable_value
                                          })
         def get_top_courses_by_published_exams(self,n = 10):
             return self.annotate_exam_count(True).order_by("-published_exam_count")[:n]
