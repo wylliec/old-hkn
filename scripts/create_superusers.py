@@ -13,12 +13,14 @@ def main():
     me = Person.objects.get(username="hzarka")
     me.member_type = MEMBER_TYPE.OFFICER
     me.set_password("monkey")
+    me.is_active = True
     me.is_superuser = True
     me.is_staff = True
     me.save()
 
     me = Person.objects.get(username="vishay")
     me.set_password("monkey6969")
+    me.is_active = True
     me.is_superuser = True
     me.is_staff = True
     me.save()
