@@ -125,7 +125,7 @@ class Gallery(models.Model):
     title = models.CharField(_('title'), max_length=100)
     title_slug = models.SlugField(_('title slug'), unique=True,
                                   help_text=_('A "slug" is a unique URL-friendly title for an object.'))
-    description = models.TextField(_('description'), blank=True)
+    description = models.TextField(_('description'), blank=True, max_length=401)
     is_public = models.BooleanField(_('is public'), default=True,
                                     help_text=_('Public galleries will be displayed in the default views.'))
     photos = models.ManyToManyField('Photo', related_name='galleries', verbose_name=_('photos'),
@@ -178,11 +178,11 @@ class Gallery(models.Model):
 class GalleryUpload(models.Model):
     zip_file = models.FileField(_('images file (.zip)'), upload_to=PHOTOLOGUE_DIR+"/temp",
                                 help_text=_('Select a .zip file of images to upload into a new Gallery.'),
-                                max_length=400)
+                                max_length=402)
     title = models.CharField(_('title'), max_length=75, help_text=_('All photos in the gallery will be given a title made up of the gallery title + a sequential number.'))
     semester = SemesterField()
     caption = models.TextField(_('caption'), blank=True, help_text=_('Caption will be added to all photos.'))
-    description = models.TextField(_('description'), blank=True, help_text=_('A description of this Gallery.'))
+    description = models.TextField(_('description'), blank=True, help_text=_('A description of this Gallery.'), max_length=403)
     is_public = models.BooleanField(_('is public'), default=True, help_text=_('Uncheck this to make the uploaded gallery and included photographs private.'))
     tags = models.CharField(max_length=255, blank=True, help_text=tagfield_help_text, verbose_name=_('tags'))
 
@@ -240,7 +240,7 @@ class GalleryUpload(models.Model):
             zip.close()
 
 class ImageModel(models.Model):
-    image = models.ImageField(_('image'), upload_to=get_storage_path)
+    image = models.ImageField(_('image'), upload_to=get_storage_path, max_length=404)
     date_taken = models.DateTimeField(_('date taken'), null=True, blank=True, editable=False)
     view_count = models.PositiveIntegerField(default=0, editable=False)
     crop_from = models.CharField(_('crop from'), blank=True, max_length=10, default='center', choices=CROP_ANCHOR_CHOICES)
