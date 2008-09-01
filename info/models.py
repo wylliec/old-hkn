@@ -100,14 +100,14 @@ class Position(Group):
             return self.name
         return "%s Officer" % self.name
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if not self.id:
             position_type = ContentType.objects.get_for_model(Position)
             perm, created = Permission.objects.get_or_create(content_type = position_type, name = self._get_permission_name(), codename = self._get_permission_codename())
             if created:
                 perm.save()
         
-        super(Position, self).save()
+        super(Position, self).save(*args, **kwargs)
         if perm:
             self.permissions.add(perm)
 
@@ -344,11 +344,11 @@ class Person(User):
         else:
             self.member_type = MEMBER_TYPE.CANDIDATE
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if type(self.privacy) != type({}):
             self.privacy = {}
         is_update = self.id is not None
-        super(Person, self).save()
+        super(Person, self).save(*args, **kwargs)
         self.reconcile_groups()
         if not is_update:
             self.groups.add(Group.objects.get(name="everyone"))
@@ -524,11 +524,11 @@ class Officership(models.Model):
     def __unicode__(self):
         return "%s %s %s" % (self.person.name, self.semester, self.position.short_name)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         super(Officership, self).save()
         self.person.reconcile_status()
         self.person.groups.add(self.position)
-        self.person.save()
+        self.person.save(*args, **kwargs)
 
     class Meta:
         unique_together = ("person", "position", "semester")

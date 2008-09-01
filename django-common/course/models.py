@@ -189,7 +189,7 @@ class Course(models.Model):
             return self.annotate_exam_count(True).order_by("-published_exam_count")[:n]
 
     INTEGER_PATTERN = re.compile("(?P<integer>\d+)")
-    def save(self):
+    def save(self, *args, **kwargs):
         if not self.department_abbr:
             self.department_abbr = self.department.abbr
         self.coursenumber = self.coursenumber.upper()
@@ -199,7 +199,7 @@ class Course(models.Model):
             self.integer_number = 0
             if m:
                 self.integer_number = int(m.group("integer"))                
-        super(Course, self).save()
+        super(Course, self).save(*args, **kwargs)
     
     class Meta:
         unique_together = (("department", "coursenumber"),)

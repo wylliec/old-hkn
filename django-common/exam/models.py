@@ -168,7 +168,7 @@ class Exam(db.models.Model):
             days_delta = weights[self.exam_type]
         return semester_start_date + datetime.timedelta(days = days_delta)
     
-    def save(self):
+    def save(self, *args, **kwargs):
         if self.klass_id:
             self.exam_date = self.auto_exam_date()
         if self.course_id == None:
@@ -177,7 +177,7 @@ class Exam(db.models.Model):
             self.department = self.course.department
         if not self.submitted:
             self.submitted = datetime.datetime.now()
-        super(Exam, self).save()
+        super(Exam, self).save(*args, **kwargs)
         
 from admin import *
 from requests import *

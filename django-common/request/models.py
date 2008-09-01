@@ -88,8 +88,8 @@ class Request(models.Model):
     def __str__(self):
         return self.description
 
-    def save(self):
+    def save(self, *args, **kwargs):
         self.set_metainfo()
-        super(Request, self).save()
+        super(Request, self).save(*args, **kwargs)
 
 setattr(Permission, 'full_codename', lambda perm: "%s.%s" % (perm.content_type.app_label, perm.codename))
