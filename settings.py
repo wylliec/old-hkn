@@ -27,16 +27,6 @@ DATABASE_NAME = SERVER_ROOT + "hkn.db"            # Or path to database file if 
 CACHE_BACKEND = 'locmem:///'
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 
-
-# hknsettings settings will override the above
-from hknsettings import *
-
-# make sure SERVER_ROOT ends with hkn/
-if not SERVER_ROOT.endswith("hkn/"):
-    raise Exception, "Your SERVER_ROOT is configured incorrectly in /hkn/settings.py. Make sure it ends with \"hkn/\" (including the final slash)"
-
-DJANGO_COMMON = SERVER_ROOT + "django-common/"
-
 EXAMS_USER_MODULE = 'django.contrib.auth.models.User'
 EXAM_LOGIN_REQUIRED = False
 LOGIN_URL = "/login/"
@@ -50,16 +40,31 @@ FORCE_LOWERCASE_TAGS = True
 # don't change this
 IMAGES_PATH = os.path.expanduser("~/hkn-website-images/")
 
-ROOT_URL = ""
+# URL that handles the media served from MEDIA_ROOT.
+# Example: "http://media.lawrence.com"
+MEDIA_URL = '/files/'
+STATIC_PREFIX = '/static/'
+# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
+# trailing slash.
+# Examples: "http://foo.com/media/", "/media/".
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # django crap
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+# Absolute path to the directory that holds media.
+# Example: "/home/media/media.lawrence.com/"
+MEDIA_ROOT = SERVER_ROOT + "files/"
+
+
+DJANGO_COMMON = SERVER_ROOT + "django-common/"
+
 
 ADMINS = (
      ('HKN Computing Services', 'compserv@hkn.eecs.berkeley.edu'),
 )
+
 DEFAULT_FROM_EMAIL = "hkn@hkn.eecs.berkeley.edu"
 EMAIL_HOST = "hkn.eecs.berkeley.edu"
 EMAIL_PORT= 465
@@ -73,15 +78,6 @@ LOGGING_SHOW_METRICS = True
 
 MANAGERS = ADMINS
 
-#DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-#DATABASE_NAME = 'hkn_website'             # Or path to database file if using sqlite3.
-#DATABASE_USER = 'root'             # Not used with sqlite3.
-#DATABASE_PASSWORD = 'monkey13'         # Not used with sqlite3.
-#DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-#DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
-
-
-
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
 # although not all variations may be possible on all operating systems.
@@ -94,6 +90,7 @@ TIME_ZONE = 'America/Los_Angeles'
 # http://blogs.law.harvard.edu/tech/stories/storyReader$15
 LANGUAGE_CODE = 'en-us'
 
+# this site's ID
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -101,21 +98,6 @@ SITE_ID = 1
 USE_I18N = True
 
 LOGIN_REDIRECT_URL = "/"
-
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = SERVER_ROOT + "files/"
-
-# URL that handles the media served from MEDIA_ROOT.
-# Example: "http://media.lawrence.com"
-MEDIA_URL = '/files/'
-
-STATIC_PREFIX = '/static/'
-
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'bb39p31)!7=far+)+wxz@mg*5v#g*!35ivju#^5t3l!y*2(76*'
@@ -140,7 +122,7 @@ MIDDLEWARE_CLASSES = (
     'djangologging.middleware.LoggingMiddleware',
 )
 
-ROOT_URLCONF = 'hkn.urls'
+ROOT_URLCONF = 'hkn.main.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -187,4 +169,11 @@ INSTALLED_APPS = (
     'registration',
     'nice_types',
 )
+
+# hknsettings settings will override the above
+from hknsettings import *
+
+# make sure SERVER_ROOT ends with hkn/
+if not SERVER_ROOT.endswith("hkn/"):
+    raise Exception, "Your SERVER_ROOT is configured incorrectly in /hkn/settings.py. Make sure it ends with \"hkn/\" (including the final slash)"
 
