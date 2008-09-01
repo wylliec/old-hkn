@@ -1,3 +1,3 @@
 html .infodiv { width: 400px; }
-html .infodiv img { float: left !important; padding-right: 20px !important; clear: none !important; }
+html .infodiv .imgdiv { float: left !important; padding-right: 20px !important; clear: none !important; }
 html .infodiv .hours { clear: none !important; vertical-align: middle !important; width: 275px !important; float: inherit !important; }
