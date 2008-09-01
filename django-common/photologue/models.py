@@ -177,7 +177,8 @@ class Gallery(models.Model):
 
 class GalleryUpload(models.Model):
     zip_file = models.FileField(_('images file (.zip)'), upload_to=PHOTOLOGUE_DIR+"/temp",
-                                help_text=_('Select a .zip file of images to upload into a new Gallery.'))
+                                help_text=_('Select a .zip file of images to upload into a new Gallery.'),
+                                max_length=400)
     title = models.CharField(_('title'), max_length=75, help_text=_('All photos in the gallery will be given a title made up of the gallery title + a sequential number.'))
     semester = SemesterField()
     caption = models.TextField(_('caption'), blank=True, help_text=_('Caption will be added to all photos.'))
