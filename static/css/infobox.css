@@ -1,4 +1,4 @@
 .infodiv { width: 400px; }
-.infodiv img { float: left; padding-right: 20px; clear: none; }
-.infodiv .tutoring_hours { float: right; clear: none; vertical-align: middle; }
+.infodiv .img { float: left; padding-right: 20px; }
+.infodiv .tutoring_hours { float: left; vertical-align: middle; }
 .infodiv .clear { clear: both; }
