@@ -1,10 +1,9 @@
-from hkn.settings import ROOT_URL, STATIC_PREFIX, MEDIA_URL
+from hkn.settings import STATIC_PREFIX, MEDIA_URL
 from hkn.main.property import PROPERTIES
 
 def hkn_vars(request):
     layout = request.session.get("layout", "-green")
     return {
-        "ROOT_URL" : "/" + ROOT_URL,
         "STATIC_PREFIX" : STATIC_PREFIX,
         "MEDIA_URL" : MEDIA_URL,
     	"LAYOUT"  : layout,
