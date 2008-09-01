@@ -1,39 +1,43 @@
-        <h1>{{ tutoring_title }}</h1>
-        <table class="landing tutoring small">
-	        <tr>
-		        <th></th>
-			<th>290 Cory</th>
-			<th>345 Soda</th>
-	        </tr>
-	        
-		{% for time in schedule %}		
-			<tr>
-				<td class="time">
-					{{ time.name }}
-				</td>			
-				{% for day in time %}
-					<td class="pcell">
-						{% for person in day.Cory.people %}
-							<div title="{{ person.0.name }}" rel="#tutor-{{person.0.id}}" class="infobox person {{ person.1 }}">
-								{{ person.0.abbr_name }}
-							</div>
-						{% endfor %}
-					</td>
-					<td class="pcell">
-						{% for person in day.Soda.people %}
-							<div title="{{ person.0.name }}" rel="#tutor-{{person.0.id}}" class="infobox person {{ person.1 }}">
-								{{ person.0.abbr_name }}
-							</div>
-						{% endfor %}
-					</td>					
-				{% endfor %}
-			</tr>
-		{% endfor %}
-		</table>
-<br />
-        <div>
-	        {% include "tutor/_schedule_classes.html" %} 
-        </div>
-        <div style="display: none">
-        	{{ infoboxes|safe }}
-        </div>
+<h1>{{ tutoring_title }}</h1>
+<table class="landing tutoring small">
+    <tr>
+        <th>
+        </th>
+        <th>
+            290 Cory
+        </th>
+        <th>
+            345 Soda
+        </th>
+    </tr>
+    {% for time in schedule %} 
+    <tr>
+        <td class="time">
+            {{ time.name }}
+        </td>
+        {% for day in time %}
+        <td class="pcell">
+            {% for person in day.Cory.people %}
+            <div title="{{ person.0.name }}" rel="#tutor-{{person.0.id}}" class="infobox person {{ person.1 }}">
+                {{ person.0.abbr_name }}
+            </div>
+            {% endfor %}
+        </td>
+        <td class="pcell">
+            {% for person in day.Soda.people %}
+            <div title="{{ person.0.name }}" rel="#tutor-{{person.0.id}}" class="infobox person {{ person.1 }}">
+                {{ person.0.abbr_name }}
+            </div>
+            {% endfor %}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+<br/>
+<div>
+    {% include "tutor/_schedule_classes.html" %} 
+</div>
+<div style="display: none">
+    {{ infoboxes|safe }}
+</div>
