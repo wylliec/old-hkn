@@ -7,8 +7,10 @@ from hkn.info.models import *
 from hkn.info.constants import MEMBER_TYPE
 
 def handleFile(initiates_file):
+    import os
+    import os.path
     f = file(initiates_file, "r")
-    initiates_file = initiates_file.replace("data/initiates/initiates_", "").replace(".txt", "")
+    initiates_file = os.path.basename(initiates_file).replace("initiates_", "").replace(".txt", "")
     semester = initiates_file[:-2]
     yr = initiates_file[-2:]
     if semester == "fall":

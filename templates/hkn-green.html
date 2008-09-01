@@ -39,6 +39,7 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% endblock %}
 
 <div id="content">
+ <div id="top_bar">
 {% block userbar %}
 <div id="userbar">
     {% if user.is_authenticated %}
@@ -51,6 +52,7 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 <div id="searchbar_wrapper">
 {% block searchbar %}
 {% endblock %}
+</div>
 <div style="clear: both"></div>
 </div>
 
