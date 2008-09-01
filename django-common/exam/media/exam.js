@@ -11,8 +11,8 @@ function toggleExamAdvanced(toggle) {
 }
 
 register_exam_listeners = function() { 
-	$('#id_course_query').autocomplete('/course/course_autocomplete', {extraParams : {"instructor" : $('#id_instructor_query').attr("value") } });
-	$('#id_instructor_query').autocomplete('/course/instructor_autocomplete', { extraParams : {course_query : function () { return $('#id_course_query').attr("value") } }  });	
+	$('#id_course_query').autocomplete('/course/course_autocomplete/', {extraParams : {"instructor" : $('#id_instructor_query').attr("value") } });
+	$('#id_instructor_query').autocomplete('/course/instructor_autocomplete/', { extraParams : {course_query : function () { return $('#id_course_query').attr("value") } }  });	
 
 	$('#id_filter_link').bind("click", function (e) {
 	    send_ajaxinfo('', '#');
