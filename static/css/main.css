@@ -1,4 +1,4 @@
-html { height: 100%]; }
+html { height: 100%; }
 html body { height: 100%; font-size: 14px; margin: 0; padding: 0; background: #EAEFFF; }
 html #logo { margin: auto; background: #FFFFFF url("/static/images/site/watermark.png"); }
 html #navigation { font-family: "Trebuchet MS",Arial,tahoma,sans-serif; width: 100%; font-size: 15px; height: 54px; background: #003366; }
@@ -16,12 +16,13 @@ html .submenu li { display: inline; padding: 0; margin: 0; height: 24px; text-al
 html .submenu li a { text-align: center; height: 18px; text-decoration: none; color: #ffffff; padding: 3px 7px 3px 10px; display: inline; }
 html .submenu li a:visited { text-align: center; height: 18px; text-decoration: none; color: #ffffff; padding: 3px 7px 3px 10px; display: inline; }
 html .submenu li a:hover { background: #336699; text-decoration: none; }
-html #top_bar { border: 2px #003366 solid; padding-bottom: 3px; }
+html #top_bar { border-left: 1px #003366 solid; border-right: 1px #003366 solid; border-bottom: 1px #003366 solid; padding-bottom: 3px; background: #ADC3DB; }
+html #top_bar input { background: #DCE2ED; border: 1px #003366 solid; }
 html #header { text-align: center; }
-html #content { margin: 10px; width: auto; }
+html #content { margin: 0 10px 10px 10px; width: auto; }
 html #userbar { float: left; padding: 5px 8px 5px 8px; }
 html .searchcontrol { text-align: left; float: right; padding-left: 15px; }
-html #searchbar_wrapper { padding-bottom: 7px; }
+html #searchbar_wrapper { padding: 5px 0px; }
 html #container { clear: both; padding: 12px 8px 20px 8px; width: auto; }
 html #container li { margin-bottom: 5px; }
 html #container #leftshadow { position: relative; top: -5%; left: -7%; width: 1%; background: url("/images/site/leftshadow.png") repeat-y; height: 110%; }
