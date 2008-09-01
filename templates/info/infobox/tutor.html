@@ -1,5 +1,5 @@
 <div width=400px id="tutor-{{person.id}}" class="infodiv">
-  <div style="float: left; width:75px"><img src="{{ person.profile_picture.get_tutorpic_url }}"></img></div>
+  <img src="{{ person.profile_picture.get_tutorpic_url }}"></img>
 	<div style="float: right; vertical-align: middle;  width:275px">
 		<label>Tutoring Office Hours:</label><br/>
 	    {% for assign in assignments %}
