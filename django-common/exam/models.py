@@ -110,7 +110,9 @@ class Exam(db.models.Model):
             return self.filter(course__in = courses)
         
         def query_instructor(self, query):
-            instrs = Instructor.objects.ft_query(query)
+	    instrs = Instructor.objects.all()
+	    for instr in query.split(";"):
+            	instrs = instrs & Instructor.objects.ft_query(instr)
             return self.filter(klass__instructors__in = instrs)            
             (last, first, dd) = Instructor.objects.parse_query(query)
 
