@@ -7,6 +7,7 @@ function register_request() {
         action = states_actions[state];
         $('.request_' + state).each( function() {
             $(this).click( function () {
+            	action = states_actions[this.id.split("_")[2]];
                 checkbox_changed(action, this.id.split("_")[1]);
             });
         });

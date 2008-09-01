@@ -42,10 +42,11 @@ def list_requests(request, category):
     return render_ajaxlist_response(request.is_ajax(), "request/list.html", d, context_instance=RequestContext(request))
 
 def list_requests_confirm_ajax(request):
-    r = get_object_or_404(Request, pk=request.POST.get("value", ""))
+    r = get_object_or_404(Request, pk=request.REQUEST.get("value", ""))
     
-    if request.POST:
-        action = request.POST.get("action", "unknown")
+    if request.REQUEST:
+        action = request.REQUEST.get("action", "unknown")
+        print "Action is: %s" % str(action)
         if action == "add":
             confirmed = True
             active = False
@@ -58,9 +59,9 @@ def list_requests_confirm_ajax(request):
         r.set_confirm(confirmed, comment, confirmed_by=request.user, save_self=False)
         r.active = active
         r.save()
+        
         r = Request.objects.get(pk = r.id)
         
-    
     r.set_metainfo()
     if r.active == True:
         state = "unknown"

@@ -66,7 +66,7 @@ class RegistrationManager(models.Manager):
         return False
     
     def create_inactive_user(self, first_name, last_name, username, password, email, hkn_alumnus,
-                             send_email=False, profile_callback=None):
+                             send_email=True, profile_callback=None):
         """
         Create a new, inactive ``User``, generates a
         ``RegistrationProfile`` and email its activation key to the
@@ -198,12 +198,12 @@ class RegistrationProfile(models.Model):
     objects = RegistrationManager()
     
     def get_is_alumnus(self):
-        return self.user.person.member_type > MEMBER_TYPE.CANDIDATE
+        return self.user.person.member_type >= MEMBER_TYPE.MEMBER
     
     def set_is_alumnus(self, value):
-        person = self.user.person        
+        person = self.user.person
         if value:
-            person.member_type = MEMBER_TYPE.CANDIDATE
+            person.member_type = MEMBER_TYPE.MEMBER
         else:
             person.member_type = MEMBER_TYPE.REGISTERED
         person.save()

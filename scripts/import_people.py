@@ -23,7 +23,7 @@ def import_people(filename, member_status):
 lion_file_content = ContentFile(file('lion.gif', 'rb').read())
 
 def make_username(first, last):
-    uname = (str(first[0] + last)).lower()
+    uname = "imported__%s" % (str(first[0] + last)).lower()
     count = 0
     while True:
         try:

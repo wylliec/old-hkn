@@ -58,6 +58,7 @@ class RegistrationForm(forms.Form):
         """
         if not alnum_re.search(self.cleaned_data['username']):
             raise forms.ValidationError(_(u'Usernames can only contain letters, numbers and underscores'))
+        
         try:
             user = User.objects.get(username__iexact=self.cleaned_data['username'])
         except User.DoesNotExist:
@@ -71,8 +72,8 @@ class RegistrationForm(forms.Form):
         
         """
         email_domain = self.cleaned_data['email'].split('@')[1]
-        if email_domain not in ('berkeley.edu',):
-            raise forms.ValidationError(_(u'Please provide an @berkeley.edu email address.'))        
+        #if email_domain not in ('berkeley.edu',):
+        #    raise forms.ValidationError(_(u'Please provide an @berkeley.edu email address.'))        
         #if User.objects.filter(email__iexact=self.cleaned_data['email']):
             #raise forms.ValidationError(_(u'This email address is already in use. Please supply a different email address.'))
         return self.cleaned_data['email']
