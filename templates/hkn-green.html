@@ -15,8 +15,10 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
     {% block js %}
     {% include "js_common.inc" %}
 	<!--[if lte IE 6]>
-<script type="text/javascript" src="{{STATIC_PREFIX}}js/supersleight-min.js"></script>
-<![endif]-->
+  
+    <link rel="stylesheet" type="text/css" href="{{STATIC_PREFIX}}css/infobox-ie6.css">
+    <script type="text/javascript" src="{{STATIC_PREFIX}}js/supersleight-min.js"></script>
+  <![endif]-->
     <script type="text/javascript" src="{{STATIC_PREFIX}}js/navigation.js"></script>
     {% endblock %}
 {% endblock %}
