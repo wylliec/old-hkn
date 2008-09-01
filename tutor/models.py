@@ -274,8 +274,6 @@ class Assignment(models.Model):
         return
     
 class CanTutorManager(QuerySetManager):
-    def for_semester(self, *args, **kwargs):
-        return self.get_query_set().for_semester(*args, **kwargs)    
     def for_current_semester(self, *args, **kwargs):
         return self.get_query_set().for_current_semester(*args, **kwargs)
 
@@ -301,6 +299,20 @@ class CanTutor(models.Model):
                    self.current) or \
                cmp(self.person_id,
                    other.person_id)
+
+class TutorExceptionManager(QuerySetManager):
+    def for_current_semester(self, *args, **kwargs):
+        return self.get_query_set().for_current_semester(*args, **kwargs)
+
+class TutorException(models.Model):
+    objects = TutorExceptionManager()
+    person = models.ForeignKey(Person)
+    num_hours = models.IntegerField()
+    semester = SemesterField()
+
+    class QuerySet(QuerySet):
+        def for_current_semester(self):
+            return self.filter(semester=nice_types.semester.current_semester())
 
 
 #Models pertaining to tutoring attendance
