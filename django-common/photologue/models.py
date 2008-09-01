@@ -122,9 +122,10 @@ IMAGE_FILTERS_HELP_TEXT = _('Chain multiple filters using the following pattern 
 class Gallery(models.Model):
     date_added = models.DateTimeField(_('date published'), default=datetime.now)
     semester = SemesterField()
-    title = models.CharField(_('title'), max_length=100)
+    title = models.CharField(_('title'), max_length=401)
     title_slug = models.SlugField(_('title slug'), unique=True,
-                                  help_text=_('A "slug" is a unique URL-friendly title for an object.'))
+                                  help_text=_('A "slug" is a unique URL-friendly title for an object.'),
+                                  max_length=401)
     description = models.TextField(_('description'), blank=True, max_length=401)
     is_public = models.BooleanField(_('is public'), default=True,
                                     help_text=_('Public galleries will be displayed in the default views.'))
@@ -179,9 +180,9 @@ class GalleryUpload(models.Model):
     zip_file = models.FileField(_('images file (.zip)'), upload_to=PHOTOLOGUE_DIR+"/temp",
                                 help_text=_('Select a .zip file of images to upload into a new Gallery.'),
                                 max_length=402)
-    title = models.CharField(_('title'), max_length=75, help_text=_('All photos in the gallery will be given a title made up of the gallery title + a sequential number.'))
+    title = models.CharField(_('title'), max_length=401, help_text=_('All photos in the gallery will be given a title made up of the gallery title + a sequential number.'))
     semester = SemesterField()
-    caption = models.TextField(_('caption'), blank=True, help_text=_('Caption will be added to all photos.'))
+    caption = models.TextField(_('caption'), blank=True, help_text=_('Caption will be added to all photos.'), max_length=405)
     description = models.TextField(_('description'), blank=True, help_text=_('A description of this Gallery.'), max_length=403)
     is_public = models.BooleanField(_('is public'), default=True, help_text=_('Uncheck this to make the uploaded gallery and included photographs private.'))
     tags = models.CharField(max_length=255, blank=True, help_text=tagfield_help_text, verbose_name=_('tags'))
@@ -242,7 +243,7 @@ class GalleryUpload(models.Model):
 class ImageModel(models.Model):
     image = models.ImageField(_('image'), upload_to=get_storage_path, max_length=404)
     date_taken = models.DateTimeField(_('date taken'), null=True, blank=True, editable=False)
-    view_count = models.PositiveIntegerField(default=0, editable=False)
+    view_count = models.IntegerField(default=0, editable=False)
     crop_from = models.CharField(_('crop from'), blank=True, max_length=10, default='center', choices=CROP_ANCHOR_CHOICES)
     effect = models.ForeignKey('PhotoEffect', null=True, blank=True, related_name="%(class)s_related", verbose_name=_('effect'))
 
@@ -460,10 +461,11 @@ class ImageModel(models.Model):
 
 
 class Photo(ImageModel):
-    title = models.CharField(_('title'), max_length=100, unique=True)
+    title = models.CharField(_('title'), max_length=406, unique=True)
     title_slug = models.SlugField(_('slug'), unique=True,
-                                  help_text=('A "slug" is a unique URL-friendly title for an object.'))
-    caption = models.TextField(_('caption'), blank=True)
+                                  help_text=('A "slug" is a unique URL-friendly title for an object.'),
+                                  max_length=407)
+    caption = models.TextField(_('caption'), blank=True, max_length=408)
     date_added = models.DateTimeField(_('date added'), default=datetime.now, editable=False)
     is_public = models.BooleanField(_('is public'), default=True, help_text=_('Public photographs will be displayed in the default views.'))
     tags = TagField(help_text=tagfield_help_text, verbose_name=_('tags'))
@@ -621,9 +623,9 @@ class Watermark(BaseEffect):
 
 class PhotoSize(models.Model):
     name = models.CharField(_('name'), max_length=20, unique=True, help_text=_('Photo size name should contain only letters, numbers and underscores. Examples: "thumbnail", "display", "small", "main_page_widget".'))
-    width = models.PositiveIntegerField(_('width'), default=0, help_text=_('If width is set to "0" the image will be scaled to the supplied height.'))
-    height = models.PositiveIntegerField(_('height'), default=0, help_text=_('If height is set to "0" the image will be scaled to the supplied width'))
-    quality = models.PositiveIntegerField(_('quality'), choices=JPEG_QUALITY_CHOICES, default=70, help_text=_('JPEG image quality.'))
+    width = models.IntegerField(_('width'), default=0, help_text=_('If width is set to "0" the image will be scaled to the supplied height.'))
+    height = models.IntegerField(_('height'), default=0, help_text=_('If height is set to "0" the image will be scaled to the supplied width'))
+    quality = models.IntegerField(_('quality'), choices=JPEG_QUALITY_CHOICES, default=70, help_text=_('JPEG image quality.'))
     upscale = models.BooleanField(_('upscale images?'), default=False, help_text=_('If selected the image will be scaled up if necessary to fit the supplied dimensions. Cropped sizes will be upscaled regardless of this setting.'))
     crop = models.BooleanField(_('crop to fit?'), default=False, help_text=_('If selected the image will be scaled and cropped to fit the supplied dimensions.'))
     pre_cache = models.BooleanField(_('pre-cache?'), default=False, help_text=_('If selected this photo size will be pre-cached as photos are added.'))
