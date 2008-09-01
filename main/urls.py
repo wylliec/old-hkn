@@ -32,10 +32,10 @@ urlpatterns = patterns('',
      (r'^admin/(.*)', admin_site.root),
 
     # default static
-    (r'^static/ajaxlist/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + '/ajaxlist/media'}),
-    (r'^static/exam/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + '/exam/media'}),
-    (r'^static/request/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + '/request/media'}),
-    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + '/static'}),
+    (r'^static/ajaxlist/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + 'ajaxlist/media'}),
+    (r'^static/exam/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + 'exam/media'}),
+    (r'^static/request/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + 'request/media'}),
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + 'static'}),
 
     # media
     (r'^files/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
