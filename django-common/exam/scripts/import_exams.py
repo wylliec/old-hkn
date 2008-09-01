@@ -12,12 +12,12 @@ from os.path import isdir, join, split
 import re
 import shutil
 import sys
-from settings import MEDIA_ROOT
+from settings import MEDIA_ROOT, SERVER_ROOT
 
 VALID_EXTENSIONS = ["html", "pdf", "ps", "txt"]
 
-EE_DIR = "/home/gilbertchou/Projects/trunk/hkn/old_exams/ee"
-CS_DIR = "/home/gilbertchou/Projects/trunk/hkn/old_exams/cs"
+EE_DIR = join(SERVER_ROOT, "old_exams/ee")
+CS_DIR = join(SERVER_ROOT, "old_exams/cs")
 course_pattern = re.compile('^\d+[A-Z]*$')
 course_map = {
 	"COMPSCI" : CS_DIR,
@@ -148,9 +148,9 @@ def load_exams():
 						e.save()
 						f.close()
 						shutil.move(join(root, c, year, filename), join(root, "completed", new_filename))
-					except MissingInstructorException:
-						print "Instructor not found: %s" % instructor
-						missing_instructors.add(instructor)
+					except MissingInstructorException, e:
+						print e[0]
+						missing_instructors.add(e[1])
 					except MissingCourseException:
 						print "Course not found: %s %s:" % (dept, c)
 						missing_courses.add("%s %s" % (dept, c))
@@ -160,7 +160,6 @@ def load_exams():
 					except NoKlasses, e:
 						print "No Klasses found for %s %s - %s %s" % (dept, c, season, year)
 						missing_klasses.add("%s %s - %s %s" % (dept, c, season, year))
-						e[1].save()
 					except Exception, e:
 						print "Failed on %s %s %s" % (season, year, instructor )
 						failed_imports.append("%s: %s %s %s %s" % (e, c, season, year, instructor) )
@@ -194,5 +193,7 @@ def load_exams():
 	
 	print "Courses that are missing: " + ", ".join(sorted(missing_courses))
 	
+	#return (missing_instructors, missing_courses, instructor_mismatches)
+
 def main():
 	load_exams()

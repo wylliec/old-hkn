@@ -43,14 +43,14 @@ def get_instructor(instructor_name, dept_abbrs=[]):
 	if len(instructor) > 1:
 		debug("Found multiple instructors %s in departments! Returning the first of %s" % (instructor_name, instructor_string(instructor)))
 		return instructor[0]
-	raise MissingInstructorException("Found no instructors %s in departments %s!" % (instructor_name, dept_abbrs))
+	raise MissingInstructorException("Found no instructors named %s in %s" % (instructor_name, departments), instructor_name, departments)
 	instructor = Instructors.objects.ft_query(instructor_name)
 	if len(instructor) == 1:
 		return instructor[0]
 	if len(instructor) > 1:
 		debug("No instructor %s in departments %s, but multiple in general! Returning the first one" % instructor_name, dept_abbrs)
 		return instructor[0]
-	raise MissingInstructorException("No instructors %s at all!" % instructor_name)
+	raise MissingInstructorException("Found no instructors named %s" % (instructor_name), instructor_name)
 	
 def get_instructor_safe(*args, **kwargs):
     try:
@@ -89,7 +89,10 @@ def get_klass_helper(course, instructors, semester):
 		raise InstructorMismatch("Found 1 klass but instructor mismatch!", klass.instructors.all(), instructors, new_klass)
 	elif len(klasses) == 0:
 		klass = Klass(course=course, semester=semester, section_type="LEC", section="", section_note="CREATED")
-		raise NoKlasses("No matching klasses!", klass, instructors)
+		#raise NoKlasses("No matching klasses!", klass, instructors)
+		klass.save()
+		klass.instructors = instructors
+		return klass
 	else:
 		klasses2 = klasses.filter(instructors__in = instructors)
 		if len(klasses2) == 1:
