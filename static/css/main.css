@@ -16,14 +16,13 @@ html .submenu li { display: inline; padding: 0; margin: 0; height: 24px; text-al
 html .submenu li a { text-align: center; height: 18px; text-decoration: none; color: #ffffff; padding: 3px 7px 3px 10px; display: inline; }
 html .submenu li a:visited { text-align: center; height: 18px; text-decoration: none; color: #ffffff; padding: 3px 7px 3px 10px; display: inline; }
 html .submenu li a:hover { background: #336699; text-decoration: none; }
-html #top_bar { border: 2px #003366 dashed; }
+html #top_bar { border: 2px #003366 solid; padding-bottom: 3px; }
 html #header { text-align: center; }
 html #content { margin: 10px; width: auto; }
 html #userbar { float: left; padding: 5px 8px 5px 8px; }
 html .searchcontrol { text-align: left; float: right; padding-left: 15px; }
 html #searchbar_wrapper { padding-bottom: 7px; }
-html #container { overflow: auto; display: inline-block; padding: 12px 8px 20px 8px; width: auto; }
-html #container { display: block; }
+html #container { clear: both; padding: 12px 8px 20px 8px; width: auto; }
 html #container li { margin-bottom: 5px; }
 html #container #leftshadow { position: relative; top: -5%; left: -7%; width: 1%; background: url("/images/site/leftshadow.png") repeat-y; height: 110%; }
 html #infobar { float: right; width: 300px; border-left: 1px solid #003366; padding-left: 8px; padding-bottom: 15px; margin-left: 12px; height: 100%; overflow: auto; }
