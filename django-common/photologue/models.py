@@ -212,6 +212,7 @@ class GalleryUpload(models.Model):
                                              tags=self.tags)
             from cStringIO import StringIO
             for filename in zip.namelist():
+                print "Importing", filename
                 if filename.startswith('__'): # do not process meta files
                     continue
                 data = zip.read(filename)
