@@ -2,8 +2,9 @@
 import hkn_settings
 from hkn.main.models import HKN
 
-properties = {"semester": "sp08",
-              "vp": "Nir Ackner",
+properties = {"semester": "fa08",
+              "vp": "Aimee Moriwaki",
+              "hkn_tutor_version" : "-1",
               }
 
 def main():
