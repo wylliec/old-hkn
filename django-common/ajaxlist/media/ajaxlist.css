@@ -27,25 +27,15 @@ table.ajaxtable th {
   white-space: nowrap;
 }
 
-/*
-table.ajaxtable {
-  margin: 1em 2% 1em 2%;
-  background: whitesmoke;
-  border-collapse: collapse;
-  font-size: small;
-  width: 96%;
+.grid_cell {
+	text-align: center;
+	float: left;
+	width: 100px;
+	margin: 10px;
 }
-table.ajaxtable th, table.ajaxtable td {
-  border: 1px silver solid;
-  padding: 0.2em;
+
+.ajaxgrid {
+	clear: both;
+	width: 100%;
+	margin: 0 -10px;
 }
-table.ajaxtable th {
-  background: gainsboro;
-  font-size: medium;
-  text-align: left;
-}
-table.ajaxtable caption {
-  margin-left: inherit;
-  margin-right: inherit;
-}
-*/

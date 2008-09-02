@@ -2,7 +2,6 @@
 
 <div class="ajaxgrid">
 {% for row in list_objects %}
-	<div class="grid_row">
 	{% special_for row %}
 		<div class="grid_cell">
 		{% ifequal checks "on" %}
@@ -11,6 +10,6 @@
 		{% include cell_template %}
 		</div>
 	{% endfor %}
-	</div>
 {% endfor %}
 </div>
+<div style="clear:both; height: 20px"></div>
