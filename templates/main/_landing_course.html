@@ -1,30 +1,33 @@
-            <div id="coursesurvey" class="searchcontrol">
-                <div>
-	                <input class="autoclear" type=input class="autoclear" value="Search course surveys"> <input type=submit value="search!">                                
-	                <div class="small infobox_help" rel="#survey_search_help">search for courses or instructors</div> 
-	                <div style="display: none" id="survey_search_help">Try searching for courses or instructors!</div>
-				</div>	                
-            </div>
-            <div id="examfiles" class="searchcontrol">
-                <div>                    
-	                <form action="{% url exam-list %}" method="GET">
-	                {{ exam_files_autocomplete|safe }}
-	                <input type=submit value="search!">
-	                </form>
-	                <div class="small infobox_help" rel="#exams_search_help">search for courses e.g. math 54</div>                
-	                <div style="display: none" id="exams_search_help">Try searching for courses like: PHYS7B, MATH 54, CS 61A, or EE20N</div>
-				</div>	                
-            </div>
-			
-            {% comment %}
-            <div style="clear:both">
-                <h3>Search for review problems!</h3>
-                <div class="flushheader">                 
-	                <form action="{% url review-search %}" method="GET">
-	                <input type=input name="query"> <input type=submit value="search!">                                
-	                </form>
-	                <div class="small">search for courses or topics e.g. CS61C, fourier series</div>
-	            </div>
-            </div>
-            {% endcomment %}
-
+<div id="coursesurvey" class="searchcontrol">
+    <input class="autoclear text" type=input class="autoclear" value="Search Course Surveys"><input class="button" type=submit value=" Search ">
+    <div class="small searchhelp infobox_help" rel="#survey_search_help">
+        search for courses or instructors
+    </div>
+    <div style="display: none" id="survey_search_help">
+        Try searching for courses or instructors!
+    </div>
+</div>
+<div id="examfiles" class="searchcontrol">
+    <form action="{% url exam-list %}" method="GET">
+        {{ exam_files_autocomplete|safe }}<input class="button" type=submit value=" Search ">
+    </form>
+    <div class="small searchhelp  infobox_help" rel="#exams_search_help">
+        search for courses e.g. math 54
+    </div>
+    <div style="display: none" id="exams_search_help">
+        Try searching for courses like: PHYS7B, MATH 54, CS 61A, or EE20N
+    </div>
+</div>
+{% comment %}
+<div style="clear:both">
+    <h3>Search for review problems!</h3>
+    <div class="flushheader">
+        <form action="{% url review-search %}" method="GET">
+            <input type=input name="query"><input type=submit value=" Search ">
+        </form>
+        <div class="small">
+            search for courses or topics e.g. CS61C, fourier series
+        </div>
+    </div>
+</div>
+{% endcomment %}

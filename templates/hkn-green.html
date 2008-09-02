@@ -39,20 +39,21 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 {% endblock %}
 
 <div id="content">
- <div id="top_bar">
+ <div id="topbar">
 {% block userbar %}
 <div id="userbar">
     {% if user.is_authenticated %}
-        Welcome, {{user.username}} (<a href="{% url info-person-profile %}">Settings</a> &middot; <a href="{% url logout %}">Logout</a>)
-    {% else %}
+        Welcome, {{user.username}} 
+        <div class="userlinks small" style="clear:both">
+          [ <a href="{% url info-person-profile %}">Settings</a> | <a href="{% url logout %}">Logout</a> ]
+        </div>
+        {% else %}
         <form action="{% url login %}" method="post"> <label> Login </label>  <input class="short autoclear" name="username" value="username"> <input class="short autoclear" type="password" name="password" value="password"> <input type="hidden" name="next" value="{{ request.path }}"> <input type="submit" value="login"></form> <div class="small"><a href="{% url registration_register %}">register</a></div>
     {% endif %}
 </div>
 {% endblock %}
-<div id="searchbar_wrapper">
 {% block searchbar %}
 {% endblock %}
-</div>
 <div style="clear:both; line-height:0px">&nbsp;</div>
 </div>
 
@@ -84,6 +85,13 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 	<div id="footer-right">Eta Kappa Nu, Mu Chapter (<a href="mailto:www@hkn.eecs.berkeley.edu">www@hkn.eecs.berkeley.edu</a>)</div>
 	<div id="footer-left"><a href="/">HOME</a> | <a href="/about/">ABOUT</a> | <a href="/about/contact/">CONTACT</a></div>
 </div>
-
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5477213-1");
+pageTracker._trackPageview();
+</script>
 </body>
 </html>

@@ -1,28 +1,27 @@
 {% extends "event/base.html" %}
 {% load ajaxtable %}
-
 {% block subtitle %}{{category|title}} Events{% endblock %}
-
 {% block js %}
 {{ block.super }}
 {% ajaxlist_js %}
 {% endblock %}
-
-    	{% block searchbar %}
-	    	<div class="searchcontrol">
-    			<label>Search Events</label>
-		        {% control search %}
-			</div>		        
-		{% endblock %}
-
-
-{% block content %}
-    {% ajaxwrapper events %}
-        {% control pager %}
-        {% control notify %}
-        {% control spinner %}
-        {% ajaxtable events "event/ajax/_list_events_header.html" "event/ajax/_list_events_row.html" %}
-        {% control pager %}
-    {% endajaxwrapper %}
+{% block searchbar %}
+<div class="searchcontrol">
+    <form class="ajaxwrapperform" id="ajax_query_form" method="GET">
+        <input id="query_field" name="query" class="ajaxinfo autoclear" value="Search Events" />
+        <input id="query_button" type="submit" value="Search" />
+    </form>
+    <div class="small searchhelp infobox_help" rel="#survey_search_help">
+        search for events
+    </div>
+</div>
 {% endblock %}
-
+{% block content %}
+{% ajaxwrapper events %}
+{% control pager %}
+{% control notify %}
+{% control spinner %}
+{% ajaxtable events "event/ajax/_list_events_header.html" "event/ajax/_list_events_row.html" %}
+{% control pager %}
+{% endajaxwrapper %}
+{% endblock %}
