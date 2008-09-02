@@ -525,10 +525,10 @@ class Officership(models.Model):
         return "%s %s %s" % (self.person.name, self.semester, self.position.short_name)
 
     def save(self, *args, **kwargs):
-        super(Officership, self).save()
+        super(Officership, self).save(*args, **kwargs)
         self.person.reconcile_status()
         self.person.groups.add(self.position)
-        self.person.save(*args, **kwargs)
+        self.person.save()
 
     class Meta:
         unique_together = ("person", "position", "semester")
