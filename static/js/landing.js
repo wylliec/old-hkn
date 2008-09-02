@@ -57,17 +57,3 @@ function hide(event_id) {
     $(event_div).html('');
     $(event_div).hide();
 }    
-
-$(document).ready( function() {
-    $('.autoclear, #id_exam_course').each( function() {
-        var value = $(this).attr('value');
-        $(this).focus( function () {
-            $(this).attr('value', '');
-        });
-        $(this).blur( function () {
-            if($(this).attr('value') == "") {
-                $(this).attr('value', value);
-            }
-        });
-    })
-});

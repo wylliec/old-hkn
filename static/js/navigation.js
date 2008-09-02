@@ -31,3 +31,17 @@ $(document).ready(function() {
 		}	
 	);
 });
+
+$(document).ready( function() {
+    $('.autoclear, #id_exam_course').each( function() {
+        var value = $(this).attr('value');
+        $(this).focus( function () {
+            $(this).attr('value', '');
+        });
+        $(this).blur( function () {
+            if($(this).attr('value') == "") {
+                $(this).attr('value', value);
+            }
+        });
+    })
+});
