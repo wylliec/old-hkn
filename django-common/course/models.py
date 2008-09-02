@@ -181,7 +181,7 @@ class Course(models.Model):
             if getattr(settings, "DATABASE_ENGINE", '') == "postgresql_psycopg2":
         	    publishable_value = "True" if publishable else "False"
             else:
-        	    publishable_value = "0" if publishable else "0"
+        	    publishable_value = "1" if publishable else "0"
             return self.extra( select = {
                                          key : """ SELECT COUNT(*) FROM exam_exam WHERE (exam_exam.course_id = course_course.id and exam_exam.publishable = %s)""" % publishable_value
                                          })

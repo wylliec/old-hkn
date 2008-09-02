@@ -35,3 +35,5 @@ html #footer a:visited { color: #ffffff; }
 html #footer-right { float: right; }
 html #messages { display: block; font-size: 12px !important; margin: 0 0 3px; padding: 4px 25px 4px 25px; }
 html .message { border: solid 3px #003366; padding: 10px; background: #336699; color: #FFFFFF; }
+html .exam { text-align: center; }
+html .unpublishable { background: #EEFF99; border: 1px solid #BBCC66; }

@@ -38,13 +38,19 @@
 						<td class="semester">{{ exam_klass.pretty_semester }}</td>
 						<td class="instructor"><a href="javascript:void(0)" onclick="setInstructor('{{ exam_klass.instructor_names }}');"> {{ exam_klass.instructor_names|title }}</a></td>
 						{% for exam_type, exams in exam_groups.items %}
-						<td class="{{exam_type}}">
+						<td class="{{exam_type}} exam">
 							{% for exam in exams %}
-							{% if exam.is_solution %}
-							<a href="{{exam.file.url}}">[solution]</a>
-							{% else %}
-							<a href="{{exam.file.url}}">[{{exam.get_exam_format}}]</a> 
-							{% endif %}
+              {% if not exam.publishable %}
+                <div class = "unpublishable">
+              {% endif %}
+							  {% if exam.is_solution %}
+							  <a href="{{exam.file.url}}">[solution]</a>
+							  {% else %}
+							  <a href="{{exam.file.url}}">[{{exam.get_exam_format}}]</a>
+                {% endif %}
+              {% if not exam.publishable %}
+                </div>
+              {% endif %} 
 							{% endfor %}
 						</td>
 						{% endfor %}
