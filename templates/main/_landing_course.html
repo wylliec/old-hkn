@@ -9,7 +9,7 @@
                 <div>                    
 	                <form action="{% url exam-list %}" method="GET">
 	                {{ exam_files_autocomplete|safe }}
-	                <input class="autoclear" type=submit value="search!">
+	                <input type=submit value="search!">
 	                </form>
 	                <div class="small infobox_help" rel="#exams_search_help">search for courses e.g. math 54</div>                
 	                <div style="display: none" id="exams_search_help">Try searching for courses like: PHYS7B, MATH 54, CS 61A, or EE20N</div>
