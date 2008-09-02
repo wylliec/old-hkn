@@ -44,11 +44,12 @@ $('.infobox_help').cluetip({
 			{% include "main/_landing_event.html" %}
 			<span class="small"><a href="{% url event-list %}">view all events</a> | <a href="{% url event-calendar %}">view events calendar</a></span>
 		</div>
-		
+		{% if not hide_tutoring %}
 		<div class="section">
 			{% include "main/_landing_tutor.html" %}
 			<span class="small"><a href="{% url tutor-view-schedule %}">view full schedule</a></span>
 		</div>
+		{% endif %}
 
 	</div>
     {% render_in_context content %}

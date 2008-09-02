@@ -12,12 +12,13 @@
 {% block content %}
 
 {% if message %}
-<font size=3 color="red">{{ message }}</font>
-<hr />
+	<blockquote class="message">
+	{{message}}<br/><br/>
+	If you have any questions or requests, please email us at: <b>tutoring@hkn.eecs.berkeley.edu</b>
+	</blockquote>
 {% endif %}
 
 {% block tutorcontent %}
-<font color="red">This page lacks a properly formatted 'tutorcontent' block. (Content goes here!)</font>
 {% endblock %}
 
 {% endblock %}

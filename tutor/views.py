@@ -2,6 +2,7 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
+from django.conf import settings
 from django.core.cache import cache
 
 from django import forms
@@ -21,6 +22,7 @@ from hkn.tutor.constants import *
 from hkn.tutor.scheduler import State, Slot
 from hkn.tutor import output
 from hkn.info import infobox
+from hkn.main.property import PROPERTIES
 import nice_types.semester
 
 from re import match, search
@@ -32,31 +34,32 @@ def basicContext(request, info = {}):
         ret['user'] = request.user
     return ret
 
-class NoTutorSchedulesException(Exception):
+class NoTutorScheduleException(Exception):
     pass
 
 def get_max_version():
     try:
         return max(tutor.Assignment.objects.values_list('version'))[0]
     except ValueError:
-        raise NoTutorSchedulesException("There are no tutoring schedules available")
+        raise NoTutorScheduleException("There are no tutoring schedules available")
     
 def get_published_version():
     try:
-        return int(HKN.objects.get("hkn_tutor_version").value)
+        return int(PROPRETIES.hkn_tutor_version)
     except:
-        return get_max_version()
+        #if getattr(settings, 'DEBUG', False):
+        #    return get_max_version()
+        #else:
+        raise NoTutorScheduleException("There is no published tutoring schedule")
         
 def get_published_assignments(version=None):
-    try:
-        if not version:
-            version = get_published_version()
-        assignments = tutor.Assignment.objects.filter(version=version).select_related('person')
-        if len(assignments) == 0:
-            return None    
-        return assignments
-    except NoTutorSchedulesException:
-        return None
+    """ Might throw NoTutorScheduleException """
+    if not version:
+        version = get_published_version()
+    assignments = tutor.Assignment.objects.filter(version=version).select_related('person')
+    if len(assignments) == 0:
+        raise NoTutorScheduleException("There is no published tutoring schedule")
+    return assignments
 
 
 def get_tutor_info(tutoring_days=TUTORING_DAYS, tutoring_times=TUTORING_TIMES):
@@ -68,6 +71,7 @@ def get_tutor_info(tutoring_days=TUTORING_DAYS, tutoring_times=TUTORING_TIMES):
         return schedule, canTutorData.filter(person__in = tutors), tutors
     
     assignments = get_published_assignments().select_related("person")
+        
     
     realAssignments = {} #dictionary from slot to person object
     for assignment in assignments:
@@ -133,16 +137,18 @@ def schedule(request):
     context['year'] = nice_types.semester.current_year()
     context['season'] = nice_types.semester.current_semester().season_name.title()
     
-    assignments = get_published_assignments(request.GET.get('version', None))
-    
-    if not assignments:
-        context['message'] = 'Tutoring schedule not available.'
+    version = None
+    if request.user.has_perm("info.group_tutor"):
+        version = request.GET.get('version', None)
+
+    try:
+        schedule, can_tutor, tutors = get_tutor_info()
+        can_tutor = get_courses_tutored(can_tutor)
+    except NoTutorScheduleException:
+        context['message'] = 'Tutoring schedule is not yet available, please check back soon!'
         return render_to_response('tutor/schedule.html',
                                   context,
-                                  context_instance = RequestContext(request))
-                                      
-    schedule, can_tutor, tutors = get_tutor_info()
-    can_tutor = get_courses_tutored(can_tutor)
+                                  context_instance = RequestContext(request))        
 
     context['schedule'] = schedule
     context['can_tutor'] = can_tutor

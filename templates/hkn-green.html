@@ -57,11 +57,12 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 </div>
 
 {% if messages %}
-<div id="messages"> <ul>
+<div id="messages">
+<blockquote class="message"><ul class="plain">
 {% for message in messages %}
     <li>{{ message }}</li>
 {% endfor %}
-</ul> </div>
+</ul></blockquote> </div>
 {% endif %}
 
 {% block container %}
