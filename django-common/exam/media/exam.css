@@ -34,11 +34,11 @@ tr.unpublished {
 }
 
 tr.exam .semester {
-    width: 20%;
+    width: 15%;
 }
 
 tr.exam .instructor{
-    width: 10%;
+    width: 15%;
 }
 
 div.small {
