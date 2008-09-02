@@ -82,11 +82,12 @@ def parse_instructor_file(path):
 	f.close()
 	return d
 
+descriptions = {EXAM_TYPE.FINAL : 'f', EXAM_TYPE.MIDTERM : 'mt', EXAM_TYPE.QUIZ : 'qz', EXAM_TYPE.REVIEW : "r"}
 def make_filename(klass, type, number, solution, extension):
 	if type != EXAM_TYPE_FINAL:
-		type_string = type + str(number)
+		type_string = descriptions[type] + str(number)
 	else:
-		type_string = type
+		type_string = descriptions[type]
 	
 	if solution:
 		sol_string = "_sol"
