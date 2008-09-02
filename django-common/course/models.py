@@ -251,7 +251,7 @@ class Klass(models.Model):
         return self.semester.verbose_description()
     
     def _instructor_names(self):
-        if not self.cached_instructor_names:
+        if self.cached_instructor_names is None:
             self.cached_instructor_names = "; ".join([inst.last for inst in self.instructors.all()])
             # maybe we shouldn't auto save...
             self.save()

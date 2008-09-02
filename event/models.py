@@ -4,6 +4,7 @@ from django.db.models.query import QuerySet
 from django.contrib.auth.models import Permission
 from django.core import urlresolvers
 from django.template.defaultfilters import slugify
+from django.db.models import Q
 
 from hkn.event.constants import EVENT_TYPE
 from hkn.event.rsvp.constants import RSVP_TYPE

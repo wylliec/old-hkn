@@ -38,15 +38,7 @@ tr.exam .semester {
 }
 
 tr.exam .instructor{
-    width: 40%;
-}
-
-tr.exam .examfile {
-    width: 35%;
-}
-
-tr.exam .extension {
-    width: 5%;
+    width: 10%;
 }
 
 div.small {

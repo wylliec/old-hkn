@@ -21,32 +21,36 @@
 	<h1 class="warning">Viewing unpublished exams</h1>
 {% endif %}
 {% ajaxwrapper exams %}
-        {% for course_item in exams_dict.items %}
-            <h1 class="clickhide"> {{ course_item.0.short_name }}</h1>
+        {% for course, exam_dict2 in exams_dict.items %}
+            <h1 class="clickhide"> {{ course.short_name }}</h1>
             <div class="exam_course" style="margin-left: 7px">
-            {% for regrouped_item in course_item.1 %}
-                <h3 class="clickhide" style="margin-bottom: 0">{{ regrouped_item.0 }}</h3>
                 <table class="ajaxtable">
-{% comment %}                
-                {% if forloop.first %}
                     <tr>
                         <th>Semester</th>
                         <th>Instructor</th>
-                        <th>Exam</th>
-                        <th></th>
+						<th>Midterm 1</th>
+						<th>Midterm 2</th>
+						<th>Midterm 3</th>
+						<th>Final </th>
                     </tr>
-                {% endif %}
-{% endcomment %}                
-                {% for exam in regrouped_item.1 %}
-                    <tr class="exam {% cycle 'even' 'odd' %} {% if not exam.publishable %}unpublished{% endif %}">
-                        <td class="semester">{{ exam.klass.pretty_semester }}</td>
-                        <td class="instructor"><a href="javascript:void(0)" onclick="setInstructor('{{ exam.klass.instructor_names }}');"> {{ exam.klass.instructor_names|title }}</a></td>
-                        <td class="examfile"><a href="{{ exam.file.url }}">{{ exam.get_exam_description }}{% if exam.is_solution %} (Solution) {% endif %}</a></td>
-                        <td class="extension">{{ exam.get_exam_format }}</td> 
-                    </tr>
-                {% endfor %}
+					{% for exam_klass, exam_groups in exam_dict2.items%}
+					<tr class="exam {% cycle 'even' 'odd' %}">
+						<td class="semester">{{ exam_klass.pretty_semester }}</td>
+						<td class="instructor"><a href="javascript:void(0)" onclick="setInstructor('{{ exam_klass.instructor_names }}');"> {{ exam_klass.instructor_names|title }}</a></td>
+						{% for exam_type, exams in exam_groups.items %}
+						<td class="{{exam_type}}">
+							{% for exam in exams %}
+							{% if exam.is_solution %}
+							<a href="{{exam.file.url}}">[solution]</a>
+							{% else %}
+							<a href="{{exam.file.url}}">[{{exam.get_exam_format}}]</a> 
+							{% endif %}
+							{% endfor %}
+						</td>
+						{% endfor %}
+					</tr>
+					{% endfor %}
                 </table>
-            {% endfor %}
             <br/>
             </div>
         {% endfor %}
