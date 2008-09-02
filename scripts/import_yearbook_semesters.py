@@ -15,6 +15,9 @@ def import_gallery(semester, zipfilename, title, desc):
 	galleryupload.title = title
 	galleryupload.description = desc
 
+	if os.path.exists("../files/photologue/temp/galleryupload.zip"):
+		os.remove("../files/photologue/temp/galleryupload.zip")
+
 	zipfile = ContentFile(file(zipfilename).read())
 	galleryupload.zip_file.save("galleryupload.zip", zipfile)
 
@@ -29,8 +32,9 @@ def import_semester(semester, workdir):
 	except:
 		pass
 
-	os.system("scp %s:/web/yearbook/%s/event_list.txt %s" % (remoteaddr, remoteSemester, semesterdir))
-	f = open("%s/event_list.txt" % (semesterdir), "r")
+	#os.system("scp %s:/web/yearbook/%s/event_list.txt %s" % (remoteaddr, remoteSemester, semesterdir))
+	#f = open("%s/event_list.txt" % (semesterdir), "r")
+	f = open("/web/yearbook/%s/event_list.txt" % (remoteSemester), "r")
 
 	for line in f:
 		if line.find(";") < 0:
@@ -42,7 +46,7 @@ def import_semester(semester, workdir):
 			dir = temp[0]
 			temp2 = temp[1].split(":", 1)
 			if len(temp2) == 2:
-				date, title = temp2
+				date, title = [x.strip() for x in temp2]
 			else:
 				date = ""
 				title = ""
@@ -50,23 +54,30 @@ def import_semester(semester, workdir):
 
 		print "Importing %s for %s" % (title, semester)
 
+		"""
 		status = os.system("rsync -a --no-perms --chmod=Fa-x -e ssh %s:/web/yearbook/%s/%s/originals/ %s/%s" % (remoteaddr, remoteSemester, dir, semesterdir, dir))
 		if status != 0:
 			continue
+		"""
 		zipfilename = "%s/%s.zip" % (semesterdir, dir)
-		status = os.system("zip -q -0 %s %s/%s/*" % (zipfilename, semesterdir, dir))
+		#status = os.system("zip -q -0 %s %s/%s/*" % (zipfilename, semesterdir, dir))
+		status = os.system("zip -q -0 %s /web/yearbook/%s/%s/originals/*" % (zipfilename, remoteSemester, dir))
 		if status != 0:
 			continue
 
-		os.system("scp %s:/web/yearbook/%s/%s/title.txt %s/%s/" % (remoteaddr, remoteSemester, dir, semesterdir, dir))
-		titleFile = open("%s/%s/title.txt" % (semesterdir, dir))
-		desc = titleFile.read()
-		titleFile.close()
+		#os.system("scp %s:/web/yearbook/%s/%s/title.txt %s/%s/" % (remoteaddr, remoteSemester, dir, semesterdir, dir))
+		#titleFile = open("%s/%s/title.txt" % (semesterdir, dir))
+		if os.path.exists("/web/yearbook/%s/%s/title.txt" % (remoteSemester, dir)):
+			titleFile = open("/web/yearbook/%s/%s/title.txt" % (remoteSemester, dir))
+			desc = titleFile.read()
+			titleFile.close()
+		else:
+			desc = ""
 
 		import_gallery(semester, zipfilename, title, desc)
 
 		os.remove(zipfilename)
-		rmrf("%s/%s" % (semesterdir, dir))
+		#rmrf("%s/%s" % (semesterdir, dir))
 	f.close()
 	rmrf(semesterdir)
 
@@ -93,6 +104,10 @@ def main(semesters):
 		import_semester(semester, workdir)
 
 	rmrf(workdir)
+
+	if os.path.exists("../files/photologue/temp/galleryupload.zip"):
+		os.remove("../files/photologue/temp/galleryupload.zip")
+
 
 if __name__ == '__main__':
 	main(sys.argv[1:])
