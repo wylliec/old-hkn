@@ -19,7 +19,6 @@ import create_permissions; create_permissions.main()
 
 
 import import_people
-import_people.import_people("data/info-candidates-sp08.tsv", MEMBER_TYPE.CANDIDATE)
 import_people.import_people("data/info-people.tsv", MEMBER_TYPE.EXCANDIDATE)
 
 import import_officership_cached; import_officership_cached.import_officers()
