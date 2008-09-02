@@ -24,8 +24,14 @@ def handleFile(initiates_file):
     for l in f:
         name = l.strip()
         p = matchPerson(name, semester)
+        if not p:
+            p = Person.objects.ft_query(name)
+            if len(p) > 1:
+                p = None
+                #print "WAS GREATER THAN 1!"
+            p = p[0]
         if p:
-#            print "Matched %s" % p.name
+            #print "%s\t%s\t%s" % (name, p.name, p.email)
             if p.member_type < MEMBER_TYPE.MEMBER:
                 p.member_type = MEMBER_TYPE.MEMBER
             p.save()
