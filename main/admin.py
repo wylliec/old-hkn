@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.contrib.admin.sites import AdminSite
 from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin
@@ -38,3 +39,7 @@ admin_site.register(PhotoEffect, PhotoEffectAdmin)
 admin_site.register(PhotoSize, PhotoSizeAdmin)
 admin_site.register(Watermark, WatermarkAdmin)
 
+from hkn.main.models import HKN
+class PropertiesAdmin(admin.ModelAdmin):
+    list_display = ('name', 'value')
+admin_site.register(HKN, PropertiesAdmin)

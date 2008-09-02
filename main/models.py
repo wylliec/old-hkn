@@ -22,6 +22,10 @@ class HKN(models.Model):
     name = models.CharField(unique=True, max_length=30)
     value = models.CharField(max_length=50)
     
+    def __str__(self):
+        return "%s: %s" % (self.name, self.value)
+    __repr__ = __str__
+
     class QuerySet(QuerySet):
         pass
     
@@ -35,5 +39,7 @@ class HKN(models.Model):
             ("hkn_candidate", "Candidates only!"),
             ("hkn_member", "Members only!"),
         )
+        verbose_name = "Property"
+        verbose_name_plural = "Properties"
 
 from hkn.main.auth_extend import *

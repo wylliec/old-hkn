@@ -10,7 +10,7 @@ import datetime
 
 from hkn.event.models import *
 from hkn.event.utils import add_events_metainfo
-from hkn.tutor.views import get_tutor_info, get_courses_tutored, get_published_assignments
+from hkn.tutor.views import get_tutor_info, get_courses_tutored, get_published_assignments, NoTutorScheduleException
 from hkn.info import infobox
 
 def main(request):
@@ -24,11 +24,14 @@ def main(request):
     if d['day'] in ("Saturday", "Sunday"):
         d['day'] = "Monday"
     d["tutoring_title"] = "%s's Tutors" % d['day']
-    schedule, can_tutor, tutors = get_tutor_info(tutoring_days=[d['day']])
-    can_tutor = get_courses_tutored(can_tutor)
-    d['schedule'] = schedule
-    d['can_tutor'] = can_tutor
-    d["infoboxes"] = infobox.tutors(request, tutors)
+    try:
+        schedule, can_tutor, tutors = get_tutor_info(tutoring_days=[d['day']])
+        can_tutor = get_courses_tutored(can_tutor)
+        d['schedule'] = schedule
+        d['can_tutor'] = can_tutor
+        d["infoboxes"] = infobox.tutors(request, tutors)        
+    except NoTutorScheduleException, e:
+        d['hide_tutoring'] = True
     
     xfa = JQueryAutoComplete(source=reverse('course-course-autocomplete'))
     d['exam_files_autocomplete']= xfa.render(name="exam_course", value="Search exams")
