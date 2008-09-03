@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} {{ block.super }} - Yearbook {% endblock %}
+
+{% block content %}
+    Welcome to the HKN Yearbook page!<br>
+    <br>
+    This page is the online journal of HKN events, brought to you by your
+    wonderful Bridge / Yearbook committee. 
+    <br>
+    <br>
+
+    {% if semesters %}
+        <ul>
+        {% for semester in semesters %}
+            <li>{{ semester }}</li>
+        {% endfor %}
+	</ul>
+    {% endif %}
+
+    <br>
+    Comments? Deaththreats? Polite requests to annihilate all trace of that
+    horrible picture? Send them all to bridge@hkn.eecs.berkeley.edu.<br>
+    <br>
+    We will be watching you... 
+{% endblock %}
