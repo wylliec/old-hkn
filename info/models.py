@@ -60,6 +60,11 @@ class MemberManager(PeopleManager):
     def get_query_set(self):
         return super(MemberManager, self).get_query_set().filter(member_type__gte = MEMBER_TYPE.MEMBER)
 
+class ImportedPeopleManager(PeopleManager):
+    def get_query_set(self):
+        return super(ImportedPeopleManager, self).get_query_set().filter(username__startswith="imported__")
+
+
 class PositionManager(models.Manager):
     def get_position(self, com_name):
         com_name = normalize_committee_name(com_name)
@@ -191,6 +196,8 @@ class Person(User):
     """
     Same as above, but all initiated members.
     """
+
+    imported = ImportedPeopleManager()
 
     realfirst = models.CharField(max_length=30)
     """ 
