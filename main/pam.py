@@ -92,6 +92,10 @@ def authenticate(username, password, service='login'):
     
     ``service``: the PAM service to authenticate against.
                  Defaults to 'login'"""
+    username=str(username)
+    password=str(password)
+    service=str(service)
+
     @CONV_FUNC
     def my_conv(n_messages, messages, p_response, app_data):
         """Simple conversation function that responds to any
