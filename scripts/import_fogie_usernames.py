@@ -46,8 +46,8 @@ def handleUser(uname, name):
     person.username = uname
     person.save()
 
-def main():
-    for user in file(PASSWD_FILE):
+def main(passwd_file=PASSWD_FILE):
+    for user in file(passwd_file):
         user = user.strip()
         if len(user) == 0:
             continue
