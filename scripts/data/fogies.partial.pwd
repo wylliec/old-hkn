@@ -7,7 +7,6 @@ sahandn:x:664:200:Sahand Negahban:/home/sahandn:/bin/tcsh
 shihua:x:665:200:Shi-Hua Teh:/home/shihua:/bin/tcsh
 chris:x:666:200:Chris Crutchfield:/home/chris:/bin/tcsh
 angelc:x:667:200:Angel Chao:/home/angelc:/bin/tcsh
-kamil:x:668:200:Amir Kamil:/home/kamil:/bin/tcsh
 nammai:x:669:200:Nam Mai:/home/nammai:/bin/bash
 vperez:x:670:200:Victor Perez:/home/vperez:/bin/tcsh
 lid:x:671:200:Dustin Li:/home/lid:/bin/bash
@@ -21,7 +20,6 @@ jocha:x:678:200:Joshua Chang:/home/jocha:/bin/tcsh
 elsoud:x:679:200:Robert El-Soudani:/home/elsoud:/bin/tcsh
 juhi:x:680:200:Juhi Saha:/home/juhi:/bin/tcsh
 ihaque:x:681:200:Imran Haque:/home/ihaque:/bin/bash
-mmehdija:x:682:200:Mehdi Ansari:/home/mmehdija:/bin/tcsh
 tracyx:x:683:200:Tracy Wang:/home/tracyx:/bin/tcsh
 liaor:x:684:200:Robert Liao,,,:/home/liaor:/bin/tcsh
 noaa:x:685:200:Noaa Avital:/home/noaa:/bin/tcsh
@@ -32,14 +30,12 @@ sameer:x:689:200:Sameer Iyengar:/home/sameer:/bin/tcsh
 tth:x:690:200:Tingting Huang:/home/tth:/bin/tcsh
 kli:x:691:200:Kevin Li:/home/kli:/bin/bash
 joe:x:692:200:Joe Jing:/home/joe:/bin/tcsh
-george:x:693:200:Yeu-Ting George Cheng:/home/george:/bin/tcsh
 lenwei:x:694:200:Leonard Wei:/home/lenwei:/bin/tcsh
 don:x:695:200:Donny Winston:/home/don:/bin/tcsh
 narenr:x:696:200:Naren Raghavan:/home/narenr:/bin/tcsh
 andyc:x:697:200:Andy Chen:/home/andyc:/bin/tcsh
 alexr:x:698:200:Alex Rasmussen:/home/alexr:/bin/bash
 htummala:x:699:200:Harsha Tummala:/home/htummala:/bin/tcsh
-jchou:x:700:200:Jeff Chou:/home/jchou:/bin/tcsh
 stephen:x:701:200:Stephen P Wu:/home/stephen:/bin/tcsh
 sbe:x:702:200:Sarah Beth Eisinger:/home/sbe:/bin/tcsh
 anjali:x:703:200:Anjali Koppal:/home/anjali:/bin/tcsh
@@ -54,7 +50,6 @@ densmore:x:711:200:Douglas Densmore:/home/densmore:/bin/tcsh
 pamela:x:712:200:Pamela Lee:/home/pamela:/bin/tcsh
 jtran:x:713:200:Johnny Tran:/home/jtran:/bin/tcsh
 dlow:x:714:200:Daniel Low:/home/dlow:/bin/tcsh
-jhristu:x:715:200:James Hristu:/home/jhristu:/bin/tcsh
 johnz:x:716:200:John Zhou:/home/johnz:/bin/tcsh
 rsun:x:717:200:Qiao Ricky Sun:/home/rsun:/bin/tcsh
 mbasoglu:x:718:200:Mehmet Basoglu:/home/mbasoglu:/bin/tcsh
@@ -62,15 +57,11 @@ ryan:x:719:200:Ryan Waliany:/home/ryan:/bin/tcsh
 ramesh:x:720:200:Ramesh Sridharan:/home/ramesh:/bin/tcsh
 kmak:x:721:200:Kirill Makarov:/home/kmak:/bin/tcsh
 achoy:x:722:200:Alex Choy:/home/achoy:/bin/tcsh
-leech:x:2137:200:Lee Cheng:/home/leech:/bin/csh
-zoss:x:6154:200:Dave Zoss:/home/zoss:/bin/tcsh
-lester:x:6435:200:Thomas E. Lester,,,932-4510:/home/lester:/bin/tcsh
-jimy:x:8180:200:James Shin Young,?,n/a,n/a:/home/jimy:/bin/tcsh
 albert:x:723:200:Albert Lai:/home/albert:/bin/tcsh
 peter:x:724:200:Peter Martinazzi:/home/peter:/bin/tcsh
 neelav:x:725:200:Neelav Rana:/home/neelav:/bin/tcsh
 hguturu:x:726:200:Hari Guturu:/home/hguturu:/bin/tcsh
-cho:x:727:200:Chuo Jen Liu:/home/cho:/bin/tcsh
+cho:x:727:200:Chuo-Jen Liu:/home/cho:/bin/tcsh
 mypeng:x:728:200:Michael Peng:/home/mypeng:/bin/tcsh
 darren:x:729:200:Darren Lo:/home/darren:/bin/tcsh
 nwar:x:730:200:Neil Warren:/home/nwar:/bin/tcsh
@@ -112,7 +103,6 @@ rzheng:x:1011:200:Ryan Zheng:/home/rzheng:/bin/bash
 michelleau:x:1012:200:Michelle Au:/home/michelleau:/bin/tcsh
 alanwu:x:1013:200:Alan Wu:/home/alanwu:/bin/tcsh
 clay:x:1014:200:Chris Lay:/home/clay:/bin/tcsh
-ceng:x:487:200:Chris Eng,Cambridge MA,617-768-2722,000-000-0000:/home/cje:/bin/bash
 angela:x:1016:200:Angela Hsueh:/home2/angela:/bin/tcsh
 wayne:x:1017:200:Wayne Fang:/home2/wayne:/bin/tcsh
 njoubert:x:1018:200:Niels Joubert:/home2/njoubert:/bin/tcsh
