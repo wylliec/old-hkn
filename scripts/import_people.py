@@ -61,7 +61,7 @@ def addLine(line, member_status):
     if email.find("berkeley.edu") == -1:
         c.school_email = email
 
-
+    c.realfirst = realfirst
     c.is_active = False
     c.save_profile_picture(lion_file_content)
     c.save()
