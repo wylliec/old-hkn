@@ -96,10 +96,10 @@ class Semester(object):
     def previous_semester(self):
         s = self.semester[:2]
         if s == "sp":
-            y = self.year_int-1
+            y = self.year-1
             return Semester("%s%s" % ("fa", y))
         else:
-            y = (self.year_int)%100            
+            y = self.year%100            
             return Semester("%s%s" % ("sp", y))
 
         
