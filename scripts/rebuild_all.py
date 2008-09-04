@@ -20,10 +20,10 @@ import create_permissions; create_permissions.main()
 
 import import_people
 import_people.import_people("data/info-people.tsv", MEMBER_TYPE.EXCANDIDATE)
-
+import import_fogie_usernames; import_fogie_usernames.main()
 import import_officership_cached; import_officership_cached.import_officers()
 import import_new_officerships; import_new_officerships.main()
-import import_usernames_cached; import_usernames_cached.main()
+#import import_usernames_cached; import_usernames_cached.main()
 import create_superusers; create_superusers.main()
 import set_initiates; set_initiates.main()
 
