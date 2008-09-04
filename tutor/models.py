@@ -16,9 +16,6 @@ import time
 
 
 class AvailabilityManager(QuerySetManager):
-    def for_semester(self, *args, **kwargs):
-        return self.get_query_set().for_semester(*args, **kwargs)
-        
     def for_current_semester(self, *args, **kwargs):
         return self.get_query_set().for_current_semester(*args, **kwargs)
 
