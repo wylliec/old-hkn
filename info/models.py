@@ -15,6 +15,7 @@ import nice_types.semester
 import os, datetime, types, random
 
 from nice_types.db import QuerySetManager, PickleField
+from nice_types import semester
 
 class PeopleManager(QuerySetManager):
         def from_email(self, *args, **kwargs):
@@ -499,7 +500,9 @@ class CandidateInfo(models.Model):
     class Admin:
         pass
 
-
+class OfficershipManager(QuerySetManager):
+    def for_current_semester(self, *args, **kwargs):
+        return self.get_query_set().for_current_semester(*args, **kwargs)
 
 class Officership(models.Model):
     """
@@ -508,7 +511,8 @@ class Officership(models.Model):
     If Lahini Arunachalam was VP in fa07, then the corresponding officership object would have
     person = Lahini, position = vp, semester = fa07
     """
-        
+ 
+    objects = OfficershipManager()       
 
     officership_id = models.AutoField(primary_key = True)
 
@@ -536,6 +540,10 @@ class Officership(models.Model):
         self.person.reconcile_status()
         self.person.groups.add(self.position)
         self.person.save()
+
+    class QuerySet(QuerySet):
+        def for_current_semester(self):
+            return self.filter(semester=semester.current_semester())
 
     class Meta:
         unique_together = ("person", "position", "semester")
