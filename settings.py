@@ -171,6 +171,11 @@ INSTALLED_APPS = (
     'nice_types',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'hkn.main.pam_backend.PamBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 # hknsettings settings will override the above
 from hknsettings import *
 
