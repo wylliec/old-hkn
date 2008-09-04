@@ -19,7 +19,7 @@ class PamBackend:
 
         try:
             user = User.objects.get(username=username)
-            if pam.authenticate(username, password):
+            if pam.authenticate(str(username), str(password)):
                 return user
         except User.DoesNotExist:
             pass
