@@ -27,30 +27,52 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
 <br />
 <br />
 <form action="{% url tutor-submit-assignments %}" method="POST">
-    <table cellpadding=5>
+    CORY
+    <table cellpadding="5">
     <tr>
         <td>&nbsp;</td>
         {% for day in days %}
-        <td>
+        <td style="text-align: center">
             {{ day }}
         </td>
         {% endfor %}
     </tr>
     {% for row in info %}
     <tr>
-        <td>{{ row.name }}</td>
+        <td style="text-align: center; vertical-align: middle">{{ row.name }}</td>
         {% for elem in row %}
-        <td style="width:{{ signup_col_width }}">
-            Cory:
+        <td style="width:{{ signup_col_width }}; text-align: center; vertical-align: middle">
             <select name="{{ elem.name }} {{ CORY }}" multiple="yes"/>
-                {% for option in elem.coryoptions %}
+                {% for option in elem.coryoptions|dictsort:"name" %}
                 <option value="{{ option.id }}"{% if option.assigned %} selected="yes"{% endif %}{% if not option.preference %} style="color:red;" {% endif %}>{{ option.name }} - {{ option.preference }}{% if option.preferredOffice %}p{% endif %}</option>
                 {% endfor %}
             </select>
-            <br />
-            Soda:
+        </td>
+        {% endfor %}
+    {% endfor %}
+    </tr>
+    </table>
+
+    <br />
+    <br />
+
+    SODA
+    <table cellpadding="5">
+    <tr>
+        <td>&nbsp;</td>
+        {% for day in days %}
+        <td style="text-align: center">
+            {{ day }}
+        </td>
+        {% endfor %}
+    </tr>
+    {% for row in info %}
+    <tr>
+        <td style="text-align: center; vertical-align: middle">{{ row.name }}</td>
+        {% for elem in row %}
+        <td style="width:{{ signup_col_width }}; text-align: center; vertical-align: middle">
             <select name="{{ elem.name }} {{ SODA }}" multiple="yes"/>
-                {% for option in elem.sodaoptions %}
+                {% for option in elem.sodaoptions|dictsort:"name" %}
                 <option value="{{ option.id }}"{% if option.assigned %} selected="yes"{% endif %}{% if not option.preference %} style="color:red;" {% endif %}>{{ option.name }} - {{ option.preference }}{% if option.preferredOffice %}p{% endif %}</option>
                 {% endfor %}
             </select>
