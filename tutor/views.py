@@ -45,8 +45,8 @@ def get_max_version():
     
 def get_published_version():
     try:
-        return int(PROPRETIES.hkn_tutor_version)
-    except:
+        return int(PROPERTIES.hkn_tutor_version)
+    except Exception, e:
         #if getattr(settings, 'DEBUG', False):
         #    return get_max_version()
         #else:
@@ -56,7 +56,7 @@ def get_published_assignments(version=None):
     """ Might throw NoTutorScheduleException """
     if not version:
         version = get_published_version()
-    assignments = tutor.Assignment.objects.filter(version=version).select_related('person')
+    assignments = tutor.Assignment.objects.for_current_semester().filter(version=version).select_related('person')
     if len(assignments) == 0:
         raise NoTutorScheduleException("There is no published tutoring schedule")
     return assignments
@@ -144,7 +144,7 @@ def schedule(request):
     try:
         schedule, can_tutor, tutors = get_tutor_info()
         can_tutor = get_courses_tutored(can_tutor)
-    except NoTutorScheduleException:
+    except NoTutorScheduleException, e:
         context['message'] = 'Tutoring schedule is not yet available, please check back soon!'
         return render_to_response('tutor/schedule.html',
                                   context,

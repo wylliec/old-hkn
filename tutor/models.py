@@ -223,18 +223,21 @@ class Assignment(models.Model):
         return "<Assignment %s %s %s>" % (self.person.name, self.slot, self.office)
     
     @staticmethod
-    def get_max_version():
+    def get_max_version(semester = None):
         """
         NOTE: this is REALLY INEFFICIENT!
         gets the max version of all assignments for given year and season name
         """
+        if not semester:
+            semester = nice_types.semester.current_semester()
+        objects = Assignment.objects.filter(semester=semester)
         max_version = cache.get('tutor_max_version')
         if not max_version:
-	    try:
-            	max_version = max(Assignment.objects.filter(semester=nice_types.semester.current_semester()).values_list('version', flat=True).distinct())
-            	cache.set('tutor_max_version', max_version, 600)
-	    except ValueError:
-	    	max_version = 0
+            try:
+                max_version = max(objects.values_list('version', flat=True).distinct())
+                cache.set('tutor_max_version', max_version, 600)
+            except ValueError:
+                max_version = 0
         return max_version
         
     @staticmethod
