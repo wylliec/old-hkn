@@ -62,7 +62,7 @@ DJANGO_COMMON = SERVER_ROOT + "django-common/"
 
 
 ADMINS = (
-     ('HKN Computing Services', 'compserv@hkn.eecs.berkeley.edu'),
+#     ('HKN Computing Services', 'compserv@hkn.eecs.berkeley.edu'),
 )
 
 DEFAULT_FROM_EMAIL = "hkn@hkn.eecs.berkeley.edu"
@@ -177,6 +177,8 @@ AUTHENTICATION_BACKENDS = (
     'hkn.main.pam_backend.PamBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+DBLOG_CATCH_404_ERRORS = True
 
 # hknsettings settings will override the above
 from hknsettings import *
