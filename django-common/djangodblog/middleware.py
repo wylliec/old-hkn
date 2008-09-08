@@ -5,6 +5,7 @@ import md5
 
 from django.conf import settings
 from django.http import Http404
+from djangodblog.models import Error, ErrorBatch
 
 __all__ = ('DBLogMiddleware', 'DBLOG_CATCH_404_ERRORS')
 
