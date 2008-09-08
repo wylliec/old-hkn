@@ -213,15 +213,15 @@
 		Tutor Signup
 	</a>
 </li>
+<li>	
+	<a href="{% url tutor-view-signups %}" class="navigation_sublevel_item">
+		View Tutor Signups
+	</a>
+</li>
 {% if perms.info.group_tutor %}
 <li>	
 	<a href="{% url tutor-admin %}" class="navigation_sublevel_item">
 		Tutor Admin
-	</a>
-</li>
-<li>	
-	<a href="{% url tutor-view-signups %}" class="navigation_sublevel_item">
-		View Tutor Signups
 	</a>
 </li>
 {% endif %}
