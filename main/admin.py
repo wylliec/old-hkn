@@ -18,6 +18,9 @@ from hkn.indrel.admin import InfosessionRegistrationAdmin
 from photologue.admin import GalleryAdmin, PhotoAdmin, PhotoEffectAdmin, PhotoSizeAdmin, WatermarkAdmin
 from photologue.models import Gallery, GalleryUpload, PhotoEffect, PhotoSize, Watermark, Photo
 
+from djangodblog.admin import ErrorAdmin, ErrorBatchAdmin
+from djangodblog.models import Error, ErrorBatch
+
 admin_site = AdminSite()
 admin_site.register(FlatPage, FlatPageAdmin)
 
@@ -38,6 +41,10 @@ admin_site.register(Photo, PhotoAdmin)
 admin_site.register(PhotoEffect, PhotoEffectAdmin)
 admin_site.register(PhotoSize, PhotoSizeAdmin)
 admin_site.register(Watermark, WatermarkAdmin)
+
+admin_site.register(Error, ErrorAdmin)
+admin_site.register(ErrorBatch, ErrorBatchAdmin)
+
 
 from hkn.main.models import HKN
 class PropertiesAdmin(admin.ModelAdmin):

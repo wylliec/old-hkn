@@ -121,6 +121,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.doc.XViewMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'djangologging.middleware.LoggingMiddleware',
+    'djangodblog.DBLogMiddleware',
 )
 
 ROOT_URLCONF = 'hkn.main.urls'
@@ -169,6 +170,7 @@ INSTALLED_APPS = (
     'photologue',
     'registration',
     'nice_types',
+    'djangodblog',
 )
 
 AUTHENTICATION_BACKENDS = (
