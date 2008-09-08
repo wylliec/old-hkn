@@ -11,5 +11,5 @@ class ErrorAdmin(admin.ModelAdmin):
     list_filter     = ('class_name', 'datetime', 'server_name')
     ordering        = ('-datetime',)
 
-admin.site.register(ErrorBatch, ErrorBatchAdmin)
-admin.site.register(Error, ErrorAdmin)
+#admin.site.register(ErrorBatch, ErrorBatchAdmin)
+#admin.site.register(Error, ErrorAdmin)
