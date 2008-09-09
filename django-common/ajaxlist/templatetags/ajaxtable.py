@@ -145,28 +145,17 @@ class AjaxWrapperNode(template.Node):
 		
 		if len(options) >= 1:
 			identifier = options[0]
-		if len(options) >= 2:
-			filters = VariableNode(options[1])
 			
 		self.nodelist = nodelist
 		self.identifier = identifier
-		self.filters = filters
 		
 	def __repr__(self):
 		return "<AjaxWrapperNode: " + self.identifier+ ">"
 	
 	def render(self, context):
 		nodelist = self.nodelist
-		filters = self.filters
 		
 		context['ajaxlist_identifier'] = self.identifier
-		
-		try:
-			context['ajaxlist_filters'] = filters.resolve(context)
-			t = get_template("ajaxlist/_filters.html")
-			nodelist = t.nodelist + nodelist
-		except:
-			pass
 		
 		if self.identifier != "none":
 			nodelist.insert(0, TextNode('<form method="POST" action="%s">' % reverse('ajaxlist-post') ))
