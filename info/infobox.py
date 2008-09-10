@@ -15,7 +15,7 @@ def tutors(request, people):
 		if not tutor_infobox:
 			courses_tutored = ", ".join([ct.course.short_name() for ct in person.cantutor_set.for_current_semester().select_related("course").order_by('course__department_abbr', 'course__integer_number')])
 			d["person"] = person
-			d["assignments"] = merge_assignments((list(person.assignment_set.for_current_semester().latest_version())))
+			d["assignments"] = merge_assignments(sort_assignments(list(person.assignment_set.for_current_semester().latest_version())))
 			d["courses"] = courses_tutored
 			tutor_infobox = render_to_string("info/infobox/tutor.html", d)
 			cache.set(cache_key, tutor_infobox, 600)
@@ -32,15 +32,16 @@ def sort_assignments(assignments):
 			return list(TUTORING_TIMES).index(slot1) - list(TUTORING_TIMES).index(slot2)
 		return list(TUTORING_DAYS).index(day1) - list(TUTORING_DAYS).index(day2)
 
-	return assignments.sort(cmp=assignmentSort)
+	assignments.sort(cmp=assignmentSort)
+	return assignments
 
 def merge_assignments(assignments):
-	if len(assignments) <= 1:
+	if assignments is None or len(assignments) <= 1:
 		return assignments
 
 	day1 = get_day_from_slot(assignments[0].slot)
 	day2 = get_day_from_slot(assignments[1].slot)
-	if day1 == day2:
+	if day1 == day2 and assignments[0].office == assignments[1].office:
 		slot_pair1 = get_time_from_slot(assignments[0].slot).split('-')
 		slot_pair2 = get_time_from_slot(assignments[1].slot).split('-')
 		if slot_pair1[1] == slot_pair2[0]:
