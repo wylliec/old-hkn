@@ -11,7 +11,7 @@
 </div>
 <div id="coursesurvey" class="searchcontrol">
     <form action ="/student/CourseSurvey/search" method="GET">
-        <input class="autoclear text" type=input class="autoclear" name="n" value="Search Course Surveys"><input class="button" type=submit value=" Search ">
+        <input class="autoclear text" type=input class="autoclear" name="n" value="Search Course Surveys"><input type="hidden" value="l1" name="sb"/><input type="hidden" value="1" name="recent"/><input type="hidden" value="1" name="sip"/><input type="hidden" value="1" name="sit"/><input type="hidden" value="1" name="sc"/><input type="hidden" value="1" name="sct"/><input class="button" type=submit value=" Search ">
     </form>
     <div class="small searchhelp infobox_help" rel="#survey_search_help">
         search for courses or instructors
@@ -20,7 +20,6 @@
         Try searching for courses or instructors!
     </div>
 </div>
-
 {% comment %}
 <div style="clear:both">
     <h3>Search for review problems!</h3>
