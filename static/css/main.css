@@ -4,18 +4,18 @@ html #logo { margin: auto; background: #FFFFFF url("/static/images/site/watermar
 html #navigation { font-family: "Trebuchet MS",Arial,tahoma,sans-serif; width: 100%; font-size: 15px; height: 54px; background: #003366; }
 html #toplevel { height: 30px; margin: 0 auto; width: 100%; text-align: center; display: inline; }
 html #toplevel ul { padding: 0; margin: 0; list-style: none; height: 30px; text-align: center; background: #336699; line-height: 30px; }
-html #toplevel li { display: inline; position: relative; top: 2px; padding: 5px 13px 6px 13px; margin: 0px 5px; height: 28px; line-height: 28px; text-align: center; }
-html #toplevel li a { text-align: center; text-decoration: none; color: #ffffff; padding: 0px 0px 6px 0px; }
+html #toplevel li { display: inline; position: relative; top: 2px; padding: 5px 13px 5px 13px; margin: 0px 5px; height: 28px; line-height: 28px; text-align: center; }
+html #toplevel li a { text-align: center; text-decoration: none; color: #ffffff; padding: 0px 0px 5px 0px; }
 html #toplevel li a:visited { text-align: center; text-decoration: none; color: #ffffff; }
 html #toplevel li.selected { background: #003366; }
+html #toplevel li.selected:hover { background: #003366; }
 html #toplevel li:hover { background: #225588; }
-html #toplevel #toplevel li.selected:hover { background: #003366; }
 html .submenu { font-size: 13px; height: 24px; display: none; clear: both; }
 html .submenu ul { padding: 0; margin: 0; list-style: none; height: 24px; text-align: center; background: #003366; line-height: 24px; }
 html .submenu li { display: inline; padding: 0; margin: 0; height: 24px; text-align: center; }
-html .submenu li a { text-align: center; height: 18px; text-decoration: none; color: #ffffff; padding: 3px 7px 3px 10px; display: inline; }
-html .submenu li a:visited { text-align: center; height: 18px; text-decoration: none; color: #ffffff; padding: 3px 7px 3px 10px; display: inline; }
-html .submenu li a:hover { background: #336699; text-decoration: none; }
+html .submenu li a { text-align: center; height: 18px; text-decoration: none; color: #ffffff; padding: 2px 7px 3px 10px; display: inline; }
+html .submenu li a:visited { text-align: center; height: 18px; text-decoration: none; color: #ffffff; display: inline; }
+html .submenu li a:hover { background: #002244; text-decoration: none; }
 html #topbar { border-left: 1px #003366 solid; border-right: 1px #003366 solid; border-bottom: 1px #003366 solid; padding-bottom: 3px; background: #ADC3DB; }
 html #topbar input { background: #DCE2ED; border: 1px #003366 solid; padding: 2px 3px; margin: 4px; }
 html #topbar input.text { width: 200px; }

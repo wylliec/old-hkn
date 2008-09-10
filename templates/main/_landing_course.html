@@ -1,12 +1,3 @@
-<div id="coursesurvey" class="searchcontrol">
-    <input class="autoclear text" type=input class="autoclear" value="Search Course Surveys"><input class="button" type=submit value=" Search ">
-    <div class="small searchhelp infobox_help" rel="#survey_search_help">
-        search for courses or instructors
-    </div>
-    <div style="display: none" id="survey_search_help">
-        Try searching for courses or instructors!
-    </div>
-</div>
 <div id="examfiles" class="searchcontrol">
     <form action="{% url exam-list %}" method="GET">
         {{ exam_files_autocomplete|safe }}<input class="button" type=submit value=" Search ">
@@ -18,6 +9,18 @@
         Try searching for courses like: PHYS7B, MATH 54, CS 61A, or EE20N
     </div>
 </div>
+<div id="coursesurvey" class="searchcontrol">
+    <form action ="/student/CourseSurvey/search" method="GET">
+        <input class="autoclear text" type=input class="autoclear" value="Search Course Surveys"><input class="button" type=submit value=" Search ">
+    </form>
+    <div class="small searchhelp infobox_help" rel="#survey_search_help">
+        search for courses or instructors
+    </div>
+    <div style="display: none" id="survey_search_help">
+        Try searching for courses or instructors!
+    </div>
+</div>
+
 {% comment %}
 <div style="clear:both">
     <h3>Search for review problems!</h3>
