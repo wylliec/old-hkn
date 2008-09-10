@@ -2,18 +2,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth.backends import ModelBackend
 from django.core.validators import email_re
 try:
-    from hkn.main import pam
+    from hkn.main import shadow_wrap
     PAM_DISABLED = False
 except:
     PAM_DISABLED = True
 
-class PamBackend:
-    def get_user(self, user_id):
-        try:
-            return User.objects.get(pk=user_id)
-        except User.DoesNotExist:
-            return None
-
+class PamBackend(ModelBackend):
     def authenticate(self, username=None, password=None):
         if PAM_DISABLED:
             # if we couldn't import the pam module
@@ -25,7 +19,7 @@ class PamBackend:
 
         try:
             user = User.objects.get(username=username)
-            if pam.authenticate(str(username), str(password)):
+            if shadow_wrap.authenticate(str(username), str(password)):
                 return user
         except User.DoesNotExist:
             pass
