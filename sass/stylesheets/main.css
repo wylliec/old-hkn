@@ -5,7 +5,7 @@ html #navigation { font-family: "Trebuchet MS",Arial,tahoma,sans-serif; width: 1
 html #toplevel { height: 30px; margin: 0 auto; width: 100%; text-align: center; display: inline; }
 html #toplevel ul { padding: 0; margin: 0; list-style: none; height: 30px; text-align: center; background: #336699; line-height: 30px; }
 html #toplevel li { display: inline; position: relative; top: 2px; padding: 5px 13px 6px 13px; margin: 0px 5px; height: 28px; line-height: 28px; text-align: center; }
-html #toplevel li a { text-align: center; text-decoration: none; color: #ffffff; }
+html #toplevel li a { text-align: center; text-decoration: none; color: #ffffff; padding: 0px 0px 6px 0px; }
 html #toplevel li a:visited { text-align: center; text-decoration: none; color: #ffffff; }
 html #toplevel li.selected { background: #003366; }
 html #toplevel li:hover { background: #225588; }
@@ -23,7 +23,8 @@ html #topbar .searchhelp { margin-left: 5px; }
 html #header { text-align: center; }
 html #content { margin: 0 10px 10px 10px; width: auto; }
 html #userbar { float: left; padding: 5px 8px 5px 8px; }
-html .searchcontrol { text-align: left; float: right; padding-left: 15px; }
+html #searcharea { float: right; }
+html .searchcontrol { text-align: left; float: left; padding-left: 15px; }
 html #container { clear: both; padding: 12px 8px 20px 8px; width: auto; }
 html #container li { margin-bottom: 5px; }
 html #container #leftshadow { position: relative; top: -5%; left: -7%; width: 1%; background: url("/images/site/leftshadow.png") repeat-y; height: 110%; }
