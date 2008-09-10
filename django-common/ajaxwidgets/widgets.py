@@ -46,9 +46,7 @@ class JQueryAutoComplete(forms.TextInput):
         if not self.attrs.has_key('id'):
             final_attrs['id'] = 'id_%s' % name    
         
-        return u'''<input type="text" %(attrs)s/>
-        <script type="text/javascript">%(js)s</script>
-        ''' % {
+        return u'''<input type="text" %(attrs)s/><script type="text/javascript">%(js)s</script>''' % {
             'attrs' : flatatt(final_attrs),
             'js' : self.render_js(final_attrs['id']),
         }
@@ -104,7 +102,7 @@ class ModelAutocomplete(Widget):
         output.append(self.render_hidden_id_field(name))
         output.append(self.render_result_javascript(name))
         
-        return '\n'.join(output)
+        return ''.join(output)
     
     def value_from_datadict(self, data, files, name):
         obj_txt = data.get(ModelAutocomplete.autocomplete_field % name)
