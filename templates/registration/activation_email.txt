@@ -1,7 +1,7 @@
 Hi {{person.first_name}},
 
 You have recently requested to create an account at the HKN website. In order to activate your account, please visit the following link:
-{% url registration_activate activation_key %}
+http://hkn.eecs.berkeley.edu{% url registration_activate activation_key %}
 
 If you have not recently requested to create an account, please feel free to ignore this message.
 
