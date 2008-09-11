@@ -1,15 +1,19 @@
 from hkn.settings import STATIC_PREFIX, MEDIA_URL
+from ajaxwidgets.widgets import JQueryAutoComplete
+from django.core.urlresolvers import reverse
 from hkn.main.property import PROPERTIES
 
 def hkn_vars(request):
     layout = request.session.get("layout", "-green")
+    xfa = JQueryAutoComplete(source=reverse('course-course-autocomplete'))
     return {
         "STATIC_PREFIX" : STATIC_PREFIX,
         "MEDIA_URL" : MEDIA_URL,
     	"LAYOUT"  : layout,
 	    "LAYOUT_HTML" : "hkn" + layout + ".html",
         "DEFAULT_PICTURE" : "/static/images/site/lion.gif",
-        "PROPERTIES" : PROPERTIES
+        "PROPERTIES" : PROPERTIES,
+        "EXAM_FILES_AUTOCOMPLETE" : xfa.render(name="exam_course", value="Search Exams", attrs={'class':'text autoclear'}),
 	}
 
 
