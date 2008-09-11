@@ -73,7 +73,9 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
 <div id="container">
 <!--content-->
 <!-- start main content block -->
-<h1>{% block subtitle %}{% endblock %}</h1>
+<div style="float: left"><h1>{% block subtitle %}{% endblock %}</h1></div>
+<div style="float: right">{% block topright %}{% endblock %}</div>
+<div style="clear: both"></div>
 {% block content %}
 {% endblock %}
 

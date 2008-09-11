@@ -37,6 +37,7 @@ ul.courses li.last {
 
 </style>
 {% for dept in departments %}
+<div style="float:left; margin-right: 30px; margin-top: 30px;">
 <h1><a class="department" href="/exam/browse/{{dept.abbr}}/">{{dept.name}}</a></h1>
 <div class="courses_wrapper">
 <ul class="courses">
@@ -47,5 +48,7 @@ ul.courses li.last {
 </div>
 <div class="browse_clear" > &nbsp; </div>
 <br />
+</div>
 {% endfor %}
+<div style="clear:both;"></div>
 {% endblock %}

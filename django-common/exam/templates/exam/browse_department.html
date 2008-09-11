@@ -1,8 +1,6 @@
 {% extends "exam/exam.html" %}
 
-{%block title {{ block.super }} - Browse Department {% endblock %}
-
-{% block subtitle %}Browse Department Exams{% endblock %}
+{% block subtitle %}Exam Files - Browse Department{% endblock %}
 
 {% block examcontent %}
 <style type="text/css">
@@ -26,7 +24,7 @@ ol.browse_ol li {
     margin: 0;
     padding: 0;
     line-height: 1.3em;
-    font-size: small;
+    font-size: medium;
 }
 
 </style>
@@ -39,7 +37,7 @@ No exams available for this department.
 <div class="browse_wrapper">
 <ol class="browse_ol">
   {% for course in courses_list %}
-  <li><a href="{% url exam-list %}?exam_course={{course.short_name_space|urlencode}}">{{course.short_name_space}}</a></li>
+  <li><a class="course_name" href="{% url exam-list %}?exam_course={{course.short_name_space|urlencode}}">{{course.short_name_space}}</a></li>
   {% endfor %}
 </ol>
 </div>
