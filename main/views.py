@@ -16,7 +16,7 @@ from hkn.info import infobox
 def main(request):
     d = {}
 
-    events = Event.objects.order_by('-start_time').filter_permissions(request.user).annotate_rsvp_count()
+    events = Event.objects.order_by('start_time').filter_permissions(request.user).annotate_rsvp_count()
     today = datetime.date.today()
     tomorrow = today + datetime.timedelta(1)
     week = today + datetime.timedelta(7)
