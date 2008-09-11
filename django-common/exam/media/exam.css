@@ -9,6 +9,7 @@ div.column {
     float: left;
     width: 150px;
     padding: 7px 30px 15px 0px;
+    margin-right: 20px;
 }
 
 div.column div {

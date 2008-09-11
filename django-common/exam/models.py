@@ -3,7 +3,7 @@ import datetime, re, os, string, os.path
 from django.contrib.auth.models import User, Permission
 
 from course.models import *
-from constants import FILE_UPLOAD_DIR, EXAM_TYPE
+from constants import FILE_UPLOAD_DIR, EXAM_TYPE, EXAM_ABBR
 import request.utils
 
 from django.db.models.query import QuerySet
@@ -155,7 +155,7 @@ class Exam(db.models.Model):
 		return os.path.splitext(self.file.name)[1].strip(". ")
 	
 	def get_exam_filename(self):
-		return ("%s_%s_%s_%s%s" % (self.klass.course.short_name(), self.klass.semester, self.klass.section, self.exam_type, self.number or "0")).replace(" ", "-")
+		return ("%s_%s_%s%s" % (self.klass.course.short_name(), self.klass.semester, EXAM_ABBR[self.exam_type], self.number or "0")).replace(" ", "-")
 		
 	def get_semester_sort(self):
 		return self.klass.semester.start_date
