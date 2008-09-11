@@ -23,7 +23,7 @@ html #topbar .searchhelp { margin-left: 5px; }
 html #header { text-align: center; }
 html #content { margin: 0 10px 10px 10px; width: auto; }
 html #userbar { float: left; padding: 5px 8px 5px 8px; }
-html #searcharea { float: right; }
+html #searcharea { float: right; padding: 5px 8px; }
 html .searchcontrol { text-align: left; float: left; padding-left: 15px; }
 html #container { clear: both; padding: 12px 8px 20px 8px; width: auto; }
 html #container li { margin-bottom: 5px; }
