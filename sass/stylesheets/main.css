@@ -1,6 +1,6 @@
 html { height: 100%; }
 html body { height: 100%; font-size: 14px; margin: 0; padding: 0; background: #EAEFFF; }
-html ul, html ol { margin-left: 30px; }
+html ul, html ol { margin-left: 25px; }
 html #logo { margin: auto; background: #FFFFFF url("/static/images/site/watermark.png"); }
 html #navigation { font-family: "Trebuchet MS",Arial,tahoma,sans-serif; width: 100%; font-size: 15px; height: 54px; background: #003366; }
 html #toplevel { height: 30px; margin: 0 auto; width: 100%; text-align: center; display: inline; }
