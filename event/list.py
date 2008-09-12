@@ -24,7 +24,8 @@ def list_events(request, category):
     except KeyError:
         raise Http404
 
-    if d.has_key('query'):
+    # HACK: change the query != Search Events
+    if d.has_key('query') and d['query'] != "Search Events":
         events = events.ft_query(d['query'])
     
     events = events.filter_permissions(request.user)
