@@ -15,7 +15,9 @@ def list_events(request, category):
     d = get_ajaxinfo(request.GET)
     d['category'] = category
     if d['sort_by'] == "?":
-        d['sort_by'] = "-start_time"
+        d['sort_by'] = "start_time"
+        if category.lower() == "past":
+            d['sort_by'] = "-start_time"
         
     try:
         events = Event.__dict__[category].manager.all()
