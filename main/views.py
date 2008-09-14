@@ -23,7 +23,7 @@ def main(request):
     d['today_events'] = events.filter(start_time__gte = today, start_time__lt = tomorrow)
     d['week_events'] = events.filter(start_time__gte = tomorrow, start_time__lt=week)
     
-    delta = datetime.datetime(0, 0, 0, 7)
+    delta = datetime.timedelta(hours=7)
     d['day'] = (datetime.datetime.now() + delta).strftime("%A")
     if d['day'] in ("Saturday", "Sunday"):
         d['day'] = "Monday"
