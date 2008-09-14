@@ -37,6 +37,7 @@ urlpatterns = patterns('',
     (r'^static/exam/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + '/exam/media'}),
     (r'^static/request/(?P<path>.*)$', 'django.views.static.serve', {'document_root': DJANGO_COMMON + '/request/media'}),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': SERVER_ROOT + 'static'}),
+    (r'^favicon.ico$', 'django.views.static.serve', {'document_root': SERVER_ROOT, 'path' : 'static/images/site/favicon.ico'}),
 
     # media
     (r'^files/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
