@@ -5,11 +5,11 @@ function prepareRow(event_div) {
 }
 
 event_show_info_url = "/event/view/";
-event_info_div = "#event_" + event_id + "_info";
-event_rsvp_div = "#event_" + event_id + "_rsvp";
-event_rsvp_list_div = "#event_" + event_id + "_rsvp_list";
 
-function showInfo(event_id) { 
+function showInfo(event_id) {
+    event_info_div = "#event_" + event_id + "_info";
+    event_rsvp_div = "#event_" + event_id + "_rsvp";
+    event_rsvp_list_div = "#event_" + event_id + "_rsvp_list";
     if($(event_info_div).html() == ""){
       prepareRow(event_info_div);
       
@@ -28,6 +28,9 @@ function showInfo(event_id) {
 event_rsvp_paragraph_url = "/event/rsvp/list_for_event_paragraph/";
 event_rsvp_list_url = "/event/rsvp/list_event/";
 function showRSVP(event_id) {
+    event_info_div = "#event_" + event_id + "_info";
+    event_rsvp_div = "#event_" + event_id + "_rsvp";
+    event_rsvp_list_div = "#event_" + event_id + "_rsvp_list";
     if($(event_rsvp_list_div).html() == ""){
       prepareRow(event_rsvp_list_div);    
       
@@ -52,6 +55,9 @@ function showRSVP(event_id) {
 
 rsvp_form_url = "/event/rsvp/edit-ajax/";
 function rsvpForm(event_id) {
+    event_info_div = "#event_" + event_id + "_info";
+    event_rsvp_div = "#event_" + event_id + "_rsvp";
+    event_rsvp_list_div = "#event_" + event_id + "_rsvp_list";
     
     if($(event_rsvp_div).html() == ""){
       prepareRow(event_rsvp_div);    
