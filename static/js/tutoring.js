@@ -93,3 +93,5 @@ function locklight (className) {
 }
 
 var tutoringcss = getObjectCss();
+addCssRule(tutoringcss, '.current', 'background: ' + colorcur + ' !important');
+addCssRule(tutoringcss, '.completed', 'background: ' + color + ' !important');
