@@ -172,7 +172,7 @@ def edit_ajax(request, event_id):
         if form.is_valid():
             rsvp = rsvp_from_form_instance(form, rsvp)
             rsvp.save() 
-            return HttpResponse("rsvpCallback(%d);" % e.id, mimetype="text/javascript", status=200)
+            return HttpResponse("eval(rsvpCallback(%d));" % e.id, mimetype="text/javascript", status=200)
     else:
         if new_rsvp:
             form = rsvp_form_instance(e)
