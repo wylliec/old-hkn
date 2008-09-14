@@ -1,3 +1,11 @@
+var options = { 
+    dataType: 'script'
+}; 
+$(document).ready(function() {
+    $('.rsvp_form').ajaxForm(options);
+});
+
+
 function prepareRow(event_div) {
     $(event_div).html('<img src="/static/images/site/spinner.gif" />');
 }
