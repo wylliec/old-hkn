@@ -3,20 +3,21 @@
 
 {% block subtitle %} Review Problems {% endblock %}
 {% block title %} {{ block.super }} - Student Services - Review Problems {% endblock %}
-{% block content %}
-	{% block search %}
-	<div style="text-align: right">
+{% block searchbar %}
+<div style="text-align: right">
 	<form method="GET" action="{% url review-search %}">
 	<input name="query" class="ajaxinfo" value="{{ query }}"  />
 	<input type="submit" value="Search" />
 	</form>
-	<div >search by tag e.g. cs3, recursion</div>
+	<div class="small searchelp infobox_help">search by tag e.g. cs3, recursion</div>
 	</div>
-	{% endblock %}
-	{% block browse_link %}
-	<div style="text-align: right;"><a href="{% url review-browse-tags %}">Browse Problems</a></div>
-	<br />
-	{% endblock %}
+{% endblock %}
+{% block topright %}
+<a href="{% url review-browse-tags %}">Browse Problems</a>
+{% endblock %}
+
+{% block content %}
+
 {% block reviewcontents %}
 {% endblock %}
 
