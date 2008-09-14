@@ -1,18 +1,12 @@
 {% spaceless %}
-	<td style="width: 10%"><a style="font-weight: bold" href="{% url event-view object.slug %}">{{ object.name }}</a><br></td>
-    <td style="width: 5%">
+	<td style="width: 20%"><a style="font-weight: bold" href="{% url event-view object.slug %}">{{ object.name }}</a><br><span class="small"><label>Location:</label> {{ object.location }}</span></td>
+	<td style="width: 65%">
+        <p>{{ object.description|linebreaksbr }}</p><BR>
+        <div id="rsvp_{{object.id}}"> </div>
         <span class="small">
-            {% if object.rsvp_none %}
-            {% else %}
-                <a href="{% url rsvp-list-for-event object.id %}"> {{ object.rsvp_set.count }} rsvps </a> 
-                <br><a href="{% url rsvp-edit object.id %}">rsvp </a>  
-            {% endif %} 
-            {% if can_edit %}
-                <br><a href="/admin/event/event/{{object.id}}/">edit</a> 
-            {% endif %}
+            {% if not object.rsvp_none %}<a href="{% url rsvp-list-for-event object.id %}">{{ object.rsvp_set.count }} rsvps</a>  |  <a href="{% url rsvp-edit object.id %}">rsvp</a>{% if can_edit %}  |  {% endif %}{% endif %}{% if can_edit %}<a href="/admin/event/event/{{object.id}}/">edit</a>{% endif %}
         </span>
     </td>
-	<td style="width: 70%"><p>{{ object.description|linebreaksbr }}</p><BR><div id="rsvp_{{object.id}}"> </div></td>
 	<td style="width: 8%">{{ object.start_time|date:"l m/d g:ia" }}-{{ object.end_time|date:"g:ia" }}</td>
 	<td style="width: 7%">{{ object.get_event_type }}</a> </td>
 {% endspaceless %}
