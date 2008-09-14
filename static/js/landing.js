@@ -1,6 +1,4 @@
 function prepareRow(event_div) {
-    $(event_div).html('');
-    $(event_div).show();
     $(event_div).html('<img src="/static/images/site/spinner.gif" />');
 }
 
