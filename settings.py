@@ -172,6 +172,7 @@ INSTALLED_APPS = (
     'nice_types',
     'djangodblog',
     'resume',
+    'south',
 )
 
 AUTHENTICATION_BACKENDS = (
