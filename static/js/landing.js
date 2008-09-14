@@ -73,10 +73,10 @@ function rsvpForm(event_id) {
       });
     }
     
-    $('.rsvp_form').ajaxForm(function(){alert("hi")});
     $(event_rsvp_div).toggle();
     $(event_info_div).hide();
     $(event_rsvp_list_div).hide();
+    $('.rsvp_form').ajaxForm(function(){alert("hi")});
 }
 
 function rsvpCallback(event_id) {
