@@ -1,12 +1,16 @@
+    {% if not today_events|length_is:"0" %}
 	<h3>Today's Events</h3>
 	<table class="landing_events flushheader">
 	    {% for event in today_events %}
 {% include 'main/_landing_event_row.html' %}
 	    {% endfor %}
 	</table>
+    {% endif %}
 	<h3>Upcoming Events</h3>
+    {% if not week_events|length_is:"0" %}
 	<table class="landing_events flushheader">
 	    {% for event in week_events %}
 {% include 'main/_landing_event_row.html' %}
 	    {% endfor %}
+    {% endif %}
 	</table>
