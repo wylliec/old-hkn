@@ -10,6 +10,7 @@ from hkn.info.models import *
 from django.contrib.auth.models import *
 from hkn.info.utils import *
 from photologue.models import *
+from nice_types.semester import Semester
 
 DEFAULT_PASSWORD = "password"
 
@@ -70,7 +71,10 @@ def addLine(line, member_status):
     ci.local_addr = la.strip()
     ci.perm_addr = pa.strip()
     ci.sid = sid.strip()
-    ci.grad_semester = gradsem.strip()
+    ci.grad_semester = None
+    gradsem = gradsem.strip()
+    if len(gradsem) > 0:
+        ci.grad_semester = Semester(gradsem)
     ci.person = c
     ci.save()
 
