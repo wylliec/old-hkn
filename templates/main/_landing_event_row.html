@@ -2,16 +2,14 @@
 	<div class="name">
 		<a rel="{% url event-infobox event.id %}" href="{% url event-view event.slug %}" style="display: block">{{event.name}}</a>
 	</div>
-	<div class="day">
-		{{event.start_time|date:"l" }}
-	</div>
 </td></tr>
 
 <tr class="linksrow"><td>
 	<div class="time_location">
-		{{event.start_time|date:"f"}}-{{event.end_time|date:"f"}} @ {{event.location}}
-	</div><br/>
+		{{event.start_time|date:"l" }}, {{event.start_time|date:"f"}}-{{event.end_time|date:"f"}} @ {{event.location}}
+	</div>
     <div class="links small">
+    [
 		{% if not event.rsvp_none %}
 			{% if user.is_authenticated %}
 				&nbsp;<a href="javascript:rsvpForm({{event.id}});" title="Click to RSVP">rsvp</a>&nbsp;|
@@ -19,6 +17,7 @@
 	        &nbsp;<a href="javascript:showRSVP({{event.id}});" title="{{event.rsvp_count}} RSVP{{event.rsvp_count|pluralize}} (click to view)">see rsvps</a>&nbsp;|
 	    {% endif %}
 		&nbsp;<a href="javascript:showInfo({{event.id}});" title="More information about this event">info</a>&nbsp;
+		]
 	</div>	    		
 	<div style="clear: both"></div>	
 </td></tr>
