@@ -93,7 +93,7 @@ def add_exams(path):
 			e.version = 0
 			e.paper_only = False
 			e.publishable = True
-			e.exam_type = type
+			e.exam_type = EXAM_REVERSE_MAP[type]
 			e.topics = ""
 			e.submitter = None
 			f = open(join(path, filename) , "r")
