@@ -36,8 +36,8 @@ class PublicEventsManager(AllEventsManager):
 
 class FutureEventsManager(AllEventsManager):
         def get_query_set(self):
-                start_time = datetime.date.today() - datetime.timedelta(days = 1)
-                return super(FutureEventsManager, self).get_query_set().filter(start_time__gte = start_time)
+                #start_time = datetime.date.today() - datetime.timedelta(days = 1)
+                return super(FutureEventsManager, self).get_query_set().filter(start_time__gte = datetime.date.today())
 
 class PastEventsManager(AllEventsManager):
         def get_query_set(self):
