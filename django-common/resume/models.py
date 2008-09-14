@@ -4,10 +4,13 @@ from hkn.info.models import Person
 
 import request.utils
 from django.db.models.query import QuerySet
+from django.core.files.base import ContentFile
 from nice_types.db import QuerySetManager
 from nice_types.semester import Semester
 
 from django.db import models
+
+import random
 
 class Concentration(models.Model):
     name = models.CharField(max_length=50)
@@ -22,6 +25,14 @@ class Resume(models.Model):
     text = models.TextField()
     published = models.BooleanField()
     concentrations = models.ManyToManyField(Concentration, related_name="resumes")
+
+    def generate_filename(self, extension):
+        digits = "0123456789abcdefghijklmnopqrstuvwxyz"
+        new = "%s-%s%s" % (''.join([random.choice(digits) for i in xrange(15)]), self.person.username, extension)
+        return new
+
+    def save_resume_file(self, content, extension):
+        self.resume.save(self.generate_filename(extension), ContentFile(content))
     
     def describe_gpa(self):
         gpa = "GPA: %s"

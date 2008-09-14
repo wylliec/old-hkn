@@ -11,7 +11,7 @@ def upload(request):
     if request.POST:
         form = ResumeForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save_for_person()
+            form.save(request.user.person)
             request.user.message_set.create(message="Resume uploaded successfully")
             form = ResumeForm()
     else:

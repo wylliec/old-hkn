@@ -153,3 +153,12 @@ class SemesterField(models.CharField):
                                SemesterField.SEPARATOR,
                                value.abbr())
         return value
+
+from django import forms
+
+class SemesterFormField(forms.CharField):
+    def clean(self, value):
+        try:
+            return Semester(value)
+        except InvalidSemester, e:
+            raise forms.ValidationError("Semester is invalid; ensure the format is similar to 'fa05' or 'sp08'")

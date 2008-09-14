@@ -35,7 +35,6 @@ def exam_from_form_instance(form, request):
     return e
 
 def submit(request):
-    examForm = ExamForm()  
     if request.POST:
         form = ExamForm(request.POST, request.FILES)
         if form.is_valid():
