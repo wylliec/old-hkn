@@ -41,7 +41,7 @@ function showRSVP(event_id) {
           html.push('<p class="small">');
           html.push(data);
           html.push('<br/>');
-          html.push('<a href="' + event_rsvp_list_url + event_rsvp_id + '/">view all rsvps</a>');        
+          html.push('<a href="' + event_rsvp_list_url + event_id + '/">view all rsvps</a>');        
           html.push('</p>');
       
           $(event_rsvp_list_div).html(html.join(''));
