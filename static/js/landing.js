@@ -18,11 +18,10 @@ function showInfo(event_id) {
       $.get(url, {}, function(data) {
           $(event_info_div).html("<p class='small'>" + data + "</p>");
       });  
-    } else {
-      $(event_rsvp_div).hide();
-      $(event_info_div).toggle();
-      $(event_rsvp_list_div).hide();
-    } 
+    }
+    $(event_rsvp_div).hide();
+    $(event_info_div).toggle();
+    $(event_rsvp_list_div).hide(); 
 }
 
 event_rsvp_paragraph_url = "/event/rsvp/list_for_event_paragraph/";
@@ -46,11 +45,10 @@ function showRSVP(event_id) {
       
           $(event_rsvp_list_div).html(html.join(''));
       });
-    } else {
-      $(event_rsvp_div).hide();
-      $(event_info_div).hide();
-      $(event_rsvp_list_div).toggle();      
     }
+    $(event_rsvp_div).hide();
+    $(event_info_div).hide();
+    $(event_rsvp_list_div).toggle();
 }
 
 rsvp_form_url = "/event/rsvp/edit-ajax/";
@@ -67,11 +65,11 @@ function rsvpForm(event_id) {
       $.get(url, {}, function(data) {
           $(event_rsvp_div).html(data);
       });
-    } else {
-      $(event_rsvp_div).toggle();
-      $(event_info_div).hide();
-      $(event_rsvp_list_div).hide();
-    } 
+    }
+    
+    $(event_rsvp_div).toggle();
+    $(event_info_div).hide();
+    $(event_rsvp_list_div).hide();
 }
 
 function rsvpCallback(event_id) {
