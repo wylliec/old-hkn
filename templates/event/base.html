@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% block title %} {{ block.super }} - Events {% endblock %}
 {% block css %}
 {{ block.super }}
 <link href="{{STATIC_PREFIX}}css/event.css" type="text/css" rel="stylesheet"/>

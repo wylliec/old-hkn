@@ -1,6 +1,6 @@
 {% extends "exam/exam.html" %}
 
-{% block subtitle %}Exam Files - Browse Departments{% endblock %}
+{% block subtitle %}Browse Exams by Department{% endblock %}
 
 {% block examcontent %}
 <style type="text/css">
@@ -41,10 +41,11 @@ ul.courses li.last {
 <h1><a class="department" href="/exam/browse/{{dept.abbr}}/">{{dept.name}}</a></h1>
 <div class="courses_wrapper">
 <ul class="courses">
-  {% for course in dept.course_set.all.annotate_exam_count.get_top_courses_by_published_exams|slice:":10" %}
+  {% for course in dept.course_set.all.annotate_exam_count.get_top_courses_by_published_exams %}
   <li {% if forloop.last %}class="last"{% endif %}><a href="{% url exam-list %}?exam_course={{course.short_name_space|urlencode}}">{{course.short_name_space}}</a> - {{course.published_exam_count}} exams</li>
   {% endfor %}
 </ul>
+<a style="font-size: x-small" href="/exam/browse/{{dept.abbr}}/">More >></a>
 </div>
 <div class="browse_clear" > &nbsp; </div>
 <br />

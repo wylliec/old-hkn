@@ -3,7 +3,7 @@
 {# Base template for all Exam Files related pages. All Exam Files pages should inherit from this base. #}
 
 {# Note: there is a 'extrahead' hook available to use (above the main HKN graphic in the header). #}
-
+{% block title %} {{ block.super }} - Student Services - Exam Files{% endblock %}
 {% block searchbar %}
 <div id="examfiles" class="searchcontrol">
     <form action="{% url exam-list %}" method="GET">
