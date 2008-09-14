@@ -13,6 +13,11 @@ table.ajaxtable .even {
     background: #dce2ed;
 }
 
+table.ajaxtable th {
+  font-weight: bold;
+}
+
+
 table.ajaxtable th, table.ajaxtable td {
   padding: 4px;
   vertical-align: top;
