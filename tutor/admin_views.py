@@ -314,7 +314,7 @@ def view_signups(request):
                                    "adjacencies":0,
                                    "same_office_adjacencies":0,
                                    "correct_office_count":0,
-                                   "missing":HOUR_EXCEPTIONS[person.id] | DEFAULT_HOURS}
+                                   "missing":HOUR_EXCEPTIONS[person.id] or DEFAULT_HOURS}
             happiness[fullname]["net"] = -1 * SCORE_MISS_PENALTY * happiness[fullname]["missing"]
         
         #scan for the preference
