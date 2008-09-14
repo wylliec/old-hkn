@@ -2,7 +2,7 @@
 
 {% spaceless %}
 <div class="pager"  style="text-align:right">
-<img src="/static/images/site/arrow_desc.gif">
+&#171;
 {% if has_previous_page %}
 <a class="prev_page" href="{% addurlparameter page prev_page %}" >Previous</a>
 {% else %}
@@ -24,6 +24,6 @@ Previous
 {% else %}
 Next
 {% endif %}
-<img src="/static/images/site/arrow_asc.gif">
+&#187;
 </div>
 {% endspaceless %}

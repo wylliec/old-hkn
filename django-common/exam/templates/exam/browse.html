@@ -45,7 +45,7 @@ ul.courses li.last {
   <li {% if forloop.last %}class="last"{% endif %}><a href="{% url exam-list %}?exam_course={{course.short_name_space|urlencode}}">{{course.short_name_space}}</a> - {{course.published_exam_count}} exams</li>
   {% endfor %}
 </ul>
-<a style="font-size: x-small" href="/exam/browse/{{dept.abbr}}/">More >></a>
+<a style="font-size: x-small" href="/exam/browse/{{dept.abbr}}/">More &#187;</a>
 </div>
 <div class="browse_clear" > &nbsp; </div>
 <br />

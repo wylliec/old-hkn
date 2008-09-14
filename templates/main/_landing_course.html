@@ -2,23 +2,27 @@
     <form action="{% url exam-list %}" method="GET">
         {{ exam_files_autocomplete|safe }}<input class="button" type=submit value=" Search ">
     </form>
-    <div class="small searchhelp  infobox_help" rel="#exams_search_help">
-        search for courses e.g. math 54
+    <div class="small searchhelp" rel="#exams_search_help">
+        search exams by course e.g. math 54
     </div>
+	{% comment %}
     <div style="display: none" id="exams_search_help">
         Try searching for courses like: PHYS7B, MATH 54, CS 61A, or EE20N
     </div>
+	{% endcomment %}
 </div>
 <div id="coursesurvey" class="searchcontrol">
     <form action ="/student/CourseSurvey/search" method="GET">
         <input class="autoclear text" type=input class="autoclear" name="n" value="Search Course Surveys"><input type="hidden" value="l1" name="sb"/><input type="hidden" value="1" name="recent"/><input type="hidden" value="1" name="sip"/><input type="hidden" value="1" name="sit"/><input type="hidden" value="1" name="sc"/><input type="hidden" value="1" name="sct"/><input class="button" type=submit value=" Search ">
     </form>
-    <div class="small searchhelp infobox_help" rel="#survey_search_help">
-        search for courses or instructors
+    <div class="small searchhelp" rel="#survey_search_help">
+        search for courses or instructors e.g. hilfinger
     </div>
-    <div style="display: none" id="survey_search_help">
-        Try searching for courses or instructors!
+    {% comment %}
+	<div style="display: none" id="survey_search_help">
+        Try searching for courses or instructors! Example
     </div>
+	{% endcomment %}
 </div>
 {% comment %}
 <div style="clear:both">

@@ -18,10 +18,15 @@
 {% endblock %}
 {% block content %}
 {% ajaxwrapper events %}
-{% control pager %}
+
 {% control notify %}
 {% control spinner %}
+{% if events %}
+{% control pager %}
 {% ajaxtable events "event/ajax/_list_events_header.html" "event/ajax/_list_events_row.html" %}
 {% control pager %}
+{% else %}
+No events
+{% endif %}
 {% endajaxwrapper %}
 {% endblock %}

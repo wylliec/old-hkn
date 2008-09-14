@@ -17,15 +17,20 @@ ajaxlist_checkbox_post_address = "{% url request-ajax-confirm %}";
 </script>
 {% endblock %}
 
-
+{% block searchbar %}
+{% control search %}
+{% endblock %}
 {% block content %}
     {% ajaxwrapper requests %}
-        {% control search %}
-        {% control pager %}
         {% control notify %}
         {% control spinner %}
+		{% if requests %}
+		{% control pager %}
         {% ajaxtable requests "request/ajax/_request_header.html" "request/ajax/_request_row.html" %}
-        {% control pager %}
+		{% control pager %}
+		{% else %}
+		No requests
+		{% endif %}
     {% endajaxwrapper %}
 {% endblock %}
 
