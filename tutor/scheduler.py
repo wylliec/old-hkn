@@ -2041,7 +2041,15 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
         x = defaultHours
         if p in exceptions:
             x = exceptions[p]
-        lines.append("s.t. totalHours%s: sum{s in slots, o in offices} personInSlot['%s', s, o] <= %d;\n" % (p, p, x)) #tweak <=, ==, remember parameters.py settings
+        lines.append("s.t. totalHoursMax%s: sum{s in slots, o in offices} personInSlot['%s', s, o] <= %d;\n" % (p, p, x)) #tweak <=, ==, remember parameters.py settings
+
+    # minimum hours to tutor
+    for p in people:
+        x = defaultHours
+        if p in exceptions:
+            x = exceptions[p] - 1
+        lines.append("s.t. totalHoursMin%s: sum{s in slots, o in offices} personInSlot['%s', s, o] >= %d;\n" % (p, p, x))
+
 
     # can't make these slots
     for p in people:
@@ -2487,6 +2495,8 @@ if __name__=="__main__":
             lpall = int(arg)
 
     if lpall > 0:
+        dump = open(filename, 'w+') #truncates file if it exists
+
         results = []
         for i in xrange(lpall):
             create_lp_from_parameters(lpfile)
@@ -2497,13 +2507,20 @@ if __name__=="__main__":
             if len(results) > 0:
                 if results[0].meta['cost'] > state.meta['cost']:
                     results = [state]
+                    dump.close()
+                    dump = open(filename, 'w+') #truncates file if it exists
+                    dump.write(state.pretty_print())
+                    dump.flush()
                 elif results[0].meta['cost'] == state.meta['cost'] and state not in results:
                     results.append(state)
+                    dump.write(state.pretty_print())
+                    dump.flush()
             else:
                 results.append(state)
+                dump.write(state.pretty_print())
+                dump.flush()
 
         print "FINAL RESULTS:"
-        dump = open(filename, 'w+') #truncates file if it exists
         for x in results:
             print x.pretty_print()
             dump.write(x.pretty_print())
