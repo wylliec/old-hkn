@@ -443,7 +443,7 @@ class ExtendedInfo(models.Model):
     sid = models.CharField(max_length=10)
     """ The person's SID. Try to use this as little as possible, will be phased out gradually. """
 
-    grad_semester = models.CharField(max_length=5)
+    grad_semester = semester.SemesterField(null=True)
     """ The person's graduation semester. Usually taken at initiation time, so subject to change. """
     
     local_addr = models.TextField()
