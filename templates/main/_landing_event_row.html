@@ -15,11 +15,11 @@
 		[
 		{% if not event.rsvp_none %}
 			{% if user.is_authenticated %}
-				&nbsp;<a href="javascript:rsvpForm({{event.id}});" title="click to RSVP!">rsvp</a>&nbsp;|
+				&nbsp;<a href="javascript:rsvpForm({{event.id}});" title="Click to RSVP">rsvp</a>&nbsp;|
 			{% endif %}
 	        &nbsp;<a href="javascript:showRSVP({{event.id}});" title="{{event.rsvp_count}} RSVP{{event.rsvp_count|pluralize}} (click to view)">see rsvps</a>&nbsp;|
 	    {% endif %}
-		&nbsp;<a href="javascript:showInfo({{event.id}});" title="more information about this event">info</a>&nbsp;
+		&nbsp;<a href="javascript:showInfo({{event.id}});" title="More information about this event">info</a>&nbsp;
 		<!--<a href="javascript:hide({{event.id}});" title="hide">&#187;</a> -->
 		]
 	</div>	    		
@@ -27,5 +27,7 @@
 </td></tr>
 
 <tr><td>
-	<div id="event_{{event.id}}" style="display: none"></div>
+	<div id="event_{{event.id}}_rsvp" style="display: none"></div>
+	<div id="event_{{event.id}}_rsvp_list" style="display: none"></div>
+	<div id="event_{{event.id}}_info" style="display: none"></div>
 </td></tr>
