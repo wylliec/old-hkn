@@ -71,7 +71,7 @@ function rsvpForm(event_id) {
       $.get(url, {}, function(data) {
           $(event_rsvp_div).html(data);
       });
-      $('.rsvp_form').ajaxForm(options);
+      $('.rsvp_form').ajaxForm(function(){alert("hi")});
     }
     
     $(event_rsvp_div).toggle();
