@@ -79,7 +79,8 @@ function rsvpForm(event_id) {
 }
 
 function rsvpCallback(event_id) {
-    showRSVP(event_id);
+    event_rsvp_div = "#event_" + event_id + "_rsvp";
+    $(event_rsvp_div).html("Successfully RSVP'd.")
 }
     
 function hide(event_id) {
