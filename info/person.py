@@ -23,9 +23,12 @@ def view(request, person_id):
 def membership_info(person):
     d = {}
     d['person'] = person
-    d['officerships'] = person.officership_set.order_by('semester')
-    d['candidate_info'] = person.candidateinfo
-    if len(d['officerships']) == 0 and not person.candidateinfo.initiated:
+    d['officerships'] = person.officership_set.order_by('-semester')
+    try:
+        d['candidate_info'] = person.candidateinfo
+        if len(d['officerships']) == 0 and not d['candidate_info'].initiated:
+            d['no_info'] = True
+    except CandidateInfo.DoesNotExist:
         d['no_info'] = True
     return render_to_string("info/_membership_info.html", d)
      
