@@ -108,7 +108,7 @@ def get_tutor_info(tutoring_days=TUTORING_DAYS, tutoring_times=TUTORING_TIMES):
                         cache_key = "tutor_courses_classes_%d" % person.id
                         tutors[person] = cache.get(cache_key)
                         if not tutors[person]:
-                            cantutors = person.cantutor_set.select_related('course')
+                            cantutors = person.cantutor_set.select_related('course').for_current_semester()
                             tutors[person] = " ".join([x.course.short_name() + (x.current and "cur" or "") for x in cantutors])
                             cache.set(cache_key, tutors[person], 6000)
                     slot_schedule["people"].append((person, tutors[person]))
