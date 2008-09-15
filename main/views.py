@@ -3,7 +3,6 @@ from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.contrib.flatpages.models import FlatPage
-from ajaxwidgets.widgets import JQueryAutoComplete
 from django.utils.safestring import mark_safe
 from django.contrib import auth
 import datetime
@@ -37,9 +36,6 @@ def main(request):
     except NoTutorScheduleException, e:
         d['hide_tutoring'] = True
     
-    xfa = JQueryAutoComplete(source=reverse('course-course-autocomplete'))
-    d['exam_files_autocomplete']= xfa.render(name="exam_course", value="Search Exams", attrs={'class':'text autoclear'})
-
     d['content'] = mark_safe(FlatPage.objects.get(url="landing-page").content)
 
     return render_to_response("main/main.html", d, context_instance=RequestContext(request))

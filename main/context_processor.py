@@ -5,7 +5,7 @@ from hkn.main.property import PROPERTIES
 
 def hkn_vars(request):
     layout = request.session.get("layout", "-green")
-    xfa = JQueryAutoComplete(source=reverse('course-course-autocomplete'))
+    xfa = JQueryAutoComplete(source=reverse('exam-autocomplete'))
     return {
         "STATIC_PREFIX" : STATIC_PREFIX,
         "MEDIA_URL" : MEDIA_URL,

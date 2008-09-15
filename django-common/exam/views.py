@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response, get_object_or_404
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 import math
@@ -58,6 +58,25 @@ def browse_department(request, department_abbr):
 	courses_lists = split_list(courses, 2)
 	d = {"courses_lists" : courses_lists, "department" : department, "empty" : empty}
 	return render_to_response("exam/browse_department.html", d, context_instance=RequestContext(request))    
+
+def exam_autocomplete(request):
+	def iter_results(courses):
+		if courses:
+			for r in courses:
+				yield '%s|%s\n' % (r.short_name(space = True), r.id)
+	
+	if not request.GET.get('q'):
+		return HttpResponse(mimetype='text/plain')
+	
+	q = request.GET.get('q')
+	limit = request.GET.get('limit', 15)
+	try:
+		limit = int(limit)
+	except ValueError:
+		return HttpResponseBadRequest() 
+
+	courses = filter(lambda x: x.published_exam_count > 0, Course.objects.ft_query(q).annotate_exam_count())[:limit]
+	return HttpResponse(iter_results(courses), mimetype='text/plain')
 
 if EXAM_LOGIN_REQUIRED:
 	browse = login_required(browse)
