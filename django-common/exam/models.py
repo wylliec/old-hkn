@@ -107,7 +107,6 @@ class Exam(db.models.Model):
 	class QuerySet(QuerySet):
 		def query_course(self, query):              
 			courses = Course.objects.ft_query(query)
-			print courses
 			return self.filter(course__in = courses)
 		
 		def query_instructor(self, query):

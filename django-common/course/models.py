@@ -132,8 +132,8 @@ class Course(models.Model):
         return self.short_name(True)
     
     def __cmp__(self, other):
-        return cmp(self.department_abbr,
-                   other.department_abbr) or cmp(self.number, other.number)
+        return cmp(self.department_abbr, other.department_abbr) or cmp(self.integer_number, other.integer_number)  \
+                   or cmp(self.number, other.number)
 
     class QuerySet(QuerySet):
         course_patterns = (
@@ -185,8 +185,11 @@ class Course(models.Model):
             return self.extra( select = {
                                          key : """ SELECT COUNT(*) FROM exam_exam WHERE (exam_exam.course_id = course_course.id and exam_exam.publishable = %s)""" % publishable_value
                                          })
-        def get_top_courses_by_published_exams(self,n = 10):
-            return self.annotate_exam_count(True).order_by("-published_exam_count", "name")[:n]
+        def get_top_courses_by_published_exams(self,n=10):
+            courses = self.annotate_exam_count(True).order_by("-published_exam_count", "name")[:n]
+            courses.sort()
+            return courses
+            
 
     INTEGER_PATTERN = re.compile("(?P<integer>\d+)")
     def save(self, *args, **kwargs):
