@@ -2,12 +2,13 @@
 import hkn_settings
 import pickle, os
 from hkn.event.models import *
+from django.core.management import call_command
 
 FILENAME = "data/events-permissions.pkl"
 
 events = pickle.load(file(FILENAME))
 def main():
-    os.system("python2.5 ../manage.py loaddata ../fixtures/new_events.json")
+    call_command('loaddata', '../fixtures/new_events.json')
     for slug, codenames in events.items():
         e = Event.objects.get(slug=slug)
         e.view_permission = Permission.objects.get(codename=codenames[0])
