@@ -12,12 +12,12 @@ def avail_serialize(a):
     return (a.person.username, a.slot, a.office, a.semester.abbr(), a.preference)
 
 def assign_deserialize(a):
-    return Assignment(person=Person.objects.get(username=a[0]), slot=a[1], office=a[2], semester=a[3], semester=a[4], preference=a[5]).save()
+    return Assignment(person=Person.objects.get(username=a[0]), slot=a[1], office=a[2], semester=a[3], version=a[4]).save()
 
 def assign_serialize(a):
     return (a.person.username, a.slot, a.office, a.semester.abbr(), a.version)
 
-def cantutor_deserialize(c):
+def cantutor_deserialize(a):
     return CanTutor(person=Person.objects.get(username=a[0]), course=Course.objects.ft_query(a[1])[0], semester=a[2], current=a[3]).save()
 
 def cantutor_serialize(c):
