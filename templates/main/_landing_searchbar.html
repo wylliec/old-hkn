@@ -1,6 +1,6 @@
 <div id="examfiles" class="searchcontrol">
     <form action="{% url exam-list %}" method="GET">
-        {{ exam_files_autocomplete|safe }}<input class="button" type=submit value=" Search ">
+        {{ EXAM_FILES_AUTOCOMPLETE|safe }}<input class="button" type=submit value=" Search ">
     </form>
     <div class="small searchhelp" rel="#exams_search_help">
         ex: CS 61a, ee 20, cs 188
