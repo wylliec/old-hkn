@@ -50,3 +50,7 @@ from hkn.main.models import HKN
 class PropertiesAdmin(admin.ModelAdmin):
     list_display = ('name', 'value')
 admin_site.register(HKN, PropertiesAdmin)
+
+from registration.models import RegistrationProfile
+from registration.admin import RegistrationAdmin
+admin_site.register(RegistrationProfile, RegistrationAdmin)
