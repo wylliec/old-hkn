@@ -106,7 +106,7 @@ class RegistrationManager(models.Manager):
                                          'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS,
                                          'site': current_site })
             
-            """send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [new_person.email])"""
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [new_person.email])
         return new_person
     
     def create_profile(self, user, hkn_member):
