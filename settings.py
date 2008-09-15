@@ -172,7 +172,7 @@ INSTALLED_APPS = (
     'nice_types',
     'djangodblog',
     'resume',
-    'south',
+#    'south',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -181,6 +181,9 @@ AUTHENTICATION_BACKENDS = (
 )
 
 DBLOG_CATCH_404_ERRORS = True
+GCAL_ENABLE = False
+GCAL_EMAIL = "hkn-test@hkn.eecs.berkeley.edu"
+GCAL_PASSWORD = "monkey13"
 
 # hknsettings settings will override the above
 from hknsettings import *

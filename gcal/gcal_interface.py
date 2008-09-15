@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-from hkn.gcal.constants import GCAL
 
 try:
     from xml.etree import ElementTree # for Python 2.5 users
@@ -15,6 +14,8 @@ import sys
 import string
 import time
 
+from django.conf import settings
+
 
 __all__ = ["get_calendar_service", "add_event", "update_event"]
 
@@ -24,9 +25,9 @@ def get_calendar_service():
 
     if _calendar_service == None:
         _calendar_service = gdata.calendar.service.CalendarService()
-        _calendar_service.email = GCAL.email
-        _calendar_service.password = GCAL.password
-        _calendar_service.source = GCAL.source
+        _calendar_service.email = getattr(settings, "GCAL_EMAIL", None)
+        _calendar_service.password = getattr(settings, "GCAL_PASSWORD", None)
+        _calendar_service.source = "Google_Calendar_Django_Sync"
         _calendar_service.ProgrammaticLogin()
     return _calendar_service
 
