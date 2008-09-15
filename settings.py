@@ -182,8 +182,18 @@ GCAL_ENABLED = False
 GCAL_EMAIL = "hkn-test@hkn.eecs.berkeley.edu"
 GCAL_PASSWORD = "monkey13"
 
+def setup_logger():
+    import logging
+    logging.basicConfig(
+            level = logging.WARNING,
+            format = '%(asctime)s %(name)s %(module)s:%(lineno)s %(levelname)s %(message)s',
+    )
+
 # hknsettings settings will override the above
 from hknsettings import *
+
+if __name__.startswith("hkn."):
+    setup_logger()
 
 # make sure SERVER_ROOT ends with hkn/
 if not SERVER_ROOT.endswith("hkn/"):
