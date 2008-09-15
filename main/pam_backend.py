@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.backends import ModelBackend
-from django.core.validators import email_re
 try:
     from hkn.main import shadow_wrap
     PAM_DISABLED = False
