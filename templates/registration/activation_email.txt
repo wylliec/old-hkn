@@ -6,4 +6,4 @@ http://hkn.eecs.berkeley.edu{% url registration_activate activation_key %}
 If you have not recently requested to create an account, please feel free to ignore this message.
 
 Thank you,
-{{ PROPERTIES.vp }}
+{{ vp }}

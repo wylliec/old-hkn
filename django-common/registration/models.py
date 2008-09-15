@@ -2,6 +2,7 @@ import datetime
 import random
 import re
 import sha
+import logging
 
 from django.conf import settings
 from django.db import models
@@ -12,6 +13,7 @@ from django.contrib.sites.models import Site
 
 from hkn.info.models import Person
 from hkn.info.constants import MEMBER_TYPE
+from hkn.main.property import PROPERTIES
 
 import request
 
@@ -53,8 +55,10 @@ class RegistrationManager(models.Manager):
             try:
                 profile = self.get(activation_key=activation_key)
             except self.model.DoesNotExist:
+                logging.getLogger('special.actions').info("Activation attempt failed with key %s" % activation_key)
                 return False
             if not profile.activation_key_expired():
+                logging.getLogger('special.actions').info("%s activated account" % profile.user.username)
                 user = profile.user
                 user.is_active = True
                 user.save()
@@ -63,6 +67,8 @@ class RegistrationManager(models.Manager):
                     profile.request_confirmation()
                 profile.save()
                 return user
+            else:
+                logging.getLogger('special.actions').info("%s failed account activation with expired key %s" % (profile.user.username, profile.activation_key))
         return False
     
     def create_inactive_user(self, first_name, last_name, username, password, email, hkn_member,
@@ -89,8 +95,10 @@ class RegistrationManager(models.Manager):
         new_person = Person.objects.create_person(first_name, last_name, username, email, MEMBER_TYPE.REGISTERED, password=password)
         new_person.is_active = False
         new_person.save()
+
         
         registration_profile = self.create_profile(new_person, hkn_member)
+        logging.getLogger('special.actions').info("%s [%s] registered for account with email %s and key %s" % (new_person.username, new_person.name, new_person.email, registration_profile.activation_key))
         
         if send_email:
             from django.core.mail import send_mail
@@ -104,6 +112,8 @@ class RegistrationManager(models.Manager):
             message = render_to_string('registration/activation_email.txt',
                                        { 'activation_key': registration_profile.activation_key,
                                          'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS,
+                                         'person' : new_person,
+                                         'vp' : PROPERTIES.vp,
                                          'site': current_site })
             
             send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [new_person.email])
