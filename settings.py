@@ -181,7 +181,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 DBLOG_CATCH_404_ERRORS = True
-GCAL_ENABLE = False
+GCAL_ENABLED = False
 GCAL_EMAIL = "hkn-test@hkn.eecs.berkeley.edu"
 GCAL_PASSWORD = "monkey13"
 
