@@ -5,12 +5,11 @@ Forms and validation code for user registration.
 
 
 from django import forms
-from django.core.validators import alnum_re
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
 from registration.models import RegistrationProfile
-
+import re
 
 # I put this on all required fields, because it's easier to pick up
 # on them with CSS or JavaScript if they have a class of "required"
@@ -50,13 +49,14 @@ class RegistrationForm(forms.Form):
                                 label=_(u'Password (again)'))
     hkn_member = forms.BooleanField(required=False, label="HKN Member", help_text="Check this box if you are a member of HKN")
     
+    USERNAME_RE = re.compile("[A-Za-z0-9_]")
     def clean_username(self):
         """
         Validate that the username is alphanumeric and is not already
         in use.
         
         """
-        if not alnum_re.search(self.cleaned_data['username']):
+        if not RegistrationForm.USERNAME_RE.search(self.cleaned_data['username']):
             raise forms.ValidationError(_(u'Usernames can only contain letters, numbers and underscores'))
         
         try:
