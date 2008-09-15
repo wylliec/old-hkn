@@ -1,6 +1,7 @@
 from hkn.event.models import *
 from hkn.event.forms import *
 
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse, Http404
@@ -56,6 +57,7 @@ def rsvp_form_instance(event, data = {}):
 
     return form	
 
+@login_required
 def delete(request, rsvp_id = "-1"):
     rsvp = get_object_or_404(RSVP, pk = rsvp_id)
     
@@ -69,6 +71,7 @@ def delete(request, rsvp_id = "-1"):
     return HttpResponseRedirect(reverse("rsvp-list-for-person", kwargs={"person_id" :"me"}))
 
 
+@login_required
 def request_confirmation(request, rsvp_id = "-1"):
     rsvp = get_object_or_404(RSVP, pk = rsvp_id)
     
@@ -81,6 +84,7 @@ def request_confirmation(request, rsvp_id = "-1"):
 
     return HttpResponseRedirect(reverse("rsvp-list-for-person", kwargs={"person_id" :"me"}))
 
+@login_required
 def view(request, rsvp_id = "-1"):
     rsvp = get_object_or_404(RSVP, pk = rsvp_id)
 
@@ -120,9 +124,11 @@ def edit2(request, event_id = "-1"):
 
     return render_to_response('event/rsvp/edit.html', d, context_instance = RequestContext(request))
 
+@login_required
 def new(request, event_id):
     return edit(request, event_id)
 
+@login_required
 def edit(request, event_id):
     e = get_object_or_404(Event, pk = event_id)
     person = request.user.person
@@ -155,6 +161,7 @@ def edit(request, event_id):
     else:
         return render_to_response('event/rsvp/edit.html', d, context_instance = RequestContext(request))
 
+@login_required
 def edit_ajax(request, event_id):
     e = get_object_or_404(Event, pk = event_id)
     person = request.user.person
