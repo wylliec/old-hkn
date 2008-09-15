@@ -150,7 +150,14 @@ def register(request, success_url=None,
             # a default value using reverse() will cause circular-import
             # problems with the default URLConf for this application, which
             # imports this file.
-            return HttpResponseRedirect(success_url or reverse('registration_complete'))
+            if extra_context is None:
+                extra_context = {}
+                context = RequestContext(request)
+                for key, value in extra_context.items():
+                    context[key] = callable(value) and value() or value
+            return render_to_response('registration/registration_complete.html',
+                              { 'email': new_user.email },
+                              context_instance=context)
     else:
         form = form_class()
     
