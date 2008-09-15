@@ -12,8 +12,6 @@ from hkn.info.utils import *
 from photologue.models import *
 from nice_types.semester import Semester
 
-DEFAULT_PASSWORD = "password"
-
 
 def import_people(filename, member_status):
     print "Importing from %s with member status %s" % (filename, MEMBER_TYPE[member_status])
