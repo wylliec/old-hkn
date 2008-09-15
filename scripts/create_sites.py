@@ -7,7 +7,7 @@ def main():
     for s in Site.objects.all():
         s.delete()
 
-    s = Site(domain="mu.cs.berkeley.edu:9090", name="HKN")
+    s = Site(domain="hkn.eecs.berkeley.edu", name="HKN")
     s.id = 1
     s.save()
 
