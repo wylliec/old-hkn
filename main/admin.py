@@ -54,3 +54,7 @@ admin_site.register(HKN, PropertiesAdmin)
 from registration.models import RegistrationProfile
 from registration.admin import RegistrationAdmin
 admin_site.register(RegistrationProfile, RegistrationAdmin)
+
+from request.models import Request
+from request.admin import RequestAdmin
+admin_site.register(Request, RequestAdmin)
