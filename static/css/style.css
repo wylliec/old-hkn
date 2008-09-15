@@ -27,6 +27,7 @@ html .small { font-size: x-small; line-height: 1.3em; }
 html .aside { font-size: x-small; line-height: 1.3em; color: #444444; }
 html .warning { color: red; }
 html th, html td { padding: 4px; vertical-align: top; text-align: left; }
+html th { font-weight: bold; }
 html .infodiv { width: 300px; text-align: left; }
 html .two_column { width: 45%; float: left; }
 html .right_column { float: right; }
