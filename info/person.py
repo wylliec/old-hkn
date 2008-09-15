@@ -10,8 +10,8 @@ import datetime
 @login_required
 def view(request, person_id):
     try:
-        person = Person.objects.get(pk=person_id)
-    except Person.DoesNotExist:
+        person = Person.objects.get(pk=int(person_id))
+    except (Person.DoesNotExist, ValueError):
         person = get_object_or_404(Person, username=person_id)
     person.set_restricted_accessor(request.user.person)
     d = {}
