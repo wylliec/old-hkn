@@ -18,11 +18,12 @@ from settings import MEDIA_ROOT, SERVER_ROOT
 
 VALID_EXTENSIONS = ["html", "pdf", "ps", "txt"]
 
-#EE_DIR = join(SERVER_ROOT, "old_exams/ee")
-#CS_DIR = join(SERVER_ROOT, "old_exams/cs")
-EE_DIR = "/web/student/online/exams_import/ee"
-CS_DIR = "/web/student/online/exams_import/cs"
+EE_DIR = join(SERVER_ROOT, "old_exams/ee")
+CS_DIR = join(SERVER_ROOT, "old_exams/cs")
+#EE_DIR = "/web/student/online/exams_import/ee"
+#CS_DIR = "/web/student/online/exams_import/cs"
 
+file_pattern = re.compile('^(sp|fa|su)-(1|2|3|f)(-sol)?\.')
 course_pattern = re.compile('^\d+[A-Z]*$')
 course_map = {
 	"COMPSCI" : CS_DIR,
@@ -51,6 +52,8 @@ def list_folders(path):
 
 def is_valid_file(filename):
 	try:
+		if not file_pattern.match(filename):
+			return False
 		parse_filename(filename)
 		return filename.split(".")[1] in VALID_EXTENSIONS
 	except:
@@ -83,7 +86,7 @@ def parse_instructor_file(path):
 	return d
 
 descriptions = {EXAM_TYPE.FINAL : 'f', EXAM_TYPE.MIDTERM : 'mt', EXAM_TYPE.QUIZ : 'qz', EXAM_TYPE.REVIEW : "r"}
-def make_filename(klass, type, number, solution, extension):
+def make_newfile(old_name, klass, type, number, solution, extension):
 	if type != EXAM_TYPE_FINAL:
 		type_string = descriptions[type] + str(number)
 	else:
@@ -93,9 +96,23 @@ def make_filename(klass, type, number, solution, extension):
 		sol_string = "_sol"
 	else:
 		sol_string = ""
-		
-	return "%s_%s_%s%s.%s" % (klass.course.short_name(), klass.semester.abbr(), type_string, sol_string, extension)
+	
+	if extension != 'ps':
+		file = open(old_name, "r")
+	else:
+		if os.path.exists(old_name.split('.')[0] + ".pdf"):
+			raise ConversionException("PDF format already exists")
 
+		os.system("ps2pdf " + old_name + " " + old_name.split('.')[0] + ".pdf")
+		os.system("rm " + old_name)
+		raise ConversionException("Converted " + old_name + " to pdf")
+		
+	filename = "%s_%s_%s%s.%s" % (klass.course.short_name(), klass.semester.abbr(), type_string, sol_string, extension)
+	return (filename, file)
+
+class ConversionException(Exception):
+	pass
+	
 def load_exams():
 	"""   
 	import exam.scripts.import_exams as exam_loader
@@ -148,8 +165,7 @@ def load_exams():
 						e.exam_type = type
 						e.topics = ""
 						e.submitter = None
-						f = open(join(root, c, year, filename) , "r")
-						new_filename = make_filename(klass, type, number, solution, filename.split('.')[-1])
+						new_filename, f = make_newfile(join(root, c, year, filename),klass, type, number, solution, filename.split('.')[-1])
 						e.file.save(new_filename, File(f))
 						e.save()
 						f.close()
@@ -166,6 +182,8 @@ def load_exams():
 					except NoKlasses, e:
 						print "No Klasses found for %s %s - %s %s" % (dept, c, season, year)
 						missing_klasses.add("%s %s - %s %s" % (dept, c, season, year))
+					except ConversionException, e:
+						print e
 					except Exception, e:
 						print "Failed on %s %s %s" % (season, year, instructor )
 						failed_imports.append("%s: %s %s %s %s" % (e, c, season, year, instructor) )

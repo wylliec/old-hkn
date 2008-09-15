@@ -54,7 +54,7 @@ def get_new_dict():
     default_dict["Final"] = []
     return default_dict
 def regroup_exams(course_id, exams):
-    exams = exams.filter(course=course_id).order_by('-klass__semester', 'exam_type', 'number').select_related('klass')
+    exams = exams.filter(course=course_id).order_by('-klass__semester', 'exam_type', 'number', 'is_solution').select_related('klass')
     d = SortedDict()
     
     for e in exams:
