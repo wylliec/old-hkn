@@ -7,7 +7,7 @@ html .subheader { font-size: small; font-style: italic; font-family: arial, helv
 html .flushheader { margin-top: -12px; }
 html .spacer { height: 10px; }
 html img { border: none; }
-html p { line-height: 1.8; font-size: small; margin-bottom: 12px; }
+html p { line-height: 1.4; font-size: small; margin-bottom: 12px; }
 html li { line-height: 1.8; font-size: small; }
 html .section { margin-bottom: 18px; }
 html a { color: #3366CC; text-decoration: none; }
@@ -27,6 +27,7 @@ html .small { font-size: x-small; line-height: 1.3em; }
 html .aside { font-size: x-small; line-height: 1.3em; color: #444444; }
 html .warning { color: red; }
 html th, html td { padding: 4px; vertical-align: top; text-align: left; }
+html th { font-weight: bold; }
 html .infodiv { width: 300px; text-align: left; }
 html .two_column { width: 45%; float: left; }
 html .right_column { float: right; }

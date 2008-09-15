@@ -1,6 +1,6 @@
 html { height: 100%; }
 html body { height: 100%; font-size: 14px; margin: 0; padding: 0; background: #FFFFFF; }
-html ul, html ol { margin-left: 25px; }
+html ul, html ol { margin-left: 25px; margin-bottom: 12px; }
 html #logo { margin: auto; background: #FFFFFF url("/static/images/site/watermark.png"); }
 html #navigation { font-family: "Trebuchet MS",Arial,tahoma,sans-serif; width: 100%; font-size: 15px; height: 54px; background: #003366; }
 html #toplevel { height: 30px; margin: 0 auto; width: 100%; text-align: center; display: inline; }
@@ -27,7 +27,6 @@ html #userbar { float: left; padding: 5px 8px 5px 8px; }
 html #searcharea { float: right; padding: 5px 8px; }
 html .searchcontrol { text-align: left; float: left; padding-left: 15px; }
 html #container { clear: both; padding: 12px 8px 20px 8px; width: auto; }
-html #container li { margin-bottom: 5px; }
 html #container #leftshadow { position: relative; top: -5%; left: -7%; width: 1%; background: url("/images/site/leftshadow.png") repeat-y; height: 110%; }
 html #infobar { float: right; width: 300px; border-left: 1px solid #003366; padding-left: 8px; margin-left: 12px; height: 100%; overflow: auto; }
 html div #rightshadow { position: absolute; top: 0%; right: 101%; width: 10px; background: url("/images/site/leftshadow.png") repeat-y; height: 100%; }

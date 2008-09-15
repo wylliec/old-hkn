@@ -2,7 +2,7 @@ html #landing_wrapper { background-color: #FFFFFF; position: relative; float: ri
 html #landing_right_info { background: #f3f8f8; padding: 0px 8px; border: 1px #5c7c0b solid; text-align: left; }
 html .tutoring { float: left; width: 47%; }
 html .events { float: right; width: 47%; }
-html table.landing_events { width: 98%; font-size: x-small; }
+html table.landing_events { width: 98%; font-size: x-small; padding-bottom: 10px; }
 html .landing_events td { padding: 0px; margin: 0px; }
 html .landing_events tr.headrow { margin-bottom: -10px; }
 html .landing_events div.time_location { float: left; text-align: left; line-height: 1em; }
