@@ -48,7 +48,7 @@ class RegistrationForm(forms.Form):
                                 label=_(u'Password'))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict, render_value=False),
                                 label=_(u'Password (again)'))
-    hkn_alumnus = forms.BooleanField(required=False, label="HKN Alumnus", help_text="Check this box if you are a member of HKN")
+    hkn_member = forms.BooleanField(required=False, label="HKN Member", help_text="Check this box if you are a member of HKN")
     
     def clean_username(self):
         """
@@ -108,6 +108,6 @@ class RegistrationForm(forms.Form):
                                                                     username=self.cleaned_data['username'],
                                                                     password=self.cleaned_data['password1'],
                                                                     email=self.cleaned_data['email'],
-                                                                    hkn_alumnus=self.cleaned_data['hkn_alumnus'],
+                                                                    hkn_member=self.cleaned_data['hkn_member'],
                                                                     profile_callback=profile_callback)
         return new_user

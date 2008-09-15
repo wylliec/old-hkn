@@ -59,13 +59,13 @@ class RegistrationManager(models.Manager):
                 user.is_active = True
                 user.save()
                 profile.activation_key = "ALREADY_ACTIVATED"
-                if profile.hkn_alumnus:
+                if profile.hkn_member:
                     profile.request_confirmation()
                 profile.save()
                 return user
         return False
     
-    def create_inactive_user(self, first_name, last_name, username, password, email, hkn_alumnus,
+    def create_inactive_user(self, first_name, last_name, username, password, email, hkn_member,
                              send_email=True, profile_callback=None):
         """
         Create a new, inactive ``User``, generates a
@@ -90,7 +90,7 @@ class RegistrationManager(models.Manager):
         new_person.is_active = False
         new_person.save()
         
-        registration_profile = self.create_profile(new_person, hkn_alumnus)
+        registration_profile = self.create_profile(new_person, hkn_member)
         
         if send_email:
             from django.core.mail import send_mail
@@ -109,7 +109,7 @@ class RegistrationManager(models.Manager):
             send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [new_person.email])
         return new_person
     
-    def create_profile(self, user, hkn_alumnus):
+    def create_profile(self, user, hkn_member):
         """
         Create a ``RegistrationProfile`` for a given
         ``User``, and return the ``RegistrationProfile``.
@@ -121,7 +121,7 @@ class RegistrationManager(models.Manager):
         """
         salt = sha.new(str(random.random())).hexdigest()[:5]
         activation_key = sha.new(salt+user.username).hexdigest()
-        return self.create(user=user, hkn_alumnus=hkn_alumnus,
+        return self.create(user=user, hkn_member=hkn_member,
                            activation_key=activation_key)
         
     def delete_expired_users(self):
@@ -193,23 +193,23 @@ class RegistrationProfile(models.Model):
     """
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
     activation_key = models.CharField(_('activation key'), max_length=40)
-    hkn_alumnus = models.BooleanField()
+    hkn_member = models.BooleanField()
     
     objects = RegistrationManager()
     
-    def get_is_alumnus(self):
+    def get_is_member(self):
         return self.user.person.member_type >= MEMBER_TYPE.MEMBER
     
-    def set_is_alumnus(self, value):
+    def set_is_member(self, value):
         person = self.user.person
         if value:
             person.member_type = MEMBER_TYPE.MEMBER
         else:
             person.member_type = MEMBER_TYPE.REGISTERED
         person.save()
-        hkn_alumnus = value
+        hkn_member = value
         return
-    is_alumnus = property(get_is_alumnus, set_is_alumnus)
+    is_member = property(get_is_member, set_is_member)
     
     def request_confirmation(self):
         return request.utils.request_confirmation(self, self.user, Permission.objects.get(codename="group_csec"))
@@ -248,4 +248,4 @@ class RegistrationProfile(models.Model):
                (self.user.date_joined + expiration_date <= datetime.datetime.now())
     activation_key_expired.boolean = True
 
-from registration.alumni import *
+from registration.members import *
