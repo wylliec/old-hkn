@@ -97,21 +97,42 @@ def make_newfile(old_name, klass, type, number, solution, extension):
 	else:
 		sol_string = ""
 	
-	if extension != 'ps':
-		file = open(old_name, "r")
-	else:
-		if os.path.exists(old_name.split('.')[0] + ".pdf"):
-			raise ConversionException("PDF format already exists")
-
-		os.system("ps2pdf " + old_name + " " + old_name.split('.')[0] + ".pdf")
-		os.system("rm " + old_name)
-		raise ConversionException("Converted " + old_name + " to pdf")
+	file = open(old_name, "r")
 		
 	filename = "%s_%s_%s%s.%s" % (klass.course.short_name(), klass.semester.abbr(), type_string, sol_string, extension)
 	return (filename, file)
 
-class ConversionException(Exception):
-	pass
+def convert_file(path):
+	path_without_extension = path.split('.')[0]
+	extension = path.split('.')[1]
+	
+	if extension == 'html':
+		if os.path.exists(path_without_extension + ".pdf"):
+			os.system("rm " + path)
+			print "PDF exists, deleting file: " + path
+			return
+			
+		os.system("htmldoc -f " + path_without_extension + ".pdf --webpage " + path)
+		os.system("rm " + path)
+		print "Converting html to pdf: " + path
+	elif extension == 'ps':
+		if os.path.exists(path_without_extension + ".pdf"):
+			os.system("rm " + path)
+			print "PDF exists, deleting file: " + path
+			return
+			
+		os.system("ps2pdf " + path + " " + path_without_extension + ".pdf")
+		os.system("rm " + path)
+		print "Converting ps to pdf: " + path
+
+def convert_exams():
+	for dept, root in course_map.items():
+		classes = filter(lambda x: course_pattern.match(x), list_folders(root))
+		for c in classes:
+			for year in list_folders(join(root, c)):
+				for filename in filter(is_valid_file, list_files(join(root, c, year))):
+					convert_file(join(root, c, year, filename))
+	
 	
 def load_exams():
 	"""   
@@ -220,6 +241,7 @@ def load_exams():
 	#return (missing_instructors, missing_courses, instructor_mismatches)
 
 def main():
+	convert_exams()
 	load_exams()
 
 if __name__ == "__main__":
