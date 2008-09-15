@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
-if __name__ == "__main__":
+def main():
     import common_tutor
     common_tutor.main(load=False)
+
+if __name__ == "__main__":
+    main()
