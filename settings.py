@@ -67,9 +67,9 @@ ADMINS = (
 
 DEFAULT_FROM_EMAIL = "hkn@hkn.eecs.berkeley.edu"
 EMAIL_HOST = "hkn.eecs.berkeley.edu"
-EMAIL_PORT= 465
-EMAIL_HOST_USER = "gafyd"
-EMAIL_HOST_PASSWORD = "shasha!!md5"
+EMAIL_PORT= 25
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 EMAIL_USE_TLS = True
 
 LOGGING_INTERCEPT_REDIRECTS = True
@@ -161,7 +161,6 @@ INSTALLED_APPS = (
 #    'hkn.yearbook',
     'exam',
     'hkn.tutor',
-#   'hkn.resume',
     'hkn.main',
     'hkn.indrel',
     'course',
