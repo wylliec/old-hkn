@@ -54,11 +54,10 @@ class Exam(db.models.Model):
 	file = db.models.FileField(null = True, upload_to = FILE_UPLOAD_DIR)
 	""" The local filesystem path to where the actual exam is stored. """
 	
-	exam_type = db.models.CharField(choices = EXAM_TYPE.choices(), max_length = 10)
 	exam_type = db.models.IntegerField(choices = EXAM_TYPE.choices())
 	""" The type of exam (e.g., Midterm, Final). """
 	
-	number = db.models.CharField(max_length=10, blank = True)
+	number = db.models.CharField(max_length=20, blank = True)
 	""" The exam number. If unique (i.e., only one final), leave this field blank. """ 
 	
 	version = db.models.CharField(max_length = 1, blank = True)
