@@ -3,7 +3,7 @@
 {% block content %}
 <form action="" method="post">
 	<table>
-	<tr><th> </th><td> <img src="{{ person.profile_picture.get_profilepic_url }}"/> <div class="small"><a href="{% url info-person-change-picture %}">change picture</a> &middot; <a href="{% url resume-upload %}">update resume</a></div> </td></tr>	
+	<tr><th> </th><td> <img src="{{ person.profile_picture.get_profilepic_url }}"/> <div class="small"><a href="{% url info-person-change-picture %}">change picture</a></td></tr>	
 	<tr><th><label>Name:</label></th><td><label>{{ person.name }}</input></td></tr>
     {% with person.resume as resume %}
     {% if resume %}
