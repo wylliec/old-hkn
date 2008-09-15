@@ -23,13 +23,15 @@ def cantutor_deserialize(a):
 def cantutor_serialize(c):
     return (c.person.username, c.course.short_name(space=True), c.semester.abbr(), c.current)
 
+BASEDIR = os.path.join(setup_settings.get_scripts_directory(), 'data')
+
 def load_clazz(clazz, d, s):
-    f = file("data/%s.pkl" % clazz.__name__.lower())
+    f = file(os.path.join(BASEDIR, "%s.pkl" % clazz.__name__.lower()))
     obs = pickle.load(f)
     [d(a) for a in obs]
 
 def dump_clazz(clazz, d, s):
-    f = file("data/%s.pkl" % clazz.__name__.lower(), "w")
+    f = file(os.path.join(BASEDIR, "%s.pkl" % clazz.__name__.lower()), "w")
     tp = map(s, clazz.objects.all())
     pickle.dump(tp, f)
     

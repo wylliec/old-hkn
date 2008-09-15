@@ -8,6 +8,8 @@ from django.core.management import call_command
 
 os.system("python clean_pyc.py")
 
+import clear_db; clear_db.main()
+
 call_command('syncdb')
 
 import create_sites; create_sites.main()
@@ -28,7 +30,7 @@ import create_superusers; create_superusers.main()
 import set_initiates; set_initiates.main()
 
 print 'Importing events'
-call_command('loaddata', '../fixtures/events.json')
+from hkn.event.scripts import load_events; load_events.main()
 #./import_events_from_webcal.py
 
 print 'Importing courses'
@@ -36,7 +38,7 @@ call_command('loaddata', '../fixtures/course.json')
 #os.system("python run_course_scripts.py")
 
 print "Importing tutor data"
-call_command('loaddata', '../fixtures/tutor.json')
+from hkn.tutor.scripts import load_tutor; load_tutor.main()
 #import import_tutor_data; import_tutor_data.main()
 
 os.system("python run_exam_scripts.py")
