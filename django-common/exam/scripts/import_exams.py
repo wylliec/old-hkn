@@ -203,8 +203,6 @@ def load_exams():
 					except NoKlasses, e:
 						print "No Klasses found for %s %s - %s %s" % (dept, c, season, year)
 						missing_klasses.add("%s %s - %s %s" % (dept, c, season, year))
-					except ConversionException, e:
-						print e
 					except Exception, e:
 						print "Failed on %s %s %s" % (season, year, instructor )
 						failed_imports.append("%s: %s %s %s %s" % (e, c, season, year, instructor) )
