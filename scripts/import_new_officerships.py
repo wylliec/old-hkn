@@ -21,6 +21,8 @@ def import_officerships(officership_file):
         except Exception, e:
             print "Error when looking up '%s': %s" % (position, str(e))
         os, created = Officership.objects.get_or_create(person=p, position=pos, semester=semester)
+        p.is_active = True
+        p.save()
         if not created:
             print "Record for %s already existed!" % str(os)
 
