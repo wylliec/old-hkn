@@ -8,7 +8,7 @@ from django.core.management import call_command
 
 os.system("python clean_pyc.py")
 
-import clear_db; clear_db.main()
+call_command('syncdb')
 
 import create_sites; create_sites.main()
 call_command('loaddata', '../fixtures/flatpages.json')
