@@ -18,7 +18,10 @@ class DBLogMiddleware(object):
         for crawler in ("msnbot", "Yahoo!", "Googlebot", "crawler", "Crawler", "Baiduspider"):
             if agent.find(crawler) != -1:
                 return response
-        if request.user.is_authenticated():
+
+        if not hasattr(request, 'session'):
+            identifier = "<none>"
+        elif request.user.is_authenticated():
             identifier =  "%s:%s" % (request.META.get('REMOTE_ADDR', '<none>'), request.user.username)
         else:
             identifier =  "%s:%s" % (request.META.get('REMOTE_ADDR', '<none>'), request.session._session_key)
