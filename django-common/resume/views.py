@@ -16,5 +16,6 @@ def upload(request):
             form = ResumeForm()
     else:
         form = ResumeForm()
+    form.bind_person(request.user.person)
     
     return render_to_response("resume/upload.html", {'form' : form, 'person' : request.user.person}, context_instance=RequestContext(request))

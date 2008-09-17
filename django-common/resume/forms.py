@@ -9,13 +9,12 @@ import os
 
 from resume.models import Resume
 
-VALID_EXTENSIONS = (".doc", ".docx", ".pdf")
+VALID_EXTENSIONS = (".doc", ".pdf")
 class ResumeForm(forms.Form):
     overall_gpa = forms.DecimalField(label="Overall GPA", min_value=1, max_value=4)
     major_gpa = forms.DecimalField(label="Major GPA (optional)", min_value=1, max_value=4, required=False)
     text = forms.CharField(help_text="Paste the contents of your resume (used for searching)", label="Resume Text", widget=forms.Textarea())
-    grad_semester = semester.SemesterFormField(help_text="your intended graduation semester e.g. fa05 sp08")
-#    comment = forms.CharField(label = "Anything We Should Know?", required = False, widget=forms.Textarea(attrs={'rows' : 2, 'wrap' : 'virtual'}))
+    grad_semester = semester.SemesterSplitFormField(help_text="your intended graduation semester e.g. fa05 sp08", initial=semester.Semester(season_name="Spring", year=datetime.date.today().year + 2))
 
     resume = forms.FileField(help_text="please provide a doc or pdf", label="Resume")
 
@@ -27,7 +26,9 @@ class ResumeForm(forms.Form):
         self.cleaned_data["resume_extension"] = ext
         return uf
 
-        
+    def bind_person(self, person):
+        if  person.extendedinfo.grad_semester:
+            self.fields['grad_semester'].initial = person.extendedinfo.grad_semester
 
     def save(self, person):
         d = self.cleaned_data
