@@ -9,5 +9,6 @@
 	    {% endfor %}
 	</div>	    
 	<div style="clear: both"></div>
-    <div class="small">{{ courses }}</div>
+    <div class="small">{{ courses_completed }}</div>
+ {% if courses_current %}   <div class="small" style="font-style: italic">In progress: {{ courses_current }}</div> {% endif %}
 </div>
