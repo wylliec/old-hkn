@@ -44,14 +44,17 @@ class Semester(object):
         return Semester(season_name=get_season(), year=date.year)
 
     def __init__(self, semester=None, season_name=None, year=None):
-        if semester is not None:
-            self.season = semester.lower()[:2]
-            self.year = int(semester[2:])
-        elif season_name is not None and year is not None:
-            self.season = season_name.lower()[:2]
-            self.year = int(year)
-        else:
-            raise InvalidSemester("Need to specify either semester or season_name and year")
+        try:
+            if semester is not None:
+                self.season = semester.lower()[:2]
+                self.year = int(semester[2:])
+            elif season_name is not None and year is not None:
+                self.season = season_name.lower()[:2]
+                self.year = int(year)
+            else:
+                raise InvalidSemester("Need to specify either semester or season_name and year")
+        except (IndexError, ValueError), e:
+                raise InvalidSemester("Semester value provided is invalid")
 
         self.semester = "%s%s" % (self.season, str(self.year%100).rjust(2, "0"))
         try:
