@@ -159,6 +159,39 @@ class SemesterField(models.CharField):
 
 from django import forms
 
+_GRAD_SEASON_CHOICES = (("sp", "Spring"), ("fa", "Fall"))
+
+class SplitSeasonYearWidget(forms.MultiWidget):
+    def __init__(self, attrs=None):
+        widgets = (
+            forms.Select(choices=_GRAD_SEASON_CHOICES, attrs=attrs),
+            forms.Select(choices=[(str(x), str(x)) for x in range(2015, 2005, -1)], attrs=attrs),
+        )
+        super(SplitSeasonYearWidget, self).__init__(widgets, attrs)
+
+    def decompress(self, value):
+        if value:
+            return [value.season_name, value.year]
+        return [None, None]
+
+class SemesterSplitFormField(forms.MultiValueField):
+    def __init__(self, *args, **kwargs):
+        fields = (
+            forms.ChoiceField(choices=_GRAD_SEASON_CHOICES),
+            forms.ChoiceField(choices=[(str(x), str(x)) for x in range(2015, 2005, -1)], initial="2009"),
+        )
+        self.widget = SplitSeasonYearWidget
+        super(SemesterSplitFormField, self).__init__(fields, *args, **kwargs)
+
+    def compress(self, data_list):
+        if not data_list:
+            return None
+        if data_list[0] in forms.EMPTY_VALUES:
+            raise forms.ValidationError("Enter a valid season")
+        if data_list[1] in forms.EMPTY_VALUES:
+            raise forms.ValidationError("Enter a valid year")
+        return Semester(season_name=data_list[0], year=data_list[1])
+
 class SemesterFormField(forms.CharField):
     def clean(self, value):
         try:
