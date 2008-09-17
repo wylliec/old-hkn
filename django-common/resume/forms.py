@@ -1,6 +1,7 @@
 from django import forms
 from string import atoi
 import datetime
+import decimal
 from django.core import urlresolvers
 from django.core.files.base import ContentFile
 from nice_types import semester
@@ -10,8 +11,8 @@ from resume.models import Resume
 
 VALID_EXTENSIONS = (".doc", ".docx", ".pdf")
 class ResumeForm(forms.Form):
-    major_gpa = forms.DecimalField(label="Major GPA", min_value=1, max_value=4)
     overall_gpa = forms.DecimalField(label="Overall GPA", min_value=1, max_value=4)
+    major_gpa = forms.DecimalField(label="Major GPA (optional)", min_value=1, max_value=4, required=False)
     text = forms.CharField(help_text="Paste the contents of your resume (used for searching)", label="Resume Text", widget=forms.Textarea())
     grad_semester = semester.SemesterFormField(help_text="your intended graduation semester e.g. fa05 sp08")
 #    comment = forms.CharField(label = "Anything We Should Know?", required = False, widget=forms.Textarea(attrs={'rows' : 2, 'wrap' : 'virtual'}))
@@ -34,7 +35,10 @@ class ResumeForm(forms.Form):
             r = person.resume
         except Resume.DoesNotExist:
             r = Resume(person=person)
-        r.major_gpa=d['major_gpa']
+        if d['major_gpa'] == None:
+            r.major_gpa = decimal.Decimal("0.00")
+        else:
+            r.major_gpa=d['major_gpa']
         r.overall_gpa=d['overall_gpa']
         r.text=d['text']
         r.save_resume_file(d['resume'].read(), d['resume_extension'])
