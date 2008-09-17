@@ -43,4 +43,9 @@ class Resume(models.Model):
             gpas.append("%s (overall)" % self.overall_gpa)
         return gpa % ", ".join(gpas)
 
+    def save(self, *args, **kwargs):
+        if isinstance(self.text, unicode):
+            self.text = self.text.encode('latin-1', 'xmlcharrefreplace')
+        super(Resume, self).save(*args, **kwargs)
+
 from resume.admin import *
