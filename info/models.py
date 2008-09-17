@@ -41,6 +41,7 @@ class PeopleManager(QuerySetManager):
             else:
                 person.set_unusable_password()
             person.save()
+            ExtendedInfo.objects.create(person=person, sid="", grad_semester=None, local_addr="", perm_addr="")
             return person
 
             
@@ -453,10 +454,7 @@ class ExtendedInfo(models.Model):
     """ Permanent (home) address """
 
     def __unicode__(self):
-        return "<ExtendedInfo %s %s>" % (self.first_name, self.last_name)
-
-    class Admin:
-        pass
+        return "%s Extended" % (self.person.name)
 
 class CandidateInfo(models.Model):
     """
