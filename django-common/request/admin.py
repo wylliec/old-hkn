@@ -4,6 +4,6 @@ from request.models import Request
 
 
 class RequestAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("content_type", "title", "description")
 
 admin.site.register(Request, RequestAdmin)
