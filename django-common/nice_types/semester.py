@@ -2,6 +2,8 @@
 import datetime
 from string import atoi
 
+from nice_types.otherchoicefield import OtherSelectWidget, OtherChoiceField
+
 """The semester module handles semester related stuff.
 
 In the database, semesters are stored as strings of the form:
@@ -160,12 +162,13 @@ class SemesterField(models.CharField):
 from django import forms
 
 _GRAD_SEASON_CHOICES = (("sp", "Spring"), ("fa", "Fall"))
+_GRAD_YEAR_CHOICES = [(x, x) for x in range(2015, 2005, -1)]
 
 class SplitSeasonYearWidget(forms.MultiWidget):
     def __init__(self, attrs=None):
         widgets = (
             forms.Select(choices=_GRAD_SEASON_CHOICES, attrs=attrs),
-            forms.Select(choices=[(str(x), str(x)) for x in range(2015, 2005, -1)], attrs=attrs),
+            OtherSelectWidget(choices=_GRAD_YEAR_CHOICES, attrs=attrs),
         )
         super(SplitSeasonYearWidget, self).__init__(widgets, attrs)
 
@@ -178,7 +181,7 @@ class SemesterSplitFormField(forms.MultiValueField):
     def __init__(self, *args, **kwargs):
         fields = (
             forms.ChoiceField(choices=_GRAD_SEASON_CHOICES),
-            forms.ChoiceField(choices=[(str(x), str(x)) for x in range(2015, 2005, -1)]),
+            OtherChoiceField(choices=_GRAD_YEAR_CHOICES, field_class=forms.IntegerField(min_value=1900, max_value=2100)),
         )
         self.widget = SplitSeasonYearWidget
         super(SemesterSplitFormField, self).__init__(fields, *args, **kwargs)

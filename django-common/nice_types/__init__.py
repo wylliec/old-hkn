@@ -89,9 +89,11 @@ class EnumType( object ):
         # Remember names list for reference by index
         self._names = dict(names)
         self._descriptions = {}
+        self.reverse = {}
         # Attributes for direct reference
         for _n, _v in self._names.items():
             setattr( self, _n, _v )
+            self.reverse[_v] = _n
     
     def __contains__( self, item ):
         try:
