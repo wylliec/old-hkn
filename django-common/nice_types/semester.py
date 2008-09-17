@@ -178,7 +178,7 @@ class SemesterSplitFormField(forms.MultiValueField):
     def __init__(self, *args, **kwargs):
         fields = (
             forms.ChoiceField(choices=_GRAD_SEASON_CHOICES),
-            forms.ChoiceField(choices=[(str(x), str(x)) for x in range(2015, 2005, -1)], initial="2009"),
+            forms.ChoiceField(choices=[(str(x), str(x)) for x in range(2015, 2005, -1)]),
         )
         self.widget = SplitSeasonYearWidget
         super(SemesterSplitFormField, self).__init__(fields, *args, **kwargs)
@@ -186,9 +186,9 @@ class SemesterSplitFormField(forms.MultiValueField):
     def compress(self, data_list):
         if not data_list:
             return None
-        if data_list[0] in forms.EMPTY_VALUES:
+        if data_list[0] in (None, ''):
             raise forms.ValidationError("Enter a valid season")
-        if data_list[1] in forms.EMPTY_VALUES:
+        if data_list[1] in (None, ''):
             raise forms.ValidationError("Enter a valid year")
         return Semester(season_name=data_list[0], year=data_list[1])
 
