@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block subtitle %}Upload Eligibility List{% endblock %}
+
+{% block js %}
+{{ block.super }}
+{{form.media}}
+{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+	<table>
+    {{ form }}
+	</table>
+	<input type="submit" value="Upload Eligibility List" />
+</form>
+{% endblock %}
