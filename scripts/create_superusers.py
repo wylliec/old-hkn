@@ -10,7 +10,7 @@ from hkn.info.models import *
 from django.contrib.auth.models import *
 
 def main():
-    for username in ("hzarka", "rzheng", "ackner", "arjun", "gkchou", "bkim", "jyan"):
+    for username in ("hzarka", "rzheng", "ackner", "arjun", "gkchou", "bkim", "jyan", "aimee"):
         me = Person.objects.get(username=username)
         me.is_active = True
         me.is_superuser = True
