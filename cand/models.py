@@ -37,4 +37,7 @@ class ProcessedEligibilityListEntry(models.Model):
     person = models.ForeignKey(Person, null=True)
     category = models.CharField(choices=CATEGORIES, max_length=30)
 
+    def __str__(self):
+        return "%s %s [%s]" % (self.entry.first_name, self.entry.last_name, self.category)
+
 from hkn.cand.admin import *
