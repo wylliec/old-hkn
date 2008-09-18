@@ -16,7 +16,7 @@ class ResumeForm(forms.Form):
     text = forms.CharField(help_text="Paste the contents of your resume (used for searching)", label="Resume Text", widget=forms.Textarea())
     grad_semester = semester.SemesterSplitFormField(help_text="your intended graduation semester e.g. fa05 sp08", initial=semester.Semester(season_name="Spring", year=datetime.date.today().year + 2))
 
-    resume = forms.FileField(help_text="please provide a doc or pdf", label="Resume")
+    resume = forms.FileField(help_text="please provide a pdf (preferable) or doc (less preferable)", label="Resume")
 
     def clean_resume(self):
         uf = self.cleaned_data["resume"]
