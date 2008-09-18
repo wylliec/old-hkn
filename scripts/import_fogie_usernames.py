@@ -46,6 +46,7 @@ def handleUser(uname, name):
     person = person[0]
     person.username = uname
     person.member_type = max(person.member_type, MEMBER_TYPE.FOGIE)
+    person.is_active = True
     person.save()
 
 def main(passwd_file=PASSWD_FILE):
