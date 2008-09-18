@@ -1,6 +1,7 @@
 #!/usr/bin/env python2.5
 import hkn_settings
 from hkn.info.models import Person
+from hkn.info.constants import MEMBER_TYPE
 from django.db.models import Q
 
 import time, os, sha, re
@@ -44,6 +45,7 @@ def handleUser(uname, name):
         return
     person = person[0]
     person.username = uname
+    person.member_type = max(person.member_type, MEMBER_TYPE.FOGIE)
     person.save()
 
 def main(passwd_file=PASSWD_FILE):
@@ -53,7 +55,7 @@ def main(passwd_file=PASSWD_FILE):
             continue
         fields = user.split(":")
         uname, name = fields[0], fields[4]
-        #print "%s -> %s" % (uname, get_names(uname))
+        #print "%s -> %s" % (uname, get_names(name))
         handleUser(uname, name)
 
 if __name__ == '__main__':
