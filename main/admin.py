@@ -58,3 +58,8 @@ admin_site.register(RegistrationProfile, RegistrationAdmin)
 from request.models import Request
 from request.admin import RequestAdmin
 admin_site.register(Request, RequestAdmin)
+
+from hkn.cand.models import EligibilityListEntry, ProcessedEligibilityListEntry
+from hkn.cand.admin import EligibilityListEntryAdmin, ProcessedEligibilityListEntryAdmin
+admin_site.register(EligibilityListEntry, EligibilityListEntryAdmin)
+admin_site.register(ProcessedEligibilityListEntry, ProcessedEligibilityListEntryAdmin)

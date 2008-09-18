@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     (r'^course/', include('course.urls')),        
     (r'^resume/', include('resume.urls')),
     (r'^indrel/', include('hkn.indrel.urls')),
+    (r'^cand/', include('hkn.cand.urls')),
     (r'^account/', include('registration.urls')),        
 
     # authentication pages

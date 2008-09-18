@@ -169,6 +169,7 @@ INSTALLED_APPS = (
     'nice_types',
     'djangodblog',
     'resume',
+    'hkn.cand',
 #    'south',
 )
 
