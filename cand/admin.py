@@ -1,5 +1,6 @@
 from django.contrib import admin
 from hkn.cand.models import *
+from nice_types.modellink import ModelLinkAdminFields
 
 class EligibilityListEntryAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'email_address', 'class_level')
@@ -21,10 +22,11 @@ def matched_person_email(x):
 def matched_person_category(x):
     return x.person.member_status if x.person else "<no match>"
 
-class ProcessedEligibilityListEntryAdmin(admin.ModelAdmin):
+class ProcessedEligibilityListEntryAdmin(ModelLinkAdminFields, admin.ModelAdmin):
     list_display = (matched_person_name, entry_name, matched_person_email, entry_email, matched_person_category, 'category')
     search_fields = ('person__first_name', 'person__last_name', 'entry__first_name', 'entry__last_name')
     list_filter = ('category',)
+    modellink = ('entry', 'person')
 
 admin.site.register(EligibilityListEntry, EligibilityListEntryAdmin)
 admin.site.register(ProcessedEligibilityListEntry, ProcessedEligibilityListEntryAdmin)
