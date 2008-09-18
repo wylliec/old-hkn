@@ -15,7 +15,7 @@ import sys
 import string
 import time
 
-import setup_settings; setup_settings.setup()
+import setup_settings
 from hkn.gcal.gcal_interface import add_event, update_event, get_calendar_service
 from hkn.gcal.calendars import calendars, NoCalendarFound
 from hkn.event.models import *

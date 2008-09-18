@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import setup_settings; setup_settings.setup()
+import setup_settings
 from hkn.event.models import Event
 from hkn.gcal.gcal_interface import add_event, update_event
 
