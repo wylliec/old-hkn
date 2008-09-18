@@ -31,7 +31,7 @@ class EligibilityListEntry(models.Model):
         def for_current_semester(self):
             return self.filter(semester=nice_types.semester.current_semester())
 
-CATEGORIES = (("CANDIDATE", "Candidate"), ("MAYBE_CAND", "Maybe candidate"), ("MAYBE_MEMBER", "Maybe member"), ("MEMBER", "Member"))
+CATEGORIES = (("CANDIDATE", "Candidate"), ("MAYBE_CAND", "Maybe candidate"), ("MAYBE_MEMBER", "Maybe member"), ("MEMBER", "Member"), ("UNKNOWN", "Unknown"))
 class ProcessedEligibilityListEntry(models.Model):
     entry = models.OneToOneField(EligibilityListEntry)
     person = models.ForeignKey(Person, null=True)

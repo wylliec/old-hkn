@@ -22,7 +22,7 @@ def process_eligibility_entry(entry):
     persons = persons.filter(Q(Q(first_name=first_name)|Q(realfirst=first_name))&Q(last_name=last_name))
     if len(persons) == 0:
         print "-- No match for (%s, %s, %s)" % (first_name, last_name, email)
-        return (None, "CANDIDATE")
+        return (None, "UNKNOWN")
     elif len(persons) == 1:
         print "Matched name %s %s" % (first_name, last_name)
         if persons[0].member_type >= MEMBER_TYPE.MEMBER:
