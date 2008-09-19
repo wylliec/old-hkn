@@ -10,6 +10,8 @@ class ModelLinkWidget(forms.HiddenInput):
         super(ModelLinkWidget,self).__init__()
 
     def render(self, name, value, attrs=None):
+        if not self.original_object:
+            return super(ModelLinkWidget, self).render(name, value, attrs) + mark_safe('None')
         link = '%s%s/%s/%d' % (self.admin_site.root_path,
                                  self.original_object._meta.app_label, 
                                  self.original_object._meta.module_name,
