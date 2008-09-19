@@ -201,14 +201,14 @@ class Person(User):
 
     imported = ImportedPeopleManager()
 
-    realfirst = models.CharField(max_length=30)
+    realfirst = models.CharField(blank=True, max_length=30)
     """ 
     Real first name (the Person's official name, if it isn't already in L{first}).
     Can be empty if the Person's first name is their official name
     """
     
 
-    school_email = models.EmailField()
+    school_email = models.EmailField(blank=True)
     """ 
     Person's official school email address. Probably a bad idea to issue lookup queries on this,
     see the object managers for some utility functions to help out with this 

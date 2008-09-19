@@ -37,8 +37,8 @@ class PrivacySelectField(forms.ChoiceField):
         return value
 
 class ProfileForm(forms.Form):
-    email = forms.CharField(label="Contact Email")
-    phone = forms.CharField(label="Contact Phone", required=False)
+    email = forms.CharField(label="Contact Email", max_length=75)
+    phone = forms.CharField(label="Contact Phone", required=False, max_length=20)
     current_password = forms.CharField(required=False, widget=forms.PasswordInput)
     new_password = forms.CharField(required=False, widget=forms.PasswordInput)
     confirm_new_password = forms.CharField(required=False, widget=forms.PasswordInput)
