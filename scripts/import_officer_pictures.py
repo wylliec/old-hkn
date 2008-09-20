@@ -7,6 +7,8 @@ from django.core.files.base import ContentFile
 
 def main():
     for off in Person.all_officers.all():
+        if off.officer_picture != None:
+            continue
         path = os.path.join(settings.IMAGES_PATH, "officerpics", off.username)
         for ext in (".jpg", ".jpeg", ".gif"):
             f = "%s%s" % (path, ext)
