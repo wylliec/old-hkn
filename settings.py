@@ -190,11 +190,16 @@ def setup_logger():
             format = '%(asctime)s %(name)s %(module)s:%(lineno)s %(levelname)s %(message)s',
     )
 
+EXTRA_INSTALLED_APPS = tuple()
+
 # hknsettings settings will override the above
 from hknsettings import *
 
 if __name__.startswith("hkn."):
     setup_logger()
+
+if EXTRA_INSTALLED_APPS:
+    INSTALLED_APPS = tuple(list(INSTALLED_APPS)+list(EXTRA_INSTALLED_APPS))
 
 # make sure SERVER_ROOT ends with hkn/
 if not SERVER_ROOT.endswith("hkn/"):
