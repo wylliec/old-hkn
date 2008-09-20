@@ -27,7 +27,7 @@ def export_resumes(resumes, export_dir):
             pass
 
         for resume in r:
-            filename = os.path.join(dir, "%s, %s%s" % (resume.person.last_name, resume.person.first_name, os.path.splitext(resume.resume.name)[1]))
+            filename = os.path.join(dir, "%s, %s%s" % (resume.person.last_name.title(), resume.person.first_name.title(), os.path.splitext(resume.resume.name)[1]))
             f = file(filename, "w")
             f.write(resume.resume.read())
             f.close()
