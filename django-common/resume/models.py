@@ -6,7 +6,7 @@ import request.utils
 from django.db.models.query import QuerySet
 from django.core.files.base import ContentFile
 from nice_types.db import QuerySetManager
-from nice_types.semester import Semester
+from nice_types.semester import Semester, current_semester
 
 from django.db import models
 
@@ -16,7 +16,13 @@ class Concentration(models.Model):
     name = models.CharField(max_length=50)
     abbr = models.CharField(max_length=20)
 
+class ResumeManager(QuerySetManager):
+    def for_current_semester(self, *args, **kwargs):
+        return self.get_query_set().for_current_semester(*args, **kwargs)
+
 class Resume(models.Model):
+    objects = ResumeManager()
+
     person = models.OneToOneField(Person)
     resume = models.FileField(upload_to="resumes", max_length=200)
     submitted = models.DateTimeField(auto_now=True)
@@ -25,6 +31,11 @@ class Resume(models.Model):
     text = models.TextField()
     published = models.BooleanField()
     concentrations = models.ManyToManyField(Concentration, related_name="resumes")
+
+    class QuerySet(QuerySet):
+        def for_current_semester(self):
+            semester = current_semester()
+            return self.filter(submitted__gt=semester.start_date, submitted__lt=semester.end_date)
 
     def generate_filename(self, extension):
         digits = "0123456789abcdefghijklmnopqrstuvwxyz"
