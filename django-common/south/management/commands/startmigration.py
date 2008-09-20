@@ -138,7 +138,7 @@ class Command(BaseCommand):
         ))''' % (
                     model._meta.object_name,
                     table_name,
-                    ",\n            ".join(["('%s', %s)" % (f[0], f[1]) for f in fields]),
+                    "\n            ".join(["('%s', %s)," % (f[0], f[1]) for f in fields]),
                 )
 
                 backwards = ('''db.delete_table('%s')
@@ -332,10 +332,9 @@ def related_field_definition(field, field_definition):
 def create_mock_model(model):
     # produce a string representing the python syntax necessary for creating
     # a mock model using the supplied real model
-    if not model._meta.pk.__class__.__module__.startswith('django.db.models.fields'):
+    if model._meta.pk.__class__.__module__ != 'django.db.models.fields':
         # we can fix this with some clever imports, but it doesn't seem necessary to
         # spend time on just yet
-        import pdb; pdb.set_trace()
         print "Can't generate a mock model for %s because it's primary key isn't a default django field" % model
         sys.exit()
     
