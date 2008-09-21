@@ -100,6 +100,8 @@ def make_newfile(old_name, klass, type, number, solution, extension):
 	file = open(old_name, "r")
 		
 	filename = "%s_%s_%s%s.%s" % (klass.course.short_name(), klass.semester.abbr(), type_string, sol_string, extension)
+	if os.path.exists(join(SERVER_ROOT, MEDIA_ROOT, File_UPLOAD_DIR, filename)):
+		raise Exception("File already exists: " + filename)
 	return (filename, file)
 
 def convert_file(path):

@@ -13,7 +13,7 @@ from os import listdir
 from os.path import isdir, join, split
 import re
 import shutil
-from settings import MEDIA_ROOT
+from settings import SERVER_ROOT, MEDIA_ROOT
 
 VALID_EXTENSIONS = ["html", "pdf", "ps", "txt"]
 filepattern = re.compile("^[a-zA-Z]+\d+[a-zA-Z]*_(sp|fa|su)\d\d_(mt\d+|f|q\d+)(_sol)?$")
@@ -67,6 +67,9 @@ def add_exams(path):
 	for filename in list_files(path):
 		if not is_valid_file(filename):
 			print "Invalid file name: %s" % filename
+			continue
+		elif os.path.exists(join(SERVER_ROOT, MEDIA_ROOT, FILE_UPLOAD_DIR, filename)):
+			print "File exists: %s" % filename
 			continue
 		elif filename == "instructor_file.txt":
 			continue
