@@ -170,6 +170,7 @@ INSTALLED_APPS = (
     'djangodblog',
     'resume',
     'hkn.cand',
+    'formmailer',
 #    'south',
 )
 

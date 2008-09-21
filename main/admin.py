@@ -63,3 +63,8 @@ from hkn.cand.models import EligibilityListEntry, ProcessedEligibilityListEntry
 from hkn.cand.admin import EligibilityListEntryAdmin, ProcessedEligibilityListEntryAdmin
 admin_site.register(EligibilityListEntry, EligibilityListEntryAdmin)
 admin_site.register(ProcessedEligibilityListEntry, ProcessedEligibilityListEntryAdmin)
+
+from formmailer.models import MailTarget, MailMessage
+from formmailer.admin import MailTargetAdmin, MailMessageAdmin
+admin_site.register(MailTarget, MailTargetAdmin)
+admin_site.register(MailMessage, MailMessageAdmin)
