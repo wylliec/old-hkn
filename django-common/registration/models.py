@@ -82,6 +82,7 @@ class RegistrationManager(models.Manager):
         new_person.phone_numer = phone_number
         new_person.realfirst = entry.first_name
         new_person.school_email = entry.email_address
+        new_person.member_type = MEMBER_TYPE.CANDIDATE
         new_person.save()
         new_person.extendedinfo.grad_semester = grad_semester
         new_person.extendedinfo.save()
