@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block subtitle %}Registerable Candidates{% endblock %}
+
+{% block content %}
+
+{% for entry in entries %}
+<a href="{% url registration_register_candidate entry.entry.email_address %}">{{ entry.entry.first_name }} {{ entry.entry.last_name }}</a><br/>
+{% endfor %}
+
+{% endblock %}
