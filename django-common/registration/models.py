@@ -77,8 +77,11 @@ class RegistrationManager(models.Manager):
 
     def create_candidate_user(self, entry, first_name, last_name, username, password, email,
                              phone_number, grad_semester, transfer_college, eecs_courses, committees, questions):
-        new_person = self.create_inactive_user(first_name, last_name, username, password, email, False, send_email=True)
-        #new_person = self.create_inactive_user(first_name, last_name, username, password, email, False, send_email=False)
+        #new_person = self.create_inactive_user(first_name, last_name, username, password, email, False, send_email=True)
+
+        new_person = self.create_inactive_user(first_name, last_name, username, password, email, False, send_email=False)
+        new_person.is_active = True
+
         new_person.phone_numer = phone_number
         new_person.realfirst = entry.first_name
         new_person.school_email = entry.email_address
