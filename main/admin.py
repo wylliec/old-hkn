@@ -59,10 +59,13 @@ from request.models import Request
 from request.admin import RequestAdmin
 admin_site.register(Request, RequestAdmin)
 
-from hkn.cand.models import EligibilityListEntry, ProcessedEligibilityListEntry
-from hkn.cand.admin import EligibilityListEntryAdmin, ProcessedEligibilityListEntryAdmin
+from hkn.cand.models import EligibilityListEntry, ProcessedEligibilityListEntry, CandidateInfo, CandidateApplication
+from hkn.cand.admin import EligibilityListEntryAdmin, ProcessedEligibilityListEntryAdmin, CandidateInfoAdmin, CandidateApplicationAdmin
 admin_site.register(EligibilityListEntry, EligibilityListEntryAdmin)
 admin_site.register(ProcessedEligibilityListEntry, ProcessedEligibilityListEntryAdmin)
+admin_site.register(CandidateApplication, CandidateApplicationAdmin)
+admin_site.register(CandidateInfo, CandidateInfoAdmin)
+
 
 from formmailer.models import MailTarget, MailMessage
 from formmailer.admin import MailTargetAdmin, MailMessageAdmin

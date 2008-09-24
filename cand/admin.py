@@ -28,5 +28,23 @@ class ProcessedEligibilityListEntryAdmin(ModelLinkAdminFields, admin.ModelAdmin)
     list_filter = ('category',)
     modellink = ('entry', 'person')
 
+def candidateinfo_name(x):
+    return "%s %s" % (x.candidateinfo.person.first_name, x.candidateinfo.person.last_name)
+
+class CandidateApplicationAdmin(ModelLinkAdminFields, admin.ModelAdmin):
+    list_display = (candidateinfo_name,)
+    search_fields = ('candidateinfo__person__first_name', 'candidateinfo__person__last_name', 'candidateinfo__person__email', 'candidateinfo__person__username')
+    modellink = ('entry', 'candidateinfo')
+
+class CandidateInfoAdmin(ModelLinkAdminFields, admin.ModelAdmin):
+    list_display = (matched_person_name, matched_person_email, 'candidate_semester', 'candidate_committee', 'initiated')
+    search_fields = ('person__first_name', 'person__last_name', 'person__email', 'person__username')
+    list_filter = ('candidate_semester', 'candidate_committee', 'initiated')
+    modellink = ('person',)
+
+
 admin.site.register(EligibilityListEntry, EligibilityListEntryAdmin)
 admin.site.register(ProcessedEligibilityListEntry, ProcessedEligibilityListEntryAdmin)
+admin.site.register(CandidateApplication, CandidateApplicationAdmin)
+admin.site.register(CandidateInfo, CandidateInfoAdmin)
+#admin.site.register(XXX, XXXAdmin)
