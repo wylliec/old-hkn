@@ -197,5 +197,8 @@ def register_candidate(request, email, extra_context=None):
 
 @permission_required('main.hkn_current_officer')
 def register_candidate_list(request):
-    entries = ProcessedEligibilityListEntry.objects.filter(category__in = ('CANDIDATE', 'MAYBE_CAND', 'UNKNOWN')).order_by('entry__first_name', 'entry__last_name')
+    if 'all' in request.GET:
+        entries = ProcessedEligibilityListEntry.objects.all()
+    else:
+        entries = ProcessedEligibilityListEntry.objects.filter(category__in = ('CANDIDATE', 'MAYBE_CAND', 'UNKNOWN')).order_by('entry__first_name', 'entry__last_name')
     return render_to_response('registration/list_candidates.html', {'entries' : entries}, context_instance=RequestContext(request))
