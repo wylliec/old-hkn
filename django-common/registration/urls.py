@@ -14,6 +14,8 @@ from django.contrib.auth import views as auth_views
 
 from registration.views import activate
 from registration.views import register
+from registration.views import register_candidate
+from registration.views import register_candidate_list
 
 
 urlpatterns = patterns('',
@@ -33,6 +35,12 @@ urlpatterns = patterns('',
                        url(r'^register/$',
                            register,
                            name='registration_register'),
+                       url(r'^register/candidate/$',
+                           register_candidate_list,
+                           name='registration_register_candidate_list'),
+                       url(r'^register/candidate/(?P<email>.*)/$',
+                           register_candidate,
+                           name='registration_register_candidate'),
                        url(r'^register/complete/$',
                            direct_to_template,
                            {'template': 'registration/registration_complete.html'},

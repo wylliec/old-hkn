@@ -6,12 +6,14 @@ Views which allow users to create and activate accounts.
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib import auth
+from django.contrib.auth.decorators import permission_required
 
-from registration.forms import RegistrationForm
+from registration.forms import RegistrationForm, CandidateRegistrationForm
 from registration.models import RegistrationProfile
+from hkn.cand.models import EligibilityListEntry, CandidateApplication, ProcessedEligibilityListEntry
 
 
 def activate(request, activation_key,
@@ -172,3 +174,28 @@ def register(request, success_url=None,
     return render_to_response(template_name,
                               { 'form': form },
                               context_instance=context)
+
+@permission_required('main.hkn_current_officer')
+def register_candidate(request, email, extra_context=None):
+    entry = get_object_or_404(EligibilityListEntry, email_address=email)
+    if CandidateApplication.objects.filter(entry=entry).count() != 0:
+        request.user.message_set.create(message="Application for candidate %s already exists!" % entry.first_name)
+        return HttpResponseRedirect(reverse("registration_register_candidate_list"))
+    if request.POST:
+        form = CandidateRegistrationForm(request.POST)
+        form.bind_entry(entry)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(message="Candidate %s registered successfully" % entry.first_name)
+            return HttpResponseRedirect(reverse("registration_register_candidate_list"))
+    else:
+        form = CandidateRegistrationForm()
+    form.bind_entry(entry)
+    return render_to_response('registration/registration_form.html',
+                              { 'form': form },
+                              context_instance=RequestContext(request))
+
+@permission_required('main.hkn_current_officer')
+def register_candidate_list(request):
+    entries = ProcessedEligibilityListEntry.objects.filter(category__in = ('CANDIDATE', 'MAYBE_CAND', 'UNKNOWN')).order_by('entry__first_name', 'entry__last_name')
+    return render_to_response('registration/list_candidates.html', {'entries' : entries}, context_instance=RequestContext(request))

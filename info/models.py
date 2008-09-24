@@ -428,6 +428,7 @@ class Person(User):
                        ("view_excandidates", "View Ex-Candidate Information"),
                        ("view_restricted", "View Restricted Information"))
 
+from course.models import Course
 
 class ExtendedInfo(models.Model):
     """
@@ -446,6 +447,9 @@ class ExtendedInfo(models.Model):
 
     grad_semester = semester.SemesterField(null=True)
     """ The person's graduation semester. Usually taken at initiation time, so subject to change. """
+
+    grad_student = models.BooleanField()
+    """ Is the person a grad student? """
     
     local_addr = models.TextField()
     """ Local address """
@@ -453,50 +457,11 @@ class ExtendedInfo(models.Model):
     perm_addr = models.TextField()
     """ Permanent (home) address """
 
+    current_courses = models.ManyToManyField(Course)
+
     def __unicode__(self):
         return "%s Extended" % (self.person.name)
 
-class CandidateInfo(models.Model):
-    """
-    CandidateInfo contains auxillary information on a Person's candidacy. Includes candidate_semester, candidate_committee,
-    and an initiation_comment set by the VP upon initiation (to record e.g., Person was recipient of Candidate of Semester award)
-
-    Note that actual initiation information is not stored in this object. Look at Person.member_type to determine whether this
-    person successfully initiated (or call person.is_initiated())
-    """
-
-    person = models.OneToOneField(Person, primary_key = True)
-    """A reference to a L{Person} object. To get a handle of the associated Person, do::
-        >>>> candidateinfo.person"""
-
-    candidate_semester = nice_types.semester.SemesterField()
-    """ The person's candidate semester. """
-    
-
-    candidate_committee = models.ForeignKey(Position)
-    """ The person's candidate committee. """    
-
-    initiated = models.BooleanField()
-    """ whether this person initiated in the semester indicated by candidate_semester """
-
-    initiation_comment = models.TextField()
-    """ a comment that can be set at initiation time by the VP """
-
-    candidate_picture = models.ForeignKey(Photo, null=True)
-    """ candidate picture """
-
-    def save_candidate_picture(self, content, ext=".gif", save=True):
-        uname = self.person.username
-        self.candidate_picture, created = Photo.objects.get_or_create(title="%s Candidate Picture" % uname, is_public=False)
-        self.candidate_picture.image.save(uname + ext, content)
-        if save:
-            self.save()
-
-    def __unicode__(self):
-        return "%s %s %s" % (self.person.name, self.candidate_committee, self.candidate_semester)
-            
-    class Admin:
-        pass
 
 class OfficershipManager(QuerySetManager):
     def for_current_semester(self, *args, **kwargs):

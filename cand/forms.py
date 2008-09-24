@@ -36,4 +36,3 @@ class EligibilityListForm(forms.Form):
             else:
                 num_existed += 1
         return (num_created, num_existed)
-        

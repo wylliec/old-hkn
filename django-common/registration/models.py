@@ -13,6 +13,10 @@ from django.contrib.sites.models import Site
 
 from hkn.info.models import Person
 from hkn.info.constants import MEMBER_TYPE
+from hkn.cand.models import CandidateInfo, CandidateApplication
+
+from nice_types import semester
+
 from hkn.main.property import PROPERTIES
 
 import request
@@ -70,6 +74,26 @@ class RegistrationManager(models.Manager):
             else:
                 logging.getLogger('special.actions').info("%s failed account activation with expired key %s" % (profile.user.username, profile.activation_key))
         return False
+
+    def create_candidate_user(self, entry, first_name, last_name, username, password, email,
+                             phone_number, grad_semester, transfer_college, eecs_courses, committees, questions):
+        #new_person = self.create_inactive_user(first_name, last_name, username, password, email, False, send_email=True)
+        new_person = self.create_inactive_user(first_name, last_name, username, password, email, False, send_email=False)
+        new_person.phone_numer = phone_number
+        new_person.realfirst = entry.first_name
+        new_person.school_email = entry.email_address
+        new_person.save()
+        new_person.extendedinfo.grad_semester = grad_semester
+        new_person.extendedinfo.save()
+        new_person.extendedinfo.current_courses = eecs_courses
+        new_person.extendedinfo.save()
+
+        candidateinfo = CandidateInfo.objects.create(person=new_person, candidate_semester=semester.current_semester(), candidate_committee=None, initiated=False, initiation_comment="", candidate_picture=None)
+        
+        candidateapp = CandidateApplication.objects.create(entry=entry, candidateinfo=candidateinfo, transfer_college=transfer_college, committees=committees, questions=questions)
+        
+        
+        
     
     def create_inactive_user(self, first_name, last_name, username, password, email, hkn_member,
                              send_email=True, profile_callback=None):

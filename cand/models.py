@@ -1,9 +1,10 @@
 from django.db import models
 from django.db.models.query import QuerySet
 import nice_types.semester
-from nice_types.db import QuerySetManager
+from nice_types.db import QuerySetManager, PickleField
 
-from hkn.info.models import Person
+from hkn.info.models import Person, Position
+from photologue.models import Photo
 
 class EligibilityListEntryManager(QuerySetManager):
     def for_current_semester(self, *args, **kwargs):
@@ -40,4 +41,51 @@ class ProcessedEligibilityListEntry(models.Model):
     def __str__(self):
         return "%s %s [%s]" % (self.entry.first_name, self.entry.last_name, self.category)
 
+
+class CandidateInfo(models.Model):
+    """
+    CandidateInfo contains auxillary information on a Person's candidacy. Includes candidate_semester, candidate_committee,
+    and an initiation_comment set by the VP upon initiation (to record e.g., Person was recipient of Candidate of Semester award)
+
+    Note that actual initiation information is not stored in this object. Look at Person.member_type to determine whether this
+    person successfully initiated (or call person.is_initiated())
+    """
+
+    person = models.OneToOneField(Person, primary_key = True)
+    """A reference to a L{Person} object. To get a handle of the associated Person, do::
+        >>>> candidateinfo.person"""
+
+    candidate_semester = nice_types.semester.SemesterField()
+    """ The person's candidate semester. """
+
+    candidate_committee = models.ForeignKey(Position, null=True)
+    """ The person's candidate committee. """    
+
+    initiated = models.BooleanField()
+    """ whether this person initiated in the semester indicated by candidate_semester """
+
+    initiation_comment = models.TextField()
+    """ a comment that can be set at initiation time by the VP """
+
+    candidate_picture = models.ForeignKey(Photo, null=True)
+    """ candidate picture """
+
+    def save_candidate_picture(self, content, ext=".gif", save=True):
+        uname = self.person.username
+        self.candidate_picture, created = Photo.objects.get_or_create(title="%s Candidate Picture" % uname, is_public=False)
+        self.candidate_picture.image.save(uname + ext, content)
+        if save:
+            self.save()
+
+    def __unicode__(self):
+        return "%s %s %s" % (self.person.name, self.candidate_committee, self.candidate_semester)
+
+class CandidateApplication(models.Model):
+    entry = models.ForeignKey(EligibilityListEntry)
+    candidateinfo = models.ForeignKey(CandidateInfo)
+
+    transfer_college = models.CharField(null=True, max_length=100)
+    committees = PickleField()
+    questions = PickleField()
+            
 from hkn.cand.admin import *
