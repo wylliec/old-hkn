@@ -95,6 +95,8 @@ class RegistrationManager(models.Manager):
         candidateinfo = CandidateInfo.objects.create(person=new_person, candidate_semester=semester.current_semester(), candidate_committee=None, initiated=False, initiation_comment="", candidate_picture=None)
         
         candidateapp = CandidateApplication.objects.create(entry=entry, candidateinfo=candidateinfo, transfer_college=transfer_college, committees=committees, questions=questions)
+
+        return new_person
         
         
         
