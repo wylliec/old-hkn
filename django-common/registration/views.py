@@ -15,6 +15,8 @@ from registration.forms import RegistrationForm, CandidateRegistrationForm
 from registration.models import RegistrationProfile
 from hkn.cand.models import EligibilityListEntry, CandidateApplication, ProcessedEligibilityListEntry
 
+import logging
+
 
 def activate(request, activation_key,
              template_name='registration/activate.html',
@@ -185,7 +187,8 @@ def register_candidate(request, email, extra_context=None):
         form = CandidateRegistrationForm(request.POST)
         form.bind_entry(entry)
         if form.is_valid():
-            form.save()
+            new_candidate = form.save()
+            logging.getLogger('special.actions').info("Candidate registered by officer: %s by %s" % (new_candidate.username, request.user.username))
             request.user.message_set.create(message="Candidate %s registered successfully" % entry.first_name)
             return HttpResponseRedirect(reverse("registration_register_candidate_list"))
     else:
