@@ -144,7 +144,7 @@ class CandidateRegistrationForm(forms.Form):
 
     phone_number = forms.CharField(max_length=30)
     grad_semester = semester.SemesterSplitFormField()
-    eecs_courses = forms.CharField(max_length=2000, label="Current EECS Courses", help_text="a comma-separated list of your eecs classes, such as: 'CS 61A, EE 20N, MATH 55'")
+    tech_courses = forms.CharField(max_length=2000, label="Current Tech Courses", help_text="a comma-separated list of your technical classes, such as: 'CS 61A, MATH 53, EE 20N'")
 
     RANKING_CHOICES = [(str(x), x) for x in range(1, 9)]
 
@@ -166,8 +166,8 @@ class CandidateRegistrationForm(forms.Form):
             field = forms.CharField(label=prompt, widget=forms.Textarea)
             self.fields["question_" + qid] = field
 
-    def clean_eecs_courses(self):
-        courses = [c.strip() for c in self.cleaned_data['eecs_courses'].split(",")]
+    def clean_tech_courses(self):
+        courses = [c.strip() for c in self.cleaned_data['tech_courses'].split(",")]
         clean_courses = []
         for course in courses:
             qr = Course.objects.query_exact(*Course.objects.parse_query(course))
@@ -176,8 +176,8 @@ class CandidateRegistrationForm(forms.Form):
             elif len(qr) > 1:
                 raise forms.ValidationError('Too many matches for course %s!' % course) 
             clean_courses.append(qr[0])
-        self.cleaned_data['eecs_courses'] = clean_courses
-        return self.cleaned_data['eecs_courses']
+        self.cleaned_data['tech_courses'] = clean_courses
+        return self.cleaned_data['tech_courses']
             
     
     USERNAME_RE = re.compile("[A-Za-z0-9_]")
@@ -259,7 +259,7 @@ class CandidateRegistrationForm(forms.Form):
                                                                     email=self.cleaned_data['email'],
                                                                     phone_number=self.cleaned_data['phone_number'],
                                                                     grad_semester=self.cleaned_data['grad_semester'],
-                                                                    eecs_courses=self.cleaned_data['eecs_courses'],
+                                                                    courses=self.cleaned_data['tech_courses'],
                                                                     committees=self.cleaned_data['committees'],
                                                                     questions=self.cleaned_data['questions'],
                                                                     transfer_college="")
