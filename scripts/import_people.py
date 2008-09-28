@@ -7,6 +7,7 @@ import hkn_settings
 from hkn.info.constants import MEMBER_TYPE
 
 from hkn.info.models import *
+from hkn.cand.models import *
 from django.contrib.auth.models import *
 from hkn.info.utils import *
 from photologue.models import *
