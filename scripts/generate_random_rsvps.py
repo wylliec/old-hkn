@@ -37,11 +37,6 @@ def main():
         for e in list(Event.objects.all()):
             make_rsvp(p, e)
 
-    p = Person.objects.get(first_name = "Hisham")
-    if not p in Person.officers.all():
-        for e in list(Event.objects.all()):
-            make_rsvp(p, e)
-
 if __name__ == "__main__":
     main()
 
