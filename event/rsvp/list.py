@@ -1,4 +1,5 @@
 from django.contrib.auth.models import *
+from django.contrib.auth.decorators import login_required
 from hkn.event.models import *
 from hkn.event.forms import *
 from django.shortcuts import render_to_response, get_object_or_404
@@ -51,11 +52,13 @@ def list_for_person_common(request, person, all=False, max_per_page=None):
     d['rsvps'] = rsvps    
     return d
 
+#@login_required
 def list_for_person_small_ajax(request, person_id):
     person = get_object_or_404(Person, pk=person_id)
     d = list_for_person_common(request, person, max_per_page=5)    
     return render_ajaxwrapper_response("event/rsvp/ajax/_list_for_person_small.html", d, context_instance=RequestContext(request))
 
+@login_required
 def list_for_person(request, person_id):
     if len(person_id) == 0 or person_id == "me":
         person = request.user.person
