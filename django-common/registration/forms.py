@@ -120,6 +120,7 @@ class RegistrationForm(forms.Form):
 # we should refactor so there isn't so much code dup --hzarka
 class CandidateRegistrationForm(forms.Form):
     QUESTIONS = (
+            ('hobbies', 'What are your hobbies and talents?'),
             ('activities', 'What activities would you like to see HKN do this semester?'),
             ('crazy', "What's the craziest thing you've ever done?"),
             ('unique', "What's something unique about you?"),
@@ -156,9 +157,6 @@ class CandidateRegistrationForm(forms.Form):
     committee_pub = forms.ChoiceField(choices=RANKING_CHOICES, label="Preference for Pub Committee")
     committee_studrel = forms.ChoiceField(choices=RANKING_CHOICES, label="Preference for StudRel Committee")
     committee_tutor = forms.ChoiceField(choices=RANKING_CHOICES, label="Preference for Tutoring Committee")
-
-    question_activities = forms.CharField(label="What activities would you like to see HKN do this semester?", widget=forms.Textarea)
-    question_unique = forms.CharField(label="What's something unique about you?", widget=forms.Textarea)
 
     def __init__(self, *args, **kwargs):
         super(CandidateRegistrationForm, self).__init__(*args, **kwargs)
@@ -238,7 +236,7 @@ class CandidateRegistrationForm(forms.Form):
         answers = []
         for qid, prompt in CandidateRegistrationForm.QUESTIONS:
             key = 'question_' + qid
-            answers.append((qid, prompt, self.cleaned_data[key]))
+            answers.append((qid, prompt, self.cleaned_data.get(key, "")))
         self.cleaned_data['questions'] = tuple(answers)
 
         return self.cleaned_data
