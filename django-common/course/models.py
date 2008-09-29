@@ -6,6 +6,15 @@ from nice_types.semester import SemesterField, Semester
 from constants import EXAMS_PREFERENCE, PREFIX, SUFFIX, DEPT_ABBRS, DEPT_ABBRS_INV, DEPT_ABBRS_SET
 import re, datetime
 
+class DeletionException(Exception):
+    pass
+
+class NoDeleteQuerySet(QuerySet):
+    def delete(self, force_delete=False):
+        if not force_delete:
+            raise DeletionException("Attempt to delete QuerySet; pass force_delete=True to force")
+        super(NoDeleteQuerySet, self).super()
+
 class CourseManager(QuerySetManager):
     def parse_query(self, *args, **kwargs):
         return self.get_query_set().parse_query(*args, **kwargs)
@@ -62,7 +71,7 @@ class Department(models.Model):
     def __cmp__(self, other):
         return cmp(self.name, other.name)
 
-    class QuerySet(QuerySet):
+    class QuerySet(NoDeleteQuerySet):
         def ft_query(self, abbr):
             return self.filter(abbr = Department.get_proper_abbr(abbr))
         
@@ -135,7 +144,7 @@ class Course(models.Model):
         return cmp(self.department_abbr, other.department_abbr) or cmp(self.integer_number, other.integer_number)  \
                    or cmp(self.number, other.number)
 
-    class QuerySet(QuerySet):
+    class QuerySet(NoDeleteQuerySet):
         course_patterns = (
                          re.compile(r'(?P<dept>[A-Za-z_\.& ]+)[\s_]+(?P<course>\w?\d+\w*)'),  # matches "CS 61A"
                          re.compile(r'(?P<dept>[A-Za-z_]+)(?P<course>\d\w*)'),  # matches "CS61A"
@@ -203,6 +212,13 @@ class Course(models.Model):
             if m:
                 self.integer_number = int(m.group("integer"))                
         super(Course, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        force = kwargs.pop('force_delete', False)
+        if not force:
+            raise DeletionException("Attempt to delete '%s'; pass force_delete=True to force" % repr(self))
+        super(Course, self).delete(*args, **kwargs)
+        
     
     class Meta:
         unique_together = (("department", "coursenumber"),)
@@ -264,7 +280,13 @@ class Klass(models.Model):
     def __str__(self):
         return "%s %s" % (str(self.course.short_name()), self.semester)
 
-    class QuerySet(QuerySet):
+    def delete(self, *args, **kwargs):
+        force = kwargs.pop('force_delete', False)
+        if not force:
+            raise DeletionException("Attempt to delete '%s'; pass force_delete=True to force" % repr(self))
+        super(Klass, self).delete(*args, **kwargs)
+
+    class QuerySet(NoDeleteQuerySet):
         def ft_query(self, course, semester):
             season = semester[:2]
             year = int(semester[2:])
@@ -360,7 +382,13 @@ class Instructor(models.Model):
             self.departments.add(self.home_department)        
         assert(self.departments.count() > 0)
 
-    class QuerySet(QuerySet):
+    def delete(self, *args, **kwargs):
+        force = kwargs.pop('force_delete', False)
+        if not force:
+            raise DeletionException("Attempt to delete '%s'; pass force_delete=True to force" % repr(self))
+        super(Instructor, self).delete(*args, **kwargs)
+
+    class QuerySet(NoDeleteQuerySet):
         instructor_patterns = (
                          re.compile(r'(?P<last>[\w-]*),\s*(?P<first>[\w-]*)\s*\[(?P<dept>\w*)\]'),  # matches "Harvey, Brian [CS]"
                          re.compile(r'(?P<last>[\w-]*),\s*(?P<first>[\w-]*)'),                      # matches "Harvey, Brian"
