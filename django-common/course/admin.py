@@ -1,9 +1,9 @@
 from django.contrib import admin
-from course.models import Course, Department, Klass
-
+from course.models import Course, Department, Klass, Instructor
 
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('department_abbr', 'coursenumber', 'name')
+    search_fields = ('department_abbr', 'coursenumber')
 
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('name', 'abbr')
@@ -11,7 +11,7 @@ class DepartmentAdmin(admin.ModelAdmin):
 
 class KlassAdmin(admin.ModelAdmin):
     list_display = ('course', 'semester')
+    search_fields = ('course__department_abbr', 'course__coursenumber', 'semester', )
 
-admin.site.register(Course, CourseAdmin)
-admin.site.register(Klass, KlassAdmin)
-admin.site.register(Department, DepartmentAdmin)
+
+

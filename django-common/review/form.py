@@ -36,4 +36,4 @@ class ProblemForm(ModelForm):
 		
 	class Meta:
 		model = Problem
-		exclude = ('num_ratings',)
+		exclude = ('num_ratings', 'submitter', 'submitted',)

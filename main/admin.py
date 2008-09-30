@@ -9,6 +9,12 @@ from hkn.info.admin import PersonAdmin, OfficershipAdmin
 from course.models import Course, Department, Klass
 from course.admin import CourseAdmin, DepartmentAdmin, KlassAdmin
 
+from exam.models import Exam
+from exam.admin import ExamAdmin
+
+from review.models import Problem
+from review.admin import ProblemAdmin
+
 from hkn.event.models import Event
 from hkn.event.admin import EventAdmin
 
@@ -21,6 +27,7 @@ from photologue.models import Gallery, GalleryUpload, PhotoEffect, PhotoSize, Wa
 from djangodblog.admin import ErrorAdmin, ErrorBatchAdmin
 from djangodblog.models import Error, ErrorBatch
 
+
 admin_site = AdminSite()
 admin_site.register(FlatPage, FlatPageAdmin)
 
@@ -30,6 +37,9 @@ admin_site.register(Officership, OfficershipAdmin)
 admin_site.register(Course, CourseAdmin)
 admin_site.register(Department, DepartmentAdmin)
 admin_site.register(Klass, KlassAdmin)
+
+admin_site.register(Exam, ExamAdmin)
+admin_site.register(Problem, ProblemAdmin)
 
 admin_site.register(Event, EventAdmin)
 
