@@ -50,7 +50,7 @@ def parse_instructor_file(path):
 	for line in f:
 		try:
 			line = re.split("[\t\n\r ]+", line)
-			d[" ".join(  [line[0], line[1]] ) ] = line[1]
+			d[" ".join(  [line[0], line[1]] ) ] = line[2]
 		except:
 			print "Bad line in instructor file: %s" % line
 	
