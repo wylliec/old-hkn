@@ -79,7 +79,7 @@ def list_for_event_common(request, event):
     rsvps = event.rsvp_set.all()
     
     rsvps = sort_objects(rsvps, d['sort_by'], None)
-    rsvps = paginate_objects(rsvps, d, page=d['page'])
+    rsvps = paginate_objects(rsvps, d, page=d['page'], max_per_page=100)
 
     d['rsvps'] = rsvps
     return d
