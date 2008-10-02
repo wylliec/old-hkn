@@ -33,3 +33,7 @@ register_exam_listeners = function() {
 };
 
 
+
+$(document).ready( function() {
+  register_exam_listeners();	  
+});
