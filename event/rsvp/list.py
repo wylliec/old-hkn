@@ -77,6 +77,11 @@ def list_for_event_common(request, event):
         d['sort_by'] = "person__first_name"
         
     rsvps = event.rsvp_set.all()
+
+    transport = 0
+    for rsvp in rsvps:
+        transport += rsvp.transport
+    d['transport'] = transport
     
     rsvps = sort_objects(rsvps, d['sort_by'], None)
     rsvps = paginate_objects(rsvps, d, page=d['page'], max_per_page=100)
