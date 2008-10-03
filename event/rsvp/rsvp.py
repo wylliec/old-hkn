@@ -77,7 +77,7 @@ def request_confirmation(request, rsvp_id = "-1"):
     
 
     if rsvp.person_id != request.user.id:
-        request.user.message_set.create(message="Can't request to confrim someone else's RSVP!")
+        request.user.message_set.create(message="Can't request to confirm someone else's RSVP!")
     else:
         rsvp.request_confirmation()
         request.user.message_set.create(message="You have requested a confirmation for your RSVP for %s" % str(rsvp.event.name))
