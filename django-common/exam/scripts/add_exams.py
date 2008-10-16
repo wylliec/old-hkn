@@ -56,6 +56,35 @@ def parse_instructor_file(path):
 	
 	f.close()
 	return d
+
+
+def convert_file(path):
+	path_without_extension = path.split('.')[0]
+	extension = path.split('.')[1]
+	
+	if extension == 'html':
+		if os.path.exists(path_without_extension + ".pdf"):
+			os.system("rm " + path)
+			print "PDF exists, deleting file: " + path
+			return
+			
+		os.system("htmldoc -f " + path_without_extension + ".pdf --webpage " + path)
+		os.system("rm " + path)
+		print "Converting html to pdf: " + path
+	elif extension == 'ps':
+		if os.path.exists(path_without_extension + ".pdf"):
+			os.system("rm " + path)
+			print "PDF exists, deleting file: " + path
+			return
+			
+		os.system("ps2pdf " + path + " " + path_without_extension + ".pdf")
+		os.system("rm " + path)
+		print "Converting ps to pdf: " + path
+
+def convert_exams(path):
+	for filename in filter(is_valid_file, list_files(path)):
+		convert_file(join(path, filename))
+
 	
 def add_exams(path):
 	d = parse_instructor_file(join(path, "instructor_file.txt"))

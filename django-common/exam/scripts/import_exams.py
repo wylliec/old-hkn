@@ -127,10 +127,6 @@ def convert_file(path):
 		os.system("rm " + path)
 		print "Converting ps to pdf: " + path
 
-def convert_exams2(path):
-	for filename in filter(is_valid_file, list_files(path)):
-		convert_file(join(path, filename))
-
 def convert_exams():
 	for dept, root in course_map.items():
 		classes = filter(lambda x: course_pattern.match(x), list_folders(root))
