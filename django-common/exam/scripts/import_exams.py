@@ -18,10 +18,10 @@ from settings import MEDIA_ROOT, SERVER_ROOT
 
 VALID_EXTENSIONS = ["html", "pdf", "ps", "txt"]
 
-#EE_DIR = join(SERVER_ROOT, "old_exams/ee")
-#CS_DIR = join(SERVER_ROOT, "old_exams/cs")
-EE_DIR = "/web/student/online/exams_import/ee"
-CS_DIR = "/web/student/online/exams_import/cs"
+EE_DIR = join(SERVER_ROOT, "old_exams/ee")
+CS_DIR = join(SERVER_ROOT, "old_exams/cs")
+#EE_DIR = "/web/student/online/exams_import/ee"
+#CS_DIR = "/web/student/online/exams_import/cs"
 
 file_pattern = re.compile('^(sp|fa|su)-(1|2|3|f)(-sol)?\.')
 course_pattern = re.compile('^\d+[A-Z]*$')
@@ -126,6 +126,10 @@ def convert_file(path):
 		os.system("ps2pdf " + path + " " + path_without_extension + ".pdf")
 		os.system("rm " + path)
 		print "Converting ps to pdf: " + path
+
+def convert_exams2(path):
+	for filename in filter(is_valid_file, list_files(path)):
+		convert_file(join(path, filename))
 
 def convert_exams():
 	for dept, root in course_map.items():
