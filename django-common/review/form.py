@@ -6,7 +6,7 @@ import os
 VALID_EXTENSIONS = [".pdf"]
 
 class ProblemForm(ModelForm):
-	difficulty = forms.IntegerField(min_value=0, max_value=10)
+	difficulty = forms.ChoiceField(choices=[("1", 1), ("2", 2), ("3", 3) , ("4", 4), ("5", 5) , ("6", 6), ("7", 7), ("8", 8), ("9", 9), ("10", 10)])
 	
 	def clean_tags(self):
 		uf = self.cleaned_data["tags"]
@@ -17,7 +17,7 @@ class ProblemForm(ModelForm):
 			uf = r'"' + uf + r'"'
 		
 		return uf
-	
+		
 	def clean_question(self):
 		uf = self.cleaned_data["question"]
 		print type(uf)

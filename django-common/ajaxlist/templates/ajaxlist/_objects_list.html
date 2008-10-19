@@ -3,8 +3,8 @@
 <table class="ajaxtable">
 <tr>
 {% include header_template %} 
-{% ifequal checks "on" %}<td></td>{% endifequal %}
-{% ifequal remove_item "on" %}<td></td>{% endifequal %}
+{% ifequal checks "on" %}<th></th>{% endifequal %}
+{% ifequal remove_item "on" %}<th></th>{% endifequal %}
 </tr>
 {% special_for list_objects %}
 <tr class="{% cycle 'even' 'odd' %}">

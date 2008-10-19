@@ -81,8 +81,7 @@ def view_problem(request, problem_id = None):
 		tag = tag.lower()
 		if tag.find('"') == -1 and tag.find(",") == -1 and tag != "":
 			tag = r'"' + tag + r'"'
-			Tag.objects.add_tag(problem, tag)
-			problem.tags = tagging.utils.edit_string_for_tags(Tag.objects.get_for_object(problem))
+			problem.add_tag(tag)
 			problem.save()
 			
 	if request.is_ajax():
@@ -94,6 +93,8 @@ def submit(request):
 	if request.method == 'POST':
 		form = ProblemForm(request.POST, request.FILES)
 		if form.is_valid():
+			form.save(commit=False)
+			form.submitter = request.user
 			form.save()
 			return HttpResponseRedirect("/review/")
 	else :

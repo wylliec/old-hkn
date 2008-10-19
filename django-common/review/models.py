@@ -24,9 +24,28 @@ class Problem(models.Model):
 	def tag_list(self):
 		return tagging.utils.parse_tag_input(self.tags)
 	
-		
 	def tag_objects(self):
 		return Tag.objects.usage_for_model(Problem, filters={'pk':self.id})
+	
+	def add_tag(self, tag):
+		self.tags = " ".join(self.tag_list() + [tag])
+	
+	def edit_tag(self, old, new):
+		try:
+			temp_tags = self.tag_list()
+			temp_tags.remove(old)
+			temp_tags.append(new)
+			self.tags = " ".join(temp_tags)
+		except ValueError:
+			print tag + " not found"
+		
+	def remove_tag(self, tag):
+		try:
+			temp_tags = self.tag_list()
+			temp_tags.remove(tag)
+			self.tags = " ".join(temp_tags)
+		except ValueError:
+			print tag + " not found"
 	
 	def rate(self, value):
 		self.num_ratings += 1
