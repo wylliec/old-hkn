@@ -145,6 +145,9 @@ class Gallery(models.Model):
     def __str__(self):
         return self.__unicode__()
 
+    def get_semester():
+        return self.semester
+
     def get_absolute_url(self):
         return reverse('pl-gallery', args=[self.title_slug])
 

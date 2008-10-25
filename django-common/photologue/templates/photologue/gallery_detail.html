@@ -5,11 +5,13 @@
 
 {% block content %}
 <h1>{{ object.title }}</h1>
-<h2>Originally published {{ object.date_added|date:"l, F jS, Y" }}</h2>
 {% if object.description %}<p>{{ object.description }}</p>{% endif %}
 <div class="photo-gallery">
-	{% ajaxgrid object.public "photologue/_cell.html" 4 %}
+	{% ajaxgrid object.public "photologue/_simple_cell.html" 4 %}
 </div>
-<p><a href="{% url pl-gallery-list 1 %}">View all galleries</a></p>
+
+{{ object.photo_count }} photos in gallery.
+{#{% control pager %}#}
+<p><a href="{% url yearbook-gallery-semester object.semester.semester %}">Galleries for {{ object.semester.verbose_description }}</a></p>
 
 {% endblock %}

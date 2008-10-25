@@ -11,9 +11,9 @@
     <br>
 
     {% if semesters %}
-        <ul>
+    <ul>
         {% for semester in semesters %}
-            <li>{{ semester }}</li>
+            <li><a href="{% url yearbook-gallery-semester semester.abbr %}">{{ semester.verbose_description }}</a></li>
         {% endfor %}
 	</ul>
     {% endif %}

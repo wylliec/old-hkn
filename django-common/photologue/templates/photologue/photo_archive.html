@@ -7,7 +7,7 @@
 <h1>Latest Photos</h1>
 
 {% if latest %}
-	{% ajaxgrid latest "photologue/cell.html"  4 %}
+	{% ajaxgrid latest "photologue/_simple_cell.html" 4 %}
 {% else %}
 <p>No photos were found.</p>
 {% endif %}
