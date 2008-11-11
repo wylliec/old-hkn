@@ -475,7 +475,7 @@ class Photo(ImageModel):
     tags = TagField(help_text=tagfield_help_text, verbose_name=_('tags'))
 
     class Meta:
-        ordering = ['-date_added']
+        ordering = ['date_added']
         get_latest_by = 'date_added'
         verbose_name = _("photo")
         verbose_name_plural = _("photos")
@@ -498,6 +498,17 @@ class Photo(ImageModel):
         """Return the public galleries to which this photo belongs."""
         return self.galleries.filter(is_public=True)
 
+    def next_and_previous_photos(self):
+        gallery = self.public_galleries()[0]
+        real_photos = gallery.photos.filter(is_public=True)
+        photos = [x.title for x in gallery.photos.filter(is_public=True)]
+        index = photos.index(self.title)
+        if index == 0:
+                return (None, real_photos[index+1])
+        elif index == len(real_photos) - 1:
+                return (real_photos[index-1], None)
+        else:
+                return (real_photos[index-1], real_photos[index+1])
 
 class BaseEffect(models.Model):
     name = models.CharField(_('name'), max_length=30, unique=True)

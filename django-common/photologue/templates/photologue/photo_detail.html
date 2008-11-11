@@ -9,4 +9,13 @@
     <a href="{{ object.image.url }}"><img src="{{ object.get_display_url }}" alt="{{ object.title }}"/></a>
     {% if object.caption %}<p>{{ object.caption }}</p>{% endif %}
 </div>
+{{ object.blah }}
+{% with object.next_and_previous_photos as photos %}
+    {% if photos.0 %}
+        <a href="{{ photos.0.get_absolute_url }}">Previous</a>
+    {% endif %}
+    {% if photos.1 %}
+        <a href="{{ photos.1.get_absolute_url }}">Next</a>
+    {% endif %}
+{% endwith %}
 {% endblock %}
