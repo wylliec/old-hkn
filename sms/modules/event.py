@@ -16,3 +16,10 @@ def today_events(user, message, match):
     msg = ", ".join(["%s [%d]" % (e.name, e.id) for e in Event.today.all()])
     return "Today's events: " + msg
 
+@sms_handler(r"event info (?P<event_name>.*)")
+def event_info(user, message, match):
+    event_name = match.group('event_name')
+    return "Event info for '%s'" % event_name
+
+
+
