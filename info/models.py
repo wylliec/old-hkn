@@ -230,8 +230,10 @@ class Person(User):
         db_semester = nice_types.semester.SemesterField().get_db_prep_value(nice_types.semester.current_semester())
         if unicode(db_semester) in officer_semesters:
             self.member_type = MEMBER_TYPE.OFFICER
-        else:
+            self.is_staff = True
+        elif self.member_type >= MEMBER_TYPE.OFFICER:
             self.member_type = MEMBER_TYPE.FOGIE
+            self.is_staff = True
     
     
     def reconcile_groups(self):
