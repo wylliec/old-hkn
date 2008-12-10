@@ -1,9 +1,5 @@
 	<td><a href="{% url person-view object.id %}">
-	{% if object.officer_picture %}
-	    <img src="{{ object.restricted.officer_picture.get_profilepic_url }}">
-	{% else %}
-	    <img src="{{ object.restricted.profile_picture.get_profilepic_url }}">
-	{% endif %}
+	    <img src="{{ object.get_picture_url }}">
 	</a></td>
 	<td>
 	    <a href="{% url person-view object.id %}">{{ object.name }}</a>
