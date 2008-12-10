@@ -7,7 +7,8 @@ OFFICE_CHOICES = (SODA, SODA), (CORY, CORY)
 
 #replace below by reading from some config file
 TUTORING_DAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
-TUTORING_TIMES = ("11a-12", "12-1", "1-2", "2-3", "3-4", "4-5") #listed in order of adjacency
+#TUTORING_TIMES = ("11a-12", "12-1", "1-2", "2-3", "3-4", "4-5") #listed in order of adjacency
+TUTORING_TIMES = ("11a-12", "12-1", "1-2")
 
 #lowest version number
 MIN_VERSION = 1
@@ -33,9 +34,9 @@ DEFAULT_HOURS = 2 #DO NOT EDIT THIS
 #exceptions for people who do not tutor the default hours.  Maps from person id to hours
 HOUR_EXCEPTIONS = NiceDict(False,{#DO NOT EDIT THIS
 #BEGIN EXCEPTIONS
-48: 3,#DO NOT EDIT THIS
-335: 3,#DO NOT EDIT THIS
-36: 3,#DO NOT EDIT THIS
+388: 4,#DO NOT EDIT THIS
+9: 4,#DO NOT EDIT THIS
+376: 4,#DO NOT EDIT THIS
 #END EXCEPTIONS
 }) #DO NOT EDIT THIS
 #END AUTOMANAGED
