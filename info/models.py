@@ -17,6 +17,13 @@ import os, datetime, types, random
 from nice_types.db import QuerySetManager, PickleField
 from nice_types import semester
 
+class BlankImage(object):
+    def __init__(self):
+        self.url = "/static/images/site/lion.gif"
+
+    def __getattr__(self, attr):
+        return lambda: self.url
+
 class PeopleManager(QuerySetManager):
         def from_email(self, *args, **kwargs):
             return self.get_query_set().from_email(*args, **kwargs)
@@ -364,11 +371,18 @@ class Person(User):
         if not is_update:
             self.groups.add(Group.objects.get(name="everyone"))
 
-    class RestrictedPerson(object):
-        class RestrictedImage(object):
-            def __init__(self):
-                self.url = "/static/images/site/lion.gif"
+    def get_picture_url(self, method="get_profilepic_url"):
+        obj = self
+        if hasattr(self, 'restricted'):
+            obj = self.restricted
+        if obj.officer_picture is not None:
+            return getattr(obj.officer_picture, method)()
+        if obj.profile_picture is not None:
+            return getattr(obj.profile_picture, method)()
+        return BlankImage().url
 
+
+    class RestrictedPerson(object):
         def __init__(self, person, accessor):
             self.person = person
             self.privacy = person.privacy
@@ -378,8 +392,8 @@ class Person(User):
         def blanktype(self, value):
             if type(value) == types.StringType:
                 return ""
-            elif type(value) == models.fields.files.ImageFieldFile:
-                return self.RestrictedImage()
+            elif isinstance(value, (models.fields.files.ImageFieldFile, Photo)):
+                return self.BlankImage()
     
         def __getattr__(self, attr):
             if (self.accessor_type >= self.privacy.get(attr, -1)) or self.view_all:
