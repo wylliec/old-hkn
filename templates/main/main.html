@@ -38,11 +38,10 @@ $('.infobox_help').cluetip({
 <div id="container">
 	<div id="infobar">
 		<h1>Latest News</h1>
-		<p>HKN is selling $10 EECS T-Shirts in 345 Soda. Buy yours today before they run out!</p>
+		<p>Congratulations to all of the new Fall 2008 initiates! Thanks for all of the great memories throughout the semester. We hope you all have a great winter break and we look forward to seeing you next semester! We'll keep you posted on when the first members meeting will be.</p>
 		
 		<div class="section">
 			{% include "main/_landing_event.html" %}
-			<div class="small infobar_links"><a href="{% url event-list %}">view all events</a> | <a href="{% url event-calendar %}">view events calendar</a></div>
 		</div>
 		{% if not hide_tutoring %}
 		<div class="section">
@@ -50,10 +49,10 @@ $('.infobox_help').cluetip({
 			<div class="small infobar_links"><a href="{% url tutor-view-schedule %}">view full schedule</a></div>
 		</div>
 		{% endif %}
-
 	</div>
     {% render_in_context content %}
     {{ content }}
+    <div style="clear:both"></div>
 </div>
 {%endblock %}
 
