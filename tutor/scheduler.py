@@ -2528,7 +2528,6 @@ if __name__=="__main__":
         print "FINAL RESULTS:"
         for x in results:
             print x.pretty_print()
-            dump.write(x.pretty_print())
     elif lpr:
         create_schedule_from_lp_output(lprfile, beamLength, True)
     elif lp:
