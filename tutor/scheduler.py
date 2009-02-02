@@ -2449,6 +2449,8 @@ if __name__=="__main__":
         print "  -G NAME --lprfile=NAME lp output filename (default: results.txt)"
         print "  -b NUM  --beam=NUM     beam length to use in hill climbing (default: 3, use 0 to use first available swap)"
         print "  -a NUM  --lpall=NUM    run the lp NUM times"
+        print "  -A NAME --analyze=NAME analyze scheduler outputs from multiple runs... cat the files together"
+        print "                             be sure to specify a file with -f or it will overwrite schedulerOutput.txt"
 
     import getopt
     try:
@@ -2534,10 +2536,10 @@ if __name__=="__main__":
     elif analyze:
         f = open(analyze, 'r')
         states = State.parse_into_states(f.read())
-        for i in xrange(len(states)):
-            for j in xrange(len(states)-1, i, -1):
-                if states[i] == states[j]:
-                    states.pop(j)
+
+        print len(states), "original states"
+        states = list(set(states))
+        print len(states), "unique states"
 
         sameList = []
         for slot in states[0]:
@@ -2553,16 +2555,13 @@ if __name__=="__main__":
         import operator
         sameList.sort(key=operator.itemgetter(1))
 
+        print "Same slots for all states:"
         for slot, person in sameList:
             print person, "\t", slot
 
-        if filename:
-            dump = open(filename, 'w+') #truncates file if it exists
-            for state in states:
-                dump.write(state.pretty_print())
-        else:
-            for state in states:
-                print state.pretty_print()
+        dump = open(filename, 'w+') #truncates file if it exists
+        for state in states:
+            dump.write(state.pretty_print())
     else:
         generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed}, beamLength=beamLength)
 
