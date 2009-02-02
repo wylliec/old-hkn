@@ -2452,7 +2452,7 @@ if __name__=="__main__":
 
     import getopt
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'f:m:c:r:tlLg:G:b:a:', ['file=', 'machine=', 'maxcost=', 'randseed=', 'test', 'lp', 'lpr', 'lpfile=', 'lprfile=', 'beam=', 'lpall='])
+        opts, args = getopt.getopt(sys.argv[1:], 'f:m:c:r:tlLg:G:b:a:A:', ['file=', 'machine=', 'maxcost=', 'randseed=', 'test', 'lp', 'lpr', 'lpfile=', 'lprfile=', 'beam=', 'lpall=', 'analyze='])
     except getopt.GetoptError:
         usage()
         sys.exit(1)
@@ -2465,6 +2465,7 @@ if __name__=="__main__":
     lpall = 0
     lpfile = "lp.txt"
     lprfile = "results.txt"
+    analyze = None
     beamLength = 3
     for opt, arg in opts:
         if opt in ('-f', '--file'):
@@ -2493,6 +2494,8 @@ if __name__=="__main__":
             beamLength = int(arg)
         elif opt in ('-a', '--lpall'):
             lpall = int(arg)
+        elif opt in ('-A', '--analyze'):
+            analyze = arg
 
     if lpall > 0:
         dump = open(filename, 'w+') #truncates file if it exists
@@ -2528,6 +2531,38 @@ if __name__=="__main__":
         create_schedule_from_lp_output(lprfile, beamLength, True)
     elif lp:
         create_lp_from_parameters(lpfile)
+    elif analyze:
+        f = open(analyze, 'r')
+        states = State.parse_into_states(f.read())
+        for i in xrange(len(states)):
+            for j in xrange(len(states)-1, i, -1):
+                if states[i] == states[j]:
+                    states.pop(j)
+
+        sameList = []
+        for slot in states[0]:
+            person = states[0][slot]
+            samePerson = True
+            for state in states:
+                if state[slot] != person:
+                    samePerson = False
+                    break
+            if samePerson:
+                sameList.append((slot, person))
+
+        import operator
+        sameList.sort(key=operator.itemgetter(1))
+
+        for slot, person in sameList:
+            print person, "\t", slot
+
+        if filename:
+            dump = open(filename, 'w+') #truncates file if it exists
+            for state in states:
+                dump.write(state.pretty_print())
+        else:
+            for state in states:
+                print state.pretty_print()
     else:
         generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed}, beamLength=beamLength)
 
