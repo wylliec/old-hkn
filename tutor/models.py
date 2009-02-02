@@ -85,6 +85,8 @@ class Availability(models.Model):
                         found = True
                         break
                 if not found:
+		    if len(availabilitiesBySlot[otherSlot]) == 0:
+			availabilitiesBySlot[slot] = []
                     #no detail found for this person.  They must not prefer the other slot
                     availabilitiesBySlot[otherSlot].append([detail[0], int(detail[1] + 0.5)])
         
