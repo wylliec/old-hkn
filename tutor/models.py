@@ -56,18 +56,19 @@ class Availability(models.Model):
             
         availabilities = Availability.objects.select_related(depth=1).filter(semester=semester)
         
-        availabilitiesBySlot = NiceDict([])
+        availabilitiesBySlot = {}
         
         for availability in availabilities:
             slot = scheduler.Slot(get_day_from_slot(availability.slot),
                                       get_time_from_slot(availability.slot),
                                       availability.office)
             
+            if slot not in availabilitiesBySlot:
+                availabilitiesBySlot[slot] = []
+                otherSlot = slot.other_office_slot()
+                availabilitiesBySlot[otherSlot] = []
+
             prev = availabilitiesBySlot[slot]
-            if len(prev) == 0:
-                #create new empty list instance to store info
-                prev = []
-                availabilitiesBySlot[slot] = prev
             
             person = availability.person
             
@@ -85,8 +86,6 @@ class Availability(models.Model):
                         found = True
                         break
                 if not found:
-		    if len(availabilitiesBySlot[otherSlot]) == 0:
-			availabilitiesBySlot[slot] = []
                     #no detail found for this person.  They must not prefer the other slot
                     availabilitiesBySlot[otherSlot].append([detail[0], int(detail[1] + 0.5)])
         
