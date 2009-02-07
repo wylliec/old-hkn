@@ -2534,12 +2534,30 @@ if __name__=="__main__":
         create_lp_from_parameters(lpfile)
     elif analyze:
         f = open(analyze, 'r')
-        states = State.parse_into_states(f.read())
 
+        # get all states
+        states = State.parse_into_states(f.read())
         print len(states), "original states"
+
+        # get unique states
         states = list(set(states))
         print len(states), "unique states"
 
+        # get best states
+        bestCost = states[0].meta['cost']
+        newStates = []
+        for state in states:
+            if state.meta['cost'] < bestCost:
+                bestCost = state.meta['cost']
+                newStates = []
+
+            if state.meta['cost'] == bestCost:
+                newStates.append(state)
+
+        states = newStates
+        print len(states), "best states"
+
+        # find slots that are fixed
         sameList = []
         for slot in states[0]:
             person = states[0][slot]
@@ -2558,6 +2576,7 @@ if __name__=="__main__":
         for slot, person in sameList:
             print person, "\t", slot
 
+        # write best states to file
         dump = open(filename, 'w+') #truncates file if it exists
         for state in states:
             dump.write(state.pretty_print())
