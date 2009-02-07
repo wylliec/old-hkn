@@ -81,3 +81,9 @@ from formmailer.models import MailTarget, MailMessage
 from formmailer.admin import MailTargetAdmin, MailMessageAdmin
 admin_site.register(MailTarget, MailTargetAdmin)
 admin_site.register(MailMessage, MailMessageAdmin)
+
+from django.contrib.auth.models import User, Group
+from django.contrib.auth.admin import UserAdmin, GroupAdmin
+admin_site.register(Group, GroupAdmin)
+admin_site.register(User, UserAdmin)
+

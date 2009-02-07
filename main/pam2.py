@@ -3,7 +3,7 @@ import PAM
 
 __all__ = ["authenticate"]
 
-def authenticate(username, password, service="login"):
+def authenticate(username, password, service="ssh"):
     def pam_conv(auth, query_list, userData):
         resp = []
         for i in range(len(query_list)):

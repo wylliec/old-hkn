@@ -23,7 +23,18 @@ $(document).ready( function() {
 	If the scheduled tutor is unavailable, feel free to ask any officer at either of these two locations for help. 
 	If you have special needs or accomodations such as after-hours or weekend tutoring, we will try our best to accomodate you.
 </p>
-<a href='http://hkn.eecs.berkeley.edu:8721/static/OOPAndTreePractices.pdf'>CS61A Practice Problems</a>
+
+
+{%comment%}
+<p>
+	<blockquote style="border: solid 3px #003366; padding: 10px; background: #336699; color: white">
+    The new tutoring schedule will be posted soon.
+</blockquote>
+	
+</p>
+<br>
+{%endcomment%}
+
 
 <p>
 	<blockquote style="border: solid 3px #003366; padding: 10px; background: #336699; color: white">
@@ -32,6 +43,10 @@ $(document).ready( function() {
 	
 </p>
 <br>
+
+
+{% comment %}
+{%endcomment%}
 
 <div style="float: left; width: 80%; text-align: center; margin-bottom: 30px;">
 	<h1>{{ header.cory }}</h1>
@@ -96,6 +111,11 @@ $(document).ready( function() {
 <div style="float: left; max-width: 18%; padding-left: 2%; padding-top: 70px; line-height: 1.75em;">
     {% include "tutor/_schedule_classes.html" %}
 </div>
+{% comment %}
+{%endcomment%}
+
+
+
 <div style="clear:both">
 </div>
 <div style="display: none">

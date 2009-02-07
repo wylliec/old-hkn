@@ -112,7 +112,6 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-    'djangodblog.DBLogMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
@@ -122,6 +121,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.doc.XViewMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'djangologging.middleware.LoggingMiddleware',
+    'djangodblog.DBLogMiddleware',
 )
 
 ROOT_URLCONF = 'hkn.main.urls'
