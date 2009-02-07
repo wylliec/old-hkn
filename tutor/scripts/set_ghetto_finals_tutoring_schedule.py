@@ -32,7 +32,7 @@ def do_office(office, user_list, version):
     
 
 def main():
-    soda_list = "sdc, ingrid, sjavdani, davidzeng, richardxia, pearce, adit, saung, gkchou, waynelin, conorh, wsandy, kylim, justinchu, ppyapali"
+    soda_list = "sdc, ingrid, sjavdani, georgechen, davidzeng, pearce, adit, saung, gkchou, waynelin, conorh, wsandy, kylim, justinchu, ppyapali"
     cory_list = "aguo, cliffe, jhoffman, richardxia, sutardja, rzheng, dwong, kmowery, suhaas, rdorrance, arjun, jkotker, siddharth, zwang, sgowda"
     version = Assignment.get_max_version() + 1
     do_office(SODA, soda_list, version)
