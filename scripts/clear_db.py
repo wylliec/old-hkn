@@ -5,6 +5,8 @@ from django.db.models import loading
 from django.core.management import call_command
 
 def main():
+    call_command('syncdb')
+    return
     for app in loading.get_apps():
     	for ends in ("markup.models", "webdesign.models"):
     		if app.__name__.endswith(ends):

@@ -8,7 +8,7 @@ from django.core.management import call_command
 
 os.system("python2.5 clean_pyc.py")
 
-import clear_db; clear_db.main()
+a = raw_input("you should reset the database with the reset_website_database.sh script")
 
 call_command('syncdb')
 
@@ -19,13 +19,11 @@ import create_properties; create_properties.main()
 import create_positions; create_positions.main()
 import create_permissions; create_permissions.main()
 
-
 import import_people
 import_people.import_people("data/info-people.tsv", MEMBER_TYPE.EXCANDIDATE)
 import import_fogie_usernames; import_fogie_usernames.main()
 import import_officership_cached; import_officership_cached.import_officers()
 import import_new_officerships; import_new_officerships.main()
-#import import_usernames_cached; import_usernames_cached.main()
 import create_superusers; create_superusers.main()
 import set_initiates; set_initiates.main()
 
@@ -41,11 +39,11 @@ print "Importing tutor data"
 from hkn.tutor.scripts import load_tutor; load_tutor.main()
 #import import_tutor_data; import_tutor_data.main()
 
-os.system("python2.5 run_exam_scripts.py")
-os.system("python2.5 run_generate_scripts.py")
-import generate_review_problems; generate_review_problems.main()
+#os.system("python2.5 run_exam_scripts.py")
+#os.system("python2.5 run_generate_scripts.py")
+#import generate_review_problems; generate_review_problems.main()
 
 print 'Adding photo sizes'
 import photologue.scripts.create_sizes; photologue.scripts.create_sizes.main()
 
-
+import import_officer_pictures; import_officer_pictures.main()

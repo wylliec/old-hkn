@@ -37,6 +37,7 @@ def import_officers():
 
             os, created = Officership.objects.get_or_create(person = person, position = position, semester = semester)
             person.is_active = True
+            person.is_staff = True
             person.save()
             if not created:
                 print "Officership: " + str(os) + " already existed!"
