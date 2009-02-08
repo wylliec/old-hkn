@@ -1,0 +1,17 @@
+<h2 class="cportal">Challenges <span class="small checklist_in_progress">[Need 3 more, 1 pending]</span></h2>
+<form action="" method="post">
+<table class="checklist"><tbody>
+<tr><th>Name of Challenge</th><th>Officer Name</th><th>Confirmed</th></tr>
+{% for challenge in challenges %}
+<tr><td>{{challenge.name}}</td><td><a href="terror">{{challenge.officer.name}}</a></td><td><span class="checklist_done">Yes</span></td></tr>
+{% endfor %}
+<tr><td><input id="id_challenge_name" type="text" name="challenge_name" /></td>
+<td><select id="id_officer_name" name="officer_name">
+<option value="0" selected="selected">Find an officer</option>
+<option value="666">Terror</option>
+<option value="777">root</option>
+</select>
+</td><td></td></tr>
+</tbody></table>
+<input type="submit" value="Request challenge confirmation" />
+</form>

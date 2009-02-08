@@ -1,0 +1,11 @@
+    {% if not events|length_is:"0" %}
+	<h3>Upcoming Events</h3>
+	<table class="landing_events flushheader">
+	    {% for event in events %}
+{% include 'main/_landing_event_row.html' %}
+	    {% endfor %}
+	</table>
+    {% endif %}
+    {% if not events|length_is:"0" and not events|length_is:"0" %}
+    <div class="small infobar_links"><a href="{% url event-list %}">view all events</a> | <a href="{% url event-calendar %}">view events calendar</a></div>
+    {% endif %}

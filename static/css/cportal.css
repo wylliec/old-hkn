@@ -1,0 +1,19 @@
+.checklist_done {
+	color: #009900;	
+	font-weight: bold;
+}
+.checklist_not_done {
+	color: #AA0000;	
+	font-weight: bold;
+}
+.checklist_in_progress {
+	color: #999900;	
+	font-weight: bold;
+}
+table.checklist {
+	margin: 0em auto 1em 1em;
+	border: 1px;
+}
+h2.cportal {
+	margin-top: 1em;	
+}

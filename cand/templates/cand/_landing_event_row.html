@@ -1,0 +1,24 @@
+<tr class="headrow"><td>
+	<div class="name">
+		{% if event.rsvped %}[RSVP'D]{% endif %}<a rel="{% url event-infobox event.id %}" href="{% url event-view event.slug %}" style="display: block">{{event.name}}</a>
+	</div>
+		<div class="day">
+      {{event.start_time|date:"l" }}
+	</div>
+</td></tr>
+
+<tr class="linksrow"><td>
+	<div class="time_location">
+		{{event.start_time|date:"f"}}-{{event.end_time|date:"f"}} @ {{event.location}}
+	</div>
+    <div class="links small">
+    [{% if not event.rsvp_none %}{% if user.is_authenticated %}<a href="javascript:rsvpForm({{event.id}});" title="Click to RSVP">rsvp</a> | {% endif %}<a href="javascript:showRSVP({{event.id}});" title="{{event.rsvp_count}} RSVP{{event.rsvp_count|pluralize}} (click to view)">see rsvps</a> | {% endif %}<a href="javascript:showInfo({{event.id}});" title="More information about this event">info</a>]
+	</div>	    		
+	<div style="clear: both"></div>	
+</td></tr>
+
+<tr><td>
+	<div id="event_{{event.id}}_rsvp" style="display: none"></div>
+	<div id="event_{{event.id}}_rsvp_list" style="display: none"></div>
+	<div id="event_{{event.id}}_info" style="display: none"></div>
+</td></tr>
