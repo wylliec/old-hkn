@@ -1,0 +1,439 @@
+aho:x:226:200:alex ho:/home/aho:/bin/csh
+bmah:x:302:200:Bruce A. Mah,464E,6428919,,DF:/home/bmah:/bin/csh
+pfile:x:303:200:Rob Pfile:/home/pfile:/bin/tcsh
+dshen:x:307:200:David Shen,335 CroMem,4154977681,4088671359,ML:/home/dshen:/bin/csh
+yclee:x:315:200:Yen C. Lee:/home/yclee:/bin/csh
+tomacruz:x:317:200:Eric Tomacruz,550-B5,6426633,8491107,ASV:/home/tomacruz:/bin/csh
+landay:x:321:200:James A. Landay:/home/landay:/bin/csh
+hatem:x:335:200:Tim Abou-Sayed:/home/hatem:/bin/csh
+sjohn:x:337:200:John Sasinowski,B10,4122687104,4126822575,JAY:/home/sjohn:/bin/csh
+ayu:x:338:200:Agnes Yu,,,7530501:/home/ayu:/bin/csh
+kepart:x:339:200:Kurt Partridge,,,,4205751:/home/kepart:/bin/tcsh
+fadden:x:342:200:Andy McFadden,Graduated,,0,TKD:/home/fadden:/bin/csh
+bombay:x:347:200:Bart John Bombay,550-C5 Cory,6427369,5485417,CS:/home/bombay:/bin/csh
+stribs:x:348:200:Stribs:/home/stribs:/bin/csh
+voelker:x:349:200:Geoff Voelker:/home/voelker:/bin/csh
+erno:x:350:200:Erno Klaassen,none,0000000,0000000:/home/erno:/bin/csh
+ttsao:x:351:200:Tom Tsao,373C,6439825,8485129,RMW:/home/ttsao:/bin/csh
+vahdat:x:352:200:Amin Vahdat,550FC,6423626,2545712:/home/vahdat:/bin/tcsh
+achuang:x:353:200:Angela Chuang:/home/achuang:/bin/csh
+yau:x:354:200:Au Yat-Pang,337 Cory,6435891,5279837,SD:/home/yau:/bin/csh
+mani:x:355:200:Mani Varadarajan,,,,:/home/mani:/bin/tcsh
+lynn:x:356:200:Lapoe Lynn:/home/lynn:/bin/tcsh
+ian:x:358:200:Ian O'Donnell:/home/ian:/bin/tcsh
+ichoi:x:359:200:Ivan K. Choi:/home/ichoi:/bin/tcsh
+sekharn:x:360:200:Sekhar Narayanaswami:/home/sekharn:/bin/tcsh
+lorenzen:x:361:200:Peter Lorenzen,,,,:/home/lorenzen:/bin/csh
+weck:x:362:200:Peter Weck,,,:/home/weck:/bin/tcsh
+secor:x:363:200:Matthew Secor:/home/secor:/bin/tcsh
+sahai:x:364:200:Anant Sahai,,,:/home/sahai:/bin/tcsh
+leena:x:365:200:Leena Sansguiri,,,:/home/leena:/bin/csh
+gutnik:x:367:200:Vadim Gutnik,,,:/home/gutnik:/bin/csh
+dyee:x:368:200:Dennis Yee,,,:/home/dyee:/bin/csh
+da:x:369:200:Shang-Tse Chuang:/home/da:/bin/tcsh
+cvieri:x:370:200:Carlin Vieri:/home/cvieri:/bin/tcsh
+myke:x:371:200:Michael Kwan,,,:/home/myke:/bin/tcsh
+jc:x:372:200:John Chang:/home/jc:/bin/tcsh
+ecchan:x:375:200:Edwin Chan, 643-0578:/home/ecchan:/bin/tcsh
+alsu:x:378:200:Alan Su,,,,:/home/alsu:/bin/tcsh
+jean:x:379:200:Jean Zheng,,,:/home/jean:/bin/tcsh
+mikec:x:380:200:Michael Chu:/home/mikec:/bin/tcsh
+ori:x:381:200:Ori Gershony,,,:/home/ori:/bin/tcsh
+kinshuk:x:382:200:Kinshuk Govil,,,:/home/kinshuk:/bin/tcsh
+sabnis:x:383:200:Vijit Sabnis,,,:/home/sabnis:/bin/tcsh
+ryen:x:384:200:Richard Yen,Mountain View (CA),(650) 966-8041 x662,(650) 325-1285:/home/ryen:/bin/tcsh
+aswan:x:385:200:Andrew Swan,,,:/home/aswan:/bin/tcsh
+mark:x:386:200:Mark Crady:/home/mark:/bin/tcsh
+saxena:x:387:200:Arvind Saxena,n/a,(408) 242-5447,:/home/saxena:/bin/tcsh
+amits:x:388:200:Amit Sahai,,,:/home/amits:/bin/tcsh
+cinnamon:x:389:200:Cinnamon Chu:/home/cinnamon:/bin/tcsh
+eyhung:x:392:200:Eugene Hung,,,:/home/eyhung:/bin/tcsh
+ilyasl:x:393:200:Ilya Slain,,,:/home/ilyasl:/bin/tcsh
+godfrey:x:394:200:Godfrey Kwan,,,:/home/godfrey:/bin/tcsh
+lfera:x:395:200:Leah Fera,,,:/home/lfera:/bin/tcsh
+sandeep:x:396:200:Sandeep Chatterjee:/home/sandeep:/bin/tcsh
+milton:x:397:200:Milton Chn,,,:/home/milton:/bin/tcsh
+nish:x:398:200:Steve Nishimoto,,,:/home/nish:/bin/tcsh
+bernwong:x:399:200:Bernard Wong,,,:/home/bernwong:/bin/tcsh
+loman:x:400:200:Jeff Lo,,,:/home/loman:/bin/tcsh
+jhong:x:401:200:James C. Hong,,,:/home/jhong:/bin/tcsh
+brazan:x:406:200:Babak Razani,,,:/home/brazan:/bin/tcsh
+blam:x:407:200:Bernice Lam:/home/blam:/bin/tcsh
+dcnguyen:x:408:200:Duy Nguyen:/home/dcnguyen:/bin/false
+hooman:x:409:200:Hooman Hashemi,,,:/home/hooman:/bin/tcsh
+djomehri:x:410:200:Ihsan Djomehri,,,:/home/djomehri:/bin/tcsh
+markc:x:411:200:Mark Chuang,,,:/home/markc:/bin/tcsh
+michaels:x:412:200:Michael Shilman,,,:/home/michaels:/bin/tcsh
+satch:x:413:200:Satish Rao:/home/satch:/bin/tcsh
+vin:x:414:200:Vineet Gossain:/home/vin:/bin/tcsh
+haidang:x:415:200:Haidang Lin,,,:/home/haidang:/bin/tcsh
+hardy:x:416:200:Dan Hardy,,,:/home/hardy:/bin/tcsh
+jhchiang:x:417:200:Joseph Chiang,,,:/home/jhchiang:/bin/tcsh
+shim:x:418:200:Martin Shim,,,:/home/shim:/bin/tcsh
+khoi:x:420:200:Khoi H. Nguyen:/home/khoi:/bin/tcsh
+neville:x:423:200:Neville Shah,,,:/home/neville:/bin/tcsh
+khangdao:x:424:200:Khang Dao,,,:/home/khangdao:/bin/tcsh
+shouyi:x:425:200:Shouyi Hsiao,,,:/home/shouyi:/bin/tcsh
+calbear:x:426:200:Michael Baer:/home/calbear:/bin/tcsh
+nizar:x:427:200:Nizar Abdalla,,,:/home/nizar:/bin/tcsh
+jcheng:x:428:200:Jason Cheng,,:/home/jcheng:/bin/tcsh
+kenhwang:x:429:200:Ken Hwang,,,:/home/kenhwang:/bin/tcsh
+aravind:x:430:200:aravind:/home/aravind:/bin/tcsh
+marksp:x:431:200:Mark Shane Peng,,,,:/home/marksp:/bin/tcsh
+dave:x:432:200:David Liu,,,:/home/dave:/bin/tcsh
+henry:x:433:200:Henry Lee,,,:/home/henry:/bin/tcsh
+johan:x:434:200:Johan Saleh,,,:/home/johan:/bin/tcsh
+tat:x:435:200:Hong Tat Chee,,,:/home/tat:/bin/tcsh
+dereky:x:437:200:Derek Park-Shing Young:/home/dereky:/bin/tcsh
+saxon:x:438:200:Saxon Noh:/home/saxon:/bin/tcsh
+timmy:x:439:200:Timothy Jun,,,:/home/timmy:/bin/tcsh
+larry:x:440:200:Larry Lien:/home/larry:/bin/tcsh
+jayc:x:441:200:Jay C. Chiu:/home/jayc:/bin/tcsh
+will:x:442:200:William N. Ng:/home/will:/bin/tcsh
+jen:x:443:200:Jennifery Wang,,,:/home/jen:/bin/tcsh
+walter:x:444:200:Walter Hsiao,SporTVision Systems MtView,(650) 961-7825x16,(650) 938-7936:/home/walter:/bin/tcsh
+wlam:x:445:200:Wang C. Lam,,,:/home/wlam:/bin/tcsh
+ericmao:x:446:200:Eric Mao,,,:/home/ericmao:/bin/bash
+boclair:x:447:200:Brian O'Clair,,,:/home/boclair:/bin/tcsh
+eddychan:x:448:200:Eddy Chan:/home/eddychan:/bin/tcsh
+nakada:x:449:200:Tim Nakada,,408-433-6844,510-644-0648:/home/nakada:/bin/tcsh
+robby:x:451:200:Riten Gupta,,,:/home/robby:/bin/tcsh
+bling:x:452:200:Benjamin Ling,,,:/home/bling:/bin/tcsh
+rajeevc:x:453:200:Rajeev Chandrasekaran,,:/home/rajeevc:/bin/tcsh
+jtsay:x:454:200:Jeff Tsay,,:/home/jtsay:/bin/tcsh
+afung:x:455:200:Allen Fung,,:/home/afung:/bin/tcsh
+hwawen:x:456:200:Heloise Hse,,,:/home/hwawen:/bin/tcsh
+aaron:x:457:200:Aaron Isaksen,Foothill 7B43F,(510) 664-0393,(510) 664-0393:/home/aaron:/bin/tcsh
+wmatusik:x:458:200:Wojciech Matusik,,:/home/wmatusik:/bin/tcsh
+ayt:x:459:200:Andy Tong,,:/home/ayt:/bin/tcsh
+dorcas:x:461:200:Dorcas Hsia,,:/home/dorcas:/bin/tcsh
+faiz:x:462:200:Chowdhury Faiz,,:/home/faiz:/bin/tcsh
+garykao:x:463:200:Gary Kao,,,510-649-1078:/home/garykao:/bin/tcsh
+shua:x:464:200:Shua Chai,,:/home/shua:/bin/tcsh
+sayf:x:465:200:Sayf Alalusi,,:/home/sayf:/bin/tcsh
+marting:x:466:200:Martin Flom-Milman,,:/home/marting:/bin/tcsh
+emily:x:467:200:Emily Kwok,,,(510) 845-1529:/home/emily:/bin/tcsh
+leland:x:468:200:Leland Chang,,,843-7311,:/home/leland:/bin/tcsh
+ntang:x:469:200:Nina Tang,,,(510)849-3894:/home/ntang:/bin/tcsh
+alchen:x:470:200:Alvin Chen,,,(408) 997-6277:/home/alchen:/bin/tcsh
+tonyho:x:471:200:Anthony Ho,,:/home/tonyho:/bin/tcsh
+drake:x:472:200:Greg Chew:/home/drake:/bin/tcsh
+sauleng:x:473:200:Karen Chong,,:/home/sauleng:/bin/tcsh
+jeffsh:x:474:200:Jeffrey Shneidman,,,:/home/jeffsh:/bin/tcsh
+rahkapur:x:475:200:Rahul Kapur,,:/home/rahkapur:/bin/tcsh
+navigate:x:476:200:Navid Sabbaghi,,,:/home/navigate:/bin/tcsh
+balee:x:477:200:Brian A. Lee,,,,:/home/balee:/bin/tcsh
+pchien:x:478:200:Peter C Chien,Soda/Cory,642-9646,011-8862-117,:/home/pchien:/bin/tcsh
+taher:x:479:200:Taher Haveliwala,,,na:/home/taher:/bin/tcsh
+hsingh:x:480:200:Harinderpal Singh,,,:/home/hsingh:/bin/tcsh
+ecov:x:482:200:Eric Covington,,:/home/ecov:/bin/tcsh
+magdaddy:x:484:200:Michael Magpayo,,,:/home/magdaddy:/bin/tcsh
+chrishtr:x:485:200:Chris Harrelson,,,:/home/chrishtr:/bin/bash
+kcamera:x:486:200:Kevin Camera,,,524-6515:/home/kcamera:/bin/tcsh
+berlin:x:488:200:Bernard Lin,,:/home/berlin:/bin/tcsh
+raywang:x:489:200:Raymond Wang,,:/home/raywang:/bin/tcsh
+dtom:x:490:200:Danny Tom,,,:/home/dtom:/bin/tcsh
+schang:x:491:200:Stephen Chang,,:/home/schang:/bin/tcsh
+brucelo:x:492:200:Bruce Lo,,,:/home/brucelo:/bin/tcsh
+soontee:x:493:200:Soon Tee Teoh,,:/home/soontee:/bin/tcsh
+stanhong:x:494:200:Stanley Hong,,(408) 487-2934,(408) 436-5004:/home/stanhong:/bin/tcsh
+sunil:x:496:200:Sunil Bhave,373 Cory,2-1143,843-1980:/home/sunil:/bin/tcsh
+kuoching:x:497:200:KUO-CHING LIANG,,:/home/kuoching:/bin/tcsh
+frahj:x:498:200:Frank Jiang,HKN Soda Office,(510) 642-9952,(510) 841-8790,:/home/frahj:/bin/tcsh
+nemanja:x:499:200:NEMANJA ISAILOVIC,,1-900-976-SERB,:/home/nemanja:/bin/tcsh
+achen:x:500:200:Albert Chen,,:/home/achen:/bin/tcsh
+mjeon:x:501:200:Michael S. Jeon,,,:/home/mjeon:/bin/tcsh
+portnov:x:502:200:Dmitriy Portnov,,:/home/portnov:/bin/tcsh
+j:x:503:200:Jacob Chang,,:/home/j:/bin/tcsh
+siwaporn:x:504:200:Ekapon Siwapornsathain,,:/home/siwaporn:/bin/tcsh
+davewang:x:505:200:David Wang,,:/home/davewang:/bin/tcsh
+greg:x:506:200:Gregory Bateman,,:/home/greg:/bin/tcsh
+tjames:x:507:200:Tim James,233 Sieg,(206) 543-7798,(206) 523-3848:/home/tjames:/bin/tcsh
+jerry:x:508:200:Jerry Chang,,:/home/jerry:/bin/tcsh
+drhong:x:509:200:Dennis Hong,,:/home/drhong:/bin/tcsh
+henrish:x:510:200:Henry Hsieh,,:/home/henrish:/bin/tcsh
+achou:x:513:200:Andy Chou,,:/home/achou:/bin/tcsh
+dmv:x:514:200:David Vierzba,Microsoft - 17/1107,(425) 703-6824,(425) 822-3067:/home/dmv:/bin/tcsh
+nacharya:x:515:200:Nikhil Acharya,,:/home/nacharya:/bin/tcsh
+mengli:x:516:200:Meng Li,,:/home/mengli:/bin/tcsh
+tsaraiya:x:517:200:Tejas Saraiya,,:/home/tsaraiya:/bin/tcsh
+rogshih:x:518:200:Roger Shih,,:/home/rogshih:/bin/tcsh
+soy:x:519:200:Brian Choi,,,:/home/soy:/bin/tcsh
+ankur:x:520:200:Ankur Varma,307-16 Cory,643-5885,510-666-0483:/home/ankur:/bin/tcsh
+pihman:x:521:200:Michael Pih,,:/home/pihman:/bin/tcsh
+chanada:x:522:200:Ada Chan,,:/home/chanada:/bin/tcsh
+dychen:x:523:200:David Chen,,:/home/dychen:/bin/tcsh
+pbhuang:x:524:200:Paul Huang,345 Soda,642-9952,:/home/pbhuang:/bin/tcsh
+gopal:x:525:200:Gopal Santhanam,,:/home/gopal:/bin/tcsh
+sedgwick:x:526:200:Forrest Sedgwick,,:/home/sedgwick:/bin/tcsh
+fuzy:x:527:200:Pei Ching Wu,,:/home/fuzy:/bin/tcsh
+jjc:x:528:200:Joshua Cantrell:/home/jjc:/bin/tcsh
+davteng:x:529:200:David Hsi-Yuan Teng,,:/home/davteng:/bin/tcsh
+teresat:x:531:200:Teresa Tung:/home/teresat:/bin/tcsh
+dyoo:x:532:200:Daniel Yoo:/home/dyoo:/bin/bash
+rbatra:x:533:200:Rishi Raj Batra:/home/rbatra:/bin/tcsh
+mcmartin:x:534:200:Michael Martin:/home/mcmartin:/bin/tcsh
+jonrlee:x:535:200:Jonathan Lee:/home/jonrlee:/bin/tcsh
+po:x:536:200:Posu Yan:/home/po:/bin/tcsh
+vtong:x:537:200:Vivien Tong:/home/vtong:/bin/tcsh
+gotcha:x:538:200:Edwin Wee:/home/gotcha:/bin/tcsh
+edleung:x:539:200:Eddie Leung:/home/edleung:/bin/tcsh
+yiz:x:540:200:Yi Zhang,Compserv,,:/home/yiz:/bin/tcsh
+byu:x:541:200:Byron Yu:/home/byu:/bin/tcsh
+shsiao:x:542:200:Sissie Hsiao:/home/shsiao:/bin/tcsh
+judylau:x:543:200:Judy Lau:/home/judylau:/bin/tcsh
+lorentz:x:544:200:Lorentz Shyu:/home/lorentz:/bin/tcsh
+chetan:x:545:200:Chetan Nandakumar:/home/chetan:/bin/tcsh
+woostern:x:546:200:Nathan Wooster:/home/woostern:/bin/tcsh
+shankar:x:547:200:Shankar Rao:/home/shankar:/bin/bash
+charlyb:x:548:200:Charlotte Yan:/home/charlyb:/bin/tcsh
+jjamp:x:550:200:Joe Jamp,290 Cory Hall,(510)642-7346:/home/jjamp:/bin/bash
+jdonald:x:551:200:James Donald:/home/jdonald:/bin/tcsh
+ktsunoda:x:552:200:Koichi Tsunoda:/home/ktsunoda:/bin/tcsh
+stopponi:x:553:200:Melissa Stopponi:/home/stopponi:/bin/tcsh
+dphan:x:554:200:Doantam Phan:/home/dphan:/bin/tcsh
+jheer:x:555:200:el jefe,345 Soda,642-9952,665-4152:/home/jheer:/bin/tcsh
+aliceg:x:556:200:Alice Gutman:/home/aliceg:/bin/tcsh
+nickeyz:x:557:200:Nicholas H Zamora,2134 Hamerschlag Hall,412-268-5241,412-421-2131:/home/nickeyz:/bin/tcsh
+jli:x:558:200:John Li:/home/jli:/bin/tcsh
+trefusis:x:559:200:Jung Lee:/home/trefusis:/bin/tcsh
+josie:x:560:200:Josie Kung:/home/josie:/bin/tcsh
+yut:x:561:200:Tian Yu,,,:/home/yut:/bin/tcsh
+hujas:x:562:200:Jason Hu:/home/hujas:/bin/tcsh
+ashieh:x:563:200:Alan Shieh,573 Soda/471 Cory,,(510) 664-0406:/home/ashieh:/bin/bash
+ngkeat:x:564:200:Chong-Keat Ng:/home/ngkeat:/bin/tcsh
+migreen:x:565:200:Michael Green:/home/migreen:/bin/tcsh
+ani:x:566:200:Alexander Ni:/home/ani:/bin/tcsh
+gagpcool:x:567:200:Gagan Prakash,,,:/home/gagpcool:/bin/bash
+laredo:x:568:200:David Alvarado:/home/laredo:/bin/tcsh
+fhsu:x:569:200:Francis Hsu:/home/fhsu:/bin/tcsh
+tom:x:570:200:Thomas Caradonna:/home/tom:/bin/tcsh
+phoebus:x:571:200:Phoebus Chen:/home/phoebus:/bin/tcsh
+perezar:x:572:200:Anthony Perez:/home/perezar:/bin/tcsh
+hugoshi:x:573:200:Hugo Shi:/home/hugoshi:/bin/tcsh
+alam:x:574:200:Alex Lam:/home/alam:/bin/tcsh
+malay:x:575:200:Malay Shah:/home/malay:/bin/tcsh
+rntan:x:576:200:Roger Tan,,,:/home/rntan:/bin/tcsh
+andy:x:577:200:Andrew Chang:/home/andy:/bin/tcsh
+alexf:x:578:200:Alex Fabrikant,345 Soda:/home/alexf:/bin/tcsh
+liane:x:579:200:Liane Beckman:/home/liane:/bin/tcsh
+nchen:x:580:200:Nick Chen,345 Soda:/home/nchen:/bin/tcsh
+ruth:x:581:200:Ruth Wang,,,:/home/ruth:/bin/bash
+ajchou:x:582:200:Alan Chou,,,:/home/ajchou:/bin/bash
+chialea:x:583:200:Lea Kissner,,,:/home/chialea:/bin/tcsh
+jalii:x:584:200:Jessica Lii:/home/jalii:/bin/tcsh
+vandebo:x:585:200:Steve VanDeBogart:/home/vandebo:/bin/bash
+billyc:x:586:200:Billy Chen:/home/billyc:/bin/tcsh
+laranth:x:587:200:Laura Todd:/home/laranth:/bin/tcsh
+klejwan:x:588:200:Nathan Klejwa:/home/klejwan:/bin/tcsh
+smoo:x:589:200:Jen Hsu,online:/home/smoo:/bin/tcsh
+net:x:590:200:Neil Turner:/home/net:/bin/tcsh
+daniel:x:591:200:Daniel Horn:/home/daniel:/bin/bash
+dlau:x:592:200:David Lau:/home/dlau:/bin/bash
+jenet:x:593:200:Jenet Peng:/home/jenet:/bin/tcsh
+alandtse:x:594:200:Alan Tse:/home/alandtse:/bin/tcsh
+sid:x:595:200:Siddharth Doshi:/home/sid:/bin/tcsh
+eiman:x:596:200:Eiman Zolfaghari:/home/eiman:/bin/tcsh
+devesh:x:597:200:Devesh Parekh,41-327A,650-253-2989,419-410-7418:/home/devesh:/usr/bin/zsh
+aaronj:x:598:200:Aaron Jow:/home/aaronj:/bin/tcsh
+kishang:x:599:200:Kishan Gupta:/home/kishang:/bin/tcsh
+tamj:x:600:200:Joe Tam:/home/tamj:/bin/false
+jshen:x:601:200:Jiong Shen:/home/jshen:/bin/tcsh
+bwhull:x:602:200:Bret Hull:/home/bwhull:/bin/tcsh
+chenm:x:603:200:Morgan Chen:/home/chenm:/usr/bin/tcsh
+dhsu:x:604:200:Daniel Hsu,4146,1 858 534 8819,see prot:/home/dhsu:/bin/bash
+rayver:x:605:200:Ray Juang:/home/rayver:/bin/tcsh
+quarl:x:606:200:Karl Chen,Soda464,,510-919-5659:/home/quarl:/bin/zsh
+calwang:x:607:200:Carl Wang:/home/calwang:/bin/false
+lnliu:x:608:200:Ellen Liu:/home/lnliu:/bin/tcsh
+empao:x:609:200:Euzane Mike Pao:/home/empao:/bin/tcsh
+seanma:x:610:200:Sean Ma:/home/seanma:/bin/tcsh
+geoffcm:x:611:200:Geoff Morrison,345 Soda,,:/home/geoffcm:/bin/bash
+rchen:x:612:200:Rupert Chen,,,510-704-7748:/home/rchen:/bin/bash
+rgulati:x:613:200:Raman Gulati:/home/rgulati:/bin/tcsh
+derek:x:614:200:Derek Ng:/home/derek:/bin/tcsh
+yctao:x:615:200:Cathy Tao:/home/yctao:/bin/tcsh
+ericshan:x:616:200:Eric Shan:/home/ericshan:/bin/tcsh
+jacks:x:617:200:Jack Sampson:/home/jacks:/bin/tcsh
+nadiah:x:618:200:Nadia Heninger:/home/nadiah:/bin/tcsh
+haywood:x:619:200:Haywood Ho:/home/haywood:/bin/tcsh
+aaronsa:x:620:200:Aaron Arboleda:/home/aaronsa:/bin/tcsh
+eroller:x:621:200:Eric Roller:/home/eroller:/bin/tcsh
+cling:x:622:200:Calvin Ling,,:/home/cling:/bin/tcsh
+candice:x:623:200:Candice Tsay,,:/home/candice:/bin/tcsh
+jon:x:624:200:Jon Driegert,,,:/home/jon:/bin/tcsh
+artemtk:x:625:200:Artem Tkachenko,:/home/artemtk:/bin/tcsh
+kylkaren:x:626:200:Karen Lee,,:/home/kylkaren:/bin/tcsh
+mimi:x:627:200:Mimi Yang,,:/home/mimi:/bin/tcsh
+kyiu:x:628:200:Katherine Yiu,,:/home/kyiu:/bin/tcsh
+jjtsao:x:629:200:Jonathan Tsao,,:/home/jjtsao:/bin/tcsh
+kgao:x:630:200:Kun Gao,,:/home/kgao:/bin/tcsh
+chengs:x:631:200:Thomas Cheng:/home/chengs:/bin/tcsh
+brandono:x:632:200:Brandon Ooi:/home/brandono:/bin/bash
+awang:x:633:200:Albert Wang,,:/home/awang:/bin/bash
+chan:x:634:200:Sangha Cedric Han,,,:/home/chan:/bin/bash
+jan:x:635:200:Jan Wen Voung,,,:/home/jan:/bin/csh
+andypang:x:636:200:Andy Pang,,:/home/andypang:/bin/tcsh
+atsao:x:637:200:Allen Tsao,,:/home/atsao:/bin/tcsh
+fred:x:638:200:Fred Jiang,,,510-508-2052:/home/fred:/bin/csh
+dkuo:x:639:200:Dan Kuo,,,:/home/dkuo:/bin/csh
+vu:x:640:200:Vu Lam Nguyen,,,:/home/vu:/bin/bash
+amywu:x:641:200:Amy Wu:/home/amywu:/bin/bash
+amywung:x:642:200:Amy Wung:/home/amywung:/bin/tcsh
+wsim:x:643:200:Wonsop Sim:/home/wsim:/bin/csh
+bheilers:x:644:200:Ben Heilers:/home/bheilers:/bin/csh
+chengsh:x:645:200:Shawn Cheng:/home/chengsh:/bin/csh
+connie:x:646:200:Connie Huang:/home/connie:/bin/tcsh
+jose:x:647:200:Jose Calderon:/home/jose:/bin/tcsh
+nbk:x:648:200:Nathan Kitchen:/home/nbk:/bin/tcsh
+nbattle:x:649:200:Natalie Battle:/home/nbattle:/bin/tcsh
+awei:x:650:200:Alan Wei:/home/awei:/bin/tcsh
+ttd:x:651:200:Tina Dong:/home/ttd:/bin/tcsh
+james:x:652:200:James Lin:/home/james:/bin/tcsh
+isaac:x:653:200:Isaac Seetho:/home/isaac:/bin/tcsh
+jcwest:x:654:200:Jeffry West:/home/jcwest:/bin/tcsh
+kevinw:x:655:200:Kevin Wang:/home/kevinw:/bin/tcsh
+nikitas:x:656:200:Nikita Shah:/home/nikitas:/bin/tcsh
+jluo:x:657:200:Jin Luo:/home/jluo:/bin/tcsh
+mliao:x:658:200:Mike Liao:/home/mliao:/bin/tcsh
+ezeng:x:659:200:Ellen Zeng:/home/ezeng:/bin/tcsh
+hxu:x:660:200:Hua Xu:/home/hxu:/bin/tcsh
+jele:x:661:200:Jessica Leung:/home/jele:/bin/tcsh
+casey:x:662:200:Casey Ho:/home/casey:/bin/bash
+jcliang:x:663:200:Joyce Liang:/home/jcliang:/bin/tcsh
+sahandn:x:664:200:Sahand Negahban:/home/sahandn:/bin/tcsh
+shihua:x:665:200:Shi-Hua Teh:/home/shihua:/bin/tcsh
+chris:x:666:200:Chris Crutchfield:/home/chris:/bin/tcsh
+angelc:x:667:200:Angel Chao:/home/angelc:/bin/tcsh
+kamil:x:668:200:Amir Kamil:/home/kamil:/bin/tcsh
+nammai:x:669:200:Nam Mai:/home/nammai:/bin/bash
+vperez:x:670:200:Victor Perez:/home/vperez:/bin/tcsh
+lid:x:671:200:Dustin Li:/home/lid:/bin/bash
+lili:x:672:200:Li Li:/home/lili:/bin/tcsh
+tgordv:x:673:200:Tanya Gordeeva:/home/tgordv:/bin/tcsh
+wliang:x:674:200:Wei Liang:/home/wliang:/bin/tcsh
+peterwu:x:675:200:Peter Wu:/home/peterwu:/bin/tcsh
+hobarts:x:676:200:Hobart Sze:/home/hobarts:/bin/tcsh
+shihtm:x:677:200:Ta-Ming Shih:/home/shihtm:/bin/tcsh
+jocha:x:678:200:Josh Chang:/home/jocha:/bin/tcsh
+elsoud:x:679:200:Robert El-Soudani:/home/elsoud:/bin/tcsh
+juhi:x:680:200:Juhi Saha:/home/juhi:/bin/tcsh
+ihaque:x:681:200:Imran Haque:/home/ihaque:/bin/bash
+mmehdija:x:682:200:Mehdi Ansari:/home/mmehdija:/bin/tcsh
+tracyx:x:683:200:Tracy Wang:/home/tracyx:/bin/tcsh
+liaor:x:684:200:Robert Liao,,,:/home/liaor:/bin/tcsh
+noaa:x:685:200:Noaa Avital:/home/noaa:/bin/tcsh
+chrislai:x:686:200:Chris Lai:/home/chrislai:/bin/tcsh
+ssl:x:687:200:Stephanie Leung:/home/ssl:/bin/tcsh
+mangesh:x:688:200:Mangesh Kulkarni:/home/mangesh:/bin/tcsh
+sameer:x:689:200:Sameer Iyengar:/home/sameer:/bin/tcsh
+tth:x:690:200:Tingting Huang:/home/tth:/bin/tcsh
+kli:x:691:200:Kevin Li:/home/kli:/bin/bash
+joe:x:692:200:Joe Jing:/home/joe:/bin/tcsh
+george:x:693:200:Yeu-Ting George Cheng:/home/george:/bin/tcsh
+lenwei:x:694:200:Leonard Wei:/home/lenwei:/bin/tcsh
+don:x:695:200:Donny Winston:/home/don:/bin/tcsh
+narenr:x:696:200:Naren Raghavan:/home/narenr:/bin/tcsh
+andyc:x:697:200:Andy Chen:/home/andyc:/bin/tcsh
+alexr:x:698:200:Alex Rasmussen:/home/alexr:/bin/bash
+htummala:x:699:200:Harsha Tummala:/home/htummala:/bin/tcsh
+jchou:x:700:200:Jeff Chou:/home/jchou:/bin/tcsh
+stephen:x:701:200:Stephen Wu:/home/stephen:/bin/tcsh
+sbe:x:702:200:Sarah Beth Eisinger:/home/sbe:/bin/tcsh
+anjali:x:703:200:Anjali Koppal:/home/anjali:/bin/tcsh
+dfang:x:704:200:Diana Fang:/home/dfang:/bin/tcsh
+tcheng:x:705:200:Tiffany Cheng:/home/tcheng:/bin/tcsh
+johnb:x:706:200:John Breneman:/home/johnb:/bin/tcsh
+usaini:x:707:200:Udam Saini:/home/usaini:/bin/tcsh
+dsl:x:708:200:Shuo David Liu:/home/dsl:/bin/tcsh
+echeung:x:709:200:Eric Cheung:/home/echeung:/bin/tcsh
+lahini:x:710:200:Lahini Arunachalam:/home/lahini:/bin/tcsh
+densmore:x:711:200:Doug Densmore:/home/densmore:/bin/tcsh
+pamela:x:712:200:Pamela Lee:/home/pamela:/bin/tcsh
+jtran:x:713:200:Johnny Tran:/home/jtran:/bin/tcsh
+dlow:x:714:200:Daniel Low:/home/dlow:/bin/tcsh
+jhristu:x:715:200:James Hristu:/home/jhristu:/bin/tcsh
+johnz:x:716:200:John Zhou:/home/johnz:/bin/tcsh
+rsun:x:717:200:Ricky Sun:/home/rsun:/bin/tcsh
+mbasoglu:x:718:200:Mehmet Basoglu:/home/mbasoglu:/bin/tcsh
+ryan:x:719:200:Ryan Waliany:/home/ryan:/bin/tcsh
+ramesh:x:720:200:Ramesh Sridharan:/home/ramesh:/bin/tcsh
+kmak:x:721:200:Kirill Makarov:/home/kmak:/bin/tcsh
+achoy:x:722:200:Alex Choy:/home/achoy:/bin/tcsh
+leech:x:2137:200:Lee Cheng:/home/leech:/bin/csh
+zoss:x:6154:200:Dave Zoss:/home/zoss:/bin/tcsh
+lester:x:6435:200:Thomas E. Lester,,,932-4510:/home/lester:/bin/tcsh
+jimy:x:8180:200:James Shin Young,?,n/a,n/a:/home/jimy:/bin/tcsh
+albert:x:723:200:Albert Lai:/home/albert:/bin/tcsh
+peter:x:724:200:Peter Martinazzi:/home/peter:/bin/tcsh
+neelav:x:725:200:Neelav Rana:/home/neelav:/bin/tcsh
+hguturu:x:726:200:Harendra Guturu:/home/hguturu:/bin/tcsh
+cho:x:727:200:Chuo Liu:/home/cho:/bin/tcsh
+mypeng:x:728:200:Michael Peng:/home/mypeng:/bin/tcsh
+darren:x:729:200:Darren Lo:/home/darren:/bin/tcsh
+nwar:x:730:200:Neil Warren:/home/nwar:/bin/tcsh
+min:x:731:200:Min Xu:/home/min:/bin/tcsh
+hkuang:x:732:200:Heng Kuang:/home/hkuang:/bin/tcsh
+kmowery:x:733:200:Keaton Mowery:/home/kmowery:/bin/bash
+jlo:x:734:200:John Lo:/home/jlo:/bin/tcsh
+agupta:x:735:200:Abhinav Gupta:/home/agupta:/bin/tcsh
+kedar:x:736:200:Kedar Kanitkar:/home/kedar:/bin/tcsh
+rramlall:x:737:200:Rohan Ramlall:/home/rramlall:/bin/tcsh
+sramlall:x:738:200:Sunil Ramlall:/home/sramlall:/bin/tcsh
+suhaas:x:739:200:Suhaas Prasad:/home/suhaas:/bin/tcsh
+ackner:x:740:200:Nir Ackner:/home/ackner:/bin/tcsh
+mchang:x:741:200:Michael Chang:/home/mchang:/bin/tcsh
+hzarka:x:742:200:Hisham Zarka:/home/hzarka:/bin/tcsh
+eugene:x:743:200:Eugene Li:/home/eugene:/bin/tcsh
+akshay:x:744:200:Akshay Balsubramani:/home/akshay:/bin/tcsh
+edchen:x:745:200:Edward Chen:/home/edchen:/bin/tcsh
+shah:x:746:200:Shaw Bawany:/home/shah:/bin/tcsh
+csboyer:x:747:200:Colby Boyer:/home/csboyer:/bin/tcsh
+andrew:x:748:200:Andrew Ma:/home/andrew:/bin/tcsh
+blackman:x:749:200:Ben Blackman:/home/blackman:/bin/tcsh
+aimee:x:750:200:Aimee Moriwaki:/home/aimee:/bin/tcsh
+tedgar:x:751:200:Tim Edgar:/home/tedgar:/bin/tcsh
+akhil:x:752:8186:Akhil Dhar:/home/akhil:/bin/tcsh
+yeehuan:x:753:8186:Yee Huan:/home/yeehuan:/bin/tcsh
+vishay:x:754:200:Vishay Nihalani:/home/vishay:/bin/tcsh
+pbhakta:x:8184:8186:Prateek Bhakta:/home/pbhakta:/bin/tcsh
+jeffcjensen:x:1002:200:Jeff Jensen:/home/jeffcjensen:/bin/tcsh
+wsandy:x:1003:200:Sandy Wiraatmadja:/home/wsandy:/bin/tcsh
+huhong:x:1004:200:Hong Hu:/home/huhong:/bin/tcsh
+mabderezai:x:1005:200:Mehdi Abderezai:/home/mabderezai:/bin/tcsh
+wongjy:x:1006:200:Jian Yuan Wong:/home/wongjy:/bin/tcsh
+sshum:x:1007:200:Stephen Shum:/home/sshum:/bin/tcsh
+patrick:x:1008:200:Patrick Au:/home/patrick:/bin/tcsh
+akovacs:x:1009:200:Arpad Kovacs:/home/akovacs:/bin/tcsh
+zhangz:x:1010:200:Jerry Zhang:/home/zhangz:/bin/tcsh
+rzheng:x:1011:200:Ryan Zheng:/home/rzheng:/bin/bash
+michelleau:x:1012:200:Michelle Au:/home/michelleau:/bin/tcsh
+alanwu:x:1013:200:Alan Wu:/home/alanwu:/bin/tcsh
+clay:x:1014:200:Chris Lay:/home/clay:/bin/tcsh
+ceng:x:487:200:Chris Eng,Cambridge MA,617-768-2722,000-000-0000:/home/cje:/bin/bash
+angela:x:1016:200:Angela Hsueh:/home2/angela:/bin/tcsh
+wayne:x:1017:200:Wayne Fang:/home2/wayne:/bin/tcsh
+njoubert:x:1018:200:Niels Joubert:/home2/njoubert:/bin/tcsh
+ingrid:x:1019:200:Ingrid Liu:/home2/ingrid:/bin/tcsh
+jhoffman:x:1020:200:Judy Hoffman:/home2/jhoffman:/bin/tcsh
+sjavdani:x:1021:200:Shervin Javdani:/home2/sjavdani:/bin/tcsh
+georgechen:x:1022:200:George Chen:/home2/georgechen:/bin/bash
+btay:x:1023:200:Brian Taylor:/home2/btay:/bin/tcsh
+mtao:x:1024:200:Michael Tao:/home2/mtao:/bin/tcsh
+sgowda:x:1025:200:Suraj Gowda:/home2/sgowda:/bin/tcsh
+mattea:x:1026:200:Matthew Ekstrand-Abueg:/home2/mattea:/bin/bash
+jliao:x:1027:200:James Liao:/home2/jliao:/bin/tcsh
+brlam:x:1028:200:Brian Lam:/home2/brlam:/bin/tcsh
+bkim:x:1029:200:Brian Kim:/home2/bkim:/bin/bash
+aalipoury:x:1030:200:Yasin Aalipour:/home2/aalipoury:/bin/tcsh
+jared:x:1031:200:Jared Prudhomme:/home2/jared:/bin/tcsh
+achaudhari:x:1032:200:Ashish Chaudhari:/home2/achaudhari:/bin/tcsh
+dwong:x:1033:200:David Wong:/home2/dwong:/bin/tcsh
+siddharth:x:1034:200:Siddharth Dangi:/home2/siddharth:/bin/tcsh
+arjun:x:1035:200:Arjun Singh:/home2/arjun:/bin/tcsh
+jyan:x:1036:200:Jinghao Yan:/home2/jyan:/bin/tcsh
+kylim:x:1037:200:Kevin Lim:/home2/kylim:/bin/tcsh
+brandon:x:1038:200:Brandon Myers:/home2/brandon:/bin/tcsh
+pearce:x:1039:200:Paul Pearce:/home2/pearce:/bin/bash
+gkchou:x:1040:200:Gilbert Chou:/home2/gkchou:/bin/tcsh
+davidzeng:x:1041:200:David Zeng:/home2/davidzeng:/bin/tcsh
