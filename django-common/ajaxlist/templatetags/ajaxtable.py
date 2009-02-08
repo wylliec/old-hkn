@@ -221,7 +221,7 @@ class SpecialForNode(template.defaulttags.ForNode):
 			# Boolean values designating first and last times through loop.
 			loop_dict['first'] = (i == 0)
 			loop_dict['last'] = (i == len_values - 1)
-			#context['object'] = item
+			context['ajaxlist_object'] = item
 			context[loop_var] = item
 			
 			for node in self.nodelist_loop:

@@ -5,7 +5,7 @@
 	{% special_for row %}
 		<div class="grid_cell">
 		{% ifequal checks "on" %}
-			<span><input class="ajaxlist_check" type="checkbox" name="object" value="{{object.id}}" {% ajaxlist_selected object %} /></span>
+			<span><input class="ajaxlist_check" type="checkbox" name="object" value="{{ajaxlist_object.id}}" {% ajaxlist_selected object %} /></span>
 		{% endifequal %}
 		{% include cell_template %}
 		</div>
