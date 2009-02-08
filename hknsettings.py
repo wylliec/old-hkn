@@ -2,8 +2,8 @@
 
 # the following are some variables that CAN be set here
 
-#DEBUG = True
-DEBUG = False
+DEBUG = True
+#DEBUG = False
 
 DATABASE_ENGINE = 'postgresql_psycopg2'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
 DATABASE_NAME = 'django_website_prod'             # Or path to database file if using sqlite3.
@@ -34,22 +34,22 @@ def setup_logger():
     formatter_simple = logging.Formatter("%(asctime)s %(message)s")
     formatter = logging.Formatter("%(asctime)s %(module)s:%(lineno)s %(levelname)s %(message)s")
 
-    handler_root = logging.handlers.RotatingFileHandler('/home/django/prod-site/logs/django.log', "a", 5*1024*1024, 10)
+    handler_root = logging.handlers.RotatingFileHandler('/var/log/django_root.log', "a", 5*1024*1024, 10)
     handler_root.setFormatter(formatter)
     handler_root.setLevel(logging.WARNING)
 
-    handler_404 = logging.handlers.RotatingFileHandler('/home/django/prod-site/logs/django_404.log', "a", 2*1024*1024, 10)
+    handler_404 = logging.handlers.RotatingFileHandler('/var/log/django_404.log', "a", 2*1024*1024, 10)
     handler_404.setFormatter(formatter_simple)
 
-    handler_access = logging.handlers.RotatingFileHandler('/home/django/prod-site/logs/django_access.log', "a", 2*1024*1024, 10)
+    handler_access = logging.handlers.RotatingFileHandler('/var/log/django_access.log', "a", 2*1024*1024, 10)
     handler_access.setLevel(logging.INFO)
     handler_access.setFormatter(formatter_simple)
 
-    handler_actions = logging.handlers.RotatingFileHandler('/home/django/prod-site/logs/django_actions.log', "a", 2*1024*1024, 10)
+    handler_actions = logging.handlers.RotatingFileHandler('/var/log/django_actions.log', "a", 2*1024*1024, 10)
     handler_actions.setLevel(logging.INFO)
     handler_actions.setFormatter(formatter)
 
-    handler_exceptions = logging.handlers.RotatingFileHandler('/home/django/prod-site/logs/django_exceptions.log', "a", 2*1024*1024, 10)
+    handler_exceptions = logging.handlers.RotatingFileHandler('/var/log/django_exceptions.log', "a", 2*1024*1024, 10)
     handler_exceptions.setFormatter(formatter)
 
     logging.getLogger().addHandler(handler_root)
