@@ -174,6 +174,26 @@ class Slot:
         otherstuff = dir(other)
         return 'day' in otherstuff and 'time' in otherstuff and 'office' in otherstuff and \
             self.day == other.day and self.time == other.time and self.office == other.office
+
+    def __cmp__(self, other):
+        days = list(TUTORING_DAYS)
+        dayDiff = days.index(self.day) - days.index(other.day)
+        if dayDiff != 0:
+            return dayDiff
+
+        times = list(TUTORING_TIMES)
+        timeDiff = times.index(self.time) - times.index(other.time)
+        if timeDiff != 0:
+            return timeDiff
+
+        if self.office == other.office:
+            return 0
+        elif self.office == CORY:
+            return -1
+        elif self.office == SODA:
+            return 1
+
+        return 0
     
     def other_office_slot(self):
         if self.office == CORY:
@@ -2449,7 +2469,7 @@ if __name__=="__main__":
         print "  -G NAME --lprfile=NAME lp output filename (default: results.txt)"
         print "  -b NUM  --beam=NUM     beam length to use in hill climbing (default: 3, use 0 to use first available swap)"
         print "  -a NUM  --lpall=NUM    run the lp NUM times"
-        print "  -A NAME --analyze=NAME analyze scheduler outputs from multiple runs... cat the files together"
+        print "  -A NAME --analyze=NAME analyze scheduler outputs from multiple runs..."
         print "                             be sure to specify a file with -f or it will overwrite schedulerOutput.txt"
 
     import getopt
@@ -2572,9 +2592,29 @@ if __name__=="__main__":
         import operator
         sameList.sort(key=operator.itemgetter(1))
 
+        tempList = []
         print "Same slots for all states:"
         for slot, person in sameList:
             print person, "\t", slot
+            tempList.append(slot)
+
+        # slots that aren't fixed
+        slots = []
+        for slot in states[0]:
+            slots.append(slot)
+        slots.sort()
+
+        diffs = {}
+        for slot in slots:
+            if slot not in tempList:
+                diffs[slot] = set()
+                for state in states:
+                    diffs[slot].add(state[slot])
+
+        print "Other slots:"
+        for slot in slots:
+            if slot in diffs:
+                print slot, "\t", list(diffs[slot])
 
         # write best states to file
         dump = open(filename, 'w+') #truncates file if it exists
