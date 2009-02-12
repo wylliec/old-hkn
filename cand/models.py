@@ -1,8 +1,11 @@
 from django.db import models
 from django.db.models.query import QuerySet
+from django.contrib.auth.models import User
+from django.contrib.contenttypes import generic
 import nice_types.semester
 from nice_types.db import QuerySetManager, PickleField
 
+from request.models import Request
 from hkn.info.models import Person, Position
 from photologue.models import Photo
 
@@ -87,5 +90,48 @@ class CandidateApplication(models.Model):
     transfer_college = models.CharField(null=True, max_length=100)
     committees = PickleField()
     questions = PickleField()
+
+
+# CHALLENGE_PENDING = Null
+# CHALLENGE_COMPLETED = True
+# CHALLENGE_REJECTED = False
+
+class Challenge(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank = True)
+    requests = generic.GenericRelation(Request)
+
+    status = models.NullBooleanField()
+    #candidate_id = models.IntegerField()
+    #officer_id = models.IntegerField()
+
+    candidate = models.ForeignKey(User, related_name="mychallenges")
+    officer = models.ForeignKey(User, related_name="challenge_requests")
+
+
+    def get_status_string(self):
+        if status:
+            return "Confirmed"
+        else:
+            if status == null:
+                return "Pending"
+            else:
+                return "Rejected"
+    
+    def save(self, *args, **kwargs):
+        # 
+        # Check if the officer is a fogie/officer
+        # Send a request to the officer that gave the challenge
+        # set to pending
+        #
+        if self.officer.person.get_member_status < 20:
+            print "This person is not an officer or fogie"
+            return
+
+        request.utils.request_confirmation(self, self.candidate, permission_user=self.officer)
+        super(Challenge, self).save(*args, **kwargs)
+        
+           
             
 from hkn.cand.admin import *
+import hkn.cand.challenge_requests

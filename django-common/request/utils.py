@@ -1,7 +1,15 @@
 from django.contrib.contenttypes.models import ContentType
 from request.models import Request
 
+
 def request_confirmation(confirm_object, requestor, permission=None, permission_user=None):
+    """                         
+    confirm_object -- the model object the request will be associated with
+    requester -- the user that sent the request
+    permission -- request viewable by people with these permissions
+    permission_user -- request to be confirmed by this User object 
+    """
+
     if not (permission or permission_user):
         raise Exception('Must define one of permission or permission_user!')
 
