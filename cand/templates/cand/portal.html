@@ -9,11 +9,6 @@
 
 
 {% block content %}
-{% comment %}
-'events'
-'challenges'
-events.rsvped = {True, False}
-{% endcomment %}
 <!--content-->
 <!-- start main content block -->
 <div style="float: left;"><h1></h1></div>
@@ -33,22 +28,19 @@ events.rsvped = {True, False}
 <h1>Checklist</h1>
 <h2 class="cportal">Events</h2>
 <table class="checklist"><tbody>
-<tr><th>Big Fun Event</th><td><span class="checklist_done">[Done]</span></td></tr>	
-<tr><td><a href="link">Photo Scavenger Hunt</a></td></tr>
-<tr><th>Other Fun Events</th><td><span class="checklist_in_progress">[Need 2 more]</span> - <span class="small"><a href="link">Upcoming</a></span></td></tr>	
-<tr><td><a href="link">Broomball</a></td></tr>
-<tr><th>Community Service Event</th><td><span class="checklist_not_done">[Need 1 more]</span> - <span class="small"><a href="link">Upcoming</a></span></td></tr>	
-<tr><th>Department Service Event</th><td><span class="checklist_in_progress">[Need 0 more, 1 RSVP'd]</span></td></tr>	
-<tr><td><a href="link">[RSVP] Baking Cookies</a></td></tr>
+	{% include "cand/_list_checklist_events.html" %}
 </tbody></table>
 
-{% include "cand/challenges.html" %}
+{% include "cand/_list_challenges.html" %}
 
+{% block comment %}
+To be completed later
 <h2 class="cportal">Course Surveys</h2>
 <table class="checklist"><tbody>
 <tr><th>Course Number</th><th>Other Candidates</th><th>Completed</th></tr>
 <tr><td><a href="http://osoc.berkeley.edu/OSOC/osoc?p_term=SP&p_classif=--+Choose+a+Course+Classification+--&p_deptname=--+Choose+a+Department+Name+--&p_presuf=--+Choose+a+Course+Prefix%2fSuffix+--&p_dept=cs&p_course=150&p_title=&p_instr=&p_exam=&p_ccn=&p_day=&p_hour=&p_bldg=&p_units=&p_restr=&p_info=&p_updt=">CS150</a></td><td><a href="terror">Terror</a></td><td><span class="checklist_done">[Done]</span></td></tr>
 </tbody></table>
+{% endcomment %}
 
 <h2 class="cportal">Forms</h2>
 <table class="checklist"><tbody>

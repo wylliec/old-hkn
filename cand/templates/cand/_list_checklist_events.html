@@ -1,0 +1,48 @@
+<tr><th>Big Fun Event</th><td>
+	{% if BIGFUN|length_gte:reqs['BIGFUN'] 
+	<span class="checklist_done">[Done]</span>
+	{% elseif BIGFUN|length_is:"0" %}
+	<span class="checklist_not_done">[Need {{ BIGFUN|length }} more]</span>
+	{% else %}
+	<span class="checklist_in_progress">[Need {{ BIGFUN.still_need }} more]</span>
+	{% endif %}
+</td></tr>
+{% for event in BIGFUN %}
+<tr><td><a href="{% url hkn.event.event-view event.slug %}">{% if event.rsvped %}[RSVP'D] {% endif %}{{ event.name }}</a></td></tr>
+{% endfor %}
+
+<tr><th>Other Fun Events</th><td>
+	{% if FUN|length_gte:reqs['FUN'] 
+	<span class="checklist_done">[Done]</span>
+	{% elseif FUN|length_is:"0" %}
+	<span class="checklist_not_done">[Need {{ FUN|length }} more]</span>
+	{% else %}
+	<span class="checklist_in_progress">[Need {{ FUN.still_need }} more]</span>
+	{% endif %}
+{% for event in FUN %}
+<tr><td><a href="{% url hkn.event.event-view event.slug %}">{% if event.rsvped %}[RSVP'D] {% endif %}{{ event.name }}</a></td></tr>
+{% endfor %}
+
+<tr><th>Community Service Event</th><td>
+	{% if COMSERV|length_gte:reqs['COMSERV'] 
+	<span class="checklist_done">[Done]</span>
+	{% elseif COMSERV|length_is:"0" %}
+	<span class="checklist_not_done">[Need {{ COMSERV|length }} more]</span>
+	{% else %}
+	<span class="checklist_in_progress">[Need {{ COMSERV.still_need }} more]</span>
+	{% endif %}
+{% for event in COMSERV %}
+<tr><td><a href="{% url hkn.event.event-view event.slug %}">{% if event.rsvped %}[RSVP'D] {% endif %}{{ event.name }}</a></td></tr>
+{% endfor %}
+
+<tr><th>Department Service Event</th><td>
+	{% if DEPSERV|length_gte:reqs['DEPSERV'] 
+	<span class="checklist_done">[Done]</span>
+	{% elseif DEPSERV|length_is:"0" %}
+	<span class="checklist_not_done">[Need {{ DEPSERV|length }} more]</span>
+	{% else %}
+	<span class="checklist_in_progress">[Need {{ DEPSERV.still_need }} more]</span>
+	{% endif %}
+{% for event in DEPSERV %}
+<tr><td><a href="{% url hkn.event.event-view event.slug %}">{% if event.rsvped %}[RSVP'D] {% endif %}{{ event.name }}</a></td></tr>
+{% endfor %}

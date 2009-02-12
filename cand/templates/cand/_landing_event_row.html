@@ -1,6 +1,6 @@
 <tr class="headrow"><td>
 	<div class="name">
-		{% if event.rsvped %}[RSVP'D]{% endif %}<a rel="{% url event-infobox event.id %}" href="{% url event-view event.slug %}" style="display: block">{{event.name}}</a>
+		<a rel="{% url event-infobox event.id %}" href="{% url event-view event.slug %}" style="display: block">{% if event.rsvped %}[RSVP'D] {% endif %}{{event.name}}</a>
 	</div>
 		<div class="day">
       {{event.start_time|date:"l" }}

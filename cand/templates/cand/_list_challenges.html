@@ -3,7 +3,19 @@
 <table class="checklist"><tbody>
 <tr><th>Name of Challenge</th><th>Officer Name</th><th>Confirmed</th></tr>
 {% for challenge in challenges %}
-<tr><td>{{challenge.name}}</td><td><a href="terror">{{challenge.officer.name}}</a></td><td><span class="checklist_done">Yes</span></td></tr>
+<tr><td>{{ challenge.name }}</td><td><a href="{% url hkn.info.person-view challenge.officer.person.id %}">{{ challenge.officer.first_name }} {{ challenge.officer.last_name }}</a></td>
+<td>
+{% 
+status_class == "Error"
+if challenge.status == true
+	status_class = "checklist_done"
+else if challenge.status == null
+	status_class = "checklist_in_progress"
+else if challenge.status == false
+	status_class = "checklist_not_done
+%}
+<span class="{{ status_class }}">[{{ challenge.getStatus() }}]</span>
+</td></tr>
 {% endfor %}
 <tr><td><input id="id_challenge_name" type="text" name="challenge_name" /></td>
 <td><select id="id_officer_name" name="officer_name">
