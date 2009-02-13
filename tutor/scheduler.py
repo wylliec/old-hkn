@@ -2453,6 +2453,17 @@ Soda	Mon	Tue	Wed	Thu	Fri\n\
     newState = hill_climb(initialState=state[0], costs=costs, slotsByPerson=NiceDict(2), availabilitiesBySlot=availabilitiesBySlot, beamLength=beamLength)
     print newState.pretty_print()
 
+def powerset(s):
+    d = dict(zip(
+        (1<<i for i in range(len(s))),
+        (set([e]) for e in s)
+        ))
+
+    subset = set()
+    yield subset
+    for i in range(1, 1<<len(s)):
+        subset = subset ^ d[i & -i]
+        yield subset
 
 if __name__=="__main__":
     def usage():
@@ -2575,11 +2586,18 @@ if __name__=="__main__":
                 newStates.append(state)
 
         states = newStates
-        print len(states), "best states"
+        numStates = len(states)
+        print numStates, "best states"
+
+        # ordered slot list
+        slots = []
+        for slot in states[0]:
+            slots.append(slot)
+        slots.sort()
 
         # find slots that are fixed
         sameList = []
-        for slot in states[0]:
+        for slot in slots:
             person = states[0][slot]
             samePerson = True
             for state in states:
@@ -2592,30 +2610,53 @@ if __name__=="__main__":
         import operator
         sameList.sort(key=operator.itemgetter(1))
 
-        tempList = []
+        print
         print "Same slots for all states:"
+        tempList = []
         for slot, person in sameList:
             print person, "\t", slot
             tempList.append(slot)
 
         # slots that aren't fixed
-        slots = []
-        for slot in states[0]:
-            slots.append(slot)
-        slots.sort()
-
         diffs = {}
         for slot in slots:
             if slot not in tempList:
-                diffs[slot] = set()
+                diffs[slot] = {}
                 for state in states:
-                    diffs[slot].add(state[slot])
+                    if state[slot] not in diffs[slot]:
+                        diffs[slot][state[slot]] = 0
+                    diffs[slot][state[slot]] += 1
 
-        print "Other slots:"
-        for slot in slots:
-            if slot in diffs:
-                print slot, "\t", list(diffs[slot])
+        print
+        print "Groups of slots that are interchangable:"
+        smallest = 2
+        while len(diffs) > 0:
+            print len(diffs), "choose", smallest
+            for slotlist in powerset(diffs.keys()):
+                if len(slotlist) != smallest:
+                    continue
+                d = {}
+                for slot in slotlist:
+                    for person in diffs[slot]:
+                        if person not in d:
+                            d[person] = 0
+                        d[person] += diffs[slot][person]
 
+                found = True
+                for person in d:
+                    if d[person] % numStates != 0:
+                        found = False
+                        break
+                if found:
+                    for slot in slotlist:
+                        print slot, diffs[slot]
+                    print
+                    for slot in slotlist:
+                        del diffs[slot]
+                    break
+            if not found:
+                smallest += 1
+                
         # write best states to file
         dump = open(filename, 'w+') #truncates file if it exists
         for state in states:
