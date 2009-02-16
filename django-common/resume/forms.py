@@ -9,6 +9,7 @@ import os
 
 from resume.models import Resume
 
+# don't allow .docx, maybe we shouldn't even allow .doc
 VALID_EXTENSIONS = (".doc", ".pdf")
 class ResumeForm(forms.Form):
     overall_gpa = forms.DecimalField(label="Overall GPA", min_value=1, max_value=4)

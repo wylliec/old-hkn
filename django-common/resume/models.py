@@ -42,6 +42,9 @@ class Resume(models.Model):
         new = "%s-%s%s" % (''.join([random.choice(digits) for i in xrange(15)]), self.person.username, extension)
         return new
 
+    def is_word(self):
+        return self.resume.name.endswith(".doc") or self.resume.name.endswith(".docx")
+
     def save_resume_file(self, content, extension):
         self.resume.save(self.generate_filename(extension), ContentFile(content))
     

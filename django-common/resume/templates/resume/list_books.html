@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>See below for the resume books on file and when they were created. </p>
+<ul>
+<li>View all resumes: <a href="{% url resume-table-of-contents %}"> table of contents </a></li>
+<li>View resumes in .doc format: [{{ num_docs }} resumes] <a href="{% url resume-list-docs %}"> table of contents [only word docs]</a></li>
+<li>View people to bug: [current officers and candidates who haven't submitted resumes] <a href="{% url resume-missing %}"> missing resumes</a></li>
+<li>Generate a new resume book: <a href="{% url resume-generate-book %}"> generate </a></li>
+</ul>
+<table>
+<tr><th>Created</th><th>PDF</th><th>ISO</th><th>Delete</th></tr>
+{% for pdf in pdfs %}
+<tr><td>{{pdf.1}}</td><td><a href="{{MEDIA_URL}}resumebooks/{{pdf.0}}HKNResumeBook.pdf">PDF</a></td><td> <a href="{{MEDIA_URL}}resumebooks/{{pdf.0}}HKNResumeBook.iso">ISO</a></td>
+<td><form action="{% url resume-delete-book %}" method="post"><input type="hidden" name="hash" value="{{pdf.0}}"><input type="submit" value="Delete"></form></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

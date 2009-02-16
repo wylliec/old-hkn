@@ -1,0 +1,3 @@
+Just a few small notes:
+hkn_emblem.png needs to be in the same directory as these .tex documents when you generate the pages.
+The headers on each page are a bit "hacky," meaning that I manually adjusted the margins until the were aligned correctly. If you change the text in the headers, you may need to adjust the numbers.
