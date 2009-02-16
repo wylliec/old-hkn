@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Wheee</p>
+{% for i in resumes %}
+<label>{{i.0}}</label><br/>
+{% for e in i.1 %}
+<p><a href="{{e.1.resume.url}}">{{e.0}}</a></p>
+{% endfor %}
+<br/>
+<br/>
+{% endfor %}
+{% endblock %}

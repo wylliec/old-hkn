@@ -8,9 +8,10 @@ def group_resumes(resumes):
         return str(resume.person.extendedinfo.grad_semester.year)
     r = {}
     for resume in resumes:
-        if key(resume) not in r:
+        k = key(resume)
+        if k not in r:
             r[key(resume)] = []
-        r[key(resume)].append(resume)
+        r[k].append(resume)
     return r
 
 def export_resumes(resumes, export_dir):

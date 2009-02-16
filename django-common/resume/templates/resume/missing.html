@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>The below are the emails of current officers and candidates who do not have a recent resume on file. Recent is defined as a resume uploaded since the beginning of the semester. (roughly: Jan 1st for the Spring, Aug 1st for the Fall)</p>
+<label>Officers</label><br/>
+<span>{% for officer in officers %}{{officer.email}}; {% endfor %}</span>
+<br/>
+<br/>
+<label>Candidates</label><br/>
+<span>{% for cand in candidates %}{{cand.email}}; {% endfor %}</span>
+{% endblock %}
