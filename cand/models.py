@@ -118,6 +118,15 @@ class Challenge(models.Model):
             else:
                 return "Rejected"
     
+    def get_status_class(self):
+        if status:
+            return "checklist_done"
+        else:
+            if status == null:
+                return "checklist_in_progress"
+            else:
+                return "checklist_not_done"
+
     def save(self, *args, **kwargs):
         # 
         # Check if the officer is a fogie/officer

@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
-from hkn.events.constants import *
+from hkn.event.constants import *
 from hkn.cand.forms import EligibilityListForm
 from hkn.cand import utils
 from hkn.cand.constants import *
@@ -14,27 +14,25 @@ def portal(request):
 
     person = request.user.person
     confirmed_events = request.user.rsvp_set.get_confirmed_events(person)
-
-    d['BIGFUN'] = []
-    d['FUN'] = []
-    d['COMSERV'] = []
-    d['DEPSERV'] = []
-    d['CANDMAND'] = []
+    rsvps = person.rsvp_set.filter(event__start_time__gte = today, event__start_time__lt = week)
+    
     for e in confirmed_events:
-        if e.event_type in d:
-            d[e.event_type].append(e)
-            
+        if not e.event_type in d:
+            d[e.event_type] = {'events' : [e], 
+                               'num_left' : EVENT_REQUIRED_NUMBER[e.event_type] - 1}
+        else:
+            d[e.event_type]['events'].append(e)
+            d[e.event_type]['num_left'] -= 1
+            if d[e.event_type]['num_left'] == 0:
+                del d[e.event_type]['num_left']
+        
     today = datetime.date.today()
     tomorrow = today + datetime.timedelta(1)
     week = today + datetime.timedelta(7)
     events = Event.objects.order_by('start_time').filter_permissions(request.user).annotate_rsvp_count()
 
     d['upcoming_events'] = events.filter(start_time__gte = today, start_time__lt = week)
-
-    rsvps = person.rsvp_set.filter(event__start_time__gte = today, event__start_time__lt = week)
-
     d['challenges'] = request.user.mychallenges.all()
-    d['reqs'] = EVENT_REQUIRED_NUMBER
 
     for e in d['upcoming_events']:
         if rsvps.filter(event = e):
@@ -42,9 +40,9 @@ def portal(request):
         else:
             e.rsvped = False
             
-    d['submitted_resume'] = True
-    d['completed_survey'] = True
-    d['completed_quiz'] = True
+    d['submitted_resume'] = False
+    d['completed_survey'] = False
+    d['completed_quiz'] = False
 
     return render_to_response("cand/portal.html", d, context_instance=RequestContext(request))
 

@@ -63,9 +63,11 @@ def render_ajaxwrapper(template, context):
 		
 def get_ajaxinfo(dict):
 	d = {}
-	d['sort_by'] = dict.get("sort_by", "?")	if d['sort_by'] == "undefined":
+	d['sort_by'] = dict.get("sort_by", "?")	
+	if d['sort_by'] == "undefined":
 		d['sort_by'] = "?"
-		d['order'] = dict.get("order", "up")
+	
+	d['order'] = dict.get("order", "up")
 	if d['order'] == "undefined":
 		d['order'] = "up"
 		
