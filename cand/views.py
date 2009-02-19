@@ -53,9 +53,11 @@ def create_challenge_ajax(request):
         officer = request.POST['offficer']
         challenge_name = request.POST['challenge_name']
         c = Challenge()
+        c.name = challenge_name
+        c.candidate = request.user
+        c.officer = officer
+        c.save()
         return "success"
-        
-
 
 @permission_required('info.group_vp')
 def upload_eligibility_list(request):
