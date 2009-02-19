@@ -48,6 +48,15 @@ def portal(request):
 
     return render_to_response("cand/portal.html", d, context_instance=RequestContext(request))
 
+def create_challenge_ajax(request):
+    if request.POST:
+        officer = request.POST['offficer']
+        challenge_name = request.POST['challenge_name']
+        c = Challenge()
+        return "success"
+        
+
+
 @permission_required('info.group_vp')
 def upload_eligibility_list(request):
     if request.POST:
