@@ -38,3 +38,25 @@ def change_picture(request):
         form = ChangePictureForm()
         
     return render_to_response("info/change_picture.html", {'form' : form, 'person' : request.user.person}, context_instance=RequestContext(request))
+    
+
+def person_autocomplete(request, member_type):
+    def iter_results(people):
+        if people:
+            for r in people:
+                yield '%s|%s\n' % (r.name, r.id)
+    
+    if not request.GET.get('q'):
+        return HttpResponse(mimetype='text/plain')
+    
+    q = request.GET.get('q')
+    limit = request.GET.get('limit', 15)
+    try:
+        limit = int(limit)
+    except ValueError:
+        return HttpResponseBadRequest() 
+
+    if (member_type == 'all_officers')
+        people = Person.all_officers.ft_query(q)[:limit]
+    return HttpResponse(iter_results(people), mimetype='text/plain')
+
