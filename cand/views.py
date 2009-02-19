@@ -16,15 +16,17 @@ def portal(request):
     confirmed_events = request.user.rsvp_set.get_confirmed_events(person)
     rsvps = person.rsvp_set.filter(event__start_time__gte = today, event__start_time__lt = week)
     
+    for event_type in EVENT_TYPE.values():
+        if event_type in EVENT_REQUIRED_NUMBER:
+            d[event_type] = { 'events' : [],
+                              'num_left' : EVENT_REQUIRED_NUMBER[event_type]}
+            
+    
     for e in confirmed_events:
-        if not e.event_type in d:
-            d[e.event_type] = {'events' : [e], 
-                               'num_left' : EVENT_REQUIRED_NUMBER[e.event_type] - 1}
-        else:
-            d[e.event_type]['events'].append(e)
-            d[e.event_type]['num_left'] -= 1
-            if d[e.event_type]['num_left'] == 0:
-                del d[e.event_type]['num_left']
+        d[e.event_type]['events'].append(e)
+        d[e.event_type]['num_left'] -= 1
+        if d[e.event_type]['num_left'] == 0:
+            del d[e.event_type]['num_left']
         
     today = datetime.date.today()
     tomorrow = today + datetime.timedelta(1)
