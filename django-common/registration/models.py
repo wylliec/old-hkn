@@ -82,7 +82,7 @@ class RegistrationManager(models.Manager):
         new_person = self.create_inactive_user(first_name, last_name, username, password, email, False, send_email=False)
         new_person.is_active = True
 
-        new_person.phone_numer = phone_number
+        new_person.phone_number = phone_number
         new_person.realfirst = entry.first_name
         new_person.school_email = entry.email_address
         new_person.member_type = MEMBER_TYPE.CANDIDATE
@@ -98,10 +98,8 @@ class RegistrationManager(models.Manager):
 
         return new_person
         
-        
-        
     
-    def create_inactive_user(self, first_name, last_name, username, password, email, hkn_member,
+    def create_inactive_user(self, first_name, last_name, username, password, email, hkn_member, hkn_candidate,
                              send_email=True, profile_callback=None):
         """
         Create a new, inactive ``User``, generates a
@@ -120,10 +118,14 @@ class RegistrationManager(models.Manager):
 
         ``user``
             The ``User`` to relate the profile to.
-        
         """
         new_person = Person.objects.create_person(first_name, last_name, username, email, MEMBER_TYPE.REGISTERED, password=password)
         new_person.is_active = False
+        if hkn_candidate:
+            new_person.member_type = MEMBER_TYPE.CANDIDATE
+            candidateinfo = CandidateInfo.objects.create(person=new_person, candidate_semester=semester.current_semester(), candidate_committee=None, initiated=False, initiation_comment="", candidate_picture=None)
+            candidateapp = CandidateApplication.objects.create(candidateinfo=candidateinfo, transfer_college=None, committees={}, questions={})
+            
         new_person.save()
 
         

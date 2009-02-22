@@ -13,7 +13,7 @@ from nice_types import semester
 from registration.models import RegistrationProfile
 from course.models import Course
 
-import re, string
+import re, string, datetime
 
 # I put this on all required fields, because it's easier to pick up
 # on them with CSS or JavaScript if they have a class of "required"
@@ -114,11 +114,13 @@ class RegistrationForm(forms.Form):
                                                                     password=self.cleaned_data['password1'],
                                                                     email=self.cleaned_data['email'],
                                                                     hkn_member=self.cleaned_data['hkn_member'],
+                                                                    hkn_candidate=self.cleaned_data['hkn_candidate'],
                                                                     profile_callback=profile_callback)
         return new_user
 
 
 # we should refactor so there isn't so much code dup --hzarka
+# This will probably be deprecated shorlty. --arjun
 class CandidateRegistrationForm(forms.Form):
     QUESTIONS = (
             ('activities', 'What activities would you like to see HKN do this semester?')
@@ -128,7 +130,7 @@ class CandidateRegistrationForm(forms.Form):
                                widget=forms.TextInput(attrs=attrs_dict),
                                label=_(u'AIM screen name (optional)'))
     phone_number = forms.CharField(max_length=30)
-    grad_semester = semester.SemesterSplitFormField()
+    grad_semester = semester.SemesterSplitFormField(help_text="your intended graduation semester", initial=semester.Semester(season_name="Spring", year=datetime.date.today().year + 2))
     tech_courses = forms.CharField(max_length=2000, label="Current Tech Courses", help_text="a comma-separated list of your technical classes, such as: 'CS 61A, MATH 53, EE 20N'")
     release_information = forms.BooleanField(required=False, label="Release information to other candidates", help_text="Check this box if you would like to release your information to other candidates.")
 

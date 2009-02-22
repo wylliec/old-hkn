@@ -15,8 +15,8 @@ default_permissions = {
 def main():
     print "Creating HKN Groups and Permissions"
     for name, value in default_permissions.items():
-        #g, created = Group.objects.get_or_create(name = name)
-        g = Group.objects.get(name = name)
+        g,created = Group.objects.get_or_create(name = name)
+        #g = Group.objects.get(name = name)
         for perm in value:
             permission = Permission.objects.get_for_name(perm)
             print "Adding to group %s: %s" % (str(g), str(permission))

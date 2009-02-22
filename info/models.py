@@ -473,6 +473,9 @@ class ExtendedInfo(models.Model):
     perm_addr = models.TextField()
     """ Permanent (home) address """
 
+    aim_sn = models.TextField()
+    """ AIM Screen Name """
+
     current_courses = models.ManyToManyField(Course)
 
     def __unicode__(self):

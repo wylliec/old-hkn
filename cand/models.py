@@ -84,12 +84,12 @@ class CandidateInfo(models.Model):
         return "%s %s %s" % (self.person.name, self.candidate_committee, self.candidate_semester)
 
 class CandidateApplication(models.Model):
-    entry = models.ForeignKey(EligibilityListEntry)
-    candidateinfo = models.ForeignKey(CandidateInfo)
+    candidateinfo = models.OneToOneField(CandidateInfo)
 
     transfer_college = models.CharField(null=True, max_length=100)
     committees = PickleField()
     questions = PickleField()
+    release_information = models.BooleanField()
 
 
 # CHALLENGE_PENDING = Null
