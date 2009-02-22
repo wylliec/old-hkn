@@ -43,7 +43,7 @@
 {% endif %}
 {% if perms.main.hkn_candidate %}
 {% if not perms.main.hkn_officer %}
-<li id="portal" class="navigation_toplevel_item">
+<li id="cand" class="navigation_toplevel_item">
 	<a href="#">
 		Portal
 	</a>
@@ -246,7 +246,7 @@
 {% endif %}
 
 {% if perms.main.hkn_candidate %}
-<div class="submenu" id ="portal_submenu">
+<div class="submenu" id ="cand_submenu">
 <ul class="navigation_sublevel">
 <li>
         <a href="{% url cand-portal %}" class="navigation_sublevel_item">
