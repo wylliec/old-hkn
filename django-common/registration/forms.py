@@ -52,6 +52,7 @@ class RegistrationForm(forms.Form):
     password2 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict, render_value=False),
                                 label=_(u'Password (again)'))
     hkn_member = forms.BooleanField(required=False, label="HKN Member", help_text="Check this box if you are a member of HKN")
+    hkn_candidate = forms.BooleanField(required=False, label="HKN Candidate", help_text="Check this box if you are a candidate of HKN")
     
     USERNAME_RE = re.compile("[A-Za-z0-9_]")
     def clean_username(self):
@@ -120,32 +121,16 @@ class RegistrationForm(forms.Form):
 # we should refactor so there isn't so much code dup --hzarka
 class CandidateRegistrationForm(forms.Form):
     QUESTIONS = (
-            ('hobbies', 'What are your hobbies and talents?'),
-            ('activities', 'What activities would you like to see HKN do this semester?'),
-            ('crazy', "What's the craziest thing you've ever done?"),
-            ('unique', "What's something unique about you?"),
-            ('nerdy', "If you were a programming language or filter, what would you be and why?"),
+            ('activities', 'What activities would you like to see HKN do this semester?')
     )
 
-    first_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs=attrs_dict),
-                               label=_(u'First Name'))
-    last_name = forms.CharField(max_length=30, widget=forms.TextInput(attrs=attrs_dict),
-                               label=_(u'Last Name'))
-    
-    username = forms.CharField(max_length=30,
+    aim_screenname = forms.CharField(max_length=30,
                                widget=forms.TextInput(attrs=attrs_dict),
-                               label=_(u'Username'))
-    email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_dict,
-                                                               maxlength=75)),
-                             label=_(u'Email Address'))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict, render_value=False),
-                                label=_(u'Password'))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict, render_value=False),
-                                label=_(u'Password (again)'))
-
+                               label=_(u'AIM screen name (optional)'))
     phone_number = forms.CharField(max_length=30)
     grad_semester = semester.SemesterSplitFormField()
     tech_courses = forms.CharField(max_length=2000, label="Current Tech Courses", help_text="a comma-separated list of your technical classes, such as: 'CS 61A, MATH 53, EE 20N'")
+    release_information = forms.BooleanField(required=False, label="Release information to other candidates", help_text="Check this box if you would like to release your information to other candidates.")
 
     RANKING_CHOICES = [(str(x), x) for x in range(1, 9)]
 

@@ -1,9 +1,11 @@
+import datetime
 from django.contrib.auth.decorators import permission_required 
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
+from hkn.event.models import *
 from hkn.event.constants import *
 from hkn.cand.forms import EligibilityListForm
 from hkn.cand import utils
@@ -11,6 +13,9 @@ from hkn.cand.constants import *
 
 def portal(request):
     d = {}
+    today = datetime.date.today()
+    tomorrow = today + datetime.timedelta(1)
+    week = today + datetime.timedelta(7)
 
     today = datetime.date.today()
     tomorrow = today + datetime.timedelta(1)
@@ -35,7 +40,7 @@ def portal(request):
         
     events = Event.objects.order_by('start_time').filter_permissions(request.user).annotate_rsvp_count()
 
-    d['events'] = events.filter(start_time__gte = today, start_time__lt = week)
+    d['upcoming_events'] = events.filter(start_time__gte = today, start_time__lt = week)
     d['challenges'] = person.mychallenges.all()
     d['challenges_left'] = EVENT_REQUIRED_NUMBER['CHALLENGES'] - d['challenges'].count()
 
