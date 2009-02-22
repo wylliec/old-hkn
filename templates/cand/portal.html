@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" type="text/css" href="/static/css/cportal.css">
+<link rel="stylesheet" type="text/css" href="/static/css/landing.css">
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="/static/js/jquery-1.2.6.js"></script>
+<script type="text/javascript" src="/static/js/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="/static/js/jquery.form.js"></script>
+<script type="text/javascript" src="/static/js/jquery.cluetip.js"></script>
+<script type="text/javascript" src="/static/js/jquery.bgiframe.js"></script>
+<script type="text/javascript" src="/static/js/officer_autocomplete.js"></script>
+<script type="text/javascript" src="/static/js/landing.js"></script>
+{% endblock %}
+
+{% block subtitle %}Candidate Portal{% endblock %}
+
+
+{% block content %}
+<!--content-->
+<!-- start main content block -->
+<div style="float: left;"><h1></h1></div>
+<div style="float: right;"></div>
+<div style="clear: both;"></div>
+
+<!--side bar-->
+<div id="infobar">
+	<h1>Upcoming Events</h1>
+	<div class="section">
+		{% include "cand/_landing_event.html" %}
+	</div>
+</div>
+
+<!--start main content-->
+
+<h1>Checklist</h1>
+<h2 class="cportal">Events</h2>
+<table class="checklist"><tbody>
+	{% include "cand/_list_checklist_events.html" %}
+</tbody></table>
+
+{% include "cand/_list_challenges.html" %}
+
+{% comment %}
+To be completed later
+<h2 class="cportal">Course Surveys</h2>
+<table class="checklist"><tbody>
+<tr><th>Course Number</th><th>Other Candidates</th><th>Completed</th></tr>
+<tr><td><a href="http://osoc.berkeley.edu/OSOC/osoc?p_term=SP&p_classif=--+Choose+a+Course+Classification+--&p_deptname=--+Choose+a+Department+Name+--&p_presuf=--+Choose+a+Course+Prefix%2fSuffix+--&p_dept=cs&p_course=150&p_title=&p_instr=&p_exam=&p_ccn=&p_day=&p_hour=&p_bldg=&p_units=&p_restr=&p_info=&p_updt=">CS150</a></td><td><a href="terror">Terror</a></td><td><span class="checklist_done">[Done]</span></td></tr>
+</tbody></table>
+{% endcomment %}
+
+<h2 class="cportal">Forms</h2>
+<table class="checklist"><tbody>
+<tr><th><a href="http://hkn.eecs.berkeley.edu/resume/upload/">Resume</a></th><td>
+{% if submitted_resume %}
+<span class="checklist_done">[Done]
+{% else %}
+<span class="checklist_not_done">[Not Done]
+{% endif %}
+</span></td></tr>
+
+<tr><th><a href="resume">Survey</a></th><td>
+{% if completed_survey %}
+<span class="checklist_done">[Done]
+{% else %}
+<span class="checklist_not_done">[Not Done]
+{% endif %}
+</span></td></tr>
+
+<tr><th><a href="resume">Quiz</a></th><td>
+{% if completed_quiz %}
+<span class="checklist_done">[Done]
+{% else %}
+<span class="checklist_not_done">[Not Done]
+{% endif %}
+</span></td></tr>
+</tbody></table>
+{% endblock %}
