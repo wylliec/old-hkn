@@ -105,8 +105,8 @@ class Challenge(models.Model):
     #candidate_id = models.IntegerField()
     #officer_id = models.IntegerField()
 
-    candidate = models.ForeignKey(User, related_name="mychallenges")
-    officer = models.ForeignKey(User, related_name="challenge_requests")
+    candidate = models.ForeignKey(Person, related_name="mychallenges")
+    officer = models.ForeignKey(Person, related_name="challenge_requests")
 
 
     def get_status_string(self):
@@ -133,7 +133,7 @@ class Challenge(models.Model):
         # Send a request to the officer that gave the challenge
         # set to pending
         #
-        if self.officer.person.get_member_status < 20:
+        if self.officer.get_member_status < 20:
             print "This person is not an officer or fogie"
             return
 

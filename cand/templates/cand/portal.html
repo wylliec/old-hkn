@@ -5,6 +5,10 @@
 <link rel="stylesheet" type="text/css" href="/static/css/cportal.css">
 {% endblock %}
 
+{% block js %}
+<script type="text/javascript" src="/static/js/officer_autocomplete"></script>
+{% endblock %}
+
 {% block subtitle %}Candidate Portal{% endblock %}
 
 
@@ -33,7 +37,7 @@
 
 {% include "cand/_list_challenges.html" %}
 
-{% block comment %}
+{% comment %}
 To be completed later
 <h2 class="cportal">Course Surveys</h2>
 <table class="checklist"><tbody>

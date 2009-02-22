@@ -56,7 +56,7 @@ def person_autocomplete(request, member_type):
     except ValueError:
         return HttpResponseBadRequest() 
 
-    if (member_type == 'all_officers')
+    if member_type == 'all_officers':
         people = Person.all_officers.ft_query(q)[:limit]
     return HttpResponse(iter_results(people), mimetype='text/plain')
 

@@ -2,9 +2,9 @@
   <th>Big Fun Activity</th>
   <td>
     {% if BIGFUN.num_left %}
-    <span class="checklist_done">[Done]</span>
-    {% else %}
     <span class="checklist_not_done">[Need {{BIGFUN.num_left}}]</span>
+    {% else %}
+    <span class="checklist_done">[Done]</span>
     {% endif %}
   </td>
 </tr>
@@ -16,9 +16,9 @@
   <th>Other Fun Events</th>
   <td>
     {% if FUN.num_left %}
-    <span class="checklist_done">[Done]</span>
-    {% else %}
     <span class="checklist_not_done">[Need {{FUN.num_left}}]</span>
+    {% else %}
+    <span class="checklist_done">[Done]</span>
     {% endif %}
   </td>
 </tr>
@@ -31,9 +31,9 @@
   <th>Community Service Event</th>
   <td>
     {% if COMSERV.num_left %}
-    <span class="checklist_done">[Done]</span>
-    {% else %}
     <span class="checklist_not_done">[Need {{COMSERV.num_left}}]</span>
+    {% else %}
+    <span class="checklist_done">[Done]</span>
     {% endif %}
   </td>
 </tr>
@@ -45,9 +45,9 @@
   <th>Department Service Event</th>
   <td>
     {% if DEPSERV.num_left %}
-    <span class="checklist_done">[Done]</span>
-    {% else %}
     <span class="checklist_not_done">[Need {{DEPSERV.num_left}}]</span>
+    {% else %}
+    <span class="checklist_done">[Done]</span>
     {% endif %}
   </td>
 </tr>

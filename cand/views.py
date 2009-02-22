@@ -12,14 +12,19 @@ from hkn.cand.constants import *
 def portal(request):
     d = {}
 
+    today = datetime.date.today()
+    tomorrow = today + datetime.timedelta(1)
+    week = today + datetime.timedelta(7)
+
     person = request.user.person
-    confirmed_events = request.user.rsvp_set.get_confirmed_events(person)
+    confirmed_events = person.rsvp_set.get_confirmed_events(person)
     rsvps = person.rsvp_set.filter(event__start_time__gte = today, event__start_time__lt = week)
     
     for event_type in EVENT_TYPE.values():
         if event_type in EVENT_REQUIRED_NUMBER:
             d[event_type] = { 'events' : [],
-                              'num_left' : EVENT_REQUIRED_NUMBER[event_type]}
+                              'num_left' : EVENT_REQUIRED_NUMBER[event_type]
+                              }
             
     
     for e in confirmed_events:
@@ -28,13 +33,11 @@ def portal(request):
         if d[e.event_type]['num_left'] == 0:
             del d[e.event_type]['num_left']
         
-    today = datetime.date.today()
-    tomorrow = today + datetime.timedelta(1)
-    week = today + datetime.timedelta(7)
     events = Event.objects.order_by('start_time').filter_permissions(request.user).annotate_rsvp_count()
 
-    d['upcoming_events'] = events.filter(start_time__gte = today, start_time__lt = week)
-    d['challenges'] = request.user.mychallenges.all()
+    d['events'] = events.filter(start_time__gte = today, start_time__lt = week)
+    d['challenges'] = person.mychallenges.all()
+    d['challenges_left'] = EVENT_REQUIRED_NUMBER['CHALLENGES'] - d['challenges'].count()
 
     for e in d['upcoming_events']:
         if rsvps.filter(event = e):
@@ -54,7 +57,7 @@ def create_challenge_ajax(request):
         challenge_name = request.POST['challenge_name']
         c = Challenge()
         c.name = challenge_name
-        c.candidate = request.user
+        c.candidate = request.user.person
         c.officer = officer
         c.save()
         return "success"
