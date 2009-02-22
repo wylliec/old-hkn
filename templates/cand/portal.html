@@ -51,7 +51,7 @@ To be completed later
 
 <h2 class="cportal">Forms</h2>
 <table class="checklist"><tbody>
-<tr><th><a href="http://hkn.eecs.berkeley.edu/resume/upload/">Resume</a></th><td>
+<tr><th><a href="{% url resume-upload %}">Resume</a></th><td>
 {% if submitted_resume %}
 <span class="checklist_done">[Done]
 {% else %}
@@ -59,7 +59,7 @@ To be completed later
 {% endif %}
 </span></td></tr>
 
-<tr><th><a href="resume">Survey</a></th><td>
+<!--tr><th><a href="">Survey</a></th><td>
 {% if completed_survey %}
 <span class="checklist_done">[Done]
 {% else %}
@@ -67,12 +67,12 @@ To be completed later
 {% endif %}
 </span></td></tr>
 
-<tr><th><a href="resume">Quiz</a></th><td>
+<tr><th><a href="">Quiz</a></th><td>
 {% if completed_quiz %}
 <span class="checklist_done">[Done]
 {% else %}
 <span class="checklist_not_done">[Not Done]
 {% endif %}
-</span></td></tr>
+</span></td></tr-->
 </tbody></table>
 {% endblock %}

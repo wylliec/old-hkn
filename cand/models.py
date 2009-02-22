@@ -137,7 +137,7 @@ class Challenge(models.Model):
             print "This person is not an officer or fogie"
             return
 
-        request.utils.request_confirmation(self, self.candidate, permission_user=self.officer)
+        #request.utils.request_confirmation(self, self.candidate, permission_user=self.officer)
         super(Challenge, self).save(*args, **kwargs)
         
            

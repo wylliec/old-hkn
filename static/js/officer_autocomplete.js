@@ -13,8 +13,11 @@ function toggleExamAdvanced(toggle) {
 
 
 register_officer_listeners = function() { 
+        var fill_officer_id = function (e, data, formatted) {
+            $('#id_officer_id').attr("value", data[1]);
+        }
 	$('#id_officer_query').autocomplete('/info/officer_autocomplete/');
-
+        $('#id_officer_query').result(fill_officer_id)
 	
 	var d = {};
 	d['officer'] = $('id_officer_query').value;
@@ -23,7 +26,7 @@ register_officer_listeners = function() {
 	
 	$('#challenge_submit').click(function (e) {
 	    //send_ajaxinfo('', '#');
-	    $.post('/cand/portal/create_challenge_ajax', d, query_confirm);
+	    $.post('/cand/portal/create_challenge', d, query_confirm);
 	});
 	
 	setInstructor = function(instr) {
@@ -38,7 +41,7 @@ register_officer_listeners = function() {
     });
     
     query_confirm = function(e) {
-	    
+        
     }
     
     toggleExamAdvanced(false);

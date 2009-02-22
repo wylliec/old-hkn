@@ -10,6 +10,9 @@ from hkn.event.constants import *
 from hkn.cand.forms import EligibilityListForm
 from hkn.cand import utils
 from hkn.cand.constants import *
+from hkn.cand.models import Challenge
+from request.utils import *
+from resume.models import Resume
 
 def portal(request):
     d = {}
@@ -40,17 +43,20 @@ def portal(request):
         if e.event_type != 'CANDMAND' or e.name.startswith('General Meeting'):
             d[e.event_type]['events'].append(e)
             d[e.event_type]['rsvp'].append(r)
-            d[e.event_type]['num_left'] -= 1
-            if d[e.event_type]['num_left'] == 0:
-                del d[e.event_type]['num_left']
+            if 'num_left' in d[e.event_type].keys():
+                d[e.event_type]['num_left'] -= 1
+                if d[e.event_type]['num_left'] == 0:
+                    del d[e.event_type]['num_left']
         
     events = Event.objects.order_by('start_time').filter_permissions(request.user).annotate_rsvp_count()
 
     d['upcoming_events'] = events.filter(start_time__gte = today, start_time__lt = week)
     d['challenges'] = person.mychallenges.all()
-    d['challenges_left'] = EVENT_REQUIRED_NUMBER['CHALLENGES'] - d['challenges'].count()
+    d['challenges_left'] = EVENT_REQUIRED_NUMBER['CHALLENGES'] - person.mychallenges.exclude(status=False).count()
     if d['challenges_left'] < EVENT_REQUIRED_NUMBER['CHALLENGES']:
         d['at_least_one_challenge'] = 1
+        if d['challenges_left'] <= 0:
+            d['challenges_left'] = 0
 
     for e in d['upcoming_events']:
         if rsvps.filter(event = e):
@@ -58,7 +64,7 @@ def portal(request):
         else:
             e.rsvped = False
             
-    d['submitted_resume'] = False
+    d['submitted_resume'] = Resume.objects.filter(person=person)
     d['completed_survey'] = False
     d['completed_quiz'] = False
 
@@ -66,7 +72,7 @@ def portal(request):
 
 def create_challenge_ajax(request):
     if request.POST:
-        officer = request.POST['offficer']
+        officer = request.POST['officer']
         challenge_name = request.POST['challenge_name']
         c = Challenge()
         c.name = challenge_name
@@ -74,6 +80,19 @@ def create_challenge_ajax(request):
         c.officer = officer
         c.save()
         return "success"
+
+def create_challenge(request):
+    if request.POST:
+        officer = Person.objects.get(id = request.POST['officer_id'])
+        challenge_name = request.POST['challenge_name']
+        c = Challenge()
+        c.name = challenge_name
+        c.candidate = request.user.person
+        c.officer = officer
+        c.save()
+        request_confirmation(c, request.user, Permission.objects.get(codename="hkn_officer"), officer)
+        request.user.message_set.create(message="Challenge created successfully")
+        return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
 
 @permission_required('info.group_vp')
 def upload_eligibility_list(request):

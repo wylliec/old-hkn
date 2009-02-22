@@ -5,16 +5,25 @@
 <span class="small checklist_done">[Done]</span>
 {% endif %}
 </h2>
-<form action="" method="post">
+<form action="{% url challenge-create %}" method="post">
 <table class="checklist"><tbody>
 {% if at_least_one_challenge %}
 <tr><th>Name of Challenge</th><th>Officer Name</th><th>Status</th></tr>
 {% endif %}
 {% for challenge in challenges %}
 <tr>
-  <td>{{ challenge.name }}</td><td><a href="{% url hkn.info.person-view challenge.officer.person.id %}">{{ challenge.officer.first_name }} {{ challenge.officer.last_name }}</a></td>
-  <td><span class="{{ challenge.get_status_class }}">[{{ challenge.get_status_string }}]</span></td>
-</tr>
+  <td>{{ challenge.name }}</td><td><a href="{% url info.person.view challenge.officer.id %}">{{ challenge.officer.first_name }} {{ challenge.officer.last_name }}</a></td>
+  <td>
+{% if challenge.status %}
+<span class="small checklist_done">[Confirmed]</span>
+{% else %}
+    {% ifequal challenge.status None %}
+<span class="small checklist_in_progress">[Pending]</span>
+    {% else %}
+<span class="small checklist_not_done">[Rejected]</span>
+    {% endifequal %}
+{% endif %}
+</td></tr>
 {% endfor %}
 </table>
 
@@ -24,6 +33,7 @@
   <label for="id_officer_query">Find Officer</label>
   <input type="text" class="ajaxinfo" autocomplete="off" name="officer_autocomplete" id="id_officer_query" value=""/>
   <label for="id_challenge_name">Challenge Name</label>
-  <input type="text" class="ajaxinfo" id="id_challenge_name" value=""/>
+  <input type="text" class="ajaxinfo" id="id_challenge_name" name="challenge_name" value=""/>
+  <input type="hidden" id="id_officer_id" class="ajaxinfo" name="officer_id" value=""/>
   <input id="challenge_submit" type="submit" value="Send Request">
 </div>

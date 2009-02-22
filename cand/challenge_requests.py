@@ -6,7 +6,7 @@ def get_challenge_metainfo(challenge, request):
 
     metainfo['title'] = "Approve Challenge"
     metainfo['links'] = [("", "")]
-    metainfo['confirmed'] = profile.is_approved
+    metainfo['confirmed'] = challenge.status
     metainfo['description'] = "Confirm %s %s's challenge" % (challenge.candidate.first_name, challenge.candidate.last_name)
 
     return metainfo

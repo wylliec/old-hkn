@@ -15,6 +15,7 @@ from hkn.event.rsvp.list import list_for_person
 
 from hkn.event.constants import EVENT_TYPE
 from hkn.event.rsvp.constants import RSVP_TYPE, TRANSPORT
+from hkn.info.constants import MEMBER_TYPE
 
 import datetime
 from string import atoi
@@ -113,6 +114,8 @@ def edit2(request, event_id = "-1"):
         if form.is_valid():
             rsvp = rsvp_from_form_instance(form, rsvp)
             rsvp.save()
+            if person.member_type == MEMBER_TYPE.CANDIDATE:
+                rsvp.request_confirmation()
             return HttpResponseRedirect("/event/rsvp/mine")
     else:
         if new:
@@ -146,6 +149,8 @@ def edit(request, event_id):
         if form.is_valid():
             rsvp = rsvp_from_form_instance(form, rsvp)
             rsvp.save()
+            if person.member_type == MEMBER_TYPE.CANDIDATE:
+                rsvp.request_confirmation()
             request.user.message_set.create(message="Successfully RSVPd for %s" % str(e.name))
             return HttpResponseRedirect(reverse("rsvp-list-for-person", kwargs={"person_id" :"me"}))
     else:
@@ -178,7 +183,10 @@ def edit_ajax(request, event_id):
         form = rsvp_form_instance(e, request.POST)
         if form.is_valid():
             rsvp = rsvp_from_form_instance(form, rsvp)
-            rsvp.save() 
+            rsvp.save()
+            #if user is a candidate, auto-request VP for confirmation
+            if person.member_type == MEMBER_TYPE.CANDIDATE:
+                rsvp.request_confirmation()
             return HttpResponse("rsvpCallback(%d);" % e.id, mimetype="text/javascript", status=200)
     else:
         if new_rsvp:
