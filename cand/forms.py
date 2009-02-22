@@ -6,7 +6,7 @@ from hkn.cand.models import EligibilityListEntry, CandidateApplication
 from course.models import Course
 
 def application_form_for_candidate(person, data=None):
-    if not data:
+    if not data and person.phone:
         data = {}
         data['phone']               = person.phone
         data['local_addr']          = person.extendedinfo.local_addr
@@ -22,11 +22,10 @@ def application_form_for_candidate(person, data=None):
             data['committee_studrel']   = 1+person.candidateinfo.candidateapplication.committees.index('studrel')
             data['committee_tutor']     = 1+person.candidateinfo.candidateapplication.committees.index('tutor')
             data['question_activities'] = person.candidateinfo.candidateapplication.questions[0][1]
-        print "\n\n\n\n\n\n\n\n\n\n\n\n"
-        print data.keys()
-    
-    
-    form = CandidateApplicationForm(person, data)
+    if data:
+        form = CandidateApplicationForm(person, data)
+    else:
+        form = CandidateApplicationForm(person)
     return form
 
 class CandidateApplicationForm(forms.Form):
