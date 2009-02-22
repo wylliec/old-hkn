@@ -1,7 +1,15 @@
-<h2 class="cportal">Challenges <span class="small checklist_in_progress">[Need {{challenges_left}} more]</span></h2>
+<h2 class="cportal">Challenges 
+{% if challenges_left %}
+<span class="small checklist_in_progress">[Need {{challenges_left}} more]</span>
+{% else %}
+<span class="small checklist_done">[Done]</span>
+{% endif %}
+</h2>
 <form action="" method="post">
 <table class="checklist"><tbody>
+{% if at_least_one_challenge %}
 <tr><th>Name of Challenge</th><th>Officer Name</th><th>Status</th></tr>
+{% endif %}
 {% for challenge in challenges %}
 <tr>
   <td>{{ challenge.name }}</td><td><a href="{% url hkn.info.person-view challenge.officer.person.id %}">{{ challenge.officer.first_name }} {{ challenge.officer.last_name }}</a></td>
@@ -18,5 +26,4 @@
   <label for="id_challenge_name">Challenge Name</label>
   <input type="text" class="ajaxinfo" id="id_challenge_name" value=""/>
   <input id="challenge_submit" type="submit" value="Send Request">
-  <div
 </div>

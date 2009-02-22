@@ -22,27 +22,35 @@ def portal(request):
     week = today + datetime.timedelta(7)
 
     person = request.user.person
-    confirmed_events = person.rsvp_set.get_confirmed_events(person)
-    rsvps = person.rsvp_set.filter(event__start_time__gte = today, event__start_time__lt = week)
+    #confirmed_events = person.rsvp_set.get_confirmed_events(person)
+    #rsvps = person.rsvp_set.filter(event__start_time__gte = today, event__start_time__lt = week)
+    rsvps = person.rsvp_set.all()
     
     for event_type in EVENT_TYPE.values():
         if event_type in EVENT_REQUIRED_NUMBER:
             d[event_type] = { 'events' : [],
-                              'num_left' : EVENT_REQUIRED_NUMBER[event_type]
+                              'num_left' : EVENT_REQUIRED_NUMBER[event_type],
+                              'rsvp' : [],
                               }
             
     
-    for e in confirmed_events:
-        d[e.event_type]['events'].append(e)
-        d[e.event_type]['num_left'] -= 1
-        if d[e.event_type]['num_left'] == 0:
-            del d[e.event_type]['num_left']
+    #for e in confirmed_events:
+    for r in rsvps:
+        e = r.event
+        if e.event_type != 'CANDMAND' or e.name.startswith('General Meeting'):
+            d[e.event_type]['events'].append(e)
+            d[e.event_type]['rsvp'].append(r)
+            d[e.event_type]['num_left'] -= 1
+            if d[e.event_type]['num_left'] == 0:
+                del d[e.event_type]['num_left']
         
     events = Event.objects.order_by('start_time').filter_permissions(request.user).annotate_rsvp_count()
 
     d['upcoming_events'] = events.filter(start_time__gte = today, start_time__lt = week)
     d['challenges'] = person.mychallenges.all()
     d['challenges_left'] = EVENT_REQUIRED_NUMBER['CHALLENGES'] - d['challenges'].count()
+    if d['challenges_left'] < EVENT_REQUIRED_NUMBER['CHALLENGES']:
+        d['at_least_one_challenge'] = 1
 
     for e in d['upcoming_events']:
         if rsvps.filter(event = e):

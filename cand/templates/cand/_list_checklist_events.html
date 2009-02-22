@@ -1,56 +1,125 @@
+
 <tr>
   <th>Big Fun Activity</th>
   <td>
     {% if BIGFUN.num_left %}
-    <span class="checklist_not_done">[Need {{BIGFUN.num_left}}]</span>
+    <span class="checklist_in_progress">[Need {{BIGFUN.num_left}} more]</span>
     {% else %}
     <span class="checklist_done">[Done]</span>
     {% endif %}
   </td>
 </tr>
-{% for event in BIGFUN.events %}
-<tr><td><a href="{% url hkn.event.event-view event.slug %}">{{ event.name }}</a></td></tr>
+{% for rsvp in BIGFUN.rsvp %}
+<tr><td><a href="{% url event-view rsvp.event.slug %}">{{ rsvp.event.name }}</a></td>
+<td>
+{% if rsvp.vp_confirm %}
+<span class="small checklist_done">[Confirmed]</span>
+{% else %}
+    {% ifequal rsvp.vp_confirm None %}
+<span class="small checklist_in_progress">[Pending]</span>
+    {% else %}
+<span class="small checklist_not_done">[Rejected]</span>
+    {% endifequal %}
+{% endif %}
+</td></tr>
 {% endfor %}
 
 <tr>
   <th>Other Fun Events</th>
   <td>
     {% if FUN.num_left %}
-    <span class="checklist_not_done">[Need {{FUN.num_left}}]</span>
+    <span class="checklist_in_progress">[Need {{FUN.num_left}} more]</span>
     {% else %}
     <span class="checklist_done">[Done]</span>
     {% endif %}
   </td>
 </tr>
-{% for event in FUN.events %}
-<tr><td><a href="{% url hkn.event.event-view event.slug %}">{{ event.name }}</a></td></tr>
+{% for rsvp in FUN.rsvp %}
+<tr><td><a href="{% url event-view rsvp.event.slug %}">{{ rsvp.event.name }}</a></td>
+<td>
+{% if rsvp.vp_confirm %}
+<span class="small checklist_done">[Confirmed]</span>
+{% else %}
+    {% ifequal rsvp.vp_confirm None %}
+<span class="small checklist_in_progress">[Pending]</span>
+    {% else %}
+<span class="small checklist_not_done">[Rejected]</span>
+    {% endifequal %}
+{% endif %}
+</td></tr>
 {% endfor %}
-
 
 <tr>
   <th>Community Service Event</th>
   <td>
     {% if COMSERV.num_left %}
-    <span class="checklist_not_done">[Need {{COMSERV.num_left}}]</span>
+    <span class="checklist_in_progress">[Need {{COMSERV.num_left}} more]</span>
     {% else %}
     <span class="checklist_done">[Done]</span>
     {% endif %}
   </td>
 </tr>
-{% for event in COMSERV.events %}
-<tr><td><a href="{% url hkn.event.event-view event.slug %}">{{ event.name }}</a></td></tr>
+{% for rsvp in COMSERV.rsvp %}
+<tr><td><a href="{% url event-view rsvp.event.slug %}">{{ rsvp.event.name }}</a></td>
+<td>
+{% if rsvp.vp_confirm %}
+<span class="small checklist_done">[Confirmed]</span>
+{% else %}
+    {% ifequal rsvp.vp_confirm None %}
+<span class="small checklist_in_progress">[Pending]</span>
+    {% else %}
+<span class="small checklist_not_done">[Rejected]</span>
+    {% endifequal %}
+{% endif %}
+</td></tr>
 {% endfor %}
 
 <tr>
   <th>Department Service Event</th>
   <td>
     {% if DEPSERV.num_left %}
-    <span class="checklist_not_done">[Need {{DEPSERV.num_left}}]</span>
+    <span class="checklist_in_progress">[Need {{DEPSERV.num_left}} more]</span>
     {% else %}
     <span class="checklist_done">[Done]</span>
     {% endif %}
   </td>
 </tr>
-{% for event in DEPSERV.events %}
-<tr><td><a href="{% url hkn.event.event-view event.slug %}">{{ event.name }}</a></td></tr>
+{% for rsvp in DEPSERV.rsvp %}
+<tr><td><a href="{% url event-view rsvp.event.slug %}">{{ rsvp.event.name }}</a></td>
+<td>
+{% if rsvp.vp_confirm %}
+<span class="small checklist_done">[Confirmed]</span>
+{% else %}
+    {% ifequal rsvp.vp_confirm None %}
+<span class="small checklist_in_progress">[Pending]</span>
+    {% else %}
+<span class="small checklist_not_done">[Rejected]</span>
+    {% endifequal %}
+{% endif %}
+</td></tr>
+{% endfor %}
+
+<tr>
+  <th>General Meetings</th>
+  <td>
+    {% if CANDMAND.num_left %}
+    <span class="checklist_in_progress">[Need {{CANDMAND.num_left}} more]</span>
+    {% else %}
+    <span class="checklist_done">[Done]</span>
+    {% endif %}
+  </td>
+</tr>
+{% for rsvp in CANDMAND.rsvp %}
+<tr><td><a href="{% url event-view rsvp.event.slug %}">{{ rsvp.event.name }}</a></td>
+<td>
+{% if rsvp.vp_confirm %}
+<span class="small checklist_done">[Confirmed]</span>
+{% else %}
+    {% ifequal rsvp.vp_confirm None %}
+<span class="small checklist_in_progress">[Pending]</span>
+    {% else %}
+<span class="small checklist_not_done">[Rejected]</span>
+    {% endifequal %}
+{% endif %}
+</td></tr>
 {% endfor %}

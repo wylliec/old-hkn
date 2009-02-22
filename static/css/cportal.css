@@ -14,6 +14,9 @@ table.checklist {
 	margin: 0em auto 1em 1em;
 	border: 1px;
 }
+table.checklist td {
+        vertical-align: middle;
+}
 h2.cportal {
 	margin-top: 1em;	
 }

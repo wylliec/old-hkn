@@ -175,7 +175,6 @@ INSTALLED_APPS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'hkn.main.pam_backend.PamBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 

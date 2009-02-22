@@ -1,3 +1,4 @@
+
 function toggleExamAdvanced(toggle) {
     if(toggle) {
         $('#advanced_toggle_show').hide();            
@@ -10,6 +11,7 @@ function toggleExamAdvanced(toggle) {
     }            
 }
 
+
 register_officer_listeners = function() { 
 	$('#id_officer_query').autocomplete('/info/officer_autocomplete/');
 
@@ -19,7 +21,7 @@ register_officer_listeners = function() {
 	d['challenge_name'] = $('id_challenge_name').value;
 	
 	
-	$('#id_challenge_submit').click(function (e) {
+	$('#challenge_submit').click(function (e) {
 	    //send_ajaxinfo('', '#');
 	    $.post('/cand/portal/create_challenge_ajax', d, query_confirm);
 	});
@@ -42,8 +44,6 @@ register_officer_listeners = function() {
     toggleExamAdvanced(false);
 };
 
-
-
 $(document).ready( function() {
-  register_exam_listeners();	  
+  register_officer_listeners();	  
 });
