@@ -52,7 +52,7 @@ class RegistrationForm(forms.Form):
     password2 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict, render_value=False),
                                 label=_(u'Password (again)'))
     hkn_member = forms.BooleanField(required=False, label="HKN Member", help_text="Check this box if you are a member of HKN")
-    hkn_candidate = forms.BooleanField(required=False, label="HKN Candidate", help_text="Check this box if you are a candidate of HKN")
+    hkn_candidate = forms.BooleanField(required=False, label="HKN Candidate", help_text="Check this box if you are a new candidate of HKN")
     
     USERNAME_RE = re.compile("[A-Za-z0-9_]")
     def clean_username(self):
