@@ -1,11 +1,22 @@
 from django.contrib import admin
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
+from django import forms
 
 from hkn.main.models import HKN
 from hkn.event.models import Event
 
+class EventAdminForm(forms.ModelForm):
+    class Meta:
+        model = Event
+
+    def clean(self):
+        if self.cleaned_data['end_time'] < self.cleaned_data['start_time']:
+            raise forms.ValidationError("End date can't be earlier than start date")
+        return self.cleaned_data
+
 class EventAdmin(admin.ModelAdmin):
+    form = EventAdminForm
     list_display = ('name', 'location', 'start_time', 'end_time')
     fieldsets = (
         ('Basic', {'fields' : ('name', 'location', 'description', 'start_time', 'end_time', 'event_type')}),
