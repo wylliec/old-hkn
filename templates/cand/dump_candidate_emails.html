@@ -1,0 +1,2 @@
+{% for entry in entries %}{% with entry.entry as e %}{{e.first_name}},{{e.last_name}},{{e.email_address}}{% endwith %}
+{% endfor %}
