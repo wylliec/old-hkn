@@ -68,6 +68,14 @@ class Semester(object):
     
     def abbr(self):
         return self.semester
+
+    def __cmp__(self, other):
+        if not isinstance(other, Semester):
+            return -1
+        e = cmp(self.year, other.year)
+        if e != 0:
+            return e
+        return cmp(_SEASON_MONTHS[self.season], _SEASON_MONTHS[other.season])
     
     def verbose_description(self):
         return "%s %d" % (self.season_name.capitalize(), self.year)
