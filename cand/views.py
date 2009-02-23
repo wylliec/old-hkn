@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 
 from hkn.event.models import *
 from hkn.event.constants import *
-from hkn.cand.forms import EligibilityListForm, CandidateApplicationForm, application_form_for_candidate
+from hkn.cand.forms import EligibilityListForm, CandidateApplicationForm
 from hkn.cand import utils
 from hkn.cand.constants import *
 from hkn.cand.models import Challenge
@@ -117,15 +117,13 @@ def process_eligibility_list(request):
 @permission_required('main.hkn_candidate')
 def application(request):
     if request.POST:
-        form = application_form_for_candidate(request.user.person,request.POST)
+        form = CandidateApplicationForm.get_for_person(request.user.person,request.POST)
         if form.is_valid():
             form.save_for_person()
             request.user.message_set.create(message="Application submitted successfully")
             return HttpResponseRedirect(reverse("hkn.cand.views.portal"))
         
     else:
-        form = application_form_for_candidate(request.user.person)
-
-    form.bind_person(request.user.person)
+        form = CandidateApplicationForm.get_for_person(request.user.person)
 
     return render_to_response("cand/application.html", {'form' : form, 'person' : request.user.person}, context_instance=RequestContext(request))

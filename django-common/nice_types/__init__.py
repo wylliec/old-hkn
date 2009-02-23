@@ -78,6 +78,7 @@ class QueryDictWrapper:
         return self.data.getlist(key)
 
 
+
 class EnumType( object ):
     """
     Enumerated-values class.
@@ -142,4 +143,5 @@ class EnumType( object ):
 
     def __str__(self):
         return self._names.__str__()
+
 

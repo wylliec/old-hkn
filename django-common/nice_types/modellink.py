@@ -15,7 +15,7 @@ class ModelLinkWidget(forms.HiddenInput):
         link = '%s%s/%s/%d' % (self.admin_site.root_path,
                                  self.original_object._meta.app_label, 
                                  self.original_object._meta.module_name,
-                                 self.original_object.pk)
+                                 self.original_object.id)
         return super(ModelLinkWidget, self).render(
             name, value, attrs) + mark_safe('<a href="%s">%s</a>' % (link, escape(unicode(self.original_object))))
                                                                 

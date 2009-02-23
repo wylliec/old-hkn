@@ -2,22 +2,9 @@
 import datetime
 from string import atoi
 
+from hkn.main.property import PROPERTIES
+
 from nice_types.otherchoicefield import OtherSelectWidget, OtherChoiceField
-
-"""The semester module handles semester related stuff.
-
-In the database, semesters are stored as strings of the form:
-    {ss}{yy}
-    
-
-Where ss is either sp or fa (for spring and fall, respectively) 
-and yy is the last two digits of the year
-
-e.g., fa07, sp08, etc.
-
-This module provides some helper functions to get the current semester,
-next semester, and semester start/end times.
-"""
 
 _SEASON_MONTHS = {"sp" : 1, "su" : 6, "fa" : 8}
 _SEASON_END_MONTHS = {"sp" : 5, "su" : 7, "fa" : 12}
@@ -72,6 +59,12 @@ class Semester(object):
 
     def __str__(self):
         return self.abbr()
+
+    def __unicode__(self):
+        return unicode(str(self))
+
+    def __repr__(self):
+        return '<Semester: %s>' % str(self)
     
     def abbr(self):
         return self.semester
@@ -109,8 +102,6 @@ class Semester(object):
 
         
 def current_semester():
-    """Gets the current semester, in ssyy format, such as fa07, sp08"""
-    from hkn.main.property import PROPERTIES
     return Semester(PROPERTIES.semester)
 
 def current_year():
@@ -165,25 +156,36 @@ _GRAD_SEASON_CHOICES = (("sp", "Spring"), ("fa", "Fall"))
 _GRAD_YEAR_CHOICES = [(x, x) for x in range(2015, 2005, -1)]
 
 class SplitSeasonYearWidget(forms.MultiWidget):
-    def __init__(self, attrs=None):
+    def __init__(self, seasons, years, attrs=None):
         widgets = (
-            forms.Select(choices=_GRAD_SEASON_CHOICES, attrs=attrs),
-            OtherSelectWidget(choices=_GRAD_YEAR_CHOICES, attrs=attrs),
+            forms.Select(choices=seasons, attrs=attrs),
+            OtherSelectWidget(choices=years, attrs=attrs),
         )
         super(SplitSeasonYearWidget, self).__init__(widgets, attrs)
 
     def decompress(self, value):
-        if value:
-            return [value.season_name, value.year]
-        return [None, None]
+        if not value:
+            return [None, None]
+        elif not isinstance(value, Semester):
+            raise ValueError("Value is not a Semester object")
+        return [value.season, str(value.year)]
+
+    def value_from_datadict(self, data, files, name):
+        if isinstance(data.get(name, None), Semester):
+            for i, subvalue in enumerate(self.decompress(data[name])):
+                data['%s_%d' % (name, i)] = subvalue
+        ret = super(SplitSeasonYearWidget, self).value_from_datadict(data, files, name)
+        return ret
 
 class SemesterSplitFormField(forms.MultiValueField):
     def __init__(self, *args, **kwargs):
+        seasons = kwargs.pop('seasons', _GRAD_SEASON_CHOICES)
+        years = kwargs.pop('years', _GRAD_YEAR_CHOICES)
         fields = (
-            forms.ChoiceField(choices=_GRAD_SEASON_CHOICES),
-            OtherChoiceField(choices=_GRAD_YEAR_CHOICES, field_class=forms.IntegerField(min_value=1900, max_value=2100)),
+            forms.ChoiceField(choices=seasons),
+            OtherChoiceField(choices=years, field_class=forms.IntegerField(min_value=1900, max_value=2100)),
         )
-        self.widget = SplitSeasonYearWidget
+        self.widget = SplitSeasonYearWidget(seasons, years)
         super(SemesterSplitFormField, self).__init__(fields, *args, **kwargs)
 
     def compress(self, data_list):
@@ -200,4 +202,4 @@ class SemesterFormField(forms.CharField):
         try:
             return Semester(value)
         except InvalidSemester, e:
-            raise forms.ValidationError("Semester is invalid; ensure the format is similar to 'fa05' or 'sp08'")
+            raise forms.ValidationError("Semester is invalid")
