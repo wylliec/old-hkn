@@ -44,8 +44,7 @@ IMAGES_PATH = os.path.expanduser("~/hkn-website-images/")
 # Example: "http://media.lawrence.com"
 MEDIA_URL = '/files/'
 STATIC_PREFIX = '/static/'
-STATIC_URL = '/static/'
-
+STATIC_URL= '/static/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
@@ -177,6 +176,7 @@ INSTALLED_APPS = (
 )
 
 AUTHENTICATION_BACKENDS = (
+    'hkn.main.pam_backend.PamBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
