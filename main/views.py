@@ -35,7 +35,7 @@ def main(request):
         d["infoboxes"] = infobox.tutors(request, tutors)        
     except NoTutorScheduleException, e:
         d['hide_tutoring'] = True
-    
+
     d['content'] = mark_safe(FlatPage.objects.get(url="landing-page").content)
 
     return render_to_response("main/main.html", d, context_instance=RequestContext(request))
