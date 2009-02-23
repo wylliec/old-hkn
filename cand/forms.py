@@ -106,11 +106,11 @@ class CandidateApplicationForm(forms.Form):
         return form
         
     def save_for_person(self):
-        self.person.extendedinfo.sid = self.cleaned_data['aim_sn']
         self.person.phone   = self.cleaned_data['phone']
         self.person.save()
 
         extendedinfo = self.person.extendedinfo
+        extendedinfo.aim_sn         = self.cleaned_data['aim_sn']
         extendedinfo.local_addr     = self.cleaned_data['local_addr']         
         extendedinfo.perm_addr      = self.cleaned_data['perm_addr']          
         extendedinfo.grad_semester  = self.cleaned_data['grad_semester']      

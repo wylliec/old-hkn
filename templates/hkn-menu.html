@@ -45,7 +45,7 @@
 {% if not perms.main.hkn_officer %}
 <li id="cand" class="navigation_toplevel_item">
 	<a href="#">
-		Portal
+		Candidate Portal
 	</a>
 </li> 
 {% endif %}
@@ -250,17 +250,12 @@
 <ul class="navigation_sublevel">
 <li>
         <a href="{% url cand-portal %}" class="navigation_sublevel_item">
-        Portal Main
+        Portal Home
         </a>
 </li>
 <li>
         <a href="{% url cand-application %}" class="navigation_sublevel_item">
         Application Form
-        </a>
-</li>
-<li>
-        <a href="{% url person-list-category category="candidates" %}" class="navigation_sublevel_item">
-        Candidates
         </a>
 </li>
 </ul>
