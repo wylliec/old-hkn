@@ -223,8 +223,8 @@ class CandidateRegistrationForm(forms.Form):
         answers = []
         for qid, prompt in CandidateRegistrationForm.QUESTIONS:
             key = 'question_' + qid
-            answers.append((qid, prompt, self.cleaned_data.get(key, "")))
-        self.cleaned_data['questions'] = tuple(answers)
+            answers.append((qid,( prompt, self.cleaned_data.get(key, ""))))
+        self.cleaned_data['questions'] = dict(answers)
 
         return self.cleaned_data
 
