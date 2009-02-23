@@ -5,12 +5,12 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
+from hkn.cand.models import ProcessedEligibilityListEntry, Challenge
 from hkn.event.models import *
 from hkn.event.constants import *
 from hkn.cand.forms import EligibilityListForm, CandidateApplicationForm
 from hkn.cand import utils
 from hkn.cand.constants import *
-from hkn.cand.models import Challenge
 from request.utils import *
 from resume.models import Resume
 
@@ -113,6 +113,11 @@ def process_eligibility_list(request):
             utils.process_eligibility_list()
             request.user.message_set.create(message="Eligibility list processed; go to admin view")
     return render_to_response("cand/process_eligibility_list.html", context_instance=RequestContext(request))
+
+@permission_required('info.group_vp')
+def dump_candidate_emails(request, category):
+    entries = ProcessedEligibilityListEntry.objects.filter(category__iexact=category.lower())
+    return render_to_response("cand/dump_candidate_emails.html", {'entries' : entries},  context_instance=RequestContext(request), mimetype="text/plain")
 
 @permission_required('main.hkn_candidate')
 def application(request):
