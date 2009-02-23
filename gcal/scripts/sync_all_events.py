@@ -13,11 +13,16 @@ def sync_event(event):
     event.save()
 
 def main():
-#    for event in Event.objects.all()[:1]:
-#        sync_event(event)
-    sync_event(Event.objects.get(location__icontains="hisham"))
+    for event in Event.objects.all()[:1]:
+        sync_event(event)
+#    sync_event(Event.objects.get(location__icontains="hisham"))
 
 if __name__ == "__main__":
-    main()
-
+    try:
+        main()
+    except Exception, e:
+        import sys, pdb
+        if sys.argv[1] == "-d":
+            pdb.post_mortem(sys.exc_info()[2])
+        
 

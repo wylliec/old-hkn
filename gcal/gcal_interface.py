@@ -73,7 +73,10 @@ def update_event(event):
     ids = []
     for gcal_event in get_gcal_events(event):
         gcal_event = populate_gcal_event(event, gcal_event)
-        updated_event = calendar_service.UpdateEvent(gcal_event.GetEditLink().href, gcal_event)
+        href = gcal_event.GetEditLink().href
+        #href = "/".join(gcal_event.GetEditLink().href.split("/")[:-1])
+        updated_event = calendar_service.UpdateEvent(href, gcal_event)
+        #updated_event = calendar_service.UpdateEvent(gcal_event, href)
         ids.append(updated_event.id.text)
     return ":::".join(ids)
 
