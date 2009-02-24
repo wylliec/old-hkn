@@ -55,3 +55,25 @@ def infobox(request, event_id):
 def calendar(request):
     d = {'ical' : calendars.calendars[0].get_ical_link()}
     return render_to_response('event/calendar.html', d, context_instance = RequestContext(request))
+
+
+def event_autocomplete(request, manager):
+    def iter_results(events):
+        if events:
+            for e in events:
+                yield '%s|%s\n' % (e.name, e.id)
+    
+    if not request.GET.get('q'):
+        return HttpResponse(mimetype='text/plain')
+    
+    q = request.GET.get('q')
+    limit = request.GET.get('limit', 15)
+    try:
+        limit = int(limit)
+    except ValueError:
+        return HttpResponseBadRequest() 
+
+    if manager == 'current_semester':
+        events = Event.semester.ft_query(q)[:limit]
+    return HttpResponse(iter_results(events), mimetype='text/plain')
+

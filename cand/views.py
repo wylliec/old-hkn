@@ -14,8 +14,6 @@ from hkn.cand.constants import *
 from request.utils import *
 from resume.models import Resume
 
-CURRENT_SEMESTER = "sp09"
-
 def portal(request):
     d = {}
     today = datetime.date.today()
@@ -149,9 +147,11 @@ def event_confirmation(request):
         r.vp_comment = "RSVP added by the VP"
         r.save()
 
+    today = datetime.date.today()
     d = {}
-    events = Event.past.filter(semester=CURRENT_SEMESTER)
+    events = Event.semester.filter(start_time__lte=today)
+    d['events'] = {}
     for e in events:
-        d[e.name] = RSVP.objects.get_confirmables_for_event(e)
+        d['events'][e.name] = RSVP.objects.get_confirmables_for_event(e)
     return render_to_response("cand/event_confirmation.html", d, context_instance=RequestContext(request))
 

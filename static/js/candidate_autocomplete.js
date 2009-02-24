@@ -1,4 +1,4 @@
-register_autocomplete = function() { 
+register_candidate_autocomplete = function() { 
     var fill_candidate_id = function (e, data, formatted) {
 	$('#id_candidate_id').attr("value", data[1]);
     }
@@ -7,5 +7,5 @@ register_autocomplete = function() {
 };
 
 $(document).ready( function() {
-  register_autocomplete();	  
+  register_candidate_autocomplete();	  
 });

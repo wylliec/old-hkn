@@ -1,35 +1,39 @@
 {% extends "base.html" %}
 
-{% block subtitle%} VP Confirm {% endblock %}
+{% block subtitle%} VP Confirm Page {% endblock %}
 
 {% block js %}
 {{block.super}}
 <script type="text/javascript" src="/static/js/candidate_autocomplete.js"></script>
+<script type="text/javascript" src="/static/js/event_autocomplete.js"></script>
 {% endblock %}
 
 {% block content %}
-
-{% for event_name, rsvps in events %}
-<div>
-<div>{{event_name}</div>
-<ul>
-{% for r in rsvps %}
-<li>
-{{r.person}} - Status: {% if r.vp_confirm %}Confirmed{% else %}Unconfirmed{% endif %}
-</li>
-{% endfor %}
-</ul>
-</div>
 
 <form id="rsvp_create" method="POST">
   <p> Create Confirmed RSVP for Candidate </p>
   <label for="id_candidate_query">Find Candidate</label>
   <input type="text" class="ajaxinfo" autocomplete="off" name="candidate_autocomplete" id="id_candidate_query" value=""/>
   <input type="hidden" id="id_candidate_id" class="ajaxinfo" name="candidate_id" value=""/>
-  <input type="hidden" id="id_event_id" name="event_id" value="{{e.name}}" />
+  <label for="id_event_query">Find Event</label>
+  <input type="text" class="ajaxinfo" autocomplete="off" name="event_autocomplete" id="id_event_query" value=""/>
+  <input type="hidden" id="id_event_id" class="ajaxinfo" name="event_id" value=""/>
   <input id="rsvp_submit" type="submit" value="Create">
 </form>
 
+{% for event_name, rsvps in events.items %}
+<div>
+<b>{{event_name}}</b>
+<ul>
+{% for r in rsvps %}
+<li>
+{{r.person.name}} - Status: {% if r.vp_confirm %}Confirmed{% else %}Unconfirmed{% endif %}
+</li>
+{% endfor %}
+</ul>
+</div>
+
+<br />
 {% endfor %}
 
 {% endblock %}

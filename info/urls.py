@@ -24,5 +24,5 @@ urlpatterns = patterns('',
 #        url(r'^tutor-infobox/(?P<person_id>\d+)/$', 'hkn.info.infobox.tutor', name="person-tutor-infobox"), 
 
         url(r'^officer_autocomplete/$', 'hkn.info.views.person_autocomplete', {'member_type': 'all_officers'}, name='officer-autocomplete'),
-        url(r'^candidate_autocomplete/$', 'hkn.info.views.person_autocomplete', {'member_type': 'canddiates'}, name='candidate-autocomplete'),
+        url(r'^candidate_autocomplete/$', 'hkn.info.views.person_autocomplete', {'member_type': 'candidates'}, name='candidate-autocomplete'),
     )					    
