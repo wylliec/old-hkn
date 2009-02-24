@@ -2,7 +2,7 @@ import datetime
 from django.contrib.auth.decorators import permission_required 
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseBadRequest
 from django.core.urlresolvers import reverse
 
 from hkn.cand.models import ProcessedEligibilityListEntry, Challenge
@@ -13,6 +13,8 @@ from hkn.cand import utils
 from hkn.cand.constants import *
 from request.utils import *
 from resume.models import Resume
+
+CURRENT_SEMESTER = "sp09"
 
 def portal(request):
     d = {}
@@ -137,15 +139,18 @@ def application(request):
 def event_confirmation(request):
     if request.POST:                
         r = RSVP()
-        r.event = get_object_or_404(Event, int(request.POST['event_id']))
-        r.person = get_object_or_404(Person, int(request.POST['candidate_id']))
+        try:
+            r.event = get_object_or_404(Event, int(request.POST['event_id']))
+            r.person = get_object_or_404(Person, int(request.POST['candidate_id']))
+        except:
+            return HttpResponseBadRequest("Invalid input for candidate: " + request.POST['candidate_info'])
         r.transport = -1
         r.vp_confirm = True
         r.vp_comment = "RSVP added by the VP"
         r.save()
 
     d = {}
-    events = Event.past.filter(semester="sp09")
+    events = Event.past.filter(semester=CURRENT_SEMESTER)
     for e in events:
         d[e.name] = RSVP.objects.get_confirmables_for_event(e)
     return render_to_response("cand/event_confirmation.html", d, context_instance=RequestContext(request))
