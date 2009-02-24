@@ -135,13 +135,13 @@ def application(request):
 
 @permission_required('info.group_vp')
 def event_confirmation(request):
-    if request.POST:                
-        r = RSVP()
+    if request.POST:
         try:
-            r.event = get_object_or_404(Event, int(request.POST['event_id']))
-            r.person = get_object_or_404(Person, int(request.POST['candidate_id']))
+            r = RSVP()
+            r.event = get_object_or_404(Event, pk=int(request.POST['event_id']))
+            r.person = get_object_or_404(Person, pk=int(request.POST['candidate_id']))
         except:
-            return HttpResponseBadRequest("Invalid input for candidate: " + request.POST['candidate_info'])
+            return HttpResponseBadRequest("Invalid input for candidate: " + request.POST)
         r.transport = -1
         r.vp_confirm = True
         r.vp_comment = "RSVP added by the VP"
