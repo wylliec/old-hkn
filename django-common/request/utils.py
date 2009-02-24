@@ -17,6 +17,6 @@ def request_confirmation(confirm_object, requestor, permission=None, permission_
     try:
         return Request.objects.get(content_type__id = ctype.id, object_id = confirm_object.id, requestor=requestor, permission=permission, permission_user = permission_user)
     except Request.DoesNotExist:
-        r = Request(content_type = ctype, object_id = confirm_object.id, requestor=requestor, permission=permission)
+        r = Request(content_type = ctype, object_id = confirm_object.id, requestor=requestor, permission=permission, permission_user=permission_user)
         r.save()
     return r

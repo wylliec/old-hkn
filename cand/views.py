@@ -90,7 +90,7 @@ def create_challenge(request):
         c.candidate = request.user.person
         c.officer = officer
         c.save()
-        request_confirmation(c, request.user, Permission.objects.get(codename="hkn_officer"), officer)
+        request_confirmation(c, request.user, permission_user=officer.user_ptr)
         request.user.message_set.create(message="Challenge created successfully")
         return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
 
