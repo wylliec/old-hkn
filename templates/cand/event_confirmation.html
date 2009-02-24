@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block subtitle%} VP Confirm {% endblock %}
+
+{% block js %}
+{{block.super}}
+<script type="text/javascript" src="/static/js/candidate_autocomplete.js"></script>
+{% endblock %}
+
+{% block content %}
+
+{% for event_name, rsvps in events %}
+<div>
+<div>{{event_name}</div>
+<ul>
+{% for r in rsvps %}
+<li>
+{{r.person}} - Status: {% if r.vp_confirm %}Confirmed{% else %}Unconfirmed{% endif %}
+</li>
+{% endfor %}
+</ul>
+</div>
+
+<form id="rsvp_create" method="POST">
+  <p> Create Confirmed RSVP for Candidate </p>
+  <label for="id_candidate_query">Find Candidate</label>
+  <input type="text" class="ajaxinfo" autocomplete="off" name="candidate_autocomplete" id="id_candidate_query" value=""/>
+  <input type="hidden" id="id_candidate_id" class="ajaxinfo" name="candidate_id" value=""/>
+  <input type="hidden" id="id_event_id" name="event_id" value="{{e.name}}" />
+  <input id="rsvp_submit" type="submit" value="Create">
+</form>
+
+{% endfor %}
+
+{% endblock %}

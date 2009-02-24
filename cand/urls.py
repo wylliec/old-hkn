@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^application/$', 'hkn.cand.views.application', name='cand-application'),
     url(r'^portal/create_challenge_ajax/$', 'hkn.cand.views.create_challenge_ajax', name='challenge-create-ajax'),
     url(r'^portal/create_challenge/$', 'hkn.cand.views.create_challenge', name='challenge-create'),
+    url(r'^vp_event_confirm/$', 'hkn.cand.views.event_confirmation', name='vp-event-confirm'),
     )					    

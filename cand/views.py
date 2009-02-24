@@ -132,3 +132,21 @@ def application(request):
         form = CandidateApplicationForm.get_for_person(request.user.person)
 
     return render_to_response("cand/application.html", {'form' : form, 'person' : request.user.person}, context_instance=RequestContext(request))
+
+@permission_required('info.group_vp')
+def event_confirmation(request):
+    if request.POST:                
+        r = RSVP()
+        r.event = get_object_or_404(Event, int(request.POST['event_id']))
+        r.person = get_object_or_404(Person, int(request.POST['candidate_id']))
+        r.transport = -1
+        r.vp_confirm = True
+        r.vp_comment = "RSVP added by the VP"
+        r.save()
+
+    d = {}
+    events = Event.past.filter(semester="sp09")
+    for e in events:
+        d[e.name] = RSVP.objects.get_confirmables_for_event(e)
+    return render_to_response("cand/event_confirmation.html", d, context_instance=RequestContext(request))
+
