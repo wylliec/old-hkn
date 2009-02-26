@@ -7,7 +7,7 @@
 <h1>{{ object.title }}</h1>
 {% if object.description %}<p>{{ object.description }}</p>{% endif %}
 <div class="photo-gallery">
-	{% ajaxgrid object.public "photologue/_simple_cell.html" 4 %}
+	{% ajaxgrid object.public "photologue/_simple_cell.html" 500 %}
 </div>
 
 {{ object.photo_count }} photos in gallery.
