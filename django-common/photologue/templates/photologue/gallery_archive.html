@@ -11,7 +11,7 @@
     {% for gallery in latest %}
     <div class="photo-gallery">
         <h2><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></h2>
-		{% ajaxgrid gallery.sample|slice:sample_size "photologue/_simple_cell.html" 4 %}
+		{% ajaxgrid gallery.sample|slice:sample_size "photologue/_simple_cell.html" %}
     </div>
     {% endfor %}
 {% else %}

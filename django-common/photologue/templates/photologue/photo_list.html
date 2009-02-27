@@ -8,7 +8,7 @@
 <h1>All Photos</h1>
 
 {% if object_list %}
-	{% ajaxgrid object_list "photologue/_simple_cell.html" 4 %}
+	{% ajaxgrid object_list "photologue/_simple_cell.html" %}
 {% else %}
 <p>No photos were found.</p>
 {% endif %}

@@ -7,7 +7,7 @@
 <h1>Photos for {{ month|date:"F Y" }}</h1>
 
 {% if object_list %}
-	{% ajaxgrid object_list "photologue/_cell.html" 4 %}
+	{% ajaxgrid object_list "photologue/_cell.html" %}
 	{% for photo in object_list %}
     <div class="gallery-photo">
         <a href="{{ photo.get_absolute_url }}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
