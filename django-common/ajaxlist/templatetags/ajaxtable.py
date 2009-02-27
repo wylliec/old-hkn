@@ -1,5 +1,5 @@
 from django.template.loader import get_template
-from django.template import VariableNode, NodeList, TextNode, Variable
+from django.template import VariableNode, NodeList, TextNode, Variable, TemplateSyntaxError
 from django.template.loader_tags import IncludeNode
 from django.core.urlresolvers import reverse
 from django import template
@@ -262,7 +262,7 @@ def do_ajaxgrid(parser, token):
 	except:
 		raise TemplateSyntaxError("AjaxGrid options have the format [key]=[value]")
 		
-	return AjaxGridNode(objects, cell, width, options)
+	return AjaxGridNode(objects, cell, options)
 	
 @register.tag(name="special_for")
 def do_special_for(parser, token):
