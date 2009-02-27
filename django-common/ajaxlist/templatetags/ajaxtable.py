@@ -60,10 +60,9 @@ class AjaxTableNode(template.Node):
 		return  t.render(context)
 
 class AjaxGridNode(template.Node):
-	def __init__(self, objects, cell_template, width, options):
+	def __init__(self, objects, cell_template, options):
 		self.objects = objects
 		self.cell_template = cell_template
-		self.width = width
 		
 		for k in grid_defaults:
 			if not options.get(k, None):
@@ -77,10 +76,7 @@ class AjaxGridNode(template.Node):
 		context.update(self.options)
 		try:
 			objects = self.objects.resolve(context)
-			context["list_objects"] = []
-			while(objects):
-				context["list_objects"].append(objects[:self.width])
-				objects = objects[self.width:]
+			context["list_objects"] = objects
 		except:
 			pass
 		
@@ -252,20 +248,15 @@ def do_ajaxtable(parser, token):
 @register.tag(name="ajaxgrid")
 def do_ajaxgrid(parser, token):
 	bits = token.split_contents()
-	if len(bits) < 4:
-		raise TemplateSyntaxError("'ajaxgrid' should have at least 3 arguments")
+	if len(bits) < 3:
+		raise TemplateSyntaxError("'ajaxgrid' should have at least 2 arguments")
 	
 	objects = parser.compile_filter(bits[1])
 	cell = bits[2] 
-	width = bits[3]
-	try:
-		width = int(width)
-	except:
-		raise TemplateSyntaxError("The width (3rd argument) must be a number")
 
 	options = {}
 	try:
-		for o in bits[4:]:
+		for o in bits[3:]:
 			k, v = o.split('=')
 			options[k] = v
 	except:
