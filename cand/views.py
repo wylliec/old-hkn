@@ -9,6 +9,7 @@ from hkn.cand.models import ProcessedEligibilityListEntry, Challenge
 from hkn.event.models import *
 from hkn.event.constants import *
 from hkn.cand.forms import EligibilityListForm, CandidateApplicationForm
+from hkn.cand.models import CandidateApplication
 from hkn.cand import utils
 from hkn.cand.constants import *
 from request.utils import *
@@ -132,6 +133,11 @@ def application(request):
         form = CandidateApplicationForm.get_for_person(request.user.person)
 
     return render_to_response("cand/application.html", {'form' : form, 'person' : request.user.person}, context_instance=RequestContext(request))
+
+@permission_required('info.group_vp')
+def view_applications(request):
+    applications = CandidateApplication.objects.select_related('candidateinfo', 'candidateinfo__person').all()
+    return render_to_response("cand/view_applications.html", {"apps" : applications}, context_instance=RequestContext(request))
 
 @permission_required('info.group_vp')
 def event_confirmation(request):

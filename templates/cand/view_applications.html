@@ -1,0 +1,16 @@
+{% extends "cand/base.html" %}
+
+{% block title %}Candidate Applications{% endblock %}
+{% block subtitle %}Candidate Applications{% endblock %}
+
+{% block content %}
+<table>
+    <tr> <th>Name</th><th>Email</th><th>Committees</th> </tr>
+    {% for app in apps %}
+    <tr>
+        <td>{{app.candidateinfo.person.name}}</td><td>{{app.candidateinfo.person.email}}</td><td>{% for c in app.committees %}{{c}}, {% endfor %}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
