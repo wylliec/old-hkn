@@ -31,6 +31,9 @@ ajaxlist_checkbox_post_address = "{% url request-ajax-confirm %}";
 		{% else %}
 		No requests
 		{% endif %}
+        <script type="text/javascript">
+            $(document).ready( register_request );
+        </script>
     {% endajaxwrapper %}
 {% endblock %}
 
