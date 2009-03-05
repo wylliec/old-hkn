@@ -41,7 +41,7 @@ def portal(request):
     #for e in confirmed_events:
     for r in rsvps:
         e = r.event
-        if e.event_type != 'CANDMAND' or e.name.startswith('General Meeting'):
+        if (e.event_type != 'CANDMAND' or e.name.startswith('General Meeting')) and (e.event_type != 'JOB'):
             d[e.event_type]['events'].append(e)
             d[e.event_type]['rsvp'].append(r)
             if 'num_left' in d[e.event_type].keys():
