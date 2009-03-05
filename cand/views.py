@@ -82,15 +82,35 @@ def create_challenge_ajax(request):
         c.save()
         return "success"
 
+# This is the one that's actually being used:
 def create_challenge(request):
     if request.POST:
-        officer = Person.objects.get(id = request.POST['officer_id'])
+        officer_id = request.POST['officer_id']
         challenge_name = request.POST['challenge_name']
-        c = Challenge()
+	officer_name = request.POST['officer_autocomplete']
+	
+	# officer is defined here to avoid scoping problems
+	officer = False
+	officers = Person.all_officers.ft_query(officer_name)
+	if len(officers) == 1:
+	    officer = officers[0]
+	elif len(officers) == 0:
+	    request.user.message_set.create(message="Officer not found. Please check your spelling.")
+	    return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
+	else:
+	    for person in officers:
+	        if officer_id == str(person.id):
+		    officer = person
+            if not officer:
+	        request.user.message_set.create(message="Name not specific enough. Please check your spelling.")
+	        return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
+	        
+	c = Challenge()
         c.name = challenge_name
         c.candidate = request.user.person
         c.officer = officer
         c.save()
+       
         request_confirmation(c, request.user, permission_user=officer.user_ptr)
         request.user.message_set.create(message="Challenge created successfully")
         return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
