@@ -11,4 +11,6 @@ urlpatterns = patterns('',
     url(r'^portal/create_challenge_ajax/$', 'hkn.cand.views.create_challenge_ajax', name='challenge-create-ajax'),
     url(r'^portal/create_challenge/$', 'hkn.cand.views.create_challenge', name='challenge-create'),
     url(r'^vp_event_confirm/$', 'hkn.cand.views.event_confirmation', name='vp-event-confirm'),
+    url(r'^all_candidates_events/$', 'hkn.cand.views.all_candidates_events', name='all-candidates-events'),
+    url(r'^all_candidates_events3/$', 'hkn.cand.views.all_candidates_events', name='all-candidates-events3'),
     )					    

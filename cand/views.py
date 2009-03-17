@@ -181,3 +181,13 @@ def event_confirmation(request):
         d['events'][e.name] = RSVP.objects.get_confirmables_for_event(e)
     return render_to_response("cand/event_confirmation.html", d, context_instance=RequestContext(request))
 
+#@permission_required('info.group_vp')
+def all_candidates_events(request):
+    d = {}
+    d['candidates'] = []
+    candidates = Person.candidates.order_by('name')
+    for candidate in candidates:
+	 candidate.rsvps = candidate.rsvp_set.all()
+         d['candidates'].append(candidate)
+    return render_to_response("cand/all_candidates_events.html", d, context_instance=RequestContext(request))
+    
