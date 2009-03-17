@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block subtitle %} All Candidates Events {% endblock %}
+
+{% block js %}
+{% endblock %}
+{% block content %}
+
+<div>
+<table><tbody>
+{% for candidate in candidates %}
+<tr><td colspan="2"><b>{{candidate.name}}</b></td></tr>
+{% for r in candidate.rsvps %}
+<tr>
+<td>{{r.event.name}}</td> <td>{% if r.vp_confirm %}Confirmed{% else %}Unconfirmed{% endif %}</td>
+</tr>
+{% endfor %}
+{% endfor %}
+</tbody></table>
+</div>
+
+{% endblock %}
