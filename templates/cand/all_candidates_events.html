@@ -2,6 +2,12 @@
 
 {% block subtitle %} All Candidates Events {% endblock %}
 
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" type="text/css" href="/static/css/cportal.css">
+{% endblock %}
+
 {% block js %}
 {% endblock %}
 {% block content %}
@@ -9,12 +15,28 @@
 <div>
 <table><tbody>
 {% for candidate in candidates %}
-<tr><td colspan="2"><b>{{candidate.name}}</b></td></tr>
-{% for r in candidate.rsvps %}
 <tr>
-<td>{{r.event.name}}</td> <td>{% if r.vp_confirm %}Confirmed{% else %}Unconfirmed{% endif %}</td>
+  <td><b>{{candidate.name}}<b></td>
+  <td>
+  {% for key, value in candidate.tallies.items %}
+    <span class={% if value.completed %}"checklist_done"{% else %}"checklist_not_done"{% endif %}>{{value.nice_name}}: {{value.count}}</span>, 
+  {% endfor %}
+  </td>
 </tr>
-{% endfor %}
+
+{% comment %}
+"checklist_not_done"
+    <span class="checklist_in_progress">[Need {{BIGFUN.num_left}} more]</span>
+    <span class="checklist_done">[Done]</span>
+{% endcomment %}
+    {% for r in candidate.rsvps %}
+        {% if r.vp_confirm %}
+<tr>
+<td colspan="2">{{r.event.name}}</td> <td></td>
+</tr>
+        {% endif %}
+    {% endfor %}
+
 {% endfor %}
 </tbody></table>
 </div>

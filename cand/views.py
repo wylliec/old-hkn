@@ -185,9 +185,22 @@ def event_confirmation(request):
 def all_candidates_events(request):
     d = {}
     d['candidates'] = []
-    candidates = Person.candidates.order_by('name')
+    candidates = Person.candidates.order_by('first_name')
+    d['event_types'] = EVENT_TYPE.values()
     for candidate in candidates:
-	 candidate.rsvps = candidate.rsvp_set.all()
-         d['candidates'].append(candidate)
+        candidate.rsvps = candidate.rsvp_set.all()
+        candidate.tallies ={EVENT_TYPE.CANDMAND: {'count': 0, 'completed': False, 'nice_name': 'General', 'order': 0, },
+                             EVENT_TYPE.BIGFUN: {'count': 0, 'completed': False, 'nice_name': 'Big Fun', 'order': 1, },
+                             EVENT_TYPE.FUN: {'count': 0, 'completed': False, 'nice_name': 'Fun', 'order': 2},
+                             EVENT_TYPE.COMSERV: {'count': 0, 'completed': False, 'nice_name': 'Community Service', 'order': 3},
+                             EVENT_TYPE.DEPSERV: {'count': 0, 'completed': False, 'nice_name': 'Department Service', 'order': 4 }, }
+        #candidate.tallies.sort(key=lambda item:item['order'])
+
+        for r in candidate.rsvps:
+            if r.vp_confirm and (r.event.event_type != EVENT_TYPE.CANDMAND or r.event.name.startswith('General Meeting')) and (r.event.event_type != EVENT_TYPE.JOB) and (r.event.event_type != EVENT_TYPE.MISC):
+                candidate.tallies[r.event.event_type]['count'] += 1
+                if candidate.tallies[r.event.event_type]['count'] >= EVENT_REQUIRED_NUMBER[r.event.event_type]:
+                    candidate.tallies[r.event.event_type]['completed'] = True
+        d['candidates'].append(candidate)
     return render_to_response("cand/all_candidates_events.html", d, context_instance=RequestContext(request))
     
