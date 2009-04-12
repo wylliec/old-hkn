@@ -139,8 +139,15 @@ class Challenge(models.Model):
 
         #request.utils.request_confirmation(self, self.candidate, permission_user=self.officer)
         super(Challenge, self).save(*args, **kwargs)
-        
-           
-            
+
+class CourseSurvey(models.Model):
+    """
+    This represents the link between a person and a klass s/he will survey. It is one-to-one.
+    """
+    request = generic.GenericRelation(Request)
+    status = models.NullBooleanField()
+    surveyor = models.ForeignKey(Person, related_name="surveys")
+    klass = models.ForeignKey(Klass, related_name="surveys")
+
 from hkn.cand.admin import *
 import hkn.cand.challenge_requests
