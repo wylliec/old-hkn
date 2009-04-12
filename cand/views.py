@@ -204,3 +204,28 @@ def all_candidates_events(request):
         d['candidates'].append(candidate)
     return render_to_response("cand/all_candidates_events.html", d, context_instance=RequestContext(request))
     
+def candidate_quiz(request):
+    if request.POST:
+        if request.person.candidateinfo.candidatequiz:
+            cquiz = request.person.candidateinfo.candidatequiz
+        else:
+            cquiz = CandidateQuiz()
+
+        ans = request.POST
+        check_q1([ans['q1']], cquiz)
+        check_q2([ans['q2']], cquiz)
+        check_q3([ans['q3']], cquiz)
+        check_q4([ans['q4']], cquiz)
+        check_q5([ans['q51'], ans['q52']], cquiz)
+        check_q6([ans['q6']], cquiz)
+        check_q7([ans['q71'], ans['q72'], ans['q73'], ans['q74'], ans['q75'], ans['q76']], cquiz)
+        check_q8([ans['q81'], ans['q82'], ans['q83'], ans['q84']], cquiz)
+        check_q9([ans['q91'], ans['q92']], cquiz)
+        check_q10([ans['q101'], ans['q102']], cquiz)
+        check_q11([ans['q11']], cquiz)
+        
+        cquiz.save()
+        
+        return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
+    else:
+        return render_to_response("cand/candidate_quiz.html", {}, context_instance=RequestContext(request))
