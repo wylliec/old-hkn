@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{block.super}}
+{% endblock %}
+
+{% block js %}
+{{block.super}}
+{% endblock %}
+
+{% block subtitle %}Candidate Quiz{% endblock %}
+
+{% block content %}
+<style type="text/css"><!--
+#quiz_list, #quiz_list ol {
+    list-style-type: decimal; 
+}
+--></style>
+<form action="" method="post">
+<p>Feel free to discuss your answers with other candidates and officers.</p>
+<p>Your score on this examination will factor into your application for candidacy. (Not curved!)</p>
+<p>Good answer sources: hkn.eecs.berkeley.edu and hkn.org</p>
+<p>Be as specific as you can.</p>
+<ol id="quiz_list">
+    <li>Eta Kappa Nu was founded at <input type="text" name="q1"></input>.</li>
+    <li>Eta Kappa Nu was founded in the year <input type="text" name="q2"></input>.</li>
+    <li>The Berkeley Chapter is known as the <input type="text" name="q3"></input> chapter.</li>
+    <li>The Berkeley Chapter was established in the year <input type="text" name="q4"></input>.</li>
+    <li>The colors of the organization are <input type="text" name="q51"></input> and <input type="text" name="q52"></input>.</li>
+    <li>The emblem of the organization is <input type="text" name="q6"></input>.</li>
+    <li>What are the six officer positions mandated by the nationalis for each chapter?
+        <ol>
+            <li><input type="text" name="q71"></input></li>
+            <li><input type="text" name="q72"></input></li>
+            <li><input type="text" name="q73"></input></li>
+            <li><input type="text" name="q74"></input></li>
+            <li><input type="text" name="q75"></input></li>
+            <li><input type="text" name="q76"></input></li>
+        </ol>
+    </li>
+    <li>Name four student services carried out by the Berkeley Chapter.
+        <ol>
+            <li><input type="text" name="q81"></input></li>
+            <li><input type="text" name="q82"></input></li>
+            <li><input type="text" name="q83"></input></li>
+            <li><input type="text" name="q84"></input></li>
+        </ol>
+    </li>
+    <li>Name any current Berkeley EECS faculty who is a member of HKN. <input type="text" name="q91"></input> At which chapter did he or she initiate? <input type="text" name="q92"></input></li>
+    <li>What are the locations of the two HKN Offices?
+        <ol>
+            <li><input type="text" name="q101"></input></li>
+            <li><input type="text" name="q102"></input></li>
+        </ol>
+    </li>
+    <li>Figure 1: R4 = <input type="text" name="q11"></input>ohms.
+    This is the Bridge circuit. When V1 equals 0, the Bridge circuit is said to be balanced. Suppose R1=27kOhms, R2 = 47kOhms, and R3=10kOhms. What must R4 be to balance the Bridge?
+    </li>
+</ol>
+
+</form>
+{% endblock %}

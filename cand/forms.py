@@ -122,6 +122,7 @@ class CandidateApplicationForm(forms.Form):
         candidateapplication.questions              = self.cleaned_data['questions']
         candidateapplication.save()
 
+
 class EligibilityListForm(forms.Form):
     eligibility_list = forms.CharField(widget=forms.Textarea)
 
