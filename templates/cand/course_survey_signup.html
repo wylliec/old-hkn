@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block subtitle %}Course Survey Signup{% endblock %}
+
+{% block content %}
+<p> NOTE: You are only required to do {{num_surveys}} course surveys.</p>
+
+<form method="POST">
+<table>
+<tr>
+  <th>Course Number</th>
+  <th>Title</th>
+  <th>People signed up</th>
+</tr>
+{% for k in klasses %}
+<tr>
+<th>{{k.course}}</th>
+<th>{{k.course.name}}</th>
+<th>
+{% for cand_info in k.surveyors.all %}
+{% if not forloop.first %}, {% endif %}{{cand_info.person.get_name}}
+{% endfor %}
+</th>
+{% if not done %}
+<th>
+  <input name="course_signup" type="checkbox" value="{{k.id}}"/>
+</th>
+{% endif %}
+</tr>
+{% endfor %}
+</table>
+{% if not done %}
+<input name="submit" type="submit" value="Submit" />
+{% endif %}
+</form>
+
+{% endblock %}

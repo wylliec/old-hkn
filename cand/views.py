@@ -238,6 +238,7 @@ def course_survey_signup(request):
     d = {}
     d['klasses'] = Klass.objects.filter(semester=current_semester(), surveyed=True).select_related('course', 'surveyors')
     d['num_surveys'] = NUM_SURVEYS
+    d['done'] = request.person.candidateinfo.surveys.count() >= NUM_SURVEYS
 
     if request.POST:
         signed_up = set(request.person.candidateinfo.surveys.values_list('id', flat=True))
