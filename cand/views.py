@@ -233,6 +233,22 @@ def candidate_quiz(request):
         return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
     else:
         return render_to_response("cand/candidate_quiz.html", {}, context_instance=RequestContext(request))
+        
+def course_survey_add_courses(request):
+    CURRENT_SEMESTER = 'sp09'
+    klasses = Klass.objects.filter(surveyed=True, course__department_abbr__in=['COMPSCI','EL ENG'], semester=CURRENT_SEMESTER).order_by('course__integer_number')
+    if request.POST:
+        courses = request.POST.getlist('courses')
+        for klass in klasses:
+            klass.surveyed = False
+            k.save()
+        for klass_id in courses:
+            k = klasses.get(id=klass_id)
+            k.surveyed = True
+            k.save()
+	    request.user.message_set.create(message="Klasses added")
+    d['courses'] = klasses
+    return render_to_response("cand/course_survey_add_courses.html", d, context_instance=RequestContext(request))
 
 def course_survey_signup(request):
     d = {}

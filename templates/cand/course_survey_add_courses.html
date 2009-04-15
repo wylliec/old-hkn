@@ -1,0 +1,18 @@
+{% extends "cand/base.html" %}
+
+{% block title %}Course Surveys - Add Courses{% endblock %}
+
+{% block content %}
+<form action="{% url course_survey_add_courses %}" method="post">
+<table>
+    <tr> <th>Course Number</th><th>Title</th><th>To Be Surveyed?</th> </tr>
+    {% for klass in courses %}
+    <tr>
+        <td>{{klass.course}}</td><td>{{klass.course.name}}</td><td><input type="checkbox" name="courses" value="{{klass.id}}" {% if klass.surveyed %}checked="checked"{% endif %}></input></td>
+    </tr>
+    {% endfor %}
+</table>
+<input type="submit" value="Update" />
+</form>
+{% endblock %}
+
