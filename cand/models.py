@@ -72,6 +72,13 @@ class CandidateInfo(models.Model):
 
     candidate_picture = models.ForeignKey(Photo, null=True)
     """ candidate picture """
+    
+    surveys = models.ManyToManyField(Klass, related_name="surveyors")
+    """ surveyed courses """
+
+    completed_quiz = models.BooleanField()
+
+    completed_surveys = models.BooleanField()
 
     def save_candidate_picture(self, content, ext=".gif", save=True):
         uname = self.person.username
@@ -139,15 +146,6 @@ class Challenge(models.Model):
 
         #request.utils.request_confirmation(self, self.candidate, permission_user=self.officer)
         super(Challenge, self).save(*args, **kwargs)
-
-class CourseSurvey(models.Model):
-    """
-    This represents the link between a person and a klass s/he will survey. It is one-to-one.
-    """
-    request = generic.GenericRelation(Request)
-    status = models.NullBooleanField()
-    surveyor = models.ForeignKey(Person, related_name="surveys")
-    klass = models.ForeignKey(Klass, related_name="surveys")
     
 class CandidateQuiz(models.Model):
     candidateinfo = models.OneToOneField(CandidateInfo)

@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^vp_event_confirm/$', 'hkn.cand.views.event_confirmation', name='vp-event-confirm'),
     url(r'^all_candidates_events/$', 'hkn.cand.views.all_candidates_events', name='all-candidates-events'),
     url(r'^all_candidates_events3/$', 'hkn.cand.views.all_candidates_events', name='all-candidates-events3'),
+    url(r'^course_survey_signup/$', 'hkn.cand.views.course_survey_signup', name='cand-survey-signup'),
     )					    

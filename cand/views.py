@@ -15,6 +15,8 @@ from hkn.cand.constants import *
 from request.utils import *
 from resume.models import Resume
 
+from nice_types.semester import current_semester
+
 def portal(request):
     d = {}
     today = datetime.date.today()
@@ -64,10 +66,12 @@ def portal(request):
             e.rsvped = True
         else:
             e.rsvped = False
-            
+        
+    d['surveys'] = person.surveys.all()
+
     d['submitted_resume'] = Resume.objects.filter(person=person)
-    d['completed_survey'] = False
-    d['completed_quiz'] = False
+    d['completed_survey'] = person.candidateinfo.completed_survey
+    d['completed_quiz'] = person.candidateinfo.completed_quiz
 
     return render_to_response("cand/portal.html", d, context_instance=RequestContext(request))
 
@@ -229,3 +233,21 @@ def candidate_quiz(request):
         return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
     else:
         return render_to_response("cand/candidate_quiz.html", {}, context_instance=RequestContext(request))
+
+def course_survey_signup(request):
+    d = {}
+    d['klasses'] = Klass.objects.filter(semester=current_semester(), surveyed=True).select_related('course', 'surveyors')
+    d['num_surveys'] = NUM_SURVEYS
+
+    if request.POST:
+        signed_up = set(request.person.candidateinfo.surveys.values_list('id', flat=True))
+        selected = request.POST.getlist('course_signup')
+        selected = set(map(lambda x: int(x), selected))
+        new_signups = signedup.intersection(selected)
+        for s in new_signups:
+            k = Klass.objects.get(id=s)
+            request.person.candidateinfo.surveys.add(k)
+        
+
+    return render_to_response("cand/course_survey_signup.html", d, context_instance=RequestContext(request))
+    
