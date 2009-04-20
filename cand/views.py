@@ -12,6 +12,7 @@ from hkn.cand.forms import EligibilityListForm, CandidateApplicationForm
 from hkn.cand.models import CandidateApplication
 from hkn.cand import utils
 from hkn.cand.constants import *
+from hkn.cand.quiz import *
 from request.utils import *
 from resume.models import Resume
 
@@ -230,6 +231,7 @@ def candidate_quiz(request):
         
         cquiz.save()
         
+	    request.user.message_set.create(message="Quiz submitted")
         return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
     else:
         return render_to_response("cand/candidate_quiz.html", {}, context_instance=RequestContext(request))

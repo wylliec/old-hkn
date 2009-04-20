@@ -52,6 +52,7 @@
 {% endif %}
 </span></td></tr>
 
+{% comment %}
 <tr><th><a href="{% url cand-survey-signup %}">Survey</a></th><td>
 {% if completed_survey %}
 <span class="checklist_done">[Done]
@@ -59,22 +60,15 @@
 <span class="checklist_not_done">[Not Done]
 {% endif %}
 </span></td></tr>
+{% endcomment %}
 
-
-<!--tr><th><a href="">Survey</a></th><td>
-{% if completed_survey %}
+<tr><th><a href="{% url cand-quiz %}">Quiz</a></th><td>
+{% if completed_quiz %}
 <span class="checklist_done">[Done]
 {% else %}
 <span class="checklist_not_done">[Not Done]
 {% endif %}
 </span></td></tr>
 
-<tr><th><a href="">Quiz</a></th><td>
-{% if completed_quiz %}
-<span class="checklist_done">[Done]
-{% else %}
-<span class="checklist_not_done">[Not Done]
-{% endif %}
-</span></td></tr-->
 </tbody></table>
 {% endblock %}
