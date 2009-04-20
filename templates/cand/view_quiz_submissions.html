@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" type="text/css" href="/static/css/cportal.css">
+{% endblock %}
+
+{% block js %}
+{{block.super}}
+{% endblock %}
+
+{% block subtitle %}Candidate Quizzes{% endblock %}
+
+{% block content %}
+<style type="text/css"><!--
+#quiz_list, #quiz_list ol {
+    list-style-type: decimal; 
+    font-weight: bold;
+}
+.blacktext {
+    font-weight: normal;
+    font-color: black;
+}
+--></style>
+{% for quiz in quizzes %}
+<h2>{{ quiz.candidateinfo.person.name }}</h2>
+<ol id="quiz_list">
+    <li class="{% if quiz.q1b %}checklist_done{% else %}checklist_not_done{% endif %}"><span class='blacktext'>{{quiz.q1}}</span></li>
+    <li class="{% if quiz.q2b %}checklist_done{% else %}checklist_not_done{% endif %}"><span class='blacktext'>{{quiz.q2}}</span></li>
+    <li class="{% if quiz.q3b %}checklist_done{% else %}checklist_not_done{% endif %}"><span class='blacktext'>{{quiz.q3}}</span></li>
+    <li class="{% if quiz.q4b %}checklist_done{% else %}checklist_not_done{% endif %}"><span class='blacktext'>{{quiz.q4}}</span></li>
+    <li class="{% if quiz.q5b %}checklist_done{% else %}checklist_not_done{% endif %}"><span class='blacktext'>{{quiz.q51}}, {{quiz.q52}}</span></li>
+    <li class="{% if quiz.q6b %}checklist_done{% else %}checklist_not_done{% endif %}"><span class='blacktext'>{{quiz.q6}}</span></li>
+    <li class="{% if quiz.q7b %}checklist_done{% else %}checklist_not_done{% endif %}">
+        <ol>
+            <li><span class='blacktext'>{{quiz.q71}}</span></li>
+            <li><span class='blacktext'>{{quiz.q72}}</span></li>
+            <li><span class='blacktext'>{{quiz.q73}}</span></li>
+            <li><span class='blacktext'>{{quiz.q74}}</span></li>
+            <li><span class='blacktext'>{{quiz.q75}}</span></li>
+            <li><span class='blacktext'>{{quiz.q76}}</span></li>
+        </ol>
+    </li>
+    <li class="{% if quiz.q8b %}checklist_done{% else %}checklist_not_done{% endif %}">
+        <ol>
+            <li><span class='blacktext'>{{quiz.q81}}</span></li>
+            <li><span class='blacktext'>{{quiz.q82}}</span></li>
+            <li><span class='blacktext'>{{quiz.q83}}</span></li>
+            <li><span class='blacktext'>{{quiz.q84}}</span></li>
+        </ol>
+    </li>
+    <li class="{% if quiz.q9b %}checklist_done{% else %}checklist_not_done{% endif %}"><span class='blacktext'>{{quiz.q91}}, {{quiz.q92}}</span></li>
+    <li class="{% if quiz.q10b %}checklist_done{% else %}checklist_not_done{% endif %}">
+        <ol>
+            <li><span class='blacktext'>{{quiz.q101}}</span></li>
+            <li><span class='blacktext'>{{quiz.q102}}</span></li>
+        </ol>
+    </li>
+    <li class="{% if quiz.q11b %}checklist_done{% else %}checklist_not_done{% endif %}"><span class='blacktext'>{{quiz.q11}}
+    </li>
+</ol>
+{% endfor %}
+{% endblock %}
