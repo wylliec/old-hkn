@@ -9,13 +9,14 @@ from hkn.cand.models import ProcessedEligibilityListEntry, Challenge
 from hkn.event.models import *
 from hkn.event.constants import *
 from hkn.cand.forms import EligibilityListForm, CandidateApplicationForm
-from hkn.cand.models import CandidateApplication
+from hkn.cand.models import CandidateApplication, CandidateQuiz
 from hkn.cand import utils
 from hkn.cand.constants import *
 from hkn.cand.quiz import *
 from request.utils import *
 from resume.models import Resume
 
+import nice_types.semester
 from nice_types.semester import current_semester
 
 def portal(request):
@@ -68,11 +69,12 @@ def portal(request):
         else:
             e.rsvped = False
         
-    d['surveys'] = person.surveys.all()
+    #d['surveys'] = person.surveys.all()
 
     d['submitted_resume'] = Resume.objects.filter(person=person)
-    d['completed_survey'] = person.candidateinfo.completed_survey
+    #d['completed_survey'] = person.candidateinfo.completed_survey
     d['completed_quiz'] = person.candidateinfo.completed_quiz
+    #d['completed_quiz'] = False
 
     return render_to_response("cand/portal.html", d, context_instance=RequestContext(request))
 
@@ -208,11 +210,11 @@ def all_candidates_events(request):
                     candidate.tallies[r.event.event_type]['completed'] = True
         d['candidates'].append(candidate)
     return render_to_response("cand/all_candidates_events.html", d, context_instance=RequestContext(request))
-    
+
 def candidate_quiz(request):
     if request.POST:
-        if request.person.candidateinfo.candidatequiz:
-            cquiz = request.person.candidateinfo.candidatequiz
+        if request.user.person.candidateinfo.completed_quiz:
+            cquiz = request.user.person.candidateinfo.candidatequiz
         else:
             cquiz = CandidateQuiz()
 
@@ -228,14 +230,30 @@ def candidate_quiz(request):
         check_q9([ans['q91'], ans['q92']], cquiz)
         check_q10([ans['q101'], ans['q102']], cquiz)
         check_q11([ans['q11']], cquiz)
+	cquiz.candidateinfo = request.user.person.candidateinfo 
         
         cquiz.save()
+
+	request.user.person.candidateinfo.completed_quiz = True
+	request.user.person.candidateinfo.save()
         
-	    request.user.message_set.create(message="Quiz submitted")
+	request.user.message_set.create(message="Quiz submitted")
         return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
     else:
-        return render_to_response("cand/candidate_quiz.html", {}, context_instance=RequestContext(request))
-        
+        d = {}
+	if request.user.person.candidateinfo.completed_quiz:
+	    d['prev_answers'] = request.user.person.candidateinfo.candidatequiz
+	else:
+	    d['prev_answers'] = CandidateQuiz()
+        return render_to_response("cand/quiz.html", d, context_instance=RequestContext(request))
+
+@permission_required('info.group_vp')
+def view_quiz_submissions(request):
+    d = {}
+    d['quizzes'] = CandidateQuiz.objects.filter(candidateinfo__candidate_semester=nice_types.semester.current_semester())
+    return render_to_response("cand/view_quiz_submissions.html", d, context_instance=RequestContext(request))
+
+"""
 def course_survey_add_courses(request):
     CURRENT_SEMESTER = 'sp09'
     klasses = Klass.objects.filter(surveyed=True, course__department_abbr__in=['COMPSCI','EL ENG'], semester=CURRENT_SEMESTER).order_by('course__integer_number')
@@ -269,4 +287,4 @@ def course_survey_signup(request):
         
 
     return render_to_response("cand/course_survey_signup.html", d, context_instance=RequestContext(request))
-    
+"""  

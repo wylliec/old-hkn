@@ -8,6 +8,7 @@ from nice_types.db import QuerySetManager, PickleField
 from request.models import Request
 from hkn.info.models import Person, Position
 from photologue.models import Photo
+from course.models import Klass
 
 class EligibilityListEntryManager(QuerySetManager):
     def for_current_semester(self, *args, **kwargs):
@@ -149,28 +150,28 @@ class Challenge(models.Model):
     
 class CandidateQuiz(models.Model):
     candidateinfo = models.OneToOneField(CandidateInfo)
-    q1 = models.CharField()
-    q2 = models.CharField()
-    q3 = models.CharField()
-    q4 = models.CharField()
-    q51 = models.CharField()
-    q52 = models.CharField()
-    q6 = models.CharField()
-    q71 = models.CharField()
-    q72 = models.CharField()
-    q73 = models.CharField()
-    q74 = models.CharField()
-    q75 = models.CharField()
-    q76 = models.CharField()
-    q81 = models.CharField()
-    q82 = models.CharField()
-    q83 = models.CharField()
-    q84 = models.CharField()
-    q91 = models.CharField()
-    q92 = models.CharField()
-    q101 = models.CharField()
-    q102 = models.CharField()
-    q11 = models.CharField()
+    q1 = models.CharField(max_length=100)
+    q2 = models.CharField(max_length=100)
+    q3 = models.CharField(max_length=100)
+    q4 = models.CharField(max_length=100)
+    q51 = models.CharField(max_length=100)
+    q52 = models.CharField(max_length=100)
+    q6 = models.CharField(max_length=100)
+    q71 = models.CharField(max_length=100)
+    q72 = models.CharField(max_length=100)
+    q73 = models.CharField(max_length=100)
+    q74 = models.CharField(max_length=100)
+    q75 = models.CharField(max_length=100)
+    q76 = models.CharField(max_length=100)
+    q81 = models.CharField(max_length=100)
+    q82 = models.CharField(max_length=100)
+    q83 = models.CharField(max_length=100)
+    q84 = models.CharField(max_length=100)
+    q91 = models.CharField(max_length=100)
+    q92 = models.CharField(max_length=100)
+    q101 = models.CharField(max_length=100)
+    q102 = models.CharField(max_length=100)
+    q11 = models.CharField(max_length=100)
     
     q1b = models.BooleanField()
     q2b = models.BooleanField()
@@ -184,5 +185,15 @@ class CandidateQuiz(models.Model):
     q10b = models.BooleanField()
     q11b = models.BooleanField()
 
+#class CourseSurvey(models.Model):
+#    """
+#    This represents the link between a person and a klass s/he will survey. It is one-to-one.
+#    """
+#    request = generic.GenericRelation(Request)
+#    status = models.NullBooleanField()
+#    surveyor = models.ForeignKey(Person, related_name="surveys")
+#    klass = models.ForeignKey(Klass, related_name="surveys")
+
+# DON'T MOVE THIS IMPORT LINE HIGHER UP BECAUSE IT DEPENDS ON CLASSES DEFINED ABOVE
 from hkn.cand.admin import *
 import hkn.cand.challenge_requests
