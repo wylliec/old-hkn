@@ -106,8 +106,12 @@ def list_for_event_paragraph(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
     rsvp_text = ", ".join([r.person.get_abbr_name(dot=False) for r in event.rsvp_set.select_related('person').order_by("person__first_name")])
     return HttpResponse(rsvp_text, mimetype="text/plain")    
-    
+
+@permission_required('info.group_vp')    
 def confirm_ajax(request, add_or_remove):
+    if not request.POST:
+        return
+
     value = request.POST.get("value", None)
     if not value:
         return
