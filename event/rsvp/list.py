@@ -107,6 +107,28 @@ def list_for_event_paragraph(request, event_id):
     rsvp_text = ", ".join([r.person.get_abbr_name(dot=False) for r in event.rsvp_set.select_related('person').order_by("person__first_name")])
     return HttpResponse(rsvp_text, mimetype="text/plain")    
 
+@permission_required('info.group_vp')
+def confirm_ajax_check(request):
+    if not request.POST:
+        return
+    
+    action = request.POST.get("value", None)
+    if not action or action == "unknown":
+        return
+
+    value = request.POST.get("value", None)
+    if not value: 
+        return
+
+    rsvp = get_object_or_404(RSVP, pk=value)
+    if add_or_remove == "add":
+        rsvp.vp_confirm = True
+    else:
+        rsvp.vp_confirm = False
+    rsvp.save()
+    return HttpResponse("success")
+
+
 @permission_required('info.group_vp')    
 def confirm_ajax(request, add_or_remove):
     if not request.POST:
@@ -115,6 +137,7 @@ def confirm_ajax(request, add_or_remove):
     value = request.POST.get("value", None)
     if not value:
         return
+
     rsvp = get_object_or_404(RSVP, pk=value)
     if add_or_remove == "add":
         rsvp.vp_confirm = True

@@ -22,7 +22,7 @@ urlpatterns = patterns('',
         url(r'^list_person/(?P<person_id>.*)/$', 'hkn.event.rsvp.list.list_for_person', name="rsvp-list-for-person"),
         url(r'^list_person/$', 'hkn.event.rsvp.list.list_for_person', {"person_id" : "-1"}, name="rsvp-list-for-self"),
         url(r'^mine/$', 'hkn.event.rsvp.list.list_for_person', {"person_id" : ""}, name="rsvp-list-mine"),
-        url(r'^confirm_ajax/$', 'hkn.event.rsvp.list.confirm_ajax', {"add_or_remove" : False}, name="rsvp-confirm"),        
+        url(r'^confirm_ajax/$', 'hkn.event.rsvp.list.confirm_ajax_check', name="rsvp-confirm"),        
         url(r'^confirm_ajax/(?P<add_or_remove>\w*)/$', 'hkn.event.rsvp.list.confirm_ajax', name="rsvp-confirm-full"),
     
         )
