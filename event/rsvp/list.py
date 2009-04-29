@@ -1,5 +1,5 @@
 from django.contrib.auth.models import *
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from hkn.event.models import *
 from hkn.event.forms import *
 from django.shortcuts import render_to_response, get_object_or_404
