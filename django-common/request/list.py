@@ -10,12 +10,19 @@ from ajaxlist import get_list_context, filter_objects
 from ajaxlist.helpers import get_ajaxinfo, sort_objects, paginate_objects, render_ajaxlist_response
 from string import atoi
 
+from request import registry
+
 from request.models import *
 
 def set_metainfos(requests):
     for request in requests:
         request.set_metainfo()
     return requests
+
+def filter_requests(requests):
+    def filter_fn(request):
+        return registry[request.content_type.model_class()](request)
+    return filter(filter_fn, requests)
     
 def list_requests(request, category):
     d = get_ajaxinfo(request.GET)
@@ -36,7 +43,11 @@ def list_requests(request, category):
     
     requests = sort_objects(requests, d['sort_by'], None)
     requests = paginate_objects(requests, d, page=d['page'])
+    
+    # TODO: hook the post_delete signal on confirm object to delete requests with orphaned objects instead of having the hack on the line below
+    requests = [r for r in requests if r.confirm_object is not None]
 
+    requests = filter_requests(requests)
     d['requests'] = set_metainfos(requests)
     
     return render_ajaxlist_response(request.is_ajax(), "request/list.html", d, context_instance=RequestContext(request))

@@ -9,5 +9,4 @@ class Command(NoArgsCommand):
         for orphan in filter(lambda r: r.confirm_object is None, Request.objects.all()):
             print "DELETING ORPHAN: %s" % orphan.description
             orphan.delete()
-        print "Finished deleting orphans"
 

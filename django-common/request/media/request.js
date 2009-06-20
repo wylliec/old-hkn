@@ -20,4 +20,4 @@ function request_select(id, state) {
 }
 
 
-$(document).ready( register_request );
+//$(document).ready( register_request );
