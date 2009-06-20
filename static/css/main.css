@@ -38,3 +38,5 @@ html #messages { display: block; font-size: 12px !important; margin: 0 0 3px; pa
 html .message { border: solid 3px #003366; padding: 10px; background: #336699; color: #FFFFFF; }
 html .exam { text-align: center; }
 html .unpublishable { background: #EEFF99; border: 1px solid #BBCC66; }
+html #calcode td{ border: 1px solid; border-collapse: collapse; }
+html #calcode { border: 1px solid; border-collapse: collapse; }
