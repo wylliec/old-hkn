@@ -254,7 +254,7 @@ class RegistrationProfile(models.Model):
     is_member = property(get_is_member, set_is_member)
     
     def request_confirmation(self):
-        return request.utils.request_confirmation(self, self.user, Permission.objects.get(codename="group_csec"))
+        return request.utils.request_confirmation(self, self.user, Permission.objects.get(codename="group_rsec"))
     
     class Meta:
         verbose_name = _('registration profile')

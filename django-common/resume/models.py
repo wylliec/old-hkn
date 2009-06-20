@@ -20,6 +20,8 @@ class ResumeManager(QuerySetManager):
     def for_current_semester(self, *args, **kwargs):
         return self.get_query_set().for_current_semester(*args, **kwargs)
 
+_NON_SAFE_CHARACTERS = re.compile("[^-\w ]")
+_WHITESPACE = re.compile("\s+")
 class Resume(models.Model):
     objects = ResumeManager()
 
@@ -59,7 +61,8 @@ class Resume(models.Model):
 
     def save(self, *args, **kwargs):
         if isinstance(self.text, unicode):
-            self.text = self.text.encode('latin-1', 'xmlcharrefreplace')
+            self.text = self.text.encode('utf-8', 'xmlcharrefreplace')
+        self.text = _WHITESPACE.sub(" ", _NON_SAFE_CHARACTERS.sub(" ", self.text))
         super(Resume, self).save(*args, **kwargs)
 
 from resume.admin import *

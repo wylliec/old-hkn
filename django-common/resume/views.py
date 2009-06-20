@@ -76,7 +76,7 @@ def generate_book(request):
         templates[t] = Template(f.read())
         f.close()
 
-    resumes = group_resumes(Resume.objects.for_current_semester())
+    resumes = group_resumes(Resume.objects.filter(resume__endswith="pdf").for_current_semester())
     resume_yrs = [r[0][0] for r in resumes]
     current_semester = semester.current_semester()
 
