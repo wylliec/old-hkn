@@ -53,7 +53,8 @@ def infobox(request, event_id):
     return render_to_response("event/infobox.html", d, context_instance=RequestContext(request))
 
 def calendar(request):
-    d = {'ical' : calendars.calendars[0].get_ical_link()}
+    #d = {'ical' : calendars.calendars[0].get_ical_link()}
+    d = {}
     return render_to_response('event/calendar.html', d, context_instance = RequestContext(request))
 
 

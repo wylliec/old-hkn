@@ -7,6 +7,7 @@ urlpatterns = patterns('',
         url(r'^feed/$', 'hkn.event.feed.feed', name="event-feed"),        
 
         url(r'^calendar/$', 'hkn.event.event.calendar', name="event-calendar"),
+        url(r'^calendar/hkn.ics$', 'hkn.gcal.views.ics', name="event-calendar-ics"),
         url(r'^view/(?P<event_id>.*)/$', 'hkn.event.event.view', name="event-view"),
         url(r'^infobox/(?P<event_id>.*)/$', 'hkn.event.event.infobox', name="event-infobox"),
         url(r'^event_autocomplete/$', 'hkn.event.event.event_autocomplete', {'manager' : 'current_semester'}, name='event-autocomplete'),

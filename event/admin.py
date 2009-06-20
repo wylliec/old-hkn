@@ -11,7 +11,7 @@ class EventAdminForm(forms.ModelForm):
         model = Event
 
     def clean(self):
-        if self.cleaned_data['end_time'] < self.cleaned_data['start_time']:
+        if 'end_time' in self.cleaned_data and 'start_time' in self.cleaned_data and self.cleaned_data['end_time'] < self.cleaned_data['start_time']:
             raise forms.ValidationError("End date can't be earlier than start date")
         return self.cleaned_data
 
