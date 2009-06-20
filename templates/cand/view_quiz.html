@@ -22,7 +22,6 @@
     font-color: black;
 }
 --></style>
-{% for quiz in quizzes %}
 <h2>{{ quiz.candidateinfo.person.name }}</h2>
 Score: {{ quiz.score }}
 <ol class="quiz_list">
@@ -60,5 +59,4 @@ Score: {{ quiz.score }}
     <li class="{% if quiz.q11b %}checklist_done{% else %}checklist_not_done{% endif %}"><span class='blacktext'>{{quiz.q11}}.</span>
     </li>
 </ol>
-{% endfor %}
 {% endblock %}

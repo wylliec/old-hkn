@@ -6,6 +6,12 @@
 {% block css %}
 {{block.super}}
 <link rel="stylesheet" type="text/css" href="/static/css/cportal.css">
+<style type="text/css"><!--
+.name {
+    font-size: 150%;
+    font-weight: bold;
+}
+//--></style>
 {% endblock %}
 
 {% block js %}
@@ -15,20 +21,15 @@
 <div>
 <table><tbody>
 {% for candidate in candidates %}
+{% comment %}
 <tr>
-  <td><b>{{candidate.name}}<b></td>
+  <td><b>{{candidate.name}}</b></td>
   <td>
   {% for key, value in candidate.tallies.items %}
     <span class={% if value.completed %}"checklist_done"{% else %}"checklist_not_done"{% endif %}>{{value.nice_name}}: {{value.count}}</span>, 
   {% endfor %}
   </td>
 </tr>
-
-{% comment %}
-"checklist_not_done"
-    <span class="checklist_in_progress">[Need {{BIGFUN.num_left}} more]</span>
-    <span class="checklist_done">[Done]</span>
-{% endcomment %}
     {% for r in candidate.rsvps %}
         {% if r.vp_confirm %}
 <tr>
@@ -36,6 +37,60 @@
 </tr>
         {% endif %}
     {% endfor %}
+
+{% endcomment %}
+<tr>
+  <td colspan="2"><span class="name">{{candidate.name}}</span></td><td>
+  {% for r in candidate.all_events %}{{r.event.name}}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+</tr>
+
+<tr><th><span class={% if candidate.events.BIGFUN.completed %}"checklist_done"{% else %}"checklist_not_done"{% endif %}>Big Fun Events</span></th><td>{{candidate.events.BIGFUN.count}}</td></tr>
+{% comment %}
+    {% for r in candidate.events.BIGFUN.rsvp %}
+<tr><td colspan="2">{{r.event.name}}</td></tr>
+    {% endfor %}
+{% endcomment %}
+
+<tr><th><span class={% if candidate.events.FUN.completed %}"checklist_done"{% else %}"checklist_not_done"{% endif %}>Fun Events</span></th><td>{{candidate.events.FUN.count}}</td></tr>
+{% comment %}
+    {% for r in candidate.events.FUN.rsvp %}
+<tr><td colspan="2">{{r.event.name}}</td></tr>
+    {% endfor %}
+{% endcomment %}
+
+<tr><th><span class={% if candidate.events.COMSERV.completed %}"checklist_done"{% else %}"checklist_not_done"{% endif %}>Community Service Event</span></th><td>{{candidate.events.COMSERV.count}}</td></tr>
+{% comment %}
+    {% for r in candidate.events.COMSERV.rsvp %}
+<tr><td colspan="2">{{r.event.name}}</td></tr>
+    {% endfor %}
+{% endcomment %}
+
+<tr><th><span class={% if candidate.events.DEPSERV.completed %}"checklist_done"{% else %}"checklist_not_done"{% endif %}>Department Service Event</span></th><td>{{candidate.events.DEPSERV.count}}</td></tr>
+{% comment %}
+    {% for r in candidate.events.DEPSERV.rsvp %}
+<tr><td colspan="2">{{r.event.name}}</td></tr>
+    {% endfor %}
+{% endcomment %}
+
+<tr><th><span class={% if candidate.events.CANDMAND.completed %}"checklist_done"{% else %}"checklist_not_done"{% endif %}>General Meetings</span></th><td>{{candidate.events.CANDMAND.count}}</td></tr>
+{% comment %}
+    {% for r in candidate.events.CANDMAND.rsvp %}
+<tr><td colspan="2">{{r.event.name}}</td></tr>
+    {% endfor %}
+{% endcomment %}
+
+<tr><th><span class={% if candidate.challenges_completed %}"checklist_done"{% else %}"checklist_not_done"{% endif %}>Challenges</span></th><td>{{candidate.challenges_count}}</td></tr>
+    {% for c in candidate.challenges %}
+<tr><td colspan="2"><span class={% if c.status %}"checklist_done"{% else %}{% ifequal c.status None %}"checklist_in_progress"{% else %}"checklist_not_done"{% endifequal %}{% endif %}>&nbsp;&nbsp;{{c.name}}</span> {% ifequal c.status None %}({{ c.officer.first_name }} {{ c.officer.last_name }}){% endifequal %}</td></tr>
+    {% endfor %}
+
+<tr><th colspan="2"><span class={% if candidate.submitted_resume %}"checklist_done"{% else %}"checklist_not_done"{% endif %}>Resume</span></th></tr>
+
+{% if candidate.completed_quiz %} 
+<tr><th><span class="checklist_done">Quiz</span> <a href="{% url cand.views.view_quiz candidate.candidateinfo.candidatequiz.id %}">Link</a></th><td><span class={% if candidate.passed_quiz %}"checklist_done"{% else %}"checklist_not_done"{% endif %}>{{ candidate.candidateinfo.candidatequiz.score }}</span></td></tr>
+{% else %}
+<tr><th><span class="checklist_not_done">Quiz</span></th><td></td></tr>
+{% endif %}
 
 {% endfor %}
 </tbody></table>

@@ -5,10 +5,10 @@
 
 {% block content %}
 <table>
-    <tr> <th>Name</th><th>Email</th><th>Committees</th> </tr>
+    <tr> <th>Name</th><th>Email</th><th>Committees</th><th>Phone #</th><th>Release Info?</th><th>Permanent Address</th><th>Graduating Semester</th></tr>
     {% for app in apps %}
     <tr>
-        <td>{{app.candidateinfo.person.name}}</td><td>{{app.candidateinfo.person.email}}</td><td>{% for c in app.committees %}{{c}}, {% endfor %}</td>
+        <td>{{app.candidateinfo.person.name}}</td><td>{{app.candidateinfo.person.email}}</td><td>{% for c in app.committees %}{{c}}, {% endfor %}</td><td>{{app.candidateinfo.person.phone}}</td><td>{{app.release_information}}</td><td>{{app.candidateinfo.person.extendedinfo.perm_addr}}</td><td>{{app.candidateinfo.person.extendedinfo.grad_semester}}</td>
     </tr>
     {% endfor %}
 </table>

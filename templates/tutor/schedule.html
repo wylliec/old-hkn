@@ -13,17 +13,23 @@ $(document).ready( function() {
 </script>
 {% endblock %}
 
+<center>
+{% block subtitle %} Finals Tutoring Schedule {% endblock %}
+</center>
+{% comment %}
 {% block subtitle %} {{ season }} {{ year }} Tutoring Schedule {% endblock %}
+{%endcomment%}
   
 {% block tutorcontent %}
 {% if not message %}
+{% comment %}
 <p>
 	We offer <b>FREE DROP-IN</b> tutoring, from <b>11am to 5pm</b> in 290 Cory Hall and 345 Soda Hall throughout the school year. 
 	CS tutoring is generally held at 345 Soda while EE tutoring is in 290 Cory. 
 	If the scheduled tutor is unavailable, feel free to ask any officer at either of these two locations for help. 
 	If you have special needs or accomodations such as after-hours or weekend tutoring, we will try our best to accomodate you.
 </p>
-
+{%endcomment%}
 
 {%comment%}
 <p>
