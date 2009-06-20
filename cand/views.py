@@ -25,15 +25,11 @@ def portal(request):
     tomorrow = today + datetime.timedelta(1)
     week = today + datetime.timedelta(7)
 
-    today = datetime.date.today()
-    tomorrow = today + datetime.timedelta(1)
-    week = today + datetime.timedelta(7)
-
+    # Get current user's person and all rsvps the person has made 
     person = request.user.person
-    #confirmed_events = person.rsvp_set.get_confirmed_events(person)
-    #rsvps = person.rsvp_set.filter(event__start_time__gte = today, event__start_time__lt = week)
     rsvps = person.rsvp_set.all()
     
+    # Initialize structure for holding each event organized by type
     for event_type in EVENT_TYPE.values():
         if event_type in EVENT_REQUIRED_NUMBER:
             d[event_type] = { 'events' : [],
@@ -42,13 +38,13 @@ def portal(request):
                               }
             
     
-    #for e in confirmed_events:
+    # Iterate through all rsvps and fill up structure from above
     for r in rsvps:
         e = r.event
-        if (e.event_type != 'CANDMAND' or e.name.startswith('General Meeting')) and (e.event_type != 'JOB'):
+        if (e.event_type != 'CANDMAND' or e.name.startswith('General Meeting')) and (e.event_type != 'JOB') and (e.event_type != 'MISC'):
             d[e.event_type]['events'].append(e)
             d[e.event_type]['rsvp'].append(r)
-            if 'num_left' in d[e.event_type].keys():
+            if 'num_left' in d[e.event_type].keys() and r.vp_confirm:
                 d[e.event_type]['num_left'] -= 1
                 if d[e.event_type]['num_left'] == 0:
                     del d[e.event_type]['num_left']
@@ -121,6 +117,9 @@ def create_challenge(request):
         request_confirmation(c, request.user, permission_user=officer.user_ptr)
         request.user.message_set.create(message="Challenge created successfully")
         return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
+    else:
+	request.user.message_set.create(message="Error creating challenge. No HTTP POST data detected.")
+	return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
 
 @permission_required('info.group_vp')
 def upload_eligibility_list(request):
@@ -190,6 +189,7 @@ def event_confirmation(request):
 
 @permission_required('info.group_vp')
 def all_candidates_events(request):
+    """
     d = {}
     d['candidates'] = []
     candidates = Person.candidates.order_by('first_name')
@@ -209,6 +209,44 @@ def all_candidates_events(request):
                 if candidate.tallies[r.event.event_type]['count'] >= EVENT_REQUIRED_NUMBER[r.event.event_type]:
                     candidate.tallies[r.event.event_type]['completed'] = True
         d['candidates'].append(candidate)
+    """
+    d = {}
+    d['candidates'] = []
+    candidates = Person.candidates.order_by('first_name')
+    
+    for candidate in candidates:
+        rsvps = candidate.rsvp_set.all()
+	candidate.events = {}
+	candidate.all_events = []
+	for event_type in EVENT_TYPE.values():
+	    if event_type in EVENT_REQUIRED_NUMBER:
+	        candidate.events[event_type] = { 'events' : [],
+		                  'count' : 0,
+				  'rsvp' : [],
+				  'completed' : False
+		                  }
+        for r in rsvps:
+	    if r.vp_confirm:
+	        e = r.event
+	        if (e.event_type != 'CANDMAND' or e.name.startswith('General Meeting')) and (e.event_type != 'JOB') and (e.event_type != 'MISC'):
+                    candidate.events[e.event_type]['events'].append(e)
+		    candidate.events[e.event_type]['rsvp'].append(r)
+		    candidate.events[e.event_type]['count'] += 1
+		    candidate.all_events.append(r)
+
+	for event_type in EVENT_TYPE.values():
+	    if event_type in EVENT_REQUIRED_NUMBER:
+	        candidate.events[event_type]['completed'] = candidate.events[event_type]['count'] >= EVENT_REQUIRED_NUMBER[event_type]
+
+	candidate.challenges = candidate.mychallenges.all()
+	candidate.challenges_count = candidate.mychallenges.filter(status=True).count()
+	candidate.challenges_completed = candidate.challenges_count >= EVENT_REQUIRED_NUMBER['CHALLENGES']
+
+	candidate.submitted_resume = Resume.objects.filter(person=candidate)
+	candidate.completed_quiz = candidate.candidateinfo.completed_quiz
+	if candidate.completed_quiz:
+	    candidate.passed_quiz = 11 - candidate.candidateinfo.candidatequiz.score < 2
+	d['candidates'].append(candidate)
     return render_to_response("cand/all_candidates_events.html", d, context_instance=RequestContext(request))
 
 def candidate_quiz(request):
@@ -219,6 +257,7 @@ def candidate_quiz(request):
             cquiz = CandidateQuiz()
 
         ans = request.POST
+	cquiz.score = 0
         check_q1([ans['q1']], cquiz)
         check_q2([ans['q2']], cquiz)
         check_q3([ans['q3']], cquiz)
@@ -247,11 +286,42 @@ def candidate_quiz(request):
 	    d['prev_answers'] = CandidateQuiz()
         return render_to_response("cand/quiz.html", d, context_instance=RequestContext(request))
 
+def rescore_quizzes(request):
+    quizzes = CandidateQuiz.objects.filter(candidateinfo__candidate_semester=nice_types.semester.current_semester())
+    for cquiz in quizzes:
+        cquiz.score = 0
+        check_q1([cquiz.q1], cquiz)
+        check_q2([cquiz.q2], cquiz)
+        check_q3([cquiz.q3], cquiz)
+        check_q4([cquiz.q4], cquiz)
+        check_q5([cquiz.q51, cquiz.q52], cquiz)
+        check_q6([cquiz.q6], cquiz)
+        check_q7([cquiz.q71, cquiz.q72, cquiz.q73, cquiz.q74, cquiz.q75, cquiz.q76], cquiz)
+        check_q8([cquiz.q81, cquiz.q82, cquiz.q83, cquiz.q84], cquiz)
+        check_q9([cquiz.q91, cquiz.q92], cquiz)
+        check_q10([cquiz.q101, cquiz.q102], cquiz)
+        check_q11([cquiz.q11], cquiz)
+
+        cquiz.save()
+    return HttpResponseRedirect(reverse('hkn.main.views.main'))
+
 @permission_required('info.group_vp')
 def view_quiz_submissions(request):
     d = {}
-    d['quizzes'] = CandidateQuiz.objects.filter(candidateinfo__candidate_semester=nice_types.semester.current_semester())
+    d['quizzes'] = CandidateQuiz.objects.filter(candidateinfo__candidate_semester=nice_types.semester.current_semester()).order_by('candidateinfo__person__first_name')
     return render_to_response("cand/view_quiz_submissions.html", d, context_instance=RequestContext(request))
+
+@permission_required('info.group_vp')
+def view_quiz(request, quiz_id):
+    d = {}
+    d['quiz'] = get_quiz(quiz_id)
+    return render_to_response("cand/view_quiz.html", d, context_instance=RequestContext(request))
+
+def get_quiz(quiz_id):
+    try:
+        return CandidateQuiz.objects.get(pk=quiz_id)
+    except (CandidateQuiz.DoesNotExist, ValueError):
+        return get_object_or_404(CandidateQuiz, slug=quiz_id)
 
 """
 def course_survey_add_courses(request):

@@ -4,7 +4,8 @@ import re
 def c(str):
     return re.compile(str, re.IGNORECASE)
 
-q1_ans = c('(Illinois|UIUC|Urbana)')
+q1_ans = c('(UIUC|Urbana)')
+q1_partial_ans = c('(Illinois)')
 q2_ans = c('1904')
 q3_ans = c('mu')
 q4_ans = c('1915')
@@ -14,15 +15,17 @@ q6_ans = c('wheatstone bridge')
 q7_ans = [c('vice president'),
           c('president'),
           c('recording secretary'),
-          c('faculty'),
+          c('faculty|bridge'),
           c('corresponding secretary'),
           c('treasurer')]
-q8_ans = [c('exams'),
+q8_ans = [c('exam'),
           c('tutor'),
           c('course survey'),
           c('advising')]
-q9_ans = [(c('sahai'), c('')),
-          (c('garcia'), c('beta theta')),]
+q9_ans = [(c('sahai'), c('mu')),
+          (c('garcia'), c('beta theta')),
+	  (c('birdsall'), c('beta epsilon')),
+	  (c('babak'), c('iota pi')),]
 q10_ans = [c('345 soda'),
            c('290 cory')]
 q11_ans = c('(470/27|17.4)')
@@ -31,13 +34,17 @@ def check_q1(answers, cquiz):
     cquiz.q1 = sanitize(answers[0])
     if q1_ans.search(sanitize(answers[0])):
         cquiz.q1b = True
+	cquiz.score += 1
     else:
         cquiz.q1b = False
+        if q1_partial_ans.search(sanitize(answers[0])):
+            cquiz.score += 0.5
 
 def check_q2(answers, cquiz):
     cquiz.q2 = sanitize(answers[0])
     if q2_ans.search(sanitize(answers[0])):
         cquiz.q2b = True
+	cquiz.score += 1
     else:
         cquiz.q2b = False
 
@@ -45,6 +52,7 @@ def check_q3(answers, cquiz):
     cquiz.q3 = sanitize(answers[0])
     if q3_ans.search(sanitize(answers[0])):
         cquiz.q3b = True
+	cquiz.score += 1
     else:
         cquiz.q3b = False
 
@@ -52,6 +60,7 @@ def check_q4(answers, cquiz):
     cquiz.q4 = sanitize(answers[0])
     if q4_ans.search(sanitize(answers[0])):
         cquiz.q4b = True
+	cquiz.score += 1
     else:
         cquiz.q4b = False
 
@@ -66,13 +75,17 @@ def check_q5(answers, cquiz):
             
     if len(answers) == 0:
         cquiz.q5b = True
+	cquiz.score += 1
     else:
         cquiz.q5b = False
+	if len(answers) == 1:
+	    cquiz.score += 0.5
 
 def check_q6(answers, cquiz):
     cquiz.q6 = sanitize(answers[0])
     if q6_ans.search(sanitize(answers[0])):
         cquiz.q6b = True
+	cquiz.score += 1
     else:
         cquiz.q6b = False
 
@@ -91,8 +104,11 @@ def check_q7(answers, cquiz):
             
     if len(answers) == 0:
         cquiz.q7b = True
+	cquiz.score += 1
     else:
         cquiz.q7b = False
+	if len(answers) == 1:
+	    cquiz.score += 0.5
 
 def check_q8(answers, cquiz):
     cquiz.q81 = sanitize(answers[0])
@@ -107,15 +123,20 @@ def check_q8(answers, cquiz):
             
     if len(answers) == 0:
         cquiz.q8b = True
+	cquiz.score += 1
     else:
         cquiz.q8b = False
+	if len(answers) == 1:
+	    cquiz.score += 0.5
 
 def check_q9(answers, cquiz):
     cquiz.q91 = sanitize(answers[0])
     cquiz.q92 = sanitize(answers[1])
     match = False
     for i in q9_ans:
-            if i[0].search(sanitize(answers[0])) and i[1].search(sanitize(answers[1])):
+        if i[0].search(sanitize(answers[0])):
+	    cquiz.score += 0.5
+	    if i[1].search(sanitize(answers[1])):
 	        match = True
                 break
             
@@ -135,6 +156,7 @@ def check_q10(answers, cquiz):
             
     if len(answers) == 0:
         cquiz.q10b = True
+	cquiz.score += 1
     else:
         cquiz.q10b = False
 
@@ -142,6 +164,7 @@ def check_q11(answers, cquiz):
     cquiz.q11 = sanitize(answers[0])
     if q11_ans.search(sanitize(answers[0])):
         cquiz.q11b = True
+	cquiz.score += 1
     else:
         cquiz.q11b = False
 

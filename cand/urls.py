@@ -17,4 +17,6 @@ urlpatterns = patterns('',
 #    url(r'^course_survey_add_courses/$', 'hkn.cand.views.course_survey_add_courses', name='cand-survey-add-courses'),
     url(r'^quiz/$', 'hkn.cand.views.candidate_quiz', name='cand-quiz'),
     url(r'^view_quiz_submissions/$', 'hkn.cand.views.view_quiz_submissions', name='cand-view-quiz-submissions'),
+    url(r'^view_quiz_submissions/(?P<quiz_id>.*)/$', 'hkn.cand.views.view_quiz', name='cand-view-quiz'),
+    url(r'^rescore_quizzes/$', 'hkn.cand.views.rescore_quizzes', name='cand-rescore-quizzes'),
     )					    

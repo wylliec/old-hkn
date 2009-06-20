@@ -74,7 +74,7 @@ class CandidateInfo(models.Model):
     candidate_picture = models.ForeignKey(Photo, null=True)
     """ candidate picture """
     
-    surveys = models.ManyToManyField(Klass, related_name="surveyors")
+    #surveys = models.ManyToManyField(Klass, related_name="surveyors")
     """ surveyed courses """
 
     completed_quiz = models.BooleanField()
@@ -184,6 +184,8 @@ class CandidateQuiz(models.Model):
     q9b = models.BooleanField()
     q10b = models.BooleanField()
     q11b = models.BooleanField()
+
+    score = models.FloatField()
 
 #class CourseSurvey(models.Model):
 #    """
