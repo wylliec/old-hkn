@@ -32,8 +32,10 @@ def do_office(office, user_list, version):
     
 
 def main():
-    soda_list = "sdc, ingrid, sjavdani, georgechen, davidzeng, pearce, adit, saung, gkchou, waynelin, conorh, wsandy, kylim, justinchu, ppyapali"
-    cory_list = "aguo, cliffe, jhoffman, richardxia, sutardja, rzheng, dwong, kmowery, suhaas, rdorrance, arjun, jkotker, siddharth, zwang, sgowda"
+
+    soda_list = "richardxia, jkotker, arjun, kylim, zwang, conorh, waynelin, rniwa, davidzeng, justinchu, adit, brlam, mmatloob, saung, tmagrino"    
+    cory_list = "namdoh, ibrahima, ingrid, siddharth, jhoffman, sjavdani, anthonychen, kathytang, hjiang, saralv, cphsu, zhangz, tonydear, andrewlee, pssandhu"
+
     version = Assignment.get_max_version() + 1
     do_office(SODA, soda_list, version)
     do_office(CORY, cory_list, version)
