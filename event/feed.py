@@ -5,7 +5,7 @@ from django.template.defaultfilters import linebreaks, truncatewords
 from hkn.event.models import Event
 
 import datetime
-
+#Ibrahim testing committing
 def json_time(date):
     return {"year" : date.year,
             "month" : date.month,
