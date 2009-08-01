@@ -63,10 +63,10 @@ DJANGO_COMMON = SERVER_ROOT + "django-common/"
 
 
 ADMINS = (
-#     ('HKN Computing Services', 'compserv@hkn.eecs.berkeley.edu'),
+     ('HKN Computing Services', 'website-errors@hkn.eecs.berkeley.edu'),
 )
 
-DEFAULT_FROM_EMAIL = "hkn@hkn.eecs.berkeley.edu"
+DEFAULT_FROM_EMAIL = "HKN CompServ <compserv@hkn.eecs.berkeley.edu>"
 EMAIL_HOST = "hkn.eecs.berkeley.edu"
 EMAIL_PORT= 25
 EMAIL_HOST_USER = ""
