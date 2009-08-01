@@ -1,0 +1,23 @@
+{% load ical %}BEGIN:VCALENDAR
+PRODID:-//HKN//Cal//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:HKN Events
+X-WR-TIMEZONE:America/Los_Angeles
+X-WR-CALDESC:HKN Events{% for event in events%}
+BEGIN:VEVENT
+DTSTART:{{ event.start_time|icaldate }}
+DTEND:{{ event.end_time|icaldate }}
+DTSTAMP:{{ today|icaldate }}
+UID:pk-{{ event.pk }}@hkn.eecs.berkeley.edu
+LOCATION:{{ event.location|icalify:"10"|safe }}
+STATUS:CONFIRMED
+SUMMARY:{{ event.name|icalify:"8"|safe }}
+CLASS:PUBLIC
+TRANSP:OPAQUE
+SEQUENCE:0
+DESCRIPTION:{{ event.description|icalify:"12"|safe }}
+END:VEVENT{% endfor %}
+END:VCALENDAR
+
