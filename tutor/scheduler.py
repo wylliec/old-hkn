@@ -4,6 +4,11 @@
 import heapq, random, sys, time, thread, re
 
 try:
+    import psyco
+except:
+    pass
+
+try:
     from hkn.tutor.constants import *
 except:
     try:
@@ -2079,7 +2084,7 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
                 t = t.replace("-", "TO")
                 lines.append("s.t. unavailable%s%s%s: sum{o in offices} personInSlot['%s', '%s%s', o] == 0;\n" % (p, d, t, p, d, t))
 
-    import random
+    random.seed()
     random.shuffle(lines)
     for line in lines:
         dump.write(line)
@@ -2467,29 +2472,34 @@ def powerset(s):
 
 if __name__=="__main__":
     def usage():
-        print "Valid options:"
+        print "Current options:"
+        print "  -h      --help"
         print "  -f NAME --file=NAME    output file name"
+        print "  -F NAME --tempfile=NAME intermediate output file name"
+        print "  -b NUM  --beam=NUM     beam length to use in hill climbing (default: 3, use 0 to use first available swap)"
+        print "  -a NUM  --lpall=NUM    run the lp NUM times"
+        print "  -p NUM  --processes=NUM run the lp with NUM processes"
+        print
+        print "Old options:"
         print "  -m NUM  --machine=NUM  machine number"
         print "  -c NUM  --maxcost=NUM  maximum cost"
         print "  -r NUM  --randseed=NUM random seed"
-        print "  -h      --help"
         print "  -t      --test         run tests"
         print "  -l      --lp           create lp"
         print "  -L      --lpr          hill climb the LP solution"
         print "  -g NAME --lpfile=NAME  lp input filename (default: lp.txt)"
         print "  -G NAME --lprfile=NAME lp output filename (default: results.txt)"
-        print "  -b NUM  --beam=NUM     beam length to use in hill climbing (default: 3, use 0 to use first available swap)"
-        print "  -a NUM  --lpall=NUM    run the lp NUM times"
         print "  -A NAME --analyze=NAME analyze scheduler outputs from multiple runs..."
         print "                             be sure to specify a file with -f or it will overwrite schedulerOutput.txt"
 
     import getopt
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'f:m:c:r:tlLg:G:b:a:A:', ['file=', 'machine=', 'maxcost=', 'randseed=', 'test', 'lp', 'lpr', 'lpfile=', 'lprfile=', 'beam=', 'lpall=', 'analyze='])
+        opts, args = getopt.getopt(sys.argv[1:], 'f:F:m:c:r:tlLg:G:b:a:A:p:', ['file=', 'tempfile=', 'machine=', 'maxcost=', 'randseed=', 'test', 'lp', 'lpr', 'lpfile=', 'lprfile=', 'beam=', 'lpall=', 'analyze=', 'processes='])
     except getopt.GetoptError:
         usage()
         sys.exit(1)
     filename = "schedulerOutput.txt"
+    tfilename = "schedulerIntOutput.txt"
     machineNum = False
     cost = False
     seed = False
@@ -2499,10 +2509,13 @@ if __name__=="__main__":
     lpfile = "lp.txt"
     lprfile = "results.txt"
     analyze = None
+    processes = 1
     beamLength = 3
     for opt, arg in opts:
         if opt in ('-f', '--file'):
             filename = arg
+        if opt in ('-F', '--tempfile'):
+            tfilename = arg
         elif opt in ('-m', '--machine'):
             machineNum = arg
         elif opt in ('-c', '--maxcost'):
@@ -2529,8 +2542,142 @@ if __name__=="__main__":
             lpall = int(arg)
         elif opt in ('-A', '--analyze'):
             analyze = arg
+        elif opt in ('-p', '--processes'):
+            processes = int(arg)
 
-    if lpall > 0:
+    def do_analyze(f):
+        # get all states
+        states = State.parse_into_states(f.read())
+        f.close()
+        print len(states), "original states"
+
+        # get best states
+        bestCost = states[0].meta['cost']
+        newStates = []
+        for state in states:
+            if state.meta['cost'] < bestCost:
+                bestCost = state.meta['cost']
+                newStates = []
+
+            if state.meta['cost'] == bestCost:
+                newStates.append(state)
+
+        states = newStates
+        numStates = len(states)
+        print numStates, "best states"
+
+        # get unique states
+        states = list(set(states))
+        print len(states), "unique states"
+
+        # ordered slot list
+        slots = []
+        for slot in states[0]:
+            slots.append(slot)
+        slots.sort()
+
+        # find slots that are fixed
+        sameList = []
+        for slot in slots:
+            person = states[0][slot]
+            samePerson = True
+            for state in states:
+                if state[slot] != person:
+                    samePerson = False
+                    break
+            if samePerson:
+                sameList.append((slot, person))
+
+        import operator
+        sameList.sort(key=operator.itemgetter(1))
+
+        print "Same slots for all states: (%d slots)" % len(sameList)
+        tempList = []
+        for slot, person in sameList:
+            print person, "\t", slot
+            tempList.append(slot)
+
+        # slots that aren't fixed
+        diffs = {}
+        for slot in slots:
+            if slot not in tempList:
+                diffs[slot] = {}
+                for state in states:
+                    if state[slot] not in diffs[slot]:
+                        diffs[slot][state[slot]] = 0
+                    diffs[slot][state[slot]] += 1
+
+        if len(diffs) > 0:
+            print
+            print "Groups of slots that are interchangable:"
+            smallest = 2
+            while len(diffs) > 0 and smallest < len(diffs):
+                for slotlist in powerset(diffs.keys()):
+                    if len(slotlist) != smallest:
+                        continue
+                    d = {}
+                    for slot in slotlist:
+                        for person in diffs[slot]:
+                            if person not in d:
+                                d[person] = 0
+                            d[person] += diffs[slot][person]
+
+                    found = True
+                    for person in d:
+                        if d[person] % numStates != 0:
+                            found = False
+                            break
+                    if found:
+                        print len(diffs), "choose", smallest
+                        for slot in slotlist:
+                            print slot, diffs[slot]
+                        print
+                        for slot in slotlist:
+                            del diffs[slot]
+                        break
+                if not found:
+                    smallest += 1
+            if smallest == len(diffs):
+                print len(diffs), "choose", smallest
+                for slot in diffs:
+                    print slot, diffs[slot]
+                
+        # write best states to file
+        dump = open(filename, 'w+') #truncates file if it exists
+        for state in states:
+            dump.write(state.pretty_print())
+        dump.close()
+
+    if processes > 1:
+        from multiprocessing import Pool, Lock
+        import os
+        lock = Lock()
+
+        dump = open(tfilename, 'w+') #truncates file if it exists
+
+        def run_lp_once(n):
+            n = str(n)
+            create_lp_from_parameters(lpfile+n)
+            os.system("glpsol --model " + (lpfile+n) + " --output " + (lprfile+n) + " > /dev/null")
+            print "Running iteration", n
+            state = create_schedule_from_lp_output(lprfile+n, beamLength, False)
+
+            os.unlink(lpfile+n)
+            os.unlink(lprfile+n)
+
+            lock.acquire()
+            dump.write(state.pretty_print())
+            dump.flush()
+            lock.release()
+            print "Done with iteration", n
+
+        pool = Pool(processes=processes)
+        pool.map(run_lp_once, range(lpall))
+        pool.close()
+
+        dump.seek(0)
+        do_analyze(dump)
+    elif lpall > 0:
         dump = open(filename, 'w+') #truncates file if it exists
 
         results = []
@@ -2565,102 +2712,7 @@ if __name__=="__main__":
         create_lp_from_parameters(lpfile)
     elif analyze:
         f = open(analyze, 'r')
-
-        # get all states
-        states = State.parse_into_states(f.read())
-        print len(states), "original states"
-
-        # get unique states
-        states = list(set(states))
-        print len(states), "unique states"
-
-        # get best states
-        bestCost = states[0].meta['cost']
-        newStates = []
-        for state in states:
-            if state.meta['cost'] < bestCost:
-                bestCost = state.meta['cost']
-                newStates = []
-
-            if state.meta['cost'] == bestCost:
-                newStates.append(state)
-
-        states = newStates
-        numStates = len(states)
-        print numStates, "best states"
-
-        # ordered slot list
-        slots = []
-        for slot in states[0]:
-            slots.append(slot)
-        slots.sort()
-
-        # find slots that are fixed
-        sameList = []
-        for slot in slots:
-            person = states[0][slot]
-            samePerson = True
-            for state in states:
-                if state[slot] != person:
-                    samePerson = False
-                    break
-            if samePerson:
-                sameList.append((slot, person))
-
-        import operator
-        sameList.sort(key=operator.itemgetter(1))
-
-        print
-        print "Same slots for all states:"
-        tempList = []
-        for slot, person in sameList:
-            print person, "\t", slot
-            tempList.append(slot)
-
-        # slots that aren't fixed
-        diffs = {}
-        for slot in slots:
-            if slot not in tempList:
-                diffs[slot] = {}
-                for state in states:
-                    if state[slot] not in diffs[slot]:
-                        diffs[slot][state[slot]] = 0
-                    diffs[slot][state[slot]] += 1
-
-        print
-        print "Groups of slots that are interchangable:"
-        smallest = 2
-        while len(diffs) > 0:
-            print len(diffs), "choose", smallest
-            for slotlist in powerset(diffs.keys()):
-                if len(slotlist) != smallest:
-                    continue
-                d = {}
-                for slot in slotlist:
-                    for person in diffs[slot]:
-                        if person not in d:
-                            d[person] = 0
-                        d[person] += diffs[slot][person]
-
-                found = True
-                for person in d:
-                    if d[person] % numStates != 0:
-                        found = False
-                        break
-                if found:
-                    for slot in slotlist:
-                        print slot, diffs[slot]
-                    print
-                    for slot in slotlist:
-                        del diffs[slot]
-                    break
-            if not found:
-                smallest += 1
-                
-        # write best states to file
-        dump = open(filename, 'w+') #truncates file if it exists
-        for state in states:
-            dump.write(state.pretty_print())
+        do_analyze(f)
     else:
         generate_from_file(filename, options={'machineNum': machineNum, 'maximumCost': cost, 'randomSeed': seed}, beamLength=beamLength)
 
