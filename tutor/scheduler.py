@@ -2509,7 +2509,7 @@ if __name__=="__main__":
     lpfile = "lp.txt"
     lprfile = "results.txt"
     analyze = None
-    processes = 1
+    processes = 0
     beamLength = 3
     for opt, arg in opts:
         if opt in ('-f', '--file'):
@@ -2648,7 +2648,7 @@ if __name__=="__main__":
             dump.write(state.pretty_print())
         dump.close()
 
-    if processes > 1:
+    if processes > 0:
         from multiprocessing import Pool, Lock
         import os
         lock = Lock()
