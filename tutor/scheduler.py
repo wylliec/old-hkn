@@ -2476,9 +2476,11 @@ if __name__=="__main__":
         print "  -h      --help"
         print "  -f NAME --file=NAME    output file name"
         print "  -F NAME --tempfile=NAME intermediate output file name"
-        print "  -b NUM  --beam=NUM     beam length to use in hill climbing (default: 3, use 0 to use first available swap)"
+        print "  -b NUM  --beam=NUM     beam length to use in hill climbing (default: 1, use 0 to use first available swap)"
         print "  -a NUM  --lpall=NUM    run the lp NUM times"
         print "  -p NUM  --processes=NUM run the lp with NUM processes"
+        print "  -A NAME --analyze=NAME analyze scheduler output file NAME"
+        print "                             be sure to specify a file with -f or it will overwrite schedulerOutput.txt"
         print
         print "Old options:"
         print "  -m NUM  --machine=NUM  machine number"
@@ -2489,8 +2491,6 @@ if __name__=="__main__":
         print "  -L      --lpr          hill climb the LP solution"
         print "  -g NAME --lpfile=NAME  lp input filename (default: lp.txt)"
         print "  -G NAME --lprfile=NAME lp output filename (default: results.txt)"
-        print "  -A NAME --analyze=NAME analyze scheduler outputs from multiple runs..."
-        print "                             be sure to specify a file with -f or it will overwrite schedulerOutput.txt"
 
     import getopt
     try:
