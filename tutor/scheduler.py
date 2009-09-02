@@ -1010,7 +1010,7 @@ def generate_schedule(availabilitiesBySlot = NiceDict([]),
                                           "maximumCost":False,
                                           "patience":False,
                                           }),
-                      beamLength = 3
+                      beamLength = 1
                       ):
     """
     Returns:
@@ -1505,7 +1505,7 @@ def hill_climb(initialState=State(),
               slotsByPerson=False,
               adjacency_checker=are_adjacent_hours,
               availabilitiesBySlot=NiceDict([]),
-              beamLength=3,
+              beamLength=1,
               debug=False):
     """
     Returns: best state found, with cost info in the meta.  If did any hill climbing,
@@ -1935,7 +1935,7 @@ def random_availabilities_by_slot(prob=.4):
     #construct dictionary
     return parse_into_availabilities_by_slot(corystr, sodastr)
 
-def generate_from_random(destFileName = "randomSchedulerOutput.txt", probability = .5, beamLength = 3):
+def generate_from_random(destFileName = "randomSchedulerOutput.txt", probability = .5, beamLength = 1):
     clear_timing()
     ret = generate_schedule(availabilitiesBySlot=random_availabilities_by_slot(probability),
                             slotsByPerson=NiceDict(2),
@@ -1950,7 +1950,7 @@ def generate_from_random(destFileName = "randomSchedulerOutput.txt", probability
     
     print "wrote output to %s" % destFileName
     
-def generate_from_file(destFileName = "schedulerOutput.txt", options=NiceDict(False), beamLength = 3):
+def generate_from_file(destFileName = "schedulerOutput.txt", options=NiceDict(False), beamLength = 1):
     try:
         from parameters import coryTimes, sodaTimes, defaultHours, exceptions, scoring
         from parameters import options as poptions
@@ -2127,7 +2127,7 @@ def create_lp_from_parameters(destFileName = "lp.txt"):
     dump.close()
 
 # Hill climbs the output of glpsol and outputs the optimal schedule
-def create_schedule_from_lp_output(resultFileName = "results.txt", beamLength = 3, debug=False):
+def create_schedule_from_lp_output(resultFileName = "results.txt", beamLength = 1, debug=False):
     try:
         from parameters import coryTimes, sodaTimes, defaultHours, exceptions, scoring
         from parameters import options as poptions
@@ -2383,7 +2383,7 @@ def test_heuristic():
     else:
         print "expected %d, start state heuristic: %d" % (expected, result)
     
-def hill_climb_test(beamLength=3):
+def hill_climb_test(beamLength=1):
     from parameters import coryTimes, sodaTimes
     """
     str = "----------\n\
@@ -2510,7 +2510,7 @@ if __name__=="__main__":
     lprfile = "results.txt"
     analyze = None
     processes = 0
-    beamLength = 3
+    beamLength = 1
     for opt, arg in opts:
         if opt in ('-f', '--file'):
             filename = arg
