@@ -2564,12 +2564,12 @@ if __name__=="__main__":
                 newStates.append(state)
 
         states = newStates
-        numStates = len(states)
-        print numStates, "best states"
+        print len(states), "best states"
 
         # get unique states
         states = list(set(states))
         print len(states), "unique states"
+        numStates = len(states)
 
         # ordered slot list
         slots = []
