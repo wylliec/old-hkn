@@ -2571,6 +2571,12 @@ if __name__=="__main__":
         print len(states), "unique states"
         numStates = len(states)
 
+        # write best states to file
+        dump = open(filename, 'w+') #truncates file if it exists
+        for state in states:
+            dump.write(state.pretty_print())
+        dump.close()
+
         # ordered slot list
         slots = []
         for slot in states[0]:
@@ -2643,12 +2649,6 @@ if __name__=="__main__":
                 for slot in diffs:
                     print slot, diffs[slot]
                 
-        # write best states to file
-        dump = open(filename, 'w+') #truncates file if it exists
-        for state in states:
-            dump.write(state.pretty_print())
-        dump.close()
-
     if processes > 0:
         from multiprocessing import Pool, Lock, active_children
         import os
