@@ -2545,10 +2545,11 @@ if __name__=="__main__":
         elif opt in ('-p', '--processes'):
             processes = int(arg)
 
-    def do_analyze(f):
-        # get all states
-        states = State.parse_into_states(f.read())
-        f.close()
+    def do_analyze(f, states=None):
+        if f is not None:
+            # get all states
+            states = State.parse_into_states(f.read())
+            f.close()
         print len(states), "original states"
 
         # get best states
@@ -2649,11 +2650,9 @@ if __name__=="__main__":
         dump.close()
 
     if processes > 0:
-        from multiprocessing import Pool, Lock
+        from multiprocessing import Pool, Lock, active_children
         import os
         lock = Lock()
-
-        dump = open(tfilename, 'w+') #truncates file if it exists
 
         def run_lp_once(n):
             n = str(n)
@@ -2665,18 +2664,30 @@ if __name__=="__main__":
             os.unlink(lpfile+n)
             os.unlink(lprfile+n)
 
-            lock.acquire()
+            dump = open(filename+str(os.getpid()), "a") #append to the file
             dump.write(state.pretty_print())
-            dump.flush()
-            lock.release()
+            dump.close()
             print "Done with iteration", n
 
         pool = Pool(processes=processes)
+        children = active_children()
+        for c in children:
+            temp = open(filename+str(c.pid), "w+") #truncates file if it exists
+            temp.close()
         pool.map(run_lp_once, range(lpall))
+        dump = open(tfilename, "w+")
+        states = []
+        for c in children:
+            temp = open(filename+str(c.pid), "r")
+            s = temp.read()
+            states += State.parse_into_states(s)
+            dump.write(s)
+            temp.close()
+            os.unlink(filename+str(c.pid))
         pool.close()
 
-        dump.seek(0)
-        do_analyze(dump)
+        dump.close()
+        do_analyze(None, states)
     elif lpall > 0:
         dump = open(filename, 'w+') #truncates file if it exists
 
