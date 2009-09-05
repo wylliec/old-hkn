@@ -2650,9 +2650,8 @@ if __name__=="__main__":
                     print slot, diffs[slot]
                 
     if processes > 0:
-        from multiprocessing import Pool, Lock, active_children
+        from multiprocessing import Pool, active_children
         import os
-        lock = Lock()
 
         def run_lp_once(n):
             n = str(n)
