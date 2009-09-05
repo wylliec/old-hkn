@@ -2644,8 +2644,8 @@ if __name__=="__main__":
                         break
                 if not found:
                     smallest += 1
-            if smallest == len(diffs):
-                print len(diffs), "choose", smallest
+            if len(diffs) > 0:
+                print len(diffs), "choose", len(diffs), "(might not match due to tutoring officers)"
                 for slot in diffs:
                     print slot, diffs[slot]
                 
