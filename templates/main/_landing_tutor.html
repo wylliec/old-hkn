@@ -17,18 +17,26 @@
         </td>
         {% for day in time %}
         <td class="pcell">
-            {% for person in day.Cory.people %}
+            {% if day.Cory.people %}
+            	{% for person in day.Cory.people %}
             <div title="{{ person.0.name }}" rel="#tutor-{{person.0.id}}" class="infobox person {{ person.1 }}">
                 {{ person.0.abbr_name }}
             </div>
-            {% endfor %}
+            	{% endfor %}
+            {% else %}
+            <div class="infobox person">No Tutoring!</div>
+            {% endif %}
         </td>
         <td class="pcell">
-            {% for person in day.Soda.people %}
+            {% if day.Soda.people %}
+            	{% for person in day.Soda.people %}
             <div title="{{ person.0.name }}" rel="#tutor-{{person.0.id}}" class="infobox person {{ person.1 }}">
                 {{ person.0.abbr_name }}
             </div>
-            {% endfor %}
+            	{% endfor %}
+            {% else %}
+            <div class="infobox person">No Tutoring!</div>
+            {% endif %}
         </td>
         {% endfor %}
     </tr>
