@@ -184,7 +184,7 @@ class GalleryUpload(models.Model):
                                 help_text=_('Select a .zip file of images to upload into a new Gallery.'),
                                 max_length=402)
     title = models.CharField(_('title'), max_length=401, help_text=_('All photos in the gallery will be given a title made up of the gallery title + a sequential number.'))
-    semester = SemesterField()
+    semester = SemesterField(help_text=_('Must be in the format "fa09".'))
     caption = models.TextField(_('caption'), blank=True, help_text=_('Caption will be added to all photos.'), max_length=405)
     description = models.TextField(_('description'), blank=True, help_text=_('A description of this Gallery.'), max_length=403)
     is_public = models.BooleanField(_('is public'), default=True, help_text=_('Uncheck this to make the uploaded gallery and included photographs private.'))
