@@ -102,6 +102,8 @@ def get_tutor_info(tutoring_days=TUTORING_DAYS, tutoring_times=TUTORING_TIMES):
                 slot_schedule["slot"] = slot
                 slot_schedule["people"] = []
                 
+                if slot not in realAssignments:
+                    continue
                 people = realAssignments[slot]
                 for person in people:
                     if person not in tutors.keys():

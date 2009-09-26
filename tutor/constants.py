@@ -7,8 +7,8 @@ OFFICE_CHOICES = (SODA, SODA), (CORY, CORY)
 
 #replace below by reading from some config file
 TUTORING_DAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
-#TUTORING_TIMES = ("11a-12", "12-1", "1-2", "2-3", "3-4", "4-5") #listed in order of adjacency
-TUTORING_TIMES = ("11a-12", "12-1", "1-2")
+TUTORING_TIMES = ("11a-12", "12-1", "1-2", "2-3", "3-4", "4-5") #listed in order of adjacency
+#TUTORING_TIMES = ("11a-12", "12-1", "1-2")
 
 #lowest version number
 MIN_VERSION = 1

@@ -298,6 +298,8 @@ def view_signups(request):
             availabilitiesDict[slot].append(to_append)
         
     
+    #raise Exception(assignments)
+    #raise Exception(people)
     #take note of which slots are assigned for the given or latest version, calculate "happiness"
     happiness = {} #full name -> dictionaries of: net, first_choices, second_choices, adjacent, correct_office_count, missing
     for assignment in assignments:
