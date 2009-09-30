@@ -176,8 +176,8 @@ INSTALLED_APPS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'hkn.main.pam_backend.PamBackend',
-    'django.contrib.auth.backends.ModelBackend',
+        'django_auth_ldap.backend.LDAPBackend',
+        'django.contrib.auth.backends.ModelBackend',
 )
 
 DBLOG_CATCH_404_ERRORS = True
