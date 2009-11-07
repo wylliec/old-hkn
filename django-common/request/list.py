@@ -41,13 +41,26 @@ def list_requests(request, category):
     if d.has_key('query'):
         requests = requests.ft_query(d['query'])
     
-    requests = sort_objects(requests, d['sort_by'], None)
-    requests = paginate_objects(requests, d, page=d['page'])
-    
-    # TODO: hook the post_delete signal on confirm object to delete requests with orphaned objects instead of having the hack on the line below
-    requests = [r for r in requests if r.confirm_object is not None]
+    num_requests = requests.count()
 
-    requests = filter_requests(requests)
+    requests = sort_objects(requests, d['sort_by'], None)
+
+    # TODO: do we still need the 'confirm_object is not None' filter in the following code? And can we push that filter to the database layer (e.g. requests.exclude(confirm_object = None) ) instead of filtering in python? We can also hook the post_delete signal on the confirm object to delete requests with orphaned objects...
+    # TODO: we only call 'filter_requests' for the 'actives' category. Is this what we want?
+    
+    if category == 'actives':
+        # TODO: this currently materializes all of the requests from the database to filter them! This is pretty bad & should fix if performance becomes a problem. Hopefully there aren't too many active requests at once
+        requests = filter_requests(requests)
+        # Requests have already been materialized from earlier filter, so we might as well do this following filter before pagination as well
+        requests = filter(lambda r: r.confirm_object is not None, requests)
+        requests = paginate_objects(requests, d, page=d['page'])
+    else:
+        # this will only load e.g. 20 requests from the database. Do this before the next filter so we don't have to materialize all requests from the database
+        requests = paginate_objects(requests, d, page=d['page'])
+
+        # this will filter the 20 returned from pagination. If all requests are filtered out, we will have problems! But this should be a rare condition (condition is: the confirm_object e.g. the RSVP object has been deleted) so hopefully this will never happen...
+        # TODO: hook the post_delete signal on confirm object to delete requests with orphaned objects instead of having the hack on the line below
+        requests = filter(lambda r: r.confirm_object is not None, requests)
     d['requests'] = set_metainfos(requests)
     
     return render_ajaxlist_response(request.is_ajax(), "request/list.html", d, context_instance=RequestContext(request))
