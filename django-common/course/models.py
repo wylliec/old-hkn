@@ -165,8 +165,8 @@ class Course(models.Model):
         
         def ft_query(self, query):
             (dept_abbr, coursenumber) = self.parse_query(query)
-        
-            self = self.filter(department_abbr__iexact = dept_abbr)        
+            if dept_abbr:
+                self = self.filter(department_abbr__iexact = dept_abbr)        
             if coursenumber:
                 prefix, number, suffix = Course.split_coursenumber(coursenumber)
                 self = self.filter(number__istartswith = number)
