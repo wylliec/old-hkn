@@ -4,6 +4,15 @@ function prepareRow(event_div) {
 
 event_show_info_url = "/event/view/";
 
+/*Handles showing info for events on the sidebar. If there is an extremely
+ *long word, break it up by inserting <wbr> between each character. It does
+ *so by first breaking up the text by whitespaces, checking the length of
+ *each substring, then joining them back together (replacing the whitespaces
+ *with spaces. This assumes that either <br> or <p> would be used to indicate
+ *newlines (since it's html) and it might break if there's no whitespace
+ *between a word and a html tag. Firefox will hopefully get a supported css
+ *word break function soon... *crosses fingers*.
+*/
 function showInfo(event_id) {
     event_info_div = "#event_" + event_id + "_info";
     event_rsvp_div = "#event_" + event_id + "_rsvp";
@@ -14,7 +23,12 @@ function showInfo(event_id) {
       url = event_show_info_url + event_id + "/";
       
       $.get(url, {}, function(data) {
-          $(event_info_div).html("<p class='small'>" + data + "</p>");
+          var str=data.split(/\s/);
+	  for(i=0;i<str.length;i++){
+	      if(str[i].length>40) str[i]=str[i].split("").join("<wbr>");
+	  }
+	  str=str.join(" ");
+          $(event_info_div).html("<p class='small'>" + str + "</p>");
       });  
     }
     $(event_rsvp_div).hide();

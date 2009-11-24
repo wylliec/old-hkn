@@ -1,5 +1,5 @@
-var color = "#6f6";
-var colorcur = "#fb6";
+var color = "#0f6";
+var colorcur = "#ff0";
 
 var locked = false;
 var highlighted = false;

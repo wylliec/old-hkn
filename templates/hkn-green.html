@@ -48,7 +48,7 @@ fair,resume,eecs,3ab95fab25e674110eed26b2e988eaa3">
           [ <a href="{% url info-person-profile %}">Settings</a> | <a href="{% url logout %}">Logout</a> ]
         </div>
         {% else %}
-        <form action="https://hkn.eecs.berkeley.edu:4444/login/" method="post"> <label> Login </label>  <input class="short autoclear" name="username" value="username"> <input class="short autoclear" type="password" name="password" value="password"> <input type="hidden" name="next" value="{{ request.path }}"> <input type="submit" value="login"></form> <div class="small"><a href="{% url auth_password_reset %}">forgot password?</a> or <a href="{% url registration_register %}">register</a></div>
+        <form action="http://mu.cs.berkeley.edu:8008/login/" method="post"> <label> Login </label>  <input class="short autoclear" name="username" value="username"> <input class="short autoclear" type="password" name="password" value="password"> <input type="hidden" name="next" value="{{ request.path }}"> <input type="submit" value="login"></form> <div class="small"><a href="{% url auth_password_reset %}">forgot password?</a> or <a href="{% url registration_register %}">register</a></div>
     {% endif %}
 </div>
 {% endblock %}

@@ -54,14 +54,14 @@ class RegistrationForm(forms.Form):
     hkn_member = forms.BooleanField(required=False, label="HKN Member", help_text="Check this box if you are a member of HKN")
     hkn_candidate = forms.BooleanField(required=False, label="HKN Candidate", help_text="Check this box if you are a new candidate of HKN")
     
-    USERNAME_RE = re.compile("[A-Za-z0-9_]")
+    USERNAME_RE = re.compile("[^A-Za-z0-9_]")
     def clean_username(self):
         """
         Validate that the username is alphanumeric and is not already
         in use.
         
         """
-        if not RegistrationForm.USERNAME_RE.search(self.cleaned_data['username']):
+        if RegistrationForm.USERNAME_RE.search(self.cleaned_data['username']):
             raise forms.ValidationError(_(u'Usernames can only contain letters, numbers and underscores'))
         
         try:
@@ -165,14 +165,14 @@ class CandidateRegistrationForm(forms.Form):
         return self.cleaned_data['tech_courses']
             
     
-    USERNAME_RE = re.compile("[A-Za-z0-9_]")
+    USERNAME_RE = re.compile("[^A-Za-z0-9_]")
     def clean_username(self):
         """
         Validate that the username is alphanumeric and is not already
         in use.
         
         """
-        if not RegistrationForm.USERNAME_RE.search(self.cleaned_data['username']):
+        if RegistrationForm.USERNAME_RE.search(self.cleaned_data['username']):
             raise forms.ValidationError(_(u'Usernames can only contain letters, numbers and underscores'))
         
         try:
