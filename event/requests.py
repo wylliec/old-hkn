@@ -15,7 +15,9 @@ def get_rsvp_metainfo(rsvp, request):
 
 import datetime
 def display_predicate(request):
-    return request.confirm_object.event.start_time <= datetime.datetime.now()
+    if request.confirm_object:
+      return request.confirm_object.event.start_time <= datetime.datetime.now()
+    return True
     #return True
 
 request.register(RSVP, get_rsvp_metainfo, display_predicate=display_predicate, confirmation_attr='vp_confirm')
