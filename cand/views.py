@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 import datetime
 from django.contrib.auth.decorators import permission_required 
 from django.shortcuts import get_object_or_404, render_to_response
@@ -19,6 +20,7 @@ from resume.models import Resume
 import nice_types.semester
 from nice_types.semester import current_semester
 
+@login_required
 def portal(request):
     d = {}
     today = datetime.date.today()
