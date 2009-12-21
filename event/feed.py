@@ -34,7 +34,8 @@ def feed(request):
                   "location" : e.location,
                   "description" : linebreaks(truncatewords(e.description, 50)),
                   "start_time" : json_time(e.start_time),
-                  "end_time" : json_time(e.end_time)
+                  "end_time" : json_time(e.end_time),
+                  "type" : e.event_type
                   } for e in events]
     
     return HttpResponse(simplejson.dumps(js_events), mimetype="application/javascript")
