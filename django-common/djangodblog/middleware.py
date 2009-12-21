@@ -2,7 +2,7 @@ import traceback
 import socket
 import warnings
 import logging
-import md5
+import hashlib
 
 from django.conf import settings
 from django.http import Http404
@@ -43,7 +43,7 @@ class DBLogMiddleware(object):
         server_name = socket.gethostname()
         tb_text     = traceback.format_exc()
         class_name  = exception.__class__.__name__
-        checksum    = md5.new(tb_text).hexdigest()
+        checksum    = hashlib.md5(tb_text).hexdigest()
         logging.getLogger("special.exceptions").error("at %s: %s\n%s" % (request.path, getattr(exception, 'message', ''), tb_text))
 
         defaults = dict(
