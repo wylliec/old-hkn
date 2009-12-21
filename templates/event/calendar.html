@@ -11,12 +11,24 @@
 <script type="text/javascript" src="{{STATIC_PREFIX}}js/jquery.cluetip.js"></script>
 <script type="text/javascript" src="{{STATIC_PREFIX}}js/jquery.livequery.js"></script>
 <script id="calvis_script" type="text/javascript" src="{{STATIC_PREFIX}}js/hkn-calvis-core.js"></script>
+<script type="text/javascript" src="{{STATIC_PREFIX}}js/tutoring.js"></script>
 {% endblock %}
 
 {% block title %}{{ block.super }} - Calendar {% endblock %}
 {% block subtitle %} HKN Events Calendar {% endblock %}
 
 {% block content %}
+ <div id="infobar">
+  <h5>Event Categories</h5>
+  <ul>
+  {% for type in event_types %}
+    <li>
+      <a class="{{type}}"  onclick="return locklight('{{type}}')" onmouseout="unhighlight('{{type}}')" onmouseover="highlight('{{type}}')" href="#">
+    {{ type }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+ </div>
 <a class="small" href="{% url event-calendar-ics %}">iCal</a>
 
   <table style="width: 800px;">
