@@ -1,14 +1,9 @@
 from django import template
-import pytz
 register = template.Library()
 
 @register.filter
 def icaldate(d):
-    try:
-        loc_d = pytz.utc.localize(d)
-    except pytz.InvalidTimeError:
-        loc_d = pytz.utc.localize(d, is_dst=True)
-    return d.strftime("%Y%m%dT%H%M%SZ")
+    return d.strftime("%Y%m%dT%H%M%S")
 
 @register.filter
 def icalify(string, args):
