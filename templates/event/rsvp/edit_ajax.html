@@ -1,3 +1,4 @@
+{% if can_rsvp %}
 <div>
 <form id='rsvp_form_{{event.id}}' class='rsvp_form' action="{{ request.path }}" method="post">
 	<ul class="rsvp_ul_form">
@@ -10,3 +11,6 @@
 var options =  {dataType: 'script'};
 $("#rsvp_form_{{event.id}}").ajaxForm(options);
 </script>
+{% else %}
+<p>Sorry, but {{ event.name }} does not allow RSVPs. We apologize for any inconvenience.</p>
+{% endif %}

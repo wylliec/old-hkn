@@ -135,7 +135,14 @@ def new(request, event_id):
 def edit(request, event_id):
     e = get_object_or_404(Event, pk = event_id)
     person = request.user.person
-
+    
+    if e.rsvp_none():#If the event is marked No RSVP, don't allow RSVPs!
+        d = {"can_rsvp" : False, "event" : e}
+        if request.is_ajax():
+            return render_to_response('event/rsvp/edit_ajax.html', d, context_instance = RequestContext(request))
+        else:
+            return render_to_response('event/rsvp/edit.html', d, context_instance = RequestContext(request))
+        
     new_rsvp = False
     try:
         rsvp = RSVP.objects.get(event = e, person = person)
