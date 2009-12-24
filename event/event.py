@@ -38,7 +38,7 @@ def view(request, event_id):
     
     permission_name = "%s.%s" % (e.rsvp_permission.content_type.app_label, e.rsvp_permission.codename)
     if getattr(request.user, 'person', False) and permission_name in request.user.get_all_permissions():
-        d["can_rsvp"] = e.rsvp_set.filter(person = request.user.person).count() == 0
+        d["can_rsvp"] = e.rsvp_set.filter(person = request.user.person).count() == 0 and not e.rsvp_none()
         
     d["rsvps"] = e.rsvp_set.select_related('person').order_by("person__first_name")
     return render_to_response("event/view.html", d, context_instance=RequestContext(request))
