@@ -1,4 +1,5 @@
 *.pyc
 hknsettings.py
 files/*
+django-common/resume/latex/titles/title_*
 
