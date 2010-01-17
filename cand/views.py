@@ -251,6 +251,7 @@ def all_candidates_events(request):
 	d['candidates'].append(candidate)
     return render_to_response("cand/all_candidates_events.html", d, context_instance=RequestContext(request))
 
+@login_required
 def candidate_quiz(request):
     if request.POST:
         if request.user.person.candidateinfo.completed_quiz:
