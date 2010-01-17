@@ -21,10 +21,10 @@
  <div id="infobar">
   <h5>Event Categories</h5>
   <ul>
-  {% for type in event_types %}
+  {% for type, description in event_types %}
     <li>
       <a class="{{type}}"  onclick="return locklight('{{type}}')" onmouseout="unhighlight('{{type}}')" onmouseover="highlight('{{type}}')" href="#">
-    {{ type }}</a>
+    {{ description }}</a>
     </li>
   {% endfor %}
   </ul>

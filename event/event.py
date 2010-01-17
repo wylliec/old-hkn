@@ -54,7 +54,7 @@ def infobox(request, event_id):
 
 def calendar(request):
     #d = {'ical' : calendars.calendars[0].get_ical_link()}
-    d = {'event_types': EVENT_TYPE.values()}
+    d = {'event_types': [(type, EVENT_TYPE[type]) for type in EVENT_TYPE.values()]}
     return render_to_response('event/calendar.html', d, context_instance = RequestContext(request))
 
 
