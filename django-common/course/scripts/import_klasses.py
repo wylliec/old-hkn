@@ -109,10 +109,15 @@ def importKlass(dpt, klass, year, season):
     (section, section_type) = section.strip().split(" ")
     instructors = [klass.getAttribute("instructor").strip()]
 
-    if len(klass.childNodes) > 0:
-        section_note = klass.getElementsByTagName("note")[0].firstChild.data
+    #if len(klass.childNodes) > 0:
+    #    section_note = klass.getElementsByTagName("note")[0].firstChild.data
+    #else:
+    #    section_note = ""
+    note = klass.getAttribute("note")
+    if note.startswith("Note:"):
+      section_note = note.replace("Note:", "", 1).strip()
     else:
-        section_note = ""
+      section_note = note.strip()
 
     match = also_pattern.search(section_note)
     if match:
