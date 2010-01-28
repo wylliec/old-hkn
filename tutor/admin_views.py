@@ -502,7 +502,7 @@ def submit_assignments(request):
     for assignment in new_assignments:
         assignment.save()
     
-    return HttpResponseRedirect("/tutor/view_signups")
+    return HttpResponseRedirect(reverse("tutor-view-signups"))
 #    return HttpResponse("made " + str(len(new_assignments)) + " assignments at version " + str(version))
 
 @permission_required('info.group_tutor')
@@ -562,7 +562,7 @@ def admin(request, message = False):
 @permission_required('info.group_tutor')
 def params_for_scheduler(request):
     if request.method != 'POST':
-        return HttpResponseRedirect("/tutor/admin")
+        return HttpResponseRedirect(reverse("tutor-admin"))
     
     randomSeed = request.POST.get('randomSeed', False)
     if randomSeed == '': randomSeed = False
@@ -586,11 +586,11 @@ def params_for_scheduler(request):
 @permission_required('info.group_tutor')
 def submit_schedule(request):
     if request.method != 'POST':
-        return HttpResponseRedirect("/tutor/admin")
+        return HttpResponseRedirect(reverse("tutor-admin"))
     
     data = request.POST.get('schedule', False)
     if not data:
-        return HttpResponseRedirect("/tutor/admin")
+        return HttpResponseRedirect(reverse("tutor-admin"))
     
     #remove all \r
     data = data.replace('\r', '')
@@ -602,7 +602,7 @@ data exactly as output by the scheduler, and that you only have 1 assignment.')
     
     tutor.Assignment.make_assignments_from_state(states[0])
     
-    return HttpResponseRedirect("/tutor/admin")
+    return HttpResponseRedirect(reverse("tutor-admin"))
 
 #helper methods
 def basicContext(request, info = {}):
