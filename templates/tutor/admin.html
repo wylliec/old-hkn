@@ -16,6 +16,23 @@ Will have:
 Change semester, year, or how much each person tutors.<br />
 <form action="{% url tutor-admin %}" method="POST">
 	<table>
+	    <tr>
+	        <td>
+	        <label for="schedule_version">
+	               Schedule Version:
+	        </label>
+	        </td>
+            <td>
+			<select name="schedule_version">
+    			{% for v in versions %}
+    			<option value="{{ v }}"{% ifequal v current_schedule_version %} selected="yes"{% endifequal %}>{{ v }}</option>
+    			{% endfor %}
+    		</select>
+            </td>
+            <td>
+            Current Value: {{ current_schedule_version }} (This item is not reflected in the error message; even if there is an error message at the top of this page it probably updated.)
+            </td>
+	    </tr>
 		<tr>
 			<td>
 				<label for="CURRENT_SEASON_NAME">
