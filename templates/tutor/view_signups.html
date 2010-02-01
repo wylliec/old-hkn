@@ -18,7 +18,11 @@ To change which schedule is displayed on the main tutoring page, you need to <s>
 <br />
 <form action="{% url tutor-view-signups %}" method="GET">
     <label for="version">Select Version:</label>
-    <input name="version"{% if version %} value="{{ version }}"{% endif %}/>
+    <select name="version">
+    {% for v in versions %}
+    <option value="{{ v }}"{% ifequal v version %} selected="yes"{% endifequal %}>{{ v }}</option>
+    {% endfor %}
+    </select>
     <input type="submit" value="Go" />
 </form>
 <br />

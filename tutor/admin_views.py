@@ -236,12 +236,14 @@ def view_signups(request):
     context['score_adjacent'] = SCORE_ADJACENT
     
     assignments = tutor.Assignment.objects.for_current_semester()
+    versions = set([x.version for x in assignments]) #Gets all the possible schedule versions for this semester.
+    context['versions'] = versions
     
     availCounts = {}
     if len(assignments) == 0:
         context['version'] = False
     else:
-        context['version'] = request.GET.get('version', False)
+        context['version'] = int(request.GET.get('version', False))
         if not context['version']:
             #NOTE: this method of finding the max version is stupid, don't know how to do it nice in django
             context['version'] = max([elem.version for elem in assignments])
@@ -258,7 +260,7 @@ def view_signups(request):
                                                person_converter = lambda x:x)
     
     if len(availabilitiesBySlot) == 0:
-        return HttpResponse("There are no availbilities, must have at least 1 to view schedule")
+        return HttpResponse("There are no availabilities, must have at least 1 to view schedule")
     
     people = {} #dictionary from id to person object
     
