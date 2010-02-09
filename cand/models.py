@@ -74,7 +74,7 @@ class CandidateInfo(models.Model):
     candidate_picture = models.ForeignKey(Photo, null=True)
     """ candidate picture """
     
-    #surveys = models.ManyToManyField(Klass, related_name="surveyors")
+    #surveys = models.ManyToManyField(CourseSurvey, related_name="surveyors")
     """ surveyed courses """
 
     completed_quiz = models.BooleanField()
@@ -110,8 +110,6 @@ class Challenge(models.Model):
     requests = generic.GenericRelation(Request)
 
     status = models.NullBooleanField()
-    #candidate_id = models.IntegerField()
-    #officer_id = models.IntegerField()
 
     candidate = models.ForeignKey(Person, related_name="mychallenges")
     officer = models.ForeignKey(Person, related_name="challenge_requests")
@@ -187,15 +185,15 @@ class CandidateQuiz(models.Model):
 
     score = models.FloatField()
 
-#class CourseSurvey(models.Model):
-#    """
-#    This represents the link between a person and a klass s/he will survey. It is one-to-one.
-#    """
-#    request = generic.GenericRelation(Request)
-#    status = models.NullBooleanField()
-#    surveyor = models.ForeignKey(Person, related_name="surveys")
-#    klass = models.ForeignKey(Klass, related_name="surveys")
+class CourseSurvey(models.Model):
+    """
+    This represents the link between a person and a klass s/he will survey. It is one-to-one.
+    """
+    status = models.NullBooleanField()
+    surveyor = models.ForeignKey(CandidateInfo)
+    klass = models.ForeignKey(Klass)
 
 # DON'T MOVE THIS IMPORT LINE HIGHER UP BECAUSE IT DEPENDS ON CLASSES DEFINED ABOVE
 from hkn.cand.admin import *
 import hkn.cand.challenge_requests
+import hkn.cand.survey_requests

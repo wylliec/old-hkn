@@ -108,6 +108,8 @@ def importKlass(dpt, klass, year, season):
     section = klass.getAttribute("section")
     (section, section_type) = section.strip().split(" ")
     instructors = [klass.getAttribute("instructor").strip()]
+    times = klass.getAttribute("day-hour").strip()
+    location = klass.getAttribute("room").strip()
 
     #if len(klass.childNodes) > 0:
     #    section_note = klass.getElementsByTagName("note")[0].firstChild.data
@@ -152,6 +154,8 @@ def importKlass(dpt, klass, year, season):
     except Klass.DoesNotExist:
         kls = Klass(course = course, semester=semester, section = section, section_type = section_type)
     kls.section_note = section_note
+    kls.times = times
+    kls.location = location
     kls.save()
     
     instrs = []

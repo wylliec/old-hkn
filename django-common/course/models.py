@@ -269,11 +269,11 @@ class Klass(models.Model):
     #enrolled = models.IntegerField()
     #""" number of people enrolled """
 
-    #time = models.CharField(max_length = 100)
-    #""" time and day for the lecture """
+    times = models.CharField(max_length = 100)
+    """ times and days for the lecture """
 
-    #location = models.CharField(max_length = 100)
-    #""" location of the lecture """
+    location = models.CharField(max_length = 100)
+    """ location of the lecture """
 
     cached_instructor_names = models.CharField(max_length = 200, null=True)
     """ cached instructor names """

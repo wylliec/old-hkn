@@ -1,0 +1,47 @@
+<h2 class="cportal">Course Surveys
+{% if surveys_left %}
+<span class="small checklist_in_progress">[Need {{surveys_left}} more]</span>
+{% else %}
+<span class="small checklist_done">[Done]</span>
+{% endif %}
+</h2>
+{% if at_least_one_survey %}
+<table id="course-survey-table">
+  <tr>
+    <th>Completed</th>
+    <th>Course Number</th>
+    <th>Section</th>
+    <th>Title</th>
+    <th>Instructor</th>
+    <th>Times</th>
+    <th>Location</th>
+    <th>Notes</th>
+    <th>Other Candidates</th>
+  </tr>
+{% for cs in surveys %}
+  <tr>
+    <td>
+      {% if cs.status %}<span class="checklist_done">Done</span>{% else %}<span class="checklist_in_progress">Not Done</span>{% endif %}
+    </td>
+    <td>{{ cs.klass.course.short_name }}</td>
+    <td>{{ cs.klass.section }}</td>
+    <td>{{ cs.klass.course.name }}</td>
+    <td>{{ cs.klass.instructor_names }}</td>
+    <td>{{ cs.klass.times }}</td>
+    <td>{{ cs.klass.location }}</td>
+    <td>{{ cs.klass.section_note|truncatewords:8 }}</td>
+    <td>
+      {% for survey in cs.klass.coursesurvey_set.all %}
+      {% ifnotequal survey.surveyor.person.user_ptr user %}
+      <a href="{% url info.person.view survey.surveyor.person.id %}">{{ survey.surveyor.person.name }}</a>
+      {% endifnotequal %}
+      {% endfor %}
+    </td>
+  </tr>
+{% endfor %}
+</table>
+{% endif %}
+
+{% if surveys_left %}
+<p><a href="{% url course-survey-signup %}">Sign Up</a></p>
+{% endif %}

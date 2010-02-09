@@ -7,7 +7,7 @@ def get_survey_metainfo(survey, request):
     metainfo['title'] = "Approve Course Survey"
     metainfo['links'] = [("", "")]
     metainfo['confirmed'] = survey.status
-    metainfo['description'] = "Confirm %s %s's course survey: %s" % (survey.surveyor.first_name, survey.surveyor.last_name, survey.klass)
+    metainfo['description'] = "Confirm %s %s's course survey: %s" % (survey.surveyor.person.first_name, survey.surveyor.person.last_name, survey.klass)
 
     return metainfo
 

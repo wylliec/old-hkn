@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{block.super}}
+<link type="text/css" href="{{STATIC_PREFIX}}css/course_survey.css" rel="stylesheet" />
+{% endblock %}
+
+{% block js %}
+{{block.super}}
+<script type="text/javascript" src="{{STATIC_PREFIX}}js/course_survey.js"></script>
+<script type="text/javascript">
+  ajaxlist_checkbox_post_address = "{% url course-survey-select-ajax %}"
+</script>
+{% endblock %}
+
+{% block subtitle %}Course Survey Admin: Choose Surveys{% endblock %}
+
+{% block content %}
+<table id="course-survey-table">
+  <tr>
+    <th>Needs Survey</th>
+    <th>Course Number</th>
+    <th>Section</th>
+    <th>Notes</th>
+  </tr>
+{% for klass in klasses %}
+  <tr>
+    <td>
+      <img id="klass_{{klass.id}}_enabled" class="klass_{{klass.id}} survey_enabled {% if klass.needs_survey %}option_selected{% endif %}" src="{{STATIC_PREFIX}}images/site/valid.png" />
+      <img id="klass_{{klass.id}}_disabled" class="klass_{{klass.id}} survey_disabled {% if not klass.needs_survey %}option_selected{% endif %}"src="{{STATIC_PREFIX}}images/site/error.png" />
+    </td>
+    <td>{{ klass.course.short_name }}</td>
+    <td>{{ klass.section }}</td>
+    <td>{{ klass.section_note|truncatewords:8 }}</td>
+  </tr>
+{% endfor %}
+</table>
+<script type="text/javascript">
+  $(document).ready( register_options );
+</script>
+{% endblock %}

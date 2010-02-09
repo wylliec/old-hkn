@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{block.super}}
+<link type="text/css" href="{{STATIC_PREFIX}}css/course_survey.css" rel="stylesheet" />
+{% endblock %}
+
+{% block js %}
+{{block.super}}
+<script type="text/javascript" src="{{STATIC_PREFIX}}js/course_survey.js"></script>
+{% endblock %}
+
+{% block subtitle %}Course Survey Admin: Manage Surveys{% endblock %}
+
+{% block content %}
+<table id="course-survey-table">
+  <tr>
+    <th>Course Number</th>
+    <th>Section</th>
+    <th>Notes</th>
+    <th>Candidates</th>
+  </tr>
+{% for klass in klasses %}
+  <tr>
+    <td>{{ klass.course.short_name }}</td>
+    <td>{{ klass.section }}</td>
+    <td>{{ klass.section_note|truncatewords:8 }}</td>
+    <td>
+      {% for coursesurvey in klass.coursesurvey_set.all %}
+        <a href="mailto:{{coursesurvey.surveyor.person.email}}">{{coursesurvey.surveyor.person.name}}</a>{% if not forloop.last %}, {% endif %}
+      {% empty %}
+        None signed up!
+      {% endfor %}
+    </td>
+  </tr>
+{% endfor %}
+</table>
+{% endblock %}

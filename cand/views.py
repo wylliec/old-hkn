@@ -3,19 +3,20 @@ import datetime
 from django.contrib.auth.decorators import permission_required 
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
-from django.http import HttpResponseRedirect, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django.core.urlresolvers import reverse
 
 from hkn.cand.models import ProcessedEligibilityListEntry, Challenge
 from hkn.event.models import *
 from hkn.event.constants import *
 from hkn.cand.forms import EligibilityListForm, CandidateApplicationForm
-from hkn.cand.models import CandidateApplication, CandidateQuiz
+from hkn.cand.models import CandidateApplication, CandidateQuiz, CourseSurvey
 from hkn.cand import utils
 from hkn.cand.constants import *
 from hkn.cand.quiz import *
 from request.utils import *
 from resume.models import Resume
+from course.models import Klass
 
 import nice_types.semester
 from nice_types.semester import current_semester
@@ -67,7 +68,15 @@ def portal(request):
         else:
             e.rsvped = False
         
-    #d['surveys'] = person.surveys.all()
+    num_surveys = person.candidateinfo.coursesurvey_set.count()
+    if num_surveys > 0:
+      d['at_least_one_survey'] = True
+    if num_surveys < SURVEYS_REQUIRED:
+      d['surveys_left'] = SURVEYS_REQUIRED - num_surveys
+    d['surveys'] = []
+    for cs in person.candidateinfo.coursesurvey_set.all():
+      d['surveys'].append(cs)
+    d['surveys'] = person.candidateinfo.coursesurvey_set.all()
 
     d['submitted_resume'] = Resume.objects.filter(person=person)
     #d['completed_survey'] = person.candidateinfo.completed_survey
@@ -326,38 +335,84 @@ def get_quiz(quiz_id):
     except (CandidateQuiz.DoesNotExist, ValueError):
         return get_object_or_404(CandidateQuiz, slug=quiz_id)
 
-"""
-def course_survey_add_courses(request):
-    CURRENT_SEMESTER = 'sp09'
-    klasses = Klass.objects.filter(surveyed=True, course__department_abbr__in=['COMPSCI','EL ENG'], semester=CURRENT_SEMESTER).order_by('course__integer_number')
-    if request.POST:
-        courses = request.POST.getlist('courses')
-        for klass in klasses:
-            klass.surveyed = False
-            k.save()
-        for klass_id in courses:
-            k = klasses.get(id=klass_id)
-            k.surveyed = True
-            k.save()
-	    request.user.message_set.create(message="Klasses added")
-    d['courses'] = klasses
-    return render_to_response("cand/course_survey_add_courses.html", d, context_instance=RequestContext(request))
+@permission_required('info.group_csec')
+def course_survey_admin(request):
+  return render_to_response("cand/course_survey_admin.html", context_instance=RequestContext(request))
 
+@permission_required('info.group_csec')
+def course_survey_admin_select_classes(request):
+  d = {}
+  d['klasses'] = Klass.objects.filter(semester=current_semester(), course__department__abbr__regex=r'(COMPSCI|EL ENG)').order_by('course__department__abbr', 'course__integer_number')
+  return render_to_response("cand/course_survey_admin_choose_classes.html", d, context_instance=RequestContext(request))
+
+@permission_required('info.group_csec')
+def course_survey_select_ajax(request):
+  print "LOL"
+  r = get_object_or_404(Klass, pk=request.REQUEST.get("value", ""))
+    
+  if request.REQUEST:
+    action = request.REQUEST.get("action", "remove")
+    print "Action is: %s" % str(action)
+    if action == "add":
+      needs_survey = True
+    else:
+      needs_survey = False
+    r.needs_survey = needs_survey
+    r.save()
+    
+  if r.needs_survey == True:
+    state = "enabled"
+  else:
+    state = "disabled"
+         
+  js = """option_select(%d, "%s");""" % (r.id, state)
+  
+  return HttpResponse(js, mimetype='application/javascript')
+
+@permission_required('info.group_csec')
+def course_survey_admin_manage(request):
+  d = {}
+  d['klasses'] = Klass.objects.filter(semester=current_semester(), course__department__abbr__regex=r'(COMPSCI|EL ENG)', needs_survey=True).order_by('course__department__abbr', 'course__integer_number')
+  return render_to_response("cand/course_survey_admin_manage.html", d, context_instance=RequestContext(request))
+
+@login_required
 def course_survey_signup(request):
+  person = request.user.person
+  if request.POST:
+    klasses_signed_up = []
+    for name, value in request.POST.items():
+      if name.startswith('klass_'):
+        klass_id = name.split('_')[1]
+        klass = Klass.objects.get(id=klass_id)
+        try: 
+          # Already signed up for this klass
+          CourseSurvey.objects.get(surveyor=person.candidateinfo, klass=klass)
+          continue
+        except CourseSurvey.DoesNotExist:
+          cs = CourseSurvey(surveyor=person.candidateinfo, klass=klass)
+          cs.save()
+
+          request_confirmation(cs, request.user, permission=Permission.objects.get(codename="group_csec"))
+          klasses_signed_up.append(klass)
+    if len(klasses_signed_up) > 0:
+      klass_list = ', '.join([klass.course.short_name() for klass in klasses_signed_up])
+      request.user.message_set.create(message="Successfully signed up for %s." % klass_list)
+    else:
+      request.user.message_set.create(message="No classes selected.")
+
+  num_signed_up = person.candidateinfo.coursesurvey_set.count()
+  if num_signed_up >= 3:
+    request.user.message_set.create(message="Already signed up for %d classes." % SURVEYS_REQUIRED)
+    return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
+  else:
     d = {}
-    d['klasses'] = Klass.objects.filter(semester=current_semester(), surveyed=True).select_related('course', 'surveyors')
-    d['num_surveys'] = NUM_SURVEYS
-    d['done'] = request.person.candidateinfo.surveys.count() >= NUM_SURVEYS
-
-    if request.POST:
-        signed_up = set(request.person.candidateinfo.surveys.values_list('id', flat=True))
-        selected = request.POST.getlist('course_signup')
-        selected = set(map(lambda x: int(x), selected))
-        new_signups = signedup.intersection(selected)
-        for s in new_signups:
-            k = Klass.objects.get(id=s)
-            request.person.candidateinfo.surveys.add(k)
-        
-
+    d['klasses'] = Klass.objects.filter(semester=current_semester(), course__department__abbr__regex=r'(COMPSCI|EL ENG)', needs_survey=True).order_by('course__department__abbr', 'course__integer_number')
+    d['surveys_needed'] = max(SURVEYS_REQUIRED - num_signed_up, 0)
+    klasses_signed_up = [coursesurvey.klass for coursesurvey in person.candidateinfo.coursesurvey_set.all()]
+    for klass in d['klasses']:
+      if klass.coursesurvey_set.count() >= MAX_SURVEYORS_PER_KLASS:
+        klass.full = True
+      if klass in klasses_signed_up:
+        klass.signed_up = True
     return render_to_response("cand/course_survey_signup.html", d, context_instance=RequestContext(request))
-"""  
+

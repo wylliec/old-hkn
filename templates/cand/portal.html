@@ -4,6 +4,7 @@
 {{block.super}}
 <link rel="stylesheet" type="text/css" href="/static/css/cportal.css">
 <link rel="stylesheet" type="text/css" href="/static/css/landing.css">
+<link type="text/css" href="{{STATIC_PREFIX}}css/course_survey.css" rel="stylesheet" />
 {% endblock %}
 
 {% block js %}
@@ -40,9 +41,7 @@
 
 {% include "cand/_list_challenges.html" %}
 
-{% comment %}
 {% include "cand/_list_surveys.html" %}
-{% endcomment %}
 
 <h2 class="cportal">Forms</h2>
 <table class="checklist"><tbody>
@@ -53,16 +52,6 @@
 <span class="checklist_not_done">[Not Done]
 {% endif %}
 </span></td></tr>
-
-{% comment %}
-<tr><th><a href="{% url cand-survey-signup %}">Survey</a></th><td>
-{% if completed_survey %}
-<span class="checklist_done">[Done]
-{% else %}
-<span class="checklist_not_done">[Not Done]
-{% endif %}
-</span></td></tr>
-{% endcomment %}
 
 <tr><th><a href="{% url cand-quiz %}">Quiz</a></th><td>
 {% if completed_quiz %}
