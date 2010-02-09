@@ -21,6 +21,9 @@ from hkn.event.admin import EventAdmin
 from hkn.indrel.models import InfosessionRegistration
 from hkn.indrel.admin import InfosessionRegistrationAdmin
 
+from resume.models import Resume
+from resume.admin import ResumeAdmin
+
 from photologue.admin import GalleryAdmin, PhotoAdmin, PhotoEffectAdmin, PhotoSizeAdmin, WatermarkAdmin
 from photologue.models import Gallery, GalleryUpload, PhotoEffect, PhotoSize, Watermark, Photo
 
@@ -50,6 +53,7 @@ admin_site.register(GalleryUpload)
 admin_site.register(Photo, PhotoAdmin)
 admin_site.register(PhotoEffect, PhotoEffectAdmin)
 admin_site.register(PhotoSize, PhotoSizeAdmin)
+admin_site.register(Resume, ResumeAdmin)
 admin_site.register(Watermark, WatermarkAdmin)
 
 admin_site.register(Error, ErrorAdmin)

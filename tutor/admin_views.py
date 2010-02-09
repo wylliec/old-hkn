@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse 
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
@@ -9,7 +10,8 @@ from django.contrib.auth.decorators import *
 from course import models as courses
 from hkn.tutor import models as tutor
 from hkn.info import models as hknmodels
-
+from hkn.main.models import HKN
+from hkn.tutor import views
 from nice_types import NiceDict
 from nice_types import NamedList
 from nice_types import QueryDictWrapper
@@ -235,12 +237,14 @@ def view_signups(request):
     context['score_adjacent'] = SCORE_ADJACENT
     
     assignments = tutor.Assignment.objects.for_current_semester()
+    versions = set([x.version for x in assignments]) #Gets all the possible schedule versions for this semester.
+    context['versions'] = versions
     
     availCounts = {}
     if len(assignments) == 0:
         context['version'] = False
     else:
-        context['version'] = request.GET.get('version', False)
+        context['version'] = int(request.GET.get('version', False))
         if not context['version']:
             #NOTE: this method of finding the max version is stupid, don't know how to do it nice in django
             context['version'] = max([elem.version for elem in assignments])
@@ -257,7 +261,7 @@ def view_signups(request):
                                                person_converter = lambda x:x)
     
     if len(availabilitiesBySlot) == 0:
-        return HttpResponse("There are no availbilities, must have at least 1 to view schedule")
+        return HttpResponse("There are no availabilities, must have at least 1 to view schedule")
     
     people = {} #dictionary from id to person object
     
@@ -502,7 +506,7 @@ def submit_assignments(request):
     for assignment in new_assignments:
         assignment.save()
     
-    return HttpResponseRedirect("/tutor/view_signups")
+    return HttpResponseRedirect(reverse("tutor-view-signups"))
 #    return HttpResponse("made " + str(len(new_assignments)) + " assignments at version " + str(version))
 
 @permission_required('info.group_tutor')
@@ -520,13 +524,20 @@ def admin(request, message = False):
                                      'CURRENT_YEAR':str(nice_types.semester.current_year()),
                                      'exceptions':exceptions,
                                      'message':message})
-    
+    assignments = tutor.Assignment.objects.for_current_semester()
+    versions = set([x.version for x in assignments]) #Gets all the possible schedule versions for this semester.
+    context['versions'] = versions
+    context['current_schedule_version'] = views.get_published_version()
     if request.method != "POST":
         return render_to_response('tutor/admin.html',
                                   context,
                                   context_instance = RequestContext(request))
     
     info = QueryDictWrapper(request.POST)
+    if info['schedule_version']:
+        v = HKN.objects.filter(name='hkn_tutor_version')[0]
+        v.value = int(info['schedule_version'])
+        v.save()
     changes = {}
     try:
         if info['newExceptions'] and info['newExceptions'] != '':
@@ -542,7 +553,7 @@ def admin(request, message = False):
             changes['removeExceptions'] = removeExceptions
             for id in info['removeExceptions'].replace(' ', '').split(','):
                 removeExceptions.append(int(id))
-        
+
         #if info['CURRENT_SEASON_NAME'] and info['CURRENT_SEASON_NAME'] != '':
         #    changes['CURRENT_SEASON_NAME'] = info['CURRENT_SEASON_NAME']
         
@@ -562,7 +573,7 @@ def admin(request, message = False):
 @permission_required('info.group_tutor')
 def params_for_scheduler(request):
     if request.method != 'POST':
-        return HttpResponseRedirect("/tutor/admin")
+        return HttpResponseRedirect(reverse("tutor-admin"))
     
     randomSeed = request.POST.get('randomSeed', False)
     if randomSeed == '': randomSeed = False
@@ -586,11 +597,11 @@ def params_for_scheduler(request):
 @permission_required('info.group_tutor')
 def submit_schedule(request):
     if request.method != 'POST':
-        return HttpResponseRedirect("/tutor/admin")
+        return HttpResponseRedirect(reverse("tutor-admin"))
     
     data = request.POST.get('schedule', False)
     if not data:
-        return HttpResponseRedirect("/tutor/admin")
+        return HttpResponseRedirect(reverse("tutor-admin"))
     
     #remove all \r
     data = data.replace('\r', '')
@@ -602,7 +613,7 @@ data exactly as output by the scheduler, and that you only have 1 assignment.')
     
     tutor.Assignment.make_assignments_from_state(states[0])
     
-    return HttpResponseRedirect("/tutor/admin")
+    return HttpResponseRedirect(reverse("tutor-admin"))
 
 #helper methods
 def basicContext(request, info = {}):

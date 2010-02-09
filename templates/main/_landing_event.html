@@ -14,6 +14,7 @@
 	    {% endfor %}
     {% endif %}
 </table>
-    {% if not week_events|length_is:"0" and not today_events|length_is:"0" %}
+{% if today_events|length_is:"0" and week_events|length_is:"0" %}
+	<h3>All Events</h3>
+{% endif %}
     <div class="small infobar_links"><a href="{% url event-list %}">view all events</a> | <a href="{% url event-calendar %}">view events calendar</a></div>
-    {% endif %}

@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     (r'^indrel/', include('hkn.indrel.urls')),
     (r'^cand/', include('hkn.cand.urls')),
     (r'^account/', include('registration.urls')),        
-
+    (r'^admin/', include('hkn.admin.urls')),
     # authentication pages
      url(r'^login/$', 'django.contrib.auth.views.login', name="login"),
      url(r'^logout/$', 'hkn.main.views.logout', name="logout"),
@@ -33,7 +33,7 @@ urlpatterns = patterns('',
    url(r'^password-reset/done/$', 'django.contrib.auth.views.password_reset_done', name='auth_password_reset_done'),
    url(r'^password-confim-reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', name='auth_password_reset_confirm'),
    url(r'^password-confim-reset/done/$', 'django.contrib.auth.views.password_reset_complete', name='auth_password_reset_complete'),
-
+        
 
      (r'^admin/(.*)', admin_site.root),
 
