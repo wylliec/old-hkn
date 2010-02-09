@@ -1,1 +1,4 @@
 html #rsvps { width: 30%; }
+html #eventTypes { padding: 0; margin: 0}
+html #eventTypes li { display: inline }
+html #eventTypes li a {background: #DAEEEF; border: 2px solid}

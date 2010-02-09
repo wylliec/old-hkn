@@ -18,17 +18,15 @@
 {% block subtitle %} HKN Events Calendar {% endblock %}
 
 {% block content %}
- <div id="infobar">
-  <h5>Event Categories</h5>
-  <ul>
-  {% for type, description in event_types %}
-    <li>
-      <a class="{{type}}"  onclick="return locklight('{{type}}')" onmouseout="unhighlight('{{type}}')" onmouseover="highlight('{{type}}')" href="#">
-    {{ description }}</a>
-    </li>
-  {% endfor %}
-  </ul>
- </div>
+  <h2>Event Categories</h2>
+<ul id="eventTypes">
+{% for type, description in event_types %}
+  <li>
+    <a class="{{type}}"  onclick="return locklight('{{type}}')" onmouseout="unhighlight('{{type}}')" onmouseover="highlight('{{type}}')" href="#">
+  {{ description }}</a>
+  </li>
+{% endfor %}
+</ul>
 <a class="small" href="{% url event-calendar-ics %}">iCal</a>
 
   <table style="width: 800px;">
