@@ -26,11 +26,13 @@
     <td>{{ klass.section }}</td>
     <td>{{ klass.section_note|truncatewords:8 }}</td>
     <td>
+      {% if klass.coursesurvey_set.all %}
       {% for coursesurvey in klass.coursesurvey_set.all %}
         <a href="mailto:{{coursesurvey.surveyor.person.email}}">{{coursesurvey.surveyor.person.name}}</a>{% if not forloop.last %}, {% endif %}
-      {% empty %}
-        None signed up!
       {% endfor %}
+      {% else %}
+        None signed up!
+      {% endif %}
     </td>
   </tr>
 {% endfor %}
