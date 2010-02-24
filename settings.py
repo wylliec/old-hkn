@@ -38,7 +38,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 FORCE_LOWERCASE_TAGS = True
 
 # don't change this
-IMAGES_PATH = os.path.expanduser("~/hkn-website-images/")
+IMAGES_PATH = os.path.expanduser("/var/www/hkn/files")
 
 # URL that handles the media served from MEDIA_ROOT.
 # Example: "http://media.lawrence.com"
