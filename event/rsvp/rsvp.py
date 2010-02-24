@@ -201,7 +201,7 @@ def edit_ajax(request, event_id):
         else:
             form = rsvp_form_instance(e, rsvp.__dict__)
 
-    d = {"person" : person, "event" : e, "form" : form }
+    d = {"person" : person, "event" : e, "form" : form, "can_rsvp" : True}
     
 
     return render_to_response('event/rsvp/edit_ajax.html', d, context_instance = RequestContext(request))
