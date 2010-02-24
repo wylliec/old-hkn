@@ -38,7 +38,7 @@ class CandidateApplicationForm(forms.Form):
     committee_act = forms.ChoiceField(choices=RANKING_CHOICES, label="Preference for Activities Committee")
     committee_bridge = forms.ChoiceField(choices=RANKING_CHOICES, label="Preference for Bridge Committee")
     committee_compserv = forms.ChoiceField(choices=RANKING_CHOICES, label="Preference for CompServ Committee")
-    committee_examfiles = forms.ChoiceField(choices=RANKING_CHOICES, label="Preference for ExamFiles Committee")
+    committee_service = forms.ChoiceField(choices=RANKING_CHOICES, label="Preference for Service Committee")
     committee_indrel = forms.ChoiceField(choices=RANKING_CHOICES, label="Preference for Indrel Committee")
     committee_pub = forms.ChoiceField(choices=RANKING_CHOICES, label="Preference for Pub Committee")
     committee_studrel = forms.ChoiceField(choices=RANKING_CHOICES, label="Preference for StudRel Committee")
