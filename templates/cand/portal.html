@@ -15,8 +15,11 @@
 
 {% block subtitle %}Candidate Portal{% endblock %}
 
-
 {% block content %}
+
+<h1>Announcements</h1>
+{{ announce }}
+<br>
 <!--content-->
 <!-- start main content block -->
 <div style="float: left;"><h1></h1></div>
@@ -61,5 +64,11 @@
 {% endif %}
 </span></td></tr>
 
+</tbody></table>
+<h2 class="cportal">Additional Forms</h2>
+<table class="checklist"><tbody>
+{% for form in add_forms %}
+<tr><th><a href="http://hkn.eecs.berkeley.edu/~kylim/vp/add_forms/{{ form }}">{{ form }}</a></th></tr>
+{% endfor %}
 </tbody></table>
 {% endblock %}

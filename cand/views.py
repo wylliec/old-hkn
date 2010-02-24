@@ -21,6 +21,8 @@ from course.models import Klass
 import nice_types.semester
 from nice_types.semester import current_semester
 
+import os
+
 @login_required
 def portal(request):
     d = {}
@@ -82,6 +84,12 @@ def portal(request):
     #d['completed_survey'] = person.candidateinfo.completed_survey
     d['completed_quiz'] = person.candidateinfo.completed_quiz
     #d['completed_quiz'] = False
+
+    f=open('/home/kylim/public_html/vp/vp_announcement.txt','r')
+    d['announce']=f.read(512)
+    f.close()
+
+    d['add_forms']=os.listdir('/home/kylim/public_html/vp/add_forms')
 
     return render_to_response("cand/portal.html", d, context_instance=RequestContext(request))
 
