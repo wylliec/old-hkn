@@ -48,6 +48,11 @@ $('.infobox_help').cluetip({
 			{% include "main/_landing_tutor.html" %}
 			<div class="small infobar_links"><a href="{% url tutor-view-schedule %}">view full schedule</a></div>
 		</div>
+    {% else %}
+    <div class="section">
+      <h3>Tutoring</h3>
+      <p>Tutoring is not being held today.</p>
+    </div>
 		{% endif %}
 	</div>
     {% render_in_context content %}
