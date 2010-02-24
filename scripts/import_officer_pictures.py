@@ -10,6 +10,7 @@ def main():
         if off.officer_picture != None:
             continue
         path = os.path.join(settings.IMAGES_PATH, "officerpics", off.username)
+        print "Adding picture for %s" % off.username
         for ext in (".jpg", ".jpeg", ".gif"):
             f = "%s%s" % (path, ext)
             if os.path.exists(f):
