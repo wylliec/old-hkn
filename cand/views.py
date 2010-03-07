@@ -181,7 +181,7 @@ def application(request):
 
 @permission_required('info.group_vp')
 def view_applications(request):
-    applications = CandidateApplication.objects.select_related('candidateinfo', 'candidateinfo__person').all()
+    applications = CandidateApplication.objects.select_related('candidateinfo', 'candidateinfo__person').filter(candidateinfo__candidate_semester=current_semester)
     return render_to_response("cand/view_applications.html", {"apps" : applications}, context_instance=RequestContext(request))
 
 @permission_required('info.group_vp')
