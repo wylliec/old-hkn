@@ -90,6 +90,10 @@ def list_for_event_common(request, event):
     return d
     
 def list_for_event(request,  event_id):
+    try:
+        int(event_id)
+    except ValueError:
+        raise Http404
     event = get_object_or_404(Event, pk=event_id)    
     d = list_for_event_common(request, event)
     d['event'] = event    
