@@ -74,7 +74,8 @@ class Event(models.Model):
     rsvp_type = models.IntegerField(choices = RSVP_TYPE.choices())
 
     rsvp_block_size = models.IntegerField()
-
+    rsvp_block_size.help_text = "Enter the RSVP block size in minutes."
+    
     rsvp_transportation_necessary = models.BooleanField()
     
 
