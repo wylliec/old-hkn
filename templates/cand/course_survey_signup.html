@@ -13,6 +13,7 @@
 <table id="course-survey-table">
   <tr>
     <th>Sign Up</th>
+    <th>Current # Of Candidates</th>
     <th>Course Number</th>
     <th>Section</th>
     <th>Title</th>
@@ -34,6 +35,7 @@
         {% endif %}
       {% endif %}
     </td>
+    <td>{{ klass.coursesurvey_set.all|length }}</td>
     <td>{{ klass.course.short_name }}</td>
     <td>{{ klass.section }}</td>
     <td>{{ klass.course.name }}</td>
