@@ -355,12 +355,10 @@ def course_survey_admin_select_classes(request):
 
 @permission_required('info.group_csec')
 def course_survey_select_ajax(request):
-  print "LOL"
   r = get_object_or_404(Klass, pk=request.REQUEST.get("value", ""))
     
   if request.REQUEST:
     action = request.REQUEST.get("action", "remove")
-    print "Action is: %s" % str(action)
     if action == "add":
       needs_survey = True
     else:
@@ -409,7 +407,7 @@ def course_survey_signup(request):
       request.user.message_set.create(message="No classes selected.")
 
   num_signed_up = person.candidateinfo.coursesurvey_set.count()
-  if num_signed_up >= 3:
+  if num_signed_up >= SURVEYS_REQUIRED:
     request.user.message_set.create(message="Already signed up for %d classes." % SURVEYS_REQUIRED)
     return HttpResponseRedirect(reverse('hkn.cand.views.portal'))
   else:
