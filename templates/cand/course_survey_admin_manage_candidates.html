@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block css %}
+{{block.super}}
+<link type="text/css" href="{{STATIC_PREFIX}}css/course_survey.css" rel="stylesheet" />
+{% endblock %}
+
+{% block js %}
+{{block.super}}
+<script type="text/javascript" src="{{STATIC_PREFIX}}js/course_survey.js"></script>
+{% endblock %}
+
+{% block subtitle %}Course Survey Admin: Manage Candidates{% endblock %}
+
+{% block content %}
+<table id="course-survey-table">
+  <tr>
+    <th>Candidate Name</th>
+    <th>Classes Signed Up For</th>
+  </tr>
+{% for cand_info in candidates %}
+  <tr>
+    <td>{{ cand_info.person.name }}</td>
+    <td> {% for survey in cand_info.coursesurvey_set.all %}
+      {{ survey.klass.course.short_name }}
+    </td>
+  </tr>
+{% endfor %}
+</table>
+{% endblock %}
