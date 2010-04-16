@@ -23,6 +23,7 @@
     <td>{{ cand_info.person.name }}</td>
     <td> {% for survey in cand_info.coursesurvey_set.all %}
       {{ survey.klass.course.short_name }}
+      {% endfor %}
     </td>
   </tr>
 {% endfor %}
