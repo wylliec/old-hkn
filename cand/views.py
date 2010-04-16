@@ -10,7 +10,7 @@ from hkn.cand.models import ProcessedEligibilityListEntry, Challenge
 from hkn.event.models import *
 from hkn.event.constants import *
 from hkn.cand.forms import EligibilityListForm, CandidateApplicationForm
-from hkn.cand.models import CandidateApplication, CandidateQuiz, CourseSurvey
+from hkn.cand.models import CandidateApplication, CandidateQuiz, CourseSurvey, CandidateInfo
 from hkn.cand import utils
 from hkn.cand.constants import *
 from hkn.cand.quiz import *
@@ -374,6 +374,12 @@ def course_survey_select_ajax(request):
   js = """option_select(%d, "%s");""" % (r.id, state)
   
   return HttpResponse(js, mimetype='application/javascript')
+
+@permission_required('info.group_csec')
+def course_survey_admin_manage_candidates(request):
+  d = {}
+  d['candidates'] = CandidateInfo.objects.filter(candidate_semester=current_semester())
+  return render_to_response("cand/course_survey_admin_manage_candidates.html", d, context_instance=RequestContext(request))
 
 @permission_required('info.group_csec')
 def course_survey_admin_manage(request):

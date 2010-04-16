@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^course_survey_admin/select_classes/$', 'hkn.cand.views.course_survey_admin_select_classes', name='course-survey-select-classes'),
     url(r'^course_survey_admin/select_classes_ajax/$', 'hkn.cand.views.course_survey_select_ajax', name='course-survey-select-ajax'),
     url(r'^course_survey_admin/manage/$', 'hkn.cand.views.course_survey_admin_manage', name='course-survey-admin-manage'),
+    url(r'^course_survey_admin/manage-candidates/$', 'hkn.cand.views.course_survey_admin_manage_candidates', name='course-survey-admin-manage-candidates'),
 
     url(r'^course_survey_signup/$', 'hkn.cand.views.course_survey_signup', name='course-survey-signup'),
     )					    
