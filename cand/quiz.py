@@ -4,7 +4,7 @@ import re
 def c(str):
   return re.compile(str, re.IGNORECASE)
 
-q1_ans = c('(UIUC|Urbana Champaign)')
+q1_ans = c('(UIUC|Urbana Champaign|Urbana-Champaign)')
 #q1_partial_ans = c('(University of Illinois)')
 q2_ans = c('1904')
 q3_ans = c('mu')
@@ -32,7 +32,7 @@ q9_ans = [(c('sahai'), c('mu|berkeley')),
     (c('babak|ayazifar'), c('iota pi|caltech')),]
 q10_ans = [c('345 soda|soda 345'),
     c('290 cory|cory 290')]
-q11_ans = c('(470/27|17.4)')
+q11_ans = c('(470/27|17.4|17)')
 
 def check_q1(answers, cquiz):
   cquiz.q1 = sanitize(answers[0])
